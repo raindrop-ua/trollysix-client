@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { map, shareReplay } from 'rxjs';
-import {ClockService} from "../../../core/services/clock.service";
-import {Departure, Status} from "../components/schedule-controls/departure.model";
+import { ClockService } from '../../../core/services/clock.service';
+import { Departure, Status } from '../data-access/models/departure.model';
 
 @Injectable({ providedIn: 'root' })
 export class ScheduleMockService {
@@ -61,11 +61,13 @@ export class ScheduleMockService {
   ];
 
   readonly departures$ = this.clock.now$.pipe(
-    map((now) => this.times.map<Departure>((t) => ({
-      time: t,
-      status: statusFor(now, toTodayDate(t, now)),
-    }))),
-    shareReplay({ bufferSize: 1, refCount: false }),
+    map((now) =>
+      this.times.map<Departure>((t) => ({
+        time: t,
+        status: statusFor(now, toTodayDate(t, now)),
+      }))
+    ),
+    shareReplay({ bufferSize: 1, refCount: false })
   );
 }
 

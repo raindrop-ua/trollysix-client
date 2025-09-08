@@ -1,0 +1,32 @@
+<div class="min-h-screen grid grid-cols-1 lg:grid-cols-2">
+  <section
+    class="flex items-center justify-center px-4 py-10 bg-white dark:bg-slate-900"
+  >
+    <div class="w-full max-w-md">
+      <router-outlet />
+    </div>
+  </section>
+
+  <section
+    class="relative hidden items-center justify-center bg-blue-950 lg:flex overflow-hidden"
+  >
+    <div class="text-center text-white z-5">
+      <div
+        class="m-8 flex flex-wrap items-center justify-center gap-3 text-white"
+      >
+        <svg
+          icon="logo"
+          width="128"
+          height="144"
+          stroke="currentColor"
+          stroke-width="2"
+        ></svg>
+      </div>
+      <h2 class="mt-6 text-3xl font-extrabold tracking-tight text-white">
+        Trolly
+        <span class="text-yellow-500">Six</span>
+      </h2>
+      <p class="mt-2 text-base text-slate-300">Ultimate Schedule for Route 6</p>
+    </div>
+  </section>
+</div>

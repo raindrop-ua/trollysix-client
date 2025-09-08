@@ -1,5 +1,8 @@
 import { isPlatformBrowser } from '@angular/common';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 import {
   ApplicationConfig,
   PLATFORM_ID,
@@ -8,16 +11,26 @@ import {
   provideEnvironmentInitializer,
   provideZonelessChangeDetection,
 } from '@angular/core';
-import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { provideRouter, withInMemoryScrolling, withPreloading } from '@angular/router';
+import {
+  provideClientHydration,
+  withEventReplay,
+} from '@angular/platform-browser';
+import {
+  provideRouter,
+  withInMemoryScrolling,
+  withPreloading,
+} from '@angular/router';
 import { provideServiceWorker } from '@angular/service-worker';
+import { provideStore } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
+import { provideRouterStore } from '@ngrx/router-store';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { NAVIGATION, NAVIGATION_TOKEN } from './core/config/navigation.config';
+import { routes } from './app.routes';
 import { SeoService } from './core/services/seo.service';
 import { AfterFirstPaintPreloadingStrategy } from './core/strategies/after-first-paint-preloading.strategy';
-
-import { routes } from './app.routes';
-import {SwUpdateService} from "./core/services/sw-update.service";
+import { SwUpdateService } from './core/services/sw-update.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -30,7 +43,7 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({
         scrollPositionRestoration: 'enabled',
         anchorScrolling: 'enabled',
-      }),
+      })
     ),
     provideClientHydration(withEventReplay()),
     provideServiceWorker('ngsw-worker.js', {
@@ -43,6 +56,14 @@ export const appConfig: ApplicationConfig = {
         inject(SwUpdateService);
       }
       inject(SeoService);
+    }),
+    provideStore(),
+    provideEffects(),
+    provideRouterStore(),
+    provideStoreDevtools({
+      maxAge: 25,
+      logOnly: !isDevMode(),
+      connectInZone: true,
     }),
   ],
 };
