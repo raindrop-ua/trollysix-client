@@ -1,0 +1,16 @@
+@if (data().length) {
+  <section class="container mx-auto max-w-6xl px-4 py-10">
+    <div
+      [class.sm:grid-cols-3]="mobileFullWidth()"
+      [class.grid-cols-3]="!mobileFullWidth()"
+      class="grid gap-3 text-center sm:gap-4"
+    >
+      @for (metric of data(); track metric) {
+        <div class="rounded-2xl border border-white/10 bg-white/60 p-4 dark:bg-slate-900/40">
+          <div class="text-2xl font-bold text-slate-900 dark:text-white">{{ metric.title }}</div>
+          <div class="text-xs text-slate-600 dark:text-slate-400">{{ metric.description }}</div>
+        </div>
+      }
+    </div>
+  </section>
+}

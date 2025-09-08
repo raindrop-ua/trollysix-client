@@ -1,0 +1,50 @@
+
+@layer components {
+  .ts-time {
+    @apply rounded-xl px-3 py-2 text-center text-base hover:-translate-y-0.5 font-mono transition;
+  }
+
+  .ts-time-past {
+    @apply bg-slate-800/10 text-slate-600 dark:bg-white/5 dark:text-slate-400;
+  }
+
+  .ts-time-now {
+    @apply font-semibold bg-red-500/80 text-white animate-bounce;
+  }
+
+  .ts-time-soon {
+    @apply font-semibold bg-amber-400 text-slate-900;
+  }
+
+  .ts-time-upcoming {
+    @apply font-medium bg-teal-400/30 text-teal-900 dark:text-teal-100;
+  }
+
+  .stop-card {
+    @apply cursor-pointer flex flex-col relative overflow-hidden p-4 text-left hover:ring-2 rounded-2xl border border-white/10 text-left shadow-sm bg-gradient-to-br hover:-translate-y-0.5 transition;
+  }
+
+  .stop-card-1 {
+    @apply from-sky-400/20 via-cyan-400/20 to-blue-500/20 ring-sky-400/50 dark:from-sky-500/15 dark:via-cyan-500/15 dark:to-blue-600/15;
+  }
+
+  .stop-card-2 {
+    @apply from-emerald-400/15 via-teal-400/15 to-emerald-500/15 hover:ring-emerald-400/50;
+  }
+
+  .stop-card-3 {
+    @apply from-fuchsia-400/15 via-purple-400/15 to-indigo-500/15 hover:ring-fuchsia-400/50;
+  }
+
+  .stop-card-4 {
+    @apply from-pink-400/15 via-rose-400/15 to-rose-500/15 hover:ring-pink-400/50;
+  }
+
+  .selector {
+    @apply cursor-pointer disabled:cursor-default px-4 py-2 min-w-28 text-sm text-slate-600 hover:bg-slate-900/5 dark:text-slate-300 dark:hover:bg-white/5 disabled:opacity-25
+  }
+
+  .selector-selected {
+    @apply text-slate-900 bg-slate-900/5 hover:bg-slate-900/10 font-semibold dark:text-white dark:bg-white/5 dark:hover:bg-white/10;
+  }
+}
