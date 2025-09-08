@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:trollysix-client": "node dist/trollysix-client/server/server.mjs"
+    "serve:ssr:trollysix-client": "node dist/trollysix-client/server/server.mjs",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -27,17 +28,23 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.2.15",
+    "@angular-eslint/builder": "20.2.0",
     "@angular/cli": "^19.2.15",
     "@angular/compiler-cli": "^19.2.0",
+    "@eslint/js": "^9.33.0",
     "@types/express": "^4.17.17",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^18.18.0",
+    "angular-eslint": "20.2.0",
+    "eslint": "^9.33.0",
     "jasmine-core": "~5.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.7.2"
-  }
+    "typescript": "~5.7.2",
+    "typescript-eslint": "8.40.0"
+  },
+  "packageManager": "pnpm@10.15.1+sha512.34e538c329b5553014ca8e8f4535997f96180a1d0f614339357449935350d924e22f8614682191264ec33d1462ac21561aff97f6bb18065351c162c7e8f6de67"
 }
