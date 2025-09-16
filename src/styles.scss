@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'tailwindcss';
+@use './app/styles/main';
+@use './app/styles/components';
+
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+

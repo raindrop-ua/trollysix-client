@@ -1,0 +1,372 @@
+<!-- Admin layout: independent from public site -->
+<div class="min-h-screen flex flex-col bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
+  <!-- Admin Header -->
+  <header class="sticky top-0 z-50 border-b border-white/10 bg-white/70 backdrop-blur-xl dark:bg-slate-900/60">
+    <div class="container mx-auto max-w-7xl px-4 py-3">
+      <div class="flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-slate-900 text-white shadow-sm dark:bg-white dark:text-slate-900">
+            <svg icon="logo" width="24" height="30" stroke="currentColor" stroke-width="2"></svg>
+          </div>
+          <div class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">Trolly <span class="text-blue-700 dark:text-yellow-500">Six</span> Admin</div>
+          <span class="hidden text-xs text-slate-500 dark:text-slate-400 sm:inline">Route 6 • Backoffice</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="/" class="rounded-xl px-3 py-1.5 text-xs ring-1 ring-slate-900/10 hover:bg-slate-900/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/5">View site</a>
+          <button type="button" class="rounded-xl px-3 py-1.5 text-xs ring-1 ring-slate-900/10 hover:bg-slate-900/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/5">Help</button>
+          <app-theme-switcher />
+          <div class="ml-2 inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-900/5 ring-1 ring-slate-900/10 dark:bg-white/5 dark:ring-white/10">🙂</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Subheader: breadcrumbs + search -->
+  <section class="sticky top-12 z-40 border-b border-white/10 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 md:top-16">
+    <div class="container mx-auto max-w-7xl px-4 py-2">
+      <div class="flex flex-wrap items-center gap-2">
+        <nav class="text-xs text-slate-500 dark:text-slate-400">
+          <ol class="flex items-center gap-1">
+            <li><a href="#" class="hover:text-slate-700 dark:hover:text-slate-200">Dashboard</a></li>
+            <li class="opacity-50">/</li>
+            <li class="text-slate-900 dark:text-slate-200">Stops</li>
+          </ol>
+        </nav>
+        <div class="ml-auto flex w-full items-center gap-2 sm:w-auto sm:ml-auto">
+          <div class="relative flex-1 sm:flex-none">
+            <input type="search" placeholder="Search stops…" class="w-full rounded-xl border-0 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 shadow-sm ring-1 ring-slate-900/10 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:bg-slate-800 dark:text-white dark:placeholder-slate-400 dark:ring-white/10" />
+            <span class="pointer-events-none absolute right-3 top-2.5 text-xs text-slate-400">⌘K</span>
+          </div>
+          <button type="button" class="hidden rounded-xl px-3 py-2 text-xs ring-1 ring-slate-900/10 hover:bg-slate-900/5 sm:inline-flex dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/5">New stop</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="flex-1">
+    <!-- Main grid: sidebar + content -->
+    <section class="container mx-auto max-w-7xl px-4 py-6 md:py-8">
+      <div class="grid gap-6 lg:grid-cols-[260px,1fr]">
+        <!-- Sidebar -->
+        <aside class="hidden rounded-2xl border border-white/10 bg-white/60 p-3 shadow-sm backdrop-blur dark:bg-slate-900/40 lg:block">
+          <nav class="space-y-1">
+            <a href="#" class="flex items-center justify-between rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 ring-1 ring-slate-900/10 hover:bg-slate-900/5 dark:text-white dark:ring-white/10 dark:hover:bg-white/5">
+              <span>Overview</span>
+              <span class="text-xs opacity-60">↗</span>
+            </a>
+            <a href="#" class="flex items-center justify-between rounded-xl px-3 py-2 text-sm text-slate-700 ring-1 ring-slate-900/10 hover:bg-slate-900/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/5">
+              <span>Stops</span>
+              <span class="text-xs opacity-60">32</span>
+            </a>
+            <a href="#" class="flex items-center justify-between rounded-xl px-3 py-2 text-sm text-slate-700 ring-1 ring-slate-900/10 hover:bg-slate-900/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/5">
+              <span>Departures</span>
+              <span class="text-xs opacity-60">712</span>
+            </a>
+            <a href="#" class="flex items-center justify-between rounded-xl px-3 py-2 text-sm text-slate-700 ring-1 ring-slate-900/10 hover:bg-slate-900/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/5">
+              <span>Routes</span>
+              <span class="text-xs opacity-60">1</span>
+            </a>
+            <a href="#" class="flex items-center justify-between rounded-xl px-3 py-2 text-sm text-slate-700 ring-1 ring-slate-900/10 hover:bg-slate-900/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/5">
+              <span>Import / Export</span>
+              <span class="text-xs opacity-60">CSV</span>
+            </a>
+            <a href="#" class="flex items-center justify-between rounded-xl px-3 py-2 text-sm text-slate-700 ring-1 ring-slate-900/10 hover:bg-slate-900/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/5">
+              <span>Settings</span>
+              <span class="text-xs opacity-60">⚙️</span>
+            </a>
+          </nav>
+        </aside>
+
+        <!-- Content -->
+        <div class="space-y-6">
+          <!-- Overview metrics -->
+          <section class="grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <div class="rounded-2xl border border-white/10 bg-white/60 p-4 text-center shadow-sm backdrop-blur dark:bg-slate-900/40">
+              <div class="text-2xl font-bold text-slate-900 dark:text-white">32</div>
+              <div class="text-xs text-slate-600 dark:text-slate-400">stops</div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/60 p-4 text-center shadow-sm backdrop-blur dark:bg-slate-900/40">
+              <div class="text-2xl font-bold text-slate-900 dark:text-white">712</div>
+              <div class="text-xs text-slate-600 dark:text-slate-400">departures</div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/60 p-4 text-center shadow-sm backdrop-blur dark:bg-slate-900/40">
+              <div class="text-2xl font-bold text-slate-900 dark:text-white">2</div>
+              <div class="text-xs text-slate-600 dark:text-slate-400">directions</div>
+            </div>
+          </section>
+
+          <!-- Stops table -->
+          <section class="rounded-3xl border border-white/10 bg-white/70 p-4 shadow-sm backdrop-blur dark:bg-slate-900/50 md:p-5">
+            <header class="mb-3 flex flex-wrap items-center justify-between gap-2">
+              <h2 class="text-base font-semibold text-slate-900 dark:text-white">Stops</h2>
+              <div class="flex items-center gap-2">
+                <button type="button" class="rounded-xl px-3 py-1.5 text-xs ring-1 ring-slate-900/10 hover:bg-slate-900/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/5">New</button>
+                <button type="button" class="rounded-xl px-3 py-1.5 text-xs ring-1 ring-slate-900/10 hover:bg-slate-900/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/5">Import</button>
+                <button type="button" class="rounded-xl px-3 py-1.5 text-xs ring-1 ring-slate-900/10 hover:bg-slate-900/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/5">Export</button>
+              </div>
+            </header>
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-left text-sm">
+                <thead class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">
+                <tr>
+                  <th class="px-3 py-2">Stop</th>
+                  <th class="px-3 py-2">Slug</th>
+                  <th class="px-3 py-2">Coords</th>
+                  <th class="px-3 py-2">Routes</th>
+                  <th class="px-3 py-2">Status</th>
+                  <th class="px-3 py-2 text-right">Actions</th>
+                </tr>
+                </thead>
+                <tbody class="divide-y divide-white/10">
+                <tr>
+                  <td class="px-3 py-2 font-medium text-slate-900 dark:text-slate-100">Pridniprovsk</td>
+                  <td class="px-3 py-2 text-slate-600 dark:text-slate-300">pridniprovsk</td>
+                  <td class="px-3 py-2 text-slate-600 dark:text-slate-300">48.388 • 35.094</td>
+                  <td class="px-3 py-2"><span class="rounded-md bg-slate-900/5 px-2 py-0.5 text-xs ring-1 ring-slate-900/10 dark:bg-white/5 dark:text-slate-200 dark:ring-white/10">#6</span></td>
+                  <td class="px-3 py-2"><span class="rounded-full bg-emerald-500/15 px-2 py-0.5 text-xs text-emerald-700 dark:text-emerald-300">active</span></td>
+                  <td class="px-3 py-2 text-right">
+                    <div class="inline-flex items-center gap-1">
+                      <button type="button" class="rounded-lg px-2 py-1 text-xs ring-1 ring-slate-900/10 hover:bg-slate-900/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/5">Edit</button>
+                      <button type="button" class="rounded-lg px-2 py-1 text-xs ring-1 ring-slate-900/10 hover:bg-slate-900/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/5">Duplicate</button>
+                      <button type="button" class="rounded-lg px-2 py-1 text-xs text-red-600 ring-1 ring-red-500/30 hover:bg-red-500/10">Archive</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-3 py-2 font-medium text-slate-900 dark:text-slate-100">Mechnikov Hospital</td>
+                  <td class="px-3 py-2 text-slate-600 dark:text-slate-300">mechnikov-hospital</td>
+                  <td class="px-3 py-2 text-slate-600 dark:text-slate-300">48.454 • 35.050</td>
+                  <td class="px-3 py-2"><span class="rounded-md bg-slate-900/5 px-2 py-0.5 text-xs ring-1 ring-slate-900/10 dark:bg-white/5 dark:text-slate-200 dark:ring-white/10">#6</span></td>
+                  <td class="px-3 py-2"><span class="rounded-full bg-emerald-500/15 px-2 py-0.5 text-xs text-emerald-700 dark:text-emerald-300">active</span></td>
+                  <td class="px-3 py-2 text-right">
+                    <div class="inline-flex items-center gap-1">
+                      <button type="button" class="rounded-lg px-2 py-1 text-xs ring-1 ring-slate-900/10 hover:bg-slate-900/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/5">Edit</button>
+                      <button type="button" class="rounded-lg px-2 py-1 text-xs ring-1 ring-slate-900/10 hover:bg-slate-900/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/5">Duplicate</button>
+                      <button type="button" class="rounded-lg px-2 py-1 text-xs text-red-600 ring-1 ring-red-500/30 hover:bg-red-500/10">Archive</button>
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Stop editor -->
+          <section class="rounded-3xl border border-white/10 bg-white/70 p-5 shadow-sm backdrop-blur dark:bg-slate-900/50">
+            <header class="mb-4 flex flex-wrap items-center justify-between gap-2">
+              <h3 class="text-base font-semibold text-slate-900 dark:text-white">Stop editor</h3>
+              <div class="text-xs text-slate-500 dark:text-slate-400">Edit a stop — fields are placeholders</div>
+            </header>
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+              <div class="md:col-span-2 space-y-4">
+                <div>
+                  <label for="i1" class="mb-1 block text-xs font-medium text-slate-600 dark:text-slate-300">Stop name</label>
+                  <input name="i1" type="text" placeholder="Pridniprovsk" class="w-full rounded-xl border-0 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 shadow-sm ring-1 ring-slate-900/10 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:bg-slate-800 dark:text-white dark:placeholder-slate-400 dark:ring-white/10" />
+                </div>
+                <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  <div>
+                    <label for="i2" class="mb-1 block text-xs font-medium text-slate-600 dark:text-slate-300">Slug</label>
+                    <input name="i2" type="text" placeholder="pridniprovsk" class="w-full rounded-xl border-0 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 shadow-sm ring-1 ring-slate-900/10 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:bg-slate-800 dark:text-white dark:placeholder-slate-400 dark:ring-white/10" />
+                  </div>
+                  <div>
+                    <label for="i3" class="mb-1 block text-xs font-medium text-slate-600 dark:text-slate-300">Status</label>
+                    <div class="inline-flex overflow-hidden rounded-xl ring-1 ring-slate-900/10 dark:ring-white/10">
+                      <button type="button" aria-pressed="true" class="px-3 py-1.5 text-xs font-medium text-slate-900 bg-slate-900/5 hover:bg-slate-900/10 dark:text-white dark:bg-white/5 dark:hover:bg-white/10">Active</button>
+                      <button type="button" class="px-3 py-1.5 text-xs text-slate-600 hover:bg-slate-900/5 dark:text-slate-300 dark:hover:bg-white/5">Archived</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  <div>
+                    <label for="i4" class="mb-1 block text-xs font-medium text-slate-600 dark:text-slate-300">Latitude</label>
+                    <input name="i4" type="text" placeholder="48.388" class="w-full rounded-xl border-0 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 shadow-sm ring-1 ring-slate-900/10 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:bg-slate-800 dark:text-white dark:placeholder-slate-400 dark:ring-white/10" />
+                  </div>
+                  <div>
+                    <label for="i5" class="mb-1 block text-xs font-medium text-slate-600 dark:text-slate-300">Longitude</label>
+                    <input name="i5" type="text" placeholder="35.094" class="w-full rounded-xl border-0 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 shadow-sm ring-1 ring-slate-900/10 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:bg-slate-800 dark:text-white dark:placeholder-slate-400 dark:ring-white/10" />
+                  </div>
+                </div>
+                <div>
+                  <label for="i6" class="mb-1 block text-xs font-medium text-slate-600 dark:text-slate-300">Routes at this stop</label>
+                  <div class="flex flex-wrap gap-2">
+                    <button type="button" class="rounded-md bg-slate-900/5 px-2 py-1 text-xs ring-1 ring-slate-900/10 hover:bg-slate-900/10 dark:bg-white/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/10">#6</button>
+                    <button type="button" class="rounded-md bg-slate-900/5 px-2 py-1 text-xs ring-1 ring-slate-900/10 hover:bg-slate-900/10 dark:bg-white/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/10">#7</button>
+                    <button type="button" class="rounded-md bg-slate-900/5 px-2 py-1 text-xs ring-1 ring-slate-900/10 hover:bg-slate-900/10 dark:bg-white/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/10">#12</button>
+                  </div>
+                </div>
+                <div>
+                  <label for="i7" class="mb-1 block text-xs font-medium text-slate-600 dark:text-slate-300">Notes</label>
+                  <textarea name="i7" rows="3" placeholder="Optional notes…" class="w-full rounded-xl border-0 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 shadow-sm ring-1 ring-slate-900/10 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:bg-slate-800 dark:text-white dark:placeholder-slate-400 dark:ring-white/10"></textarea>
+                </div>
+              </div>
+              <div class="space-y-4">
+                <div>
+                  <div class="mb-1 text-xs font-medium text-slate-600 dark:text-slate-300">Photo</div>
+                  <div class="flex aspect-[4/3] w-full items-center justify-center rounded-xl bg-slate-900/5 text-xs ring-1 ring-slate-900/10 dark:bg-white/5 dark:text-slate-200 dark:ring-white/10">Drop image here</div>
+                </div>
+                <div>
+                  <div class="mb-1 text-xs font-medium text-slate-600 dark:text-slate-300">Display order</div>
+                  <input type="number" placeholder="10" class="w-full rounded-xl border-0 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 shadow-sm ring-1 ring-slate-900/10 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:bg-slate-800 dark:text-white dark:placeholder-slate-400 dark:ring-white/10" />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Directions editor -->
+          <section class="rounded-3xl border border-white/10 bg-white/70 p-5 shadow-sm backdrop-blur dark:bg-slate-900/50">
+            <header class="mb-3">
+              <h3 class="text-base font-semibold text-slate-900 dark:text-white">Directions</h3>
+            </header>
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div class="rounded-2xl border border-white/10 p-4 dark:border-white/10">
+                <div class="mb-2 text-sm font-medium text-slate-700 dark:text-slate-200">Forward</div>
+                <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  <div>
+                    <label for="i8" class="mb-1 block text-xs text-slate-600 dark:text-slate-300">Label</label>
+                    <input name="i8" type="text" placeholder="Forward" class="w-full rounded-xl border-0 bg-white px-3 py-2 text-sm shadow-sm ring-1 ring-slate-900/10 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:bg-slate-800 dark:text-white dark:ring-white/10" />
+                  </div>
+                  <div>
+                    <label for="i9" class="mb-1 block text-xs text-slate-600 dark:text-slate-300">Terminus</label>
+                    <input name="i9" type="text" placeholder="City Center" class="w-full rounded-xl border-0 bg-white px-3 py-2 text-sm shadow-sm ring-1 ring-slate-900/10 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:bg-slate-800 dark:text-white dark:ring-white/10" />
+                  </div>
+                </div>
+              </div>
+              <div class="rounded-2xl border border-white/10 p-4 dark:border-white/10">
+                <div class="mb-2 text-sm font-medium text-slate-700 dark:text-slate-200">Backward</div>
+                <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  <div>
+                    <label for="i10" class="mb-1 block text-xs text-slate-600 dark:text-slate-300">Label</label>
+                    <input name="i10" type="text" placeholder="Backward" class="w-full rounded-xl border-0 bg-white px-3 py-2 text-sm shadow-sm ring-1 ring-slate-900/10 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:bg-slate-800 dark:text-white dark:ring-white/10" />
+                  </div>
+                  <div>
+                    <label for="i11" class="mb-1 block text-xs text-slate-600 dark:text-slate-300">Terminus</label>
+                    <input name="i11" type="text" placeholder="Pridniprovsk" class="w-full rounded-xl border-0 bg-white px-3 py-2 text-sm shadow-sm ring-1 ring-slate-900/10 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:bg-slate-800 dark:text-white dark:ring-white/10" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Departures editor -->
+          <section class="rounded-3xl border border-white/10 bg-white/70 p-5 shadow-sm backdrop-blur dark:bg-slate-900/50">
+            <header class="mb-4 flex flex-wrap items-center justify-between gap-2">
+              <h3 class="text-base font-semibold text-slate-900 dark:text-white">Departures</h3>
+              <div class="text-xs text-slate-500 dark:text-slate-400">Weekday / Weekend • Forward / Backward</div>
+            </header>
+
+            <!-- Filters (segmented) -->
+            <div class="mb-4 flex flex-wrap items-center gap-2">
+              <div class="inline-flex overflow-hidden rounded-xl ring-1 ring-slate-900/10 dark:ring-white/10">
+                <button type="button" aria-pressed="true" class="px-3 py-1.5 text-xs font-semibold text-slate-900 bg-slate-900/5 hover:bg-slate-900/10 dark:text-white dark:bg-white/5 dark:hover:bg-white/10">Weekday</button>
+                <button type="button" class="px-3 py-1.5 text-xs text-slate-600 hover:bg-slate-900/5 dark:text-slate-300 dark:hover:bg-white/5">Weekend</button>
+              </div>
+              <div class="inline-flex overflow-hidden rounded-xl ring-1 ring-slate-900/10 dark:ring-white/10">
+                <button type="button" aria-pressed="true" class="px-3 py-1.5 text-xs font-semibold text-slate-900 bg-slate-900/5 hover:bg-slate-900/10 dark:text-white dark:bg-white/5 dark:hover:bg-white/10">Forward</button>
+                <button type="button" class="px-3 py-1.5 text-xs text-slate-600 hover:bg-slate-900/5 dark:text-slate-300 dark:hover:bg-white/5">Backward</button>
+              </div>
+              <div class="ml-auto flex items-center gap-2">
+                <button type="button" class="rounded-xl px-3 py-1.5 text-xs ring-1 ring-slate-900/10 hover:bg-slate-900/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/5">Bulk add</button>
+                <button type="button" class="rounded-xl px-3 py-1.5 text-xs ring-1 ring-slate-900/10 hover:bg-slate-900/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/5">Sort</button>
+                <button type="button" class="rounded-xl px-3 py-1.5 text-xs text-red-600 ring-1 ring-red-500/30 hover:bg-red-500/10">Clear</button>
+              </div>
+            </div>
+
+            <!-- Input row -->
+            <div class="mb-3 grid grid-cols-1 gap-3 sm:grid-cols-[160px,1fr]">
+              <input type="text" placeholder="Add time e.g. 07:15" class="rounded-xl border-0 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 shadow-sm ring-1 ring-slate-900/10 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:bg-slate-800 dark:text-white dark:placeholder-slate-400 dark:ring-white/10" />
+              <div class="flex flex-wrap items-center gap-2">
+                <button type="button" class="rounded-xl bg-slate-900 px-3 py-2 text-xs font-semibold text-white shadow-sm ring-1 ring-black/10 hover:opacity-95 active:scale-[.98] dark:bg-white dark:text-slate-900 dark:ring-white/10">Add</button>
+                <button type="button" class="rounded-xl px-3 py-2 text-xs ring-1 ring-slate-900/10 hover:bg-slate-900/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/5">Paste CSV</button>
+                <button type="button" class="rounded-xl px-3 py-2 text-xs ring-1 ring-slate-900/10 hover:bg-slate-900/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/5">Generate pattern</button>
+              </div>
+            </div>
+
+            <!-- Times grid (demo) -->
+            <div class="grid grid-cols-4 gap-2 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12">
+              <div class="rounded-xl bg-slate-900/5 px-3 py-2 text-center text-sm text-slate-800 dark:bg-white/5 dark:text-slate-200">06:00</div>
+              <div class="rounded-xl bg-slate-900/5 px-3 py-2 text-center text-sm text-slate-800 dark:bg-white/5 dark:text-slate-200">06:15</div>
+              <div class="rounded-xl bg-slate-900/5 px-3 py-2 text-center text-sm text-slate-800 dark:bg-white/5 dark:text-slate-200">06:30</div>
+              <div class="rounded-xl bg-slate-900/5 px-3 py-2 text-center text-sm text-slate-800 dark:bg-white/5 dark:text-slate-200">06:45</div>
+              <div class="rounded-xl bg-slate-900/5 px-3 py-2 text-center text-sm text-slate-800 dark:bg-white/5 dark:text-slate-200">07:10</div>
+              <div class="rounded-xl bg-slate-900/5 px-3 py-2 text-center text-sm text-slate-800 dark:bg-white/5 dark:text-slate-200">07:25</div>
+              <div class="rounded-xl bg-slate-900/5 px-3 py-2 text-center text-sm text-slate-800 dark:bg-white/5 dark:text-slate-200">07:40</div>
+              <div class="rounded-xl bg-amber-400 px-3 py-2 text-center text-sm font-semibold text-slate-900">07:55</div>
+              <div class="rounded-xl bg-teal-400/30 px-3 py-2 text-center text-sm font-medium text-teal-900 dark:text-teal-100">08:10</div>
+              <div class="rounded-xl bg-teal-400/30 px-3 py-2 text-center text-sm font-medium text-teal-900 dark:text-teal-100">08:25</div>
+              <div class="rounded-xl bg-red-500/80 px-3 py-2 text-center text-sm font-semibold text-white">08:40</div>
+              <div class="rounded-xl bg-slate-900/5 px-3 py-2 text-center text-sm text-slate-800 dark:bg-white/5 dark:text-slate-200">08:55</div>
+            </div>
+
+            <!-- Hints / validation placeholder -->
+            <div class="mt-3 rounded-xl bg-slate-900/5 px-3 py-2 text-xs ring-1 ring-slate-900/10 dark:bg-white/5 dark:text-slate-300 dark:ring-white/10">
+              <div class="flex flex-wrap items-start gap-2">
+                <span>ℹ️</span>
+                <span>Use 24h format. Duplicate times will be highlighted. Bulk tools accept comma/space/newline separated values.</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Preview -->
+          <section class="rounded-3xl border border-white/10 bg-white/70 p-5 shadow-sm backdrop-blur dark:bg-slate-900/50">
+            <header class="mb-3 flex items-center justify-between">
+              <h3 class="text-base font-semibold text-slate-900 dark:text-white">Preview</h3>
+              <div class="text-xs text-slate-500 dark:text-slate-400">As users might see it</div>
+            </header>
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+              <div class="md:col-span-2">
+                <div class="mb-2 text-sm text-slate-600 dark:text-slate-300">Pridniprovsk • Forward • Weekday</div>
+                <div class="grid grid-cols-4 gap-2 sm:grid-cols-6 md:grid-cols-8">
+                  <div class="rounded-xl bg-slate-900/5 px-3 py-2 text-center text-sm text-slate-800 dark:bg-white/5 dark:text-slate-200">06:00</div>
+                  <div class="rounded-xl bg-amber-400 px-3 py-2 text-center text-sm font-semibold text-slate-900">07:55</div>
+                  <div class="rounded-xl bg-teal-400/30 px-3 py-2 text-center text-sm font-medium text-teal-900 dark:text-teal-100">08:10</div>
+                  <div class="rounded-xl bg-slate-900/5 px-3 py-2 text-center text-sm text-slate-800 dark:bg-white/5 dark:text-slate-200">08:55</div>
+                </div>
+              </div>
+              <div class="space-y-3">
+                <div class="rounded-xl border border-white/10 p-3">
+                  <div class="text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Weather (placeholder)</div>
+                  <div class="text-sm text-slate-600 dark:text-slate-300">+23°C • light breeze</div>
+                </div>
+                <div class="rounded-xl border border-white/10 p-3">
+                  <div class="text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Other routes</div>
+                  <div class="flex flex-wrap gap-2 text-xs">
+                    <span class="rounded-md bg-slate-900/5 px-2 py-1 ring-1 ring-slate-900/10 dark:bg-white/5 dark:text-slate-200 dark:ring-white/10">#7</span>
+                    <span class="rounded-md bg-slate-900/5 px-2 py-1 ring-1 ring-slate-900/10 dark:bg白/5 dark:text-slate-200 dark:ring-white/10">#12</span>
+                    <span class="rounded-md bg-slate-900/5 px-2 py-1 ring-1 ring-slate-900/10 dark:bg-white/5 dark:text-slate-200 dark:ring-white/10">#15</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Sticky Action Bar -->
+  <section class="sticky bottom-0 z-40 border-t border-white/10 bg-white/70 backdrop-blur md:py-2 dark:bg-slate-900/60">
+    <div class="container mx-auto max-w-7xl px-4 py-3">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <div class="text-xs text-slate-500 dark:text-slate-400">Unsaved changes (demo)</div>
+        <div class="flex items-center gap-2">
+          <button type="button" class="rounded-xl px-4 py-2 text-xs ring-1 ring-slate-900/10 hover:bg-slate-900/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/5">Discard</button>
+          <button type="button" class="rounded-xl bg-slate-900 px-4 py-2 text-xs font-semibold text-white shadow-sm ring-1 ring-black/10 hover:opacity-95 active:scale-[.98] dark:bg-white dark:text-slate-900 dark:ring-white/10">Save</button>
+          <button type="button" class="rounded-xl bg-emerald-500/90 px-4 py-2 text-xs font-semibold text-white shadow-sm ring-1 ring-emerald-500/20 hover:opacity-95 active:scale-[.98]">Publish</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admin Footer -->
+  <footer class="border-t border-white/10 bg-white/50 py-6 text-center text-xs text-slate-500 backdrop-blur dark:bg-slate-900/50 dark:text-slate-400">
+    <div class="container mx-auto max-w-7xl px-4">
+      <div class="flex flex-col items-center justify-between gap-3 sm:flex-row">
+        <div>© TrollySix Admin</div>
+        <div class="flex items-center gap-4">
+          <a class="hover:text-slate-700 dark:hover:text-slate-200" href="#">Changelog</a>
+          <a class="hover:text-slate-700 dark:hover:text-slate-200" href="#">System status</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

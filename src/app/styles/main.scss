@@ -1,0 +1,31 @@
+@use "./fonts";
+
+/* stylelint-disable-next-line */
+@theme {
+  /* stylelint-disable-next-line */
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  /* stylelint-disable-next-line */
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1; transform: none;
+  }
+}
+
+.reveal-preset {
+  opacity: 0;
+  transform: translateY(12px);
+  will-change: transform, opacity;
+}
+
+.reveal {
+  animation: fade-up 1000ms var(--reveal-ease, cubic-bezier(.22,1,.36,1)) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
