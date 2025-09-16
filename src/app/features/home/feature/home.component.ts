@@ -10,7 +10,6 @@ import {
 import {
   BigClaimsComponent,
   MastheadComponent,
-  PromoStripsComponent,
   ReadyForRouteSixComponent,
   ThisIsTrollysixComponent,
   ValuePropsComponent,
@@ -20,7 +19,6 @@ import {
   selector: 'app-home',
   imports: [
     MastheadComponent,
-    PromoStripsComponent,
     ValuePropsComponent,
     BigClaimsComponent,
     ThisIsTrollysixComponent,
