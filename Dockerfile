@@ -2,17 +2,17 @@ FROM node:22-alpine AS build
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci
+RUN pnpm ci
 
 COPY . .
-RUN npm run build
+RUN pnpm run build
 
 FROM node:22-bullseye-slim AS runtime
 WORKDIR /app
 ENV NODE_ENV=production
 
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN pnpm ci --omit=dev
 
 COPY --from=build /app/dist /app/dist
 
