@@ -18,7 +18,7 @@ ENV NODE_ENV=production
 
 RUN corepack enable && corepack prepare pnpm@9.12.3 --activate
 COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile --prod
+RUN pnpm install
 
 COPY --from=build /app/dist /app/dist
 
