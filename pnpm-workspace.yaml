@@ -1,5 +1,8 @@
-ignoredBuiltDependencies:
-  - '@swc/core'
-
 onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - '@swc/core'
+  - '@tailwindcss/oxide'
   - cypress
+  - esbuild
+  - lmdb
+  - msgpackr-extract
