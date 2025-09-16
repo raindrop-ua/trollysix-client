@@ -25,19 +25,19 @@ export const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./features/auth/auth.routes'),
   },
-  {
-    path: 'admin',
-    data: {
-      preload: false,
-      animation: 'Admin',
-      seo: {
-        title: 'Administration | TrollySix',
-        description: 'Ultimate schedule for trolleybus route number 6.',
-      },
-    },
-    loadComponent: () =>
-      import('./features/admin/admin.component').then((m) => m.AdminComponent),
-  },
+  // {
+  //   path: 'admin',
+  //   data: {
+  //     preload: false,
+  //     animation: 'Admin',
+  //     seo: {
+  //       title: 'Administration | TrollySix',
+  //       description: 'Ultimate schedule for trolleybus route number 6.',
+  //     },
+  //   },
+  //   loadComponent: () =>
+  //     import('./features/admin/admin.component').then((m) => m.AdminComponent),
+  // },
   {
     path: '**',
     redirectTo: '/',
