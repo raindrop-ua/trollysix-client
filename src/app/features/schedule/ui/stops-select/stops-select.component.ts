@@ -3,11 +3,8 @@ import {
   Component,
   inject,
   input,
-  OnInit,
-  signal,
 } from '@angular/core';
 import { SvgIconComponent } from '../../../../shared/components/svg-icon/svg-icon.component';
-import { Stop } from '../../data-access/models/stop.model';
 import { Store } from '@ngrx/store';
 import { selectScheduleViewModel } from '../../data-access/store/schedule.selectors';
 import { AsyncPipe } from '@angular/common';

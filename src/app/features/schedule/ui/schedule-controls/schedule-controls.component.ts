@@ -17,6 +17,4 @@ import {
   templateUrl: './schedule-controls.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ScheduleControlsComponent {
-
-}
+export class ScheduleControlsComponent {}

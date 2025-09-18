@@ -1,5 +1,3 @@
-import { Direction } from './direction.model';
-
 export interface Stop {
   id: string;
   name: string;

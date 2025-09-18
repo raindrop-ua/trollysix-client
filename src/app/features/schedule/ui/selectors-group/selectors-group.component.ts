@@ -3,7 +3,6 @@ import { OptionsSelectorComponent } from '../options-selector/options-selector.c
 import { StopsSelectComponent } from '../stops-select/stops-select.component';
 import { SvgIconComponent } from '../../../../shared/components/svg-icon/svg-icon.component';
 import { Store } from '@ngrx/store';
-import { selectScheduleViewModel } from '../../data-access/store/schedule.selectors';
 import { SchedulePageActions } from '../../data-access/store/schedule.actions';
 
 @Component({
@@ -14,10 +13,8 @@ import { SchedulePageActions } from '../../data-access/store/schedule.actions';
 })
 export class SelectorsGroupComponent {
   private store = inject(Store);
-  vm$ = this.store.select(selectScheduleViewModel);
 
   onSelectDayType(dayTypeName: string): void {
-    console.log(dayTypeName);
     this.store.dispatch(SchedulePageActions.selectDayType({ dayTypeName }));
   }
 
