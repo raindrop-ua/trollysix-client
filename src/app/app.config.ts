@@ -1,6 +1,7 @@
 import { isPlatformBrowser } from '@angular/common';
 import {
   provideHttpClient,
+  withFetch,
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import {
@@ -36,7 +37,10 @@ export const appConfig: ApplicationConfig = {
   providers: [
     { provide: NAVIGATION_TOKEN, useValue: NAVIGATION },
     provideZonelessChangeDetection(),
-    provideHttpClient(withInterceptorsFromDi()),
+    provideHttpClient(
+      withInterceptorsFromDi(),
+      withFetch()
+    ),
     provideRouter(
       routes,
       withPreloading(AfterFirstPaintPreloadingStrategy),

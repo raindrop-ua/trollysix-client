@@ -1,9 +1,18 @@
 import { Routes } from '@angular/router';
 import { ScheduleComponent } from './schedule.component';
+import { provideState } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
+import { scheduleFeature } from '../data-access/store/schedule.reducer';
+import { ScheduleEffects } from '../data-access/store/schedule.effects';
+
 export default [
   {
     path: '',
     component: ScheduleComponent,
+    providers: [
+      provideState(scheduleFeature),
+      provideEffects([ScheduleEffects]),
+    ],
     data: {
       preload: true,
       animation: 'Schedule',

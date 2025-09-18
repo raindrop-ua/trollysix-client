@@ -7,7 +7,7 @@ import { Timetable } from '../models/timetable.model';
 export const SchedulePageActions = createActionGroup({
   source: 'Schedule Page',
   events: {
-    'Enter': emptyProps(), // Пользователь зашел на страницу
+    'Enter': emptyProps(),
     'Select Stop': props<{ stopId: string }>(),
     'Select Day Type': props<{ dayTypeName: string }>(),
     'Select Direction': props<{ directionName: string }>(),
