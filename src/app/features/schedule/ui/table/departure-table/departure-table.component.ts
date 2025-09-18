@@ -6,12 +6,12 @@ import {
 } from '@angular/core';
 import { DepartureTimeItemComponent } from '../departure-time-item/departure-time-item.component';
 import { ScheduleService } from '../../../services/schedule.service';
-import { AsyncPipe, JsonPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-departure-table',
   templateUrl: './departure-table.component.html',
-  imports: [DepartureTimeItemComponent, AsyncPipe, JsonPipe],
+  imports: [DepartureTimeItemComponent, AsyncPipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
