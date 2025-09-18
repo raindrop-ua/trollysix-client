@@ -1,6 +1,12 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, switchMap, withLatestFrom, filter } from 'rxjs/operators';
+import {
+  catchError,
+  map,
+  switchMap,
+  withLatestFrom,
+  filter,
+} from 'rxjs/operators';
 import { of, forkJoin } from 'rxjs';
 import { Store } from '@ngrx/store';
 
@@ -10,7 +16,7 @@ import { ScheduleApiService } from '../data/schedule.api.service';
 
 @Injectable()
 export class ScheduleEffects {
-  private actions$= inject(Actions);
+  private actions$ = inject(Actions);
   private store = inject(Store);
   private scheduleApi = inject(ScheduleApiService);
 
@@ -24,39 +30,65 @@ export class ScheduleEffects {
           directions: this.scheduleApi.getDirections(),
         }).pipe(
           map(({ stops, dayTypes, directions }) =>
-            ScheduleApiActions.loadInitialDataSuccess({ stops, dayTypes, directions })
+            ScheduleApiActions.loadInitialDataSuccess({
+              stops,
+              dayTypes,
+              directions,
+            }),
           ),
           catchError((error) =>
-            of(ScheduleApiActions.loadInitialDataFailure({ error: error.message }))
-          )
-        )
-      )
-    )
+            of(
+              ScheduleApiActions.loadInitialDataFailure({
+                error: error.message,
+              }),
+            ),
+          ),
+        ),
+      ),
+    ),
   );
 
-  loadTimetable$ = createEffect(() =>
+  triggerLoadTimetable$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
         SchedulePageActions.selectStop,
         SchedulePageActions.selectDayType,
         SchedulePageActions.selectDirection,
-        ScheduleApiActions.loadInitialDataSuccess
+        ScheduleApiActions.loadInitialDataSuccess,
       ),
       withLatestFrom(
         this.store.select(scheduleFeature.selectSelectedStopId),
         this.store.select(scheduleFeature.selectSelectedDayTypeName),
-        this.store.select(scheduleFeature.selectSelectedDirectionName)
+        this.store.select(scheduleFeature.selectSelectedDirectionName),
       ),
-      filter(([action, stopId, dayType, direction]) => !!stopId && !!dayType && !!direction),
+      filter(
+        ([action, stopId, dayType, direction]) =>
+          !!stopId && !!dayType && !!direction,
+      ),
       map(() => ScheduleApiActions.loadTimetable()),
+    ),
+  );
+
+  executeLoadTimetable$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ScheduleApiActions.loadTimetable),
+      withLatestFrom(
+        this.store.select(scheduleFeature.selectSelectedStopId),
+        this.store.select(scheduleFeature.selectSelectedDayTypeName),
+        this.store.select(scheduleFeature.selectSelectedDirectionName),
+      ),
       switchMap(([action, stopId, dayType, direction]) =>
         this.scheduleApi.getTimetable(stopId!, dayType!, direction!).pipe(
-          map((timetable) => ScheduleApiActions.loadTimetableSuccess({ timetable })),
+          map((timetable) =>
+            ScheduleApiActions.loadTimetableSuccess({ timetable }),
+          ),
           catchError((error) =>
-            of(ScheduleApiActions.loadTimetableFailure({ error: error.message }))
-          )
-        )
-      )
-    )
+            of(
+              ScheduleApiActions.loadTimetableFailure({ error: error.message }),
+            ),
+          ),
+        ),
+      ),
+    ),
   );
 }
