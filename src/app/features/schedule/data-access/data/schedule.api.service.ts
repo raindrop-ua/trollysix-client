@@ -36,6 +36,6 @@ export class ScheduleApiService {
       .set('dayType', dayTypeName)
       .set('direction', directionName);
 
-    return this.http.get<Timetable>(`${this.BASE_URL}/timetables/find`, { params });
+    return this.http.get<Timetable>(`${this.BASE_URL}/timetables`, { params });
   }
 }

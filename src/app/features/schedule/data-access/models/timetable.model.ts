@@ -1,7 +1,7 @@
 export interface Timetable {
   id: string;
   name: string;
-  stop_id: string;
+  stopId: string;
   dayType: string; // 'weekday' | 'weekend' | 'holiday'
   direction: string; // 'forward' | 'backward'
   times: string[];
