@@ -3,6 +3,7 @@ import {
   Component,
   input,
   OnInit,
+  output,
   signal,
 } from '@angular/core';
 import { Option } from '../../data-access/models/option.model';
@@ -18,6 +19,7 @@ export class OptionsSelectorComponent implements OnInit {
   public readonly options = input.required<Option[]>();
   public readonly preselected = input<string>();
   public readonly selected = signal<string | null>(null);
+  public optionSelect = output<string>();
 
   ngOnInit() {
     this.selected.set(this.preselected() ?? this.options()[0].value);
@@ -25,5 +27,7 @@ export class OptionsSelectorComponent implements OnInit {
 
   public select(option: string) {
     this.selected.set(option);
+    this.optionSelect.emit(option);
+    console.log(option, 'select');
   }
 }

@@ -4,6 +4,7 @@ import { StopsSelectComponent } from '../stops-select/stops-select.component';
 import { SvgIconComponent } from '../../../../shared/components/svg-icon/svg-icon.component';
 import { Store } from '@ngrx/store';
 import { selectScheduleViewModel } from '../../data-access/store/schedule.selectors';
+import { SchedulePageActions } from '../../data-access/store/schedule.actions';
 
 @Component({
   selector: 'app-selectors-group',
@@ -14,4 +15,13 @@ import { selectScheduleViewModel } from '../../data-access/store/schedule.select
 export class SelectorsGroupComponent {
   private store = inject(Store);
   vm$ = this.store.select(selectScheduleViewModel);
+
+  onSelectDayType(dayTypeName: string): void {
+    console.log(dayTypeName);
+    this.store.dispatch(SchedulePageActions.selectDayType({ dayTypeName }));
+  }
+
+  onSelectDirection(directionName: string): void {
+    this.store.dispatch(SchedulePageActions.selectDirection({ directionName }));
+  }
 }
