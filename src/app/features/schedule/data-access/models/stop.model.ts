@@ -1,5 +1,3 @@
-type Directions = 'forward' | 'backward';
-
 export interface Stop {
   id: string;
   name: string;
@@ -7,5 +5,16 @@ export interface Stop {
   firstDeparture: string;
   lastDeparture: string;
   style: number;
-  availableDirections: Directions[];
+  availableDirections: string[];
+  imageUrl: string;
+  sharedRoutes: string[];
+  geo?: {
+    lat: number;
+    lon: number;
+  };
+  weather?: {
+    temperature: number;
+    description: string;
+    icon: string;
+  };
 }
