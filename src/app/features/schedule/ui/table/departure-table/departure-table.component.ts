@@ -5,7 +5,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { DepartureTimeItemComponent } from '../departure-time-item/departure-time-item.component';
-import { ScheduleMockService } from '../../../services/schedule-mock.service';
+import { ScheduleService } from '../../../services/schedule.service';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
@@ -16,6 +16,6 @@ import { AsyncPipe } from '@angular/common';
   encapsulation: ViewEncapsulation.None,
 })
 export class DepartureTableComponent {
-  private readonly schedule = inject(ScheduleMockService);
+  private readonly schedule = inject(ScheduleService);
   readonly departures$ = this.schedule.departures$;
 }

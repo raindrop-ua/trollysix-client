@@ -1,4 +1,12 @@
-<app-selectors-group/>
-<app-schedule-controls/>
-<app-stop-details [stopData]="stopData"/>
-<app-notice/>
+@if (vm$ | async; as vm) {
+  @if (vm.stopsLoading) {
+    <div>Loading</div>
+  }
+  <app-selectors-group/>
+  <app-schedule-controls/>
+  @if (vm.selectedStop) {
+    <app-stop-details [stopData]="vm.selectedStop"/>
+  }
+  <app-notice/>
+}
+

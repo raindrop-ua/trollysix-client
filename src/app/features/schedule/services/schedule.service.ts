@@ -1,0 +1,56 @@
+import { Injectable, inject } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { combineLatest, map, shareReplay, distinctUntilChanged } from 'rxjs';
+import { ClockService } from '../../../core/services/clock.service';
+import { Departure, Status } from '../data-access/models/departure.model';
+import { selectScheduleViewModel } from '../data-access/store/schedule.selectors';
+
+@Injectable({ providedIn: 'root' })
+export class ScheduleService {
+  private readonly clock = inject(ClockService);
+  private readonly store = inject(Store);
+
+  private readonly times$ = this.store.select(selectScheduleViewModel).pipe(
+    map((vm) => vm.currentTimetable?.times ?? ([] as string[])),
+    distinctUntilChanged((a, b) => arraysEqual(a, b)),
+    shareReplay({ bufferSize: 1, refCount: true }),
+  );
+
+  readonly departures$ = combineLatest([this.clock.now$, this.times$]).pipe(
+    map(([now, times]) =>
+      times.map<Departure>((t) => ({
+        time: t,
+        status: statusFor(now, toTodayDate(t, now)),
+      })),
+    ),
+    shareReplay({ bufferSize: 1, refCount: false }),
+  );
+}
+
+function arraysEqual(a: string[], b: string[]) {
+  if (a === b) return true;
+  if (a.length !== b.length) return false;
+  for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return false;
+  return true;
+}
+
+function toTodayDate(hhmm: string, now: Date): Date {
+  const [h, m] = hhmm.split(':').map(Number);
+  const d = new Date(now);
+  d.setHours(h, m, 0, 0);
+  return d;
+}
+
+/** Rules:
+ * < 0 min → Past
+ * 0..5 min → Now
+ * 6..20 min → Soon
+ * ≥21 min → Coming
+ */
+function statusFor(now: Date, dep: Date): Status {
+  const diffMinutes = Math.floor((dep.getTime() - now.getTime()) / 60000);
+  if (diffMinutes < 0) return Status.Past;
+  if (diffMinutes <= 5) return Status.Now;
+  if (diffMinutes <= 20) return Status.Soon;
+  return Status.Coming;
+}

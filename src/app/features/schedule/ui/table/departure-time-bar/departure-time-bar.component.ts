@@ -9,7 +9,7 @@ import { SvgIconComponent } from '../../../../../shared/components/svg-icon/svg-
 import { ClockService } from '../../../../../core/services/clock.service';
 import { map } from 'rxjs';
 import { Status } from '../../../data-access/models/departure.model';
-import { ScheduleMockService } from '../../../services/schedule-mock.service';
+import { ScheduleService } from '../../../services/schedule.service';
 
 @Component({
   selector: 'app-departure-time-bar',
@@ -20,7 +20,7 @@ import { ScheduleMockService } from '../../../services/schedule-mock.service';
 })
 export class DepartureTimeBarComponent {
   public clockService: ClockService = inject(ClockService);
-  private readonly schedule = inject(ScheduleMockService);
+  private readonly schedule = inject(ScheduleService);
 
   readonly departures$ = this.schedule.departures$;
 
@@ -29,7 +29,7 @@ export class DepartureTimeBarComponent {
       (list) =>
         list.find((d) => d.status === Status.Now) ??
         list.find((d) => d.status !== Status.Past) ??
-        null
-    )
+        null,
+    ),
   );
 }
