@@ -5,6 +5,7 @@ import {
 } from '@angular/core';
 
 @Component({
+  selector: 'app-terms',
   templateUrl: './terms.component.html',
   imports: [],
   encapsulation: ViewEncapsulation.None,
