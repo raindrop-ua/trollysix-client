@@ -4,9 +4,9 @@ import {
   inject,
   ViewEncapsulation,
 } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { selectScheduleViewModel } from '../../../data-access/store/schedule.selectors';
-import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-departure-stop-bar',

@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { ScheduleComponent } from './schedule.component';
 import { provideState } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
+import { ScheduleComponent } from './schedule.component';
 import { scheduleFeature } from '../data-access/store/schedule.reducer';
 import { ScheduleEffects } from '../data-access/store/schedule.effects';
 

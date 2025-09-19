@@ -28,6 +28,5 @@ export class OptionsSelectorComponent implements OnInit {
   public select(option: string) {
     this.selected.set(option);
     this.optionSelect.emit(option);
-    console.log(option, 'select');
   }
 }
