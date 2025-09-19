@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   DepartureTableComponent,
   DepartureLegendComponent,
@@ -15,6 +19,7 @@ import {
     DepartureStopBarComponent,
   ],
   templateUrl: './schedule-controls.component.html',
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScheduleControlsComponent {}

@@ -5,6 +5,7 @@ import {
   OnInit,
   output,
   signal,
+  ViewEncapsulation,
 } from '@angular/core';
 import { Option } from '../../data-access/models/option.model';
 
@@ -12,6 +13,7 @@ import { Option } from '../../data-access/models/option.model';
   selector: 'app-options-selector',
   imports: [],
   templateUrl: './options-selector.component.html',
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OptionsSelectorComponent implements OnInit {

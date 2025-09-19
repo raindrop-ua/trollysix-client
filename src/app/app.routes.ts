@@ -19,6 +19,14 @@ export const routes: Routes = [
         path: 'about',
         loadChildren: () => import('./features/about/feature/about.routes'),
       },
+      {
+        path: 'privacy',
+        loadChildren: () => import('./features/privacy/feature/privacy.routes'),
+      },
+      {
+        path: 'terms',
+        loadChildren: () => import('./features/terms/feature/terms.routes'),
+      },
     ],
   },
   {

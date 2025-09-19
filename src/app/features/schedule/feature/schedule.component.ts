@@ -3,6 +3,7 @@ import {
   Component,
   inject,
   OnInit,
+  ViewEncapsulation,
 } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
@@ -25,6 +26,7 @@ import { SchedulePageActions } from '../data-access/store/schedule.actions';
     AsyncPipe,
   ],
   templateUrl: './schedule.component.html',
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScheduleComponent implements OnInit {

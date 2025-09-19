@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 import { AppRouteEnum } from '../../../../../core/enums/app-route.enum';
@@ -14,6 +18,7 @@ import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal
     RevealOnScrollDirective,
   ],
   templateUrl: './masthead.component.html',
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MastheadComponent {

@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { SvgIconComponent } from '../../shared/components/svg-icon/svg-icon.component';
 import { ThemeSwitcherComponent } from '../../shared/components/theme-switcher/theme-switcher.component';
 
@@ -6,6 +10,7 @@ import { ThemeSwitcherComponent } from '../../shared/components/theme-switcher/t
   selector: 'app-admin',
   imports: [SvgIconComponent, ThemeSwitcherComponent],
   templateUrl: './admin.component.html',
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminComponent {}

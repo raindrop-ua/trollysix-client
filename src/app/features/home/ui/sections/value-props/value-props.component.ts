@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 
 interface ValueProp {
   title: string;
@@ -9,21 +13,25 @@ interface ValueProp {
   selector: 'app-value-props',
   imports: [],
   templateUrl: './value-props.component.html',
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ValuePropsComponent {
   protected readonly valueProps: ValueProp[] = [
     {
       title: 'Precision, by default',
-      description: 'Precise time, neat statuses: missed, next, upcoming. Everything to get there on time - no surprises.',
+      description:
+        'Precise time, neat statuses: missed, next, upcoming. Everything to get there on time - no surprises.',
     },
     {
       title: 'Designed to disappear',
-      description: 'An interface that doesn\'t distract. Focus only on the route - because time is the most precious thing.',
+      description:
+        "An interface that doesn't distract. Focus only on the route - because time is the most precious thing.",
     },
     {
       title: 'Built for today',
-      description: 'Mobile first, lightweight, fast. Works like it\'s the only thing you need.',
-    }
-  ]
+      description:
+        "Mobile first, lightweight, fast. Works like it's the only thing you need.",
+    },
+  ];
 }

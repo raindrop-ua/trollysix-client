@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AppRouteEnum } from '../../../../../core/enums/app-route.enum';
 
@@ -6,6 +10,7 @@ import { AppRouteEnum } from '../../../../../core/enums/app-route.enum';
   selector: 'app-big-claims',
   imports: [RouterLink],
   templateUrl: './big-claims.component.html',
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BigClaimsComponent {

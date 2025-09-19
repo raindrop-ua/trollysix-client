@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  ViewEncapsulation,
+} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { OptionsSelectorComponent } from '../options-selector/options-selector.component';
 import { StopsListComponent } from '../stops-list/stops-list.component';
@@ -9,6 +14,7 @@ import { SchedulePageActions } from '../../data-access/store/schedule.actions';
   selector: 'app-selectors-group',
   imports: [OptionsSelectorComponent, StopsListComponent, SvgIconComponent],
   templateUrl: './selectors-group.component.html',
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectorsGroupComponent {
