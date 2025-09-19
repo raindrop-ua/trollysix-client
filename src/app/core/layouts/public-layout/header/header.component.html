@@ -22,7 +22,7 @@
           @for (routeItem of navigation; track routeItem.path) {
             <li>
               <a
-                class="text-slate-700 transition font-semibold hover:text-slate-900 dark:text-slate-300 dark:hover:text-white underline-offset-8"
+                class="text-slate-700 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white underline-offset-8"
                 [routerLink]="[routeItem.path]"
                 [class.underline]="isLinkActive(routeItem.path)"
                 >{{ routeItem.label }}</a
