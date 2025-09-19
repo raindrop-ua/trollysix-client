@@ -3,17 +3,18 @@ import {
   Component,
   inject,
   OnInit,
+  ViewEncapsulation,
 } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
+import { Store } from '@ngrx/store';
 import {
   ScheduleControlsComponent,
   SelectorsGroupComponent,
   StopDetailsComponent,
 } from '../ui';
 import { NoticeComponent } from '../../../shared/components/sections';
-import { Store } from '@ngrx/store';
 import { selectScheduleViewModel } from '../data-access/store/schedule.selectors';
 import { SchedulePageActions } from '../data-access/store/schedule.actions';
-import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-schedule',
@@ -25,6 +26,7 @@ import { AsyncPipe } from '@angular/common';
     AsyncPipe,
   ],
   templateUrl: './schedule.component.html',
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScheduleComponent implements OnInit {

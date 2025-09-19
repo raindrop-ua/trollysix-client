@@ -4,9 +4,9 @@ import {
   inject,
   ViewEncapsulation,
 } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
 import { DepartureTimeItemComponent } from '../departure-time-item/departure-time-item.component';
 import { ScheduleService } from '../../../services/schedule.service';
-import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-departure-table',

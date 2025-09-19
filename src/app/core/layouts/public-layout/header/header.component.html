@@ -20,14 +20,14 @@
       <nav class="hidden md:block">
         <ul class="flex items-center gap-6 text-lg">
           @for (routeItem of navigation; track routeItem.path) {
-          <li>
-            <a
-              class="text-slate-700 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
-              [routerLink]="[routeItem.path]"
-              [class.font-semibold]="isLinkActive(routeItem.path)"
-              >{{ routeItem.label }}</a
-            >
-          </li>
+            <li>
+              <a
+                class="text-slate-700 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white underline-offset-8"
+                [routerLink]="[routeItem.path]"
+                [class.underline]="isLinkActive(routeItem.path)"
+                >{{ routeItem.label }}</a
+              >
+            </li>
           }
         </ul>
       </nav>
@@ -58,24 +58,24 @@
   class="h-px w-full bg-gradient-to-r from-transparent via-gray-200/80 to-transparent dark:via-gray-700/70"
 ></div>
 
-@if (isMenuOpen()){
-<div
-  class="sticky top-0 z-50 bg-white/60 backdrop-blur-xl dark:bg-slate-900/50"
->
-  <nav class="md:hidden shadow-lg">
-    <ul class="flex flex-col gap-4 px-6 py-4 text-lg">
-      @for (routeItem of navigation; track routeItem.path) {
-      <li>
-        <a
-          (click)="isMenuOpen.set(false)"
-          class="block text-slate-700 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
-          [routerLink]="[routeItem.path]"
-          [class.font-semibold]="isLinkActive(routeItem.path)"
-          >{{ routeItem.label }}</a
-        >
-      </li>
-      }
-    </ul>
-  </nav>
-</div>
+@if (isMenuOpen()) {
+  <div
+    class="sticky top-0 z-50 bg-white/60 backdrop-blur-xl dark:bg-slate-900/50"
+  >
+    <nav class="md:hidden shadow-lg">
+      <ul class="flex flex-col gap-4 px-6 py-4 text-lg">
+        @for (routeItem of navigation; track routeItem.path) {
+          <li>
+            <a
+              (click)="isMenuOpen.set(false)"
+              class="block text-slate-700 transition font-semibold hover:text-slate-900 dark:text-slate-300 dark:hover:text-white underline-offset-4"
+              [routerLink]="[routeItem.path]"
+              [class.underline]="isLinkActive(routeItem.path)"
+              >{{ routeItem.label }}</a
+            >
+          </li>
+        }
+      </ul>
+    </nav>
+  </div>
 }

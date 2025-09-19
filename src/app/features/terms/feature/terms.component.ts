@@ -5,10 +5,10 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-this-is-trollysix',
+  selector: 'app-terms',
+  templateUrl: './terms.component.html',
   imports: [],
-  templateUrl: './this-is-trollysix.component.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ThisIsTrollysixComponent {}
+export class TermsComponent {}

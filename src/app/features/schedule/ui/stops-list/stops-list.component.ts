@@ -3,20 +3,22 @@ import {
   Component,
   inject,
   input,
+  ViewEncapsulation,
 } from '@angular/core';
-import { SvgIconComponent } from '../../../../shared/components/svg-icon/svg-icon.component';
 import { Store } from '@ngrx/store';
-import { selectScheduleViewModel } from '../../data-access/store/schedule.selectors';
 import { AsyncPipe } from '@angular/common';
+import { SvgIconComponent } from '../../../../shared/components/svg-icon/svg-icon.component';
+import { selectScheduleViewModel } from '../../data-access/store/schedule.selectors';
 import { SchedulePageActions } from '../../data-access/store/schedule.actions';
 
 @Component({
-  selector: 'app-stops-select',
+  selector: 'app-stops-list',
   imports: [SvgIconComponent, AsyncPipe],
-  templateUrl: './stops-select.component.html',
+  templateUrl: './stops-list.component.html',
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StopsSelectComponent {
+export class StopsListComponent {
   public readonly showDescriptions = input<boolean>(true);
 
   private store = inject(Store);
