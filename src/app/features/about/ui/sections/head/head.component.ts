@@ -9,7 +9,7 @@ import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal
   selector: 'app-head',
   imports: [RevealOnScrollDirective],
   templateUrl: './head.component.html',
-  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class HeadComponent {}

@@ -10,7 +10,7 @@ import { ThemeSwitcherComponent } from '../../shared/components/theme-switcher/t
   selector: 'app-admin',
   imports: [SvgIconComponent, ThemeSwitcherComponent],
   templateUrl: './admin.component.html',
-  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class AdminComponent {}

@@ -8,7 +8,7 @@ import {
   selector: 'app-privacy',
   templateUrl: './privacy.component.html',
   imports: [],
-  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class PrivacyComponent {}

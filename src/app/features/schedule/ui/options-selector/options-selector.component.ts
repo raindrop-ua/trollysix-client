@@ -13,8 +13,8 @@ import { Option } from '../../data-access/models/option.model';
   selector: 'app-options-selector',
   imports: [],
   templateUrl: './options-selector.component.html',
-  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class OptionsSelectorComponent implements OnInit {
   public readonly title = input.required<string>();

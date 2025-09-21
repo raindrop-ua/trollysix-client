@@ -13,8 +13,8 @@ interface ValueProp {
   selector: 'app-value-props',
   imports: [],
   templateUrl: './value-props.component.html',
-  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class ValuePropsComponent {
   protected readonly valueProps: ValueProp[] = [

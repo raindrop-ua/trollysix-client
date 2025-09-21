@@ -8,7 +8,7 @@ import {
   selector: 'app-infrastructure',
   imports: [],
   templateUrl: './infrastructure.component.html',
-  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class InfrastructureComponent {}

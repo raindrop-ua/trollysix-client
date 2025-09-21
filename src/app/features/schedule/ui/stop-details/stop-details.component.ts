@@ -13,8 +13,8 @@ import { Stop } from '../../data-access/models/stop.model';
   selector: 'app-stop-details',
   imports: [TemperaturePipe, DecimalPipe, SvgIconComponent],
   templateUrl: './stop-details.component.html',
-  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class StopDetailsComponent {
   stopData = input.required<Stop>();

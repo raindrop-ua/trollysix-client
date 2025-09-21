@@ -33,8 +33,8 @@ import {
     RouterLink,
   ],
   templateUrl: './home.component.html',
-  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class HomeComponent {
   public readonly metrics: Metric[] = [

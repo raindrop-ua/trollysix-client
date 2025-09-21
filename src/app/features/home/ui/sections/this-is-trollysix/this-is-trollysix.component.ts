@@ -8,7 +8,7 @@ import {
   selector: 'app-this-is-trollysix',
   imports: [],
   templateUrl: './this-is-trollysix.component.html',
-  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class ThisIsTrollysixComponent {}

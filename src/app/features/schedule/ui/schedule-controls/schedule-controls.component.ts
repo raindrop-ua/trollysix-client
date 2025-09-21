@@ -19,7 +19,7 @@ import {
     DepartureStopBarComponent,
   ],
   templateUrl: './schedule-controls.component.html',
-  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class ScheduleControlsComponent {}

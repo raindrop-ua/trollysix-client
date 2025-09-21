@@ -11,8 +11,8 @@ import { RouterLink } from '@angular/router';
   selector: 'app-sign-up',
   imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './sign-up.component.html',
-  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class SignUpComponent {
   private readonly fb = inject(FormBuilder);
