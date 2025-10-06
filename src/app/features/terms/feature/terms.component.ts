@@ -8,7 +8,7 @@ import {
   selector: 'app-terms',
   templateUrl: './terms.component.html',
   imports: [],
-  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class TermsComponent {}

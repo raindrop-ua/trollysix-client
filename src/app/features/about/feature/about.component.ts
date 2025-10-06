@@ -22,8 +22,8 @@ import {
     MetricsComponent,
   ],
   templateUrl: './about.component.html',
-  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class AboutComponent {
   public readonly metrics: Metric[] = [

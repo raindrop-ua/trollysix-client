@@ -10,8 +10,8 @@ import { AppRouteEnum } from '../../../../../core/enums/app-route.enum';
   selector: 'app-big-claims',
   imports: [RouterLink],
   templateUrl: './big-claims.component.html',
-  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class BigClaimsComponent {
   protected readonly AppRouteEnum = AppRouteEnum;

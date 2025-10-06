@@ -1,8 +1,8 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   inject,
   input,
+  ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
 import { Store } from '@ngrx/store';
@@ -15,8 +15,8 @@ import { SchedulePageActions } from '../../data-access/store/schedule.actions';
   selector: 'app-stops-list',
   imports: [SvgIconComponent, AsyncPipe],
   templateUrl: './stops-list.component.html',
-  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class StopsListComponent {
   public readonly showDescriptions = input<boolean>(true);

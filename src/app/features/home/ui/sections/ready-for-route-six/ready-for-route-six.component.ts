@@ -10,8 +10,8 @@ import { AppRouteEnum } from '../../../../../core/enums/app-route.enum';
   selector: 'app-ready-for-route-six',
   imports: [RouterLink],
   templateUrl: './ready-for-route-six.component.html',
-  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class ReadyForRouteSixComponent {
   protected readonly AppRouteEnum = AppRouteEnum;

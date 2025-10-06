@@ -14,8 +14,8 @@ import { SchedulePageActions } from '../../data-access/store/schedule.actions';
   selector: 'app-selectors-group',
   imports: [OptionsSelectorComponent, StopsListComponent, SvgIconComponent],
   templateUrl: './selectors-group.component.html',
-  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class SelectorsGroupComponent {
   private store = inject(Store);

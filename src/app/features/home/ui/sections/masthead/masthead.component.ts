@@ -18,8 +18,8 @@ import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal
     RevealOnScrollDirective,
   ],
   templateUrl: './masthead.component.html',
-  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class MastheadComponent {
   protected readonly AppRouteEnum = AppRouteEnum;

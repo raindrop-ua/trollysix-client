@@ -26,8 +26,8 @@ import { SchedulePageActions } from '../data-access/store/schedule.actions';
     AsyncPipe,
   ],
   templateUrl: './schedule.component.html',
-  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class ScheduleComponent implements OnInit {
   private store = inject(Store);

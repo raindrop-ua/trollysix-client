@@ -10,8 +10,8 @@ import { SvgIconComponent } from '../../../shared/components/svg-icon/svg-icon.c
 @Component({
   selector: 'app-auth-layout',
   templateUrl: './auth-layout.component.html',
+  imports: [ReactiveFormsModule, SvgIconComponent, RouterOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  imports: [ReactiveFormsModule, SvgIconComponent, RouterOutlet],
 })
 export class AuthLayoutComponent {}
