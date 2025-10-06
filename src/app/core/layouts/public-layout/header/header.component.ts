@@ -1,11 +1,11 @@
 import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
-  DestroyRef,
   inject,
-  OnInit,
   signal,
+  OnInit,
+  ChangeDetectorRef,
+  DestroyRef,
+  ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
