@@ -7,7 +7,10 @@
       <div class="text-s text-slate-500 dark:text-slate-400">Route 6</div>
     </div>
 
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4"
+         [class.md:grid-cols-3]="vm.stops.length === 3"
+         [class.md:grid-cols-4]="vm.stops.length >= 4"
+    >
       @for (stop of vm.stops; track stop.id) {
         @let selected = vm.selectedStop?.id === stop.id;
         <button
