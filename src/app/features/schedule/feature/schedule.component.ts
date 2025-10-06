@@ -10,7 +10,7 @@ import { Store } from '@ngrx/store';
 import {
   ScheduleControlsComponent,
   SelectorsGroupComponent,
-  StopDetailsComponent,
+  // StopDetailsComponent,
 } from '../ui';
 import { NoticeComponent } from '../../../shared/components/sections';
 import { selectScheduleViewModel } from '../data-access/store/schedule.selectors';
@@ -20,7 +20,7 @@ import { SchedulePageActions } from '../data-access/store/schedule.actions';
   selector: 'app-schedule',
   imports: [
     ScheduleControlsComponent,
-    StopDetailsComponent,
+    // StopDetailsComponent,
     NoticeComponent,
     SelectorsGroupComponent,
     AsyncPipe,
