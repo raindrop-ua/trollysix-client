@@ -34,7 +34,7 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@analogjs/storybook-angular": "^1.21.1",
+    "@analogjs/storybook-angular": "^1.21.2",
     "@angular-eslint/builder": "20.2.0",
     "@angular/build": "^20.3.4",
     "@angular/cli": "^20.3.4",
