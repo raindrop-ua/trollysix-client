@@ -4,7 +4,11 @@
       <h2 class="text-base font-semibold text-slate-900 dark:text-slate-100">
         Select stop
       </h2>
-      <div class="text-s text-slate-500 dark:text-slate-400">Route 6</div>
+      <div class="text-s text-slate-500 dark:text-slate-400">
+        @if (vm.currentTimetable?.validFrom; as validFrom) {
+          <span>Schedule valid from {{ validFrom | date: 'dd.MM.yyyy'  }}</span>
+        }
+      </div>
     </div>
 
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4"
