@@ -6,14 +6,14 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, DatePipe } from '@angular/common';
 import { SvgIconComponent } from '../../../../shared/components/svg-icon/svg-icon.component';
 import { selectScheduleViewModel } from '../../data-access/store/schedule.selectors';
 import { SchedulePageActions } from '../../data-access/store/schedule.actions';
 
 @Component({
   selector: 'app-stops-list',
-  imports: [SvgIconComponent, AsyncPipe],
+  imports: [SvgIconComponent, AsyncPipe, DatePipe],
   templateUrl: './stops-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
