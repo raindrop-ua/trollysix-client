@@ -20,8 +20,8 @@ import { SchedulePageActions } from '../../data-access/store/schedule.actions';
 })
 export class StopsListComponent {
   public readonly showDescriptions = input<boolean>(true);
-
   private store = inject(Store);
+
   vm$ = this.store.select(selectScheduleViewModel);
 
   onSelectStop(stopId: string): void {
