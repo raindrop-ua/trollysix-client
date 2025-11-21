@@ -6,13 +6,7 @@
 ![Angular](https://img.shields.io/badge/angular-20-brightgreen)
 ![Build](https://img.shields.io/github/actions/workflow/status/raindrop-ua/trollysix-client/ci.yml?branch=main)
 
-
-
 ![Preview](docs/splash.png)
-
-## ✨ Ultimate Schedule for Trolleybus Route 6
-
-### Timetable for trolleybus route in the city of Dnipro.
 
 ## 🚀 Live Demo
 
