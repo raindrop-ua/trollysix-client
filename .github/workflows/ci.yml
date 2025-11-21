@@ -17,17 +17,17 @@ jobs:
       - name: 🔧 Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 22
           cache: 'pnpm'
 
-      - name: 📦 Enable pnpm via corepack
+      - name: 🧰 Enable corepack (pnpm)
         run: corepack enable
 
       - name: 📦 Install deps
         run: pnpm install --frozen-lockfile
 
       - name: 🧹 Lint
-        run: pnpm run lint
+        run: pnpm lint
 
 #      - name: ✅ Run tests
 #        run: pnpm test
