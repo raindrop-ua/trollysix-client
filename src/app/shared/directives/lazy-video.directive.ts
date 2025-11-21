@@ -54,7 +54,7 @@ export class LazyVideoDirective implements OnInit, OnDestroy {
     this.el.dataset['loaded'] = 'true';
 
     if (this.el.muted) {
-      this.el.play().catch(() => {});
+      this.el.play().catch(() => { /* empty */ });
     }
   }
 }
