@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, input, InputSignal } from '@angular/core';
+import {
+  Component,
+  input,
+  ChangeDetectionStrategy,
+  InputSignal,
+} from '@angular/core';
 import { Metric } from './metrics.model';
 
 @Component({
@@ -9,5 +14,6 @@ import { Metric } from './metrics.model';
 })
 export class MetricsComponent {
   public readonly mobileFullWidth = input<string>();
-  public readonly data: InputSignal<readonly Metric[]> = input.required<readonly Metric[]>();
+  public readonly data: InputSignal<readonly Metric[]> =
+    input.required<readonly Metric[]>();
 }

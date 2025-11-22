@@ -1,8 +1,8 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   inject,
   OnInit,
+  ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
 import { AsyncPipe } from '@angular/common';

@@ -1,10 +1,10 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   inject,
+  ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
-import { map } from 'rxjs';
+import { combineLatest, map } from 'rxjs';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { SvgIconComponent } from '../../../../../shared/components/svg-icon/svg-icon.component';
 import { ClockService } from '../../../../../core/services/clock.service';
@@ -31,5 +31,13 @@ export class DepartureTimeBarComponent {
         list.find((d) => d.status !== Status.Past) ??
         null,
     ),
+  );
+
+  readonly label$ = combineLatest([this.next$, this.departures$]).pipe(
+    map(([next, departures]) => {
+      if (next?.time) return next.time;
+      if (departures?.length) return 'Tomorrow';
+      return 'No departures';
+    }),
   );
 }

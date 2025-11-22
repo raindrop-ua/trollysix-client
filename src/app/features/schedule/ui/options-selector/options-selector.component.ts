@@ -1,10 +1,10 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   input,
-  OnInit,
   output,
   signal,
+  OnInit,
+  ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
 import { Option } from '../../data-access/models/option.model';

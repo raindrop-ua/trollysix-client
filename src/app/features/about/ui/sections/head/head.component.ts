@@ -1,6 +1,6 @@
 import {
-  ChangeDetectionStrategy,
   Component,
+  ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
 import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';

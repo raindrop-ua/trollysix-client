@@ -1,6 +1,7 @@
 import {
   Component,
   input,
+  computed,
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
@@ -15,4 +16,9 @@ import { Departure } from '../../../data-access/models/departure.model';
 })
 export class DepartureTimeItemComponent {
   departure = input.required<Departure>();
+
+  readonly timeClass = computed(() => {
+    const d = this.departure();
+    return `ts-time ts-time-${d.status}`;
+  });
 }

@@ -1,10 +1,3 @@
-@let d = departure();
-<div
-  class="ts-time"
-  [class.ts-time-past]="d.status === 'past'"
-  [class.ts-time-now]="d.status === 'now'"
-  [class.ts-time-soon]="d.status === 'soon'"
-  [class.ts-time-upcoming]="d.status === 'coming'"
->
-  {{ d.time }}
+<div [class]="timeClass()">
+  {{ departure().time }}
 </div>

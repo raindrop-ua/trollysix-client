@@ -28,7 +28,7 @@
       ></svg>
     </span>
     <span class="font-mono text-blue-700 dark:text-yellow-500">
-      {{ (next$ | async)?.time || 'Tomorrow' }}
+      {{ label$ | async }}
     </span>
   </div>
 </div>
