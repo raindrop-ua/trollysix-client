@@ -10,7 +10,6 @@ import { OptionsSelectorComponent } from '../options-selector/options-selector.c
 import { SvgIconComponent } from '../../../../shared/components/svg-icon/svg-icon.component';
 import { SchedulePageActions } from '../../data-access/store/schedule.actions';
 import { selectScheduleViewModel } from '../../data-access/store/schedule.selectors';
-import { DirectionName } from '../../data-access/models/direction.model';
 
 @Component({
   selector: 'app-selectors-group',
