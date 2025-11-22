@@ -80,10 +80,9 @@
                   stroke="currentColor"
                   stroke-width="2"
                 ></svg>
-                <span
-                >{{ stop.departures.forward?.first }} - {{ stop.departures.forward?.last }}</span
-                >
-                <span>{{ [vm.selectedDirectionName] }}</span>
+                <span>
+                  {{ getDeparture(stop, vm.selectedDirectionName)?.first }} • {{ getDeparture(stop, vm.selectedDirectionName)?.last }}
+                </span>
               </div>
             </div>
           }
