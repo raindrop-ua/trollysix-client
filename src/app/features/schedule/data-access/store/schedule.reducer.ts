@@ -31,10 +31,14 @@ export const scheduleFeature = createFeature({
       error,
     })),
 
-    on(SchedulePageActions.selectStop, (state, { stopId }) => ({
-      ...state,
-      selectedStopId: stopId,
-    })),
+    on(SchedulePageActions.selectStop, (state, { stopId }) =>
+      state.selectedStopId === stopId
+        ? state
+        : {
+          ...state,
+          selectedStopId: stopId,
+        }
+    ),
     on(SchedulePageActions.selectDayType, (state, { dayTypeName }) => ({
       ...state,
       selectedDayTypeName: dayTypeName,

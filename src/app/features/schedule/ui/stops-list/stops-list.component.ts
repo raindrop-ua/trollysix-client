@@ -10,6 +10,8 @@ import { AsyncPipe, DatePipe } from '@angular/common';
 import { SvgIconComponent } from '../../../../shared/components/svg-icon/svg-icon.component';
 import { selectScheduleViewModel } from '../../data-access/store/schedule.selectors';
 import { SchedulePageActions } from '../../data-access/store/schedule.actions';
+import { Stop } from '../../data-access/models/stop.model';
+import { DirectionName } from '../../data-access/models/direction.model';
 
 @Component({
   selector: 'app-stops-list',
@@ -24,7 +26,15 @@ export class StopsListComponent {
 
   vm$ = this.store.select(selectScheduleViewModel);
 
-  onSelectStop(stopId: string): void {
+  getDeparture(stop: Stop, direction: DirectionName | null) {
+    if (!direction) return null;
+    return stop.departures?.[direction];
+  }
+
+  onSelectStop(stopId: string, isSelected: boolean): void {
+    if (isSelected) {
+      return;
+    }
     this.store.dispatch(SchedulePageActions.selectStop({ stopId }));
   }
 }

@@ -1,6 +1,6 @@
 import {
-  ChangeDetectionStrategy,
   Component,
+  ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
