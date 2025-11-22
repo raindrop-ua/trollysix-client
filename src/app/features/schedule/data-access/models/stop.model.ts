@@ -2,8 +2,16 @@ export interface Stop {
   id: string;
   name: string;
   description: string;
-  firstDeparture: string;
-  lastDeparture: string;
+  departures: {
+    forward?: {
+      first: string;
+      last: string;
+    };
+    backward?: {
+      first: string;
+      last: string;
+    };
+  };
   style: number;
   availableDirections: string[];
   imageUrl: string;
