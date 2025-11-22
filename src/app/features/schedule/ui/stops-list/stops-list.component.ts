@@ -22,6 +22,7 @@ import { DirectionName } from '../../data-access/models/direction.model';
 })
 export class StopsListComponent {
   public readonly showDescriptions = input<boolean>(true);
+  public readonly showDepartures = input<boolean>(true);
   private store = inject(Store);
 
   vm$ = this.store.select(selectScheduleViewModel);
