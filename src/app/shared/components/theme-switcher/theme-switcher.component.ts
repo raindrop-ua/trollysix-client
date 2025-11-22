@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { SvgIconComponent } from '../svg-icon/svg-icon.component';
 import { ThemeService } from '../../../core/services/theme.service';
 

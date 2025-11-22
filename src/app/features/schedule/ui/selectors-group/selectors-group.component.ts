@@ -1,7 +1,7 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   inject,
+  ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
 import { Store } from '@ngrx/store';

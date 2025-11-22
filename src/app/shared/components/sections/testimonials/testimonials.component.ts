@@ -1,7 +1,7 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   input,
+  ChangeDetectionStrategy,
   InputSignal,
 } from '@angular/core';
 import { Testimonials } from './testimonial.model';

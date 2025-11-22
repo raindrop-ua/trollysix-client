@@ -1,7 +1,7 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   input,
+  ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
