@@ -22,7 +22,7 @@
           class="stop-card"
           [attr.aria-pressed]="selected"
           [class]="'stop-card stop-card-' + stop.style"
-          (click)="onSelectStop(stop.id)"
+          (click)="onSelectStop(stop.id, selected)"
         >
           <div class="absolute inset-0 -z-10 backdrop-blur-sm"></div>
           <div class="flex items-start justify-between">

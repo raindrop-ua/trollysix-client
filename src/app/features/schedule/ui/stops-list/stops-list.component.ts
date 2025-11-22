@@ -31,7 +31,10 @@ export class StopsListComponent {
     return stop.departures?.[direction];
   }
 
-  onSelectStop(stopId: string): void {
+  onSelectStop(stopId: string, isSelected: boolean): void {
+    if (isSelected) {
+      return;
+    }
     this.store.dispatch(SchedulePageActions.selectStop({ stopId }));
   }
 }
