@@ -28,6 +28,9 @@ export class SelectorsGroupComponent {
   }
 
   onSelectDirection(directionName: string): void {
+    if (directionName !== 'forward' && directionName !== 'backward') {
+      return;
+    }
     this.store.dispatch(SchedulePageActions.selectDirection({ directionName }));
   }
 }

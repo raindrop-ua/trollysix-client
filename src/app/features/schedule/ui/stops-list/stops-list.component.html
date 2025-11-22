@@ -22,7 +22,7 @@
           class="stop-card"
           [attr.aria-pressed]="selected"
           [class]="'stop-card stop-card-' + stop.style"
-          (click)="onSelectStop(stop.id)"
+          (click)="onSelectStop(stop.id, selected)"
         >
           <div class="absolute inset-0 -z-10 backdrop-blur-sm"></div>
           <div class="flex items-start justify-between">
@@ -80,9 +80,9 @@
                   stroke="currentColor"
                   stroke-width="2"
                 ></svg>
-                <span
-                >{{ stop.firstDeparture }} - {{ stop.lastDeparture }}</span
-                >
+                <span>
+                  {{ getDeparture(stop, vm.selectedDirectionName)?.first }} • {{ getDeparture(stop, vm.selectedDirectionName)?.last }}
+                </span>
               </div>
             </div>
           }
