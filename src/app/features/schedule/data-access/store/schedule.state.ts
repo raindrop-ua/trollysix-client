@@ -1,6 +1,6 @@
 import { EntityState, createEntityAdapter } from '@ngrx/entity';
 import { Stop } from '../models/stop.model';
-import { Direction } from '../models/direction.model';
+import { Direction, DirectionName } from '../models/direction.model';
 import { Timetable } from '../models/timetable.model';
 import { DayType } from '../models/daytype.model';
 
@@ -17,7 +17,7 @@ export interface ScheduleState {
 
   selectedStopId: string | null;
   selectedDayTypeName: string | null;
-  selectedDirectionName: string | null;
+  selectedDirectionName: DirectionName | null;
 
   stopsLoading: boolean;
   timetableLoading: boolean;

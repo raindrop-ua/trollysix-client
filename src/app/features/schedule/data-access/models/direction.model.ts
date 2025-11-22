@@ -1,5 +1,7 @@
+export type DirectionName = 'forward' | 'backward';
+
 export interface Direction {
   id: string;
-  name: string; // 'forward', 'backward'
+  name: DirectionName;
   label: string; // 'Forward', 'Backward'
 }
