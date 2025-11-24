@@ -10,6 +10,8 @@ import { SvgIconComponent } from '../../../../../shared/components/svg-icon/svg-
 import { ClockService } from '../../../../../core/services/clock.service';
 import { Status } from '../../../data-access/models/departure.model';
 import { ScheduleService } from '../../../services/schedule.service';
+import { Store } from '@ngrx/store';
+import { selectScheduleViewModel } from '../../../data-access/store/schedule.selectors';
 
 @Component({
   selector: 'app-departure-time-bar',
@@ -24,6 +26,9 @@ export class DepartureTimeBarComponent {
 
   readonly departures$ = this.schedule.departures$;
 
+  private store = inject(Store);
+  vm$ = this.store.select(selectScheduleViewModel);
+
   readonly next$ = this.departures$.pipe(
     map(
       (list) =>
@@ -33,8 +38,9 @@ export class DepartureTimeBarComponent {
     ),
   );
 
-  readonly label$ = combineLatest([this.next$, this.departures$]).pipe(
-    map(([next, departures]) => {
+  readonly label$ = combineLatest([this.next$, this.departures$, this.vm$]).pipe(
+    map(([next, departures, vm]) => {
+      if (vm.timetableLoading) return 'Loading...';
       if (next?.time) return next.time;
       if (departures?.length) return 'Tomorrow';
       return 'No departures';

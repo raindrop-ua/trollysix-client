@@ -25,7 +25,7 @@ export class StopCardComponent {
   public readonly showDescriptions = input<boolean>(false);
   public readonly showDepartures = input<boolean>(true);
   public selected = input<boolean>(false);
-  public stop = input<Stop>();
+  public stopData = input<Stop>();
 
   vm$ = this.store.select(selectScheduleViewModel);
 

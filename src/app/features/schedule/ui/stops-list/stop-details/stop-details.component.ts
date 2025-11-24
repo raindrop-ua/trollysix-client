@@ -5,9 +5,9 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
-import { TemperaturePipe } from '../../../../shared/pipes/temperature.pipe';
-import { SvgIconComponent } from '../../../../shared/components/svg-icon/svg-icon.component';
-import { Stop } from '../../data-access/models/stop.model';
+import { TemperaturePipe } from '../../../../../shared/pipes/temperature.pipe';
+import { SvgIconComponent } from '../../../../../shared/components/svg-icon/svg-icon.component';
+import { Stop } from '../../../data-access/models/stop.model';
 
 @Component({
   selector: 'app-stop-details',

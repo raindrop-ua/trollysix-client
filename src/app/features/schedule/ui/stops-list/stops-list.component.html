@@ -17,7 +17,7 @@
     >
       @for (stop of vm.stops; track stop.id) {
         @let selected = vm.selectedStop?.id === stop.id;
-        <app-stop-card [stop]="stop" [selected]="selected"/>
+        <app-stop-card [stopData]="stop" [selected]="selected"/>
       }
     </div>
   </section>

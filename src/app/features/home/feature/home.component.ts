@@ -8,13 +8,13 @@ import {
   AttentionComponent,
   Metric,
   MetricsComponent,
-  Testimonials,
-  TestimonialsComponent,
 } from '../../../shared/components/sections';
 import {
   BigClaimsComponent,
   MastheadComponent,
   ReadyForRouteSixComponent,
+  Testimonials,
+  TestimonialsComponent,
   ThisIsTrollysixComponent,
   ValuePropsComponent,
 } from '../ui';
@@ -31,6 +31,7 @@ import {
     MetricsComponent,
     AttentionComponent,
     RouterLink,
+    TestimonialsComponent,
   ],
   templateUrl: './home.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
