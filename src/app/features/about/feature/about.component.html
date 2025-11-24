@@ -1,4 +1,13 @@
 <app-head />
-<app-overview />
-<app-metrics mobileFullWidth="true" [data]="metrics" />
-<app-infrastructure />
+
+@defer (on idle) {
+  <app-overview />
+}
+
+@defer (on idle) {
+  <app-metrics mobileFullWidth="true" [data]="metrics" />
+}
+
+@defer (on idle) {
+  <app-infrastructure />
+}

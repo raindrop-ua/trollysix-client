@@ -1,46 +1,62 @@
 <app-masthead />
 
-<app-metrics [data]="metrics" />
+@defer (on idle) {
+  <app-metrics [data]="metrics" />
+}
 
-<app-big-claims />
+@defer (on idle) {
+  <app-big-claims />
+}
 
-<app-attention
-  [titleTemplate]="worksTitle"
-  [descriptionTemplate]="worksDescription"
-  [ctaTemplate]="worksCTAs"
-/>
-<ng-template #worksTitle>It just works.</ng-template>
-<ng-template #worksDescription
-  >No instructions. No chaos. Open it and see everything you need. Less
-  touching, more control.</ng-template
->
-<ng-template #worksCTAs>
-  <a
-    [routerLink]="['/schedule']"
-    class="rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm ring-1 ring-white/20 hover:opacity-95 active:scale-[.98]"
-    >View Schedule</a
+@defer (on idle) {
+  <app-attention
+    [titleTemplate]="worksTitle"
+    [descriptionTemplate]="worksDescription"
+    [ctaTemplate]="worksCTAs"
+  />
+  <ng-template #worksTitle>It just works.</ng-template>
+  <ng-template #worksDescription
+    >No instructions. No chaos. Open it and see everything you need. Less
+    touching, more control.</ng-template
   >
-  <a
-    [routerLink]="['/about']"
-    class="rounded-2xl px-5 py-3 text-sm font-medium text-slate-700 ring-1 ring-slate-900/10 hover:bg-slate-900/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/5"
-    >Why it’s different</a
+  <ng-template #worksCTAs>
+    <a
+      [routerLink]="['/schedule']"
+      class="rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm ring-1 ring-white/20 hover:opacity-95 active:scale-[.98]"
+      >View Schedule</a
+    >
+    <a
+      [routerLink]="['/about']"
+      class="rounded-2xl px-5 py-3 text-sm font-medium text-slate-700 ring-1 ring-slate-900/10 hover:bg-slate-900/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/5"
+      >Why it’s different</a
+    >
+  </ng-template>
+}
+
+@defer (on idle) {
+  <app-testimonials [data]="testimonials" />
+}
+
+@defer (on idle) {
+  <app-attention
+    [titleTemplate]="precisionTitle"
+    [descriptionTemplate]="precisionDescription"
+  />
+  <ng-template #precisionTitle>Designed with the precision.</ng-template>
+  <ng-template #precisionDescription
+    >Every departure, every arrival — perfectly organized. Because your time
+    deserves nothing less than perfection.</ng-template
   >
-</ng-template>
+}
 
-<app-testimonials [data]="testimonials" />
+@defer (on idle) {
+  <app-this-is-trollysix />
+}
 
-<app-attention
-  [titleTemplate]="precisionTitle"
-  [descriptionTemplate]="precisionDescription"
-/>
-<ng-template #precisionTitle>Designed with the precision.</ng-template>
-<ng-template #precisionDescription
-  >Every departure, every arrival — perfectly organized. Because your time
-  deserves nothing less than perfection.</ng-template
->
+@defer (on idle) {
+  <app-ready-for-route-six />
+}
 
-<app-this-is-trollysix />
-
-<app-ready-for-route-six />
-
-<app-value-props />
+@defer (on idle) {
+  <app-value-props />
+}

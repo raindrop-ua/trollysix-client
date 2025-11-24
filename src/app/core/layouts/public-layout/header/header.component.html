@@ -34,7 +34,9 @@
     </div>
 
     <div class="flex items-center gap-4">
-      <app-theme-switcher />
+      @defer (on idle) {
+        <app-theme-switcher />
+      }
       <div class="md:hidden">
         <button
           type="button"
