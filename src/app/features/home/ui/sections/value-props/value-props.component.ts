@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
+import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
 
 interface ValueProp {
   title: string;
@@ -11,7 +12,7 @@ interface ValueProp {
 
 @Component({
   selector: 'app-value-props',
-  imports: [],
+  imports: [RevealOnScrollDirective],
   templateUrl: './value-props.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
