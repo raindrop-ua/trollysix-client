@@ -5,7 +5,7 @@ import {
   InputSignal,
 } from '@angular/core';
 import { Testimonials } from './testimonial.model';
-import { RevealOnScrollDirective } from '../../../directives/reveal-on-scroll.directive';
+import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
 
 @Component({
   selector: 'app-testimonials',
