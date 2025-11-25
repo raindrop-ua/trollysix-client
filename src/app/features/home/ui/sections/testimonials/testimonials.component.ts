@@ -6,10 +6,11 @@ import {
 } from '@angular/core';
 import { Testimonials } from './testimonial.model';
 import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
+import { TestimonialComponent } from './testimonial/testimonial.component';
 
 @Component({
   selector: 'app-testimonials',
-  imports: [RevealOnScrollDirective],
+  imports: [RevealOnScrollDirective, TestimonialComponent],
   templateUrl: './testimonials.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
