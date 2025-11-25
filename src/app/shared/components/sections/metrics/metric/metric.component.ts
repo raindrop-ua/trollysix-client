@@ -13,6 +13,6 @@ import {
   encapsulation: ViewEncapsulation.None,
 })
 export class MetricComponent {
-  title = input<string>('');
-  description = input<string>('');
+  title = input.required<string>();
+  description = input.required<string>();
 }
