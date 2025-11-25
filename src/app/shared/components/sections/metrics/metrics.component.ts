@@ -5,10 +5,11 @@ import {
   InputSignal,
 } from '@angular/core';
 import { Metric } from './metrics.model';
+import { MetricComponent } from './metric/metric.component';
 
 @Component({
   selector: 'app-metrics',
-  imports: [],
+  imports: [MetricComponent],
   templateUrl: './metrics.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

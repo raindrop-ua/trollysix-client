@@ -4,15 +4,12 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
-
-interface ValueProp {
-  title: string;
-  description?: string;
-}
+import { ValueProp } from './value-prop.model';
+import { ValuePropComponent } from './value-prop/value-prop.component';
 
 @Component({
   selector: 'app-value-props',
-  imports: [RevealOnScrollDirective],
+  imports: [RevealOnScrollDirective, ValuePropComponent],
   templateUrl: './value-props.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
