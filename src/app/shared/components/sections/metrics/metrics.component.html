@@ -6,10 +6,7 @@
       class="grid gap-3 text-center sm:gap-4"
     >
       @for (metric of data(); track metric) {
-        <div class="rounded-2xl border border-white/10 bg-white/60 p-4 dark:bg-slate-900/40">
-          <div class="text-2xl font-bold text-slate-900 dark:text-white">{{ metric.title }}</div>
-          <div class="text-xs text-slate-600 dark:text-slate-400">{{ metric.description }}</div>
-        </div>
+        <app-metric [title]="metric.title" [description]="metric.description" />
       }
     </div>
   </section>
