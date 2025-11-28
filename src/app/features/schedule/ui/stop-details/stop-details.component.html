@@ -39,7 +39,7 @@
             <span class="text-base">
               <img
                 class="w-12 h-12"
-                [src]="'assets/images/weather/icons/' + stopData().weather?.icon + '@2x.png'"
+                [src]="`assets/images/weather/icons/${ stopData().weather?.icon }@2x.png`"
                 [alt]="stopData().weather?.description"
               />
             </span>
