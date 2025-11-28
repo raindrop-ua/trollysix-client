@@ -12,7 +12,7 @@
           { value: 'weekday', label: 'Weekday' },
           { value: 'weekend', label: 'Weekend' },
         ]"
-        [preselected]="(vm$ | async)?.currentTimetable?.dayType"
+        [preselected]="(vm$ | async)?.selectedDayTypeName"
       />
       <app-options-selector
         (optionSelect)="onSelectDirection($event)"
@@ -21,7 +21,7 @@
           { value: 'forward', label: 'Forward' },
           { value: 'backward', label: 'Backward' },
         ]"
-        [preselected]="(vm$ | async)?.currentTimetable?.direction"
+        [preselected]="(vm$ | async)?.selectedDirectionName"
       />
       <div class="hidden gap-4 lg:flex md:items-center md:px-3">
         <div class="text-blue-800 dark:text-blue-900">
