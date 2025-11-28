@@ -1,7 +1,7 @@
 export type {
   Testimonials,
   Testimonial,
-} from './sections/testimonials/testimonial.model';
+} from '../data-access/models/testimonial.model';
 export { MastheadComponent } from './sections/masthead/masthead.component';
 export { ValuePropsComponent } from './sections/value-props/value-props.component';
 export { BigClaimsComponent } from './sections/big-claims/big-claims.component';
