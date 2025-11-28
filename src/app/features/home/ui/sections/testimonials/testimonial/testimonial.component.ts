@@ -4,7 +4,7 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
-import { Testimonial } from '../testimonial.model';
+import { Testimonial } from '../../../../data-access/models/testimonial.model';
 
 @Component({
   selector: 'app-testimonial',
