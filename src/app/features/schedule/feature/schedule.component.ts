@@ -10,6 +10,7 @@ import { Store } from '@ngrx/store';
 import {
   ScheduleControlsComponent,
   SelectorsGroupComponent,
+  StopDetailsComponent,
   StopsListComponent,
 } from '../ui';
 import { NoticeComponent } from '../../../shared/components/sections';
@@ -22,8 +23,9 @@ import { SchedulePageActions } from '../data-access/store/schedule.actions';
     ScheduleControlsComponent,
     NoticeComponent,
     SelectorsGroupComponent,
-    AsyncPipe,
     StopsListComponent,
+    StopDetailsComponent,
+    AsyncPipe,
   ],
   templateUrl: './schedule.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
