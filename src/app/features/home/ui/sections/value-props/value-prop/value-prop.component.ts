@@ -4,7 +4,7 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
-import { ValueProp } from '../value-prop.model';
+import { ValueProp } from '../../../../data-access/models/value-prop.model';
 
 @Component({
   selector: 'app-value-prop',

@@ -4,7 +4,7 @@ import {
   ChangeDetectionStrategy,
   InputSignal,
 } from '@angular/core';
-import { Testimonials } from './testimonial.model';
+import { Testimonials } from '../../../data-access/models/testimonial.model';
 import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
 import { TestimonialComponent } from './testimonial/testimonial.component';
 
