@@ -8,6 +8,10 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { Option } from '../../data-access/models/option.model';
+import { DayType } from '../../data-access/models/daytype.model';
+import { Direction } from '../../data-access/models/direction.model';
+
+type OptionLike = Option | DayType | Direction;
 
 @Component({
   selector: 'app-options-selector',
@@ -18,17 +22,37 @@ import { Option } from '../../data-access/models/option.model';
 })
 export class OptionsSelectorComponent implements OnInit {
   public readonly title = input.required<string>();
-  public readonly options = input.required<Option[]>();
+  public readonly options = input.required<OptionLike[]>();
   public readonly preselected = input<string | null | undefined>();
   public readonly selected = signal<string | null>(null);
   public optionSelect = output<string>();
 
   ngOnInit() {
-    this.selected.set(this.preselected() ?? this.options()[0].value);
+    const pre = this.preselected();
+    if (pre) {
+      this.selected.set(pre);
+    } else {
+      const first = this.options()[0];
+      if (first) {
+        this.selected.set(this.getValue(first));
+      }
+    }
   }
 
   public select(option: string) {
     this.selected.set(option);
     this.optionSelect.emit(option);
+  }
+
+  public getValue(option: OptionLike): string {
+    return 'value' in option ? option.value : option.name;
+  }
+
+  public getLabel(option: OptionLike): string {
+    return option.label;
+  }
+
+  public isDisabled(option: OptionLike): boolean {
+    return 'disabled' in option ? !!option.disabled : false;
   }
 }
