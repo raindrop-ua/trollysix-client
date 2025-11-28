@@ -19,7 +19,7 @@ import { Option } from '../../data-access/models/option.model';
 export class OptionsSelectorComponent implements OnInit {
   public readonly title = input.required<string>();
   public readonly options = input.required<Option[]>();
-  public readonly preselected = input<string>();
+  public readonly preselected = input<string | null| undefined>();
   public readonly selected = signal<string | null>(null);
   public optionSelect = output<string>();
 
