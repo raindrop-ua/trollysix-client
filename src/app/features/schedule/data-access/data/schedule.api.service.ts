@@ -11,7 +11,7 @@ import { Timetable } from '../models/timetable.model';
   providedIn: 'root',
 })
 export class ScheduleApiService {
-  private readonly BASE_URL = environment.apiUrl;
+  private readonly BASE_URL = environment.BASE_API_URL;
   private http = inject(HttpClient);
 
   getStops(): Observable<Stop[]> {

@@ -1,3 +1,4 @@
 export const environment = {
-  apiUrl: 'https://api-lite.trolly6.com',
+  BASE_API_URL: 'https://api-lite.trolly6.com',
+  WEATHER_ICON_BASE: 'assets/images/weather/icons',
 };
