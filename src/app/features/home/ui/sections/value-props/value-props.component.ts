@@ -4,7 +4,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
-import { ValueProp } from './value-prop.model';
+import { ValueProp } from '../../../data-access/models/value-prop.model';
 import { ValuePropComponent } from './value-prop/value-prop.component';
 
 @Component({
