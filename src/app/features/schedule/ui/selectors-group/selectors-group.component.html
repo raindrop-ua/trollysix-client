@@ -1,28 +1,20 @@
 <section class="container mx-auto max-w-6xl px-4">
-  <div
-    class="rounded-2xl border border-white/10 bg-white/60 p-3 shadow-sm backdrop-blur md:p-4 dark:bg-slate-900/40"
-  >
-    <div
-      class="grid gap-3 md:grid-cols-2 lg:flex lg:items-center lg:justify-between lg:gap-0 lg:divide-x lg:divide-white/10"
-    >
-      <app-options-selector
-        (optionSelect)="onSelectDayType($event)"
-        title="Day"
-        [options]="[
-          { value: 'weekday', label: 'Weekday' },
-          { value: 'weekend', label: 'Weekend' },
-        ]"
-        [preselected]="(vm$ | async)?.selectedDayTypeName"
-      />
-      <app-options-selector
-        (optionSelect)="onSelectDirection($event)"
-        title="Direction"
-        [options]="[
-          { value: 'forward', label: 'Forward' },
-          { value: 'backward', label: 'Backward' },
-        ]"
-        [preselected]="(vm$ | async)?.selectedDirectionName"
-      />
+  <div class="rounded-2xl border border-white/10 bg-white/60 p-3 shadow-sm backdrop-blur md:p-4 dark:bg-slate-900/40">
+    <div class="grid gap-3 md:grid-cols-2 lg:flex lg:items-center lg:justify-between lg:gap-0 lg:divide-x lg:divide-white/10">
+      @if (vm$ | async; as vm) {
+        <app-options-selector
+          (optionSelect)="onSelectDayType($event)"
+          title="Day"
+          [options]="vm.dayTypes"
+          [preselected]="vm.selectedDayTypeName"
+        />
+        <app-options-selector
+          (optionSelect)="onSelectDirection($event)"
+          title="Direction"
+          [options]="vm.directions"
+          [preselected]="(vm$ | async)?.selectedDirectionName"
+        />
+      }
       <div class="hidden gap-4 lg:flex md:items-center md:px-3">
         <div class="text-blue-800 dark:text-blue-900">
           <svg
