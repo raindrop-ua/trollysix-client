@@ -8,10 +8,7 @@ import {
   OverviewComponent,
   InfrastructureComponent,
 } from '../ui';
-import {
-  MetricsComponent,
-  type Metric,
-} from '../../../shared/components/sections';
+import { Metric, MetricsComponent } from '../../../shared/components/sections';
 
 @Component({
   selector: 'app-about',
