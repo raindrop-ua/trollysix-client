@@ -14,6 +14,6 @@ export class TemperaturePipe implements PipeTransform {
     if (value === 0) {
       return '0°C';
     }
-    return (value > 0 ? '+' : '-') + Math.abs(value) + '°C';
+    return (value > 0 ? '+' : '-') + Math.round(Math.abs(value)) + '°C';
   }
 }
