@@ -16,9 +16,11 @@ export interface ScheduleState {
   selectedStopId: string | null;
   selectedDayTypeName: string | null;
   selectedDirectionName: DirectionName | null;
+  showScheduleNumbers: boolean;
   stopsLoading: boolean;
   timetableLoading: boolean;
   error: string | null;
+  initialDataLoaded: boolean;
 }
 
 export const initialState: ScheduleState = {
@@ -29,7 +31,9 @@ export const initialState: ScheduleState = {
   selectedStopId: null,
   selectedDayTypeName: 'weekday',
   selectedDirectionName: 'forward',
+  showScheduleNumbers: false,
   stopsLoading: false,
   timetableLoading: false,
   error: null,
+  initialDataLoaded: false,
 };
