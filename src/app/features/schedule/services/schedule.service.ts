@@ -56,13 +56,6 @@ export class ScheduleService {
     return true;
   }
 
-  private arraysEqual(a: string[], b: string[]) {
-    if (a === b) return true;
-    if (a.length !== b.length) return false;
-    for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return false;
-    return true;
-  }
-
   private toTodayDate(hhmm: string, now: Date): Date {
     const [h, m] = hhmm.split(':').map(Number);
     const d = new Date(now);
