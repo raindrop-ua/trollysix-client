@@ -1,3 +1,6 @@
 <div [class]="timeClass()">
-  {{ departure().time }}
+  <div>{{ departure().time }}</div>
+  @if (showSchedule()) {
+    <div class="text-xs opacity-75">Schedule 3</div>
+  }
 </div>
