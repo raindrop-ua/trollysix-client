@@ -53,6 +53,10 @@ export const scheduleFeature = createFeature({
       ...state,
       selectedDirectionName: directionName,
     })),
+    on(SchedulePageActions.setShowScheduleNumbers, (state, { show }) => ({
+      ...state,
+      showScheduleNumbers: show,
+    })),
 
     on(ScheduleApiActions.loadTimetable, (state) => ({
       ...state,

@@ -4,6 +4,8 @@ import { combineLatest, map, shareReplay, distinctUntilChanged } from 'rxjs';
 import { ClockService } from '../../../core/services/clock.service';
 import { Departure, Status } from '../data-access/models/departure.model';
 import { selectScheduleViewModel } from '../data-access/store/schedule.selectors';
+import { scheduleFeature } from '../data-access/store/schedule.reducer';
+import { SchedulePageActions } from '../data-access/store/schedule.actions';
 
 @Injectable({ providedIn: 'root' })
 export class ScheduleService {
@@ -26,6 +28,16 @@ export class ScheduleService {
     shareReplay({ bufferSize: 1, refCount: false }),
   );
 
+  readonly showScheduleNumbers$ = this.store.select(
+    scheduleFeature.selectShowScheduleNumbers,
+  );
+
+  setShowScheduleNumbers(show: boolean) {
+    this.store.dispatch(
+      SchedulePageActions.setShowScheduleNumbers({ show }),
+    );
+  }
+
   private arraysEqual(a: string[], b: string[]) {
     if (a === b) return true;
     if (a.length !== b.length) return false;
@@ -40,12 +52,6 @@ export class ScheduleService {
     return d;
   }
 
-  /** Rules:
-   * < 0 min → Past
-   * 0..5 min → Now
-   * 6..20 min → Soon
-   * ≥21 min → Coming
-   */
   private statusFor(now: Date, dep: Date): Status {
     const diffMinutes = Math.floor((dep.getTime() - now.getTime()) / 60000);
     if (diffMinutes < 0) return Status.Past;
