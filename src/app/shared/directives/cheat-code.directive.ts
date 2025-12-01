@@ -9,7 +9,6 @@ import {
 
 @Directive({
   selector: '[appCheatCode]',
-  standalone: true,
 })
 export class CheatCodeDirective {
   private tpl = inject(TemplateRef);
@@ -68,6 +67,7 @@ export class CheatCodeDirective {
     if (this.hasShown) {
       return;
     }
+
     this.hasShown = true;
     this.vcr.createEmbeddedView(this.tpl);
   }
