@@ -5,8 +5,10 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
+import { Store } from '@ngrx/store';
 import { DepartureTimeItemComponent } from '../departure-time-item/departure-time-item.component';
 import { ScheduleService } from '../../../services/schedule.service';
+import { selectScheduleViewModel } from '../../../data-access/store/schedule.selectors';
 
 @Component({
   selector: 'app-departure-table',
@@ -18,4 +20,6 @@ import { ScheduleService } from '../../../services/schedule.service';
 export class DepartureTableComponent {
   private readonly schedule = inject(ScheduleService);
   readonly departures$ = this.schedule.departures$;
+  private store = inject(Store);
+  vm$ = this.store.select(selectScheduleViewModel);
 }

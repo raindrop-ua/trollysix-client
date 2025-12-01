@@ -2,4 +2,7 @@
   @for (departure of departures$ | async; track departure.time) {
     <app-departure-time-item [departure]="departure" />
   }
+  @if ((vm$ | async)?.timetableLoading) {
+    <div class="min-h-[200px]"></div>
+  }
 </div>
