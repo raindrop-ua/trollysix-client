@@ -7,11 +7,15 @@ export const scheduleFeature = createFeature({
   reducer: createReducer(
     initialState,
 
-    on(SchedulePageActions.enter, (state) => ({
-      ...state,
-      stopsLoading: true,
-      error: null,
-    })),
+    on(SchedulePageActions.enter, (state) =>
+      state.initialDataLoaded
+        ? state
+        : {
+          ...state,
+          stopsLoading: true,
+          error: null,
+        },
+    ),
 
     on(ScheduleApiActions.loadInitialDataSuccess, (state, { stops, dayTypes, directions }) => {
       return {
@@ -22,6 +26,7 @@ export const scheduleFeature = createFeature({
         stopsLoading: false,
         selectedStopId: stops[0]?.id ?? null,
         error: null,
+        initialDataLoaded: true,
       };
     }),
 
@@ -29,6 +34,7 @@ export const scheduleFeature = createFeature({
       ...state,
       stopsLoading: false,
       error,
+      initialDataLoaded: false,
     })),
 
     on(SchedulePageActions.selectStop, (state, { stopId }) =>
@@ -46,6 +52,10 @@ export const scheduleFeature = createFeature({
     on(SchedulePageActions.selectDirection, (state, { directionName }) => ({
       ...state,
       selectedDirectionName: directionName,
+    })),
+    on(SchedulePageActions.setShowScheduleNumbers, (state, { show }) => ({
+      ...state,
+      showScheduleNumbers: show,
     })),
 
     on(ScheduleApiActions.loadTimetable, (state) => ({

@@ -8,4 +8,5 @@ export enum Status {
 export interface Departure {
   status: Status;
   time: string;
+  scheduleNumber: number | null;
 }

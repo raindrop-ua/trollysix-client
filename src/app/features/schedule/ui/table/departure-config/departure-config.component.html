@@ -1,0 +1,35 @@
+@if ((departures$ | async)?.length) {
+  @let showSchedule = (showScheduleNumbers$ | async) ?? false;
+
+  <div
+    class="mt-4 rounded-2xl border border-white/10 bg-white/60 p-3 shadow-sm backdrop-blur md:p-4 dark:bg-slate-900/40"
+  >
+    <div
+      class="flex flex-wrap items-center gap-3 text-xs text-slate-500 dark:text-slate-400"
+    >
+      <label for="schedule" class="flex items-center gap-2 cursor-pointer select-none">
+        <input
+          id="schedule"
+          type="checkbox"
+          class="peer sr-only"
+          [checked]="showSchedule"
+          (change)="onToggleSchedule($event)"
+        />
+        <div class="h-4 w-4 rounded-md border transition-all border-slate-400 dark:border-slate-600 bg-white dark:bg-slate-900 flex items-center justify-center peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-checked:[&>svg]:opacity-100">
+          <svg
+            class="h-3 w-3 text-white opacity-0 transition-opacity"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <p class="text-sm text-slate-700 dark:text-slate-300 peer-checked:text-blue-600 dark:peer-checked:text-blue-400">
+          Show schedule number
+        </p>
+      </label>
+    </div>
+  </div>
+}
