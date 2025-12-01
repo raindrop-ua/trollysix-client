@@ -6,8 +6,8 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
-import { Departure } from '../../../data-access/models/departure.model';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { Departure } from '../../../data-access/models/departure.model';
 import { ScheduleService } from '../../../services/schedule.service';
 
 @Component({
@@ -21,10 +21,9 @@ export class DepartureTimeItemComponent {
   private readonly schedule = inject(ScheduleService);
   public departure = input.required<Departure>();
 
-  readonly showSchedule = toSignal(
-    this.schedule.showScheduleNumbers$,
-    { initialValue: false },
-  );
+  readonly showSchedule = toSignal(this.schedule.showScheduleNumbers$, {
+    initialValue: false,
+  });
 
   readonly timeClass = computed(() => {
     const d = this.departure();

@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { combineLatest, map, shareReplay, distinctUntilChanged } from 'rxjs';
-import { ClockService } from '../../../core/services/clock.service';
+import { ClockService } from './clock.service';
 import { Departure, Status } from '../data-access/models/departure.model';
 import { TimeEntity } from '../data-access/models/timetable.model';
 import { selectScheduleViewModel } from '../data-access/store/schedule.selectors';
@@ -35,9 +35,7 @@ export class ScheduleService {
   );
 
   setShowScheduleNumbers(show: boolean) {
-    this.store.dispatch(
-      SchedulePageActions.setShowScheduleNumbers({ show }),
-    );
+    this.store.dispatch(SchedulePageActions.setShowScheduleNumbers({ show }));
   }
 
   private timeArraysEqual(a: TimeEntity[], b: TimeEntity[]) {
@@ -46,10 +44,7 @@ export class ScheduleService {
     for (let i = 0; i < a.length; i++) {
       const ai = a[i];
       const bi = b[i];
-      if (
-        ai.time !== bi.time ||
-        ai.scheduleNumber !== bi.scheduleNumber
-      ) {
+      if (ai.time !== bi.time || ai.scheduleNumber !== bi.scheduleNumber) {
         return false;
       }
     }
