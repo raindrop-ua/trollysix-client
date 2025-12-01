@@ -9,6 +9,7 @@ import {
   DepartureTimeBarComponent,
   DepartureStopBarComponent,
 } from '../table';
+import { DepartureConfigComponent } from '../table/departure-config/departure-config.component';
 
 @Component({
   selector: 'app-schedule-controls',
@@ -17,6 +18,7 @@ import {
     DepartureLegendComponent,
     DepartureTimeBarComponent,
     DepartureStopBarComponent,
+    DepartureConfigComponent,
   ],
   templateUrl: './schedule-controls.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
