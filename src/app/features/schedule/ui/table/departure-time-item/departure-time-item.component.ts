@@ -2,11 +2,13 @@ import {
   Component,
   input,
   computed,
-  signal,
+  inject,
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
 import { Departure } from '../../../data-access/models/departure.model';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { ScheduleService } from '../../../services/schedule.service';
 
 @Component({
   selector: 'app-departure-time-item',
@@ -16,8 +18,13 @@ import { Departure } from '../../../data-access/models/departure.model';
   encapsulation: ViewEncapsulation.None,
 })
 export class DepartureTimeItemComponent {
-  departure = input.required<Departure>();
-  showSchedule = signal(false);
+  private readonly schedule = inject(ScheduleService);
+  public departure = input.required<Departure>();
+
+  readonly showSchedule = toSignal(
+    this.schedule.showScheduleNumbers$,
+    { initialValue: false },
+  );
 
   readonly timeClass = computed(() => {
     const d = this.departure();
