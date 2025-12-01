@@ -3,10 +3,11 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-infrastructure',
-  imports: [],
+  imports: [NgOptimizedImage],
   templateUrl: './infrastructure.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
