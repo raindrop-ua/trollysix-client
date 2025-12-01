@@ -10,13 +10,18 @@
 
       <button
         type="button"
-        class="selector"
+        class="selector relative"
         [disabled]="isDisabled(option)"
         [attr.aria-pressed]="isSelected"
         [class.selector-selected]="isSelected"
         (click)="select(value)"
       >
+        <span class="invisible block font-semibold">
+          {{ getLabel(option) }}
+        </span>
+        <span class="absolute inset-0 flex items-center justify-center" [class.font-semibold]="isSelected">
         {{ getLabel(option) }}
+      </span>
       </button>
     }
   </div>
