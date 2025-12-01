@@ -23,6 +23,10 @@ export class ScheduleEffects {
   loadInitialData$ = createEffect(() =>
     this.actions$.pipe(
       ofType(SchedulePageActions.enter),
+      withLatestFrom(
+        this.store.select(scheduleFeature.selectInitialDataLoaded),
+      ),
+      filter(([, initialDataLoaded]) => !initialDataLoaded),
       switchMap(() =>
         forkJoin({
           stops: this.scheduleApi.getStops(),
