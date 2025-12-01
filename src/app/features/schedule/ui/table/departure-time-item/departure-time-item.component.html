@@ -1,8 +1,9 @@
 <div class="relative" [class]="timeClass()">
-  <div>{{ departure().time }}</div>
-  @if (showSchedule() && departure().scheduleNumber !== null) {
-    <div class="absolute -top-1 -right-1 inline-flex items-center rounded-xl bg-gray-400/20 px-2 py-1 text-xs font-medium inset-ring inset-ring-gray-400/20 shadow-sm">
-      #{{ departure().scheduleNumber }}
+  @let dep = departure();
+  <div>{{ dep.time }}</div>
+  @if (showSchedule() && dep.scheduleNumber !== null) {
+    <div class="absolute -top-1 -right-1 backdrop-blur-xs inline-flex items-center rounded-xl bg-gray-400/20 px-2 py-1 text-xs font-medium inset-ring inset-ring-gray-400/20 shadow-sm">
+      #{{ dep.scheduleNumber }}
     </div>
   }
 </div>
