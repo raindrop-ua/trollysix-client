@@ -1,12 +1,20 @@
 @if ((departures$ | async)?.length) {
-  <div class="mt-4 rounded-2xl border border-white/10 bg-white/60 p-3 shadow-sm backdrop-blur md:p-4 dark:bg-slate-900/40">
-    <div class="flex flex-wrap items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
+  @let showSchedule = (showScheduleNumbers$ | async) ?? false;
+
+  <div
+    class="mt-4 rounded-2xl border border-white/10 bg-white/60 p-3 shadow-sm backdrop-blur md:p-4 dark:bg-slate-900/40"
+  >
+    <div
+      class="flex flex-wrap items-center gap-3 text-xs text-slate-500 dark:text-slate-400"
+    >
       <label for="schedule">
         <div class="flex flex-wrap items-center group active:ring-2 ring-black rounded">
           <input
             id="schedule"
             type="checkbox"
             class="rounded-full h-4 w-4 cursor-pointer"
+            [checked]="showSchedule"
+            (change)="onToggleSchedule($event)"
           />
           <p class="pl-2 text-sm cursor-pointer">
             Show schedule number

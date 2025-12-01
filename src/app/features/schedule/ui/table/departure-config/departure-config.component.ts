@@ -16,5 +16,12 @@ import { AsyncPipe } from '@angular/common';
 })
 export class DepartureConfigComponent {
   private readonly schedule = inject(ScheduleService);
+
   readonly departures$ = this.schedule.departures$;
+  readonly showScheduleNumbers$ = this.schedule.showScheduleNumbers$;
+
+  onToggleSchedule(event: Event) {
+    const checked = (event.target as HTMLInputElement).checked;
+    this.schedule.setShowScheduleNumbers(checked);
+  }
 }
