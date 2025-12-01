@@ -1,12 +1,8 @@
 @if ((departures$ | async)?.length) {
   @let showSchedule = (showScheduleNumbers$ | async) ?? false;
 
-  <div
-    class="mt-4 rounded-2xl border border-white/10 bg-white/60 p-3 shadow-sm backdrop-blur md:p-4 dark:bg-slate-900/40"
-  >
-    <div
-      class="flex flex-wrap items-center gap-3 text-xs text-blue-700 dark:text-slate-400"
-    >
+  <div class="rounded-2xl border border-white/10 bg-white/60 p-3 shadow-sm backdrop-blur md:p-4 dark:bg-slate-900/40">
+    <div class="flex flex-wrap items-center gap-3 text-xs text-blue-700 dark:text-slate-400">
       <label for="schedule" class="flex items-center gap-2 cursor-pointer select-none">
         <input
           id="schedule"
