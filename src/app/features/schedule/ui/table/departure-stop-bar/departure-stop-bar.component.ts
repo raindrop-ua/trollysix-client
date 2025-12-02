@@ -7,6 +7,7 @@ import {
 import { AsyncPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { selectScheduleViewModel } from '../../../data-access/store/schedule.selectors';
+import { ScheduleService } from '../../../services/schedule.service';
 
 @Component({
   selector: 'app-departure-stop-bar',
@@ -17,5 +18,7 @@ import { selectScheduleViewModel } from '../../../data-access/store/schedule.sel
 })
 export class DepartureStopBarComponent {
   private store = inject(Store);
+  private readonly schedule = inject(ScheduleService);
+  readonly departures$ = this.schedule.departures$;
   vm$ = this.store.select(selectScheduleViewModel);
 }
