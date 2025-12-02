@@ -3,7 +3,7 @@ import { retry, tap } from 'rxjs';
 
 export const globalHttpErrorInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
-    retry({ count: 3, delay: 1000 }),
+    retry({ count: 3, delay: 3000 }),
     tap({
       error: (error: HttpErrorResponse) => {
         console.log('Error:', error.status, error.message);
