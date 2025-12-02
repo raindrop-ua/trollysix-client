@@ -62,7 +62,7 @@ export class ScheduleService {
     const diffMinutes = Math.floor((dep.getTime() - now.getTime()) / 60000);
     if (diffMinutes < 0) return Status.Past;
     if (diffMinutes <= 5) return Status.Now;
-    if (diffMinutes <= 20) return Status.Soon;
+    if (diffMinutes <= 15) return Status.Soon;
     return Status.Coming;
   }
 }
