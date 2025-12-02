@@ -1,7 +1,10 @@
 <div aria-live="assertive" aria-atomic="true" class="pointer-events-none fixed inset-0 z-50 flex items-end justify-end px-4 py-6">
   <div class="flex w-full flex-col items-end space-y-3">
     @for (toast of toasts(); track toast.id) {
-      <div [class]="typeClasses(toast.type)" class="pointer-events-auto shadow-sm backdrop-blur w-full max-w-sm overflow-hidden shadow-lg ring-1 ring-black/10 rounded-2xl border bg-white/60 dark:bg-slate-900/40">
+      <div
+        class="pointer-events-auto shadow-sm backdrop-blur w-full max-w-sm overflow-hidden shadow-lg ring-1 ring-black/10 rounded-2xl border bg-white/60 dark:bg-slate-900/40"
+        [class]="typeClasses(toast.type)"
+      >
         <div class="p-4 flex">
           <div class="flex-shrink-0 pt-0.5">
             <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-black/10">
