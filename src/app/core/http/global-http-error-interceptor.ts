@@ -6,7 +6,6 @@ export const globalHttpErrorInterceptor: HttpInterceptorFn = (req, next) => {
     retry({ count: 3, delay: 3000 }),
     tap({
       error: (error: HttpErrorResponse) => {
-        console.log('Error:', error.status, error.message);
         if ([500, 404].includes(error.status)) {
           // snack or something like it
         }
