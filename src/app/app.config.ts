@@ -2,6 +2,7 @@ import { isPlatformBrowser } from '@angular/common';
 import {
   provideHttpClient,
   withFetch,
+  withInterceptors,
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import {
@@ -10,7 +11,7 @@ import {
   inject,
   isDevMode,
   provideEnvironmentInitializer,
-  provideZonelessChangeDetection,
+  provideBrowserGlobalErrorListeners,
 } from '@angular/core';
 import {
   provideClientHydration,
@@ -32,14 +33,16 @@ import { routes } from './app.routes';
 import { SeoService } from './core/services/seo.service';
 import { AfterFirstPaintPreloadingStrategy } from './core/strategies/after-first-paint-preloading.strategy';
 import { SwUpdateService } from './core/services/sw-update.service';
+import { globalHttpErrorInterceptor } from './core/http/global-http-error-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     { provide: NAVIGATION_TOKEN, useValue: NAVIGATION },
-    provideZonelessChangeDetection(),
+    provideBrowserGlobalErrorListeners(),
     provideHttpClient(
+      withInterceptors([globalHttpErrorInterceptor]),
       withInterceptorsFromDi(),
-      withFetch()
+      withFetch(),
     ),
     provideRouter(
       routes,
@@ -47,7 +50,7 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({
         scrollPositionRestoration: 'enabled',
         anchorScrolling: 'enabled',
-      })
+      }),
     ),
     provideClientHydration(withEventReplay()),
     provideServiceWorker('ngsw-worker.js', {
