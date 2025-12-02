@@ -19,6 +19,7 @@ import {
 } from '@angular/platform-browser';
 import {
   provideRouter,
+  withComponentInputBinding,
   withInMemoryScrolling,
   withPreloading,
 } from '@angular/router';
@@ -46,6 +47,7 @@ export const appConfig: ApplicationConfig = {
     ),
     provideRouter(
       routes,
+      withComponentInputBinding(),
       withPreloading(AfterFirstPaintPreloadingStrategy),
       withInMemoryScrolling({
         scrollPositionRestoration: 'enabled',
