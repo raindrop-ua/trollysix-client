@@ -1,0 +1,38 @@
+<div aria-live="assertive" aria-atomic="true" class="pointer-events-none fixed inset-0 z-50 flex items-end justify-end px-4 py-6">
+  <div class="flex w-full flex-col items-end space-y-3">
+    @for (toast of toasts(); track toast.id) {
+      <div
+        class="pointer-events-auto shadow-sm backdrop-blur w-full max-w-sm overflow-hidden shadow-lg ring-1 ring-black/10 rounded-2xl border bg-white/60 dark:bg-slate-900/40"
+        [class]="typeClasses(toast.type)"
+      >
+        <div class="p-4 flex">
+          <div class="flex-shrink-0 pt-0.5">
+            <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-black/10">
+              <span class="text-sm">
+                @if (toast.type === 'success') { ✓ }
+                @else if (toast.type === 'error') { ! }
+                @else { i }
+              </span>
+            </span>
+          </div>
+
+          <div class="ml-3 flex-1">
+            @if (toast.title) {
+              <p class="text-sm font-semibold leading-5">
+                {{ toast.title }}
+              </p>
+            }
+            <p class="mt-0.5 text-sm leading-5">
+              {{ toast.message }}
+            </p>
+          </div>
+
+          <div class="ml-3 flex-shrink-0">
+            <button type="button" (click)="dismiss(toast.id)" class="cursor-pointer inline-flex rounded-full p-1 text-blue-900/70 hover:text-slate-800 dark:text-slate-100/70 dark:hover:text-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-slate-200/50">
+              <span class="sr-only">Close</span> ✕ </button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

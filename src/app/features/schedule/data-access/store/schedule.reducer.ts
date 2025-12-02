@@ -11,24 +11,27 @@ export const scheduleFeature = createFeature({
       state.initialDataLoaded
         ? state
         : {
-          ...state,
-          stopsLoading: true,
-          error: null,
-        },
+            ...state,
+            stopsLoading: true,
+            error: null,
+          },
     ),
 
-    on(ScheduleApiActions.loadInitialDataSuccess, (state, { stops, dayTypes, directions }) => {
-      return {
-        ...state,
-        stops: stopsAdapter.setAll(stops, state.stops),
-        dayTypes,
-        directions,
-        stopsLoading: false,
-        selectedStopId: stops[0]?.id ?? null,
-        error: null,
-        initialDataLoaded: true,
-      };
-    }),
+    on(
+      ScheduleApiActions.loadInitialDataSuccess,
+      (state, { stops, dayTypes, directions }) => {
+        return {
+          ...state,
+          stops: stopsAdapter.setAll(stops, state.stops),
+          dayTypes,
+          directions,
+          stopsLoading: false,
+          selectedStopId: stops[0]?.id ?? null,
+          error: null,
+          initialDataLoaded: true,
+        };
+      },
+    ),
 
     on(ScheduleApiActions.loadInitialDataFailure, (state, { error }) => ({
       ...state,
@@ -41,9 +44,9 @@ export const scheduleFeature = createFeature({
       state.selectedStopId === stopId
         ? state
         : {
-          ...state,
-          selectedStopId: stopId,
-        }
+            ...state,
+            selectedStopId: stopId,
+          },
     ),
     on(SchedulePageActions.selectDayType, (state, { dayTypeName }) => ({
       ...state,
@@ -53,6 +56,7 @@ export const scheduleFeature = createFeature({
       ...state,
       selectedDirectionName: directionName,
     })),
+
     on(SchedulePageActions.setShowScheduleNumbers, (state, { show }) => ({
       ...state,
       showScheduleNumbers: show,
