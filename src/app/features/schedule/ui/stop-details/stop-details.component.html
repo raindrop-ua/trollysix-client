@@ -33,11 +33,11 @@
             </div>
             <ul class="flex flex-wrap gap-2">
               @for (sharedRoute of stop.sharedRoutes; track sharedRoute) {
-                <li class="min-w-10 rounded-md border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-center text-base text-blue-600 dark:text-blue-300">
+                <li class="cursor-default min-w-10 rounded-md border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-center text-base text-blue-600 dark:text-blue-300">
                   {{ sharedRoute }}
                 </li>
               } @empty {
-                <li class="min-w-10 rounded-md border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-center text-base text-blue-600 dark:text-blue-300">
+                <li class="cursor-default min-w-10 rounded-md border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-center text-base text-blue-600 dark:text-blue-300">
                   No shared routes
                 </li>
               }
