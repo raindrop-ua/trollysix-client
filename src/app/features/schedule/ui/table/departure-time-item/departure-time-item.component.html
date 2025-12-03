@@ -1,8 +1,8 @@
-<div class="relative" [class]="timeClass()">
+<div class="relative cursor-default" [class]="timeClass()">
   @let dep = departure();
-  <div>{{ dep.time }}</div>
+  <div class="cursor-default">{{ dep.time }}</div>
   @if (showSchedule() && dep.scheduleNumber !== null) {
-    <div class="absolute -top-1 -right-1 backdrop-blur-xs inline-flex items-center rounded-xl bg-gray-400/20 px-2 py-1 text-xs font-medium inset-ring inset-ring-gray-400/20 shadow-sm">
+    <div class="cursor-default absolute -top-1 -right-1 backdrop-blur-xs inline-flex items-center rounded-xl bg-gray-400/20 px-2 py-1 text-xs font-medium inset-ring inset-ring-gray-400/20 shadow-sm">
       #{{ dep.scheduleNumber }}
     </div>
   }
