@@ -14,6 +14,7 @@ import {
   StopsListComponent,
 } from '../ui';
 import { NoticeComponent } from '../../../shared/components/sections';
+import { RevealOnScrollDirective } from '../../../shared/directives/reveal-on-scroll.directive';
 import { selectScheduleViewModel } from '../data-access/store/schedule.selectors';
 import { SchedulePageActions } from '../data-access/store/schedule.actions';
 
@@ -26,6 +27,7 @@ import { SchedulePageActions } from '../data-access/store/schedule.actions';
     StopsListComponent,
     StopDetailsComponent,
     AsyncPipe,
+    RevealOnScrollDirective,
   ],
   templateUrl: './schedule.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
