@@ -23,4 +23,8 @@ export class DepartureTableComponent {
   readonly departures$ = this.schedule.departures$;
   private store = inject(Store);
   vm$ = this.store.select(selectScheduleViewModel);
+
+  onSelectTime(time: string) {
+    //
+  }
 }
