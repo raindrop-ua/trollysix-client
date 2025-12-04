@@ -10,8 +10,8 @@ import { EMPTY } from 'rxjs';
 import { catchError, take } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ToastService } from '../../../../core/services/toast.service';
-import { GeolocationService } from '../../../../core/services/geolocation.service';
-import { GeolocationError } from '../../../../core/services/geolocation.types';
+import { GeolocationService } from '../../services/geolocation.service';
+import { GeolocationError } from '../../services/geolocation.types';
 
 @Component({
   selector: 'app-find-geo-stop',
