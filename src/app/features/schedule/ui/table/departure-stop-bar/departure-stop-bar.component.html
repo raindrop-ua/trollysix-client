@@ -1,6 +1,6 @@
 @if (vm$ | async; as vm) {
 <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
-  <h3 class="cursor-default text-xl font-semibold text-slate-900 dark:text-white">
+  <h3 class="cursor-default py-1 text-xl font-semibold text-slate-900 dark:text-white">
     <div>{{ vm.selectedStop?.name }}</div>
   </h3>
   @let departures = (departures$ | async);
