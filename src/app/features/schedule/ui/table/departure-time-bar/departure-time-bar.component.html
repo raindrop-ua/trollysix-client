@@ -9,9 +9,9 @@
         stroke-width="2"
       ></svg>
     </span>
-    <span class="font-mono text-blue-700 dark:text-yellow-500">
+    <time class="font-mono text-blue-700 dark:text-yellow-500">
       {{ clockService.now$ | async | date : 'HH:mm' }}
-    </span>
+    </time>
   </div>
   <div class="flex items-center gap-2 text-lg text-blue-700 dark:text-yellow-500">
     <span>
