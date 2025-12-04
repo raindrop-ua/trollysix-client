@@ -5,10 +5,11 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 import { ToastService } from '../../services/toast.service';
+import { RevealOnScrollDirective } from '../../../shared/directives/reveal-on-scroll.directive';
 
 @Component({
   selector: 'app-toast-container',
-  imports: [],
+  imports: [RevealOnScrollDirective],
   templateUrl: './toast-container.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -26,7 +27,7 @@ export class ToastContainerComponent {
       case 'success':
         return 'border-l-5 border-emerald-600';
       case 'error':
-        return 'border-l-5 border-red-600';
+        return 'border-l-5 border-red-700';
       case 'info':
       default:
         return 'border-l-5 border-sky-600';
