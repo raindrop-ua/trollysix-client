@@ -7,6 +7,7 @@
 </section>
 @if (vm$ | async; as vm) {
   <app-stops-list />
+  <app-find-geo-stop />
   <app-selectors-group/>
   <app-schedule-controls/>
   @if (vm.selectedStop) {
