@@ -1,0 +1,11 @@
+@if (isGeolocationAvailable()) {
+  <section class="container mx-auto max-w-6xl px-4 pb-6 md:pb-8">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <button
+        (click)="onClick()"
+        class="cursor-pointer rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-sm ring-1 ring-black/10 hover:opacity-95 active:scale-[.98] dark:bg-white dark:text-slate-900 dark:ring-white/10">
+        Find closest stop
+      </button>
+    </div>
+  </section>
+}
