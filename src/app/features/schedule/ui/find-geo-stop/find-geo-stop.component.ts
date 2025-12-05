@@ -21,10 +21,9 @@ import { GeolocationError } from '../../services/geolocation.types';
   encapsulation: ViewEncapsulation.None,
 })
 export class FindGeoStopComponent {
-  private toastService = inject(ToastService);
-  private readonly geolocation = inject(GeolocationService);
   private readonly destroyRef = inject(DestroyRef);
-  public isGeolocationAvailable = signal<boolean>('geolocation' in navigator);
+  private readonly toastService = inject(ToastService);
+  protected readonly geolocation = inject(GeolocationService);
 
   onClick() {
     this.geolocation
