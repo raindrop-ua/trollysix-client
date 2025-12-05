@@ -7,7 +7,13 @@
         Select closest stop
       </button>
       @if (state().status === 'loading') {
-        <p>Loading...</p>
+        <p>Retrieving...</p>
+      }
+      @if (state().status === 'success') {
+        <p>Location received</p>
+      }
+      @if (state().status === 'error') {
+        <p>Unable to get location</p>
       }
     </div>
   </section>
