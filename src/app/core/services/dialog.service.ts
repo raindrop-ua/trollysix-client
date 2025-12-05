@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DialogConfig, DialogResult } from '../model/dialog.models';
+import { DialogConfig, DialogResult } from '../models/dialog.models';
 
 interface DialogHost {
   open(config: DialogConfig): Observable<DialogResult>;
