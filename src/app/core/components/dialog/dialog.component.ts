@@ -13,11 +13,12 @@ import { Subject, Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { DialogConfig, DialogResult } from '../../models/dialog.models';
 import { DialogService } from '../../services/dialog.service';
+import { SvgIconComponent } from '../../../shared/components/svg-icon/svg-icon.component';
 
 @Component({
   selector: 'app-dialog',
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass, SvgIconComponent],
   templateUrl: './dialog.component.html',
 })
 export class DialogComponent implements OnDestroy {
