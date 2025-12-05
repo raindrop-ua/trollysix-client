@@ -29,9 +29,7 @@ export class DialogComponent implements OnDestroy {
   private readonly isBrowser = isPlatformBrowser(this.platformId);
 
   readonly config = signal<DialogConfig | null>(null);
-
   readonly isOpen = signal(false);
-
   private readonly resultSubject = new Subject<DialogResult>();
 
   constructor() {
