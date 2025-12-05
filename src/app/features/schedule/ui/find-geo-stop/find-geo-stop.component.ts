@@ -1,7 +1,6 @@
 import {
   Component,
   inject,
-  signal,
   ChangeDetectionStrategy,
   ViewEncapsulation,
   DestroyRef,
