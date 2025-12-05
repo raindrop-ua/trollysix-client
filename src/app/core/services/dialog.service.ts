@@ -19,9 +19,7 @@ export class DialogService {
 
   open(config: DialogConfig): Observable<DialogResult> {
     if (!this.host) {
-      throw new Error(
-        'Dialog host is not registered. Add <app-dialog> to root template.',
-      );
+      throw new Error('Dialog host is not registered.');
     }
     return this.host.open(config);
   }

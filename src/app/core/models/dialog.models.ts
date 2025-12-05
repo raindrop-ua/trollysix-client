@@ -7,6 +7,7 @@ export interface DialogConfig {
   cancelText?: string;
   variant?: DialogVariant;
   disableClose?: boolean;
+  customIcon?: string;
 }
 
 export type DialogResult = 'confirm' | 'cancel' | 'backdrop' | 'escape';

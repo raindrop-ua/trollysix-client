@@ -11,9 +11,6 @@ import {
   templateUrl: './metric.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  host: {
-    style: 'display: flex;',
-  },
 })
 export class MetricComponent {
   title = input.required<string>();
