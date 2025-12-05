@@ -15,7 +15,7 @@ export class SwUpdateService {
 
     this.swUpdate.versionUpdates
       .pipe(
-        filter((evt) => evt.type === 'VERSION_READY'),
+        filter((event) => event.type === 'VERSION_READY'),
         takeUntilDestroyed(this.destroyRef),
       )
       .subscribe(() => {
