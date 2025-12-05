@@ -1,10 +1,10 @@
 <div class="grid grid-cols-4 gap-2 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10">
   @for (departure of departures$ | async; track departure.time) {
-    <app-departure-time-item [departure]="departure" />
+    <app-departure-time-item [departure]="departure" (clickTime)="onSelectTime($event)"/>
   }
 </div>
 @if ((vm$ | async)?.timetableLoading) {
-  <div class="min-h-[200px] flex items-center justify-center w-full">
+  <div class="min-h-[150px] flex items-center justify-center w-full">
     <app-spinner />
   </div>
 }

@@ -3,6 +3,7 @@ import {
   inject,
   ChangeDetectionStrategy,
   ViewEncapsulation,
+  signal,
 } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
@@ -23,4 +24,9 @@ export class DepartureTableComponent {
   readonly departures$ = this.schedule.departures$;
   private store = inject(Store);
   vm$ = this.store.select(selectScheduleViewModel);
+  private selectedTime = signal<string | null>(null);
+
+  onSelectTime(time: string) {
+    this.selectedTime.set(time);
+  }
 }
