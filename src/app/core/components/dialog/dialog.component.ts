@@ -11,7 +11,7 @@ import {
 import { isPlatformBrowser, NgClass } from '@angular/common';
 import { Subject, Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { DialogConfig, DialogResult } from '../../model/dialog.models';
+import { DialogConfig, DialogResult } from '../../models/dialog.models';
 import { DialogService } from '../../services/dialog.service';
 
 @Component({
