@@ -5,6 +5,7 @@ import {
   inject,
   ChangeDetectionStrategy,
   ViewEncapsulation,
+  output,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Departure } from '../../../data-access/models/departure.model';
@@ -20,6 +21,7 @@ import { ScheduleService } from '../../../services/schedule.service';
 export class DepartureTimeItemComponent {
   private readonly schedule = inject(ScheduleService);
   public departure = input.required<Departure>();
+  public clickTime = output<string>();
 
   readonly showSchedule = toSignal(this.schedule.showScheduleNumbers$, {
     initialValue: false,
@@ -29,4 +31,8 @@ export class DepartureTimeItemComponent {
     const d = this.departure();
     return `ts-time ts-time-${d.status}`;
   });
+
+  onClick() {
+    this.clickTime.emit(this.departure().time);
+  }
 }

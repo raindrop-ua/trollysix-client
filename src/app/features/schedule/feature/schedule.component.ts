@@ -12,6 +12,7 @@ import {
   SelectorsGroupComponent,
   StopDetailsComponent,
   StopsListComponent,
+  FindGeoStopComponent,
 } from '../ui';
 import { NoticeComponent } from '../../../shared/components/sections';
 import { RevealOnScrollDirective } from '../../../shared/directives/reveal-on-scroll.directive';
@@ -28,6 +29,7 @@ import { SchedulePageActions } from '../data-access/store/schedule.actions';
     StopDetailsComponent,
     AsyncPipe,
     RevealOnScrollDirective,
+    FindGeoStopComponent,
   ],
   templateUrl: './schedule.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -2,12 +2,13 @@
   <div class="flex w-full flex-col items-end space-y-3">
     @for (toast of toasts(); track toast.id) {
       <div
+        appRevealOnScroll="0"
         class="pointer-events-auto shadow-sm backdrop-blur w-full max-w-sm overflow-hidden shadow-lg ring-1 ring-black/10 rounded-2xl border bg-white/60 dark:bg-slate-900/40"
         [class]="typeClasses(toast.type)"
       >
         <div class="p-4 flex">
           <div class="flex-shrink-0 pt-0.5">
-            <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-black/10">
+            <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-black/10 dark:bg-white/10">
               <span class="text-sm">
                 @if (toast.type === 'success') { ✓ }
                 @else if (toast.type === 'error') { ! }
