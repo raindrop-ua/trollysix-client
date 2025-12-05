@@ -33,6 +33,17 @@ export class HeaderComponent implements OnInit {
   public readonly navigation = inject(NAVIGATION_TOKEN);
   public isMenuOpen = signal(false);
 
+  private readonly premiumMessages = [
+    'Just kidding — everyone here is already premium.',
+    'Premium? Buddy, this whole app is premium by default.',
+    'No subscriptions here — you were born premium.',
+    'Relax, everything in this app is free and premium at the same time.',
+    'It was unlocked the whole time, actually.',
+    'You’ve reached Premium Level Zero — the highest possible tier.',
+    'You are now premium. Again. And again. And forever.',
+    'Premium status confirmed — but honestly, you never needed upgrading.',
+  ];
+
   public ngOnInit() {
     this.router.events
       .pipe(
@@ -58,10 +69,12 @@ export class HeaderComponent implements OnInit {
   }
 
   onPremium() {
+    const message = this.getRandomMessage();
+
     this.dialogService
       .open({
         title: 'Premium unlocked!',
-        message: 'Just kidding — everything here is already free and unlocked.',
+        message,
         confirmText: 'Nice!',
         variant: 'success',
         disableClose: false,
@@ -69,5 +82,10 @@ export class HeaderComponent implements OnInit {
         customIcon: 'premium',
       })
       .subscribe();
+  }
+
+  private getRandomMessage() {
+    const list = this.premiumMessages;
+    return list[Math.floor(Math.random() * list.length)];
   }
 }
