@@ -26,6 +26,7 @@ export class SwUpdateService {
             confirmText: 'Update',
             variant: 'info',
             disableClose: true,
+            customIcon: 'monitor-down',
           })
           .subscribe((result) => {
             if (result === 'confirm') {
