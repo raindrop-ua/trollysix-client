@@ -4,13 +4,19 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation,
   DestroyRef,
+  signal,
 } from '@angular/core';
-import { EMPTY } from 'rxjs';
-import { catchError, take } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ToastService } from '../../../../core/services/toast.service';
 import { GeolocationService } from '../../services/geolocation.service';
 import { GeolocationError } from '../../services/geolocation.types';
+
+type GeoState =
+  | { status: 'idle' }
+  | { status: 'loading' }
+  | { status: 'success'; position: GeolocationPosition }
+  | { status: 'error'; error: GeolocationError };
 
 @Component({
   selector: 'app-find-geo-stop',
@@ -23,33 +29,33 @@ export class FindGeoStopComponent {
   private readonly destroyRef = inject(DestroyRef);
   private readonly toastService = inject(ToastService);
   protected readonly geolocation = inject(GeolocationService);
+  state = signal<GeoState>({ status: 'idle' });
 
   onClick() {
+    this.state.set({ status: 'loading' });
+
     this.geolocation
       .getCurrentPosition$({
         enableHighAccuracy: false,
         timeout: 10_000,
         maximumAge: 60_000,
       })
-      .pipe(
-        take(1),
-        takeUntilDestroyed(this.destroyRef),
-        catchError((error: GeolocationError) => {
+      .pipe(take(1), takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (position) => {
+          this.state.set({ status: 'success', position });
+          this.toastService.success(
+            `${position.coords.latitude.toFixed(4)} : ${position.coords.longitude.toFixed(4)}`,
+            { title: 'Successfully found geolocation', duration: 5000 },
+          );
+        },
+        error: (error: GeolocationError) => {
+          this.state.set({ status: 'error', error });
           this.toastService.error(this.getErrorMessage(error), {
             title: 'Failed to get location',
             duration: 5000,
           });
-          return EMPTY;
-        }),
-      )
-      .subscribe((position) => {
-        this.toastService.success(
-          `${position.coords.latitude.toFixed(4)} : ${position.coords.longitude.toFixed(4)}`,
-          {
-            title: 'Successfully found geolocation',
-            duration: 5000,
-          },
-        );
+        },
       });
   }
 
