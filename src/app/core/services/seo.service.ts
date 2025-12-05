@@ -15,8 +15,8 @@ interface SeoData {
 
 @Injectable({ providedIn: 'root' })
 export class SeoService {
-  private readonly titleSrv = inject(Title);
-  private readonly meta = inject(Meta);
+  private readonly titleService = inject(Title);
+  private readonly metaService = inject(Meta);
   private readonly router = inject(Router);
   private readonly activatedRoute = inject(ActivatedRoute);
   private readonly destroyRef = inject(DestroyRef);
@@ -41,32 +41,38 @@ export class SeoService {
   }
 
   public update(seo: SeoData): void {
-    if (seo.title) this.titleSrv.setTitle(seo.title);
+    if (seo.title) this.titleService.setTitle(seo.title);
 
     if (seo.description) {
-      this.meta.updateTag({ name: 'description', content: seo.description });
+      this.metaService.updateTag({
+        name: 'description',
+        content: seo.description,
+      });
     }
 
     if (seo.keywords) {
-      this.meta.updateTag({ name: 'keywords', content: seo.keywords });
+      this.metaService.updateTag({ name: 'keywords', content: seo.keywords });
     }
 
     if (seo.ogTitle ?? seo.title) {
-      this.meta.updateTag({
+      this.metaService.updateTag({
         property: 'og:title',
         content: seo.ogTitle ?? seo.title!,
       });
     }
 
     if (seo.ogDescription ?? seo.description) {
-      this.meta.updateTag({
+      this.metaService.updateTag({
         property: 'og:description',
         content: seo.ogDescription ?? seo.description!,
       });
     }
 
     if (seo.ogImage) {
-      this.meta.updateTag({ property: 'og:image', content: seo.ogImage });
+      this.metaService.updateTag({
+        property: 'og:image',
+        content: seo.ogImage,
+      });
     }
   }
 }
