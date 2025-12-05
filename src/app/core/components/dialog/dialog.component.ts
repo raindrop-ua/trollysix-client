@@ -23,7 +23,7 @@ import { SvgIconComponent } from '../../../shared/components/svg-icon/svg-icon.c
 })
 export class DialogComponent implements OnDestroy {
   @ViewChild('dialog', { static: true })
-  private dialogEl!: ElementRef<HTMLDialogElement>;
+  private dialogElement!: ElementRef<HTMLDialogElement>;
   private readonly dialogService = inject(DialogService);
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
@@ -42,7 +42,7 @@ export class DialogComponent implements OnDestroy {
 
     effect(() => {
       const open = this.isOpen();
-      const dialog = this.dialogEl?.nativeElement;
+      const dialog = this.dialogElement?.nativeElement;
 
       if (!dialog) return;
 
