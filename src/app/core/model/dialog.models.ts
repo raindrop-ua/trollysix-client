@@ -1,4 +1,4 @@
-export type DialogVariant = 'info' | 'danger';
+export type DialogVariant = 'info' | 'danger' | 'warning' | 'success';
 
 export interface DialogConfig {
   title: string;
