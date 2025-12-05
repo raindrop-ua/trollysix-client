@@ -1,4 +1,4 @@
-import { Injectable, PLATFORM_ID, inject } from '@angular/core';
+import { Injectable, PLATFORM_ID, inject, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Observable, throwError } from 'rxjs';
 import { GeolocationError, GeolocationErrorCode } from './geolocation.types';
@@ -9,6 +9,8 @@ import { GeolocationError, GeolocationErrorCode } from './geolocation.types';
 export class GeolocationService {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
+
+  public isGeolocationAvailable = signal<boolean>('geolocation' in navigator);
 
   getCurrentPosition$(
     options?: PositionOptions,
