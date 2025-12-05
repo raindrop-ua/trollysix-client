@@ -35,7 +35,7 @@ export class SwUpdateService {
           });
       });
 
-    interval(2 * 60_000)
+    interval(3 * 60_000)
       .pipe(
         takeUntilDestroyed(this.destroyRef),
         switchMap(() => this.swUpdate.checkForUpdate()),
