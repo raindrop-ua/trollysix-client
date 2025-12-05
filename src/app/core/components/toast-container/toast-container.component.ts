@@ -25,12 +25,12 @@ export class ToastContainerComponent {
   typeClasses(type: 'success' | 'error' | 'info'): string {
     switch (type) {
       case 'success':
-        return 'border-l-5 border-emerald-600';
+        return 'border-l-5 border-emerald-600/50';
       case 'error':
-        return 'border-l-5 border-red-700';
+        return 'border-l-5 border-red-700/50';
       case 'info':
       default:
-        return 'border-l-5 border-sky-600';
+        return 'border-l-5 border-sky-600/50';
     }
   }
 }
