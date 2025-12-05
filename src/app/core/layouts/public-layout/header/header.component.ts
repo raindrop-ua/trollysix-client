@@ -66,6 +66,7 @@ export class HeaderComponent implements OnInit {
         variant: 'success',
         disableClose: false,
         cancelText: '',
+        customIcon: 'premium',
       })
       .subscribe();
   }
