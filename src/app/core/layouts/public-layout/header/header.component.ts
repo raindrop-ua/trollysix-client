@@ -15,6 +15,7 @@ import { NAVIGATION_TOKEN } from '../../../config/navigation.config';
 import { SvgIconComponent } from '../../../../shared/components/svg-icon/svg-icon.component';
 import { ThemeSwitcherComponent } from '../../../../shared/components/theme-switcher/theme-switcher.component';
 import { AppRouteEnum } from '../../../enums/app-route.enum';
+import { DialogService } from '../../../services/dialog.service';
 
 @Component({
   selector: 'app-header',
@@ -24,17 +25,19 @@ import { AppRouteEnum } from '../../../enums/app-route.enum';
   encapsulation: ViewEncapsulation.None,
 })
 export class HeaderComponent implements OnInit {
-  private router = inject(Router);
+  protected readonly AppRouteEnum = AppRouteEnum;
+  private readonly router = inject(Router);
+  private readonly dialogService = inject(DialogService);
   private destroyRef = inject(DestroyRef);
   private cdr = inject(ChangeDetectorRef);
-  public navigation = inject(NAVIGATION_TOKEN);
+  public readonly navigation = inject(NAVIGATION_TOKEN);
   public isMenuOpen = signal(false);
 
   public ngOnInit() {
     this.router.events
       .pipe(
         filter((e): e is NavigationEnd => e instanceof NavigationEnd),
-        takeUntilDestroyed(this.destroyRef)
+        takeUntilDestroyed(this.destroyRef),
       )
       .subscribe(() => {
         this.cdr.markForCheck();
@@ -50,9 +53,20 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  protected readonly AppRouteEnum = AppRouteEnum;
-
   toggleMenu() {
     this.isMenuOpen.update(() => !this.isMenuOpen());
+  }
+
+  openPremiumModal() {
+    this.dialogService
+      .open({
+        title: 'Premium unlocked!',
+        message: 'Just kidding — everything here is already free and unlocked.',
+        confirmText: 'Nice!',
+        variant: 'success',
+        disableClose: false,
+        cancelText: '',
+      })
+      .subscribe();
   }
 }
