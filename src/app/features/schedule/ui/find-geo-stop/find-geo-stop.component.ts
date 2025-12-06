@@ -15,6 +15,7 @@ import { Store } from '@ngrx/store';
 import { Stop } from '../../data-access/models/stop.model';
 import { SchedulePageActions } from '../../data-access/store/schedule.actions';
 import { selectAllScheduleStops } from '../../data-access/store/schedule.selectors';
+import { SvgIconComponent } from '../../../../shared/components/svg-icon/svg-icon.component';
 
 type GeoState =
   | { status: 'idle' }
@@ -24,7 +25,7 @@ type GeoState =
 
 @Component({
   selector: 'app-find-geo-stop',
-  imports: [],
+  imports: [SvgIconComponent],
   templateUrl: './find-geo-stop.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
@@ -150,9 +151,9 @@ export class FindGeoStopComponent {
     const a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       Math.cos(toRad(lat1)) *
-      Math.cos(toRad(lat2)) *
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2);
+        Math.cos(toRad(lat2)) *
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
 
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
