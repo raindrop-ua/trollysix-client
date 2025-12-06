@@ -3,9 +3,9 @@ import {
   input,
   computed,
   inject,
+  output,
   ChangeDetectionStrategy,
   ViewEncapsulation,
-  output,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Departure } from '../../../data-access/models/departure.model';

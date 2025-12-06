@@ -5,14 +5,13 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
-import { ToastService } from '../../services/toast.service';
-import { RevealOnScrollDirective } from '../../../shared/directives/reveal-on-scroll.directive';
 import { NgClass } from '@angular/common';
+import { ToastService } from '../../services/toast.service';
 import { SvgIconComponent } from '../../../shared/components/svg-icon/svg-icon.component';
 
 @Component({
   selector: 'app-toast-container',
-  imports: [RevealOnScrollDirective, NgClass, SvgIconComponent],
+  imports: [NgClass, SvgIconComponent],
   templateUrl: './toast-container.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,

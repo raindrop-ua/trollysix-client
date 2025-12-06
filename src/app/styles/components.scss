@@ -5,19 +5,19 @@
   }
 
   .ts-time-past {
-    @apply bg-slate-800/10 text-slate-600 dark:bg-white/5 dark:text-slate-400;
+    @apply bg-slate-800/10 text-slate-600 dark:bg-white/5 dark:text-slate-400 border-slate-600/80;
   }
 
   .ts-time-now {
-    @apply font-semibold bg-red-500/80 text-white animate-bounce;
+    @apply font-semibold bg-red-500/80 text-white animate-bounce border-red-700/80;
   }
 
   .ts-time-soon {
-    @apply font-semibold bg-amber-400 text-slate-900;
+    @apply font-semibold bg-amber-400 text-slate-900 border-amber-600/80;
   }
 
   .ts-time-coming {
-    @apply font-medium bg-teal-400/30 text-teal-900 dark:text-teal-100;
+    @apply font-medium bg-teal-400/30 text-teal-900 dark:text-teal-100 border-teal-600/80;
   }
 
   .stop-card {
