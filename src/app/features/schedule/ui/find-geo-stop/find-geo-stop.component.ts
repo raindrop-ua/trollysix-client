@@ -45,7 +45,7 @@ export class FindGeoStopComponent {
         next: (position) => {
           this.state.set({ status: 'success', position });
           this.toastService.success(
-            `${position.coords.latitude.toFixed(4)} : ${position.coords.longitude.toFixed(4)}`,
+            `${position.coords.latitude.toFixed(5)} • ${position.coords.longitude.toFixed(5)}`,
             { title: 'Successfully found geolocation', duration: 5000 },
           );
         },
