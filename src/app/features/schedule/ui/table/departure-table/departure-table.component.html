@@ -8,3 +8,9 @@
     <app-spinner />
   </div>
 }
+@if ((departures$ | async)?.length === 0 && !(vm$ | async)?.timetableLoading) {
+  <div class="flex flex-col items-center justify-center w-full text-center py-4">
+    <p class="text-xl">No departures found.</p>
+    <p class="mt-4 text-lg">This stop may not have any departures in the selected direction. Please try choosing the opposite direction.</p>
+  </div>
+}
