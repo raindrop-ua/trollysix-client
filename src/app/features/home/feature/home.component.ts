@@ -22,6 +22,7 @@ import {
 @Component({
   selector: 'app-home',
   imports: [
+    RouterLink,
     MastheadComponent,
     ValuePropsComponent,
     BigClaimsComponent,
@@ -30,7 +31,6 @@ import {
     ReadyForRouteSixComponent,
     MetricsComponent,
     AttentionComponent,
-    RouterLink,
     TestimonialsComponent,
   ],
   templateUrl: './home.component.html',
@@ -72,7 +72,7 @@ export class HomeComponent {
       {
         name: 'Oleh',
         place: 'Pridniprovsk',
-        text: 'Route 6 - like a Swiss watch. Thanks for the simplicity and precision.',
+        text: 'TrollySix - like a Swiss watch. Thanks for the simplicity and precision.',
         avatarUrl: 'a219da8d-8b66-44b6-ad85-209517f87293.webp',
       },
     ],
