@@ -10,6 +10,10 @@ const {
   selectCurrentTimetable,
 } = scheduleFeature;
 
+const stopsSelectors = stopsAdapter.getSelectors(selectStops);
+
+export const selectAllScheduleStops = stopsSelectors.selectAll;
+
 const { selectAll: selectAllStops } = stopsAdapter.getSelectors(selectStops);
 
 const selectSelectedStop = createSelector(
