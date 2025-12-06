@@ -10,6 +10,7 @@ import { environment } from '../../../../../environments/environment';
 import { TemperaturePipe } from '../../../../shared/pipes/temperature.pipe';
 import { Stop } from '../../data-access/models/stop.model';
 import { GeoBadgeComponent } from '../geo-badge/geo-badge.component';
+import { GenericSectionBlockComponent } from '../../../../shared/components/sections';
 
 @Component({
   selector: 'app-stop-details',
@@ -18,6 +19,7 @@ import { GeoBadgeComponent } from '../geo-badge/geo-badge.component';
     TitleCasePipe,
     NgOptimizedImage,
     GeoBadgeComponent,
+    GenericSectionBlockComponent,
   ],
   templateUrl: './stop-details.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
