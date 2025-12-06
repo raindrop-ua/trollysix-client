@@ -1,15 +1,17 @@
 import {
   Component,
-  ElementRef,
-  OnDestroy,
-  ViewChild,
   effect,
-  signal,
+  ElementRef,
   inject,
+  OnDestroy,
   PLATFORM_ID,
+  signal,
+  ViewChild,
+  ChangeDetectionStrategy,
+  ViewEncapsulation,
 } from '@angular/core';
 import { isPlatformBrowser, NgClass } from '@angular/common';
-import { Subject, Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { DialogConfig, DialogResult } from '../../models/dialog.models';
 import { DialogService } from '../../services/dialog.service';
@@ -20,6 +22,8 @@ import { SvgIconComponent } from '../../../shared/components/svg-icon/svg-icon.c
   standalone: true,
   imports: [NgClass, SvgIconComponent],
   templateUrl: './dialog.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class DialogComponent implements OnDestroy {
   @ViewChild('dialog', { static: true })
