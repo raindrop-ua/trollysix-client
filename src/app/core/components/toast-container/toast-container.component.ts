@@ -3,34 +3,25 @@ import {
   computed,
   inject,
   ChangeDetectionStrategy,
+  ViewEncapsulation,
 } from '@angular/core';
 import { ToastService } from '../../services/toast.service';
 import { RevealOnScrollDirective } from '../../../shared/directives/reveal-on-scroll.directive';
+import { NgClass } from '@angular/common';
+import { SvgIconComponent } from '../../../shared/components/svg-icon/svg-icon.component';
 
 @Component({
   selector: 'app-toast-container',
-  imports: [RevealOnScrollDirective],
+  imports: [RevealOnScrollDirective, NgClass, SvgIconComponent],
   templateUrl: './toast-container.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class ToastContainerComponent {
   private readonly toastService = inject(ToastService);
-
   readonly toasts = computed(() => this.toastService.toasts());
 
   dismiss(id: number): void {
     this.toastService.dismiss(id);
-  }
-
-  typeClasses(type: 'success' | 'error' | 'info'): string {
-    switch (type) {
-      case 'success':
-        return 'border-l-5 border-emerald-600/50';
-      case 'error':
-        return 'border-l-5 border-red-700/50';
-      case 'info':
-      default:
-        return 'border-l-5 border-sky-600/50';
-    }
   }
 }

@@ -76,7 +76,7 @@ export class HeaderComponent implements OnInit {
         title: 'Premium unlocked!',
         message,
         confirmText: 'Nice!',
-        variant: 'success',
+        variant: 'warning',
         disableClose: false,
         cancelText: '',
         customIcon: 'premium',

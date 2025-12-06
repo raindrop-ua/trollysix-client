@@ -15,7 +15,7 @@ export class SwUpdateService {
 
     this.swUpdate.versionUpdates
       .pipe(
-        filter((evt) => evt.type === 'VERSION_READY'),
+        filter((event) => event.type === 'VERSION_READY'),
         takeUntilDestroyed(this.destroyRef),
       )
       .subscribe(() => {
@@ -35,7 +35,7 @@ export class SwUpdateService {
           });
       });
 
-    interval(2 * 60_000)
+    interval(3 * 60_000)
       .pipe(
         takeUntilDestroyed(this.destroyRef),
         switchMap(() => this.swUpdate.checkForUpdate()),
