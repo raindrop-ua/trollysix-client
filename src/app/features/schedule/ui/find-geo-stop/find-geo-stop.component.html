@@ -6,15 +6,6 @@
         class="cursor-pointer rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-sm ring-1 ring-black/10 hover:opacity-95 active:scale-[.98] dark:bg-white dark:text-slate-900 dark:ring-white/10">
         Select closest stop
       </button>
-      @if (state().status === 'loading') {
-        <p>Retrieving...</p>
-      }
-      @if (state().status === 'success') {
-        <p>Location received</p>
-      }
-      @if (state().status === 'error') {
-        <p>Unable to get location</p>
-      }
     </div>
   </section>
 }
