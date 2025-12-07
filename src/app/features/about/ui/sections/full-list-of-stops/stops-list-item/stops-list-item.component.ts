@@ -15,7 +15,7 @@ import { RouteStop } from '../../../../data-access/models/route-stops.model';
   encapsulation: ViewEncapsulation.None,
 })
 export class StopsListItemComponent {
-  stopItemData = input.required<RouteStop>();
-  isLastItem = input(false);
-  itemIndex = input.required<number>();
+  public readonly stopItemData = input.required<RouteStop>();
+  public readonly isLastItem = input(false);
+  public readonly itemIndex = input.required<number>();
 }
