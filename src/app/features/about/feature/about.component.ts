@@ -7,6 +7,7 @@ import {
   HeadComponent,
   OverviewComponent,
   InfrastructureComponent,
+  FullListOfStopsComponent,
 } from '../ui';
 import { Metric, MetricsComponent } from '../../../shared/components/sections';
 
@@ -17,6 +18,7 @@ import { Metric, MetricsComponent } from '../../../shared/components/sections';
     OverviewComponent,
     InfrastructureComponent,
     MetricsComponent,
+    FullListOfStopsComponent,
   ],
   templateUrl: './about.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
