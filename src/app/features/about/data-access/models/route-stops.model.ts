@@ -1,4 +1,5 @@
 export interface RouteStop {
+  id: string;
   title: string;
   description: string;
   direction: 'forward' | 'backward';

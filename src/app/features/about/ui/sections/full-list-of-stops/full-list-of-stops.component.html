@@ -20,7 +20,7 @@
           ></svg>
         </h4>
         <div class="flex w-full flex-col items-start">
-          @for (stop of routeStopsForward(); track stop; let i = $index, last = $last) {
+          @for (stop of routeStopsForward(); track stop.id; let i = $index, last = $last) {
             <app-stops-list-item [stopItemData]="stop" [itemIndex]="i" [isLastItem]="last" />
           }
         </div>
@@ -37,7 +37,7 @@
           ></svg>
         </h4>
         <div class="flex w-full flex-col items-start">
-          @for (stop of routeStopsBackward(); track stop; let i = $index, last = $last) {
+          @for (stop of routeStopsBackward(); track stop.id; let i = $index, last = $last) {
             <app-stops-list-item [stopItemData]="stop" [itemIndex]="i" [isLastItem]="last" />
           }
         </div>
