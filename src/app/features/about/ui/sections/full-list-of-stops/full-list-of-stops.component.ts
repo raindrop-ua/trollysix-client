@@ -3,9 +3,9 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
-import { GenericSectionBlockComponent } from '../../../../../shared/components/sections';
-import { RouteStop } from '../../../data-access/models/route-stops.model';
 import { SvgIconComponent } from '../../../../../shared/components/svg-icon/svg-icon.component';
+import { RouteStop } from '../../../data-access/models/route-stops.model';
+import { GenericSectionBlockComponent } from '../../../../../shared/components/sections';
 
 @Component({
   selector: 'app-full-list-of-stops',
