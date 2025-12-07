@@ -19,7 +19,7 @@ export const scheduleFeature = createFeature({
 
     on(
       ScheduleApiActions.loadInitialDataSuccess,
-      (state, { stops, dayTypes, directions }) => {
+      (state, { stops, dayTypes, directions, autoSelectedDayTypeName }) => {
         return {
           ...state,
           stops: stopsAdapter.setAll(stops, state.stops),
@@ -27,6 +27,7 @@ export const scheduleFeature = createFeature({
           directions,
           stopsLoading: false,
           selectedStopId: stops[0]?.id ?? null,
+          selectedDayTypeName: autoSelectedDayTypeName ?? state.selectedDayTypeName,
           error: null,
           initialDataLoaded: true,
         };
