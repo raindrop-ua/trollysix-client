@@ -1,0 +1,7 @@
+@if (isLoading()) {
+  <section class="container mx-auto max-w-6xl px-4 py-10">
+    <app-spinner />
+  </section>
+} @else {
+  <app-metrics [data]="metrics()" />
+}
