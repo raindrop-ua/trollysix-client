@@ -4,9 +4,3 @@ export interface Testimonial {
   text: string;
   avatarUrl: string;
 }
-
-export interface Testimonials {
-  title: string;
-  description: string;
-  testimonials: Testimonial[];
-}
