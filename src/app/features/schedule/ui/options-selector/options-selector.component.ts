@@ -6,6 +6,7 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   ViewEncapsulation,
+  effect,
 } from '@angular/core';
 import { Option } from '../../data-access/models/option.model';
 import { DayType } from '../../data-access/models/daytype.model';
@@ -20,23 +21,27 @@ type OptionLike = Option | DayType | Direction;
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class OptionsSelectorComponent implements OnInit {
+export class OptionsSelectorComponent {
   public readonly title = input.required<string>();
   public readonly options = input.required<OptionLike[]>();
   public readonly preselected = input<string | null | undefined>();
   public readonly selected = signal<string | null>(null);
   public optionSelect = output<string>();
 
-  ngOnInit() {
-    const pre = this.preselected();
-    if (pre) {
-      this.selected.set(pre);
-    } else {
-      const first = this.options()[0];
-      if (first) {
-        this.selected.set(this.getValue(first));
+  constructor() {
+    effect(() => {
+      const options = this.options();
+      const pre = this.preselected();
+
+      if (pre) {
+        this.selected.set(pre);
+        return;
       }
-    }
+
+      if (this.selected() === null && options.length) {
+        this.selected.set(this.getValue(options[0]));
+      }
+    });
   }
 
   public select(option: string) {
