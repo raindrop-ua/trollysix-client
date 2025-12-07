@@ -20,7 +20,7 @@ export class MetricsListService {
     return this.metrics$;
   }
 
-  getSafeMetrics(): Observable<Metric[]> {
+  getMetricsSafe(): Observable<Metric[]> {
     return this.getMetrics().pipe(
       catchError(() => {
         return of<Metric[]>([]);
