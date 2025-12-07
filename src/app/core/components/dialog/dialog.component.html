@@ -9,8 +9,8 @@
 >
   <div
     tabindex="0" class="fixed inset-0 bg-gray-900/60 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
-    inert=""
     role="button"
+    inert
     (click)="onBackdropClick()"
   ></div>
 
@@ -19,12 +19,12 @@
       <div class="bg-gray-100/90 dark:bg-gray-800 px-5 pt-5 pb-4 sm:p-6 sm:pb-5">
         <div class="sm:flex sm:items-start">
           <div
-            class="mx-auto flex size-12 shrink-0 items-center justify-center rounded-full sm:mx-0 sm:size-10"
+            class="mx-auto flex size-12 shrink-0 items-center justify-center rounded-full sm:mx-0 sm:size-10 bg-slate-500"
             [ngClass]="{
-              'bg-slate-500 dark:bg-red-500/10 text-red-400': config()?.variant === 'danger',
-              'bg-slate-500 dark:bg-blue-500/10 text-blue-400': config()?.variant === 'info',
-              'bg-slate-500 dark:bg-yellow-500/10 text-yellow-400': config()?.variant === 'warning',
-              'bg-slate-500 dark:bg-green-500/10 text-green-500 dark:text-green-400': config()?.variant === 'success'
+              'dark:bg-red-500/10 text-red-400': config()?.variant === 'danger',
+              'dark:bg-blue-500/10 text-blue-400': config()?.variant === 'info',
+              'dark:bg-yellow-500/10 text-yellow-400': config()?.variant === 'warning',
+              'dark:bg-green-500/10 text-green-500 dark:text-green-400': config()?.variant === 'success'
             }"
           >
             @let icon = config()?.customIcon ?? 'info';
@@ -53,7 +53,7 @@
       <div class="bg-gray-200/90 dark:bg-gray-700/25 px-4 py-4 sm:flex sm:flex-row-reverse sm:px-6">
         <button
           type="button"
-          class="cursor-pointer transition inline-flex w-full justify-center rounded-xl px-3 py-2 text-sm font-semibold sm:ml-3 sm:w-auto"
+          class="cursor-pointer transition inline-flex w-full justify-center rounded-xl px-3 py-2 text-sm font-semibold sm:ml-3 sm:w-auto hover:opacity-95 active:scale-[.98]"
           [ngClass]="{
             'bg-red-500 hover:bg-red-500/90 text-white': config()?.variant === 'danger',
             'bg-blue-500 hover:bg-blue-500/90 text-white': config()?.variant === 'info',
@@ -68,7 +68,7 @@
         @if (config()?.cancelText) {
           <button
             type="button"
-            class="cursor-pointer transition mt-3 inline-flex w-full justify-center rounded-xl bg-white/10 px-3 py-2 text-sm font-semibold text-white inset-ring inset-ring-white/5 hover:bg-white/20 sm:mt-0 sm:w-auto"
+            class="cursor-pointer transition mt-3 inline-flex w-full justify-center rounded-xl bg-white/10 px-3 py-2 text-sm font-semibold text-white inset-ring inset-ring-white/5 hover:bg-white/20 sm:mt-0 sm:w-auto hover:opacity-95 active:scale-[.98]"
             (click)="onCancelClick()"
           >
             {{ config()?.cancelText }}
