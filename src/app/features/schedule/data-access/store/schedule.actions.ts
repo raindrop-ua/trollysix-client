@@ -22,6 +22,7 @@ export const ScheduleApiActions = createActionGroup({
       stops: Stop[];
       dayTypes: DayType[];
       directions: Direction[];
+      autoSelectedDayTypeName: string | null;
     }>(),
     'Load Initial Data Failure': props<{ error: string }>(),
     'Load Timetable': emptyProps(),

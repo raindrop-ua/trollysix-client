@@ -13,6 +13,30 @@ import { Store } from '@ngrx/store';
 import { SchedulePageActions, ScheduleApiActions } from './schedule.actions';
 import { scheduleFeature } from './schedule.reducer';
 import { ScheduleApiService } from '../data/schedule.api.service';
+import { DayType } from '../models/daytype.model';
+
+function resolveAutoDayTypeName(
+  dayTypes: DayType[],
+  today: Date = new Date(),
+): string | null {
+  if (!dayTypes?.length) {
+    return null;
+  }
+
+  const dayOfWeek = today.getDay(); // 0 - Sunday, 6 - Saturday
+  const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+
+  const findByName = (name: string) =>
+    dayTypes.find((dt) => dt.name === name)?.name ?? null;
+
+  if (isWeekend) {
+    return (
+      findByName('weekend') ?? findByName('weekday') ?? dayTypes[0].name
+    );
+  }
+
+  return findByName('weekday') ?? findByName('weekend') ?? dayTypes[0].name;
+}
 
 @Injectable()
 export class ScheduleEffects {
@@ -38,6 +62,7 @@ export class ScheduleEffects {
               stops,
               dayTypes,
               directions,
+              autoSelectedDayTypeName: resolveAutoDayTypeName(dayTypes),
             }),
           ),
           catchError((error) =>

@@ -8,8 +8,15 @@
 
   <div class="grid gap-3 sm:gap-4 grid-cols-1 md:grid-cols-2">
     <div class="mt-8">
-      <h4 class="mb-4 text-base font-semibold text-slate-900 dark:text-white">
-        Forward direction
+      <h4 class="mb-4 text-base font-semibold text-slate-900 dark:text-white flex items-center gap-2">
+        <span>Forward direction</span>
+        <svg
+          icon="forward"
+          width="16"
+          height="16"
+          stroke="currentColor"
+          stroke-width="2"
+        ></svg>
       </h4>
       <div class="flex w-full flex-col items-start">
         @for (stop of routeStopsForward; track stop; let i = $index, last = $last) {
@@ -18,8 +25,15 @@
       </div>
     </div>
     <div class="mt-8">
-      <h4 class="mb-4 text-base font-semibold text-slate-900 dark:text-white">
-        Backward direction
+      <h4 class="mb-4 text-base font-semibold text-slate-900 dark:text-white flex items-center gap-2">
+        <span>Backward direction</span>
+        <svg
+          icon="backward"
+          width="16"
+          height="16"
+          stroke="currentColor"
+          stroke-width="2"
+        ></svg>
       </h4>
       <div class="flex w-full flex-col items-start">
         @for (stop of routeStopsBackward; track stop; let i = $index, last = $last) {
