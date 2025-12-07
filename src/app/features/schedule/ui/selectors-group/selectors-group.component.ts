@@ -11,10 +11,16 @@ import { selectScheduleViewModel } from '../../data-access/store/schedule.select
 import { ScheduleService } from '../../services/schedule.service';
 import { OptionsSelectorComponent } from '../options-selector/options-selector.component';
 import { SvgIconComponent } from '../../../../shared/components/svg-icon/svg-icon.component';
+import { HintArrowComponent } from '../hint-arrow/hint-arrow.component';
 
 @Component({
   selector: 'app-selectors-group',
-  imports: [OptionsSelectorComponent, SvgIconComponent, AsyncPipe],
+  imports: [
+    OptionsSelectorComponent,
+    SvgIconComponent,
+    AsyncPipe,
+    HintArrowComponent,
+  ],
   templateUrl: './selectors-group.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
