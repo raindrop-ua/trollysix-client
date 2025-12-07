@@ -3,4 +3,5 @@ export interface RouteStop {
   description: string;
   direction: 'forward' | 'backward';
   scheduled: boolean;
+  scheduledInApp: boolean;
 }
