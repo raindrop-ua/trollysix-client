@@ -29,20 +29,23 @@
           {{ stopData.description }}
         </small>
       }
-      @if (stopData.scheduled || stopData.scheduledInApp) {
-        <div class="flex gap-2 mt-1">
-          @if (stopData.scheduled) {
-            <span class="inline-flex items-center rounded-xl bg-purple-400/10 px-2 py-1 text-xs font-medium text-purple-400 inset-ring inset-ring-purple-400/30">
-              Scheduled
-            </span>
-          }
-          @if (stopData.scheduledInApp) {
-            <span class="inline-flex items-center rounded-xl bg-blue-400/10 px-2 py-1 text-xs font-medium text-blue-400 inset-ring inset-ring-blue-400/30">
-              Scheduled in TrollySix
-            </span>
-          }
-        </div>
-      }
+      <div class="flex gap-2 mt-1">
+        @if (stopData.onDemand) {
+          <span class="inline-flex items-center rounded-xl bg-yellow-500/10 px-2 py-1 text-xs font-medium text-yellow-500 inset-ring inset-ring-yellow-500/30">
+            On demand
+          </span>
+        }
+        @if (stopData.scheduled) {
+          <span class="inline-flex items-center rounded-xl bg-purple-400/10 px-2 py-1 text-xs font-medium text-purple-400 inset-ring inset-ring-purple-400/30">
+            Scheduled
+          </span>
+        }
+        @if (stopData.scheduledInApp) {
+          <span class="inline-flex items-center rounded-xl bg-blue-400/10 px-2 py-1 text-xs font-medium text-blue-400 inset-ring inset-ring-blue-400/30">
+            Scheduled in TrollySix
+          </span>
+        }
+      </div>
     </div>
   </div>
 </div>
