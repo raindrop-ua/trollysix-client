@@ -13,6 +13,14 @@ export const globalHttpErrorInterceptor: HttpInterceptorFn = (req, next) => {
     }),
     tap({
       error: (error: HttpErrorResponse) => {
+        if (error.status === 0) {
+          toastService.error('Network error. Please check your connection.', {
+            title: 'Connection issue',
+            duration: 5_000,
+          });
+          return;
+        }
+
         if ([500, 404].includes(error.status)) {
           toastService.error(error.message, {
             title: 'Error',
