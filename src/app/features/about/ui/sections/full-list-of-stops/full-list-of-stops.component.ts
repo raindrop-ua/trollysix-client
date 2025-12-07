@@ -1,12 +1,14 @@
 import {
   Component,
   inject,
-  OnInit,
   signal,
   computed,
+  OnInit,
+  DestroyRef,
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouteStop } from '../../../data-access/models/route-stops.model';
 import {
   GenericSectionBlockComponent,
@@ -29,13 +31,25 @@ import { StopsListService } from '../../../services/stops-list.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class FullListOfStopsComponent implements OnInit {
-  private stopsList: StopsListService = inject(StopsListService);
-  public routeStops = signal<RouteStop[]>([]);
+  private stopsListService = inject(StopsListService);
+  private destroyRef = inject(DestroyRef);
+  public readonly routeStops = signal<RouteStop[]>([]);
+  public readonly isLoading = signal(true);
 
   ngOnInit() {
-    this.stopsList.getStops().subscribe((stops) => {
-      this.routeStops.set(stops);
-    });
+    this.stopsListService
+      .getStops()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (stops) => {
+          this.routeStops.set(stops);
+          this.isLoading.set(false);
+        },
+        error: () => {
+          this.routeStops.set([]);
+          this.isLoading.set(false);
+        },
+      });
   }
 
   public readonly routeStopsForward = computed(() => {
