@@ -29,7 +29,7 @@ export const initialState: ScheduleState = {
   directions: [],
   currentTimetable: null,
   selectedStopId: null,
-  selectedDayTypeName: 'weekday',
+  selectedDayTypeName: null,
   selectedDirectionName: 'forward',
   showScheduleNumbers: false,
   stopsLoading: false,
