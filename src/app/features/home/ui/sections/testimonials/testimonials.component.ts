@@ -5,7 +5,9 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   ViewEncapsulation,
+  DestroyRef,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Testimonial } from '../../../data-access/models/testimonial.model';
 import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
 import { TestimonialsListService } from '../../../services/testimonials-list.service';
@@ -20,14 +22,24 @@ import { SpinnerComponent } from '../../../../../shared/components/sections';
   encapsulation: ViewEncapsulation.None,
 })
 export class TestimonialsComponent implements OnInit {
-  private testimonialsListService: TestimonialsListService = inject(
-    TestimonialsListService,
-  );
-  public testimonialList = signal<Testimonial[]>([]);
+  private testimonialsListService = inject(TestimonialsListService);
+  private destroyRef = inject(DestroyRef);
+  public readonly testimonials = signal<Testimonial[]>([]);
+  public readonly isLoading = signal(true);
 
   ngOnInit() {
-    this.testimonialsListService.getTestimonials().subscribe((testimonials) => {
-      this.testimonialList.set(testimonials);
-    });
+    this.testimonialsListService
+      .getTestimonials()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (testimonials) => {
+          this.testimonials.set(testimonials);
+          this.isLoading.set(false);
+        },
+        error: () => {
+          this.testimonials.set([]);
+          this.isLoading.set(false);
+        },
+      });
   }
 }

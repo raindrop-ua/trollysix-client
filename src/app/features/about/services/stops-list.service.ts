@@ -1,8 +1,10 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of, shareReplay } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 import { RouteStop } from '../data-access/models/route-stops.model';
+import { Metric } from '../../../shared/components/sections';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +13,19 @@ export class StopsListService {
   private readonly BASE_URL = environment.BASE_API_URL;
   private http = inject(HttpClient);
 
+  private readonly stops$ = this.http
+    .get<RouteStop[]>(`${this.BASE_URL}/stops-list`)
+    .pipe(shareReplay({ bufferSize: 1, refCount: true }));
+
   getStops(): Observable<RouteStop[]> {
-    return this.http.get<RouteStop[]>(`${this.BASE_URL}/stops-list`);
+    return this.stops$;
+  }
+
+  getStopsSafe(): Observable<Metric[]> {
+    return this.getStops().pipe(
+      catchError(() => {
+        return of<Metric[]>([]);
+      }),
+    );
   }
 }

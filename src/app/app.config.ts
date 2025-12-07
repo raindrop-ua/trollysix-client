@@ -12,6 +12,7 @@ import {
   isDevMode,
   provideEnvironmentInitializer,
   provideBrowserGlobalErrorListeners,
+  ErrorHandler,
 } from '@angular/core';
 import {
   provideClientHydration,
@@ -34,11 +35,13 @@ import { routes } from './app.routes';
 import { SeoService } from './core/services/seo.service';
 import { AfterFirstPaintPreloadingStrategy } from './core/strategies/after-first-paint-preloading.strategy';
 import { SwUpdateService } from './core/services/sw-update.service';
-import { globalHttpErrorInterceptor } from './core/http/global-http-error-interceptor';
+import { globalHttpErrorInterceptor } from './core/interceptors/global-http-error.interceptor';
+import { CustomErrorHandler } from './core/custom-error-handler';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     { provide: NAVIGATION_TOKEN, useValue: NAVIGATION },
+    { provide: ErrorHandler, useClass: CustomErrorHandler },
     provideBrowserGlobalErrorListeners(),
     provideHttpClient(
       withInterceptors([globalHttpErrorInterceptor]),
