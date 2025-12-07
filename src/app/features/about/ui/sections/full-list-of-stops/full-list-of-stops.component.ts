@@ -1,12 +1,20 @@
 import {
   Component,
+  inject,
+  OnInit,
+  signal,
+  computed,
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
 import { RouteStop } from '../../../data-access/models/route-stops.model';
-import { GenericSectionBlockComponent } from '../../../../../shared/components/sections';
+import {
+  GenericSectionBlockComponent,
+  SpinnerComponent,
+} from '../../../../../shared/components/sections';
 import { StopsListItemComponent } from './stops-list-item/stops-list-item.component';
 import { SvgIconComponent } from '../../../../../shared/components/svg-icon/svg-icon.component';
+import { StopsListService } from '../../../services/stops-list.service';
 
 @Component({
   selector: 'app-full-list-of-stops',
@@ -14,361 +22,27 @@ import { SvgIconComponent } from '../../../../../shared/components/svg-icon/svg-
     GenericSectionBlockComponent,
     StopsListItemComponent,
     SvgIconComponent,
+    SpinnerComponent,
   ],
   templateUrl: './full-list-of-stops.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class FullListOfStopsComponent {
-  public readonly routeStops: RouteStop[] = [
-    {
-      title: 'Historical Museum',
-      description: '',
-      direction: 'forward',
-      scheduled: true,
-      scheduledInApp: true,
-    },
-    {
-      title: 'Heroiv Krut St.',
-      description: '',
-      direction: 'forward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Monument of Glory',
-      description: '',
-      direction: 'forward',
-      scheduled: false,
-      scheduledInApp: false,
-      onDemand: true,
-    },
-    {
-      title: 'Institute of Physical Education',
-      description: '',
-      direction: 'forward',
-      scheduled: true,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Regional Pension Fund',
-      description: '',
-      direction: 'forward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Water Ski Stadium',
-      description: '',
-      direction: 'forward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Studentska',
-      description: '',
-      direction: 'forward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'r/a. Victory-1',
-      description: '',
-      direction: 'forward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'r/a. Victory-2',
-      description: '',
-      direction: 'forward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Sports Complex "East"',
-      description: '',
-      direction: 'forward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Kosmichna St.',
-      description: '',
-      direction: 'forward',
-      scheduled: true,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Lotsmanska',
-      description: '',
-      direction: 'forward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'School No. 66',
-      description: '',
-      direction: 'forward',
-      scheduledInApp: false,
-      scheduled: false,
-    },
-    {
-      title: 'Boulevard of Glory',
-      description: '',
-      direction: 'forward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Volunteer Lane',
-      description: '',
-      direction: 'forward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'South Bridge',
-      description: '',
-      direction: 'forward',
-      scheduled: false,
-      scheduledInApp: false,
-      onDemand: true,
-    },
-    {
-      title: 'Havanska St.',
-      description: '',
-      direction: 'forward',
-      scheduled: false,
-      scheduledInApp: false,
-      onDemand: true,
-    },
-    {
-      title: 'Pridniprovska TPP',
-      description: '',
-      direction: 'forward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Medical St.',
-      description: '',
-      direction: 'forward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Elektrichna St.',
-      description: '',
-      direction: 'forward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Rotorna St.',
-      description: '',
-      direction: 'forward',
-      scheduled: true,
-      scheduledInApp: true,
-    },
-    {
-      title: '20th Anniversary of Victory St.',
-      description: '',
-      direction: 'forward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Sosnovy Square',
-      description: '',
-      direction: 'forward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Pridniprovsk',
-      description: '',
-      direction: 'backward',
-      scheduled: true,
-      scheduledInApp: true,
-    },
-    {
-      title: 'Sosnovy Square',
-      description: '',
-      direction: 'backward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: '20th Anniversary of Victory St.',
-      description: '',
-      direction: 'backward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Rotorna St.',
-      description: '',
-      direction: 'backward',
-      scheduled: true,
-      scheduledInApp: true,
-    },
-    {
-      title: 'Medical St.',
-      description: '',
-      direction: 'backward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Vasyl Hruntenko St.',
-      description: '',
-      direction: 'backward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Pridniprovska TPP',
-      description: '',
-      direction: 'backward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Havanska St.',
-      description: '',
-      direction: 'backward',
-      scheduled: false,
-      scheduledInApp: false,
-      onDemand: true,
-    },
-    {
-      title: 'South Bridge',
-      description: '',
-      direction: 'backward',
-      scheduled: false,
-      scheduledInApp: false,
-      onDemand: true,
-    },
-    {
-      title: 'Volunteer Lane',
-      description: '',
-      direction: 'backward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Boulevard of Glory',
-      description: '',
-      direction: 'backward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'School No. 66',
-      description: '',
-      direction: 'backward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Lotsmanska',
-      description: '',
-      direction: 'backward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Kosmichna St.',
-      description: '',
-      direction: 'backward',
-      scheduled: true,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Sports Complex "East"',
-      description: '',
-      direction: 'backward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'r/a. Victory-2',
-      description: '',
-      direction: 'backward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'r/a. Victory-1',
-      description: '',
-      direction: 'backward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Studentska',
-      description: '',
-      direction: 'backward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Water Ski Stadium',
-      description: '',
-      direction: 'backward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Regional Pension Fund',
-      description: '',
-      direction: 'backward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Institute of Physical Education',
-      description: '',
-      direction: 'backward',
-      scheduled: true,
-      scheduledInApp: false,
-    },
-    {
-      title: "Children's Tourist Center",
-      description: '',
-      direction: 'backward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Heroiv Krut St.',
-      description: '',
-      direction: 'backward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-    {
-      title: 'Mechnikov Hospital',
-      description: '',
-      direction: 'backward',
-      scheduled: false,
-      scheduledInApp: true,
-    },
-    {
-      title: 'Shevchenko Park',
-      description: '',
-      direction: 'backward',
-      scheduled: false,
-      scheduledInApp: false,
-    },
-  ];
+export class FullListOfStopsComponent implements OnInit {
+  private stopsList: StopsListService = inject(StopsListService);
+  public routeStops = signal<RouteStop[]>([]);
 
-  get routeStopsForward() {
-    return this.routeStops.filter((stop) => stop.direction === 'forward');
+  ngOnInit() {
+    this.stopsList.getStops().subscribe((stops) => {
+      this.routeStops.set(stops);
+    });
   }
 
-  get routeStopsBackward() {
-    return this.routeStops.filter((stop) => stop.direction === 'backward');
-  }
+  public readonly routeStopsForward = computed(() => {
+    return this.routeStops().filter((stop) => stop.direction === 'forward');
+  });
+
+  public readonly routeStopsBackward = computed(() => {
+    return this.routeStops().filter((stop) => stop.direction === 'backward');
+  });
 }
