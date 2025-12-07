@@ -1,17 +1,10 @@
 import {
   Component,
-  inject,
-  signal,
-  OnInit,
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import {
-  AttentionComponent,
-  Metric,
-  MetricsComponent,
-} from '../../../shared/components/sections';
+import { AttentionComponent } from '../../../shared/components/sections';
 import {
   BigClaimsComponent,
   MastheadComponent,
@@ -21,7 +14,7 @@ import {
   ValuePropsComponent,
 } from '../ui';
 import { BtnDirective } from '../../../shared/directives/btn.directive';
-import { MetricsListService } from '../services/metrics-list.service';
+import { MetricsCoveredComponent } from '../ui/sections/metrics-covered/metrics-covered.component';
 
 @Component({
   selector: 'app-home',
@@ -33,22 +26,13 @@ import { MetricsListService } from '../services/metrics-list.service';
     ThisIsTrollysixComponent,
     TestimonialsComponent,
     ReadyForRouteSixComponent,
-    MetricsComponent,
     AttentionComponent,
     TestimonialsComponent,
     BtnDirective,
+    MetricsCoveredComponent,
   ],
   templateUrl: './home.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class HomeComponent implements OnInit {
-  private metricsListService = inject(MetricsListService);
-  public readonly metrics = signal<Metric[]>([]);
-
-  ngOnInit() {
-    this.metricsListService.getMetrics().subscribe((metrics) => {
-      this.metrics.set(metrics);
-    });
-  }
-}
+export class HomeComponent {}
