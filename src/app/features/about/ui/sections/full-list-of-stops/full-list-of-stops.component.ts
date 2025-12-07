@@ -207,8 +207,8 @@ export class FullListOfStopsComponent {
       title: 'Rotorna St.',
       description: '',
       direction: 'backward',
-      scheduled: false,
-      scheduledInApp: false,
+      scheduled: true,
+      scheduledInApp: true,
     },
     {
       title: 'Medical St.',
@@ -277,7 +277,7 @@ export class FullListOfStopsComponent {
       title: 'Kosmichna St.',
       description: '',
       direction: 'backward',
-      scheduled: false,
+      scheduled: true,
       scheduledInApp: false,
     },
     {
