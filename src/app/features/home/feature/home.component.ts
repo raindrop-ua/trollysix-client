@@ -1,5 +1,8 @@
 import {
   Component,
+  inject,
+  signal,
+  OnInit,
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
@@ -18,6 +21,7 @@ import {
   ValuePropsComponent,
 } from '../ui';
 import { BtnDirective } from '../../../shared/directives/btn.directive';
+import { MetricsListService } from '../services/metrics-list.service';
 
 @Component({
   selector: 'app-home',
@@ -38,19 +42,13 @@ import { BtnDirective } from '../../../shared/directives/btn.directive';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class HomeComponent {
-  public readonly metrics: Metric[] = [
-    {
-      title: '97%',
-      description: 'on-time clarity',
-    },
-    {
-      title: '4',
-      description: 'key stops',
-    },
-    {
-      title: '2',
-      description: 'directions',
-    },
-  ];
+export class HomeComponent implements OnInit {
+  private metricsListService = inject(MetricsListService);
+  public readonly metrics = signal<Metric[]>([]);
+
+  ngOnInit() {
+    this.metricsListService.getMetrics().subscribe((metrics) => {
+      this.metrics.set(metrics);
+    });
+  }
 }

@@ -1,8 +1,6 @@
 <app-masthead />
 
-@defer (on idle) {
-  <app-metrics [data]="metrics" />
-}
+<app-metrics [data]="metrics()" />
 
 @defer (on idle) {
   <app-big-claims />
@@ -33,9 +31,7 @@
   </ng-template>
 }
 
-@defer (on idle) {
-  <app-testimonials/>
-}
+<app-testimonials/>
 
 @defer (on idle) {
   <app-attention
