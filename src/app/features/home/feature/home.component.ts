@@ -18,6 +18,7 @@ import {
   ThisIsTrollysixComponent,
   ValuePropsComponent,
 } from '../ui';
+import { BtnDirective } from '../../../shared/directives/btn.directive';
 
 @Component({
   selector: 'app-home',
@@ -32,6 +33,7 @@ import {
     MetricsComponent,
     AttentionComponent,
     TestimonialsComponent,
+    BtnDirective,
   ],
   templateUrl: './home.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
