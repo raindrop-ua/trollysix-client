@@ -1,5 +1,5 @@
-@if (data().length) {
-  <section class="container mx-auto max-w-6xl px-4 py-10">
+<section class="container mx-auto max-w-6xl px-4 py-10">
+  @if (data().length) {
     <div
       [class.sm:grid-cols-3]="mobileFullWidth()"
       [class.grid-cols-3]="!mobileFullWidth()"
@@ -9,5 +9,7 @@
         <app-metric [title]="metric.title" [description]="metric.description" />
       }
     </div>
-  </section>
-}
+  } @else {
+    <app-spinner />
+  }
+</section>
