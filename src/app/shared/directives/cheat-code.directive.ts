@@ -5,6 +5,8 @@ import {
   ViewContainerRef,
   HostListener,
   inject,
+  Output,
+  EventEmitter
 } from '@angular/core';
 
 @Directive({
@@ -27,6 +29,9 @@ export class CheatCodeDirective {
 
   @Input()
   appCheatCodeTimeout = 1500;
+
+  @Output()
+  cheatSuccess = new EventEmitter<void>();
 
   constructor() {
     this.vcr.clear();
@@ -67,6 +72,8 @@ export class CheatCodeDirective {
     if (this.hasShown) {
       return;
     }
+
+    this.cheatSuccess.emit();
 
     this.hasShown = true;
     this.vcr.createEmbeddedView(this.tpl);
