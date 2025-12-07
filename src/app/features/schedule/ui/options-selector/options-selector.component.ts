@@ -3,7 +3,6 @@ import {
   input,
   output,
   signal,
-  OnInit,
   ChangeDetectionStrategy,
   ViewEncapsulation,
   effect,
