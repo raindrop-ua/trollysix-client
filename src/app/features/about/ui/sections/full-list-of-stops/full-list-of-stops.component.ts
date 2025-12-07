@@ -41,6 +41,7 @@ export class FullListOfStopsComponent {
       direction: 'forward',
       scheduled: false,
       scheduledInApp: false,
+      onDemand: true,
     },
     {
       title: 'Institute of Physical Education',
@@ -132,6 +133,7 @@ export class FullListOfStopsComponent {
       direction: 'forward',
       scheduled: false,
       scheduledInApp: false,
+      onDemand: true,
     },
     {
       title: 'Havanska St.',
@@ -139,6 +141,7 @@ export class FullListOfStopsComponent {
       direction: 'forward',
       scheduled: false,
       scheduledInApp: false,
+      onDemand: true,
     },
     {
       title: 'Pridniprovska TPP',
@@ -237,6 +240,7 @@ export class FullListOfStopsComponent {
       direction: 'backward',
       scheduled: false,
       scheduledInApp: false,
+      onDemand: true,
     },
     {
       title: 'South Bridge',
@@ -244,6 +248,7 @@ export class FullListOfStopsComponent {
       direction: 'backward',
       scheduled: false,
       scheduledInApp: false,
+      onDemand: true,
     },
     {
       title: 'Volunteer Lane',
