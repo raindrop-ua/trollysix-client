@@ -10,7 +10,7 @@ import { Store } from '@ngrx/store';
 import { selectScheduleViewModel } from '../../../data-access/store/schedule.selectors';
 import { ScheduleService } from '../../../services/schedule.service';
 import { DepartureTimeItemComponent } from '../departure-time-item/departure-time-item.component';
-import { SpinnerComponent } from '../spinner/spinner.component';
+import { SpinnerComponent } from '../../../../../shared/components/sections';
 
 @Component({
   selector: 'app-departure-table',
