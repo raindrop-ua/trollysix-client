@@ -10,7 +10,7 @@
 
   @if (testimonialList().length) {
     <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
-      @for (testimonial of testimonialList(); track testimonial; let i = $index) {
+      @for (testimonial of testimonialList(); track testimonial.id; let i = $index) {
         <app-testimonial [testimonial]="testimonial" [appRevealOnScroll]="300 + (i * 300)"/>
       }
     </div>
