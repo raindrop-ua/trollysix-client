@@ -6,10 +6,15 @@ import {
 import { RouteStop } from '../../../data-access/models/route-stops.model';
 import { GenericSectionBlockComponent } from '../../../../../shared/components/sections';
 import { StopsListItemComponent } from './stops-list-item/stops-list-item.component';
+import { SvgIconComponent } from '../../../../../shared/components/svg-icon/svg-icon.component';
 
 @Component({
   selector: 'app-full-list-of-stops',
-  imports: [GenericSectionBlockComponent, StopsListItemComponent],
+  imports: [
+    GenericSectionBlockComponent,
+    StopsListItemComponent,
+    SvgIconComponent,
+  ],
   templateUrl: './full-list-of-stops.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
@@ -18,7 +23,7 @@ export class FullListOfStopsComponent {
   public readonly routeStops: RouteStop[] = [
     {
       title: 'Historical Museum',
-      description: 'Scheduled, Scheduled in TrollySix',
+      description: '',
       direction: 'forward',
       scheduled: true,
       scheduledInApp: true,
@@ -39,7 +44,7 @@ export class FullListOfStopsComponent {
     },
     {
       title: 'Institute of Physical Education',
-      description: 'Scheduled',
+      description: '',
       direction: 'forward',
       scheduled: true,
       scheduledInApp: false,
@@ -88,7 +93,7 @@ export class FullListOfStopsComponent {
     },
     {
       title: 'Kosmichna St.',
-      description: 'Scheduled',
+      description: '',
       direction: 'forward',
       scheduled: true,
       scheduledInApp: false,
@@ -158,7 +163,7 @@ export class FullListOfStopsComponent {
     },
     {
       title: 'Rotorna St.',
-      description: 'Scheduled, Scheduled in TrollySix',
+      description: '',
       direction: 'forward',
       scheduled: true,
       scheduledInApp: true,
@@ -179,7 +184,7 @@ export class FullListOfStopsComponent {
     },
     {
       title: 'Pridniprovsk',
-      description: 'Scheduled, Scheduled in TrollySix',
+      description: '',
       direction: 'backward',
       scheduled: true,
       scheduledInApp: true,
@@ -200,7 +205,7 @@ export class FullListOfStopsComponent {
     },
     {
       title: 'Rotorna St.',
-      description: 'Scheduled, Scheduled in TrollySix',
+      description: '',
       direction: 'backward',
       scheduled: false,
       scheduledInApp: false,
@@ -270,7 +275,7 @@ export class FullListOfStopsComponent {
     },
     {
       title: 'Kosmichna St.',
-      description: 'Scheduled',
+      description: '',
       direction: 'backward',
       scheduled: false,
       scheduledInApp: false,
@@ -319,7 +324,7 @@ export class FullListOfStopsComponent {
     },
     {
       title: 'Institute of Physical Education',
-      description: 'Scheduled',
+      description: '',
       direction: 'backward',
       scheduled: true,
       scheduledInApp: false,
@@ -340,7 +345,7 @@ export class FullListOfStopsComponent {
     },
     {
       title: 'Mechnikov Hospital',
-      description: 'Scheduled in TrollySix',
+      description: '',
       direction: 'backward',
       scheduled: false,
       scheduledInApp: true,
