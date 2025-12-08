@@ -1,8 +1,9 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, shareReplay } from 'rxjs';
+import { Observable, of, shareReplay } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { GlobalMessage } from '../models/global-message.model';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -17,5 +18,13 @@ export class GlobalMessageService {
 
   getGlobalMessage(): Observable<GlobalMessage> {
     return this.globalMessage$;
+  }
+
+  getGlobalMessageSafe(): Observable<GlobalMessage> {
+    return this.getGlobalMessage().pipe(
+      catchError(() => {
+        return of<GlobalMessage>({});
+      }),
+    );
   }
 }
