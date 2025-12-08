@@ -5,6 +5,10 @@
 }
 
 @defer (on idle) {
+  <app-easter-egg />
+}
+
+@defer (on idle) {
   <app-metrics mobileFullWidth="true" [data]="metrics" />
 }
 
