@@ -10,21 +10,19 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouteStop } from '../../../data-access/models/route-stops.model';
+import { StopsListService } from '../../../services/stops-list.service';
 import {
   GenericSectionBlockComponent,
   SpinnerComponent,
 } from '../../../../../shared/components/sections';
-import { StopsListItemComponent } from './stops-list-item/stops-list-item.component';
-import { SvgIconComponent } from '../../../../../shared/components/svg-icon/svg-icon.component';
-import { StopsListService } from '../../../services/stops-list.service';
+import { StopsListComponent } from './stops-list/stops-list.component';
 
 @Component({
   selector: 'app-full-list-of-stops',
   imports: [
     GenericSectionBlockComponent,
-    StopsListItemComponent,
-    SvgIconComponent,
     SpinnerComponent,
+    StopsListComponent,
   ],
   templateUrl: './full-list-of-stops.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
