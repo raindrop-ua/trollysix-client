@@ -16,5 +16,5 @@ import { AsyncPipe, NgClass } from '@angular/common';
 })
 export class GlobalMessageComponent {
   private globalMessageService = inject(GlobalMessageService);
-  public globalMessage$ = this.globalMessageService.getGlobalMessage();
+  public globalMessage$ = this.globalMessageService.getGlobalMessageSafe();
 }

@@ -1,4 +1,4 @@
 export interface GlobalMessage {
-  message: string;
-  type: 'news' | 'issue' | 'warning';
+  message?: string;
+  type?: 'news' | 'issue' | 'warning';
 }
