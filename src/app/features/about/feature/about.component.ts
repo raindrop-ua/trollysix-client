@@ -10,6 +10,7 @@ import {
   FullListOfStopsComponent,
 } from '../ui';
 import { Metric, MetricsComponent } from '../../../shared/components/sections';
+import { EasterEggComponent } from '../ui/sections/easter-egg/easter-egg.component';
 
 @Component({
   selector: 'app-about',
@@ -19,6 +20,7 @@ import { Metric, MetricsComponent } from '../../../shared/components/sections';
     InfrastructureComponent,
     MetricsComponent,
     FullListOfStopsComponent,
+    EasterEggComponent,
   ],
   templateUrl: './about.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
