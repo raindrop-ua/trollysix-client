@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of, shareReplay } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { GlobalMessage } from '../models/global-message.model';
-import { Testimonial } from '../../features/home/data-access/models/testimonial.model';
 import { catchError } from 'rxjs/operators';
 
 @Injectable({
