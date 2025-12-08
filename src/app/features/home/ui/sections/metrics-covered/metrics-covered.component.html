@@ -1,7 +1,5 @@
-@if (isLoading()) {
-  <section class="container mx-auto max-w-6xl px-4 py-10">
-    <app-spinner />
-  </section>
+@if (metricsList$ | async; as metricsList) {
+  <app-metrics [data]="metricsList" />
 } @else {
-  <app-metrics [data]="metrics()" />
+  <section class="container mx-auto max-w-6xl px-4 py-10"></section>
 }
