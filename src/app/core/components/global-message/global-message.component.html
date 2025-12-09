@@ -1,20 +1,26 @@
-@let message = (globalMessage$ | async);
+@let messages = (globalMessage$ | async);
 
-@if (message && message?.message && message?.type) {
-  <section
-    class="w-full px-4 py-3 text-center"
-    [ngClass]="{
-      'bg-green-600 dark:bg-green-800': message.type === 'news',
-      'bg-yellow-400 dark:bg-yellow-600': message.type === 'issue',
-      'bg-red-500 dark:bg-red-800': message.type === 'warning'
-    }"
-  >
-    <p
-      [ngClass]="{
-      'text-white/90': message.type === 'news',
-      'text-slate-900 dark:text-white': message.type === 'issue',
-      'text-white': message.type === 'warning'
-    }"
-    >{{ message.message }}</p>
-  </section>
+@if (messages?.length) {
+  @for (message of messages; track message.id) {
+    @if (message.type && message.message) {
+      <section
+        class="w-full px-4 py-3 text-center"
+        [ngClass]="{
+          'bg-blue-600 dark:bg-blue-800': message.type === 'info',
+          'bg-green-600 dark:bg-green-800': message.type === 'news',
+          'bg-yellow-400 dark:bg-yellow-600': message.type === 'issue',
+          'bg-red-500 dark:bg-red-800': message.type === 'warning'
+        }"
+      >
+        <p
+          [ngClass]="{
+          'text-white/80': message.type === 'info',
+          'text-white/90': message.type === 'news',
+          'text-slate-900 dark:text-white': message.type === 'issue',
+          'text-white': message.type === 'warning'
+        }"
+        >{{ message.message }}</p>
+      </section>
+    }
+  }
 }
