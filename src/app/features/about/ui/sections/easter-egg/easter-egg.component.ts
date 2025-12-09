@@ -1,12 +1,12 @@
 import {
   Component,
+  inject,
   ChangeDetectionStrategy,
   ViewEncapsulation,
-  inject,
 } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
-import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
 import { DialogService } from '../../../../../core/services/dialog.service';
+import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
 import { CheatCodeDirective } from '../../../../../shared/directives/cheat-code.directive';
 import { GenericSectionBlockComponent } from '../../../../../shared/components/sections';
 
