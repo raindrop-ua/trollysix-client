@@ -8,7 +8,7 @@ import { AsyncPipe, DatePipe } from '@angular/common';
 import { combineLatest, map } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { Status } from '../../../data-access/models/departure.model';
-import { ClockService } from '../../../services/clock.service';
+import { ClockService } from '../../../../../core/services/clock.service';
 import { ScheduleService } from '../../../services/schedule.service';
 import { SvgIconComponent } from '../../../../../shared/components/svg-icon/svg-icon.component';
 import { selectScheduleViewModel } from '../../../data-access/store/schedule.selectors';

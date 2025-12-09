@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { combineLatest, map, shareReplay, distinctUntilChanged } from 'rxjs';
-import { ClockService } from './clock.service';
+import { ClockService } from '../../../core/services/clock.service';
 import { Departure, Status } from '../data-access/models/departure.model';
 import { TimeEntity } from '../data-access/models/timetable.model';
 import { selectScheduleViewModel } from '../data-access/store/schedule.selectors';
