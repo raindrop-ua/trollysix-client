@@ -4,9 +4,9 @@
 <div class="group flex gap-x-4">
   <div class="relative">
     @if (!lastItem) {
-      <div class="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-slate-300"></div>
+      <div class="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-slate-600 dark:bg-slate-300"></div>
     }
-    <span class="relative z-10 grid h-8 w-8 place-items-center rounded-full bg-slate-300 text-blue-800 dark:text-slate-800">
+    <span class="relative z-10 grid h-8 w-8 place-items-center rounded-full bg-slate-600 dark:bg-slate-300 text-blue-100 dark:text-slate-800">
       <svg
         [icon]="stopData.direction"
         width="16"
@@ -42,7 +42,7 @@
         }
         @if (stopData.scheduledInApp) {
           <span class="inline-flex items-center rounded-xl bg-blue-400/10 px-2 py-1 text-xs font-medium text-blue-400 inset-ring inset-ring-blue-400/30">
-            Scheduled in TrollySix
+            <span class="hidden md:inline-block">Scheduled in&nbsp;</span>TrollySix
           </span>
         }
       </div>
