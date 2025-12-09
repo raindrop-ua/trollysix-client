@@ -4,7 +4,7 @@ import {
   ViewEncapsulation,
   inject,
 } from '@angular/core';
-import { map } from 'rxjs';
+import { distinctUntilChanged, map } from 'rxjs';
 import { RouterLink } from '@angular/router';
 import { AsyncPipe, NgOptimizedImage } from '@angular/common';
 import { AppRouteEnum } from '../../../../../core/enums/app-route.enum';
@@ -38,5 +38,6 @@ export class MastheadComponent {
       const month = date.getMonth(); // 0 = Jan, 11 = Dec
       return month === 11 || month === 0 || month === 1; // Dec, Jan or Feb
     }),
+    distinctUntilChanged(),
   );
 }
