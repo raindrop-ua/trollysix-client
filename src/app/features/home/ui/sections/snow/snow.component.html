@@ -1,0 +1,12 @@
+<div class="snow-container">
+  @for (snowflake of snowService.getSnowflakes(); track snowflake.id) {
+    <div
+      class="snowflake"
+      [style.left.%]="snowflake.x"
+      [style.top.%]="snowflake.y"
+      [style.width.px]="snowflake.size"
+      [style.height.px]="snowflake.size"
+      [style.opacity]="snowflake.opacity"
+    ></div>
+  }
+</div>
