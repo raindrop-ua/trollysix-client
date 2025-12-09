@@ -1,5 +1,12 @@
-
 @layer components {
+  .baseline-borders {
+    @apply border border-slate-300/40 dark:border-white/10;
+  }
+
+  .baseline-surface {
+    @apply bg-white/60 dark:bg-slate-900/40;
+  }
+
   .ts-time {
     @apply rounded-xl px-3 py-2 text-center text-base hover:-translate-y-0.5 font-mono transition;
   }
