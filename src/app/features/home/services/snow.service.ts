@@ -15,7 +15,7 @@ export interface Snowflake {
   providedIn: 'root',
 })
 export class SnowService {
-  private readonly maxSnowflakes = 80;
+  private readonly maxSnowflakes = 75;
   private snowflakes = signal<Snowflake[]>([]);
 
   public getSnowflakes = computed(() => this.snowflakes());
