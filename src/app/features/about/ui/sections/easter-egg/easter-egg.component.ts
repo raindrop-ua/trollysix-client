@@ -5,7 +5,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
-import { DialogService } from '../../../../../core/services/dialog.service';
+import { ToastService } from '../../../../../core/services/toast.service';
 import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
 import { CheatCodeDirective } from '../../../../../shared/directives/cheat-code.directive';
 import { GenericSectionBlockComponent } from '../../../../../shared/components/sections';
@@ -24,18 +24,12 @@ import { GenericSectionBlockComponent } from '../../../../../shared/components/s
   encapsulation: ViewEncapsulation.None,
 })
 export class EasterEggComponent {
-  private readonly dialogService = inject(DialogService);
+  private readonly toastService: ToastService = inject(ToastService);
 
   onCheatEnter() {
-    this.dialogService
-      .open({
-        title: 'Congratulations!',
-        message: "You've found the secret image.",
-        confirmText: 'Cool!',
-        variant: 'success',
-        disableClose: false,
-        cancelText: '',
-      })
-      .subscribe();
+    this.toastService.success("You've found the secret image.", {
+      title: 'Congratulations!',
+      duration: 5_000,
+    });
   }
 }
