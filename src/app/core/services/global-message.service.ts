@@ -13,17 +13,17 @@ export class GlobalMessageService {
   private http = inject(HttpClient);
 
   private readonly globalMessage$ = this.http
-    .get<GlobalMessage>(`${this.BASE_URL}/global-message`)
+    .get<GlobalMessage[]>(`${this.BASE_URL}/global-message`)
     .pipe(shareReplay({ bufferSize: 1, refCount: true }));
 
-  getGlobalMessage(): Observable<GlobalMessage> {
+  getGlobalMessage(): Observable<GlobalMessage[]> {
     return this.globalMessage$;
   }
 
-  getGlobalMessageSafe(): Observable<GlobalMessage> {
+  getGlobalMessageSafe(): Observable<GlobalMessage[]> {
     return this.getGlobalMessage().pipe(
       catchError(() => {
-        return of<GlobalMessage>({});
+        return of<GlobalMessage[]>([]);
       }),
     );
   }
