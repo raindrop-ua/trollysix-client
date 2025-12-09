@@ -8,12 +8,12 @@
     </header>
 
     <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
-      <div class="aspect-[16/10] w-full relative overflow-hidden rounded-xl bg-slate-900/5 ring-1 ring-slate-900/10 dark:bg-white/5 dark:ring-white/10">
+      <div class="aspect-[16/10] w-full relative overflow-hidden baseline-surface rounded-xl ring-1 ring-slate-900/10">
         <img [ngSrc]="stop.imageUrl" alt="Stop photo" class="h-full w-full object-cover" fill/>
       </div>
 
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:col-span-2">
-        <div class="rounded-xl border border-slate-300/40 dark:border-white/10 p-3">
+        <div class="rounded-xl baseline-borders baseline-surface p-3">
           <div class="mb-2 text-base font-medium text-slate-700 dark:text-slate-200">
             Shared routes
           </div>
@@ -31,10 +31,10 @@
         </div>
 
         @if (stop.weather; as weather) {
-        <div class="rounded-xl border border-slate-300/40 dark:border-white/10 p-3">
+        <div class="rounded-xl baseline-borders baseline-surface p-3">
           <div class="mb-2 text-base font-medium text-slate-700 dark:text-slate-200">Weather</div>
           <div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
-            <div class="w-12 h-12 text-base relative rounded-xl border border-slate-300/40 dark:border-white/10 p-3">
+            <div class="w-12 h-12 text-base relative rounded-xl baseline-borders baseline-surface p-3">
               <img
                 class="w-12 h-12"
                 [ngSrc]="weatherIconUrl()"
