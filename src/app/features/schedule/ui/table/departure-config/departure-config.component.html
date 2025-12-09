@@ -1,7 +1,7 @@
 @if ((departures$ | async)?.length) {
   @let showSchedule = (showScheduleNumbers$ | async) ?? false;
 
-  <div class="rounded-2xl border border-white/10 bg-white/60 p-3 shadow-sm backdrop-blur md:p-4 dark:bg-slate-900/40">
+  <div class="rounded-2xl baseline-borders baseline-surface p-3 backdrop-blur md:p-4">
     <div class="flex flex-wrap items-center justify-end gap-3 text-xs text-blue-700 dark:text-slate-400">
       <label class="flex cursor-pointer gap-3 items-center justify-between text-sm text-slate-500 dark:text-slate-400">
         <span>Show schedule number</span>

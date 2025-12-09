@@ -9,7 +9,7 @@
       stroke-width="2"
     ></svg>
   </h4>
-  <div class="flex w-full flex-col items-start">
+  <div class="flex w-full flex-col items-start pb-2">
     @for (stop of stops(); track stop.id; let i = $index, last = $last) {
       <app-stops-list-item
         class="block w-full"
