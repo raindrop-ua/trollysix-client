@@ -9,13 +9,13 @@
   @if (routeStops().length) {
     <div class="grid gap-3 sm:gap-4 grid-cols-1 md:grid-cols-2">
       <app-stops-list
-        title="Forward direction"
-        direction="forward"
+        [title]="'Forward direction'"
+        [direction]="'forward'"
         [stops]="routeStopsForward()"
       />
       <app-stops-list
-        title="Backward direction"
-        direction="backward"
+        [title]="'Backward direction'"
+        [direction]="'backward'"
         [stops]="routeStopsBackward()"
       />
     </div>
