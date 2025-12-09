@@ -31,7 +31,9 @@
   </ng-template>
 }
 
-<app-testimonials/>
+@defer (on idle) {
+  <app-testimonials/>
+}
 
 @defer (on idle) {
   <app-attention
