@@ -15,6 +15,7 @@ import {
   ErrorHandler,
 } from '@angular/core';
 import {
+  EVENT_MANAGER_PLUGINS,
   provideClientHydration,
   withEventReplay,
 } from '@angular/platform-browser';
@@ -37,11 +38,17 @@ import { AfterFirstPaintPreloadingStrategy } from './core/strategies/after-first
 import { SwUpdateService } from './core/services/sw-update.service';
 import { globalHttpErrorInterceptor } from './core/interceptors/global-http-error.interceptor';
 import { CustomErrorHandler } from './core/custom-error-handler';
+import { PreventDefaultEventPlugin } from './core/plugins/prevent-default-events';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     { provide: NAVIGATION_TOKEN, useValue: NAVIGATION },
     { provide: ErrorHandler, useClass: CustomErrorHandler },
+    {
+      provide: EVENT_MANAGER_PLUGINS,
+      multi: true,
+      useClass: PreventDefaultEventPlugin,
+    },
     provideBrowserGlobalErrorListeners(),
     provideHttpClient(
       withInterceptors([globalHttpErrorInterceptor]),
