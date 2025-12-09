@@ -1,4 +1,12 @@
-import { Directive, ElementRef, Input, OnDestroy, OnInit, inject, PLATFORM_ID } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  Input,
+  OnDestroy,
+  OnInit,
+  inject,
+  PLATFORM_ID,
+} from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 @Directive({
@@ -8,7 +16,8 @@ import { isPlatformBrowser } from '@angular/common';
 export class RevealOnScrollDirective implements OnInit, OnDestroy {
   @Input('appRevealOnScroll') delay: number | string | undefined;
 
-  private readonly el = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
+  private readonly el =
+    inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
   private io?: IntersectionObserver;
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
