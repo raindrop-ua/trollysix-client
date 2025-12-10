@@ -2,7 +2,10 @@ import {
   Component,
   ChangeDetectionStrategy,
   ViewEncapsulation,
+  input,
 } from '@angular/core';
+import { DirectionName } from '../../data-access/models/direction.model';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-hint-arrow',
@@ -11,4 +14,6 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class HintArrowComponent {}
+export class HintArrowComponent {
+  public direction = input<DirectionName | null | undefined>();
+}

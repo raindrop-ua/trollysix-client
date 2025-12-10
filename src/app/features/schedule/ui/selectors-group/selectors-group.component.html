@@ -18,7 +18,7 @@
             [preselected]="(vm$ | async)?.selectedDirectionName"
           >
             @if ((departures$ | async)?.length === 0 && !(vm$ | async)?.timetableLoading) {
-              <app-hint-arrow />
+              <app-hint-arrow [direction]="vm.selectedDirectionName" />
             }
           </app-options-selector>
         </div>
