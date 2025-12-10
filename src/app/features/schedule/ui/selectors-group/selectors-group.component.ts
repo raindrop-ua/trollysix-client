@@ -4,7 +4,7 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { SchedulePageActions } from '../../data-access/store/schedule.actions';
 import { selectScheduleViewModel } from '../../data-access/store/schedule.selectors';
@@ -20,6 +20,7 @@ import { HintArrowComponent } from '../hint-arrow/hint-arrow.component';
     SvgIconComponent,
     AsyncPipe,
     HintArrowComponent,
+    NgClass,
   ],
   templateUrl: './selectors-group.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
