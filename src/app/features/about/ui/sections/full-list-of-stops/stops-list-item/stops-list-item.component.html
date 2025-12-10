@@ -6,9 +6,10 @@
     @if (!lastItem) {
       <div class="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-slate-600 dark:bg-slate-300"></div>
     }
+    @let icon = lastItem ? 'square' : stopData.direction;
     <span class="relative z-10 grid h-8 w-8 place-items-center rounded-full bg-slate-600 dark:bg-slate-300 text-blue-100 dark:text-slate-800">
       <svg
-        [icon]="stopData.direction"
+        [icon]="icon"
         width="16"
         height="16"
         stroke="currentColor"
