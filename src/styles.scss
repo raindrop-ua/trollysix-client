@@ -3,6 +3,7 @@
 @use 'app/styles/components/baseline';
 @use 'app/styles/components/stops';
 @use 'app/styles/components/timetable';
+@use 'app/styles/animations';
 
 @custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
 
