@@ -1,4 +1,4 @@
-import { isPlatformBrowser } from '@angular/common';
+import { IMAGE_CONFIG, isPlatformBrowser } from '@angular/common';
 import {
   provideHttpClient,
   withFetch,
@@ -48,6 +48,13 @@ export const appConfig: ApplicationConfig = {
       provide: EVENT_MANAGER_PLUGINS,
       multi: true,
       useClass: PreventDefaultEventPlugin,
+    },
+    {
+      provide: IMAGE_CONFIG,
+      useValue: {
+        placeholderResolution: 40,
+        breakpoints: [16, 48, 96, 128, 384, 640, 750, 828, 1080, 1200, 1920],
+      },
     },
     provideBrowserGlobalErrorListeners(),
     provideHttpClient(

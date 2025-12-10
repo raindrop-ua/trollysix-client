@@ -12,6 +12,18 @@
     animation: shake 3s ease-in-out infinite;
   }
 
+  .animate-shake-once {
+    animation: shake 3s ease-in-out;
+  }
+
+  .animate-shake-once-delayed {
+    animation: shake 3s ease-in-out 300ms;
+  }
+
+  .animate-shake-once-delayed-1s {
+    animation: shake 3s ease-in-out 1s;
+  }
+
   @keyframes bounce-jelly {
     0%, 100% {
       transform: translateY(0) scale(1) rotate(0deg);
