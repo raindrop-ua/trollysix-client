@@ -10,9 +10,9 @@ import { Store } from '@ngrx/store';
 import {
   ScheduleControlsComponent,
   SelectorsGroupComponent,
-  StopDetailsComponent,
   StopsListComponent,
-  FindGeoStopComponent,
+  StopDetailsComponent,
+  StopToolbarComponent,
 } from '../ui';
 import { NoticeComponent } from '../../../shared/components/sections';
 import { RevealOnScrollDirective } from '../../../shared/directives/reveal-on-scroll.directive';
@@ -29,7 +29,7 @@ import { SchedulePageActions } from '../data-access/store/schedule.actions';
     StopDetailsComponent,
     AsyncPipe,
     RevealOnScrollDirective,
-    FindGeoStopComponent,
+    StopToolbarComponent,
   ],
   templateUrl: './schedule.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
