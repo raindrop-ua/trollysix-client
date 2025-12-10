@@ -3,4 +3,4 @@ export { ScheduleControlsComponent } from './schedule-controls/schedule-controls
 export { SelectorsGroupComponent } from './selectors-group/selectors-group.component';
 export { StopsListComponent } from './stops-list/stops-list.component';
 export { StopDetailsComponent } from './stop-details/stop-details.component';
-export { FindGeoStopComponent } from './find-geo-stop/find-geo-stop.component';
+export { StopToolbarComponent } from './stop-toolbar/stop-toolbar.component';
