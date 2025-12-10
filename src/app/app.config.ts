@@ -12,6 +12,7 @@ import {
   isDevMode,
   provideEnvironmentInitializer,
   provideBrowserGlobalErrorListeners,
+  provideAppInitializer,
   ErrorHandler,
 } from '@angular/core';
 import {
@@ -33,9 +34,10 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { NAVIGATION, NAVIGATION_TOKEN } from './core/config/navigation.config';
 import { routes } from './app.routes';
-import { SeoService } from './core/services/seo.service';
-import { AfterFirstPaintPreloadingStrategy } from './core/strategies/after-first-paint-preloading.strategy';
 import { SwUpdateService } from './core/services/sw-update.service';
+import { SeoService } from './core/services/seo.service';
+import { PageVisibilityService } from './core/services/page-visibility.service';
+import { AfterFirstPaintPreloadingStrategy } from './core/strategies/after-first-paint-preloading.strategy';
 import { globalHttpErrorInterceptor } from './core/interceptors/global-http-error.interceptor';
 import { CustomErrorHandler } from './core/custom-error-handler';
 import { PreventDefaultEventPlugin } from './core/plugins/prevent-default-events';
@@ -82,6 +84,10 @@ export const appConfig: ApplicationConfig = {
         inject(SwUpdateService);
       }
       inject(SeoService);
+    }),
+    provideAppInitializer(() => {
+      const svc = inject(PageVisibilityService);
+      svc.init();
     }),
     provideStore(),
     provideEffects(),
