@@ -13,6 +13,7 @@ import {
   provideEnvironmentInitializer,
   provideBrowserGlobalErrorListeners,
   ErrorHandler,
+  provideAppInitializer,
 } from '@angular/core';
 import {
   EVENT_MANAGER_PLUGINS,
@@ -39,6 +40,7 @@ import { SwUpdateService } from './core/services/sw-update.service';
 import { globalHttpErrorInterceptor } from './core/interceptors/global-http-error.interceptor';
 import { CustomErrorHandler } from './core/custom-error-handler';
 import { PreventDefaultEventPlugin } from './core/plugins/prevent-default-events';
+import { PageVisibilityService } from './core/services/page-visibility.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -82,6 +84,10 @@ export const appConfig: ApplicationConfig = {
         inject(SwUpdateService);
       }
       inject(SeoService);
+    }),
+    provideAppInitializer(() => {
+      const svc = inject(PageVisibilityService);
+      svc.init();
     }),
     provideStore(),
     provideEffects(),
