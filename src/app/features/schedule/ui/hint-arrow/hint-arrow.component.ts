@@ -5,7 +5,6 @@ import {
   input,
 } from '@angular/core';
 import { DirectionName } from '../../data-access/models/direction.model';
-import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-hint-arrow',
