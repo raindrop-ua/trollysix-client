@@ -12,8 +12,8 @@ import {
   isDevMode,
   provideEnvironmentInitializer,
   provideBrowserGlobalErrorListeners,
-  ErrorHandler,
   provideAppInitializer,
+  ErrorHandler,
 } from '@angular/core';
 import {
   EVENT_MANAGER_PLUGINS,
@@ -34,13 +34,13 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { NAVIGATION, NAVIGATION_TOKEN } from './core/config/navigation.config';
 import { routes } from './app.routes';
-import { SeoService } from './core/services/seo.service';
-import { AfterFirstPaintPreloadingStrategy } from './core/strategies/after-first-paint-preloading.strategy';
 import { SwUpdateService } from './core/services/sw-update.service';
+import { SeoService } from './core/services/seo.service';
+import { PageVisibilityService } from './core/services/page-visibility.service';
+import { AfterFirstPaintPreloadingStrategy } from './core/strategies/after-first-paint-preloading.strategy';
 import { globalHttpErrorInterceptor } from './core/interceptors/global-http-error.interceptor';
 import { CustomErrorHandler } from './core/custom-error-handler';
 import { PreventDefaultEventPlugin } from './core/plugins/prevent-default-events';
-import { PageVisibilityService } from './core/services/page-visibility.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
