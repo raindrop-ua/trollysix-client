@@ -5,7 +5,7 @@
         <div class="relative flex">
           <app-options-selector
             (optionSelect)="onSelectDayType($event)"
-            title="Day"
+            [title]="'Day'"
             [options]="vm.dayTypes"
             [preselected]="vm.selectedDayTypeName"
           />
@@ -13,7 +13,7 @@
         <div class="relative flex">
           <app-options-selector
             (optionSelect)="onSelectDirection($event)"
-            title="Direction"
+            [title]="'Direction'"
             [options]="vm.directions"
             [preselected]="(vm$ | async)?.selectedDirectionName"
           >
