@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
     'No subscriptions here — you were born premium.',
     'Relax, everything in this app is free and premium at the same time.',
     'It was unlocked the whole time, actually.',
-    'You’ve reached Premium Level Zero — the highest possible tier.',
+    'You’ve reached the highest possible Premium tier.',
     'You are now premium. Again. And again. And forever.',
     'Premium status confirmed — but honestly, you never needed upgrading.',
   ];
