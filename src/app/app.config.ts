@@ -12,7 +12,6 @@ import {
   isDevMode,
   provideEnvironmentInitializer,
   provideBrowserGlobalErrorListeners,
-  provideAppInitializer,
   ErrorHandler,
 } from '@angular/core';
 import {
@@ -82,12 +81,9 @@ export const appConfig: ApplicationConfig = {
       const platformId = inject(PLATFORM_ID);
       if (isPlatformBrowser(platformId)) {
         inject(SwUpdateService);
+        inject(PageVisibilityService).init();
       }
       inject(SeoService);
-    }),
-    provideAppInitializer(() => {
-      const svc = inject(PageVisibilityService);
-      svc.init();
     }),
     provideStore(),
     provideEffects(),
