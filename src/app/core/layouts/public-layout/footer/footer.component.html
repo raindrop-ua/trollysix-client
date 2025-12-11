@@ -1,5 +1,11 @@
 <div class="container mx-auto max-w-6xl px-4 py-6">
-  <div class="flex flex-col items-center justify-between gap-3 sm:flex-row">
+  <div class="flex flex-col sm:flex-row items-center justify-between gap-3 sm:flex-row">
     <div>© 2024-{{ currentYear }} TrollySix. All rights reserved.</div>
+    <div>
+      <ul class="flex gap-3">
+        <li><a [routerLink]="AppRouteEnum.PrivacyPolicy">Privacy Policy</a></li>
+        <li><a [routerLink]="AppRouteEnum.TermsOfUse">Terms of Use</a></li>
+      </ul>
+    </div>
   </div>
 </div>
