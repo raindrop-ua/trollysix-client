@@ -34,7 +34,7 @@ export class PageVisibilityService {
             }
           }
 
-          this.toastService.success('Nice to see you again', {
+          this.toastService.info('Nice to see you again', {
             title: 'Welcome back 👋',
             duration: 5000,
           });
