@@ -44,6 +44,8 @@ export class OptionsSelectorComponent {
   }
 
   public select(option: string) {
+    if (this.selected() === option) return;
+
     this.selected.set(option);
     this.optionSelect.emit(option);
   }
