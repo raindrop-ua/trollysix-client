@@ -1,11 +1,7 @@
 <app-generic-section-block appRevealOnScroll="600" class="block relative overflow-hidden">
   <div class="prose prose-slate dark:prose-invert max-w-none">
-    <p
-      class="mb-2"
-    >The route connects the charming residential area of Pridniprovsky, locally referred to simply as Pridniprovsk, with the city center.</p>
-    <p
-      class="mb-2"
-    >On weekdays, 8 vehicles operate on the route, while on weekends, this number is reduced to 4. The route is served by two trolleybus depots, with 4 vehicles from each depot on weekdays and 2 from each depot on weekends.</p>
-    <p>Due to the specifics of the route, as a portion of it lacks overhead contact wires, only a limited number of vehicles capable of autonomous operation over long distances can serve this route.</p>
+    @for (paragraph of copyAbout.generalDescription; track paragraph;) {
+      <p [ngClass]="{ 'mb-2': !$last }">{{ paragraph }}</p>
+    }
   </div>
 </app-generic-section-block>
