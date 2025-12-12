@@ -21,7 +21,7 @@ export class PageVisibilityService {
 
     visibility$
       .pipe(
-        pairwise(), // [prev, curr]
+        pairwise(),
         filter(([prev, curr]) => prev === 'hidden' && curr === 'visible'),
         delay(500),
         tap(() => {
