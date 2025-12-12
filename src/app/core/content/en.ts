@@ -2,6 +2,7 @@ export const COPY = {
   common: {
     viewSchedule: 'View Schedule',
     learnMore: 'Learn More',
+    whyDifferent: 'Why it’s different',
   },
 
   home: {
