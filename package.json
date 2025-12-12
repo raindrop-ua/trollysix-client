@@ -10,7 +10,8 @@
     "test": "ng test",
     "start:ssr": "node dist/trollysix-client/server/server.mjs",
     "serve:ssr:trollysix-client": "node dist/trollysix-client/server/server.mjs",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "prepare": "husky"
   },
   "private": true,
   "dependencies": {
@@ -39,6 +40,8 @@
     "@angular/build": "^21.0.3",
     "@angular/cli": "^21.0.3",
     "@angular/compiler-cli": "^21.0.4",
+    "@commitlint/cli": "^20.2.0",
+    "@commitlint/config-conventional": "^20.2.0",
     "@eslint/js": "^9.33.0",
     "@tailwindcss/postcss": "^4.1.13",
     "@testing-library/angular": "^18.1.1",
@@ -61,5 +64,13 @@
     "typescript-eslint": "8.40.0",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^4.0.8"
+  },
+  "lint-staged": {
+    "*.{html,scss,css,json}": [
+      "prettier --write"
+    ],
+    "*.ts": [
+      "eslint --fix"
+    ]
   }
 }
