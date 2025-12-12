@@ -19,11 +19,26 @@ export const routes: Routes = [
         path: 'about',
         loadChildren: () => import('./features/about/feature/about.routes'),
       },
+      {
+        path: '404',
+        loadChildren: () =>
+          import('./features/static/not-found/feature/not-found.routes'),
+      },
+      {
+        path: 'privacy-policy',
+        loadChildren: () =>
+          import('./features/static/privacy-policy/feature/privacy-policy.routes'),
+      },
+      {
+        path: 'terms-of-use',
+        loadChildren: () =>
+          import('./features/static/terms-of-use/feature/terms-of-use.routes'),
+      },
     ],
   },
   {
     path: '**',
-    redirectTo: '/',
+    redirectTo: '/404',
     pathMatch: 'full',
   },
 ];
