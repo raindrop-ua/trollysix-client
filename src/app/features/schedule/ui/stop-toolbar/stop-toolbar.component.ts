@@ -1,6 +1,7 @@
 import {
   Component,
   inject,
+  input,
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
@@ -10,18 +11,24 @@ import { ClosestStopService } from '../../services/closest-stop.service';
 import { BtnDirective } from '../../../../shared/directives/btn.directive';
 
 @Component({
-  selector: 'app-find-geo-stop',
+  selector: 'app-stop-toolbar',
   imports: [SvgIconComponent, BtnDirective],
   providers: [ClosestStopService],
-  templateUrl: './find-geo-stop.component.html',
+  templateUrl: './stop-toolbar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class FindGeoStopComponent {
+export class StopToolbarComponent {
   protected readonly geolocation = inject(GeolocationService);
   private closestStopService = inject(ClosestStopService);
 
-  onClick() {
+  public showShareButton = input<boolean>(false);
+
+  onFindStop() {
     this.closestStopService.findAndSelectStop();
+  }
+
+  onCopy() {
+    /* todo */
   }
 }

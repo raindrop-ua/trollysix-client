@@ -12,24 +12,24 @@ import {
   SelectorsGroupComponent,
   StopDetailsComponent,
   StopsListComponent,
-  FindGeoStopComponent,
+  StopToolbarComponent,
 } from '../ui';
-import { NoticeComponent } from '../../../shared/components/sections';
-import { RevealOnScrollDirective } from '../../../shared/directives/reveal-on-scroll.directive';
 import { selectScheduleViewModel } from '../data-access/store/schedule.selectors';
 import { SchedulePageActions } from '../data-access/store/schedule.actions';
+import { NoticeComponent } from '../../../shared/components/sections';
+import { GenericHeaderComponent } from '../../../shared/components/sections/generic-header/generic-header.component';
 
 @Component({
   selector: 'app-schedule',
   imports: [
+    GenericHeaderComponent,
     ScheduleControlsComponent,
     NoticeComponent,
     SelectorsGroupComponent,
     StopsListComponent,
     StopDetailsComponent,
+    StopToolbarComponent,
     AsyncPipe,
-    RevealOnScrollDirective,
-    FindGeoStopComponent,
   ],
   templateUrl: './schedule.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

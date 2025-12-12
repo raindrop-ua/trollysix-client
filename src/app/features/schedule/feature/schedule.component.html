@@ -1,14 +1,8 @@
-<section appRevealOnScroll="300" class="relative overflow-hidden">
-  <div class="container mx-auto max-w-6xl px-4 pt-6 md:pt-8 text-center">
-    <h1 class="mx-auto max-w-4xl text-2xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-      Schedule
-    </h1>
-  </div>
-</section>
+<app-generic-header [title]="'Schedule'" />
 @defer (on idle) {
   @if (vm$ | async; as vm) {
     <app-stops-list />
-    <app-find-geo-stop />
+    <app-stop-toolbar />
     <app-selectors-group/>
     <app-schedule-controls/>
     @if (vm.selectedStop) {
