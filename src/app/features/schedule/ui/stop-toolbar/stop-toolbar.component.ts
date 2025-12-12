@@ -1,6 +1,7 @@
 import {
   Component,
   inject,
+  input,
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
@@ -20,6 +21,8 @@ import { BtnDirective } from '../../../../shared/directives/btn.directive';
 export class StopToolbarComponent {
   protected readonly geolocation = inject(GeolocationService);
   private closestStopService = inject(ClosestStopService);
+
+  public showShareButton = input<boolean>(false);
 
   onFindStop() {
     this.closestStopService.findAndSelectStop();

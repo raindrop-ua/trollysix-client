@@ -6,9 +6,11 @@
           <svg icon="map-pinned" width="20" height="20" stroke="currentColor" stroke-width="2"></svg>
         </button>
       }
-      <button (click)="onCopy()" appBtn="primary">
-        <span>Share</span>
-        <svg icon="share" width="20" height="20" stroke="currentColor" stroke-width="2"></svg>
-      </button>
+      @if (showShareButton()) {
+        <button (click)="onCopy()" appBtn="primary">
+          <span>Share</span>
+          <svg icon="share" width="20" height="20" stroke="currentColor" stroke-width="2"></svg>
+        </button>
+      }
     </div>
   </section>
