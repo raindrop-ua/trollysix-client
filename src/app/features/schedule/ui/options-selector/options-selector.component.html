@@ -3,13 +3,13 @@
     {{ title() }}
   </div>
 
-  <div class="inline-flex overflow-hidden rounded-xl ring-1 ring-slate-900/10 dark:ring-white/10">
+  <div class="inline-flex w-full overflow-hidden rounded-xl ring-1 ring-slate-900/10 dark:ring-white/10">
     @for (option of options(); track getValue(option)) {
       @let value = getValue(option);
       @let isSelected = value === selected();
       <button
         type="button"
-        class="selector relative"
+        class="selector relative w-[50%]"
         [disabled]="isDisabled(option)"
         [attr.aria-pressed]="isSelected"
         [class.selector-selected]="isSelected"
