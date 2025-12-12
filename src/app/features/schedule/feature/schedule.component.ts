@@ -12,7 +12,7 @@ import {
   SelectorsGroupComponent,
   StopDetailsComponent,
   StopsListComponent,
-  FindGeoStopComponent,
+  StopToolbarComponent,
 } from '../ui';
 import { selectScheduleViewModel } from '../data-access/store/schedule.selectors';
 import { SchedulePageActions } from '../data-access/store/schedule.actions';
@@ -28,7 +28,7 @@ import { GenericHeaderComponent } from '../../../shared/components/sections/gene
     SelectorsGroupComponent,
     StopsListComponent,
     StopDetailsComponent,
-    FindGeoStopComponent,
+    StopToolbarComponent,
     AsyncPipe,
   ],
   templateUrl: './schedule.component.html',
