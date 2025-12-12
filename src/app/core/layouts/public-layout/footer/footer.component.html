@@ -3,8 +3,17 @@
     <div>© 2024-{{ currentYear }} TrollySix. All rights reserved.</div>
     <div>
       <ul class="flex gap-3">
-        <li><a [routerLink]="AppRouteEnum.PrivacyPolicy">Privacy Policy</a></li>
-        <li><a [routerLink]="AppRouteEnum.TermsOfUse">Terms of Use</a></li>
+        <li>
+          <a
+            class="hover:underline"
+            [routerLink]="AppRouteEnum.PrivacyPolicy"
+          >Privacy Policy</a>
+        </li>
+        <li>
+          <a class="hover:underline"
+            [routerLink]="AppRouteEnum.TermsOfUse"
+          >Terms of Use</a>
+        </li>
       </ul>
     </div>
   </div>
