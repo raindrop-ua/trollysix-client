@@ -3,9 +3,9 @@ import {
   input,
   output,
   signal,
+  effect,
   ChangeDetectionStrategy,
   ViewEncapsulation,
-  effect,
 } from '@angular/core';
 import { Option } from '../../data-access/models/option.model';
 import { DayType } from '../../data-access/models/daytype.model';

@@ -13,6 +13,7 @@ import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal
 import { BtnDirective } from '../../../../../shared/directives/btn.directive';
 import { SvgIconComponent } from '../../../../../shared/components/svg-icon/svg-icon.component';
 import { SnowComponent } from '../snow/snow.component';
+import { copy } from '../../../../../core/content/copy.util';
 
 @Component({
   selector: 'app-masthead',
@@ -31,6 +32,7 @@ import { SnowComponent } from '../snow/snow.component';
 })
 export class MastheadComponent {
   protected readonly AppRouteEnum = AppRouteEnum;
+  readonly copyCommon = copy('common');
   private readonly clock = inject(ClockService);
 
   readonly isWinter$ = this.clock.now$.pipe(

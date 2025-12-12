@@ -3,16 +3,18 @@
     <div class="grid grid-flow-col grid-rows-2 gap-4 sm:flex items-center sm:justify-between md:divide-x md:divide-white/10">
       @let isUnavailable = (departures$ | async)?.length === 0 && !(vm$ | async)?.timetableLoading;
       @if (vm$ | async; as vm) {
-        <div class="relative flex">
+        <div class="relative flex w-full sm:w-auto">
           <app-options-selector
+            class="block w-full"
             (optionSelect)="onSelectDayType($event)"
             [title]="'Day'"
             [options]="vm.dayTypes"
             [preselected]="vm.selectedDayTypeName"
           />
         </div>
-        <div class="relative flex">
+        <div class="relative flex w-full sm:w-auto">
           <app-options-selector
+            class="block w-full"
             (optionSelect)="onSelectDirection($event)"
             [title]="'Direction'"
             [options]="vm.directions"

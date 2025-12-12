@@ -6,6 +6,7 @@ import {
 import { RouterLink } from '@angular/router';
 import { AppRouteEnum } from '../../../../../core/enums/app-route.enum';
 import { BtnDirective } from '../../../../../shared/directives/btn.directive';
+import { copy } from '../../../../../core/content/copy.util';
 
 @Component({
   selector: 'app-ready-for-route-six',
@@ -16,4 +17,5 @@ import { BtnDirective } from '../../../../../shared/directives/btn.directive';
 })
 export class ReadyForRouteSixComponent {
   protected readonly AppRouteEnum = AppRouteEnum;
+  readonly copyCommon = copy('common');
 }
