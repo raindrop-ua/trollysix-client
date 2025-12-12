@@ -15,6 +15,7 @@ import {
 } from '../ui';
 import { BtnDirective } from '../../../shared/directives/btn.directive';
 import { MetricsCoveredComponent } from '../ui/sections/metrics-covered/metrics-covered.component';
+import { copy } from '../../../core/content/copy.util';
 
 @Component({
   selector: 'app-home',
@@ -35,4 +36,6 @@ import { MetricsCoveredComponent } from '../ui/sections/metrics-covered/metrics-
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class HomeComponent {}
+export class HomeComponent {
+  readonly copyCommon = copy('common');
+}
