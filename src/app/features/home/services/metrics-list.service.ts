@@ -16,11 +16,11 @@ export class MetricsListService {
     .get<Metric[]>(`${this.BASE_URL}/metrics`)
     .pipe(shareReplay({ bufferSize: 1, refCount: true }));
 
-  getMetrics(): Observable<Metric[]> {
+  public getMetrics(): Observable<Metric[]> {
     return this.metrics$;
   }
 
-  getMetricsSafe(): Observable<Metric[]> {
+  public getMetricsSafe(): Observable<Metric[]> {
     return this.getMetrics().pipe(
       catchError(() => {
         return of<Metric[]>([]);

@@ -17,11 +17,11 @@ export class StopsListService {
     .get<RouteStop[]>(`${this.BASE_URL}/stops-list`)
     .pipe(shareReplay({ bufferSize: 1, refCount: true }));
 
-  getStops(): Observable<RouteStop[]> {
+  public getStops(): Observable<RouteStop[]> {
     return this.stops$;
   }
 
-  getStopsSafe(): Observable<Metric[]> {
+  public getStopsSafe(): Observable<Metric[]> {
     return this.getStops().pipe(
       catchError(() => {
         return of<Metric[]>([]);

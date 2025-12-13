@@ -13,7 +13,7 @@ export class PageVisibilityService {
   private lastHiddenAt: number | null = null;
   private readonly minAwayMs = 5_000;
 
-  init(): void {
+  public init(): void {
     const visibility$ = fromEvent(this.document, 'visibilitychange').pipe(
       map(() => this.document.visibilityState),
       takeUntilDestroyed(this.destroyRef),

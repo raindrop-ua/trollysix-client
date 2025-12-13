@@ -12,7 +12,7 @@ export class GeolocationService {
 
   public isGeolocationAvailable = signal<boolean>('geolocation' in navigator);
 
-  getCurrentPosition$(
+  public getCurrentPosition$(
     options?: PositionOptions,
   ): Observable<GeolocationPosition> {
     if (!this.isBrowser || typeof navigator === 'undefined') {
@@ -55,7 +55,9 @@ export class GeolocationService {
     });
   }
 
-  watchPosition$(options?: PositionOptions): Observable<GeolocationPosition> {
+  public watchPosition$(
+    options?: PositionOptions,
+  ): Observable<GeolocationPosition> {
     if (!this.isBrowser || typeof navigator === 'undefined') {
       return throwError(() =>
         this.createError(

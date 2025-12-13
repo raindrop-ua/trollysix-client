@@ -23,7 +23,7 @@ export class ToastService {
 
   readonly toasts = this._toasts.asReadonly();
 
-  show(message: string, options: ToastOptions = {}): number {
+  public show(message: string, options: ToastOptions = {}): number {
     const id = ++this._idSeq;
     const toast: Toast = {
       id,
@@ -42,23 +42,32 @@ export class ToastService {
     return id;
   }
 
-  success(message: string, options: Omit<ToastOptions, 'type'> = {}): number {
+  public success(
+    message: string,
+    options: Omit<ToastOptions, 'type'> = {},
+  ): number {
     return this.show(message, { ...options, type: 'success' });
   }
 
-  error(message: string, options: Omit<ToastOptions, 'type'> = {}): number {
+  public error(
+    message: string,
+    options: Omit<ToastOptions, 'type'> = {},
+  ): number {
     return this.show(message, { ...options, type: 'error' });
   }
 
-  info(message: string, options: Omit<ToastOptions, 'type'> = {}): number {
+  public info(
+    message: string,
+    options: Omit<ToastOptions, 'type'> = {},
+  ): number {
     return this.show(message, { ...options, type: 'info' });
   }
 
-  dismiss(id: number): void {
+  public dismiss(id: number): void {
     this._toasts.update((list) => list.filter((t) => t.id !== id));
   }
 
-  clear(): void {
+  public clear(): void {
     this._toasts.set([]);
   }
 }

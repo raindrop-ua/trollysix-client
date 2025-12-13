@@ -16,11 +16,11 @@ export class GlobalMessageService {
     .get<GlobalMessage[]>(`${this.BASE_URL}/global-message`)
     .pipe(shareReplay({ bufferSize: 1, refCount: true }));
 
-  getGlobalMessage(): Observable<GlobalMessage[]> {
+  public getGlobalMessage(): Observable<GlobalMessage[]> {
     return this.globalMessage$;
   }
 
-  getGlobalMessageSafe(): Observable<GlobalMessage[]> {
+  public getGlobalMessageSafe(): Observable<GlobalMessage[]> {
     return this.getGlobalMessage().pipe(
       catchError(() => {
         return of<GlobalMessage[]>([]);

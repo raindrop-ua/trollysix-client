@@ -19,7 +19,10 @@ export class ScheduleService {
     shareReplay({ bufferSize: 1, refCount: true }),
   );
 
-  readonly departures$ = combineLatest([this.clock.now$, this.times$]).pipe(
+  public readonly departures$ = combineLatest([
+    this.clock.now$,
+    this.times$,
+  ]).pipe(
     map(([now, times]) =>
       times.map<Departure>((t) => ({
         time: t.time,
@@ -30,11 +33,11 @@ export class ScheduleService {
     shareReplay({ bufferSize: 1, refCount: false }),
   );
 
-  readonly showScheduleNumbers$ = this.store.select(
+  public readonly showScheduleNumbers$ = this.store.select(
     scheduleFeature.selectShowScheduleNumbers,
   );
 
-  setShowScheduleNumbers(show: boolean) {
+  public setShowScheduleNumbers(show: boolean) {
     this.store.dispatch(SchedulePageActions.setShowScheduleNumbers({ show }));
   }
 
