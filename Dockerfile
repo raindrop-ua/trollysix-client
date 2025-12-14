@@ -2,6 +2,8 @@
 FROM node:22-alpine AS build
 WORKDIR /app
 
+ENV HUSKY=0
+
 RUN corepack enable && corepack prepare pnpm@10.23.0 --activate
 
 COPY package.json pnpm-lock.yaml ./
@@ -14,7 +16,9 @@ RUN pnpm run build
 # ---------- Runtime stage ----------
 FROM node:22-bullseye-slim AS runtime
 WORKDIR /app
+
 ENV NODE_ENV=production
+ENV HUSKY=0
 
 RUN corepack enable && corepack prepare pnpm@10.23.0 --activate
 COPY package.json pnpm-lock.yaml ./
