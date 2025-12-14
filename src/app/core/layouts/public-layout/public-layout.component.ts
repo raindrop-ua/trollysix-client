@@ -14,5 +14,8 @@ import { GlobalMessageComponent } from '../../components/global-message/global-m
   ],
   templateUrl: './public-layout.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'baseline-background min-w-sm min-h-screen flex flex-col',
+  },
 })
 export class PublicLayoutComponent {}
