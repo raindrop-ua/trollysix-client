@@ -1,6 +1,6 @@
 @layer timetable {
   .ts-time {
-    @apply rounded-xl px-3 py-2 text-center text-base hover:-translate-y-0.5 font-mono transition;
+    @apply rounded-xl px-3 py-2 text-center text-base motion-safe:hover:-translate-y-0.5 font-mono transition;
   }
 
   .ts-time-past {
@@ -8,7 +8,7 @@
   }
 
   .ts-time-now {
-    @apply font-semibold bg-red-500/80 text-white animate-bounce border-red-700/80;
+    @apply font-semibold bg-red-500/80 text-white animate-none motion-safe:animate-bounce border-red-700/80;
   }
 
   .ts-time-soon {
