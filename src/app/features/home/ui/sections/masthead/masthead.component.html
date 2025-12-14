@@ -14,24 +14,38 @@
     <app-snow />
   }
 
-  <div class="container mx-auto max-w-6xl px-4 pt-14 pb-16 md:pt-24 md:pb-24 text-center relative">
-    <h1 class="mx-auto max-w-4xl text-4xl font-extrabold tracking-tight text-slate-900 md:text-6xl dark:text-white">
+  <div
+    class="baseline-container pt-14 pb-16 md:pt-24 md:pb-24 text-center relative"
+  >
+    <h1
+      class="mx-auto max-w-4xl text-4xl font-extrabold tracking-tight text-slate-900 md:text-6xl dark:text-white"
+    >
       <span
         class="cursor-default bg-gradient-to-br from-slate-900 via-slate-700 to-slate-900 bg-clip-text text-transparent dark:from-white dark:via-slate-200 dark:to-white"
-      >Ultimate Schedule</span>
+        >Ultimate Schedule</span
+      >
       <span class="cursor-default block">
         <span>for Trolleybus </span>
-        <span class="animate-shake relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-yellow-500">
-          <span class="relative text-white dark:text-blue-950 pr-1">Route&nbsp;6</span>
+        <span
+          class="animate-shake relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-yellow-500"
+        >
+          <span class="relative text-white dark:text-blue-950 pr-1"
+            >Route&nbsp;6</span
+          >
         </span>
       </span>
     </h1>
 
     <p
       class="cursor-default mx-auto mt-5 max-w-2xl text-slate-600 md:text-lg dark:text-slate-300"
-    >Timetable for trolleybus route in the city of Dnipro.</p>
+    >
+      Timetable for trolleybus route in the city of Dnipro.
+    </p>
 
-    <div appRevealOnScroll="300" class="m-8 flex flex-wrap items-center justify-center gap-3 text-blue-800 dark:text-white">
+    <div
+      appRevealOnScroll="300"
+      class="m-8 flex flex-wrap items-center justify-center gap-3 text-blue-800 dark:text-white"
+    >
       <svg
         icon="logo"
         width="128"
@@ -42,16 +56,12 @@
     </div>
 
     <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-      <a
-        [routerLink]="[AppRouteEnum.Schedule]"
-        appBtn="primary"
-        >{{ copyCommon.viewSchedule }}</a
-      >
-      <a
-        [routerLink]="[AppRouteEnum.About]"
-        appBtn="secondary"
-        >{{ copyCommon.learnMore }}</a
-      >
+      <a [routerLink]="[AppRouteEnum.Schedule]" appBtn="primary">{{
+        copyCommon.viewSchedule
+      }}</a>
+      <a [routerLink]="[AppRouteEnum.About]" appBtn="secondary">{{
+        copyCommon.learnMore
+      }}</a>
     </div>
   </div>
 </section>
