@@ -1,8 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ToastContainerComponent } from './core/components/toast-container/toast-container.component';
 import { DialogComponent } from './core/components/dialog/dialog.component';
@@ -12,6 +8,5 @@ import { DialogComponent } from './core/components/dialog/dialog.component';
   imports: [RouterOutlet, ToastContainerComponent, DialogComponent],
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {}

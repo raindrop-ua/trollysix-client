@@ -1,9 +1,4 @@
-import {
-  Component,
-  inject,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { combineLatest, map } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -18,7 +13,7 @@ import { selectScheduleViewModel } from '../../../data-access/store/schedule.sel
   imports: [AsyncPipe, DatePipe, SvgIconComponent],
   templateUrl: './departure-time-bar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  host: { class: 'block' },
 })
 export class DepartureTimeBarComponent {
   public clockService: ClockService = inject(ClockService);

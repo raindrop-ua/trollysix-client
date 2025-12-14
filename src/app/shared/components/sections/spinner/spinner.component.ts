@@ -4,5 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-spinner',
   imports: [],
   templateUrl: './spinner.component.html',
+  host: { class: 'block' },
 })
 export class SpinnerComponent {}

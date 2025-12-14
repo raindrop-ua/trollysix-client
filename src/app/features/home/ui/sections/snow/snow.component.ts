@@ -1,9 +1,4 @@
-import {
-  Component,
-  inject,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { SnowService } from '../../../services/snow.service';
 
 @Component({
@@ -11,7 +6,7 @@ import { SnowService } from '../../../services/snow.service';
   imports: [],
   templateUrl: './snow.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  host: { class: 'block' },
 })
 export class SnowComponent {
   public snowService: SnowService = inject(SnowService);

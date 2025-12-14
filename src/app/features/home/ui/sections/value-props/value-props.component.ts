@@ -1,8 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
 import { ValueProp } from '../../../data-access/models/value-prop.model';
 import { ValuePropComponent } from './value-prop/value-prop.component';
@@ -12,7 +8,7 @@ import { ValuePropComponent } from './value-prop/value-prop.component';
   imports: [RevealOnScrollDirective, ValuePropComponent],
   templateUrl: './value-props.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  host: { class: 'block' },
 })
 export class ValuePropsComponent {
   protected readonly valueProps: ValueProp[] = [

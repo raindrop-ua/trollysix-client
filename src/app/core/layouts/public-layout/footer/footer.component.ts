@@ -1,9 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-  input,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AppRouteEnum } from '../../../enums/app-route.enum';
 
@@ -12,7 +7,6 @@ import { AppRouteEnum } from '../../../enums/app-route.enum';
   imports: [RouterLink],
   templateUrl: './footer.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
 })
 export class FooterComponent {
   protected readonly AppRouteEnum = AppRouteEnum;

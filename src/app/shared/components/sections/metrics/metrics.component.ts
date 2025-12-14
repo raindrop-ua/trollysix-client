@@ -12,6 +12,7 @@ import { MetricComponent } from './metric/metric.component';
   imports: [MetricComponent],
   templateUrl: './metrics.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { class: 'block' },
 })
 export class MetricsComponent {
   public readonly mobileFullWidth = input<string>();
