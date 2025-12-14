@@ -21,6 +21,9 @@ import { ThemeSwitcherComponent } from '../../../../shared/components/theme-swit
   imports: [RouterLink, ThemeSwitcherComponent, SvgIconComponent],
   templateUrl: './header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'block',
+  },
 })
 export class HeaderComponent implements OnInit {
   protected readonly AppRouteEnum = AppRouteEnum;
