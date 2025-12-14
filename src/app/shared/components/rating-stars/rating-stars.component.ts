@@ -16,9 +16,9 @@ type StarKind = 'filled' | 'empty-yellow' | 'empty-gray';
   host: { class: 'flex gap-1' },
 })
 export class RatingStarsComponent {
-  rating = input.required<number>();
+  public readonly rating = input.required<number>();
 
-  readonly starKinds = computed<StarKind[]>(() => {
+  public readonly starKinds = computed<StarKind[]>(() => {
     const ratingRaw = this.rating() ?? 0;
     const rating = Math.max(0, Math.min(5, ratingRaw));
 
