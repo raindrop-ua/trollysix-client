@@ -13,6 +13,7 @@ import { SvgIconComponent } from '../../../shared/components/svg-icon/svg-icon.c
   imports: [NgClass, SvgIconComponent],
   templateUrl: './toast-container.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { class: 'block' },
 })
 export class ToastContainerComponent {
   private readonly toastService = inject(ToastService);

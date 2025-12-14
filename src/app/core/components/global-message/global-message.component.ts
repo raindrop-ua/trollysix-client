@@ -7,6 +7,7 @@ import { AsyncPipe, NgClass } from '@angular/common';
   imports: [AsyncPipe, NgClass],
   templateUrl: './global-message.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { class: 'block' },
 })
 export class GlobalMessageComponent {
   private globalMessageService = inject(GlobalMessageService);
