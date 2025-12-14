@@ -14,7 +14,9 @@
     <div class="text-sm h-full flex flex-col justify-between">
       <p class="text-gray-600 dark:text-gray-400">{{ testimonial().text }}</p>
       <div>
-        <app-rating-stars class="mt-3" [rating]="testimonial().rating" />
+        @if (testimonial().rating) {
+          <app-rating-stars class="mt-3" [rating]="testimonial().rating" />
+        }
         <p class="font-medium mt-2">
           — {{ testimonial().name }}, {{ testimonial().place }}
         </p>
