@@ -3,7 +3,6 @@ import {
   input,
   computed,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
 import { NgOptimizedImage, TitleCasePipe } from '@angular/common';
 import { environment } from '../../../../../environments/environment';
@@ -23,7 +22,7 @@ import { GenericSectionBlockComponent } from '../../../../shared/components/sect
   ],
   templateUrl: './stop-details.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  host: { class: 'block' },
 })
 export class StopDetailsComponent {
   stopData = input.required<Stop>();

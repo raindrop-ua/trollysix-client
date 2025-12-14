@@ -1,9 +1,4 @@
-import {
-  Component,
-  inject,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { ToastService } from '../../../../../core/services/toast.service';
 import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
@@ -21,7 +16,6 @@ import { GenericSectionBlockComponent } from '../../../../../shared/components/s
   ],
   templateUrl: './easter-egg.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
 })
 export class EasterEggComponent {
   private readonly toastService: ToastService = inject(ToastService);

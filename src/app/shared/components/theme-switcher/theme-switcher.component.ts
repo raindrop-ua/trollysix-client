@@ -7,6 +7,7 @@ import { ThemeService } from '../../../core/services/theme.service';
   imports: [SvgIconComponent],
   templateUrl: './theme-switcher.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { class: 'block' },
 })
 export class ThemeSwitcherComponent {
   private readonly theme = inject(ThemeService);

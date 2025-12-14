@@ -6,6 +6,7 @@ import { DecimalPipe } from '@angular/common';
   selector: 'app-geo-badge',
   imports: [SvgIconComponent, DecimalPipe],
   templateUrl: './geo-badge.component.html',
+  host: { class: 'block' },
 })
 export class GeoBadgeComponent {
   geo = input<{ lat: number; lon: number }>();

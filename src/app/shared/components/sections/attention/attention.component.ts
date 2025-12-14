@@ -11,6 +11,7 @@ import { NgTemplateOutlet } from '@angular/common';
   imports: [NgTemplateOutlet],
   templateUrl: './attention.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { class: 'block' },
 })
 export class AttentionComponent {
   titleTemplate = input<TemplateRef<unknown>>();

@@ -1,8 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
   HeadComponent,
   OverviewComponent,
@@ -24,7 +20,7 @@ import { EasterEggComponent } from '../ui/sections/easter-egg/easter-egg.compone
   ],
   templateUrl: './about.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  host: { class: 'block' },
 })
 export class AboutComponent {
   public readonly metrics: Metric[] = [

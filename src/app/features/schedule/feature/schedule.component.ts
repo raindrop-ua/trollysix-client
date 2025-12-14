@@ -3,7 +3,6 @@ import {
   inject,
   OnInit,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
@@ -33,7 +32,7 @@ import { GenericHeaderComponent } from '../../../shared/components/sections/gene
   ],
   templateUrl: './schedule.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  host: { class: 'block' },
 })
 export class ScheduleComponent implements OnInit {
   private store = inject(Store);

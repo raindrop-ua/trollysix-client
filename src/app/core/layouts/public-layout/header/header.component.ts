@@ -6,7 +6,6 @@ import {
   ChangeDetectorRef,
   DestroyRef,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { filter } from 'rxjs';
@@ -22,7 +21,9 @@ import { ThemeSwitcherComponent } from '../../../../shared/components/theme-swit
   imports: [RouterLink, ThemeSwitcherComponent, SvgIconComponent],
   templateUrl: './header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  host: {
+    class: 'block',
+  },
 })
 export class HeaderComponent implements OnInit {
   protected readonly AppRouteEnum = AppRouteEnum;

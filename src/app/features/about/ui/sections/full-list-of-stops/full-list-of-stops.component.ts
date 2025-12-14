@@ -6,7 +6,6 @@ import {
   OnInit,
   DestroyRef,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouteStop } from '../../../data-access/models/route-stops.model';
@@ -19,14 +18,10 @@ import { StopsListComponent } from './stops-list/stops-list.component';
 
 @Component({
   selector: 'app-full-list-of-stops',
-  imports: [
-    GenericSectionBlockComponent,
-    SpinnerComponent,
-    StopsListComponent,
-  ],
+  imports: [GenericSectionBlockComponent, SpinnerComponent, StopsListComponent],
   templateUrl: './full-list-of-stops.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  host: { class: 'block' },
 })
 export class FullListOfStopsComponent implements OnInit {
   private stopsListService = inject(StopsListService);
