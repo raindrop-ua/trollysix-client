@@ -1,6 +1,6 @@
-<app-generic-section-block appRevealOnScroll="600" class="block relative overflow-hidden">
+<app-generic-section-block appRevealOnScroll="600" class="block relative">
   <div class="prose prose-slate dark:prose-invert max-w-none">
-    @for (paragraph of copyAbout.generalDescription; track paragraph;) {
+    @for (paragraph of copyAbout.generalDescription; track paragraph) {
       <p [ngClass]="{ 'mb-2': !$last }">{{ paragraph }}</p>
     }
   </div>
