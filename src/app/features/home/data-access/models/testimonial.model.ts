@@ -4,4 +4,5 @@ export interface Testimonial {
   place: string;
   text: string;
   avatarUrl: string;
+  rating: number;
 }
