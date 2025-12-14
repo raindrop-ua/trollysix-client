@@ -1,8 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AppRouteEnum } from '../../../../../core/enums/app-route.enum';
 import { BtnDirective } from '../../../../../shared/directives/btn.directive';
@@ -13,7 +9,7 @@ import { copy } from '../../../../../core/content/copy.util';
   imports: [RouterLink, BtnDirective],
   templateUrl: './ready-for-route-six.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  host: { class: 'block' },
 })
 export class ReadyForRouteSixComponent {
   protected readonly AppRouteEnum = AppRouteEnum;

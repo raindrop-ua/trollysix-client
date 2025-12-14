@@ -5,6 +5,7 @@ import { provideAppHttp } from './core/config/app-http.providers';
 import { provideAppRouter } from './core/config/app-router.providers';
 import { provideAppPwa } from './core/config/app-pwa.providers';
 import { provideAppState } from './core/config/app-state.providers';
+import { provideAppInit } from './core/config/app-init.providers';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,5 +14,6 @@ export const appConfig: ApplicationConfig = {
     provideAppRouter(routes),
     provideAppPwa(),
     provideAppState(),
+    provideAppInit(),
   ],
 };

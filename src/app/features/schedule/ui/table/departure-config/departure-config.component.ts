@@ -1,9 +1,4 @@
-import {
-  Component,
-  inject,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ScheduleService } from '../../../services/schedule.service';
 import { AsyncPipe } from '@angular/common';
 
@@ -12,7 +7,7 @@ import { AsyncPipe } from '@angular/common';
   imports: [AsyncPipe],
   templateUrl: './departure-config.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  host: { class: 'block' },
 })
 export class DepartureConfigComponent {
   private readonly schedule = inject(ScheduleService);

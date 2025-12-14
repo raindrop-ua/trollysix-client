@@ -8,7 +8,6 @@ import {
   signal,
   ViewChild,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
 import { isPlatformBrowser, NgClass } from '@angular/common';
 import { Observable, Subject } from 'rxjs';
@@ -23,7 +22,7 @@ import { SvgIconComponent } from '../../../shared/components/svg-icon/svg-icon.c
   imports: [NgClass, SvgIconComponent],
   templateUrl: './dialog.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  host: { class: 'block' },
 })
 export class DialogComponent implements OnDestroy {
   @ViewChild('dialog', { static: true })

@@ -1,20 +1,14 @@
 import {
   EnvironmentProviders,
   ErrorHandler,
-  inject,
   makeEnvironmentProviders,
-  PLATFORM_ID,
   provideBrowserGlobalErrorListeners,
-  provideEnvironmentInitializer,
 } from '@angular/core';
-import { IMAGE_CONFIG, isPlatformBrowser } from '@angular/common';
+import { IMAGE_CONFIG } from '@angular/common';
 import { NAVIGATION, NAVIGATION_TOKEN } from './navigation.config';
 import { EVENT_MANAGER_PLUGINS } from '@angular/platform-browser';
 import { CustomErrorHandler } from '../custom-error-handler';
 import { PreventDefaultEventPlugin } from '../plugins/prevent-default-events';
-import { SwUpdateService } from '../services/sw-update.service';
-import { PageVisibilityService } from '../services/page-visibility.service';
-import { SeoService } from '../services/seo.service';
 
 export function provideAppCore(): EnvironmentProviders {
   return makeEnvironmentProviders([
@@ -33,13 +27,5 @@ export function provideAppCore(): EnvironmentProviders {
       },
     },
     provideBrowserGlobalErrorListeners(),
-    provideEnvironmentInitializer(() => {
-      const platformId = inject(PLATFORM_ID);
-      if (isPlatformBrowser(platformId)) {
-        inject(SwUpdateService);
-        inject(PageVisibilityService).init();
-      }
-      inject(SeoService);
-    }),
   ]);
 }

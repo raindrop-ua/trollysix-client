@@ -25,7 +25,7 @@ export class ClockService {
       )
     : of(0);
 
-  readonly now$ = this.timeUpdateTicks$.pipe(
+  public readonly now$ = this.timeUpdateTicks$.pipe(
     map(() => new Date()),
     shareReplay({ bufferSize: 1, refCount: false }),
   );

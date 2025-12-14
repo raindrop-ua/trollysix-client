@@ -6,4 +6,12 @@
   .baseline-surface {
     @apply bg-white/60 dark:bg-slate-900/40;
   }
+
+  .baseline-background {
+    @apply bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-950;
+  }
+
+  .baseline-container {
+    @apply container mx-auto max-w-6xl px-4;
+  }
 }

@@ -1,7 +1,12 @@
-<section class="container mx-auto max-w-6xl px-4">
-  <div class="rounded-2xl baseline-borders baseline-surface p-4 backdrop-blur md:p-4">
-    <div class="grid grid-flow-col grid-rows-2 gap-4 sm:flex items-center sm:justify-between md:divide-x md:divide-white/10">
-      @let isUnavailable = (departures$ | async)?.length === 0 && !(vm$ | async)?.timetableLoading;
+<section class="baseline-container">
+  <div
+    class="rounded-2xl baseline-borders baseline-surface p-4 backdrop-blur md:p-4"
+  >
+    <div
+      class="grid grid-flow-col grid-rows-2 gap-4 sm:flex items-center sm:justify-between md:divide-x md:divide-white/10"
+    >
+      @let isUnavailable =
+        (departures$ | async)?.length === 0 && !(vm$ | async)?.timetableLoading;
       @if (vm$ | async; as vm) {
         <div class="relative flex w-full sm:w-auto">
           <app-options-selector
@@ -30,8 +35,11 @@
         <div
           class="transition"
           [ngClass]="{
-            'text-blue-700 dark:text-blue-800 animate-shake-once-delayed': (departures$ | async)?.length,
-            'text-slate-400 dark:text-slate-700' : !(departures$ | async)?.length
+            'text-blue-700 dark:text-blue-800 animate-shake-once-delayed': (
+              departures$ | async
+            )?.length,
+            'text-slate-400 dark:text-slate-700': !(departures$ | async)
+              ?.length,
           }"
         >
           <svg

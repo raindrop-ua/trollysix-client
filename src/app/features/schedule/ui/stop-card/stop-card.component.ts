@@ -3,7 +3,6 @@ import {
   input,
   inject,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Stop } from '../../data-access/models/stop.model';
@@ -17,8 +16,8 @@ import { SvgIconComponent } from '../../../../shared/components/svg-icon/svg-ico
   selector: 'app-stop-card',
   imports: [SvgIconComponent, AsyncPipe],
   templateUrl: './stop-card.component.html',
-  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { class: 'block' },
 })
 export class StopCardComponent {
   private store = inject(Store);

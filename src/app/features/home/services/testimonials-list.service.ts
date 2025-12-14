@@ -16,11 +16,11 @@ export class TestimonialsListService {
     .get<Testimonial[]>(`${this.BASE_URL}/testimonials`)
     .pipe(shareReplay({ bufferSize: 1, refCount: true }));
 
-  getTestimonials(): Observable<Testimonial[]> {
+  public getTestimonials(): Observable<Testimonial[]> {
     return this.testimonials$;
   }
 
-  getTestimonialsSafe(): Observable<Testimonial[]> {
+  public getTestimonialsSafe(): Observable<Testimonial[]> {
     return this.getTestimonials().pipe(
       catchError(() => {
         return of<Testimonial[]>([]);

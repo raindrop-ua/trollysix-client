@@ -2,7 +2,6 @@ import {
   Component,
   inject,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
   signal,
 } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
@@ -17,7 +16,7 @@ import { SpinnerComponent } from '../../../../../shared/components/sections';
   templateUrl: './departure-table.component.html',
   imports: [DepartureTimeItemComponent, AsyncPipe, SpinnerComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  host: { class: 'block' },
 })
 export class DepartureTableComponent {
   private readonly schedule = inject(ScheduleService);

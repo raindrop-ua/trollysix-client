@@ -4,7 +4,6 @@ import {
   signal,
   OnInit,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
   DestroyRef,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -19,7 +18,7 @@ import { SpinnerComponent } from '../../../../../shared/components/sections';
   imports: [RevealOnScrollDirective, TestimonialComponent, SpinnerComponent],
   templateUrl: './testimonials.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  host: { class: 'block' },
 })
 export class TestimonialsComponent implements OnInit {
   private testimonialsListService = inject(TestimonialsListService);

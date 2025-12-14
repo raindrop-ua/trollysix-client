@@ -3,7 +3,6 @@ import {
   inject,
   input,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
 import { GeolocationService } from '../../services/geolocation.service';
 import { SvgIconComponent } from '../../../../shared/components/svg-icon/svg-icon.component';
@@ -16,7 +15,7 @@ import { BtnDirective } from '../../../../shared/directives/btn.directive';
   providers: [ClosestStopService],
   templateUrl: './stop-toolbar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  host: { class: 'block' },
 })
 export class StopToolbarComponent {
   protected readonly geolocation = inject(GeolocationService);

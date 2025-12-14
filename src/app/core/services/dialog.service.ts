@@ -13,18 +13,18 @@ interface DialogHost {
 export class DialogService {
   private host?: DialogHost;
 
-  registerHost(host: DialogHost) {
+  public registerHost(host: DialogHost) {
     this.host = host;
   }
 
-  open(config: DialogConfig): Observable<DialogResult> {
+  public open(config: DialogConfig): Observable<DialogResult> {
     if (!this.host) {
       throw new Error('Dialog host is not registered.');
     }
     return this.host.open(config);
   }
 
-  close(result: DialogResult) {
+  public close(result: DialogResult) {
     this.host?.close(result);
   }
 }
