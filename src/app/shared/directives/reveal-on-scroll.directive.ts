@@ -25,6 +25,17 @@ export class RevealOnScrollDirective implements OnInit, OnDestroy {
   ngOnInit(): void {
     if (!this.isBrowser) return;
 
+    const reduceMotion = window.matchMedia?.(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+
+    if (reduceMotion) {
+      this.el.style.removeProperty('will-change');
+      this.el.style.opacity = '1';
+      this.el.style.transform = 'none';
+      return;
+    }
+
     if (typeof IntersectionObserver === 'undefined') {
       return;
     }
