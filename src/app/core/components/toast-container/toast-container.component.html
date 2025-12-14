@@ -1,16 +1,24 @@
-<div aria-live="assertive" aria-atomic="true" class="pointer-events-none fixed inset-0 z-50 flex items-end justify-end p-6">
+<div
+  aria-live="assertive"
+  aria-atomic="true"
+  class="pointer-events-none fixed inset-0 z-50 flex items-end justify-end p-6"
+>
   <div class="flex w-full flex-col items-end space-y-3">
     @for (toast of toasts(); track toast.id) {
       <div
         tabindex="0"
         role="button"
-        class="pointer-events-auto cursor-default w-full max-w-sm shadow-sm backdrop-blur w-full max-w-sm overflow-hidden shadow-lg border-l-4 py-3 px-4 rounded-2xl flex gap-1 items-center transition duration-300 ease-in-out transform hover:scale-101 hover:-translate-y-0.5"
+        class="pointer-events-auto cursor-default w-full max-w-sm shadow-sm backdrop-blur w-full max-w-sm overflow-hidden shadow-lg border-l-4 py-3 px-4 rounded-2xl flex gap-1 items-center motion-safe:transition motion-safe:duration-300 ease-in-out motion-safe:transform motion-safe:hover:scale-101 motion-safe:hover:-translate-y-0.5"
         [ngClass]="{
-            'bg-red-100/90 dark:bg-red-900/90 border-red-500/90 dark:border-red-700/90 text-red-900 dark:text-red-100 hover:bg-red-200/90 dark:hover:bg-red-800/90': toast.type === 'error',
-            'bg-blue-100/90 dark:bg-blue-900/90 border-blue-500/90 dark:border-blue-700/90 text-blue-900 dark:text-blue-100 hover:bg-blue-200/90 dark:hover:bg-blue-800/90': toast.type === 'info',
-            'bg-yellow-100/90 dark:bg-yellow-900/90 border-yellow-500/90 dark:border-yellow-700/90 text-yellow-900 dark:text-yellow-100 hover:bg-yellow-200/90 dark:hover:bg-yellow-800/90': toast.type === 'warning',
-            'bg-green-100/90 dark:bg-green-900/90 border-green-500/90 dark:border-green-700/90 text-green-900 dark:text-green-100 hover:bg-green-200/90 dark:hover:bg-green-800/90': toast.type === 'success'
-          }"
+          'bg-red-100/90 dark:bg-red-900/90 border-red-500/90 dark:border-red-700/90 text-red-900 dark:text-red-100 hover:bg-red-200/90 dark:hover:bg-red-800/90':
+            toast.type === 'error',
+          'bg-blue-100/90 dark:bg-blue-900/90 border-blue-500/90 dark:border-blue-700/90 text-blue-900 dark:text-blue-100 hover:bg-blue-200/90 dark:hover:bg-blue-800/90':
+            toast.type === 'info',
+          'bg-yellow-100/90 dark:bg-yellow-900/90 border-yellow-500/90 dark:border-yellow-700/90 text-yellow-900 dark:text-yellow-100 hover:bg-yellow-200/90 dark:hover:bg-yellow-800/90':
+            toast.type === 'warning',
+          'bg-green-100/90 dark:bg-green-900/90 border-green-500/90 dark:border-green-700/90 text-green-900 dark:text-green-100 hover:bg-green-200/90 dark:hover:bg-green-800/90':
+            toast.type === 'success',
+        }"
         (click)="dismiss(toast.id)"
       >
         <svg
@@ -24,7 +32,7 @@
             'text-red-600': toast.type === 'error',
             'text-blue-600': toast.type === 'info',
             'text-yellow-600': toast.type === 'warning',
-            'text-green-600': toast.type === 'success'
+            'text-green-600': toast.type === 'success',
           }"
         ></svg>
         <div>
