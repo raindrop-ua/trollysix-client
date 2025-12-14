@@ -8,7 +8,7 @@ import { RouteStop } from '../../../../data-access/models/route-stops.model';
   imports: [StopsListItemComponent, SvgIconComponent],
   templateUrl: './stops-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { class: 'block' },
+  host: { class: 'flex' },
 })
 export class StopsListComponent {
   public title = input.required<string>();

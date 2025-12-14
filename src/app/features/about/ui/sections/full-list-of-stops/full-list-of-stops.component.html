@@ -1,21 +1,19 @@
 <app-generic-section-block class="block mb-10">
   <header>
-    <h2
-      class="text-xl font-semibold text-slate-900 dark:text-white"
-    >List of stops of the route</h2>
+    <h2 class="text-xl font-semibold text-slate-900 dark:text-white">
+      List of stops of the route
+    </h2>
     <p class="mt-1 text-sm text-slate-600 dark:text-slate-300"></p>
   </header>
 
   @if (routeStops().length) {
     <div class="grid gap-3 sm:gap-4 grid-cols-1 md:grid-cols-2">
       <app-stops-list
-        class="flex"
         [title]="'Forward direction'"
         [direction]="'forward'"
         [stops]="routeStopsForward()"
       />
       <app-stops-list
-        class="flex"
         [title]="'Backward direction'"
         [direction]="'backward'"
         [stops]="routeStopsBackward()"
@@ -24,5 +22,4 @@
   } @else {
     <app-spinner />
   }
-
 </app-generic-section-block>
