@@ -1,6 +1,6 @@
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
-import { ScheduleService } from '../../../services/schedule.service';
 import { AsyncPipe } from '@angular/common';
+import { ScheduleService } from '../../../services/schedule.service';
 
 @Component({
   selector: 'app-departure-config',

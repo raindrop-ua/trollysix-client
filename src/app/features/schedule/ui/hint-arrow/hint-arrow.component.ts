@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, input } from '@angular/core';
-import { DirectionName } from '../../data-access/models/direction.model';
 import { NgClass } from '@angular/common';
+import { DirectionName } from '../../data-access/models/direction.model';
 
 @Component({
   selector: 'app-hint-arrow',
