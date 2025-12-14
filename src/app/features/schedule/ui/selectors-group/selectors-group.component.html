@@ -35,9 +35,8 @@
         <div
           class="transition"
           [ngClass]="{
-            'text-blue-700 dark:text-blue-800 animate-shake-once-delayed': (
-              departures$ | async
-            )?.length,
+            'text-blue-700 dark:text-blue-800 animate-none motion-safe:animate-shake-once-delayed':
+              (departures$ | async)?.length,
             'text-slate-400 dark:text-slate-700': !(departures$ | async)
               ?.length,
           }"

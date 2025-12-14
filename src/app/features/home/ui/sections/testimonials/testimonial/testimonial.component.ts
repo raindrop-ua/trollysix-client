@@ -1,10 +1,11 @@
 import { Component, input, ChangeDetectionStrategy } from '@angular/core';
-import { Testimonial } from '../../../../data-access/models/testimonial.model';
 import { NgOptimizedImage } from '@angular/common';
+import { Testimonial } from '../../../../data-access/models/testimonial.model';
+import { RatingStarsComponent } from '../../../../../../shared/components/rating-stars/rating-stars.component';
 
 @Component({
   selector: 'app-testimonial',
-  imports: [NgOptimizedImage],
+  imports: [NgOptimizedImage, RatingStarsComponent],
   templateUrl: './testimonial.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'block' },

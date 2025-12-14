@@ -1,11 +1,16 @@
-@use "./fonts";
+@use './fonts';
 
 /* stylelint-disable-next-line */
 @theme {
   /* stylelint-disable-next-line */
-  --font-sans: "Montserrat", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  --font-sans:
+    'Montserrat', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
   /* stylelint-disable-next-line */
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-mono:
+    'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
 
   --breakpoint-xs: 30rem;
   --breakpoint-2xl: 100rem;
@@ -19,7 +24,8 @@
   }
 
   to {
-    opacity: 1; transform: none;
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -30,6 +36,19 @@
 }
 
 .reveal {
-  animation: fade-up 1000ms var(--reveal-ease, cubic-bezier(.22,1,.36,1)) both;
+  animation: fade-up 1000ms var(--reveal-ease, cubic-bezier(0.22, 1, 0.36, 1))
+    both;
   animation-delay: var(--reveal-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-preset {
+    opacity: 1 !important;
+    transform: none !important;
+    will-change: auto;
+  }
+
+  .reveal {
+    animation: none !important;
+  }
 }
