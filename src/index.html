@@ -1,28 +1,40 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>Trolly Six</title>
-  <base href="/" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <link rel="manifest" href="/manifest.webmanifest" />
-  <script>
-    (function () {
-      try {
-        const saved = localStorage.getItem('theme');
-        const prefersDark = typeof matchMedia === 'function' && matchMedia('(prefers-color-scheme: dark)').matches;
-        const mode = saved === 'light' || saved === 'dark' ? saved : prefersDark ? 'dark' : 'light';
-        document.documentElement.classList.toggle('dark', mode === 'dark');
-        document.documentElement.setAttribute('data-theme', mode);
-        document.documentElement.style.colorScheme = mode;
-      } catch {}
-    })();
-  </script>
-  <meta name="theme-color" content="#000000" />
-</head>
-<body>
-<app-root></app-root>
-<noscript>Please enable JavaScript to continue using this application.</noscript>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Trolly Six</title>
+    <base href="/" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+    />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <script>
+      (function () {
+        try {
+          const saved = localStorage.getItem('theme');
+          const prefersDark =
+            typeof matchMedia === 'function' &&
+            matchMedia('(prefers-color-scheme: dark)').matches;
+          const mode =
+            saved === 'light' || saved === 'dark'
+              ? saved
+              : prefersDark
+                ? 'dark'
+                : 'light';
+          document.documentElement.classList.toggle('dark', mode === 'dark');
+          document.documentElement.setAttribute('data-theme', mode);
+          document.documentElement.style.colorScheme = mode;
+        } catch {}
+      })();
+    </script>
+    <meta name="theme-color" content="#000000" />
+  </head>
+  <body>
+    <app-root></app-root>
+    <noscript
+      >Please enable JavaScript to continue using this application.</noscript
+    >
+  </body>
 </html>

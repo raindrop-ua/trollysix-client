@@ -4,6 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-color-splash',
   imports: [],
   templateUrl: './color-splash.component.html',
-  styles: ``,
+  host: { class: 'block' },
 })
 export class ColorSplashComponent {}
