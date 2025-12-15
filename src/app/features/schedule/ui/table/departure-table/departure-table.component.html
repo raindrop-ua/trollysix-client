@@ -1,6 +1,11 @@
-<div class="grid grid-cols-4 gap-2 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10">
+<div
+  class="grid grid-cols-4 gap-2 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 2xl:grid-cols-14 3xl:grid-cols-16"
+>
   @for (departure of departures$ | async; track departure.time) {
-    <app-departure-time-item [departure]="departure" (clickTime)="onSelectTime($event)"/>
+    <app-departure-time-item
+      [departure]="departure"
+      (clickTime)="onSelectTime($event)"
+    />
   }
 </div>
 @if ((vm$ | async)?.timetableLoading) {
@@ -9,8 +14,13 @@
   </div>
 }
 @if ((departures$ | async)?.length === 0 && !(vm$ | async)?.timetableLoading) {
-  <div class="flex flex-col items-center justify-center w-full text-center py-4">
+  <div
+    class="flex flex-col items-center justify-center w-full text-center py-4"
+  >
     <p class="text-xl">No departures found.</p>
-    <p class="mt-4 text-lg">This stop may not have any departures in the selected direction. Please try choosing the opposite direction.</p>
+    <p class="mt-4 text-lg">
+      This stop may not have any departures in the selected direction. Please
+      try choosing the opposite direction.
+    </p>
   </div>
 }
