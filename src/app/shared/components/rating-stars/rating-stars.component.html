@@ -2,10 +2,8 @@
   @for (kind of starKinds(); track $index) {
     <svg
       [icon]="kind === 'filled' ? 'star-filled' : 'star-empty'"
-      width="18"
-      height="18"
       stroke-width="2"
-      class="transition-opacity"
+      class="transition-opacity size-4"
       [class.text-yellow-500]="kind === 'filled' || kind === 'empty-yellow'"
       [class.dark:text-yellow-400]="
         kind === 'filled' || kind === 'empty-yellow'
