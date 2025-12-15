@@ -23,7 +23,7 @@ export class StopCardComponent {
   private store = inject(Store);
   public readonly showDescriptions = input<boolean>(false);
   public readonly showDepartures = input<boolean>(true);
-  public readonly showBackgroundImage = input<boolean>(false);
+  public readonly showBackgroundImage = input<boolean>(true);
   public selected = input<boolean>(false);
   public stopData = input<Stop>();
 

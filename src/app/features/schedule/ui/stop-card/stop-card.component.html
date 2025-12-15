@@ -13,16 +13,16 @@
     (click)="onSelectStop(stop.id, isSelected)"
   >
     @if (showBackgroundImage() && stop.imageUrl) {
-      <div class="absolute inset-0 backdrop-blur-sm z-1">
+      <div class="absolute inset-0">
         <img
           [ngSrc]="stop.imageUrl"
           [alt]="stop.name"
-          class="h-full w-full object-cover opacity-15"
+          class="h-full w-full object-cover opacity-10"
           fill
         />
       </div>
     }
-    <div class="flex items-start justify-between z-5">
+    <div class="flex items-start justify-between">
       <div>
         <div
           class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400"
@@ -62,7 +62,7 @@
       }
     </div>
     <div
-      class="flex flex-col items-start justify-end basis-full line-clamp-2 text-sm text-slate-600 dark:text-slate-300 z-5"
+      class="flex flex-col items-start justify-end basis-full line-clamp-2 text-sm text-slate-600 dark:text-slate-300"
     >
       @if (showDescriptions()) {
         <span>{{ stop.description }}</span>
