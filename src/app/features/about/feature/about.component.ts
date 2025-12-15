@@ -7,7 +7,7 @@ import {
 } from '../ui';
 import { Metric, MetricsComponent } from '../../../shared/components/sections';
 import { EasterEggComponent } from '../ui/sections/easter-egg/easter-egg.component';
-import { OperatingOfRouteComponent } from '../../../shared/components/sections/operating-of-route/operating-of-route.component';
+import { RouteOperationComponent } from '../../../shared/components/sections/route-operation/route-operation.component';
 
 @Component({
   selector: 'app-about',
@@ -18,7 +18,7 @@ import { OperatingOfRouteComponent } from '../../../shared/components/sections/o
     MetricsComponent,
     FullListOfStopsComponent,
     EasterEggComponent,
-    OperatingOfRouteComponent,
+    RouteOperationComponent,
   ],
   templateUrl: './about.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

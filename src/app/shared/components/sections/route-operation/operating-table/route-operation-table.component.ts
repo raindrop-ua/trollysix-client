@@ -14,13 +14,13 @@ interface IntervalCell {
 }
 
 @Component({
-  selector: 'app-operating-table',
+  selector: 'app-route-operation-table',
   imports: [SvgIconComponent],
-  templateUrl: './operating-table.component.html',
+  templateUrl: './route-operation-table.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'block' },
 })
-export class OperatingTableComponent {
+export class RouteOperationTableComponent {
   public dayOperatingData = input.required<OperatingDay>();
 
   public readonly intervalCells = computed<IntervalCell[]>(() => {

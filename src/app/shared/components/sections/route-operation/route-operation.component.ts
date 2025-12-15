@@ -1,16 +1,16 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { GenericSectionBlockComponent } from '../generic-section-block/generic-section-block.component';
-import { OperatingTableComponent } from './operating-table/operating-table.component';
+import { RouteOperationTableComponent } from './operating-table/route-operation-table.component';
 import { OperatingDays } from '../../../models/operating-days.model';
 
 @Component({
-  selector: 'app-operating-of-route',
-  imports: [GenericSectionBlockComponent, OperatingTableComponent],
-  templateUrl: './operating-of-route.component.html',
+  selector: 'app-route-operation',
+  imports: [GenericSectionBlockComponent, RouteOperationTableComponent],
+  templateUrl: './route-operation.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'block' },
 })
-export class OperatingOfRouteComponent {
+export class RouteOperationComponent {
   public readonly operatingData = signal<OperatingDays>({
     weekday: {
       title: 'Weekday',
