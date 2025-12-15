@@ -26,7 +26,10 @@
             [preselected]="(vm$ | async)?.selectedDirectionName"
           >
             @if (isUnavailable) {
-              <app-hint-arrow [direction]="vm.selectedDirectionName" />
+              <app-hint-arrow
+                slot="footer"
+                [direction]="vm.selectedDirectionName"
+              />
             }
           </app-options-selector>
         </div>
