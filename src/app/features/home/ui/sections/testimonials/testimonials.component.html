@@ -1,4 +1,4 @@
-<section class="baseline-container py-16 md:py-20">
+<section class="baseline-container py-16 md:py-20 relative">
   <div class="mb-8 text-center">
     <h3 class="text-2xl md:text-4xl font-bold text-slate-900 dark:text-white">
       Loved by everyday riders
@@ -7,11 +7,17 @@
       No advertising. No noise. Just what helps you get things done.
     </p>
   </div>
+  @if (testimonials() && testimonials()?.overallRating; as overallRating) {
+    <div class="flex gap-2 justify-center items-center mb-8">
+      <app-rating-stars class="mt-1" [rating]="overallRating || 0" />
+      <span>{{ overallRating | number: '1.1' }}</span>
+    </div>
+  }
 
-  @if (testimonials().length) {
+  @if (testimonials()?.testimonials?.length) {
     <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
       @for (
-        testimonial of testimonials();
+        testimonial of testimonials()?.testimonials;
         track testimonial.id;
         let i = $index
       ) {
@@ -24,4 +30,8 @@
   } @else {
     <app-spinner />
   }
+  <app-color-splash
+    aria-hidden="true"
+    class="text-sky-700/25 dark:text-blue-400/33"
+  />
 </section>

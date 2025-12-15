@@ -6,3 +6,8 @@ export interface Testimonial {
   avatarUrl: string;
   rating: number;
 }
+
+export interface Testimonials {
+  overallRating: number;
+  testimonials: Testimonial[];
+}
