@@ -12,7 +12,16 @@
     [style.height.%]="100"
     (click)="onSelectStop(stop.id, isSelected)"
   >
-    <div class="absolute inset-0 -z-10 backdrop-blur-sm"></div>
+    @if (showBackgroundImage() && stop.imageUrl) {
+      <div class="absolute inset-0">
+        <img
+          [ngSrc]="stop.imageUrl"
+          [alt]="stop.name"
+          class="h-full w-full object-cover opacity-10"
+          fill
+        />
+      </div>
+    }
     <div class="flex items-start justify-between">
       <div>
         <div
