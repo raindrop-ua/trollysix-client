@@ -12,7 +12,16 @@
     [style.height.%]="100"
     (click)="onSelectStop(stop.id, isSelected)"
   >
-    <div class="absolute inset-0 -z-10 backdrop-blur-sm"></div>
+    @if (showBackgroundImage() && stop.imageUrl) {
+      <div class="absolute inset-0">
+        <img
+          [ngSrc]="stop.imageUrl"
+          [alt]="stop.name"
+          class="h-full w-full object-cover opacity-10"
+          fill
+        />
+      </div>
+    }
     <div class="flex items-start justify-between">
       <div>
         <div
@@ -23,8 +32,7 @@
             @if (stop.availableDirections.includes('forward')) {
               <svg
                 icon="forward"
-                width="18"
-                height="18"
+                class="size-4"
                 stroke="currentColor"
                 stroke-width="2"
               ></svg>
@@ -32,8 +40,7 @@
             @if (stop.availableDirections.includes('backward')) {
               <svg
                 icon="backward"
-                width="18"
-                height="18"
+                class="size-4"
                 stroke="currentColor"
                 stroke-width="2"
               ></svg>
@@ -65,8 +72,7 @@
         >
           <svg
             icon="clock"
-            width="18"
-            height="18"
+            class="size-4"
             stroke="currentColor"
             stroke-width="2"
           ></svg>

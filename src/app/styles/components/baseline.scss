@@ -3,6 +3,10 @@
     @apply border border-slate-300/40 dark:border-white/10;
   }
 
+  .baseline-borders-color {
+    @apply border-slate-300/40 dark:border-white/10;
+  }
+
   .baseline-surface {
     @apply bg-white/60 dark:bg-slate-900/40;
   }
