@@ -6,7 +6,7 @@
     <p class="mt-1 text-sm text-slate-600 dark:text-slate-300"></p>
   </header>
   <div class="flex flex-col gap-5">
-    <app-operating-table [dayOperatingData]="operatingData().weekday" />
-    <app-operating-table [dayOperatingData]="operatingData().weekend" />
+    <app-route-operation-table [dayOperatingData]="operatingData().weekday" />
+    <app-route-operation-table [dayOperatingData]="operatingData().weekend" />
   </div>
 </app-generic-section-block>
