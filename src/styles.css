@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+
+@import './app/styles/main.css';
+@import './app/styles/components/baseline.css';
+@import './app/styles/components/stops.css';
+@import './app/styles/components/timetable.css';
+@import './app/styles/animations.css';
+
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
