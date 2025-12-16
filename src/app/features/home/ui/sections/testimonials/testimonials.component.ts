@@ -13,8 +13,10 @@ import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal
 import { TestimonialsListService } from '../../../services/testimonials-list.service';
 import { TestimonialComponent } from './testimonial/testimonial.component';
 import { SpinnerComponent } from '../../../../../shared/components/sections';
-import { RatingStarsComponent } from '../../../../../shared/components/rating-stars/rating-stars.component';
-import { ColorSplashComponent } from '../../../../../shared/components/color-splash/color-splash.component';
+import {
+  RatingStarsComponent,
+  ColorSplashComponent,
+} from '../../../../../shared/components';
 
 @Component({
   selector: 'app-testimonials',

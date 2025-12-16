@@ -1,6 +1,6 @@
 import { Component, computed, input } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
-import { SvgIconComponent } from '../../../../shared/components/svg-icon/svg-icon.component';
+import { SvgIconComponent } from '../../../../shared/components';
 
 @Component({
   selector: 'app-geo-badge',

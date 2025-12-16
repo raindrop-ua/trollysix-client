@@ -20,6 +20,11 @@ export const routes: Routes = [
         loadChildren: () => import('./features/about/feature/about.routes'),
       },
       {
+        path: 'settings',
+        loadChildren: () =>
+          import('./features/settings/feature/settings.routes'),
+      },
+      {
         path: '404',
         loadChildren: () =>
           import('./features/static/not-found/feature/not-found.routes'),
