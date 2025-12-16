@@ -1,0 +1,37 @@
+@layer stops {
+  .stop-card {
+    @apply relative flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br p-4 text-left shadow-sm ring-1 hover:ring-3 motion-safe:transition motion-safe:hover:-translate-y-0.5;
+  }
+
+  .stop-card-1 {
+    @apply from-sky-400/20 via-cyan-400/20 to-blue-500/20 ring-sky-400/50 dark:from-sky-500/15 dark:via-cyan-500/15 dark:to-blue-600/15;
+  }
+
+  .stop-card-2 {
+    @apply from-emerald-400/20 via-teal-400/15 to-emerald-500/20 ring-emerald-400/50;
+  }
+
+  .stop-card-3 {
+    @apply from-fuchsia-400/20 via-purple-400/15 to-indigo-500/20 ring-fuchsia-400/50;
+  }
+
+  .stop-card-4 {
+    @apply from-pink-400/15 via-rose-400/15 to-rose-500/15 ring-pink-400/50;
+  }
+
+  .stop-selected {
+    @apply ring-2;
+  }
+
+  .selector {
+    @apply cursor-pointer px-4 py-2 text-sm text-slate-600 hover:bg-slate-900/5 disabled:cursor-default disabled:opacity-25 dark:text-slate-300 dark:hover:bg-white/5;
+  }
+
+  .selector-selected {
+    @apply bg-slate-900/5 text-slate-900 hover:bg-slate-900/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10;
+  }
+
+  .shared-route-badge {
+    @apply min-w-10 cursor-default rounded-lg border border-blue-500/30 bg-blue-500/10 px-2 py-1 text-center text-base text-blue-600 dark:text-blue-300;
+  }
+}
