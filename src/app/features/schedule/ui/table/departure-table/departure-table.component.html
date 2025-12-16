@@ -1,5 +1,5 @@
 <div
-  class="grid grid-cols-4 gap-2 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 2xl:grid-cols-14 3xl:grid-cols-16"
+  class="3xl:grid-cols-16 grid grid-cols-4 gap-2 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 2xl:grid-cols-14"
 >
   @for (departure of departures$ | async; track departure.time) {
     <app-departure-time-item
@@ -9,13 +9,13 @@
   }
 </div>
 @if ((vm$ | async)?.timetableLoading) {
-  <div class="min-h-[150px] flex items-center justify-center w-full">
+  <div class="flex min-h-38 w-full items-center justify-center">
     <app-spinner />
   </div>
 }
 @if ((departures$ | async)?.length === 0 && !(vm$ | async)?.timetableLoading) {
   <div
-    class="flex flex-col items-center justify-center w-full text-center py-4"
+    class="flex w-full flex-col items-center justify-center py-4 text-center"
   >
     <p class="text-xl">No departures found.</p>
     <p class="mt-4 text-lg">

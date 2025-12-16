@@ -1,23 +1,23 @@
 <figure
-  class="h-full rounded-2xl baseline-borders baseline-surface p-5 backdrop-blur hover:-translate-y-0.5 transition"
+  class="baseline-borders baseline-surface h-full rounded-2xl p-5 backdrop-blur transition hover:-translate-y-0.5"
 >
   <figcaption
-    class="grid grid-cols-[max-content_1fr] gap-4 h-full max-lg:line-y lg:group-first:line-y"
+    class="max-lg:line-y lg:group-first:line-y grid h-full grid-cols-[max-content_1fr] gap-4"
   >
     <img
-      class="aspect-square size-12 lg:size-16 rounded-full outline -outline-offset-1 outline-gray-950/5 dark:outline-white/10"
+      class="aspect-square size-12 rounded-full outline -outline-offset-1 outline-gray-950/5 lg:size-16 dark:outline-white/10"
       [ngSrc]="'/assets/images/testimonials/' + testimonial().avatarUrl"
       width="256"
       height="256"
       [alt]="testimonial().name"
     />
-    <div class="text-sm h-full flex flex-col justify-between">
+    <div class="flex h-full flex-col justify-between text-sm">
       <p class="text-gray-600 dark:text-gray-400">{{ testimonial().text }}</p>
       <div>
         @if (testimonial().rating) {
           <app-rating-stars class="mt-3" [rating]="testimonial().rating" />
         }
-        <p class="font-medium mt-2">
+        <p class="mt-2 font-medium">
           — {{ testimonial().name }}, {{ testimonial().place }}
         </p>
       </div>

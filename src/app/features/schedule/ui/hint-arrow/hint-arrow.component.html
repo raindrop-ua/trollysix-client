@@ -1,11 +1,11 @@
 <div
-  class="pointer-events-none absolute transition animate-none motion-safe:animate-cartoon-bounce w-full flex items-center top-4 text-yellow-500 dark:text-yellow-400"
+  class="motion-safe:animate-cartoon-bounce pointer-events-none absolute top-4 flex w-full animate-none items-center text-yellow-500 transition dark:text-yellow-400"
   [ngClass]="{
     'justify-start': direction() === 'backward',
     'justify-end': direction() === 'forward',
   }"
 >
-  <div class="w-[50%] flex items-center justify-center">
+  <div class="flex w-[50%] items-center justify-center">
     <div class="w-20">
       <svg
         width="100%"

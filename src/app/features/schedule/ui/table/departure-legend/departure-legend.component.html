@@ -1,18 +1,26 @@
 @if ((departures$ | async)?.length) {
-  <div class="rounded-2xl baseline-borders baseline-surface p-3 backdrop-blur md:p-4">
-    <div class="flex flex-wrap items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
-      <span class="cursor-default font-medium rounded-md bg-teal-400/30 px-2 py-1 text-teal-900 dark:text-teal-100">
-        Upcoming
-      </span>
-      <span class="cursor-default font-medium rounded-md bg-amber-400 px-2 py-1 text-slate-900">
-        Soon
-      </span>
-      <span class="cursor-default font-medium rounded-md bg-red-500/80 px-2 py-1 text-white">
-        Now
-      </span>
-      <span class="cursor-default font-medium rounded-md bg-slate-800/10 px-2 py-1 text-slate-600 dark:bg-white/5 dark:text-slate-400">
-        Past
-      </span>
+  <div
+    class="baseline-borders baseline-surface rounded-2xl p-3 backdrop-blur md:p-4"
+  >
+    <div
+      class="flex flex-wrap items-center gap-3 text-xs text-slate-500 dark:text-slate-400"
+    >
+      <span
+        class="cursor-default rounded-md bg-teal-400/30 px-2 py-1 font-medium text-teal-900 dark:text-teal-100"
+        >Upcoming</span
+      >
+      <span
+        class="cursor-default rounded-md bg-amber-400 px-2 py-1 font-medium text-slate-900"
+        >Soon</span
+      >
+      <span
+        class="cursor-default rounded-md bg-red-500/80 px-2 py-1 font-medium text-white"
+        >Now</span
+      >
+      <span
+        class="cursor-default rounded-md bg-slate-800/10 px-2 py-1 font-medium text-slate-600 dark:bg-white/5 dark:text-slate-400"
+        >Past</span
+      >
     </div>
   </div>
 }
