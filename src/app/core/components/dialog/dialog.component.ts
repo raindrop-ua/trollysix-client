@@ -14,7 +14,7 @@ import { Observable, Subject } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { DialogConfig, DialogResult } from '../../models/dialog.models';
 import { DialogService } from '../../services/dialog.service';
-import { SvgIconComponent } from '../../../shared/components/svg-icon/svg-icon.component';
+import { SvgIconComponent } from '../../../shared/components';
 
 @Component({
   selector: 'app-dialog',

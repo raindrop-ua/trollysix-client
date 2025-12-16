@@ -13,8 +13,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NAVIGATION_TOKEN } from '../../../config/navigation.config';
 import { AppRouteEnum } from '../../../enums/app-route.enum';
 import { DialogService } from '../../../services/dialog.service';
-import { SvgIconComponent } from '../../../../shared/components/svg-icon/svg-icon.component';
-import { ThemeSwitcherComponent } from '../../../../shared/components/theme-switcher/theme-switcher.component';
+import { SvgIconComponent } from '../../../../shared/components';
+import { ThemeSwitcherComponent } from '../../../../shared/components';
 
 @Component({
   selector: 'app-header',

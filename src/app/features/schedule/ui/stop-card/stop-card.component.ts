@@ -10,7 +10,7 @@ import { Stop } from '../../data-access/models/stop.model';
 import { DirectionName } from '../../data-access/models/direction.model';
 import { SchedulePageActions } from '../../data-access/store/schedule.actions';
 import { selectScheduleViewModel } from '../../data-access/store/schedule.selectors';
-import { SvgIconComponent } from '../../../../shared/components/svg-icon/svg-icon.component';
+import { SvgIconComponent } from '../../../../shared/components';
 
 @Component({
   selector: 'app-stop-card',
