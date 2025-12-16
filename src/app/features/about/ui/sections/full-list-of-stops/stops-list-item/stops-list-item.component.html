@@ -5,12 +5,12 @@
   <div class="relative">
     @if (!lastItem) {
       <div
-        class="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-slate-600 dark:bg-slate-300"
+        class="absolute top-0 left-1/2 h-full w-0.5 -translate-x-1/2 bg-slate-600 dark:bg-slate-300"
       ></div>
     }
     @let icon = lastItem ? 'square' : stopData.direction;
     <span
-      class="relative z-10 grid h-8 w-8 place-items-center rounded-full bg-slate-600 dark:bg-slate-300 text-blue-100 dark:text-slate-800"
+      class="relative z-10 grid h-8 w-8 place-items-center rounded-full bg-slate-600 text-blue-100 dark:bg-slate-300 dark:text-slate-800"
     >
       <svg
         [icon]="icon"
@@ -28,11 +28,11 @@
         {{ stopData.title }}
       </p>
       @if (stopData.description) {
-        <small class="text-sm text-slate-600 dark:text-slate-400 antialiased">{{
+        <small class="text-sm text-slate-600 antialiased dark:text-slate-400">{{
           stopData.description
         }}</small>
       }
-      <div class="flex gap-2 mt-1">
+      <div class="mt-1 flex gap-2">
         @if (stopData.onDemand) {
           <span
             class="inline-flex items-center rounded-xl bg-yellow-500/10 px-2 py-1 text-xs font-medium text-yellow-500 inset-ring inset-ring-yellow-500/30"

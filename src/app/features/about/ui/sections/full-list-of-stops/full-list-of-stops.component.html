@@ -1,4 +1,4 @@
-<app-generic-section-block class="block mb-12">
+<app-generic-section-block class="mb-12 block">
   <header>
     <h2 class="text-xl font-semibold text-slate-900 dark:text-white">
       List of stops of the route
@@ -7,7 +7,7 @@
   </header>
 
   @if (routeStops().length) {
-    <div class="grid gap-3 sm:gap-4 grid-cols-1 md:grid-cols-2">
+    <div class="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2">
       <app-stops-list
         [title]="'Forward direction'"
         [direction]="'forward'"
