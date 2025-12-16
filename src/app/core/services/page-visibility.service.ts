@@ -11,7 +11,7 @@ export class PageVisibilityService {
   private readonly destroyRef = inject(DestroyRef);
 
   private lastHiddenAt: number | null = null;
-  private readonly minAwayMs = 5_000;
+  private readonly minAwayMs = 10_000;
 
   public init(): void {
     const visibility$ = fromEvent(this.document, 'visibilitychange').pipe(

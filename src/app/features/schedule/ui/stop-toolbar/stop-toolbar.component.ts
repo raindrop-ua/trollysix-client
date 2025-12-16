@@ -5,9 +5,9 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 import { GeolocationService } from '../../services/geolocation.service';
-import { SvgIconComponent } from '../../../../shared/components/svg-icon/svg-icon.component';
-import { ClosestStopService } from '../../services/closest-stop.service';
 import { BtnDirective } from '../../../../shared/directives/btn.directive';
+import { ClosestStopService } from '../../services/closest-stop.service';
+import { SvgIconComponent } from '../../../../shared/components';
 
 @Component({
   selector: 'app-stop-toolbar',

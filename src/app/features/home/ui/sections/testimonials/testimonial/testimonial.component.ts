@@ -1,7 +1,7 @@
 import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { Testimonial } from '../../../../data-access/models/testimonial.model';
-import { RatingStarsComponent } from '../../../../../../shared/components/rating-stars/rating-stars.component';
+import { RatingStarsComponent } from '../../../../../../shared/components';
 
 @Component({
   selector: 'app-testimonial',

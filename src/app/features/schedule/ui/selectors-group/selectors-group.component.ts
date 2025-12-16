@@ -5,7 +5,7 @@ import { SchedulePageActions } from '../../data-access/store/schedule.actions';
 import { selectScheduleViewModel } from '../../data-access/store/schedule.selectors';
 import { ScheduleService } from '../../services/schedule.service';
 import { OptionsSelectorComponent } from '../options-selector/options-selector.component';
-import { SvgIconComponent } from '../../../../shared/components/svg-icon/svg-icon.component';
+import { SvgIconComponent } from '../../../../shared/components';
 import { HintArrowComponent } from '../hint-arrow/hint-arrow.component';
 
 @Component({
