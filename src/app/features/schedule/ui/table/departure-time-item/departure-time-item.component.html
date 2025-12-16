@@ -1,12 +1,14 @@
 <button
-  class="relative w-full cursor-default focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-slate-200/50"
+  class="relative w-full cursor-default focus:ring-2 focus:ring-slate-200/50 focus:ring-offset-2 focus:ring-offset-slate-900 focus:outline-none"
   [class]="timeClass()"
   (click)="onClick()"
 >
   @let dep = departure();
   <time class="cursor-default">{{ dep.time }}</time>
   @if (showSchedule() && dep.scheduleNumber !== null) {
-    <div class="cursor-default absolute -top-1 -right-1 backdrop-blur-xs inline-flex items-center rounded-xl bg-gray-400/20 px-2 py-1 text-xs font-medium inset-ring inset-ring-gray-400/20 shadow-sm">
+    <div
+      class="absolute -top-1 -right-1 inline-flex cursor-default items-center rounded-xl bg-gray-400/20 px-2 py-1 text-xs font-medium shadow-sm inset-ring inset-ring-gray-400/20 backdrop-blur-xs"
+    >
       #{{ dep.scheduleNumber }}
     </div>
   }

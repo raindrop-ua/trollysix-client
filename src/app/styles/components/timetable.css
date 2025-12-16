@@ -1,0 +1,21 @@
+@layer timetable {
+  .ts-time {
+    @apply rounded-xl px-3 py-2 text-center font-mono text-base transition motion-safe:hover:-translate-y-0.5;
+  }
+
+  .ts-time-past {
+    @apply border-slate-600/80 bg-slate-800/10 text-slate-600 dark:bg-white/5 dark:text-slate-400;
+  }
+
+  .ts-time-now {
+    @apply animate-none border-red-700/80 bg-red-500/80 font-semibold text-white motion-safe:animate-bounce;
+  }
+
+  .ts-time-soon {
+    @apply border-amber-600/80 bg-amber-400 font-semibold text-slate-900;
+  }
+
+  .ts-time-coming {
+    @apply border-teal-600/80 bg-teal-400/30 font-medium text-teal-900 dark:text-teal-100;
+  }
+}

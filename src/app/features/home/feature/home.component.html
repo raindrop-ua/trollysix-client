@@ -1,6 +1,6 @@
 <app-masthead />
 
-<app-metrics-covered/>
+<app-metrics-covered />
 
 @defer (on idle) {
   <app-big-claims />
@@ -13,23 +13,22 @@
     [ctaTemplate]="worksCTAs"
   />
   <ng-template #worksTitle>It just works.</ng-template>
-  <ng-template #worksDescription>No instructions. No chaos. Open it and see everything you need. Less touching, more control.</ng-template>
+  <ng-template #worksDescription
+    >No instructions. No chaos. Open it and see everything you need. Less
+    touching, more control.</ng-template
+  >
   <ng-template #worksCTAs>
-    <a
-      [routerLink]="['/schedule']"
-      appBtn="primary"
-      >{{ copyCommon.viewSchedule }}</a
-    >
-    <a
-      [routerLink]="['/about']"
-      appBtn="secondary"
-      >{{ copyCommon.whyDifferent }}</a
-    >
+    <a [routerLink]="['/schedule']" appBtn="primary">{{
+      copyCommon.viewSchedule
+    }}</a>
+    <a [routerLink]="['/about']" appBtn="secondary">{{
+      copyCommon.whyDifferent
+    }}</a>
   </ng-template>
 }
 
 @defer (on idle) {
-  <app-testimonials/>
+  <app-testimonials />
 }
 
 @defer (on idle) {
@@ -38,7 +37,10 @@
     [descriptionTemplate]="precisionDescription"
   />
   <ng-template #precisionTitle>Designed with the precision</ng-template>
-  <ng-template #precisionDescription>Every departure, every arrival — perfectly organized. Because your time deserves nothing less than perfection.</ng-template>
+  <ng-template #precisionDescription
+    >Every departure, every arrival — perfectly organized. Because your time
+    deserves nothing less than perfection.</ng-template
+  >
 }
 
 @defer (on idle) {
