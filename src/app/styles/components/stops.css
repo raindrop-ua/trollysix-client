@@ -1,6 +1,6 @@
 @layer stops {
   .stop-card {
-    @apply relative flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br p-4 text-left shadow-sm ring-1 hover:ring-3 motion-safe:transition motion-safe:hover:-translate-y-0.5;
+    @apply relative flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/10 bg-linear-to-br p-4 text-left shadow-sm ring-1 hover:ring-3 motion-safe:transition motion-safe:hover:-translate-y-0.5;
   }
 
   .stop-card-1 {
