@@ -39,16 +39,20 @@
     </ng-template>
 
     <div class="flex items-center gap-3">
-      @defer (on idle) {
-        <app-settings-button />
-      } @placeholder {
-        <ng-container *ngTemplateOutlet="placeholder"></ng-container>
+      @if (showSettingsButton()) {
+        @defer (on idle) {
+          <app-settings-button />
+        } @placeholder {
+          <ng-container *ngTemplateOutlet="placeholder"></ng-container>
+        }
       }
 
-      @defer (on idle) {
-        <app-premium-cta />
-      } @placeholder {
-        <ng-container *ngTemplateOutlet="placeholder"></ng-container>
+      @if (showPremiumButton()) {
+        @defer (on idle) {
+          <app-premium-cta />
+        } @placeholder {
+          <ng-container *ngTemplateOutlet="placeholder"></ng-container>
+        }
       }
 
       @defer (on idle) {

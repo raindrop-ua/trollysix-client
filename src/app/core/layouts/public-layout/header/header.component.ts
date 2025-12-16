@@ -42,6 +42,9 @@ export class HeaderComponent implements OnInit {
   public readonly navigation = inject(NAVIGATION_TOKEN);
   public isMenuOpen = signal(false);
 
+  public readonly showSettingsButton = signal<boolean>(true);
+  public readonly showPremiumButton = signal<boolean>(true);
+
   public ngOnInit() {
     this.router.events
       .pipe(
