@@ -1,4 +1,4 @@
-@let messages = (globalMessage$ | async);
+@let messages = globalMessage$ | async;
 
 @if (messages?.length) {
   @for (message of messages; track message.id) {
@@ -9,17 +9,19 @@
           'bg-blue-600 dark:bg-blue-800': message.type === 'info',
           'bg-green-600 dark:bg-green-800': message.type === 'news',
           'bg-yellow-400 dark:bg-yellow-600': message.type === 'issue',
-          'bg-red-500 dark:bg-red-800': message.type === 'warning'
+          'bg-red-500 dark:bg-red-800': message.type === 'warning',
         }"
       >
         <p
           [ngClass]="{
-          'text-white/80': message.type === 'info',
-          'text-white/90': message.type === 'news',
-          'text-slate-900 dark:text-white': message.type === 'issue',
-          'text-white': message.type === 'warning'
-        }"
-        >{{ message.message }}</p>
+            'text-white/80': message.type === 'info',
+            'text-white/90': message.type === 'news',
+            'text-slate-900 dark:text-white': message.type === 'issue',
+            'text-white': message.type === 'warning',
+          }"
+        >
+          {{ message.message }}
+        </p>
       </section>
     }
   }

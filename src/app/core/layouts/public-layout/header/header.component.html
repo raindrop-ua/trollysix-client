@@ -21,7 +21,7 @@
           @for (routeItem of navigation; track routeItem.path) {
             <li>
               <a
-                class="text-slate-700 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white underline-offset-8"
+                class="text-slate-700 underline-offset-8 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
                 [routerLink]="[routeItem.path]"
                 [class.underline]="isLinkActive(routeItem.path)"
                 >{{ routeItem.label }}</a
@@ -34,7 +34,7 @@
 
     <ng-template #placeholder>
       <div
-        class="inline-flex h-10 w-10 items-center justify-center rounded-xl baseline-borders bg-white/80 px-3 py-2 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 dark:bg-gray-900/70 dark:text-gray-100 dark:hover:bg-gray-900 dark:focus-visible:outline-white"
+        class="baseline-borders inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/80 px-3 py-2 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 dark:bg-gray-900/70 dark:text-gray-100 dark:hover:bg-gray-900 dark:focus-visible:outline-white"
       ></div>
     </ng-template>
 
@@ -65,7 +65,7 @@
         <button
           type="button"
           (click)="toggleMenu()"
-          class="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl baseline-borders bg-white/80 px-2 py-1 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 dark:bg-gray-900/70 dark:text-gray-100 dark:hover:bg-gray-900 dark:focus-visible:outline-white"
+          class="baseline-borders inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl bg-white/80 px-2 py-1 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 dark:bg-gray-900/70 dark:text-gray-100 dark:hover:bg-gray-900 dark:focus-visible:outline-white"
         >
           <svg
             icon="burger"
@@ -81,20 +81,20 @@
   </div>
 </div>
 <div
-  class="h-px w-full bg-gradient-to-r from-transparent via-gray-200/80 to-transparent dark:via-gray-700/70"
+  class="h-px w-full bg-linear-to-r from-transparent via-gray-200/80 to-transparent dark:via-gray-700/70"
 ></div>
 
 @if (isMenuOpen()) {
   <div
     class="sticky top-0 z-50 bg-white/60 backdrop-blur-xl dark:bg-slate-900/50"
   >
-    <nav class="md:hidden shadow-lg">
+    <nav class="shadow-lg md:hidden">
       <ul class="flex flex-col gap-4 px-6 py-4 text-lg">
         @for (routeItem of navigation; track routeItem.path) {
           <li>
             <a
               (click)="isMenuOpen.set(false)"
-              class="block text-slate-700 transition font-semibold hover:text-slate-900 dark:text-slate-300 dark:hover:text-white underline-offset-4"
+              class="block font-semibold text-slate-700 underline-offset-4 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
               [routerLink]="[routeItem.path]"
               [class.underline]="isLinkActive(routeItem.path)"
               >{{ routeItem.label }}</a

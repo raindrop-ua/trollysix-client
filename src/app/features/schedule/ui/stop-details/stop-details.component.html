@@ -1,5 +1,5 @@
 @if (stopData(); as stop) {
-  <app-generic-section-block class="block mb-12">
+  <app-generic-section-block class="mb-12 block">
     <header class="mb-4 flex flex-wrap items-center justify-between gap-3">
       <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
         {{ stop.name }} — Stop details
@@ -9,7 +9,7 @@
 
     <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
       <div
-        class="hidden md:block aspect-[16/10] w-full relative overflow-hidden baseline-surface rounded-xl ring-1 ring-slate-900/10"
+        class="baseline-surface relative hidden aspect-16/10 w-full overflow-hidden rounded-xl ring-1 ring-slate-900/10 md:block"
       >
         <img
           [ngSrc]="stop.imageUrl"
@@ -20,7 +20,7 @@
       </div>
 
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:col-span-2">
-        <div class="rounded-xl baseline-borders baseline-surface p-3">
+        <div class="baseline-borders baseline-surface rounded-xl p-3">
           <div
             class="mb-2 text-base font-medium text-slate-700 dark:text-slate-200"
           >
@@ -38,7 +38,7 @@
         </div>
 
         @if (stop.weather; as weather) {
-          <div class="rounded-xl baseline-borders baseline-surface p-3">
+          <div class="baseline-borders baseline-surface rounded-xl p-3">
             <div
               class="mb-2 text-base font-medium text-slate-700 dark:text-slate-200"
             >
@@ -48,10 +48,10 @@
               class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300"
             >
               <div
-                class="w-12 h-12 text-base relative rounded-xl baseline-borders baseline-surface p-3"
+                class="baseline-borders baseline-surface relative h-12 w-12 rounded-xl p-3 text-base"
               >
                 <img
-                  class="w-12 h-12"
+                  class="h-12 w-12"
                   [ngSrc]="weatherIconUrl()"
                   [alt]="weather.description"
                   fill
