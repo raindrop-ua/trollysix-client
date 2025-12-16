@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { GenericHeaderComponent } from '../../../shared/components/sections/generic-header/generic-header.component';
 
 @Component({
   selector: 'app-settings',
   imports: [GenericHeaderComponent],
   templateUrl: './settings.component.html',
-  styles: ``,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { class: 'block' },
 })
 export class SettingsComponent {}
