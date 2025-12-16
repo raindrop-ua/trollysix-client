@@ -39,7 +39,7 @@ export class SnowService {
       id,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: size,
+      size: size / 16,
       speed: (Math.random() + 0.5) * (size / 3),
       opacity: Math.random() * 0.6 + 0.4,
     };

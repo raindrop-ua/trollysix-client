@@ -1,16 +1,15 @@
 <div class="mt-6 p-4 w-full rounded-2xl baseline-borders baseline-surface">
-  <h4
+  <div
     class="mb-5 pb-3 text-base font-semibold text-slate-900 dark:text-white flex items-center gap-2 border-b border-slate-300/40 dark:border-white/10"
   >
     <span>{{ title() }}</span>
     <svg
       [icon]="direction()"
-      width="16"
-      height="16"
+      class="size-6"
       stroke="currentColor"
       stroke-width="2"
     ></svg>
-  </h4>
+  </div>
   <div class="flex w-full flex-col items-start">
     @for (stop of stops(); track stop.id; let i = $index, last = $last) {
       <app-stops-list-item
