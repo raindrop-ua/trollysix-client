@@ -7,7 +7,7 @@ import {
 } from '../ui';
 import { Metric, MetricsComponent } from '../../../shared/components/sections';
 import { EasterEggComponent } from '../ui/sections/easter-egg/easter-egg.component';
-import { RouteOperationComponent } from '../../../shared/components/sections/route-operation/route-operation.component';
+import { RouteOperationComponent } from '../ui';
 
 @Component({
   selector: 'app-about',

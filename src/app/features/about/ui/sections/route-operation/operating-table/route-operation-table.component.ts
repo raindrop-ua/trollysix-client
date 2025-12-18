@@ -4,8 +4,8 @@ import {
   input,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { SvgIconComponent } from '../../../svg-icon/svg-icon.component';
-import { OperatingDay } from '../../../../models/operating-days.model';
+import { SvgIconComponent } from '../../../../../../shared/components';
+import { OperatingDay } from '../../../../../../shared/models/operating-days.model';
 
 interface IntervalCell {
   value: string;

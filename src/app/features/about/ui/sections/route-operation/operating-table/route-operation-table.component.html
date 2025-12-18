@@ -38,8 +38,7 @@
       <div
         class="baseline-borders-color row-start-2 border-b p-3 text-center text-sm"
         [style.grid-column-start]="cell.gridColumnStart"
-        [class.border-r.baseline-borders-color]="!cell.isLast"
-        [class.rounded-br-2xl]="cell.isLast"
+        [class.border-r]="!cell.isLast"
       >
         {{ cell.value }}
       </div>
@@ -69,7 +68,7 @@
       <div
         class="baseline-borders-color flex items-center justify-center p-3 text-center font-semibold"
         [style.grid-column-start]="cell.gridColumnStart"
-        [class.border-r.baseline-borders-color]="!cell.isLast"
+        [class.border-r]="!cell.isLast"
         [class.rounded-br-2xl]="cell.isLast"
       >
         {{ cell.value }}
