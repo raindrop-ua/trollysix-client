@@ -1,76 +1,65 @@
 <div>
-  <div class="text-base mb-3 font-medium text-slate-700 dark:text-slate-200">
+  <div class="mb-3 text-base font-medium text-slate-700 dark:text-slate-200">
     {{ dayOperatingData().title }}
   </div>
 </div>
-<div class="overflow-x-auto baseline-borders rounded-2xl">
+<div class="baseline-borders overflow-x-auto rounded-2xl">
   <div
-    class="min-w-256 baseline-surface grid grid-cols-[minmax(14rem,1.3fr)_4.5rem_minmax(14rem,1fr)_repeat(4,minmax(6rem,0.7fr))] grid-rows-[auto_auto_auto]"
+    class="baseline-surface grid min-w-5xl grid-cols-[minmax(14rem,1.3fr)_4.5rem_minmax(14rem,1fr)_repeat(4,minmax(6rem,0.7fr))] grid-rows-[auto_auto_auto]"
   >
     <div
-      class="border-r border-b baseline-borders-color rounded-tl-2xl p-3 row-start-1 col-start-1 row-start-1 row-span-2"
+      class="baseline-borders-color col-start-1 row-span-2 row-start-1 rounded-tl-2xl border-r border-b p-3"
     ></div>
     <div
-      class="border-r border-b baseline-borders-color p-3 text-center text-sm font-medium row-start-1 col-start-2 row-span-2 flex items-center justify-center"
+      class="baseline-borders-color col-start-2 row-span-2 row-start-1 flex items-center justify-center border-r border-b p-3 text-center text-sm font-medium"
     >
       <svg
         icon="logo"
-        width="40"
-        height="50"
+        class="size-8"
         stroke="currentColor"
         stroke-width="2"
       ></svg>
     </div>
 
     <div
-      class="border-r border-b baseline-borders-color p-3 text-center text-sm font-medium row-start-1 col-start-3 row-span-2 flex items-center justify-center"
+      class="baseline-borders-color col-start-3 row-span-2 row-start-1 flex items-center justify-center border-r border-b p-3 text-center text-sm font-medium"
     >
       Operating hours<br />
       (start / end)
     </div>
 
     <div
-      class="border-b baseline-borders-color rounded-tr-2xl p-3 text-center text-sm font-medium row-start-1 col-start-4 col-span-4"
+      class="baseline-borders-color col-span-4 col-start-4 row-start-1 rounded-tr-2xl border-b p-3 text-center text-sm font-medium"
     >
       Average service interval by hour (minutes)
     </div>
 
-    <div
-      class="border-b border-r baseline-borders-color p-3 text-center text-sm row-start-2 col-start-4"
-    >
-      7:00 - 10:00
-    </div>
-    <div
-      class="border-b border-r baseline-borders-color p-3 text-center text-sm row-start-2 col-start-5"
-    >
-      10:00 - 15:00
-    </div>
-    <div
-      class="border-b border-r baseline-borders-color p-3 text-center text-sm row-start-2 col-start-6"
-    >
-      15:00 - 18:00
-    </div>
-    <div
-      class="border-b baseline-borders-color p-3 text-center text-sm row-start-2 col-start-7"
-    >
-      18:00 onwards
-    </div>
+    @for (cell of operationHours(); track cell.gridColumnStart) {
+      <div
+        class="baseline-borders-color row-start-2 border-b p-3 text-center text-sm"
+        [style.grid-column-start]="cell.gridColumnStart"
+        [class.border-r.baseline-borders-color]="!cell.isLast"
+        [class.rounded-br-2xl]="cell.isLast"
+      >
+        {{ cell.value }}
+      </div>
+    }
 
     <div
-      class="border-r baseline-borders-color rounded-bl-2xl p-3 row-start-3 col-start-1"
+      class="baseline-borders-color col-start-1 row-start-3 rounded-bl-2xl border-r p-3"
     >
       <div class="font-semibold">Historical Museum</div>
       <div class="font-semibold">Pridniprovsk</div>
     </div>
 
     <div
-      class="border-r baseline-borders-color p-3 text-center font-semibold row-start-3 col-start-2 flex items-center justify-center"
+      class="baseline-borders-color col-start-2 row-start-3 flex items-center justify-center border-r p-3 text-center font-semibold"
     >
       {{ dayOperatingData().vehiclesQuantity }}
     </div>
 
     <div
-      class="border-r baseline-borders-color p-3 text-center row-start-3 col-start-3"
+      class="baseline-borders-color col-start-3 row-start-3 border-r p-3 text-center"
     >
       <div class="font-semibold">5:55 / 20:25</div>
       <div class="font-semibold">6:00 / 21:20</div>
@@ -78,7 +67,7 @@
 
     @for (cell of intervalCells(); track cell.gridColumnStart) {
       <div
-        class="p-3 baseline-borders-color text-center font-semibold flex items-center justify-center"
+        class="baseline-borders-color flex items-center justify-center p-3 text-center font-semibold"
         [style.grid-column-start]="cell.gridColumnStart"
         [class.border-r.baseline-borders-color]="!cell.isLast"
         [class.rounded-br-2xl]="cell.isLast"

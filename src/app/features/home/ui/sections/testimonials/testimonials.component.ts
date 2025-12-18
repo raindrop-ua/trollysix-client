@@ -12,10 +12,10 @@ import { Testimonials } from '../../../data-access/models/testimonial.model';
 import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
 import { TestimonialsListService } from '../../../services/testimonials-list.service';
 import { TestimonialComponent } from './testimonial/testimonial.component';
-import { SpinnerComponent } from '../../../../../shared/components/sections';
 import {
   RatingStarsComponent,
   ColorSplashComponent,
+  SpinnerComponent,
 } from '../../../../../shared/components';
 
 @Component({
