@@ -34,26 +34,16 @@
       Average service interval by hour (minutes)
     </div>
 
-    <div
-      class="baseline-borders-color col-start-4 row-start-2 border-r border-b p-3 text-center text-sm"
-    >
-      7:00 - 10:00
-    </div>
-    <div
-      class="baseline-borders-color col-start-5 row-start-2 border-r border-b p-3 text-center text-sm"
-    >
-      10:00 - 15:00
-    </div>
-    <div
-      class="baseline-borders-color col-start-6 row-start-2 border-r border-b p-3 text-center text-sm"
-    >
-      15:00 - 18:00
-    </div>
-    <div
-      class="baseline-borders-color col-start-7 row-start-2 border-b p-3 text-center text-sm"
-    >
-      18:00 onwards
-    </div>
+    @for (cell of operationHours(); track cell.gridColumnStart) {
+      <div
+        class="baseline-borders-color row-start-2 border-b p-3 text-center text-sm"
+        [style.grid-column-start]="cell.gridColumnStart"
+        [class.border-r.baseline-borders-color]="!cell.isLast"
+        [class.rounded-br-2xl]="cell.isLast"
+      >
+        {{ cell.value }}
+      </div>
+    }
 
     <div
       class="baseline-borders-color col-start-1 row-start-3 rounded-bl-2xl border-r p-3"
