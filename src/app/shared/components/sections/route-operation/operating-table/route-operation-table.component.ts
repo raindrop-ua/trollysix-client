@@ -33,4 +33,15 @@ export class RouteOperationTableComponent {
       isLast: index === lastIndex,
     }));
   });
+
+  public readonly operationHours = computed<IntervalCell[]>(() => {
+    const operationHours = this.dayOperatingData().operationHours ?? [];
+    const lastIndex = operationHours.length - 1;
+
+    return operationHours.map((value, index) => ({
+      value,
+      gridColumnStart: 4 + index,
+      isLast: index === lastIndex,
+    }));
+  });
 }
