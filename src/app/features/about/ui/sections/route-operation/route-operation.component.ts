@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { GenericSectionBlockComponent } from '../generic-section-block/generic-section-block.component';
+import { GenericSectionBlockComponent } from '../../../../../shared/components/sections';
 import { RouteOperationTableComponent } from './operating-table/route-operation-table.component';
-import { OperatingDays } from '../../../models/operating-days.model';
+import { OperatingDays } from '../../../../../shared/models/operating-days.model';
 
 @Component({
   selector: 'app-route-operation',
