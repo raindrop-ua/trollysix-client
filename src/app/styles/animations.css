@@ -40,3 +40,35 @@
     transform: translateY(0);
   }
 }
+
+/* toast animation */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    translate: 50% 0;
+  }
+}
+
+@keyframes pop-in {
+  0% {
+    scale: 0.98;
+  }
+  50% {
+    scale: 1.02;
+  }
+}
+
+.enter-chain {
+  animation:
+    fade-in 300ms ease-out,
+    pop-in 150ms ease-out 300ms backwards;
+}
+
+.leave-chain {
+  animation:
+    pop-in 150ms ease-out forwards reverse,
+    fade-in 300ms ease-out 150ms reverse;
+}
+
+/* toast animation - end */
