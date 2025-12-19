@@ -7,7 +7,6 @@ export default [
     component: NotFoundComponent,
     data: {
       preload: true,
-      animation: 'NotFound',
       seo: {
         title: '404 | TrollySix',
         description:

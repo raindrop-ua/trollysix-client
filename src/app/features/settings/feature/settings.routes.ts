@@ -7,7 +7,6 @@ export default [
     component: SettingsComponent,
     data: {
       preload: true,
-      animation: 'Settings',
       seo: {
         title: 'Settings | TrollySix',
         description:

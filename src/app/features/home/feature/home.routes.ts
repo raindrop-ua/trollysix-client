@@ -7,7 +7,6 @@ export default [
     component: HomeComponent,
     data: {
       preload: true,
-      animation: 'Home',
       seo: {
         title: 'Home | TrollySix',
         description:
