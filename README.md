@@ -17,7 +17,7 @@
 ```bash
 git clone https://github.com/raindrop-ua/trollysix-client.git
 cd trollysix-client
-npm install
+pnpm install
 ng serve
 ```
 
