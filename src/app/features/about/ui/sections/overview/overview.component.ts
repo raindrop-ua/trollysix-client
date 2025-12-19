@@ -3,7 +3,10 @@ import { NgClass } from '@angular/common';
 import { copy } from '../../../../../core/content/copy.util';
 import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
 import { GenericSectionBlockComponent } from '../../../../../shared/components/sections';
-import { ColorSplashComponent } from '../../../../../shared/components';
+import {
+  ColorSplashComponent,
+  SvgIconComponent,
+} from '../../../../../shared/components';
 
 @Component({
   selector: 'app-overview',
@@ -12,6 +15,7 @@ import { ColorSplashComponent } from '../../../../../shared/components';
     NgClass,
     GenericSectionBlockComponent,
     ColorSplashComponent,
+    SvgIconComponent,
   ],
   templateUrl: './overview.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
