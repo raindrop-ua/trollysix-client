@@ -8,11 +8,11 @@
 
 ![Preview](docs/splash.png)
 
-## 🚀 Live Demo
+## 🚀 Live
 
 [🔗 Try it on trolly6.com](https://trolly6.com)
 
-## 📦 Run locally
+## 📦 Run frontend locally
 
 ```bash
 git clone https://github.com/raindrop-ua/trollysix-client.git
