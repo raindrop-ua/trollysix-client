@@ -6,7 +6,7 @@
 ![Angular](https://img.shields.io/badge/angular-21-brightgreen)
 ![Build](https://img.shields.io/github/actions/workflow/status/raindrop-ua/trollysix-client/ci.yml?branch=main)
 
-![Preview](docs/splash.png)
+![Preview](docs/splash@2x.png)
 
 ## 🚀 Live
 
