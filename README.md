@@ -6,13 +6,13 @@
 ![Angular](https://img.shields.io/badge/angular-21-brightgreen)
 ![Build](https://img.shields.io/github/actions/workflow/status/raindrop-ua/trollysix-client/ci.yml?branch=main)
 
-![Preview](docs/splash.png)
+![Preview](docs/splash@2x.png)
 
-## 🚀 Live Demo
+## 🚀 Live
 
 [🔗 Try it on trolly6.com](https://trolly6.com)
 
-## 📦 Run locally
+## 📦 Run frontend locally
 
 ```bash
 git clone https://github.com/raindrop-ua/trollysix-client.git

@@ -7,7 +7,6 @@ export default [
     component: TermsOfUseComponent,
     data: {
       preload: true,
-      animation: 'TermsOfUse',
       seo: {
         title: 'Terms of Use | TrollySix',
         description:

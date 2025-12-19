@@ -7,7 +7,6 @@ export default [
     component: AboutComponent,
     data: {
       preload: true,
-      animation: 'About',
       seo: {
         title: 'About | TrollySix',
         description: 'Ultimate schedule for trolleybus route number 6.',

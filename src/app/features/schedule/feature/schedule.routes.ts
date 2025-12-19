@@ -15,7 +15,6 @@ export default [
     ],
     data: {
       preload: true,
-      animation: 'Schedule',
       seo: {
         title: 'Schedule | TrollySix',
         description: 'Ultimate schedule for trolleybus route 6.',

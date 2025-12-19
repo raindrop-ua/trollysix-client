@@ -7,7 +7,6 @@ export default [
     component: PrivacyPolicyComponent,
     data: {
       preload: true,
-      animation: 'PrivacyPolicy',
       seo: {
         title: 'Privacy Policy | TrollySix',
         description:
