@@ -7,9 +7,9 @@
       <app-geo-badge [geo]="stop.geo" />
     </header>
 
-    <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+    <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
       <div
-        class="baseline-surface relative hidden aspect-16/10 w-full overflow-hidden rounded-xl ring-1 ring-slate-900/10 md:block"
+        class="baseline-surface relative hidden w-full overflow-hidden rounded-xl ring-1 ring-slate-900/10 lg:block xl:aspect-16/10"
       >
         <img
           [ngSrc]="stop.imageUrl"
@@ -20,64 +20,8 @@
       </div>
 
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:col-span-2">
-        <div class="baseline-borders baseline-surface rounded-xl p-3">
-          <div
-            class="mb-2 text-base font-medium text-slate-700 dark:text-slate-200"
-          >
-            Shared routes
-          </div>
-          <ul class="flex flex-wrap gap-2">
-            @for (sharedRoute of stop.sharedRoutes; track sharedRoute) {
-              <li class="shared-route-badge">
-                {{ sharedRoute }}
-              </li>
-            } @empty {
-              <li class="shared-route-badge">No shared routes</li>
-            }
-          </ul>
-        </div>
-
-        @if (stop.weather; as weather) {
-          <div class="baseline-borders baseline-surface rounded-xl p-3">
-            <div
-              class="mb-2 text-base font-medium text-slate-700 dark:text-slate-200"
-            >
-              Weather
-            </div>
-            <div
-              class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300"
-            >
-              <div
-                class="baseline-borders baseline-surface relative h-12 w-12 rounded-xl p-3 text-base"
-              >
-                <img
-                  class="h-12 w-12"
-                  [ngSrc]="weatherIconUrl()"
-                  [alt]="weather.description"
-                  fill
-                />
-              </div>
-              <div class="flex flex-col justify-between text-base">
-                <div class="flex items-baseline gap-3">
-                  <span
-                    class="text-lg font-semibold text-slate-900 dark:text-white"
-                    >{{ weather.temperature | temperature }}</span
-                  >
-                  <span>Feels like {{ weather.feelsLike | temperature }}</span>
-                </div>
-                <div>
-                  <span>{{ weather.description | titlecase }}</span>
-                </div>
-                <div>
-                  <span>Pressure: {{ weather.pressure }} hPa</span>
-                </div>
-                <div>
-                  <span>Humidity: {{ weather.humidity }}%</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        }
+        <app-shared-routes [stop]="stop" />
+        <app-weather-block [stop]="stop" />
       </div>
     </div>
   </app-generic-section-block>
