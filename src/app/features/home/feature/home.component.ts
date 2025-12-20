@@ -7,7 +7,6 @@ import {
   ReadyForRouteSixComponent,
   TestimonialsComponent,
   ThisIsTrollysixComponent,
-  ValuePropsComponent,
 } from '../ui';
 import { BtnDirective } from '../../../shared/directives/btn.directive';
 import { MetricsCoveredComponent } from '../ui/sections/metrics-covered/metrics-covered.component';
@@ -18,7 +17,6 @@ import { copy } from '../../../core/content/copy.util';
   imports: [
     RouterLink,
     MastheadComponent,
-    ValuePropsComponent,
     BigClaimsComponent,
     ThisIsTrollysixComponent,
     TestimonialsComponent,
