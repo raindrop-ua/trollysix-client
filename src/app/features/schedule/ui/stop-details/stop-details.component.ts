@@ -4,7 +4,7 @@ import {
   computed,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { NgOptimizedImage, TitleCasePipe } from '@angular/common';
+import { DatePipe, DecimalPipe, NgOptimizedImage, TitleCasePipe } from '@angular/common';
 import { environment } from '../../../../../environments/environment';
 import { TemperaturePipe } from '../../../../shared/pipes/temperature.pipe';
 import { Stop } from '../../data-access/models/stop.model';
@@ -19,6 +19,8 @@ import { GenericSectionBlockComponent } from '../../../../shared/components/sect
     NgOptimizedImage,
     GeoBadgeComponent,
     GenericSectionBlockComponent,
+    DecimalPipe,
+    DatePipe,
   ],
   templateUrl: './stop-details.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
