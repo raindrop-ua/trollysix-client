@@ -45,7 +45,7 @@
               Weather
             </div>
             <div
-              class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300"
+              class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300"
             >
               <div
                 class="baseline-borders baseline-surface relative h-12 w-12 rounded-xl p-3 text-base"
@@ -57,14 +57,24 @@
                   fill
                 />
               </div>
-              <span class="text-base">
-                <span
-                  class="text-lg font-semibold text-slate-900 dark:text-white"
-                  >{{ weather.temperature | temperature }}</span
-                >
-                <br />
-                <span>{{ weather.description | titlecase }}</span>
-              </span>
+              <div class="flex flex-col justify-between text-base">
+                <div class="flex items-baseline gap-3">
+                  <span
+                    class="text-lg font-semibold text-slate-900 dark:text-white"
+                    >{{ weather.temperature | temperature }}</span
+                  >
+                  <span>Feels like {{ weather.feelsLike | temperature }}</span>
+                </div>
+                <div>
+                  <span>{{ weather.description | titlecase }}</span>
+                </div>
+                <div>
+                  <span>Pressure: {{ weather.pressure }} hPa</span>
+                </div>
+                <div>
+                  <span>Humidity: {{ weather.humidity }}%</span>
+                </div>
+              </div>
             </div>
           </div>
         }
