@@ -22,7 +22,7 @@ export class TooltipDirective {
   @Input() appTooltipPlacement: TooltipPlacement = 'top';
   @Input() appTooltipOffset = 8;
   @Input() appTooltipShowDelay = 150;
-  @Input() appTooltipHideDelay = 80;
+  @Input() appTooltipHideDelay = 50;
   @Input() appTooltipDisabled = false;
   @Input() appTooltipMaxWidth = 320;
   @Input() appTooltipInteractive = false;
@@ -118,7 +118,7 @@ export class TooltipDirective {
         this.destroyTooltip();
         this.detachGlobalListeners();
       }
-    }, 180);
+    }, this.appTooltipShowDelay);
   }
 
   private createTooltip() {
@@ -127,23 +127,19 @@ export class TooltipDirective {
 
     el.className = [
       'fixed',
-      'z-[9999]',
+      'z-45',
       'pointer-events-none',
       'select-none',
       'rounded-xl',
-      'border',
-      'border-slate-200/70',
-      'bg-white/95',
+      'baseline-borders',
+      'baseline-surface',
       'px-3',
       'py-2',
       'text-sm',
       'text-slate-900',
-      'shadow-lg',
-      'shadow-slate-900/10',
-      'backdrop-blur',
-      'dark:border-white/10',
-      'dark:bg-slate-900/90',
       'dark:text-slate-100',
+      'shadow-md',
+      'shadow-slate-900/10',
       'transition-opacity',
       'duration-150',
       'ease-out',
