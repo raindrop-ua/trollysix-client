@@ -9,7 +9,7 @@
 
     <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
       <div
-        class="baseline-surface relative hidden xl:aspect-16/10 w-full overflow-hidden rounded-xl ring-1 ring-slate-900/10 lg:block"
+        class="baseline-surface relative hidden w-full overflow-hidden rounded-xl ring-1 ring-slate-900/10 lg:block xl:aspect-16/10"
       >
         <img
           [ngSrc]="stop.imageUrl"
@@ -63,23 +63,53 @@
                     class="text-lg font-semibold text-slate-900 dark:text-white"
                     >{{ weather.temperature | temperature }}</span
                   >
-                  <span>Feels like <span class="font-bold">{{ weather.feelsLike | temperature }}</span></span>
+                  <span
+                    >Feels like
+                    <span class="font-bold">{{
+                      weather.feelsLike | temperature
+                    }}</span></span
+                  >
                 </div>
                 <div>
                   <span>{{ weather.description | titlecase }}</span>
                 </div>
-                <div>
-                  <span>Pressure: <span class="font-bold">{{ weather.pressure }}</span> hPa</span>
-                </div>
-                <div>
-                  <span>Humidity: <span class="font-bold">{{ weather.humidity }}%</span></span>
-                </div>
               </div>
             </div>
-            <div class="mt-3 text-slate-600 dark:text-slate-300">
-              <div>Wind Speed: <span class="font-bold">{{ stop.weather.windSpeed | number: '1.1-2' }}</span> m/s</div>
-              <div>Sunrise: <span class="font-bold font-mono">{{ stop.weather.sunrise | date : 'HH:mm' }}</span></div>
-              <div>Sunset: <span class="font-bold font-mono">{{ stop.weather.sunset | date : 'HH:mm' }}</span></div>
+            <div
+              class="mt-3 flex flex-col gap-1 text-slate-600 dark:text-slate-300"
+            >
+              <div>
+                <span
+                  >Pressure:
+                  <span class="font-bold">{{ weather.pressure }}</span>
+                  hPa</span
+                >
+              </div>
+              <div>
+                <span
+                  >Humidity:
+                  <span class="font-bold">{{ weather.humidity }}%</span></span
+                >
+              </div>
+              <div>
+                Wind Speed:
+                <span class="font-bold">{{
+                  weather.windSpeed | number: '1.1-2'
+                }}</span>
+                m/s
+              </div>
+              <div>
+                Sunrise:
+                <span class="font-mono">{{
+                  weather.sunrise | date: 'HH:mm'
+                }}</span>
+              </div>
+              <div>
+                Sunset:
+                <span class="font-mono">{{
+                  weather.sunset | date: 'HH:mm'
+                }}</span>
+              </div>
             </div>
           </div>
         }
@@ -87,4 +117,3 @@
     </div>
   </app-generic-section-block>
 }
-
