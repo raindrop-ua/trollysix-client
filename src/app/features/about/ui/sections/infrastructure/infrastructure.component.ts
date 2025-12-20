@@ -1,8 +1,8 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { GenericSectionBlockComponent } from '../../../../../shared/components/sections';
 import { InfrastructureCardComponent } from './infrastructure-card/infrastructure-card.component';
-import { SvgIconComponent } from '../../../../../shared/components';
+import { VehicleFeaturesComponent } from './vehicle-features/vehicle-features.component';
 
 @Component({
   selector: 'app-infrastructure',
@@ -10,12 +10,10 @@ import { SvgIconComponent } from '../../../../../shared/components';
     NgOptimizedImage,
     GenericSectionBlockComponent,
     InfrastructureCardComponent,
-    SvgIconComponent,
+    VehicleFeaturesComponent,
   ],
   templateUrl: './infrastructure.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'block' },
 })
-export class InfrastructureComponent {
-  vehicleFeatures = signal(['accessibility', 'speech']);
-}
+export class InfrastructureComponent {}

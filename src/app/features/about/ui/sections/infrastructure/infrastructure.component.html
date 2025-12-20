@@ -23,17 +23,7 @@
       <div class="mt-1 text-base font-semibold text-slate-900 dark:text-white">
         Dnipro&nbsp;T203 <span class="opacity-60">(Дніпрó&nbsp;Т203)</span>
       </div>
-      <div class="baseline-borders-color mt-4 border-t pt-3">
-        <ul class="flex gap-2 text-sm text-slate-100 dark:text-slate-200">
-          @for (feature of vehicleFeatures(); track feature) {
-            <li
-              class="inline-block rounded-full bg-blue-600 p-2 dark:bg-blue-700"
-            >
-              <svg [icon]="feature" stroke="currentColor" class="size-6" />
-            </li>
-          }
-        </ul>
-      </div>
+      <app-vehicle-features />
     </app-infrastructure-card>
 
     <app-infrastructure-card [title]="'Operation'">
