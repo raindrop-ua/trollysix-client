@@ -1,26 +1,19 @@
-import {
-  Component,
-  input,
-  computed,
-  ChangeDetectionStrategy,
-} from '@angular/core';
-import { DatePipe, DecimalPipe, NgOptimizedImage, TitleCasePipe } from '@angular/common';
-import { environment } from '../../../../../environments/environment';
-import { TemperaturePipe } from '../../../../shared/pipes/temperature.pipe';
+import { Component, input, ChangeDetectionStrategy } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 import { Stop } from '../../data-access/models/stop.model';
 import { GeoBadgeComponent } from '../geo-badge/geo-badge.component';
 import { GenericSectionBlockComponent } from '../../../../shared/components/sections';
+import { SharedRoutesComponent } from './shared-routes/shared-routes.component';
+import { WeatherBlockComponent } from './weather-block/weather-block.component';
 
 @Component({
   selector: 'app-stop-details',
   imports: [
-    TemperaturePipe,
-    TitleCasePipe,
     NgOptimizedImage,
     GeoBadgeComponent,
     GenericSectionBlockComponent,
-    DecimalPipe,
-    DatePipe,
+    SharedRoutesComponent,
+    WeatherBlockComponent,
   ],
   templateUrl: './stop-details.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -28,12 +21,4 @@ import { GenericSectionBlockComponent } from '../../../../shared/components/sect
 })
 export class StopDetailsComponent {
   stopData = input.required<Stop>();
-
-  readonly weatherIconUrl = computed(() => {
-    const weather = this.stopData().weather;
-    if (!weather?.icon) {
-      return `${environment.WEATHER_ICON_BASE}/default@2x.png`;
-    }
-    return `${environment.WEATHER_ICON_BASE}/${weather.icon}@2x.png`;
-  });
 }

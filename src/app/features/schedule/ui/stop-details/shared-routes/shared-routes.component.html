@@ -1,0 +1,14 @@
+<div class="baseline-borders baseline-surface h-full rounded-xl p-3">
+  <div class="mb-2 text-base font-medium text-slate-700 dark:text-slate-200">
+    Shared routes
+  </div>
+  <ul class="flex flex-wrap gap-2">
+    @for (sharedRoute of stop().sharedRoutes; track sharedRoute) {
+      <li class="shared-route-badge">
+        {{ sharedRoute }}
+      </li>
+    } @empty {
+      <li class="shared-route-badge">No shared routes</li>
+    }
+  </ul>
+</div>
