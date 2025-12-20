@@ -24,5 +24,8 @@ export interface Stop {
     temperature: number;
     description: string;
     icon: string;
+    feelsLike: number;
+    pressure: number;
+    humidity: number;
   };
 }
