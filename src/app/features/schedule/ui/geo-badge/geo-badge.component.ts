@@ -1,10 +1,11 @@
 import { Component, computed, input } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { SvgIconComponent } from '../../../../shared/components';
+import { TooltipDirective } from '../../../../shared/directives/tooltip.directive';
 
 @Component({
   selector: 'app-geo-badge',
-  imports: [SvgIconComponent, DecimalPipe],
+  imports: [SvgIconComponent, DecimalPipe, TooltipDirective],
   templateUrl: './geo-badge.component.html',
   host: { class: 'block' },
 })
