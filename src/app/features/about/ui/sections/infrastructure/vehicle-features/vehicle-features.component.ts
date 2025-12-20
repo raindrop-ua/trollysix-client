@@ -4,6 +4,7 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
+import { VehicleFeature } from '../../../../data-access/models/vehicle-feature';
 import { SvgIconComponent } from '../../../../../../shared/components';
 
 @Component({
@@ -15,5 +16,21 @@ import { SvgIconComponent } from '../../../../../../shared/components';
   host: { class: 'block' },
 })
 export class VehicleFeaturesComponent {
-  vehicleFeatures = signal(['accessibility', 'speech']);
+  vehicleFeatures = signal<VehicleFeature[]>([
+    {
+      name: 'Accessibility',
+      ariaLabel: 'Accessibility feature',
+      icon: 'accessibility',
+    },
+    {
+      name: 'Announcer',
+      ariaLabel: 'Announcer feature',
+      icon: 'speech',
+    },
+    {
+      name: 'Battery',
+      ariaLabel: 'Battery feature',
+      icon: 'battery-charging',
+    },
+  ]);
 }
