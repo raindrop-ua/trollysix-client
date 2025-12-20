@@ -1,0 +1,12 @@
+<div class="baseline-borders-color mt-4 border-t pt-3">
+  <ul class="flex gap-2 text-sm text-slate-100 dark:text-slate-200">
+    @for (feature of vehicleFeatures(); track feature.name) {
+      <li
+        class="inline-block rounded-full bg-blue-600 p-1.5 dark:bg-blue-700"
+        [title]="feature.name"
+      >
+        <svg [icon]="feature.icon" stroke="currentColor" class="size-5" />
+      </li>
+    }
+  </ul>
+</div>
