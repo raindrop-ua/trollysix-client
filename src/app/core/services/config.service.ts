@@ -12,7 +12,7 @@ import { isPlatformBrowser } from '@angular/common';
   providedIn: 'root',
 })
 export class ConfigService<T extends Record<string, unknown>> {
-  private readonly storageKey = 'app_config';
+  private readonly STORAGE_KEY = 'app_config';
   private readonly _config = signal<T>({} as T);
   readonly config = this._config.asReadonly();
 
@@ -23,13 +23,13 @@ export class ConfigService<T extends Record<string, unknown>> {
     effect(() => {
       const currentConfig = this._config();
       if (this.isBrowser && Object.keys(currentConfig).length > 0) {
-        localStorage.setItem(this.storageKey, JSON.stringify(currentConfig));
+        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(currentConfig));
       }
     });
   }
 
   public init(defaultConfig: T): void {
-    const saved = localStorage.getItem(this.storageKey);
+    const saved = localStorage.getItem(this.STORAGE_KEY);
     const initialData = saved
       ? { ...defaultConfig, ...JSON.parse(saved) }
       : defaultConfig;
@@ -37,7 +37,7 @@ export class ConfigService<T extends Record<string, unknown>> {
 
     if (this.isBrowser) {
       window.addEventListener('storage', (event) => {
-        if (event.key === this.storageKey && event.newValue) {
+        if (event.key === this.STORAGE_KEY && event.newValue) {
           this._config.set(JSON.parse(event.newValue));
         }
       });
@@ -54,6 +54,6 @@ export class ConfigService<T extends Record<string, unknown>> {
 
   public reset(defaultConfig: T): void {
     this._config.set(defaultConfig);
-    localStorage.removeItem(this.storageKey);
+    localStorage.removeItem(this.STORAGE_KEY);
   }
 }
