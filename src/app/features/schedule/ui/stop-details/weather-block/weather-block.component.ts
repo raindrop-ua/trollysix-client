@@ -39,4 +39,42 @@ export class WeatherBlockComponent {
     }
     return `${environment.WEATHER_ICON_BASE}/${weather.icon}@2x.png`;
   });
+
+  private readonly windDirs = [
+    'N',
+    'NE',
+    'E',
+    'SE',
+    'S',
+    'SW',
+    'W',
+    'NW',
+  ] as const;
+
+  readonly windDegNorm = computed(() => {
+    const w = this.stop().weather;
+    const deg = w?.windDeg ?? 0;
+    return ((deg % 360) + 360) % 360;
+  });
+
+  readonly windDirLabel = computed(() => {
+    const deg = this.windDegNorm();
+    return this.windDirs[Math.round(deg / 45) % 8];
+  });
+
+  readonly windArrowTransform = computed(
+    () => `rotate(${this.windDegNorm()}deg)`,
+  );
+
+  readonly hasWindGust = computed(() => {
+    const w = this.stop().weather;
+    if (!w) return false;
+    return w.windGust > w.windSpeed + 0.5;
+  });
+
+  readonly windGustDelta = computed(() => {
+    const w = this.stop().weather;
+    if (!w) return 0;
+    return Math.max(0, w.windGust - w.windSpeed);
+  });
 }
