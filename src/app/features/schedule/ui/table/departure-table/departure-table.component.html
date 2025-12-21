@@ -1,5 +1,5 @@
 <div
-  class="3xl:grid-cols-16 grid grid-cols-4 gap-2 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 2xl:grid-cols-14"
+  class="grid grid-cols-4 gap-2 sm:grid-cols-6 md:grid-cols-7 lg:grid-cols-8 xl:grid-cols-10"
 >
   @for (departure of departures$ | async; track departure.time) {
     <app-departure-time-item
