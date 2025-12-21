@@ -5,9 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { GlobalMessage } from '../models/global-message.model';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class GlobalMessageService {
   private readonly BASE_URL = environment.BASE_API_URL;
   private http = inject(HttpClient);

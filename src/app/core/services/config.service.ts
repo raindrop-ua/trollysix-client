@@ -8,9 +8,7 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class ConfigService<T extends Record<string, unknown>> {
   private readonly STORAGE_KEY = 'app_config';
   private readonly _config = signal<T>({} as T);
