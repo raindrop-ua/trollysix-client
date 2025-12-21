@@ -1,4 +1,5 @@
 import { inject, Injectable } from '@angular/core';
+import { Location } from '@angular/common';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import {
   catchError,
@@ -8,19 +9,19 @@ import {
   filter,
   take,
 } from 'rxjs/operators';
-import { of, forkJoin, distinctUntilChanged, combineLatest } from 'rxjs';
+import { of, forkJoin, distinctUntilChanged, combineLatest, tap } from 'rxjs';
 import { Store } from '@ngrx/store';
-
+import { ActivatedRoute, Router } from '@angular/router';
 import { SchedulePageActions, ScheduleApiActions } from './schedule.actions';
 import { scheduleFeature } from './schedule.reducer';
 import { ScheduleApiService } from '../data/schedule.api.service';
 import { DayType } from '../models/daytype.model';
 import { DirectionName } from '../models/direction.model';
-import { ActivatedRoute, Router } from '@angular/router';
 
 function parseDirection(v: string | null): DirectionName | null {
   return v === 'forward' || v === 'backward' ? v : null;
 }
+
 function resolveAutoDayTypeName(
   dayTypes: DayType[],
   today: Date = new Date(),
@@ -50,6 +51,8 @@ export class ScheduleEffects {
 
   private router = inject(Router);
   private route = inject(ActivatedRoute);
+
+  private location = inject(Location);
 
   hydrateFromUrlOnEnter$ = createEffect(() =>
     this.actions$.pipe(
@@ -128,17 +131,18 @@ export class ScheduleEffects {
             a.dayTypeName === b.dayTypeName &&
             a.directionName === b.directionName,
         ),
-        switchMap(({ stopId, dayTypeName, directionName }) =>
-          this.router.navigate([], {
+        tap(({ stopId, dayTypeName, directionName }) => {
+          const urlTree = this.router.createUrlTree([], {
             relativeTo: this.route,
             queryParams: {
               stopId,
               dayType: dayTypeName,
               direction: directionName,
             },
-            replaceUrl: true,
-          }),
-        ),
+          });
+
+          this.location.replaceState(this.router.serializeUrl(urlTree));
+        }),
       ),
     { dispatch: false },
   );
