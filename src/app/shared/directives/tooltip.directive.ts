@@ -133,6 +133,7 @@ export class TooltipDirective {
       'rounded-xl',
       'baseline-borders',
       'baseline-surface',
+      'backdrop-blur',
       'px-3',
       'py-2',
       'text-sm',
