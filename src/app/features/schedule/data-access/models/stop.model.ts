@@ -1,3 +1,5 @@
+import { DirectionName } from './direction.model';
+
 export interface Stop {
   id: string;
   name: string;
@@ -13,7 +15,7 @@ export interface Stop {
     };
   };
   style: number;
-  availableDirections: string[];
+  availableDirections: DirectionName[];
   imageUrl: string;
   sharedRoutes: string[];
   geo?: {
