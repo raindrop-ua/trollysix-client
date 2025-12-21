@@ -14,6 +14,7 @@ import {
 import { TemperaturePipe } from '../../../../../shared/pipes/temperature.pipe';
 import { Stop } from '../../../data-access/models/stop.model';
 import { environment } from '../../../../../../environments/environment';
+import { SvgIconComponent } from '../../../../../shared/components';
 
 @Component({
   selector: 'app-weather-block',
@@ -23,6 +24,7 @@ import { environment } from '../../../../../../environments/environment';
     NgOptimizedImage,
     TemperaturePipe,
     TitleCasePipe,
+    SvgIconComponent,
   ],
   templateUrl: './weather-block.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
