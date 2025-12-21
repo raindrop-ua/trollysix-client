@@ -8,10 +8,11 @@ import { GeolocationService } from '../../services/geolocation.service';
 import { BtnDirective } from '../../../../shared/directives/btn.directive';
 import { ClosestStopService } from '../../services/closest-stop.service';
 import { SvgIconComponent } from '../../../../shared/components';
+import { TooltipDirective } from '../../../../shared/directives/tooltip.directive';
 
 @Component({
   selector: 'app-stop-toolbar',
-  imports: [SvgIconComponent, BtnDirective],
+  imports: [SvgIconComponent, BtnDirective, TooltipDirective],
   providers: [ClosestStopService],
   templateUrl: './stop-toolbar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -28,6 +29,6 @@ export class StopToolbarComponent {
   }
 
   onCopy() {
-    /* todo */
+    //
   }
 }
