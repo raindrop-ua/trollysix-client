@@ -8,7 +8,6 @@ export class CustomErrorHandler implements ErrorHandler {
   handleError(error: unknown) {
     this.toastService.error('We are already working on it.', {
       title: 'Error detected',
-      duration: 5_000,
     });
     console.warn(error);
   }

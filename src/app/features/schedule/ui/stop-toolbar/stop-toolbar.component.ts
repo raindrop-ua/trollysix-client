@@ -10,6 +10,7 @@ import { ClosestStopService } from '../../services/closest-stop.service';
 import { SvgIconComponent } from '../../../../shared/components';
 import { TooltipDirective } from '../../../../shared/directives/tooltip.directive';
 import { ClipboardService } from '../../../../core/services/clipboard.service';
+import { ToastService } from '../../../../core/services/toast.service';
 
 @Component({
   selector: 'app-stop-toolbar',
@@ -22,6 +23,7 @@ import { ClipboardService } from '../../../../core/services/clipboard.service';
 export class StopToolbarComponent {
   protected readonly geolocation = inject(GeolocationService);
   private closestStopService = inject(ClosestStopService);
+  private readonly toastService = inject(ToastService);
   private readonly clipboard = inject(ClipboardService);
   public showShareButton = input<boolean>(true);
 
@@ -29,12 +31,16 @@ export class StopToolbarComponent {
     this.closestStopService.findAndSelectStop();
   }
 
-  public async onCopy() {
+  public onCopy() {
     const text = location.href;
-    if (!text) return { ok: false, message: 'Empty content' };
 
-    const ok = await this.clipboard.copy(text);
-
-    return { ok };
+    this.clipboard
+      .copy(text)
+      .then(() => {
+        this.toastService.success(`Link successfully copied to clipboard`);
+      })
+      .catch(() => {
+        this.toastService.error(`Link could not be copied to clipboard`);
+      });
   }
 }

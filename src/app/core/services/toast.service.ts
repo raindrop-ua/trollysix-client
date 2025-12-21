@@ -15,7 +15,7 @@ export class ToastService {
       message,
       title: options.title,
       type: options.type ?? 'info',
-      duration: options.duration ?? 4000,
+      duration: options.duration ?? 5_000,
     };
 
     this._toasts.update((list) => [...list, toast]);
