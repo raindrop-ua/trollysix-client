@@ -2,9 +2,10 @@ import {
   DestroyRef,
   Directive,
   ElementRef,
-  HostListener,
-  Input,
+  booleanAttribute,
   inject,
+  input,
+  numberAttribute,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
@@ -12,83 +13,85 @@ type TooltipPlacement = 'top' | 'bottom' | 'left' | 'right';
 
 @Directive({
   selector: '[appTooltip]',
+  standalone: true,
+  host: {
+    '(mouseenter)': 'onEnter()',
+    '(focusin)': 'onEnter()',
+    '(mouseleave)': 'onLeave()',
+    '(focusout)': 'onLeave()',
+    '(document:keydown.escape)': 'hideNow()',
+  },
 })
 export class TooltipDirective {
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
-  private readonly destroyRef = inject(DestroyRef);
   private readonly doc = inject(DOCUMENT);
+  private readonly destroyRef = inject(DestroyRef);
 
-  @Input('appTooltip') text: string | null | undefined = '';
-  @Input() appTooltipPlacement: TooltipPlacement = 'top';
-  @Input() appTooltipOffset = 8;
-  @Input() appTooltipShowDelay = 150;
-  @Input() appTooltipHideDelay = 50;
-  @Input() appTooltipDisabled = false;
-  @Input() appTooltipMaxWidth = 320;
-  @Input() appTooltipInteractive = false;
+  text = input<string | null | undefined>(undefined, { alias: 'appTooltip' });
+  placement = input<TooltipPlacement>('top', { alias: 'appTooltipPlacement' });
+  offset = input(8, { transform: numberAttribute, alias: 'appTooltipOffset' });
+  showDelay = input(150, {
+    transform: numberAttribute,
+    alias: 'appTooltipShowDelay',
+  });
+  hideDelay = input(50, {
+    transform: numberAttribute,
+    alias: 'appTooltipHideDelay',
+  });
+  disabled = input(false, {
+    transform: booleanAttribute,
+    alias: 'appTooltipDisabled',
+  });
+  maxWidth = input(320, {
+    transform: numberAttribute,
+    alias: 'appTooltipMaxWidth',
+  });
+  interactive = input(false, {
+    transform: booleanAttribute,
+    alias: 'appTooltipInteractive',
+  });
 
   private tooltipEl: HTMLDivElement | null = null;
-
-  private showTimer: number | null = null;
-  private hideTimer: number | null = null;
-
+  private showTimer: ReturnType<typeof setTimeout> | null = null;
+  private hideTimer: ReturnType<typeof setTimeout> | null = null;
   private rafId: number | null = null;
-
-  private removeGlobalListeners: (() => void) | null = null;
   private ro: ResizeObserver | null = null;
 
+  private readonly isTouchDevice =
+    typeof window !== 'undefined' &&
+    (window.matchMedia('(pointer: coarse)').matches ||
+      'ontouchstart' in window);
+
   constructor() {
-    this.destroyRef.onDestroy(() => {
-      this.clearTimers();
-      this.detachGlobalListeners();
-      this.destroyTooltip();
-    });
+    this.destroyRef.onDestroy(() => this.destroyTooltip());
   }
 
-  @HostListener('mouseenter')
-  @HostListener('focusin')
   onEnter() {
-    if (this.appTooltipDisabled) return;
-    if (!this.getText()) return;
+    if (this.isTouchDevice || this.disabled() || !this.getText()) return;
     this.scheduleShow();
   }
 
-  @HostListener('mouseleave')
-  @HostListener('focusout')
   onLeave() {
     this.scheduleHide();
   }
 
-  @HostListener('document:keydown.escape')
-  onEscape() {
-    this.hideNow();
-  }
-
   private getText(): string {
-    return (this.text ?? '').trim();
+    return (this.text() ?? '').trim();
   }
 
   private scheduleShow() {
-    this.clearHideTimer();
-    this.clearShowTimer();
-
-    this.showTimer = window.setTimeout(() => {
-      this.showNow();
-    }, this.appTooltipShowDelay);
+    this.clearTimers();
+    this.showTimer = setTimeout(() => this.showNow(), this.showDelay());
   }
 
   private scheduleHide() {
-    this.clearShowTimer();
-    this.clearHideTimer();
-
-    this.hideTimer = window.setTimeout(() => {
-      this.hideNow();
-    }, this.appTooltipHideDelay);
+    this.clearTimers();
+    this.hideTimer = setTimeout(() => this.hideNow(), this.hideDelay());
   }
 
   private showNow() {
     const text = this.getText();
-    if (!text || this.appTooltipDisabled) return;
+    if (!text) return;
 
     if (!this.tooltipEl) {
       this.createTooltip();
@@ -96,71 +99,43 @@ export class TooltipDirective {
     }
 
     this.tooltipEl!.textContent = text;
-
     this.host.nativeElement.setAttribute('aria-label', text);
-
     this.tooltipEl!.style.opacity = '1';
-    this.tooltipEl!.style.transform =
-      'translate3d(var(--tx, 0px), var(--ty, 0px), 0)';
 
     this.updatePosition();
   }
 
-  private hideNow() {
+  hideNow() {
     this.clearTimers();
     if (!this.tooltipEl) return;
 
     this.tooltipEl.style.opacity = '0';
-
-    window.setTimeout(() => {
-      if (!this.tooltipEl) return;
-      if (this.tooltipEl.style.opacity === '0') {
+    setTimeout(() => {
+      if (this.tooltipEl?.style.opacity === '0') {
         this.destroyTooltip();
-        this.detachGlobalListeners();
       }
-    }, this.appTooltipShowDelay);
+    }, 150);
   }
 
   private createTooltip() {
     const el = this.doc.createElement('div');
     el.setAttribute('role', 'tooltip');
 
-    el.className = [
-      'fixed',
-      'z-45',
-      'pointer-events-none',
-      'select-none',
-      'rounded-xl',
-      'baseline-borders',
-      'baseline-surface',
-      'backdrop-blur',
-      'px-3',
-      'py-2',
-      'text-sm',
-      'text-slate-900',
-      'dark:text-slate-100',
-      'shadow-md',
-      'shadow-slate-900/10',
-      'transition-opacity',
-      'duration-150',
-      'ease-out',
-    ].join(' ');
+    el.className = `hidden md:block fixed z-45 pointer-events-none select-none rounded-xl baseline-borders
+                    baseline-surface backdrop-blur px-3 py-2 text-sm text-slate-900
+                    dark:text-slate-100 shadow-md transition-opacity duration-150 ease-out`;
 
-    el.style.maxWidth = `${this.appTooltipMaxWidth}px`;
+    el.style.maxWidth = `${this.maxWidth()}px`;
     el.style.opacity = '0';
     el.style.left = '0px';
     el.style.top = '0px';
     el.style.willChange = 'transform, opacity';
 
-    if (this.appTooltipInteractive) {
+    if (this.interactive()) {
       el.classList.remove('pointer-events-none');
       el.classList.add('pointer-events-auto');
-      el.addEventListener('mouseenter', () => this.clearHideTimer(), {
-        passive: true,
-      });
-      el.addEventListener('mouseleave', () => this.scheduleHide(), {
-        passive: true,
-      });
+      el.addEventListener('mouseenter', () => this.clearTimers());
+      el.addEventListener('mouseleave', () => this.scheduleHide());
     }
 
     this.doc.body.appendChild(el);
@@ -168,94 +143,67 @@ export class TooltipDirective {
   }
 
   private destroyTooltip() {
-    if (this.rafId != null) {
-      cancelAnimationFrame(this.rafId);
-      this.rafId = null;
-    }
+    this.clearTimers();
+    if (this.rafId) cancelAnimationFrame(this.rafId);
     this.ro?.disconnect();
-    this.ro = null;
-
-    if (this.tooltipEl) {
-      this.tooltipEl.remove();
-      this.tooltipEl = null;
-    }
+    this.detachGlobalListeners();
+    this.tooltipEl?.remove();
+    this.tooltipEl = null;
   }
 
   private attachGlobalListeners() {
-    if (this.removeGlobalListeners) return;
-
-    const onScroll = () => this.scheduleRafUpdate();
-    const onResize = () => this.scheduleRafUpdate();
-
-    window.addEventListener('scroll', onScroll, {
+    window.addEventListener('scroll', this.onViewportChange, {
       passive: true,
       capture: true,
     });
-    window.addEventListener('resize', onResize, { passive: true });
+    window.addEventListener('resize', this.onViewportChange, { passive: true });
 
-    if ('ResizeObserver' in window) {
-      this.ro = new ResizeObserver(() => this.scheduleRafUpdate());
+    if (typeof ResizeObserver !== 'undefined') {
+      this.ro = new ResizeObserver(() => this.onViewportChange());
       this.ro.observe(this.host.nativeElement);
     }
-
-    this.removeGlobalListeners = () => {
-      window.removeEventListener(
-        'scroll',
-        onScroll,
-        true as unknown as EventListenerOptions,
-      );
-      window.removeEventListener('resize', onResize);
-      this.ro?.disconnect();
-      this.ro = null;
-    };
   }
 
   private detachGlobalListeners() {
-    this.removeGlobalListeners?.();
-    this.removeGlobalListeners = null;
+    window.removeEventListener('scroll', this.onViewportChange, true);
+    window.removeEventListener('resize', this.onViewportChange);
   }
 
-  private scheduleRafUpdate() {
-    if (!this.tooltipEl) return;
-    if (this.rafId != null) return;
+  private onViewportChange = () => {
+    if (!this.tooltipEl || this.rafId) return;
     this.rafId = requestAnimationFrame(() => {
       this.rafId = null;
       this.updatePosition();
     });
-  }
+  };
 
   private updatePosition() {
     if (!this.tooltipEl) return;
 
     const hostRect = this.host.nativeElement.getBoundingClientRect();
-
     if (hostRect.width === 0 && hostRect.height === 0) {
       this.hideNow();
       return;
     }
 
     const tipRect = this.tooltipEl.getBoundingClientRect();
-    const offset = this.appTooltipOffset;
+    const offset = this.offset();
+    let x: number;
+    let y: number;
 
-    let x;
-    let y;
-
-    switch (this.appTooltipPlacement) {
+    switch (this.placement()) {
       case 'bottom':
         x = hostRect.left + (hostRect.width - tipRect.width) / 2;
         y = hostRect.bottom + offset;
         break;
-
       case 'left':
         x = hostRect.left - tipRect.width - offset;
         y = hostRect.top + (hostRect.height - tipRect.height) / 2;
         break;
-
       case 'right':
         x = hostRect.right + offset;
         y = hostRect.top + (hostRect.height - tipRect.height) / 2;
         break;
-
       case 'top':
       default:
         x = hostRect.left + (hostRect.width - tipRect.width) / 2;
@@ -263,33 +211,19 @@ export class TooltipDirective {
         break;
     }
 
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
-
     const pad = 8;
-    x = Math.min(Math.max(x, pad), vw - tipRect.width - pad);
-    y = Math.min(Math.max(y, pad), vh - tipRect.height - pad);
+    x = Math.min(Math.max(x, pad), window.innerWidth - tipRect.width - pad);
+    y = Math.min(Math.max(y, pad), window.innerHeight - tipRect.height - pad);
 
-    this.tooltipEl.style.setProperty('--tx', `${Math.round(x)}px`);
-    this.tooltipEl.style.setProperty('--ty', `${Math.round(y)}px`);
-    this.tooltipEl.style.transform =
-      'translate3d(var(--tx, 0px), var(--ty, 0px), 0)';
+    this.tooltipEl.style.transform = `translate3d(${Math.round(x)}px, ${Math.round(y)}px, 0)`;
   }
 
   private clearTimers() {
-    this.clearShowTimer();
-    this.clearHideTimer();
-  }
-
-  private clearShowTimer() {
-    if (this.showTimer != null) {
+    if (this.showTimer !== null) {
       clearTimeout(this.showTimer);
       this.showTimer = null;
     }
-  }
-
-  private clearHideTimer() {
-    if (this.hideTimer != null) {
+    if (this.hideTimer !== null) {
       clearTimeout(this.hideTimer);
       this.hideTimer = null;
     }
