@@ -42,7 +42,7 @@ export class TooltipDirective {
     transform: booleanAttribute,
     alias: 'appTooltipDisabled',
   });
-  maxWidth = input(320, {
+  maxWidth = input(12, {
     transform: numberAttribute,
     alias: 'appTooltipMaxWidth',
   });
@@ -125,7 +125,7 @@ export class TooltipDirective {
                     baseline-surface backdrop-blur px-3 py-2 text-sm text-slate-900
                     dark:text-slate-100 shadow-md transition-opacity duration-150 ease-out`;
 
-    el.style.maxWidth = `${this.maxWidth()}px`;
+    el.style.maxWidth = `${this.maxWidth()}rem`;
     el.style.opacity = '0';
     el.style.left = '0px';
     el.style.top = '0px';
