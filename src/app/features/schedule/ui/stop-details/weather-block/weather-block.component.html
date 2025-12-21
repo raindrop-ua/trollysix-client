@@ -52,7 +52,7 @@
         >
           <svg
             icon="arrow-up-slim"
-            class="size-4"
+            class="size-4 rotate-180"
             stroke="currentColor"
             stroke-width="2"
           ></svg>
@@ -63,12 +63,12 @@
         </span>
 
         @if (hasWindGust()) {
-          <span class="text-xs font-semibold">
+          <div class="text-xs font-semibold">
             (gust {{ weather.windGust | number: '1.1-2' }}
             <span class="text-slate-400"
               >+{{ windGustDelta() | number: '1.1-2' }}</span
             >)
-          </span>
+          </div>
         }
       </div>
 
