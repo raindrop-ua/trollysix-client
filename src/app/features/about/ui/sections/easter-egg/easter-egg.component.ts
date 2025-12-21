@@ -23,7 +23,6 @@ export class EasterEggComponent {
   onCheatEnter() {
     this.toastService.success("You've found the secret image.", {
       title: 'Congratulations!',
-      duration: 5_000,
     });
   }
 }

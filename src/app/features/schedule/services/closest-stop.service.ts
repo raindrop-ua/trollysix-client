@@ -49,7 +49,6 @@ export class ClosestStopService {
               'No stops with location data are available. Please try again later.',
               {
                 title: 'Failed to find closest stop',
-                duration: 5000,
               },
             );
             return;
@@ -63,7 +62,6 @@ export class ClosestStopService {
 
           this.toastService.success(`Closest stop: ${closestStop.name}`, {
             title: 'Stop selected by location',
-            duration: 5000,
           });
         },
 
@@ -71,7 +69,6 @@ export class ClosestStopService {
           this.state.set({ status: 'error', error });
           this.toastService.error(this.getErrorMessage(error), {
             title: 'Failed to get location',
-            duration: 5000,
           });
         },
       });
