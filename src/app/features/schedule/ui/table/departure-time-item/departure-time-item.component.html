@@ -1,6 +1,7 @@
 <button
   class="relative w-full cursor-default focus:ring-2 focus:ring-slate-200/50 focus:ring-offset-2 focus:ring-offset-slate-900 focus:outline-none"
   [class]="timeClass()"
+  [style.corner-top-right-shape]="showSchedule() ? 'square' : 'round'"
   (click)="onClick()"
 >
   @let dep = departure();
