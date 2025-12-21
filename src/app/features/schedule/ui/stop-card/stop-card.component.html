@@ -4,12 +4,10 @@
   @let isSelected = selected();
   <button
     type="button"
-    class="stop-card"
+    class="stop-card h-full w-full"
     [attr.aria-pressed]="isSelected"
     [class]="'stop-card stop-card-' + stop.style"
     [class.stop-selected]="isSelected"
-    [style.width.%]="100"
-    [style.height.%]="100"
     (click)="onSelectStop(stop.id, isSelected)"
   >
     @if (showBackgroundImage() && stop.imageUrl) {
