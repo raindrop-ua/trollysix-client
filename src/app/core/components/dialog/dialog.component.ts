@@ -52,11 +52,11 @@ export class DialogComponent implements OnInit, OnDestroy {
   }
 
   onConfirmClick() {
-    if (!this.config()?.disableClose) this.close('confirm');
+    this.close('confirm');
   }
 
   onCancelClick() {
-    if (!this.config()?.disableClose) this.close('cancel');
+    this.close('cancel');
   }
 
   onCancelEvent(event: Event) {
