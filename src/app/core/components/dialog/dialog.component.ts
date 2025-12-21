@@ -1,20 +1,17 @@
 import {
   Component,
-  effect,
-  ElementRef,
-  inject,
-  OnDestroy,
-  PLATFORM_ID,
   signal,
-  ViewChild,
+  inject,
+  PLATFORM_ID,
+  OnDestroy,
+  OnInit,
   ChangeDetectionStrategy,
+  ViewEncapsulation,
 } from '@angular/core';
 import { isPlatformBrowser, NgClass } from '@angular/common';
-import { Observable, Subject } from 'rxjs';
-import { take } from 'rxjs/operators';
 import { DialogConfig, DialogResult } from '../../models/dialog.models';
-import { DialogService } from '../../services/dialog.service';
 import { SvgIconComponent } from '../../../shared/components';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-dialog',
@@ -22,80 +19,44 @@ import { SvgIconComponent } from '../../../shared/components';
   imports: [NgClass, SvgIconComponent],
   templateUrl: './dialog.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
-export class DialogComponent implements OnDestroy {
-  @ViewChild('dialog', { static: true })
-  private dialogElement!: ElementRef<HTMLDialogElement>;
-  private readonly dialogService = inject(DialogService);
+export class DialogComponent implements OnInit, OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
 
   readonly config = signal<DialogConfig | null>(null);
-  readonly isOpen = signal(false);
-  private readonly resultSubject = new Subject<DialogResult>();
+  readonly isVisible = signal(false);
 
-  constructor() {
-    this.dialogService.registerHost({
-      open: (cfg) => this.open(cfg),
-      close: (res) => this.close(res),
-    });
+  readonly result$ = new Subject<DialogResult>();
 
-    effect(() => {
-      const open = this.isOpen();
-      const dialog = this.dialogElement?.nativeElement;
+  ngOnInit() {
+    setTimeout(() => this.isVisible.set(true), 10);
 
-      if (!dialog) return;
-
-      if (open && !dialog.open) {
-        dialog.showModal();
-        if (this.isBrowser) {
-          document.documentElement.style.overflow = 'hidden';
-          document.body.style.overflow = 'hidden';
-        }
-      } else if (!open && dialog.open) {
-        dialog.close();
-        if (this.isBrowser) {
-          document.documentElement.style.overflow = '';
-          document.body.style.overflow = '';
-        }
-      }
-    });
-  }
-
-  open(config: DialogConfig): Observable<DialogResult> {
-    const defaults: DialogConfig = {
-      confirmText: 'OK',
-      cancelText: 'Cancel',
-      variant: 'info',
-      disableClose: false,
-      ...config,
-    };
-
-    this.config.set(defaults);
-    this.isOpen.set(true);
-
-    return this.resultSubject.asObservable().pipe(take(1));
+    if (this.isBrowser) {
+      document.body.style.overflow = 'hidden';
+    }
   }
 
   close(result: DialogResult) {
-    if (!this.isOpen()) return;
-    this.isOpen.set(false);
-    this.resultSubject.next(result);
-  }
-
-  onConfirmClick() {
-    this.close('confirm');
-  }
-
-  onCancelClick() {
-    this.close('cancel');
+    this.isVisible.set(false);
+    setTimeout(() => {
+      this.result$.next(result);
+      this.result$.complete();
+    }, 300);
   }
 
   onBackdropClick() {
-    const cfg = this.config();
-    if (cfg?.disableClose) return;
-    this.close('backdrop');
+    if (!this.config()?.disableClose) this.close('backdrop');
+  }
+
+  onConfirmClick() {
+    if (!this.config()?.disableClose) this.close('confirm');
+  }
+
+  onCancelClick() {
+    if (!this.config()?.disableClose) this.close('cancel');
   }
 
   onCancelEvent(event: Event) {
@@ -107,7 +68,6 @@ export class DialogComponent implements OnDestroy {
 
   ngOnDestroy() {
     if (this.isBrowser) {
-      document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
     }
   }
