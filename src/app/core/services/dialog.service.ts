@@ -1,30 +1,45 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import {
+  createComponent,
+  ApplicationRef,
+  EnvironmentInjector,
+  inject,
+  Injectable,
+  ComponentRef,
+} from '@angular/core';
 import { DialogConfig, DialogResult } from '../models/dialog.models';
+import { DialogComponent } from '../components/dialog/dialog.component';
+import { Subject } from 'rxjs';
 
-interface DialogHost {
-  open(config: DialogConfig): Observable<DialogResult>;
-  close(result: DialogResult): void;
-}
-
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class DialogService {
-  private host?: DialogHost;
+  private appRef = inject(ApplicationRef);
+  private injector = inject(EnvironmentInjector);
+  private activeDialogs: ComponentRef<DialogComponent>[] = [];
 
-  public registerHost(host: DialogHost) {
-    this.host = host;
+  open(config: DialogConfig): Subject<DialogResult> {
+    const result$ = new Subject<DialogResult>();
+
+    const componentRef = createComponent(DialogComponent, {
+      environmentInjector: this.injector,
+    });
+
+    componentRef.instance.config.set(config);
+    componentRef.instance.result$.subscribe((res) => {
+      result$.next(res);
+      this.destroyDialog(componentRef);
+    });
+
+    this.appRef.attachView(componentRef.hostView);
+    document.body.appendChild(componentRef.location.nativeElement);
+
+    this.activeDialogs.push(componentRef);
+
+    return result$;
   }
 
-  public open(config: DialogConfig): Observable<DialogResult> {
-    if (!this.host) {
-      throw new Error('Dialog host is not registered.');
-    }
-    return this.host.open(config);
-  }
-
-  public close(result: DialogResult) {
-    this.host?.close(result);
+  private destroyDialog(ref: ComponentRef<DialogComponent>) {
+    this.appRef.detachView(ref.hostView);
+    ref.destroy();
+    this.activeDialogs = this.activeDialogs.filter((d) => d !== ref);
   }
 }
