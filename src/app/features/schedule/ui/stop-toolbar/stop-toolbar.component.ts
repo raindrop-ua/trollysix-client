@@ -9,6 +9,7 @@ import { BtnDirective } from '../../../../shared/directives/btn.directive';
 import { ClosestStopService } from '../../services/closest-stop.service';
 import { SvgIconComponent } from '../../../../shared/components';
 import { TooltipDirective } from '../../../../shared/directives/tooltip.directive';
+import { ClipboardService } from '../../../../core/services/clipboard.service';
 
 @Component({
   selector: 'app-stop-toolbar',
@@ -21,14 +22,19 @@ import { TooltipDirective } from '../../../../shared/directives/tooltip.directiv
 export class StopToolbarComponent {
   protected readonly geolocation = inject(GeolocationService);
   private closestStopService = inject(ClosestStopService);
+  private readonly clipboard = inject(ClipboardService);
+  public showShareButton = input<boolean>(true);
 
-  public showShareButton = input<boolean>(false);
-
-  onFindStop() {
+  public onFindStop() {
     this.closestStopService.findAndSelectStop();
   }
 
-  onCopy() {
-    //
+  public async onCopy() {
+    const text = location.href;
+    if (!text) return { ok: false, message: 'Empty content' };
+
+    const ok = await this.clipboard.copy(text);
+
+    return { ok };
   }
 }

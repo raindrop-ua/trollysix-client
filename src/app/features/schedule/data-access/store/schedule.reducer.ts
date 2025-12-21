@@ -1,6 +1,30 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { ScheduleApiActions, SchedulePageActions } from './schedule.actions';
 import { initialState, stopsAdapter } from './schedule.state';
+import { DirectionName } from '../models/direction.model';
+
+function pickValidStopId(
+  stops: { id: string }[],
+  candidate: string | null,
+): string | null {
+  if (!candidate) return null;
+  return stops.some((s) => s.id === candidate) ? candidate : null;
+}
+
+function pickValidDayTypeName(
+  dayTypes: { name: string }[],
+  candidate: string | null,
+): string | null {
+  if (!candidate) return null;
+  return dayTypes.some((dt) => dt.name === candidate) ? candidate : null;
+}
+
+function pickValidDirectionName(
+  candidate: DirectionName | null,
+): DirectionName | null {
+  if (!candidate) return null;
+  return candidate === 'forward' || candidate === 'backward' ? candidate : null;
+}
 
 export const scheduleFeature = createFeature({
   name: 'schedule',
@@ -17,19 +41,49 @@ export const scheduleFeature = createFeature({
           },
     ),
 
+    on(SchedulePageActions.hydrateFromUrl, (state, payload) => ({
+      ...state,
+      pendingUrlSelection: payload,
+    })),
+
     on(
       ScheduleApiActions.loadInitialDataSuccess,
       (state, { stops, dayTypes, directions, autoSelectedDayTypeName }) => {
+        const pending = state.pendingUrlSelection;
+
+        const urlStopId = pickValidStopId(stops, pending?.stopId ?? null);
+        const urlDayType = pickValidDayTypeName(
+          dayTypes,
+          pending?.dayTypeName ?? null,
+        );
+        const urlDirection = pickValidDirectionName(
+          pending?.directionName ?? null,
+        );
+
+        const nextSelectedStopId =
+          urlStopId ?? state.selectedStopId ?? stops[0]?.id ?? null;
+
+        const nextSelectedDayTypeName =
+          urlDayType ??
+          state.selectedDayTypeName ??
+          autoSelectedDayTypeName ??
+          null;
+
+        const nextSelectedDirectionName =
+          urlDirection ?? state.selectedDirectionName ?? 'forward';
+
         return {
           ...state,
           stops: stopsAdapter.setAll(stops, state.stops),
           dayTypes,
           directions,
           stopsLoading: false,
-          selectedStopId: stops[0]?.id ?? null,
-          selectedDayTypeName: autoSelectedDayTypeName ?? state.selectedDayTypeName,
+          selectedStopId: nextSelectedStopId,
+          selectedDayTypeName: nextSelectedDayTypeName,
+          selectedDirectionName: nextSelectedDirectionName,
           error: null,
           initialDataLoaded: true,
+          pendingUrlSelection: null,
         };
       },
     ),

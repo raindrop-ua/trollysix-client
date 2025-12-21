@@ -1,14 +1,15 @@
 import {
+  PLATFORM_ID,
   EnvironmentProviders,
   inject,
   makeEnvironmentProviders,
-  PLATFORM_ID,
   provideEnvironmentInitializer,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { SwUpdateService } from '../services/sw-update.service';
 import { PageVisibilityService } from '../services/page-visibility.service';
 import { SeoService } from '../services/seo.service';
+import { ConfigService } from '../services/config.service';
 
 export function provideAppInit(): EnvironmentProviders {
   return makeEnvironmentProviders([
@@ -17,6 +18,7 @@ export function provideAppInit(): EnvironmentProviders {
       if (isPlatformBrowser(platformId)) {
         inject(SwUpdateService);
         inject(PageVisibilityService).init();
+        inject(ConfigService).init({});
       }
       inject(SeoService);
     }),

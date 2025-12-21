@@ -21,6 +21,11 @@ export interface ScheduleState {
   timetableLoading: boolean;
   error: string | null;
   initialDataLoaded: boolean;
+  pendingUrlSelection: {
+    stopId: string | null;
+    dayTypeName: string | null;
+    directionName: DirectionName | null;
+  } | null;
 }
 
 export const initialState: ScheduleState = {
@@ -36,4 +41,5 @@ export const initialState: ScheduleState = {
   timetableLoading: false,
   error: null,
   initialDataLoaded: false,
+  pendingUrlSelection: null,
 };

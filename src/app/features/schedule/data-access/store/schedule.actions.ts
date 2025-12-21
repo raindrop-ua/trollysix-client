@@ -8,6 +8,11 @@ export const SchedulePageActions = createActionGroup({
   source: 'Schedule Page',
   events: {
     Enter: emptyProps(),
+    'Hydrate From Url': props<{
+      stopId: string | null;
+      dayTypeName: string | null;
+      directionName: DirectionName | null;
+    }>(),
     'Select Stop': props<{ stopId: string }>(),
     'Select Day Type': props<{ dayTypeName: string }>(),
     'Select Direction': props<{ directionName: DirectionName }>(),
