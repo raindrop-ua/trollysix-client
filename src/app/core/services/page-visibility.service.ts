@@ -36,7 +36,6 @@ export class PageVisibilityService {
 
           this.toastService.info('Nice to see you again', {
             title: 'Welcome back 👋',
-            duration: 5000,
           });
 
           this.lastHiddenAt = null;

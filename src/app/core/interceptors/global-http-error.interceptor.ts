@@ -16,7 +16,6 @@ export const globalHttpErrorInterceptor: HttpInterceptorFn = (req, next) => {
         if (error.status === 0) {
           toastService.error('Network error. Please check your connection.', {
             title: 'Connection issue',
-            duration: 5_000,
           });
           return;
         }
@@ -24,12 +23,10 @@ export const globalHttpErrorInterceptor: HttpInterceptorFn = (req, next) => {
         if ([500, 404].includes(error.status)) {
           toastService.error(error.message, {
             title: 'Error',
-            duration: 5_000,
           });
         } else {
           toastService.error('Failed to load data', {
             title: 'Error',
-            duration: 5_000,
           });
         }
       },
