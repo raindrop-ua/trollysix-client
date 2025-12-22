@@ -9,8 +9,7 @@ import { BtnDirective } from '../../../../shared/directives/btn.directive';
 import { ClosestStopService } from '../../services/closest-stop.service';
 import { SvgIconComponent } from '../../../../shared/components';
 import { TooltipDirective } from '../../../../shared/directives/tooltip.directive';
-import { ClipboardService } from '../../../../core/services/clipboard.service';
-import { ToastService } from '../../../../core/services/toast.service';
+import { ShareScheduleService } from '../../services/share-schedule.service';
 
 @Component({
   selector: 'app-stop-toolbar',
@@ -23,8 +22,7 @@ import { ToastService } from '../../../../core/services/toast.service';
 export class StopToolbarComponent {
   protected readonly geolocation = inject(GeolocationService);
   private closestStopService = inject(ClosestStopService);
-  private readonly toastService = inject(ToastService);
-  private readonly clipboard = inject(ClipboardService);
+  private readonly shareScheduleService = inject(ShareScheduleService);
   public showShareButton = input<boolean>(true);
 
   public onFindStop() {
@@ -32,15 +30,6 @@ export class StopToolbarComponent {
   }
 
   public onCopy() {
-    const text = location.href;
-
-    this.clipboard
-      .copy(text)
-      .then(() => {
-        this.toastService.success(`Link successfully copied to clipboard`);
-      })
-      .catch(() => {
-        this.toastService.error(`Link could not be copied to clipboard`);
-      });
+    this.shareScheduleService.shareSchedule();
   }
 }
