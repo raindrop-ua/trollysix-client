@@ -3,6 +3,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter, map, mergeMap, distinctUntilChanged } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { environment } from '../../../environments/environment';
 
 interface SeoData {
   title?: string;
@@ -21,6 +22,8 @@ export class SeoService {
   private readonly activatedRoute = inject(ActivatedRoute);
   private readonly destroyRef = inject(DestroyRef);
 
+  private readonly DEFAULT_OG_IMAGE = `${environment.SEO_ASSETS}og-default.jpg`;
+
   constructor() {
     this.router.events
       .pipe(
@@ -35,9 +38,7 @@ export class SeoService {
         distinctUntilChanged((a, b) => JSON.stringify(a) === JSON.stringify(b)),
         takeUntilDestroyed(this.destroyRef),
       )
-      .subscribe((seo) => {
-        if (seo) this.update(seo);
-      });
+      .subscribe((seo) => this.update(seo ?? {}));
   }
 
   public update(seo: SeoData): void {
@@ -68,11 +69,11 @@ export class SeoService {
       });
     }
 
-    if (seo.ogImage) {
-      this.metaService.updateTag({
-        property: 'og:image',
-        content: seo.ogImage,
-      });
-    }
+    this.metaService.updateTag({
+      property: 'og:image',
+      content: seo.ogImage
+        ? `${environment.SEO_ASSETS}${seo.ogImage}`
+        : this.DEFAULT_OG_IMAGE,
+    });
   }
 }
