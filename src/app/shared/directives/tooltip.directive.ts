@@ -121,8 +121,8 @@ export class TooltipDirective {
     const el = this.doc.createElement('div');
     el.setAttribute('role', 'tooltip');
 
-    el.className = `hidden md:block fixed z-45 pointer-events-none select-none rounded-xl baseline-borders
-                    baseline-surface backdrop-blur px-3 py-2 text-sm text-slate-900
+    el.className = `hiddenmd:block fixed z-45 pointer-events-none select-none rounded-xl baseline-borders
+                    text-center baseline-surface backdrop-blur px-3 py-2 text-sm text-slate-900
                     dark:text-slate-100 shadow-md transition-opacity duration-150 ease-out`;
 
     el.style.maxWidth = `${this.maxWidth()}rem`;
