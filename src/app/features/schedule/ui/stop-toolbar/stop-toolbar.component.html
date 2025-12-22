@@ -17,8 +17,8 @@
         ></svg>
       </button>
     }
-    @if (showShareButton()) {
-      <button (click)="onCopy()" appBtn="primary">
+    @if (canShare()) {
+      <button (click)="onShare()" appBtn="primary">
         <span>Share</span>
         <svg
           icon="share"
