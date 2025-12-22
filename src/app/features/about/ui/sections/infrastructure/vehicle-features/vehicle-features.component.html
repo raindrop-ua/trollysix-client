@@ -3,7 +3,6 @@
     @for (feature of vehicleFeatures(); track feature.name) {
       <li
         class="inline-block rounded-full bg-blue-600 p-1.5 dark:bg-blue-700"
-        [title]="feature.name"
         [appTooltip]="feature.name"
         [appTooltipPlacement]="'bottom'"
       >
