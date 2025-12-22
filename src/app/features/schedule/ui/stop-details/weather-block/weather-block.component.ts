@@ -37,9 +37,9 @@ export class WeatherBlockComponent {
   readonly weatherIconUrl = computed(() => {
     const weather = this.stop().weather;
     if (!weather?.icon) {
-      return `${environment.WEATHER_ICON_BASE}/default@2x.png`;
+      return `${environment.WEATHER_ICON_BASE}default@2x.png`;
     }
-    return `${environment.WEATHER_ICON_BASE}/${weather.icon}@2x.png`;
+    return `${environment.WEATHER_ICON_BASE}${weather.icon}@2x.png`;
   });
 
   private readonly windDirs = [
