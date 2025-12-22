@@ -1,6 +1,6 @@
 <section class="baseline-container pb-6 md:pb-8">
   <div class="flex flex-wrap items-center justify-start gap-3">
-    @if (geolocation.isGeolocationAvailable()) {
+    @if (canFind()) {
       <button
         (click)="onFindStop()"
         aria-label="Find closest stop"
@@ -17,8 +17,8 @@
         ></svg>
       </button>
     }
-    @if (showShareButton()) {
-      <button (click)="onCopy()" appBtn="primary">
+    @if (canShare()) {
+      <button (click)="onShare()" appBtn="primary">
         <span>Share</span>
         <svg
           icon="share"

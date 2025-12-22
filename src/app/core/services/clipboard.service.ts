@@ -1,46 +1,53 @@
 import { Injectable, inject, PLATFORM_ID } from '@angular/core';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
-import { from, Observable } from 'rxjs';
+
+export type ClipboardCopyResult =
+  | { ok: true }
+  | { ok: false; reason: 'empty' | 'not_browser' | 'not_supported' | 'failed' };
 
 @Injectable({ providedIn: 'root' })
 export class ClipboardService {
   private readonly doc = inject(DOCUMENT);
   private readonly platformId = inject(PLATFORM_ID);
 
-  public async copy(text: string): Promise<boolean> {
-    if (!text) return false;
+  isSupported(): boolean {
     if (!isPlatformBrowser(this.platformId)) return false;
+    return !!navigator?.clipboard?.writeText || !!this.doc?.execCommand;
+  }
+
+  async copy(text: string): Promise<ClipboardCopyResult> {
+    if (!text) return { ok: false, reason: 'empty' };
+    if (!isPlatformBrowser(this.platformId))
+      return { ok: false, reason: 'not_browser' };
 
     try {
-      if (
-        navigator &&
-        'clipboard' in navigator &&
-        navigator.clipboard?.writeText
-      ) {
+      if (navigator?.clipboard?.writeText) {
         await navigator.clipboard.writeText(text);
-        return true;
+        return { ok: true };
       }
     } catch {
-      /* empty */
+      // continue to fallback
     }
 
+    // fallback
     try {
       const textarea = this.doc.createElement('textarea');
       textarea.value = text;
       textarea.setAttribute('readonly', '');
       textarea.style.position = 'fixed';
       textarea.style.left = '-9999px';
+      textarea.style.opacity = '0';
       this.doc.body.appendChild(textarea);
+
+      textarea.focus();
       textarea.select();
+
       const ok = this.doc.execCommand?.('copy') ?? false;
       this.doc.body.removeChild(textarea);
-      return ok;
-    } catch {
-      return false;
-    }
-  }
 
-  public copy$(text: string): Observable<boolean> {
-    return from(this.copy(text));
+      return ok ? { ok: true } : { ok: false, reason: 'failed' };
+    } catch {
+      return { ok: false, reason: 'failed' };
+    }
   }
 }
