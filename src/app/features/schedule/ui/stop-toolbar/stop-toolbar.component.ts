@@ -32,7 +32,7 @@ export class StopToolbarComponent {
     this.closestStopService.findAndSelectStop();
   }
 
-  public onCopy() {
+  public onShare() {
     this.shareScheduleService.shareSchedule();
   }
 }
