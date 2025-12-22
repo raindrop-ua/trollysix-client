@@ -1,19 +1,20 @@
 import {
   Component,
   inject,
-  input,
+  computed,
   ChangeDetectionStrategy,
 } from '@angular/core';
 import { GeolocationService } from '../../services/geolocation.service';
-import { BtnDirective } from '../../../../shared/directives/btn.directive';
 import { ClosestStopService } from '../../services/closest-stop.service';
-import { SvgIconComponent } from '../../../../shared/components';
-import { TooltipDirective } from '../../../../shared/directives/tooltip.directive';
 import { ShareScheduleService } from '../../services/share-schedule.service';
+import { ClipboardService } from '../../../../core/services/clipboard.service';
+import { TooltipDirective } from '../../../../shared/directives/tooltip.directive';
+import { BtnDirective } from '../../../../shared/directives/btn.directive';
+import { SvgIconComponent } from '../../../../shared/components';
 
 @Component({
   selector: 'app-stop-toolbar',
-  imports: [SvgIconComponent, BtnDirective, TooltipDirective],
+  imports: [BtnDirective, TooltipDirective, SvgIconComponent],
   providers: [ClosestStopService],
   templateUrl: './stop-toolbar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -21,9 +22,11 @@ import { ShareScheduleService } from '../../services/share-schedule.service';
 })
 export class StopToolbarComponent {
   protected readonly geolocation = inject(GeolocationService);
-  private closestStopService = inject(ClosestStopService);
+  private readonly closestStopService = inject(ClosestStopService);
   private readonly shareScheduleService = inject(ShareScheduleService);
-  public showShareButton = input<boolean>(true);
+  private readonly clipboardService = inject(ClipboardService);
+
+  readonly canShare = computed(() => this.clipboardService.isSupported());
 
   public onFindStop() {
     this.closestStopService.findAndSelectStop();
