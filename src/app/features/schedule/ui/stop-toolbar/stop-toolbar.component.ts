@@ -21,12 +21,15 @@ import { SvgIconComponent } from '../../../../shared/components';
   host: { class: 'block' },
 })
 export class StopToolbarComponent {
-  protected readonly geolocation = inject(GeolocationService);
+  public readonly geolocationService = inject(GeolocationService);
   private readonly closestStopService = inject(ClosestStopService);
   private readonly shareScheduleService = inject(ShareScheduleService);
   private readonly clipboardService = inject(ClipboardService);
 
   readonly canShare = computed(() => this.clipboardService.isSupported());
+  readonly canFind = computed(() =>
+    this.geolocationService.isGeolocationAvailable(),
+  );
 
   public onFindStop() {
     this.closestStopService.findAndSelectStop();
