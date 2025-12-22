@@ -6,10 +6,11 @@ import {
 } from '@angular/core';
 import { VehicleFeature } from '../../../../data-access/models/vehicle-feature';
 import { SvgIconComponent } from '../../../../../../shared/components';
+import { TooltipDirective } from '../../../../../../shared/directives/tooltip.directive';
 
 @Component({
   selector: 'app-vehicle-features',
-  imports: [SvgIconComponent],
+  imports: [SvgIconComponent, TooltipDirective],
   templateUrl: './vehicle-features.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
@@ -19,17 +20,17 @@ export class VehicleFeaturesComponent {
   vehicleFeatures = signal<VehicleFeature[]>([
     {
       name: 'Accessibility',
-      ariaLabel: 'Accessibility feature',
+      ariaLabel: 'Accessibility',
       icon: 'accessibility',
     },
     {
-      name: 'Announcer',
-      ariaLabel: 'Announcer feature',
+      name: 'Onboard Announcement System',
+      ariaLabel: 'Onboard Announcement System',
       icon: 'speech',
     },
     {
-      name: 'Battery',
-      ariaLabel: 'Battery feature',
+      name: 'Autonomous Operation',
+      ariaLabel: 'Autonomous Operation',
       icon: 'battery-charging',
     },
   ]);
