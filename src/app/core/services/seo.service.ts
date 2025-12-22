@@ -4,15 +4,7 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter, map, mergeMap, distinctUntilChanged } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { environment } from '../../../environments/environment';
-
-interface SeoData {
-  title?: string;
-  description?: string;
-  keywords?: string;
-  ogTitle?: string;
-  ogDescription?: string;
-  ogImage?: string;
-}
+import { SeoData } from '../models/seo-data';
 
 @Injectable({ providedIn: 'root' })
 export class SeoService {
