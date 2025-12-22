@@ -11,7 +11,6 @@ import { ScheduleService } from '../../../services/schedule.service';
 })
 export class DepartureConfigComponent {
   private readonly schedule = inject(ScheduleService);
-
   readonly departures$ = this.schedule.departures$;
   readonly showScheduleNumbers$ = this.schedule.showScheduleNumbers$;
 
