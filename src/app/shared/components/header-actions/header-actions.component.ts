@@ -18,6 +18,6 @@ import { ThemeSwitcherComponent } from './theme-switcher/theme-switcher.componen
   host: { class: 'block' },
 })
 export class HeaderActionsComponent {
-  public readonly showSettingsButton = signal<boolean>(true);
+  public readonly showSettingsButton = signal<boolean>(false);
   protected readonly AppRouteEnum = AppRouteEnum;
 }
