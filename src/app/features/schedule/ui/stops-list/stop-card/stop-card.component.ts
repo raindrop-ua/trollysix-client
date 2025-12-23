@@ -5,12 +5,12 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { AsyncPipe, NgOptimizedImage } from '@angular/common';
-import { Stop } from '../../../data-access/models/stop.model';
-import { DirectionName } from '../../../data-access/models/direction.model';
+import { Store } from '@ngrx/store';
 import { SchedulePageActions } from '../../../data-access/store/schedule.actions';
 import { selectScheduleViewModel } from '../../../data-access/store/schedule.selectors';
+import { Stop } from '../../../data-access/models/stop.model';
+import { DirectionName } from '../../../data-access/models/direction.model';
 import { SvgIconComponent } from '../../../../../shared/components';
 
 @Component({
