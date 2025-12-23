@@ -1,8 +1,8 @@
 import {
   Component,
+  signal,
   ChangeDetectionStrategy,
   ViewEncapsulation,
-  signal,
 } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { AppRouteEnum } from '../../../core/enums/app-route.enum';

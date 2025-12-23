@@ -1,8 +1,9 @@
 import {
   Component,
   inject,
-  ChangeDetectionStrategy,
   signal,
+  ChangeDetectionStrategy,
+  ViewEncapsulation,
 } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
@@ -16,6 +17,7 @@ import { SpinnerComponent } from '../../../../../shared/components';
   templateUrl: './departure-table.component.html',
   imports: [DepartureTimeItemComponent, AsyncPipe, SpinnerComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class DepartureTableComponent {

@@ -3,7 +3,9 @@
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
       <div>
         @for (paragraph of copyAbout.generalDescription; track paragraph) {
-          <p [ngClass]="{ 'mb-2': !$last }">{{ paragraph }}</p>
+          <p class="text-pretty" [ngClass]="{ 'mb-2': !$last }">
+            {{ paragraph }}
+          </p>
         }
       </div>
       <div

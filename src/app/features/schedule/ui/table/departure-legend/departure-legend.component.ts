@@ -1,4 +1,9 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import {
+  Component,
+  inject,
+  ChangeDetectionStrategy,
+  ViewEncapsulation,
+} from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { ScheduleService } from '../../../services/schedule.service';
 
@@ -7,6 +12,7 @@ import { ScheduleService } from '../../../services/schedule.service';
   imports: [AsyncPipe],
   templateUrl: './departure-legend.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class DepartureLegendComponent {
