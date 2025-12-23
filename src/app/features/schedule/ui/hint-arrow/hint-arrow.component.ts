@@ -1,4 +1,9 @@
-import { Component, ChangeDetectionStrategy, input } from '@angular/core';
+import {
+  Component,
+  input,
+  ChangeDetectionStrategy,
+  ViewEncapsulation,
+} from '@angular/core';
 import { NgClass } from '@angular/common';
 import { DirectionName } from '../../data-access/models/direction.model';
 
@@ -7,6 +12,7 @@ import { DirectionName } from '../../data-access/models/direction.model';
   imports: [NgClass],
   templateUrl: './hint-arrow.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class HintArrowComponent {

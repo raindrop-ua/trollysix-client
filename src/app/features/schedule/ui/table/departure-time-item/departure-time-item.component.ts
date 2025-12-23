@@ -5,6 +5,7 @@ import {
   inject,
   output,
   ChangeDetectionStrategy,
+  ViewEncapsulation,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Departure } from '../../../data-access/models/departure.model';
@@ -15,6 +16,7 @@ import { ScheduleService } from '../../../services/schedule.service';
   imports: [],
   templateUrl: './departure-time-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class DepartureTimeItemComponent {

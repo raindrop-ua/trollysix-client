@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ViewEncapsulation,
+} from '@angular/core';
 import { GenericHeaderComponent } from '../../../shared/components/sections/generic-header/generic-header.component';
 
 @Component({
@@ -6,6 +10,7 @@ import { GenericHeaderComponent } from '../../../shared/components/sections/gene
   imports: [GenericHeaderComponent],
   templateUrl: './settings.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class SettingsComponent {}

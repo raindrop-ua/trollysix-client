@@ -1,4 +1,9 @@
-import { Component, input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  input,
+  ChangeDetectionStrategy,
+  ViewEncapsulation,
+} from '@angular/core';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -6,6 +11,7 @@ import { Component, input, ChangeDetectionStrategy } from '@angular/core';
   imports: [],
   template: '<svg:use [attr.href]="href"></svg:use>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class SvgIconComponent {
   public icon = input.required();

@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  Component,
+  signal,
+  ChangeDetectionStrategy,
+  ViewEncapsulation,
+} from '@angular/core';
 import { GenericSectionBlockComponent } from '../../../../../shared/components/sections';
 import { RouteOperationTableComponent } from './operating-table/route-operation-table.component';
 import { OperatingDays } from '../../../../../shared/models/operating-days.model';
@@ -8,6 +13,7 @@ import { OperatingDays } from '../../../../../shared/models/operating-days.model
   imports: [GenericSectionBlockComponent, RouteOperationTableComponent],
   templateUrl: './route-operation.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class RouteOperationComponent {
