@@ -13,21 +13,11 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NAVIGATION_TOKEN } from '../../../config/navigation.config';
 import { AppRouteEnum } from '../../../enums/app-route.enum';
 import { SvgIconComponent } from '../../../../shared/components';
-import { ThemeSwitcherComponent } from '../../../../shared/components';
-import { PremiumCtaComponent } from '../../../../shared/components/premium-cta/premium-cta.component';
-import { SettingsButtonComponent } from '../../../../shared/components/settings-button/settings-button.component';
-import { NgTemplateOutlet } from '@angular/common';
+import { HeaderActionsComponent } from '../../../../shared/components/header-actions/header-actions.component';
 
 @Component({
   selector: 'app-header',
-  imports: [
-    RouterLink,
-    ThemeSwitcherComponent,
-    SvgIconComponent,
-    PremiumCtaComponent,
-    SettingsButtonComponent,
-    NgTemplateOutlet,
-  ],
+  imports: [RouterLink, SvgIconComponent, HeaderActionsComponent],
   templateUrl: './header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
@@ -41,9 +31,6 @@ export class HeaderComponent implements OnInit {
   private readonly cdr = inject(ChangeDetectorRef);
   public readonly navigation = inject(NAVIGATION_TOKEN);
   public isMenuOpen = signal(false);
-
-  public readonly showSettingsButton = signal<boolean>(false);
-  public readonly showPremiumButton = signal<boolean>(true);
 
   public ngOnInit() {
     this.router.events
