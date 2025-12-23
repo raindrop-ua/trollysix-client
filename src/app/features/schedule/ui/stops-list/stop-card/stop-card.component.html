@@ -15,7 +15,7 @@
         <img
           [ngSrc]="stop.imageUrl"
           [alt]="stop.name"
-          class="h-full w-full object-cover opacity-10"
+          class="h-full w-full object-cover opacity-8 blur-[2px]"
           fill
         />
       </div>
@@ -23,7 +23,7 @@
     <div class="flex items-start justify-between">
       <div>
         <div
-          class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400"
+          class="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-200"
         >
           <span>Stop</span>
           <span class="flex items-center">
@@ -66,7 +66,7 @@
       @if (showDepartures()) {
         @let departure = getDeparture(stop, vm.selectedDirectionName);
         <div
-          class="mt-2 flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400"
+          class="mt-2 flex items-center gap-2 text-sm text-slate-800 dark:text-slate-200"
         >
           <svg
             icon="clock"

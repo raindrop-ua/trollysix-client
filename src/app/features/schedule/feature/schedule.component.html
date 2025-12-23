@@ -2,10 +2,10 @@
 @defer (on idle) {
   @if (vm$ | async; as vm) {
     <app-stops-list />
-    <app-stop-toolbar />
-    <app-selectors-group />
-    <app-schedule-controls />
     @if (vm.selectedStop) {
+      <app-stop-toolbar />
+      <app-selectors-group />
+      <app-schedule-controls />
       <app-stop-details [stopData]="vm.selectedStop" />
     }
     <app-notice />

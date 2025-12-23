@@ -13,12 +13,12 @@ type TooltipPlacement = 'top' | 'bottom' | 'left' | 'right';
 
 @Directive({
   selector: '[appTooltip]',
-  standalone: true,
   host: {
     '(mouseenter)': 'onEnter()',
     '(focusin)': 'onEnter()',
     '(mouseleave)': 'onLeave()',
     '(focusout)': 'onLeave()',
+    '(click)': 'hideNow()',
     '(document:keydown.escape)': 'hideNow()',
   },
 })
@@ -121,7 +121,7 @@ export class TooltipDirective {
     const el = this.doc.createElement('div');
     el.setAttribute('role', 'tooltip');
 
-    el.className = `hiddenmd:block fixed z-45 pointer-events-none select-none rounded-xl baseline-borders
+    el.className = `hidden md:block fixed z-45 pointer-events-none select-none rounded-xl baseline-borders
                     text-center baseline-surface backdrop-blur px-3 py-2 text-sm text-slate-900
                     dark:text-slate-100 shadow-md transition-opacity duration-150 ease-out`;
 

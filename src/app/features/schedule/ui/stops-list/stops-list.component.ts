@@ -2,7 +2,7 @@ import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { selectScheduleViewModel } from '../../data-access/store/schedule.selectors';
-import { StopCardComponent } from '../stop-card/stop-card.component';
+import { StopCardComponent } from './stop-card/stop-card.component';
 
 @Component({
   selector: 'app-stops-list',

@@ -14,7 +14,7 @@ export class SeoService {
   private readonly activatedRoute = inject(ActivatedRoute);
   private readonly destroyRef = inject(DestroyRef);
 
-  private readonly DEFAULT_OG_IMAGE = `${environment.SEO_ASSETS}og-default.jpg`;
+  private readonly DEFAULT_OG_IMAGE = `${environment.PUBLIC_URL}${environment.SEO_ASSETS}og-default.png`;
 
   constructor() {
     this.router.events
@@ -64,7 +64,7 @@ export class SeoService {
     this.metaService.updateTag({
       property: 'og:image',
       content: seo.ogImage
-        ? `${environment.SEO_ASSETS}${seo.ogImage}`
+        ? `${environment.PUBLIC_URL}${environment.SEO_ASSETS}${seo.ogImage}`
         : this.DEFAULT_OG_IMAGE,
     });
   }

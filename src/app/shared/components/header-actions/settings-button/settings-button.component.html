@@ -1,0 +1,17 @@
+<div class="flex items-center gap-2">
+  <a
+    appIconButton
+    [variant]="'default'"
+    [attr.aria-label]="'Settings'"
+    [attr.title]="'Settings'"
+    [routerLink]="[AppRouteEnum.Settings]"
+  >
+    <svg
+      icon="settings"
+      class="size-4"
+      stroke="currentColor"
+      stroke-width="2"
+    ></svg>
+    <span class="sr-only">Settings</span>
+  </a>
+</div>

@@ -6,11 +6,11 @@ import {
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AsyncPipe, NgOptimizedImage } from '@angular/common';
-import { Stop } from '../../data-access/models/stop.model';
-import { DirectionName } from '../../data-access/models/direction.model';
-import { SchedulePageActions } from '../../data-access/store/schedule.actions';
-import { selectScheduleViewModel } from '../../data-access/store/schedule.selectors';
-import { SvgIconComponent } from '../../../../shared/components';
+import { Stop } from '../../../data-access/models/stop.model';
+import { DirectionName } from '../../../data-access/models/direction.model';
+import { SchedulePageActions } from '../../../data-access/store/schedule.actions';
+import { selectScheduleViewModel } from '../../../data-access/store/schedule.selectors';
+import { SvgIconComponent } from '../../../../../shared/components';
 
 @Component({
   selector: 'app-stop-card',
@@ -21,9 +21,9 @@ import { SvgIconComponent } from '../../../../shared/components';
 })
 export class StopCardComponent {
   private store = inject(Store);
-  public readonly showDescriptions = input<boolean>(false);
+  public readonly showDescriptions = input<boolean>(true);
+  public readonly showBackgroundImage = input<boolean>(true);
   public readonly showDepartures = input<boolean>(true);
-  public readonly showBackgroundImage = input<boolean>(false);
   public selected = input<boolean>(false);
   public stopData = input<Stop>();
 
