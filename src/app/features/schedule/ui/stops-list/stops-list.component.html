@@ -14,10 +14,19 @@
     <div class="grid min-h-28 grid-cols-2 gap-4 md:grid-cols-4">
       @for (stop of vm.stops; track stop.id) {
         @let selected = vm.selectedStop?.id === stop.id;
-        <app-stop-card [stopData]="stop" [selected]="selected" />
+        <app-stop-card
+          [stopData]="stop"
+          [selected]="selected"
+          [showDescriptions]="showDescriptions()"
+          [showBackgroundImage]="showBackgroundImage()"
+        />
       } @empty {
         @for (placeholder of [1, 2, 3, 4]; track placeholder) {
-          <div class="stop-card-placeholder min-h-28"></div>
+          <div
+            class="stop-card-placeholder"
+            [class.min-h-36]="showDescriptions()"
+            [class.min-h-30]="!showDescriptions()"
+          ></div>
         }
       }
     </div>

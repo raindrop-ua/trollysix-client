@@ -1,6 +1,7 @@
 import {
   Component,
   inject,
+  signal,
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
@@ -20,5 +21,8 @@ import { StopCardComponent } from './stop-card/stop-card.component';
 export class StopsListComponent {
   private store = inject(Store);
 
-  vm$ = this.store.select(selectScheduleViewModel);
+  public readonly showDescriptions = signal<boolean>(false);
+  public readonly showBackgroundImage = signal<boolean>(true);
+
+  public vm$ = this.store.select(selectScheduleViewModel);
 }
