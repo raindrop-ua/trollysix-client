@@ -24,7 +24,7 @@
   }
 
   .stop-selected {
-    @apply ring-2;
+    @apply ring-3;
   }
 
   .selector {
