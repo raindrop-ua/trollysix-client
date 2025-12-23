@@ -1,4 +1,9 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  inject,
+  ChangeDetectionStrategy,
+  ViewEncapsulation,
+} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { selectScheduleViewModel } from '../../data-access/store/schedule.selectors';
@@ -9,6 +14,7 @@ import { StopCardComponent } from './stop-card/stop-card.component';
   imports: [AsyncPipe, DatePipe, StopCardComponent],
   templateUrl: './stops-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class StopsListComponent {

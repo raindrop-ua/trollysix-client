@@ -1,4 +1,8 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ViewEncapsulation,
+} from '@angular/core';
 import { GenericSectionBlockComponent } from '../generic-section-block/generic-section-block.component';
 
 @Component({
@@ -6,6 +10,7 @@ import { GenericSectionBlockComponent } from '../generic-section-block/generic-s
   imports: [GenericSectionBlockComponent],
   templateUrl: './notice.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class NoticeComponent {}

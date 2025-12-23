@@ -1,4 +1,10 @@
-import { Component, computed, input } from '@angular/core';
+import {
+  Component,
+  computed,
+  input,
+  ChangeDetectionStrategy,
+  ViewEncapsulation,
+} from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { SvgIconComponent } from '../../../../shared/components';
 import { TooltipDirective } from '../../../../shared/directives/tooltip.directive';
@@ -7,6 +13,8 @@ import { TooltipDirective } from '../../../../shared/directives/tooltip.directiv
   selector: 'app-geo-badge',
   imports: [SvgIconComponent, DecimalPipe, TooltipDirective],
   templateUrl: './geo-badge.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class GeoBadgeComponent {
