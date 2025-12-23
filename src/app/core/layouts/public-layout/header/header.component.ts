@@ -6,6 +6,7 @@ import {
   ChangeDetectorRef,
   DestroyRef,
   ChangeDetectionStrategy,
+  ViewEncapsulation,
 } from '@angular/core';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { filter } from 'rxjs';
@@ -20,6 +21,7 @@ import { HeaderActionsComponent } from '../../../../shared/components/header-act
   imports: [RouterLink, SvgIconComponent, HeaderActionsComponent],
   templateUrl: './header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: {
     class: 'block',
   },
