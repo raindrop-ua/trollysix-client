@@ -5,11 +5,11 @@ import {
 } from '@angular/core';
 import { copy } from '../../../../../core/content/copy.util';
 import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
-import { GenericSectionBlockComponent } from '../../../../../shared/components/sections';
+import { GenericSectionBlockComponent } from '../../../../../shared/ui/sections';
 import {
   ColorSplashComponent,
   SvgIconComponent,
-} from '../../../../../shared/components';
+} from '../../../../../shared/ui';
 
 @Component({
   selector: 'app-overview',

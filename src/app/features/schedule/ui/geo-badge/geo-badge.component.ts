@@ -6,7 +6,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
-import { SvgIconComponent } from '../../../../shared/components';
+import { SvgIconComponent } from '../../../../shared/ui';
 import { TooltipDirective } from '../../../../shared/directives/tooltip.directive';
 
 @Component({

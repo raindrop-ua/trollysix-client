@@ -5,7 +5,7 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
-import { SvgIconComponent } from '../../../../../../shared/components';
+import { SvgIconComponent } from '../../../../../../shared/ui';
 import { OperatingDay } from '../../../../../../shared/models/operating-days.model';
 
 interface IntervalCell {

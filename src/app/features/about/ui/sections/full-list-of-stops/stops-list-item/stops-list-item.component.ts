@@ -4,7 +4,7 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
-import { SvgIconComponent } from '../../../../../../shared/components';
+import { SvgIconComponent } from '../../../../../../shared/ui';
 import { RouteStop } from '../../../../data-access/models/route-stops.model';
 
 @Component({

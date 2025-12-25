@@ -14,7 +14,7 @@ import {
 import { TemperaturePipe } from '../../../../../shared/pipes/temperature.pipe';
 import { Stop } from '../../../data-access/models/stop.model';
 import { environment } from '../../../../../../environments/environment';
-import { SvgIconComponent } from '../../../../../shared/components';
+import { SvgIconComponent } from '../../../../../shared/ui';
 
 @Component({
   selector: 'app-weather-block',

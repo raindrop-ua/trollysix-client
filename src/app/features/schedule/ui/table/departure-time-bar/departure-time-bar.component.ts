@@ -11,7 +11,7 @@ import { selectScheduleViewModel } from '../../../data-access/store/schedule.sel
 import { Status } from '../../../data-access/models/departure.model';
 import { ClockService } from '../../../../../core/services/clock.service';
 import { ScheduleService } from '../../../services/schedule.service';
-import { SvgIconComponent } from '../../../../../shared/components';
+import { SvgIconComponent } from '../../../../../shared/ui';
 
 @Component({
   selector: 'app-departure-time-bar',

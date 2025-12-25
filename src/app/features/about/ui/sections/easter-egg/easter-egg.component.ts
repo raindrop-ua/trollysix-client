@@ -8,7 +8,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { ToastService } from '../../../../../core/services/toast.service';
 import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
 import { CheatCodeDirective } from '../../../../../shared/directives/cheat-code.directive';
-import { GenericSectionBlockComponent } from '../../../../../shared/components/sections';
+import { GenericSectionBlockComponent } from '../../../../../shared/ui/sections';
 
 @Component({
   selector: 'app-easter-egg',

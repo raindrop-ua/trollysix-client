@@ -7,7 +7,7 @@ import {
 import { NgOptimizedImage } from '@angular/common';
 import { Stop } from '../../data-access/models/stop.model';
 import { GeoBadgeComponent } from '../geo-badge/geo-badge.component';
-import { GenericSectionBlockComponent } from '../../../../shared/components/sections';
+import { GenericSectionBlockComponent } from '../../../../shared/ui/sections';
 import { SharedRoutesComponent } from './shared-routes/shared-routes.component';
 import { WeatherBlockComponent } from './weather-block/weather-block.component';
 

@@ -4,7 +4,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AttentionComponent } from '../../../shared/components/sections';
+import { AttentionComponent } from '../../../shared/ui/sections';
 import {
   BigClaimsComponent,
   MastheadComponent,

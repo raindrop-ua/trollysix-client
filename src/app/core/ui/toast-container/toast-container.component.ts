@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { ToastService } from '../../services/toast.service';
-import { SvgIconComponent } from '../../../shared/components';
+import { SvgIconComponent } from '../../../shared/ui';
 
 @Component({
   selector: 'app-toast-container',

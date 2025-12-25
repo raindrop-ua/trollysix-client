@@ -4,7 +4,7 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
-import { MetricsComponent } from '../../../../../shared/components/sections';
+import { MetricsComponent } from '../../../../../shared/ui/sections';
 import { MetricsListService } from '../../../services/metrics-list.service';
 import { AsyncPipe } from '@angular/common';
 

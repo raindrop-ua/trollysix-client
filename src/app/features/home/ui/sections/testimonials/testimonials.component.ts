@@ -17,7 +17,7 @@ import {
   RatingStarsComponent,
   ColorSplashComponent,
   SpinnerComponent,
-} from '../../../../../shared/components';
+} from '../../../../../shared/ui';
 
 @Component({
   selector: 'app-testimonials',

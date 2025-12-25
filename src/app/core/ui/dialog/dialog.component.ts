@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser, NgClass } from '@angular/common';
 import { DialogConfig, DialogResult } from '../../models/dialog.models';
-import { SvgIconComponent } from '../../../shared/components';
+import { SvgIconComponent } from '../../../shared/ui';
 import { Subject } from 'rxjs';
 
 @Component({
