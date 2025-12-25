@@ -3,7 +3,6 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
-import { NgClass } from '@angular/common';
 import { copy } from '../../../../../core/content/copy.util';
 import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
 import { GenericSectionBlockComponent } from '../../../../../shared/components/sections';
@@ -16,7 +15,6 @@ import {
   selector: 'app-overview',
   imports: [
     RevealOnScrollDirective,
-    NgClass,
     GenericSectionBlockComponent,
     ColorSplashComponent,
     SvgIconComponent,

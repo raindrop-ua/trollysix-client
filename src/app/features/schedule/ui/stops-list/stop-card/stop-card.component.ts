@@ -5,12 +5,12 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { AsyncPipe, NgOptimizedImage } from '@angular/common';
-import { Stop } from '../../../data-access/models/stop.model';
-import { DirectionName } from '../../../data-access/models/direction.model';
+import { Store } from '@ngrx/store';
 import { SchedulePageActions } from '../../../data-access/store/schedule.actions';
 import { selectScheduleViewModel } from '../../../data-access/store/schedule.selectors';
+import { Stop } from '../../../data-access/models/stop.model';
+import { DirectionName } from '../../../data-access/models/direction.model';
 import { SvgIconComponent } from '../../../../../shared/components';
 
 @Component({
@@ -23,20 +23,21 @@ import { SvgIconComponent } from '../../../../../shared/components';
 })
 export class StopCardComponent {
   private store = inject(Store);
-  public readonly showDescriptions = input<boolean>(true);
-  public readonly showBackgroundImage = input<boolean>(true);
-  public readonly showDepartures = input<boolean>(true);
+
+  public readonly showDescriptions = input.required<boolean>();
+  public readonly showBackgroundImage = input.required<boolean>();
+
   public selected = input<boolean>(false);
   public stopData = input<Stop>();
 
-  vm$ = this.store.select(selectScheduleViewModel);
+  public vm$ = this.store.select(selectScheduleViewModel);
 
-  getDeparture(stop: Stop, direction: DirectionName | null) {
+  public getDeparture(stop: Stop, direction: DirectionName | null) {
     if (!direction) return null;
     return stop.departures?.[direction];
   }
 
-  onSelectStop(stopId: string, isSelected: boolean): void {
+  public onSelectStop(stopId: string, isSelected: boolean): void {
     if (isSelected) {
       return;
     }
