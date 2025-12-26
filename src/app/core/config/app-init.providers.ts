@@ -8,6 +8,7 @@ import {
 import { isPlatformBrowser } from '@angular/common';
 import { SwUpdateService } from '../services/sw-update.service';
 import { PageVisibilityService } from '../services/page-visibility.service';
+import { NetworkStatusService } from '../services/network-status.service';
 import { SeoService } from '../services/seo.service';
 import { ConfigService } from '../services/config.service';
 
@@ -18,6 +19,7 @@ export function provideAppInit(): EnvironmentProviders {
       if (isPlatformBrowser(platformId)) {
         inject(SwUpdateService);
         inject(PageVisibilityService).init();
+        inject(NetworkStatusService).init();
         inject(ConfigService).init({});
       }
       inject(SeoService);
