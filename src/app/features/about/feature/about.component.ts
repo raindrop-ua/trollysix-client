@@ -9,7 +9,7 @@ import {
   InfrastructureComponent,
   FullListOfStopsComponent,
 } from '../ui';
-import { Metric, MetricsComponent } from '../../../shared/components/sections';
+import { Metric, MetricsComponent } from '../../../shared/ui/sections';
 import { EasterEggComponent } from '../ui/sections/easter-egg/easter-egg.component';
 import { RouteOperationComponent } from '../ui';
 

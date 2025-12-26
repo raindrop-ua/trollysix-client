@@ -4,7 +4,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
-import { GenericSectionBlockComponent } from '../../../../../shared/components/sections';
+import { GenericSectionBlockComponent } from '../../../../../shared/ui/sections';
 import { InfrastructureCardComponent } from './infrastructure-card/infrastructure-card.component';
 import { VehicleFeaturesComponent } from './vehicle-features/vehicle-features.component';
 

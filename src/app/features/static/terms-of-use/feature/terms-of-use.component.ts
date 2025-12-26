@@ -3,7 +3,7 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
-import { GenericHeaderComponent } from '../../../../shared/components/sections/generic-header/generic-header.component';
+import { GenericHeaderComponent } from '../../../../shared/ui/sections/generic-header/generic-header.component';
 
 @Component({
   selector: 'app-terms-of-use',

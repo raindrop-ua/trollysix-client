@@ -4,7 +4,7 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation,
 } from '@angular/core';
-import { GenericSectionBlockComponent } from '../../../../../shared/components/sections';
+import { GenericSectionBlockComponent } from '../../../../../shared/ui/sections';
 import { RouteOperationTableComponent } from './operating-table/route-operation-table.component';
 import { OperatingDays } from '../../../../../shared/models/operating-days.model';
 

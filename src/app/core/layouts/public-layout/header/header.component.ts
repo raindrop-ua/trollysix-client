@@ -13,8 +13,8 @@ import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NAVIGATION_TOKEN } from '../../../config/navigation.config';
 import { AppRouteEnum } from '../../../enums/app-route.enum';
-import { SvgIconComponent } from '../../../../shared/components';
-import { HeaderActionsComponent } from '../../../../shared/components/header-actions/header-actions.component';
+import { SvgIconComponent } from '../../../../shared/ui';
+import { HeaderActionsComponent } from '../../../../shared/ui/header-actions/header-actions.component';
 
 @Component({
   selector: 'app-header',

@@ -11,10 +11,7 @@ import { AppRouteEnum } from '../../../../../core/enums/app-route.enum';
 import { ClockService } from '../../../../../core/services/clock.service';
 import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
 import { BtnDirective } from '../../../../../shared/directives/btn.directive';
-import {
-  SvgIconComponent,
-  SnowComponent,
-} from '../../../../../shared/components';
+import { SvgIconComponent, SnowComponent } from '../../../../../shared/ui';
 import { copy } from '../../../../../core/content/copy.util';
 
 @Component({

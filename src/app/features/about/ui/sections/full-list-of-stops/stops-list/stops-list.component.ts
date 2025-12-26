@@ -5,7 +5,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { StopsListItemComponent } from '../stops-list-item/stops-list-item.component';
-import { SvgIconComponent } from '../../../../../../shared/components';
+import { SvgIconComponent } from '../../../../../../shared/ui';
 import { RouteStop } from '../../../../data-access/models/route-stops.model';
 
 @Component({

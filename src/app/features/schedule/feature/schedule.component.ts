@@ -16,8 +16,8 @@ import {
 } from '../ui';
 import { selectScheduleViewModel } from '../data-access/store/schedule.selectors';
 import { SchedulePageActions } from '../data-access/store/schedule.actions';
-import { NoticeComponent } from '../../../shared/components/sections';
-import { GenericHeaderComponent } from '../../../shared/components/sections/generic-header/generic-header.component';
+import { NoticeComponent } from '../../../shared/ui/sections';
+import { GenericHeaderComponent } from '../../../shared/ui/sections/generic-header/generic-header.component';
 
 @Component({
   selector: 'app-schedule',

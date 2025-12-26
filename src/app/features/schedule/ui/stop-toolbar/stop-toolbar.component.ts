@@ -11,7 +11,7 @@ import { ShareScheduleService } from '../../services/share-schedule.service';
 import { ClipboardService } from '../../../../core/services/clipboard.service';
 import { TooltipDirective } from '../../../../shared/directives/tooltip.directive';
 import { BtnDirective } from '../../../../shared/directives/btn.directive';
-import { SvgIconComponent } from '../../../../shared/components';
+import { SvgIconComponent } from '../../../../shared/ui';
 
 @Component({
   selector: 'app-stop-toolbar',

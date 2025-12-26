@@ -5,7 +5,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { VehicleFeature } from '../../../../data-access/models/vehicle-feature';
-import { SvgIconComponent } from '../../../../../../shared/components';
+import { SvgIconComponent } from '../../../../../../shared/ui';
 import { TooltipDirective } from '../../../../../../shared/directives/tooltip.directive';
 
 @Component({

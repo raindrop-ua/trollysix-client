@@ -11,7 +11,7 @@ import { SchedulePageActions } from '../../../data-access/store/schedule.actions
 import { selectScheduleViewModel } from '../../../data-access/store/schedule.selectors';
 import { Stop } from '../../../data-access/models/stop.model';
 import { DirectionName } from '../../../data-access/models/direction.model';
-import { SvgIconComponent } from '../../../../../shared/components';
+import { SvgIconComponent } from '../../../../../shared/ui';
 
 @Component({
   selector: 'app-stop-card',

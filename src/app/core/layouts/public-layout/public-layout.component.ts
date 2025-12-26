@@ -6,7 +6,7 @@ import {
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { GlobalMessageComponent } from '../../components/global-message/global-message.component';
+import { GlobalMessageComponent } from '../../ui/global-message/global-message.component';
 
 @Component({
   selector: 'app-public-layout',
