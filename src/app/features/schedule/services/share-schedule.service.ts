@@ -13,8 +13,8 @@ import { ClipboardService } from '../../../core/services/clipboard.service';
 export class ShareScheduleService {
   private readonly store = inject(Store);
   private readonly router = inject(Router);
-  private readonly toastService = inject(ToastService);
   private readonly clipboardService = inject(ClipboardService);
+  private readonly toastService = inject(ToastService);
 
   shareSchedule(): void {
     combineLatest([

@@ -7,8 +7,8 @@ import { ToastService } from './toast.service';
 @Injectable({ providedIn: 'root' })
 export class PageVisibilityService {
   private readonly document = inject(DOCUMENT);
-  private readonly toastService = inject(ToastService);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly toastService = inject(ToastService);
 
   private lastHiddenAt: number | null = null;
   private readonly minAwayMs = 10_000;

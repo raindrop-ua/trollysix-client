@@ -13,8 +13,8 @@ import { GeoState } from './closest-stop.types';
 @Injectable()
 export class ClosestStopService {
   private readonly destroyRef = inject(DestroyRef);
-  private readonly toastService = inject(ToastService);
   protected readonly geolocation = inject(GeolocationService);
+  private readonly toastService = inject(ToastService);
   private readonly store = inject(Store);
   state = signal<GeoState>({ status: 'idle' });
 

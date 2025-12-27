@@ -9,9 +9,9 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { isPlatformBrowser, NgClass } from '@angular/common';
+import { Subject } from 'rxjs';
 import { DialogConfig, DialogResult } from '../../models/dialog.models';
 import { SvgIconComponent } from '../../../shared/ui';
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-dialog',

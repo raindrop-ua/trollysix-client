@@ -13,8 +13,8 @@ import { ToastService } from './toast.service';
 @Injectable({ providedIn: 'root' })
 export class NetworkStatusService {
   private readonly document = inject(DOCUMENT);
-  private readonly toastService = inject(ToastService);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly toastService = inject(ToastService);
 
   private readonly minOfflineMs = 3_000;
   private wentOfflineAt: number | null = null;
