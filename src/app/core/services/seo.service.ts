@@ -8,11 +8,11 @@ import { SeoData } from '../models/seo-data';
 
 @Injectable({ providedIn: 'root' })
 export class SeoService {
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly router = inject(Router);
   private readonly titleService = inject(Title);
   private readonly metaService = inject(Meta);
-  private readonly router = inject(Router);
-  private readonly activatedRoute = inject(ActivatedRoute);
-  private readonly destroyRef = inject(DestroyRef);
 
   private readonly DEFAULT_OG_IMAGE = `${environment.PUBLIC_URL}${environment.SEO_ASSETS}og-default.png`;
 
