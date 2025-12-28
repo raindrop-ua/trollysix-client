@@ -16,22 +16,25 @@ export class NetworkStatusService {
   private readonly destroyRef = inject(DestroyRef);
   private readonly toastService = inject(ToastService);
 
-  private readonly minOfflineMs = 3_000;
+  private readonly online = signal(true);
+  public readonly isOnline = computed(() => this.online());
+
+  private readonly minOfflineMs = 1_000;
   private wentOfflineAt: number | null = null;
 
   public init(): void {
-    const win = this.document.defaultView;
+    const defaultView = this.document.defaultView;
 
-    if (!win) {
+    if (!defaultView) {
       return;
     }
 
-    const online$ = fromEvent(win, 'online').pipe(map(() => true));
+    const online$ = fromEvent(defaultView, 'online').pipe(map(() => true));
 
-    const offline$ = fromEvent(win, 'offline').pipe(map(() => false));
+    const offline$ = fromEvent(defaultView, 'offline').pipe(map(() => false));
 
     const status$ = merge(online$, offline$).pipe(
-      startWith(win.navigator.onLine),
+      startWith(defaultView.navigator.onLine),
       tap((value) => this.online.set(value)),
       takeUntilDestroyed(this.destroyRef),
     );
@@ -71,8 +74,4 @@ export class NetworkStatusService {
       )
       .subscribe();
   }
-
-  private readonly online = signal(true);
-
-  public readonly isOnline = computed(() => this.online());
 }
