@@ -7,9 +7,7 @@ import { scheduleFeature } from '../data-access/store/schedule.reducer';
 import { ToastService } from '../../../core/services/toast.service';
 import { ClipboardService } from '../../../core/services/clipboard.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class ShareScheduleService {
   private readonly store = inject(Store);
   private readonly router = inject(Router);
