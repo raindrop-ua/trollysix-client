@@ -30,7 +30,6 @@ export class NetworkStatusService {
     }
 
     const online$ = fromEvent(defaultView, 'online').pipe(map(() => true));
-
     const offline$ = fromEvent(defaultView, 'offline').pipe(map(() => false));
 
     const status$ = merge(online$, offline$).pipe(
