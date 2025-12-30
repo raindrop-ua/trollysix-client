@@ -12,6 +12,7 @@ import { selectScheduleViewModel } from '../../../data-access/store/schedule.sel
 import { Stop } from '../../../data-access/models/stop.model';
 import { DirectionName } from '../../../data-access/models/direction.model';
 import { SvgIconComponent } from '../../../../../shared/ui';
+import { copy } from '../../../../../core/content/copy.util';
 
 @Component({
   selector: 'app-stop-card',
@@ -22,6 +23,8 @@ import { SvgIconComponent } from '../../../../../shared/ui';
   host: { class: 'block' },
 })
 export class StopCardComponent {
+  readonly copySchedule = copy('schedule');
+
   private store = inject(Store);
 
   public readonly showDescriptions = input.required<boolean>();

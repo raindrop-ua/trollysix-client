@@ -1,4 +1,4 @@
-<app-generic-header [title]="'Schedule'" />
+<app-generic-header [title]="copySchedule.header.title" />
 @defer (on idle) {
   @if (vm$ | async; as vm) {
     <app-stops-list />

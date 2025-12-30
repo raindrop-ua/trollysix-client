@@ -12,6 +12,7 @@ import { ScheduleService } from '../../services/schedule.service';
 import { OptionsSelectorComponent } from '../options-selector/options-selector.component';
 import { SvgIconComponent } from '../../../../shared/ui';
 import { HintArrowComponent } from '../hint-arrow/hint-arrow.component';
+import { copy } from '../../../../core/content/copy.util';
 
 @Component({
   selector: 'app-selectors-group',
@@ -28,6 +29,8 @@ import { HintArrowComponent } from '../hint-arrow/hint-arrow.component';
   host: { class: 'block' },
 })
 export class SelectorsGroupComponent {
+  readonly copySchedule = copy('schedule');
+
   private store = inject(Store);
   private readonly schedule = inject(ScheduleService);
   readonly departures$ = this.schedule.departures$;
