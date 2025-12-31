@@ -10,6 +10,7 @@ import { GeoBadgeComponent } from '../geo-badge/geo-badge.component';
 import { GenericSectionBlockComponent } from '../../../../shared/ui/sections';
 import { SharedRoutesComponent } from './shared-routes/shared-routes.component';
 import { WeatherBlockComponent } from './weather-block/weather-block.component';
+import { copy } from '../../../../core/content/copy.util';
 
 @Component({
   selector: 'app-stop-details',
@@ -26,5 +27,7 @@ import { WeatherBlockComponent } from './weather-block/weather-block.component';
   host: { class: 'block' },
 })
 export class StopDetailsComponent {
+  readonly copySchedule = copy('schedule');
+
   stopData = input.required<Stop>();
 }

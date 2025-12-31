@@ -2,11 +2,14 @@
   <section class="baseline-container py-6 md:py-8">
     <div class="mb-4 flex items-center justify-between gap-2">
       <h2 class="text-base font-semibold text-slate-900 dark:text-slate-100">
-        Select stop:
+        {{ copySchedule.selectStop }}
       </h2>
       <div class="text-s text-slate-500 dark:text-slate-400">
         @if (vm.currentTimetable?.validFrom; as validFrom) {
-          <span>Schedule valid from {{ validFrom | date: 'dd.MM.yyyy' }}</span>
+          <span
+            >{{ copySchedule.scheduleValidFrom }}
+            {{ validFrom | date: 'dd.MM.yyyy' }}</span
+          >
         }
       </div>
     </div>

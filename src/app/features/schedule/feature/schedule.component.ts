@@ -18,6 +18,7 @@ import { selectScheduleViewModel } from '../data-access/store/schedule.selectors
 import { SchedulePageActions } from '../data-access/store/schedule.actions';
 import { NoticeComponent } from '../../../shared/ui/sections';
 import { GenericHeaderComponent } from '../../../shared/ui/sections/generic-header/generic-header.component';
+import { copy } from '../../../core/content/copy.util';
 
 @Component({
   selector: 'app-schedule',
@@ -37,6 +38,8 @@ import { GenericHeaderComponent } from '../../../shared/ui/sections/generic-head
   host: { class: 'block' },
 })
 export class ScheduleComponent implements OnInit {
+  readonly copySchedule = copy('schedule');
+
   private store = inject(Store);
   vm$ = this.store.select(selectScheduleViewModel);
 
