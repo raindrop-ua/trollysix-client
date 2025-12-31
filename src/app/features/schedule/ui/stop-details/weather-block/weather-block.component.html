@@ -18,14 +18,13 @@
       </div>
       <div class="flex flex-col justify-between text-base">
         <div class="flex items-baseline gap-3">
-          <span
-            class="text-lg font-semibold text-slate-900 tabular-nums dark:text-white"
-            >{{ weather.temperature | temperature }}</span
-          >
+          <span class="text-lg font-semibold text-slate-900 dark:text-white">{{
+            weather.temperature | temperature
+          }}</span>
           <span
             >Feels like
             <span
-              class="text-lg font-semibold text-slate-900 tabular-nums dark:text-white"
+              class="text-lg font-semibold text-slate-900 dark:text-white"
               >{{ weather.feelsLike | temperature }}</span
             ></span
           >
