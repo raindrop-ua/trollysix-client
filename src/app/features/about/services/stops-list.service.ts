@@ -4,11 +4,9 @@ import { Observable, of, shareReplay } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 import { RouteStop } from '../data-access/models/route-stops.model';
-import { Metric } from '../../../shared/components/sections';
+import { Metric } from '../../../shared/ui/sections';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class StopsListService {
   private readonly BASE_URL = environment.BASE_API_URL;
   private http = inject(HttpClient);

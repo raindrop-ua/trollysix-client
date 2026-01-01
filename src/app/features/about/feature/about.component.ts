@@ -1,11 +1,15 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ViewEncapsulation,
+} from '@angular/core';
 import {
   HeadComponent,
   OverviewComponent,
   InfrastructureComponent,
   FullListOfStopsComponent,
 } from '../ui';
-import { Metric, MetricsComponent } from '../../../shared/components/sections';
+import { Metric, MetricsComponent } from '../../../shared/ui/sections';
 import { EasterEggComponent } from '../ui/sections/easter-egg/easter-egg.component';
 import { RouteOperationComponent } from '../ui';
 
@@ -22,6 +26,7 @@ import { RouteOperationComponent } from '../ui';
   ],
   templateUrl: './about.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class AboutComponent {

@@ -1,12 +1,17 @@
-import { Component, ChangeDetectionStrategy, input } from '@angular/core';
-import { NgClass } from '@angular/common';
+import {
+  Component,
+  input,
+  ChangeDetectionStrategy,
+  ViewEncapsulation,
+} from '@angular/core';
 import { DirectionName } from '../../data-access/models/direction.model';
 
 @Component({
   selector: 'app-hint-arrow',
-  imports: [NgClass],
+  imports: [],
   templateUrl: './hint-arrow.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class HintArrowComponent {

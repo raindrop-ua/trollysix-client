@@ -10,16 +10,44 @@ export const COPY = {
     subtitle: 'Timetable for trolleybus route in the city of Dnipro.',
   },
 
+  schedule: {
+    header: {
+      title: 'Schedule',
+    },
+    selectStop: 'Select stop',
+    scheduleValidFrom: 'Schedule valid from',
+    stop: 'Stop',
+    stopSelected: 'Selected',
+    stopDetails: 'Stop details',
+    controlDay: 'Day',
+    controlDirection: 'Day',
+    noDepartures: 'No departures',
+    noDeparturesFound: 'No departures found.',
+    noDeparturesFoundNote:
+      'This stop may not have any departures in the selected direction. Please try choosing the opposite direction.',
+  },
+
   about: {
+    header: {
+      title: 'About Route 6',
+      subtitle:
+        'A concise story of a unique trolleybus line — connecting neighborhoods with the city heart.',
+    },
     generalDescription: [
       'The route connects the charming residential area of Pridniprovsky, locally referred to simply as Pridniprovsk, with the city center.',
-      `On September 12, 2020 — City Day — trolleybus route No. 6 “Soborna Square - Pridniprovsk Residential Area” was launched.`,
-      `Descending from Dmytro Yavornytskyi Avenue, the trolleybus runs along Naberezhna Peremohy without entering residential neighborhoods, heading toward the Southern Bridge. After crossing the bridge, it continues along Havanska Street, passing the Pridniprovska Thermal Power Plant.
-The route then proceeds along Elektrychna Street, Kolska Street, and 20 Years of Victory Street, terminating at the loop near the district administration building.
-With the launch of this trolleybus route, electric public transport finally reached Pridniprovsk, which previously could only be accessed by buses or minibuses.`,
+      `On September 12, 2020 — City Day — trolleybus route No. 6 was launched.`,
+      `Descending from Dmytro Yavornytskyi Avenue, the trolleybus runs along Naberezhna Peremohy without entering residential neighborhoods, heading toward the Southern Bridge. After crossing the bridge, it continues along Havanska St., passing the Pridniprovska Thermal Power Plant.
+The route then proceeds along Elektrychna St., Kolska St., and 20 Years of Victory St., terminating at the loop near the district administration building.`,
+      `With the launch of this trolleybus route, electric public transport finally reached Pridniprovsk, which previously could only be accessed by buses or minibuses.`,
       'The route is operated by AKSM 321D trolleybuses equipped with supercapacitor-based autonomous running capability. A charging substation for battery recharging was built at the Pridniprovsk terminal stop.',
       'On weekdays, 8 vehicles operate on the route, while on weekends, this number is reduced to 4. The route is served by two trolleybus depots, with 4 vehicles from each depot on weekdays and 2 from each depot on weekends.',
     ],
+  },
+
+  routeNote: {
+    title:
+      'Schedule changes may occur due to unforeseen situations along the route.',
+    subtitle: 'Thank you for riding the trolleybus!',
   },
 
   errors: {

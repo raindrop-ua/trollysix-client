@@ -1,24 +1,27 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { NgClass } from '@angular/common';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ViewEncapsulation,
+} from '@angular/core';
 import { copy } from '../../../../../core/content/copy.util';
 import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
-import { GenericSectionBlockComponent } from '../../../../../shared/components/sections';
+import { GenericSectionBlockComponent } from '../../../../../shared/ui/sections';
 import {
   ColorSplashComponent,
   SvgIconComponent,
-} from '../../../../../shared/components';
+} from '../../../../../shared/ui';
 
 @Component({
   selector: 'app-overview',
   imports: [
     RevealOnScrollDirective,
-    NgClass,
     GenericSectionBlockComponent,
     ColorSplashComponent,
     SvgIconComponent,
   ],
   templateUrl: './overview.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class OverviewComponent {

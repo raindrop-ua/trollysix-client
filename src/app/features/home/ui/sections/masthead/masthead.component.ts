@@ -1,4 +1,9 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import {
+  Component,
+  inject,
+  ChangeDetectionStrategy,
+  ViewEncapsulation,
+} from '@angular/core';
 import { distinctUntilChanged, map } from 'rxjs';
 import { RouterLink } from '@angular/router';
 import { AsyncPipe, NgOptimizedImage } from '@angular/common';
@@ -6,10 +11,7 @@ import { AppRouteEnum } from '../../../../../core/enums/app-route.enum';
 import { ClockService } from '../../../../../core/services/clock.service';
 import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
 import { BtnDirective } from '../../../../../shared/directives/btn.directive';
-import {
-  SvgIconComponent,
-  SnowComponent,
-} from '../../../../../shared/components';
+import { SvgIconComponent, SnowComponent } from '../../../../../shared/ui';
 import { copy } from '../../../../../core/content/copy.util';
 
 @Component({
@@ -25,6 +27,7 @@ import { copy } from '../../../../../core/content/copy.util';
   ],
   templateUrl: './masthead.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class MastheadComponent {

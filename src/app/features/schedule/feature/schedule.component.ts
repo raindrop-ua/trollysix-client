@@ -3,6 +3,7 @@ import {
   inject,
   OnInit,
   ChangeDetectionStrategy,
+  ViewEncapsulation,
 } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
@@ -15,8 +16,9 @@ import {
 } from '../ui';
 import { selectScheduleViewModel } from '../data-access/store/schedule.selectors';
 import { SchedulePageActions } from '../data-access/store/schedule.actions';
-import { NoticeComponent } from '../../../shared/components/sections';
-import { GenericHeaderComponent } from '../../../shared/components/sections/generic-header/generic-header.component';
+import { NoticeComponent } from '../../../shared/ui/sections';
+import { GenericHeaderComponent } from '../../../shared/ui/sections/generic-header/generic-header.component';
+import { copy } from '../../../core/content/copy.util';
 
 @Component({
   selector: 'app-schedule',
@@ -32,9 +34,12 @@ import { GenericHeaderComponent } from '../../../shared/components/sections/gene
   ],
   templateUrl: './schedule.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class ScheduleComponent implements OnInit {
+  readonly copySchedule = copy('schedule');
+
   private store = inject(Store);
   vm$ = this.store.select(selectScheduleViewModel);
 

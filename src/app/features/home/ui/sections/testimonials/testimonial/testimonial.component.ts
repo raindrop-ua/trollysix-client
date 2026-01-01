@@ -1,13 +1,19 @@
-import { Component, input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  input,
+  ChangeDetectionStrategy,
+  ViewEncapsulation,
+} from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { Testimonial } from '../../../../data-access/models/testimonial.model';
-import { RatingStarsComponent } from '../../../../../../shared/components';
+import { RatingStarsComponent } from '../../../../../../shared/ui';
 
 @Component({
   selector: 'app-testimonial',
   imports: [NgOptimizedImage, RatingStarsComponent],
   templateUrl: './testimonial.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class TestimonialComponent {

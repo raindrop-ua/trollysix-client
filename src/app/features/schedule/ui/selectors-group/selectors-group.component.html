@@ -12,7 +12,7 @@
           <app-options-selector
             class="block w-full"
             (optionSelect)="onSelectDayType($event)"
-            [title]="'Day'"
+            [title]="copySchedule.controlDay"
             [options]="vm.dayTypes"
             [preselected]="vm.selectedDayTypeName"
           />
@@ -21,7 +21,7 @@
           <app-options-selector
             class="block w-full"
             (optionSelect)="onSelectDirection($event)"
-            [title]="'Direction'"
+            [title]="copySchedule.controlDirection"
             [options]="vm.directions"
             [preselected]="(vm$ | async)?.selectedDirectionName"
           >

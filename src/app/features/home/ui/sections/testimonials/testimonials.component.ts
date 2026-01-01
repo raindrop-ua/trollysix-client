@@ -5,6 +5,7 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   DestroyRef,
+  ViewEncapsulation,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DecimalPipe } from '@angular/common';
@@ -16,7 +17,7 @@ import {
   RatingStarsComponent,
   ColorSplashComponent,
   SpinnerComponent,
-} from '../../../../../shared/components';
+} from '../../../../../shared/ui';
 
 @Component({
   selector: 'app-testimonials',
@@ -30,6 +31,7 @@ import {
   ],
   templateUrl: './testimonials.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class TestimonialsComponent implements OnInit {

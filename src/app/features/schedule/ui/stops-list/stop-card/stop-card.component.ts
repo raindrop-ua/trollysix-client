@@ -3,38 +3,44 @@ import {
   input,
   inject,
   ChangeDetectionStrategy,
+  ViewEncapsulation,
 } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { AsyncPipe, NgOptimizedImage } from '@angular/common';
-import { Stop } from '../../../data-access/models/stop.model';
-import { DirectionName } from '../../../data-access/models/direction.model';
+import { Store } from '@ngrx/store';
 import { SchedulePageActions } from '../../../data-access/store/schedule.actions';
 import { selectScheduleViewModel } from '../../../data-access/store/schedule.selectors';
-import { SvgIconComponent } from '../../../../../shared/components';
+import { Stop } from '../../../data-access/models/stop.model';
+import { DirectionName } from '../../../data-access/models/direction.model';
+import { SvgIconComponent } from '../../../../../shared/ui';
+import { copy } from '../../../../../core/content/copy.util';
 
 @Component({
   selector: 'app-stop-card',
   imports: [SvgIconComponent, AsyncPipe, NgOptimizedImage],
   templateUrl: './stop-card.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class StopCardComponent {
+  readonly copySchedule = copy('schedule');
+
   private store = inject(Store);
-  public readonly showDescriptions = input<boolean>(true);
-  public readonly showBackgroundImage = input<boolean>(true);
-  public readonly showDepartures = input<boolean>(true);
+
+  public readonly showDescriptions = input.required<boolean>();
+  public readonly showBackgroundImage = input.required<boolean>();
+
   public selected = input<boolean>(false);
   public stopData = input<Stop>();
 
-  vm$ = this.store.select(selectScheduleViewModel);
+  public vm$ = this.store.select(selectScheduleViewModel);
 
-  getDeparture(stop: Stop, direction: DirectionName | null) {
+  public getDeparture(stop: Stop, direction: DirectionName | null) {
     if (!direction) return null;
     return stop.departures?.[direction];
   }
 
-  onSelectStop(stopId: string, isSelected: boolean): void {
+  public onSelectStop(stopId: string, isSelected: boolean): void {
     if (isSelected) {
       return;
     }

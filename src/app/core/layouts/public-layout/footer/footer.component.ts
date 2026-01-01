@@ -1,4 +1,9 @@
-import { Component, ChangeDetectionStrategy, input } from '@angular/core';
+import {
+  Component,
+  input,
+  ChangeDetectionStrategy,
+  ViewEncapsulation,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AppRouteEnum } from '../../../enums/app-route.enum';
 
@@ -7,6 +12,7 @@ import { AppRouteEnum } from '../../../enums/app-route.enum';
   imports: [RouterLink],
   templateUrl: './footer.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: {
     class: 'block',
   },

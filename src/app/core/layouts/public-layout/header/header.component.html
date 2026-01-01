@@ -20,7 +20,7 @@
 
       <a
         [routerLink]="[AppRouteEnum.Home]"
-        class="flex items-center gap-2 text-xl font-bold tracking-tight text-slate-900 md:text-2xl dark:text-slate-100"
+        class="mr-4 flex items-center gap-2 text-2xl font-bold text-slate-900 md:text-2xl dark:text-slate-100"
       >
         <svg
           icon="logo"
@@ -33,6 +33,7 @@
           ><span class="text-blue-700 dark:text-yellow-500">Six</span>
         </span>
       </a>
+
       <nav class="hidden md:block">
         <ul class="flex items-center gap-6 text-lg">
           @for (routeItem of navigation; track routeItem.path) {

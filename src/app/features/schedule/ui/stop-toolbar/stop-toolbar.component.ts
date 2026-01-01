@@ -3,6 +3,7 @@ import {
   inject,
   computed,
   ChangeDetectionStrategy,
+  ViewEncapsulation,
 } from '@angular/core';
 import { GeolocationService } from '../../services/geolocation.service';
 import { ClosestStopService } from '../../services/closest-stop.service';
@@ -10,7 +11,7 @@ import { ShareScheduleService } from '../../services/share-schedule.service';
 import { ClipboardService } from '../../../../core/services/clipboard.service';
 import { TooltipDirective } from '../../../../shared/directives/tooltip.directive';
 import { BtnDirective } from '../../../../shared/directives/btn.directive';
-import { SvgIconComponent } from '../../../../shared/components';
+import { SvgIconComponent } from '../../../../shared/ui';
 
 @Component({
   selector: 'app-stop-toolbar',
@@ -18,6 +19,7 @@ import { SvgIconComponent } from '../../../../shared/components';
   providers: [ClosestStopService],
   templateUrl: './stop-toolbar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class StopToolbarComponent {

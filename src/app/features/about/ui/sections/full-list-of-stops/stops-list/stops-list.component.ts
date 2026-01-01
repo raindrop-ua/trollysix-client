@@ -1,6 +1,11 @@
-import { Component, input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  input,
+  ChangeDetectionStrategy,
+  ViewEncapsulation,
+} from '@angular/core';
 import { StopsListItemComponent } from '../stops-list-item/stops-list-item.component';
-import { SvgIconComponent } from '../../../../../../shared/components';
+import { SvgIconComponent } from '../../../../../../shared/ui';
 import { RouteStop } from '../../../../data-access/models/route-stops.model';
 
 @Component({
@@ -8,6 +13,7 @@ import { RouteStop } from '../../../../data-access/models/route-stops.model';
   imports: [StopsListItemComponent, SvgIconComponent],
   templateUrl: './stops-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: { class: 'flex' },
 })
 export class StopsListComponent {

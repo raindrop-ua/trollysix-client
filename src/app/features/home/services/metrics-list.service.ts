@@ -3,11 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of, shareReplay } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
-import { Metric } from '../../../shared/components/sections';
+import { Metric } from '../../../shared/ui/sections';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class MetricsListService {
   private readonly BASE_URL = environment.BASE_API_URL;
   private http = inject(HttpClient);

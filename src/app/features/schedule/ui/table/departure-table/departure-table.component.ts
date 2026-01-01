@@ -1,21 +1,23 @@
 import {
   Component,
   inject,
-  ChangeDetectionStrategy,
   signal,
+  ChangeDetectionStrategy,
+  ViewEncapsulation,
 } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { selectScheduleViewModel } from '../../../data-access/store/schedule.selectors';
 import { ScheduleService } from '../../../services/schedule.service';
 import { DepartureTimeItemComponent } from '../departure-time-item/departure-time-item.component';
-import { SpinnerComponent } from '../../../../../shared/components';
+import { SpinnerComponent } from '../../../../../shared/ui';
 
 @Component({
   selector: 'app-departure-table',
   templateUrl: './departure-table.component.html',
   imports: [DepartureTimeItemComponent, AsyncPipe, SpinnerComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class DepartureTableComponent {

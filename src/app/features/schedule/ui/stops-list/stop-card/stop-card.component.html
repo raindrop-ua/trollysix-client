@@ -25,7 +25,7 @@
         <div
           class="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-200"
         >
-          <span>Stop</span>
+          <span>{{ copySchedule.stop }}</span>
           <span class="flex items-center">
             @if (stop.availableDirections.includes('forward')) {
               <svg
@@ -45,16 +45,17 @@
             }
           </span>
         </div>
-        <div class="mt-1 text-lg font-semibold text-slate-900 dark:text-white">
+        <div
+          class="mt-1 mb-2 text-lg/6 font-semibold text-slate-900 dark:text-white"
+        >
           {{ stop.name }}
         </div>
       </div>
       @if (selected()) {
         <span
           class="absolute top-3 right-3 rounded-full bg-white px-2 py-0.5 text-xs text-black dark:bg-white/10 dark:text-white"
+          >{{ copySchedule.stopSelected }}</span
         >
-          Selected
-        </span>
       }
     </div>
     <div
@@ -63,24 +64,22 @@
       @if (showDescriptions()) {
         <span>{{ stop.description }}</span>
       }
-      @if (showDepartures()) {
-        @let departure = getDeparture(stop, vm.selectedDirectionName);
-        <div
-          class="mt-2 flex items-center gap-2 text-sm text-slate-800 dark:text-slate-200"
-        >
-          <svg
-            icon="clock"
-            class="size-4"
-            stroke="currentColor"
-            stroke-width="2"
-          ></svg>
-          @if (departure?.first && departure?.last) {
-            <span> {{ departure?.first }} • {{ departure?.last }} </span>
-          } @else {
-            <span> No departures </span>
-          }
-        </div>
-      }
+      @let departure = getDeparture(stop, vm.selectedDirectionName);
+      <div
+        class="mt-2 flex items-center gap-2 text-sm text-slate-800 dark:text-slate-200"
+      >
+        <svg
+          icon="clock"
+          class="size-4"
+          stroke="currentColor"
+          stroke-width="2"
+        ></svg>
+        @if (departure?.first && departure?.last) {
+          <span> {{ departure?.first }} • {{ departure?.last }} </span>
+        } @else {
+          <span>{{ copySchedule.noDepartures }}</span>
+        }
+      </div>
     </div>
   </button>
 }

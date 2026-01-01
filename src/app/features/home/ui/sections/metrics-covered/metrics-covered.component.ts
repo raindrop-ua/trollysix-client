@@ -1,5 +1,10 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
-import { MetricsComponent } from '../../../../../shared/components/sections';
+import {
+  Component,
+  inject,
+  ChangeDetectionStrategy,
+  ViewEncapsulation,
+} from '@angular/core';
+import { MetricsComponent } from '../../../../../shared/ui/sections';
 import { MetricsListService } from '../../../services/metrics-list.service';
 import { AsyncPipe } from '@angular/common';
 
@@ -8,6 +13,7 @@ import { AsyncPipe } from '@angular/common';
   imports: [MetricsComponent, AsyncPipe],
   templateUrl: './metrics-covered.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class MetricsCoveredComponent {

@@ -1,9 +1,7 @@
 <div
-  class="motion-safe:animate-cartoon-bounce pointer-events-none absolute top-4 flex w-full animate-none items-center text-yellow-500 transition dark:text-yellow-400"
-  [ngClass]="{
-    'justify-start': direction() === 'backward',
-    'justify-end': direction() === 'forward',
-  }"
+  class="motion-safe:animate-cartoon-bounce pointer-events-none absolute top-0 flex w-full animate-none items-center text-yellow-500 transition dark:text-yellow-400"
+  [class.justify-start]="direction() === 'backward'"
+  [class.justify-end]="direction() === 'forward'"
 >
   <div class="flex w-[50%] items-center justify-center">
     <div class="w-20">

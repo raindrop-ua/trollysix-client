@@ -2,7 +2,7 @@
   <app-generic-section-block class="mb-12 block">
     <header class="mb-4 flex flex-wrap items-center justify-between gap-3">
       <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
-        {{ stop.name }} — Stop details
+        {{ stop.name }} — {{ copySchedule.stopDetails }}
       </h3>
       <app-geo-badge [geo]="stop.geo" />
     </header>

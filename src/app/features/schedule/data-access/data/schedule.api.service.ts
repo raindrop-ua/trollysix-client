@@ -7,9 +7,7 @@ import { DayType } from '../models/daytype.model';
 import { Direction } from '../models/direction.model';
 import { Timetable } from '../models/timetable.model';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class ScheduleApiService {
   private readonly BASE_URL = environment.BASE_API_URL;
   private http = inject(HttpClient);
