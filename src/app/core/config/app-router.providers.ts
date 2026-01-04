@@ -5,6 +5,7 @@ import {
   withComponentInputBinding,
   withInMemoryScrolling,
   withPreloading,
+  withViewTransitions,
 } from '@angular/router';
 import {
   EnvironmentProviders,
@@ -25,6 +26,7 @@ export function provideAppRouter<T extends Routes>(
     provideRouter(
       routes,
       withComponentInputBinding(),
+      withViewTransitions(),
       withPreloading(preloading),
       withInMemoryScrolling({
         scrollPositionRestoration: 'enabled',

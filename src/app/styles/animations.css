@@ -72,3 +72,59 @@
 }
 
 /* toast animation - end */
+
+/* page transition animation */
+/*
+main {
+  view-transition-name: main-container;
+}
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes page-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-from-top {
+  from {
+    transform: translateY(3rem);
+  }
+}
+
+@keyframes slide-to-top {
+  to {
+    transform: translateY(-3rem);
+  }
+}
+
+::view-transition-old(main-container) {
+  animation:
+    100ms cubic-bezier(0.4, 0, 1, 1) both page-fade-out,
+    300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-top;
+}
+
+::view-transition-new(main-container) {
+  animation:
+    200ms cubic-bezier(0, 0, 0.2, 1) 100ms both page-fade-in,
+    300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-top;
+}
+*/
+/* page transition animation - end */
+
+@keyframes rotate-out {
+  to {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes rotate-in {
+  from {
+    transform: rotate(-90deg);
+  }
+}
