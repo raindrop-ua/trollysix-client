@@ -1,8 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ValuePropComponent } from './value-prop/value-prop.component';
 import { ValueProp } from '../../../data-access/models/value-prop.model';
 import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
@@ -12,7 +8,6 @@ import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal
   imports: [ValuePropComponent, RevealOnScrollDirective],
   templateUrl: './this-is-trollysix.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class ThisIsTrollysixComponent {

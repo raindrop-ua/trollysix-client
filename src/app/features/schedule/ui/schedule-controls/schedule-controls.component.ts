@@ -1,8 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
   DepartureTableComponent,
   DepartureLegendComponent,
@@ -22,7 +18,6 @@ import { DepartureConfigComponent } from '../table/departure-config/departure-co
   ],
   templateUrl: './schedule-controls.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class ScheduleControlsComponent {}

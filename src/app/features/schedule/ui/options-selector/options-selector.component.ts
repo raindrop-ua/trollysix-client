@@ -5,7 +5,6 @@ import {
   signal,
   effect,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
 import { Option } from '../../data-access/models/option.model';
 import { DayType } from '../../data-access/models/daytype.model';
@@ -18,7 +17,6 @@ type OptionLike = Option | DayType | Direction;
   imports: [],
   templateUrl: './options-selector.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class OptionsSelectorComponent {

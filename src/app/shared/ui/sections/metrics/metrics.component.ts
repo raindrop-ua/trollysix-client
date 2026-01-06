@@ -3,7 +3,6 @@ import {
   input,
   ChangeDetectionStrategy,
   InputSignal,
-  ViewEncapsulation,
 } from '@angular/core';
 import { Metric } from './metrics.model';
 import { MetricComponent } from './metric/metric.component';
@@ -13,7 +12,6 @@ import { MetricComponent } from './metric/metric.component';
   imports: [MetricComponent],
   templateUrl: './metrics.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class MetricsComponent {

@@ -3,7 +3,6 @@ import {
   inject,
   signal,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AsyncPipe, DatePipe } from '@angular/common';
@@ -16,7 +15,6 @@ import { copy } from '../../../../core/content/copy.util';
   imports: [AsyncPipe, DatePipe, StopCardComponent],
   templateUrl: './stops-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class StopsListComponent {

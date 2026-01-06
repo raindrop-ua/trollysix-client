@@ -1,9 +1,4 @@
-import {
-  Component,
-  input,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 import { DirectionName } from '../../data-access/models/direction.model';
 
 @Component({
@@ -11,7 +6,6 @@ import { DirectionName } from '../../data-access/models/direction.model';
   imports: [],
   templateUrl: './hint-arrow.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class HintArrowComponent {

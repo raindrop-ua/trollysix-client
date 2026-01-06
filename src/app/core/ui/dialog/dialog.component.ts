@@ -6,7 +6,6 @@ import {
   OnDestroy,
   OnInit,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
 import { isPlatformBrowser, NgClass } from '@angular/common';
 import { Subject } from 'rxjs';
@@ -19,7 +18,6 @@ import { SvgIconComponent } from '../../../shared/ui';
   imports: [NgClass, SvgIconComponent],
   templateUrl: './dialog.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class DialogComponent implements OnInit, OnDestroy {

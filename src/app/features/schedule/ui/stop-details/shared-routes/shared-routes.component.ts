@@ -1,9 +1,4 @@
-import {
-  Component,
-  input,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 import { Stop } from '../../../data-access/models/stop.model';
 
 @Component({
@@ -11,7 +6,6 @@ import { Stop } from '../../../data-access/models/stop.model';
   imports: [],
   templateUrl: './shared-routes.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block h-full' },
 })
 export class SharedRoutesComponent {

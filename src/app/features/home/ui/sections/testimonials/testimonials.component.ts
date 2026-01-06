@@ -5,7 +5,6 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   DestroyRef,
-  ViewEncapsulation,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DecimalPipe } from '@angular/common';
@@ -31,7 +30,6 @@ import {
   ],
   templateUrl: './testimonials.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class TestimonialsComponent implements OnInit {

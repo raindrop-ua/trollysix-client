@@ -1,9 +1,4 @@
-import {
-  Component,
-  inject,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { distinctUntilChanged, map } from 'rxjs';
 import { RouterLink } from '@angular/router';
 import { AsyncPipe, NgOptimizedImage } from '@angular/common';
@@ -27,7 +22,6 @@ import { copy } from '../../../../../core/content/copy.util';
   ],
   templateUrl: './masthead.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class MastheadComponent {

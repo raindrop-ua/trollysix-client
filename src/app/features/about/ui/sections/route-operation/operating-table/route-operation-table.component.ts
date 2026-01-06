@@ -3,7 +3,6 @@ import {
   computed,
   input,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
 import { SvgIconComponent } from '../../../../../../shared/ui';
 import { OperatingDay } from '../../../../../../shared/models/operating-days.model';
@@ -19,7 +18,6 @@ interface IntervalCell {
   imports: [SvgIconComponent],
   templateUrl: './route-operation-table.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class RouteOperationTableComponent {

@@ -1,8 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
   HeadComponent,
   OverviewComponent,
@@ -26,7 +22,6 @@ import { RouteOperationComponent } from '../ui';
   ],
   templateUrl: './about.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class AboutComponent {

@@ -3,7 +3,6 @@ import {
   input,
   inject,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
 import { AsyncPipe, NgOptimizedImage } from '@angular/common';
 import { Store } from '@ngrx/store';
@@ -19,7 +18,6 @@ import { copy } from '../../../../../core/content/copy.util';
   imports: [SvgIconComponent, AsyncPipe, NgOptimizedImage],
   templateUrl: './stop-card.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class StopCardComponent {
