@@ -10,11 +10,11 @@ import {
 import { isPlatformBrowser } from '@angular/common';
 
 @Directive({
-  selector: '[appRevealOnScroll]',
+  selector: '[trollysixRevealOnScroll]',
   standalone: true,
 })
 export class RevealOnScrollDirective implements OnInit, OnDestroy {
-  @Input('appRevealOnScroll') delay: number | string | undefined;
+  @Input('trollysixRevealOnScroll') delay: number | string | undefined;
 
   private readonly el =
     inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;

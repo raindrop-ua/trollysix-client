@@ -11,18 +11,18 @@ import { interval, timer } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 class HideAfterContext {
-  public appHideAfter = 0;
+  public trollysixHideAfter = 0;
   public counter = 0;
 
-  public appHideAfterThen: TemplateRef<HideAfterContext> | null = null;
+  public trollysixHideAfterThen: TemplateRef<HideAfterContext> | null = null;
 
   public get $implicit() {
-    return this.appHideAfter;
+    return this.trollysixHideAfter;
   }
 }
 
 @Directive({
-  selector: '[appHideAfter]',
+  selector: '[trollysixHideAfter]',
   standalone: true,
 })
 export class HideAfterDirective implements OnInit {
@@ -34,16 +34,16 @@ export class HideAfterDirective implements OnInit {
   private readonly context = new HideAfterContext();
   private delayValue = 0;
 
-  @Input('appHideAfter')
+  @Input('trollysixHideAfter')
   set delay(value: number | null) {
     this.delayValue = value ?? 0;
-    this.context.appHideAfter = this.delayValue / 1000;
-    this.context.counter = this.context.appHideAfter;
+    this.context.trollysixHideAfter = this.delayValue / 1000;
+    this.context.counter = this.context.trollysixHideAfter;
   }
 
   @Input()
-  set appHideAfterThen(tpl: TemplateRef<HideAfterContext> | null) {
-    this.context.appHideAfterThen = tpl;
+  set trollysixHideAfterThen(tpl: TemplateRef<HideAfterContext> | null) {
+    this.context.trollysixHideAfterThen = tpl;
   }
 
   ngOnInit(): void {
@@ -72,9 +72,9 @@ export class HideAfterDirective implements OnInit {
   private showThenTemplate(): void {
     this.viewContainerRef.clear();
 
-    if (this.context.appHideAfterThen) {
+    if (this.context.trollysixHideAfterThen) {
       this.viewContainerRef.createEmbeddedView(
-        this.context.appHideAfterThen,
+        this.context.trollysixHideAfterThen,
         this.context,
       );
     }
