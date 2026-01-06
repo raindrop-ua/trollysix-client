@@ -1,16 +1,12 @@
-import {
-  Directive,
-  HostBinding,
-  input,
-} from '@angular/core';
+import { Directive, HostBinding, input } from '@angular/core';
 
 type ButtonVariant = 'primary' | 'secondary';
 
 @Directive({
-  selector: '[appBtn]',
+  selector: '[trollysixBtn]',
 })
 export class BtnDirective {
-  public readonly appBtn = input<ButtonVariant>('primary');
+  public readonly trollysixBtn = input<ButtonVariant>('primary');
 
   @HostBinding('class')
   get hostClasses(): string {
@@ -20,7 +16,7 @@ export class BtnDirective {
       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ' +
       'focus-visible:ring-slate-900/60 dark:focus-visible:ring-white/70 ';
 
-    switch (this.appBtn()) {
+    switch (this.trollysixBtn()) {
       case 'secondary':
         return (
           base +

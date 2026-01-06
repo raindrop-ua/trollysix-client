@@ -12,7 +12,7 @@ import { DOCUMENT } from '@angular/common';
 type TooltipPlacement = 'top' | 'bottom' | 'left' | 'right';
 
 @Directive({
-  selector: '[appTooltip]',
+  selector: '[trollysixTooltip]',
   host: {
     '(mouseenter)': 'onEnter()',
     '(focusin)': 'onEnter()',
@@ -27,28 +27,35 @@ export class TooltipDirective {
   private readonly doc = inject(DOCUMENT);
   private readonly destroyRef = inject(DestroyRef);
 
-  text = input<string | null | undefined>(undefined, { alias: 'appTooltip' });
-  placement = input<TooltipPlacement>('top', { alias: 'appTooltipPlacement' });
-  offset = input(8, { transform: numberAttribute, alias: 'appTooltipOffset' });
+  text = input<string | null | undefined>(undefined, {
+    alias: 'trollysixTooltip',
+  });
+  placement = input<TooltipPlacement>('top', {
+    alias: 'trollysixTooltipPlacement',
+  });
+  offset = input(8, {
+    transform: numberAttribute,
+    alias: 'trollysixTooltipOffset',
+  });
   showDelay = input(150, {
     transform: numberAttribute,
-    alias: 'appTooltipShowDelay',
+    alias: 'trollysixTooltipShowDelay',
   });
   hideDelay = input(50, {
     transform: numberAttribute,
-    alias: 'appTooltipHideDelay',
+    alias: 'trollysixTooltipHideDelay',
   });
   disabled = input(false, {
     transform: booleanAttribute,
-    alias: 'appTooltipDisabled',
+    alias: 'trollysixTooltipDisabled',
   });
   maxWidth = input(12, {
     transform: numberAttribute,
-    alias: 'appTooltipMaxWidth',
+    alias: 'trollysixTooltipMaxWidth',
   });
   interactive = input(false, {
     transform: booleanAttribute,
-    alias: 'appTooltipInteractive',
+    alias: 'trollysixTooltipInteractive',
   });
 
   private tooltipEl: HTMLDivElement | null = null;
