@@ -8,7 +8,7 @@ import { GlobalMessageService } from '../../services/global-message.service';
 import { AsyncPipe, NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-global-message',
+  selector: 'trollysix-global-message',
   imports: [AsyncPipe, NgClass],
   templateUrl: './global-message.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

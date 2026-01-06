@@ -8,7 +8,7 @@ import { ValueProp } from '../../../data-access/models/value-prop.model';
 import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
 
 @Component({
-  selector: 'app-this-is-trollysix',
+  selector: 'trollysix-this-is-trollysix',
   imports: [ValuePropComponent, RevealOnScrollDirective],
   templateUrl: './this-is-trollysix.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

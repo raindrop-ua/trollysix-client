@@ -10,7 +10,7 @@ import { SvgIconComponent } from '../svg-icon/svg-icon.component';
 type StarKind = 'filled' | 'empty-yellow' | 'empty-gray';
 
 @Component({
-  selector: 'app-rating-stars',
+  selector: 'trollysix-rating-stars',
   imports: [SvgIconComponent],
   templateUrl: './rating-stars.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

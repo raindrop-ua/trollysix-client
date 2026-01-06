@@ -14,7 +14,7 @@ import { BtnDirective } from '../../../../shared/directives/btn.directive';
 import { SvgIconComponent } from '../../../../shared/ui';
 
 @Component({
-  selector: 'app-stop-toolbar',
+  selector: 'trollysix-stop-toolbar',
   imports: [BtnDirective, TooltipDirective, SvgIconComponent],
   providers: [ClosestStopService],
   templateUrl: './stop-toolbar.component.html',

@@ -15,7 +15,7 @@ interface IntervalCell {
 }
 
 @Component({
-  selector: 'app-route-operation-table',
+  selector: 'trollysix-route-operation-table',
   imports: [SvgIconComponent],
   templateUrl: './route-operation-table.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

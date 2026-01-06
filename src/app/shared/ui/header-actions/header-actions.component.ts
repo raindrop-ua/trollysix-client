@@ -10,7 +10,7 @@ import { SettingsButtonComponent } from './settings-button/settings-button.compo
 import { ThemeSwitcherComponent } from './theme-switcher/theme-switcher.component';
 
 @Component({
-  selector: 'app-header-actions',
+  selector: 'trollysix-header-actions',
   imports: [NgTemplateOutlet, ThemeSwitcherComponent, SettingsButtonComponent],
   templateUrl: './header-actions.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -9,7 +9,7 @@ import { SvgIconComponent } from '../../../../../../shared/ui';
 import { RouteStop } from '../../../../data-access/models/route-stops.model';
 
 @Component({
-  selector: 'app-stops-list',
+  selector: 'trollysix-stops-list',
   imports: [StopsListItemComponent, SvgIconComponent],
   templateUrl: './stops-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

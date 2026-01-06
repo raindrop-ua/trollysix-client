@@ -12,7 +12,7 @@ import { Departure } from '../../../data-access/models/departure.model';
 import { ScheduleService } from '../../../services/schedule.service';
 
 @Component({
-  selector: 'app-departure-time-item',
+  selector: 'trollysix-departure-time-item',
   imports: [],
   templateUrl: './departure-time-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

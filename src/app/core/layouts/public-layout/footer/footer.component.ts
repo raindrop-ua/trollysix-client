@@ -8,7 +8,7 @@ import { RouterLink } from '@angular/router';
 import { AppRouteEnum } from '../../../enums/app-route.enum';
 
 @Component({
-  selector: 'app-footer',
+  selector: 'trollysix-footer',
   imports: [RouterLink],
   templateUrl: './footer.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -7,7 +7,7 @@ import {
 import { DirectionName } from '../../data-access/models/direction.model';
 
 @Component({
-  selector: 'app-hint-arrow',
+  selector: 'trollysix-hint-arrow',
   imports: [],
   templateUrl: './hint-arrow.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

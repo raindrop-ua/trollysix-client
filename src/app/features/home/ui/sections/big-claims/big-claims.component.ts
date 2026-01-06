@@ -10,7 +10,7 @@ import { BtnDirective } from '../../../../../shared/directives/btn.directive';
 import { ColorSplashComponent } from '../../../../../shared/ui';
 
 @Component({
-  selector: 'app-big-claims',
+  selector: 'trollysix-big-claims',
   imports: [RouterLink, BtnDirective, ColorSplashComponent],
   templateUrl: './big-claims.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

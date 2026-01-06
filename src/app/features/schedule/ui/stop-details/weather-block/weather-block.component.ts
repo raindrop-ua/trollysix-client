@@ -17,7 +17,7 @@ import { environment } from '../../../../../../environments/environment';
 import { SvgIconComponent } from '../../../../../shared/ui';
 
 @Component({
-  selector: 'app-weather-block',
+  selector: 'trollysix-weather-block',
   imports: [
     DatePipe,
     DecimalPipe,

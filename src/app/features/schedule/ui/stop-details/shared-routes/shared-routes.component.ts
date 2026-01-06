@@ -7,7 +7,7 @@ import {
 import { Stop } from '../../../data-access/models/stop.model';
 
 @Component({
-  selector: 'app-shared-routes',
+  selector: 'trollysix-shared-routes',
   imports: [],
   templateUrl: './shared-routes.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

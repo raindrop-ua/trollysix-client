@@ -13,7 +13,7 @@ import { DepartureTimeItemComponent } from '../departure-time-item/departure-tim
 import { SpinnerComponent } from '../../../../../shared/ui';
 
 @Component({
-  selector: 'app-departure-table',
+  selector: 'trollysix-departure-table',
   templateUrl: './departure-table.component.html',
   imports: [DepartureTimeItemComponent, AsyncPipe, SpinnerComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,

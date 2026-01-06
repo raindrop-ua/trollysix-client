@@ -14,7 +14,7 @@ import { EasterEggComponent } from '../ui/sections/easter-egg/easter-egg.compone
 import { RouteOperationComponent } from '../ui';
 
 @Component({
-  selector: 'app-about',
+  selector: 'trollysix-about',
   imports: [
     HeadComponent,
     OverviewComponent,

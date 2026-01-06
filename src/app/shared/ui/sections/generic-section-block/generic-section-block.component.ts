@@ -5,7 +5,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-generic-section-block',
+  selector: 'trollysix-generic-section-block',
   imports: [],
   templateUrl: './generic-section-block.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

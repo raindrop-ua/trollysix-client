@@ -8,7 +8,7 @@ import {
 import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
-  selector: 'app-attention',
+  selector: 'trollysix-attention',
   imports: [NgTemplateOutlet],
   templateUrl: './attention.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

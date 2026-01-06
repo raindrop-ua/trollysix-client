@@ -15,7 +15,7 @@ import { SvgIconComponent } from '../../../../../shared/ui';
 import { copy } from '../../../../../core/content/copy.util';
 
 @Component({
-  selector: 'app-stop-card',
+  selector: 'trollysix-stop-card',
   imports: [SvgIconComponent, AsyncPipe, NgOptimizedImage],
   templateUrl: './stop-card.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

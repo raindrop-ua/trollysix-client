@@ -7,7 +7,7 @@ import { RouterOutlet } from '@angular/router';
 import { ToastContainerComponent } from './core/ui/toast-container/toast-container.component';
 
 @Component({
-  selector: 'app-root',
+  selector: 'trollysix-root',
   imports: [RouterOutlet, ToastContainerComponent],
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

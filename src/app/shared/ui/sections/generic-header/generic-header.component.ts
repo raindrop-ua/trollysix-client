@@ -7,7 +7,7 @@ import {
 import { RevealOnScrollDirective } from '../../../directives/reveal-on-scroll.directive';
 
 @Component({
-  selector: 'app-generic-header',
+  selector: 'trollysix-generic-header',
   imports: [RevealOnScrollDirective],
   templateUrl: './generic-header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

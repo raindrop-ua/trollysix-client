@@ -14,7 +14,7 @@ import { DialogConfig, DialogResult } from '../../models/dialog.models';
 import { SvgIconComponent } from '../../../shared/ui';
 
 @Component({
-  selector: 'app-dialog',
+  selector: 'trollysix-dialog',
   standalone: true,
   imports: [NgClass, SvgIconComponent],
   templateUrl: './dialog.component.html',

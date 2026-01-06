@@ -6,7 +6,10 @@
       class="grid gap-3 text-center sm:gap-4"
     >
       @for (metric of data(); track metric) {
-        <app-metric [title]="metric.title" [description]="metric.description" />
+        <trollysix-metric
+          [title]="metric.title"
+          [description]="metric.description"
+        />
       }
     </div>
   }

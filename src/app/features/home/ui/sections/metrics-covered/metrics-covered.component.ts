@@ -9,7 +9,7 @@ import { MetricsListService } from '../../../services/metrics-list.service';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-metrics-covered',
+  selector: 'trollysix-metrics-covered',
   imports: [MetricsComponent, AsyncPipe],
   templateUrl: './metrics-covered.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

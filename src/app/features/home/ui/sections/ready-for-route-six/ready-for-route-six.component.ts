@@ -9,7 +9,7 @@ import { BtnDirective } from '../../../../../shared/directives/btn.directive';
 import { copy } from '../../../../../core/content/copy.util';
 
 @Component({
-  selector: 'app-ready-for-route-six',
+  selector: 'trollysix-ready-for-route-six',
   imports: [RouterLink, BtnDirective],
   templateUrl: './ready-for-route-six.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

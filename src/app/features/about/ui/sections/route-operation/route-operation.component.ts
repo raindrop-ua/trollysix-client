@@ -9,7 +9,7 @@ import { RouteOperationTableComponent } from './operating-table/route-operation-
 import { OperatingDays } from '../../../../../shared/models/operating-days.model';
 
 @Component({
-  selector: 'app-route-operation',
+  selector: 'trollysix-route-operation',
   imports: [GenericSectionBlockComponent, RouteOperationTableComponent],
   templateUrl: './route-operation.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

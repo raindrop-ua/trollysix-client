@@ -10,7 +10,7 @@ import { SvgIconComponent } from '../../../../shared/ui';
 import { TooltipDirective } from '../../../../shared/directives/tooltip.directive';
 
 @Component({
-  selector: 'app-geo-badge',
+  selector: 'trollysix-geo-badge',
   imports: [SvgIconComponent, DecimalPipe, TooltipDirective],
   templateUrl: './geo-badge.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

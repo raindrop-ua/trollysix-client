@@ -9,7 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { GlobalMessageComponent } from '../../ui/global-message/global-message.component';
 
 @Component({
-  selector: 'app-public-layout',
+  selector: 'trollysix-public-layout',
   imports: [
     RouterOutlet,
     HeaderComponent,

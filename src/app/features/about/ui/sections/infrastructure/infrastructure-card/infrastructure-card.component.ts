@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-infrastructure-card',
+  selector: 'trollysix-infrastructure-card',
   imports: [],
   templateUrl: './infrastructure-card.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -6,7 +6,7 @@ import {
 import { GenericHeaderComponent } from '../../../shared/ui/sections/generic-header/generic-header.component';
 
 @Component({
-  selector: 'app-settings',
+  selector: 'trollysix-settings',
   imports: [GenericHeaderComponent],
   templateUrl: './settings.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

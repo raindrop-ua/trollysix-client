@@ -20,7 +20,7 @@ import {
 } from '../../../../../shared/ui';
 
 @Component({
-  selector: 'app-testimonials',
+  selector: 'trollysix-testimonials',
   imports: [
     RevealOnScrollDirective,
     DecimalPipe,

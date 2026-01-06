@@ -12,7 +12,7 @@ import {
 import { DepartureConfigComponent } from '../table/departure-config/departure-config.component';
 
 @Component({
-  selector: 'app-schedule-controls',
+  selector: 'trollysix-schedule-controls',
   imports: [
     DepartureTableComponent,
     DepartureLegendComponent,

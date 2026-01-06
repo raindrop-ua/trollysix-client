@@ -7,7 +7,7 @@ import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal
 import { copy } from '../../../../../core/content/copy.util';
 
 @Component({
-  selector: 'app-head',
+  selector: 'trollysix-head',
   imports: [RevealOnScrollDirective],
   templateUrl: './head.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

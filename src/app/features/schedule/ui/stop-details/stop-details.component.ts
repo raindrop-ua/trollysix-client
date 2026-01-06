@@ -13,7 +13,7 @@ import { WeatherBlockComponent } from './weather-block/weather-block.component';
 import { copy } from '../../../../core/content/copy.util';
 
 @Component({
-  selector: 'app-stop-details',
+  selector: 'trollysix-stop-details',
   imports: [
     NgOptimizedImage,
     GeoBadgeComponent,

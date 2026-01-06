@@ -6,7 +6,7 @@ import {
 import { GenericHeaderComponent } from '../../../../shared/ui/sections/generic-header/generic-header.component';
 
 @Component({
-  selector: 'app-privacy-policy',
+  selector: 'trollysix-privacy-policy',
   imports: [GenericHeaderComponent],
   templateUrl: './privacy-policy.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

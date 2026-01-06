@@ -9,7 +9,7 @@ import { SvgIconComponent } from '../../../../../../shared/ui';
 import { TooltipDirective } from '../../../../../../shared/directives/tooltip.directive';
 
 @Component({
-  selector: 'app-vehicle-features',
+  selector: 'trollysix-vehicle-features',
   imports: [SvgIconComponent, TooltipDirective],
   templateUrl: './vehicle-features.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

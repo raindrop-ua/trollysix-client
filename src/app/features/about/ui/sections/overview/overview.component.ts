@@ -12,7 +12,7 @@ import {
 } from '../../../../../shared/ui';
 
 @Component({
-  selector: 'app-overview',
+  selector: 'trollysix-overview',
   imports: [
     RevealOnScrollDirective,
     GenericSectionBlockComponent,

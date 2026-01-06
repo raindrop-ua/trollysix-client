@@ -10,7 +10,7 @@ import { selectScheduleViewModel } from '../../../data-access/store/schedule.sel
 import { ScheduleService } from '../../../services/schedule.service';
 
 @Component({
-  selector: 'app-departure-stop-bar',
+  selector: 'trollysix-departure-stop-bar',
   imports: [AsyncPipe],
   templateUrl: './departure-stop-bar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

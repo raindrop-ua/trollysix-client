@@ -16,7 +16,7 @@ import { StopsListComponent } from './stops-list/stops-list.component';
 import { SpinnerComponent } from '../../../../../shared/ui';
 
 @Component({
-  selector: 'app-full-list-of-stops',
+  selector: 'trollysix-full-list-of-stops',
   imports: [GenericSectionBlockComponent, StopsListComponent, SpinnerComponent],
   templateUrl: './full-list-of-stops.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

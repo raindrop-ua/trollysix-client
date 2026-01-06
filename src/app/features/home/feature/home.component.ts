@@ -17,7 +17,7 @@ import { MetricsCoveredComponent } from '../ui/sections/metrics-covered/metrics-
 import { copy } from '../../../core/content/copy.util';
 
 @Component({
-  selector: 'app-home',
+  selector: 'trollysix-home',
   imports: [
     RouterLink,
     MastheadComponent,

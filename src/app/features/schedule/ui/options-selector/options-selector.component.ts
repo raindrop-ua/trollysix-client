@@ -14,7 +14,7 @@ import { Direction } from '../../data-access/models/direction.model';
 type OptionLike = Option | DayType | Direction;
 
 @Component({
-  selector: 'app-options-selector',
+  selector: 'trollysix-options-selector',
   imports: [],
   templateUrl: './options-selector.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

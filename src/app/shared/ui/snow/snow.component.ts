@@ -7,7 +7,7 @@ import {
 import { SnowService } from '../../services/snow.service';
 
 @Component({
-  selector: 'app-snow',
+  selector: 'trollysix-snow',
   imports: [],
   templateUrl: './snow.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-metric',
+  selector: 'trollysix-metric',
   imports: [],
   templateUrl: './metric.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -21,7 +21,7 @@ import { GenericHeaderComponent } from '../../../shared/ui/sections/generic-head
 import { copy } from '../../../core/content/copy.util';
 
 @Component({
-  selector: 'app-schedule',
+  selector: 'trollysix-schedule',
   imports: [
     GenericHeaderComponent,
     ScheduleControlsComponent,

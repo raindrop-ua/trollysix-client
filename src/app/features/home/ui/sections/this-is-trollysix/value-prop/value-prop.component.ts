@@ -7,7 +7,7 @@ import {
 import { ValueProp } from '../../../../data-access/models/value-prop.model';
 
 @Component({
-  selector: 'app-value-prop',
+  selector: 'trollysix-value-prop',
   imports: [],
   templateUrl: './value-prop.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

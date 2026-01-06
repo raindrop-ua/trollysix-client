@@ -15,7 +15,7 @@ import { SvgIconComponent, SnowComponent } from '../../../../../shared/ui';
 import { copy } from '../../../../../core/content/copy.util';
 
 @Component({
-  selector: 'app-masthead',
+  selector: 'trollysix-masthead',
   imports: [
     RouterLink,
     SvgIconComponent,

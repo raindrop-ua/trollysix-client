@@ -11,7 +11,7 @@ import { CheatCodeDirective } from '../../../../../shared/directives/cheat-code.
 import { GenericSectionBlockComponent } from '../../../../../shared/ui/sections';
 
 @Component({
-  selector: 'app-easter-egg',
+  selector: 'trollysix-easter-egg',
   imports: [
     NgOptimizedImage,
     RevealOnScrollDirective,

@@ -15,7 +15,7 @@ import { HintArrowComponent } from '../hint-arrow/hint-arrow.component';
 import { copy } from '../../../../core/content/copy.util';
 
 @Component({
-  selector: 'app-selectors-group',
+  selector: 'trollysix-selectors-group',
   imports: [
     OptionsSelectorComponent,
     SvgIconComponent,

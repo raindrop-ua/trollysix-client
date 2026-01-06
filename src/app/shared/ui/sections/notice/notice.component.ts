@@ -7,7 +7,7 @@ import { GenericSectionBlockComponent } from '../generic-section-block/generic-s
 import { copy } from '../../../../core/content/copy.util';
 
 @Component({
-  selector: 'app-notice',
+  selector: 'trollysix-notice',
   imports: [GenericSectionBlockComponent],
   templateUrl: './notice.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

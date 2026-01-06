@@ -5,7 +5,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-spinner',
+  selector: 'trollysix-spinner',
   imports: [],
   templateUrl: './spinner.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

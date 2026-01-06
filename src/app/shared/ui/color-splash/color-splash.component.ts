@@ -5,7 +5,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-color-splash',
+  selector: 'trollysix-color-splash',
   imports: [],
   templateUrl: './color-splash.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

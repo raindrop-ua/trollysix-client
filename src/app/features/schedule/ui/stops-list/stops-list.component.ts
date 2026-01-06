@@ -12,7 +12,7 @@ import { StopCardComponent } from './stop-card/stop-card.component';
 import { copy } from '../../../../core/content/copy.util';
 
 @Component({
-  selector: 'app-stops-list',
+  selector: 'trollysix-stops-list',
   imports: [AsyncPipe, DatePipe, StopCardComponent],
   templateUrl: './stops-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

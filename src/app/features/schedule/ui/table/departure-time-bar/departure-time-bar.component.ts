@@ -15,7 +15,7 @@ import { SvgIconComponent } from '../../../../../shared/ui';
 import { copy } from '../../../../../core/content/copy.util';
 
 @Component({
-  selector: 'app-departure-time-bar',
+  selector: 'trollysix-departure-time-bar',
   imports: [AsyncPipe, DatePipe, SvgIconComponent],
   templateUrl: './departure-time-bar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

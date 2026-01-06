@@ -9,7 +9,7 @@ import { InfrastructureCardComponent } from './infrastructure-card/infrastructur
 import { VehicleFeaturesComponent } from './vehicle-features/vehicle-features.component';
 
 @Component({
-  selector: 'app-infrastructure',
+  selector: 'trollysix-infrastructure',
   imports: [
     NgOptimizedImage,
     GenericSectionBlockComponent,

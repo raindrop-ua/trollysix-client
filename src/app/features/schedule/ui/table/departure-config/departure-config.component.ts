@@ -8,7 +8,7 @@ import { AsyncPipe } from '@angular/common';
 import { ScheduleService } from '../../../services/schedule.service';
 
 @Component({
-  selector: 'app-departure-config',
+  selector: 'trollysix-departure-config',
   imports: [AsyncPipe],
   templateUrl: './departure-config.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

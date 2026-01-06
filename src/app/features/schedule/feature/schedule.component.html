@@ -1,13 +1,13 @@
-<app-generic-header [title]="copySchedule.header.title" />
+<trollysix-generic-header [title]="copySchedule.header.title" />
 @defer (on idle) {
   @if (vm$ | async; as vm) {
-    <app-stops-list />
+    <trollysix-stops-list />
     @if (vm.selectedStop) {
-      <app-stop-toolbar />
-      <app-selectors-group />
-      <app-schedule-controls />
-      <app-stop-details [stopData]="vm.selectedStop" />
+      <trollysix-stop-toolbar />
+      <trollysix-selectors-group />
+      <trollysix-schedule-controls />
+      <trollysix-stop-details [stopData]="vm.selectedStop" />
     }
-    <app-notice />
+    <trollysix-notice />
   }
 }

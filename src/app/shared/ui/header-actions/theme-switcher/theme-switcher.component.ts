@@ -9,7 +9,7 @@ import { ThemeService } from '../../../../core/services/theme.service';
 import { IconButtonDirective } from '../../../directives/icon-button.directive';
 
 @Component({
-  selector: 'app-theme-switcher',
+  selector: 'trollysix-theme-switcher',
   imports: [SvgIconComponent, IconButtonDirective],
   templateUrl: './theme-switcher.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

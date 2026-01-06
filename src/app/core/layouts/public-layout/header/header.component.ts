@@ -17,7 +17,7 @@ import { SvgIconComponent } from '../../../../shared/ui';
 import { HeaderActionsComponent } from '../../../../shared/ui/header-actions/header-actions.component';
 
 @Component({
-  selector: 'app-header',
+  selector: 'trollysix-header',
   imports: [RouterLink, SvgIconComponent, HeaderActionsComponent],
   templateUrl: './header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
