@@ -4,8 +4,9 @@ import {
   ChangeDetectionStrategy,
   InputSignal,
 } from '@angular/core';
-import { Metric } from './metrics.model';
+
 import { MetricComponent } from './metric/metric.component';
+import { Metric } from './metrics.model';
 
 @Component({
   selector: 'trollysix-metrics',

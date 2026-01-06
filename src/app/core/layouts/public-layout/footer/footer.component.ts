@@ -1,6 +1,7 @@
 import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AppRouteEnum } from '../../../enums/app-route.enum';
+
+import { AppRouteEnum } from '@core/enums/app-route.enum';
 
 @Component({
   selector: 'trollysix-footer',

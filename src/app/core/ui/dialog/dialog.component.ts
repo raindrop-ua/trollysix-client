@@ -1,3 +1,4 @@
+import { isPlatformBrowser, NgClass } from '@angular/common';
 import {
   Component,
   signal,
@@ -7,10 +8,12 @@ import {
   OnInit,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { isPlatformBrowser, NgClass } from '@angular/common';
+
 import { Subject } from 'rxjs';
+
+import { SvgIconComponent } from '@shared/ui';
+
 import { DialogConfig, DialogResult } from '../../models/dialog.models';
-import { SvgIconComponent } from '../../../shared/ui';
 
 @Component({
   selector: 'trollysix-dialog',

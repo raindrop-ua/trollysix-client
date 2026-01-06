@@ -1,13 +1,16 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { AsyncPipe, DatePipe } from '@angular/common';
-import { combineLatest, map } from 'rxjs';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+
 import { Store } from '@ngrx/store';
-import { selectScheduleViewModel } from '../../../data-access/store/schedule.selectors';
+import { combineLatest, map } from 'rxjs';
+
+import { copy } from '@app/core/content/copy.util';
+import { ClockService } from '@app/core/services/clock.service';
+import { SvgIconComponent } from '@app/shared/ui';
+
 import { Status } from '../../../data-access/models/departure.model';
-import { ClockService } from '../../../../../core/services/clock.service';
+import { selectScheduleViewModel } from '../../../data-access/store/schedule.selectors';
 import { ScheduleService } from '../../../services/schedule.service';
-import { SvgIconComponent } from '../../../../../shared/ui';
-import { copy } from '../../../../../core/content/copy.util';
 
 @Component({
   selector: 'trollysix-departure-time-bar',

@@ -1,3 +1,4 @@
+import { DOCUMENT } from '@angular/common';
 import {
   DestroyRef,
   Directive,
@@ -7,7 +8,6 @@ import {
   input,
   numberAttribute,
 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
 
 type TooltipPlacement = 'top' | 'bottom' | 'left' | 'right';
 

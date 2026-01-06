@@ -1,7 +1,9 @@
 import { DOCUMENT } from '@angular/common';
 import { DestroyRef, Injectable, inject } from '@angular/core';
-import { fromEvent, filter, map, pairwise, tap, delay } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+import { fromEvent, filter, map, pairwise, tap, delay } from 'rxjs';
+
 import { ToastService } from './toast.service';
 
 @Injectable({ providedIn: 'root' })

@@ -6,9 +6,10 @@ import {
   effect,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { Option } from '../../data-access/models/option.model';
+
 import { DayType } from '../../data-access/models/daytype.model';
 import { Direction } from '../../data-access/models/direction.model';
+import { Option } from '../../data-access/models/option.model';
 
 type OptionLike = Option | DayType | Direction;
 

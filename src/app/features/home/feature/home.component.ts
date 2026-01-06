@@ -1,6 +1,10 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AttentionComponent } from '../../../shared/ui/sections';
+
+import { copy } from '@core/content/copy.util';
+import { BtnDirective } from '@shared/directives/btn.directive';
+import { AttentionComponent } from '@shared/ui/sections';
+
 import {
   BigClaimsComponent,
   MastheadComponent,
@@ -8,9 +12,7 @@ import {
   TestimonialsComponent,
   ThisIsTrollysixComponent,
 } from '../ui';
-import { BtnDirective } from '../../../shared/directives/btn.directive';
 import { MetricsCoveredComponent } from '../ui/sections/metrics-covered/metrics-covered.component';
-import { copy } from '../../../core/content/copy.util';
 
 @Component({
   selector: 'trollysix-home',

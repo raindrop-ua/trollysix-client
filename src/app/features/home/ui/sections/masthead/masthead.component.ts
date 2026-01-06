@@ -1,13 +1,15 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
-import { distinctUntilChanged, map } from 'rxjs';
-import { RouterLink } from '@angular/router';
 import { AsyncPipe, NgOptimizedImage } from '@angular/common';
-import { AppRouteEnum } from '../../../../../core/enums/app-route.enum';
-import { ClockService } from '../../../../../core/services/clock.service';
-import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
-import { BtnDirective } from '../../../../../shared/directives/btn.directive';
-import { SvgIconComponent, SnowComponent } from '../../../../../shared/ui';
-import { copy } from '../../../../../core/content/copy.util';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { RouterLink } from '@angular/router';
+
+import { distinctUntilChanged, map } from 'rxjs';
+
+import { copy } from '@app/core/content/copy.util';
+import { AppRouteEnum } from '@app/core/enums/app-route.enum';
+import { ClockService } from '@app/core/services/clock.service';
+import { BtnDirective } from '@app/shared/directives/btn.directive';
+import { RevealOnScrollDirective } from '@app/shared/directives/reveal-on-scroll.directive';
+import { SvgIconComponent, SnowComponent } from '@app/shared/ui';
 
 @Component({
   selector: 'trollysix-masthead',

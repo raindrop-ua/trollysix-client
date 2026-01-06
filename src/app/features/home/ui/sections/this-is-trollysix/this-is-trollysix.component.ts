@@ -1,7 +1,10 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { ValuePropComponent } from './value-prop/value-prop.component';
+
+import { RevealOnScrollDirective } from '@app/shared/directives/reveal-on-scroll.directive';
+
 import { ValueProp } from '../../../data-access/models/value-prop.model';
-import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
+
+import { ValuePropComponent } from './value-prop/value-prop.component';
 
 @Component({
   selector: 'trollysix-this-is-trollysix',

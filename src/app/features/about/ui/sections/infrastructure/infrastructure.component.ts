@@ -1,6 +1,8 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
-import { GenericSectionBlockComponent } from '../../../../../shared/ui/sections';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+
+import { GenericSectionBlockComponent } from '@app/shared/ui/sections';
+
 import { InfrastructureCardComponent } from './infrastructure-card/infrastructure-card.component';
 import { VehicleFeaturesComponent } from './vehicle-features/vehicle-features.component';
 

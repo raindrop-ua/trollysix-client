@@ -1,7 +1,9 @@
-import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
+import { Component, input, ChangeDetectionStrategy } from '@angular/core';
+
+import { RatingStarsComponent } from '@app/shared/ui';
+
 import { Testimonial } from '../../../../data-access/models/testimonial.model';
-import { RatingStarsComponent } from '../../../../../../shared/ui';
 
 @Component({
   selector: 'trollysix-testimonial',

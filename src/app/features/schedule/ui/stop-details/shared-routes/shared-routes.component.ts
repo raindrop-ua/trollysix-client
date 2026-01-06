@@ -1,4 +1,5 @@
 import { Component, input, ChangeDetectionStrategy } from '@angular/core';
+
 import { Stop } from '../../../data-access/models/stop.model';
 
 @Component({

@@ -1,3 +1,4 @@
+import { isPlatformBrowser } from '@angular/common';
 import {
   Directive,
   ElementRef,
@@ -7,7 +8,6 @@ import {
   inject,
   PLATFORM_ID,
 } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
 
 @Directive({
   selector: '[trollysixRevealOnScroll]',

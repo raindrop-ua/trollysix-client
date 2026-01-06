@@ -1,8 +1,12 @@
-import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of, shareReplay } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+
 import { catchError } from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
+
+import { Observable, of, shareReplay } from 'rxjs';
+
+import { environment } from '@environments/environment';
+
 import { GlobalMessage } from '../models/global-message.model';
 
 @Injectable({ providedIn: 'root' })

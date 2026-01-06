@@ -1,11 +1,15 @@
 import { inject, Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
-import { combineLatest } from 'rxjs';
+
 import { take } from 'rxjs/operators';
+
+import { Store } from '@ngrx/store';
+import { combineLatest } from 'rxjs';
+
+import { ClipboardService } from '@core/services/clipboard.service';
+import { ToastService } from '@core/services/toast.service';
+
 import { scheduleFeature } from '../data-access/store/schedule.reducer';
-import { ToastService } from '../../../core/services/toast.service';
-import { ClipboardService } from '../../../core/services/clipboard.service';
 
 @Injectable({ providedIn: 'root' })
 export class ShareScheduleService {

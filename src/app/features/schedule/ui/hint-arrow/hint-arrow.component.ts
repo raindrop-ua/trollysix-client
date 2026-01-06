@@ -1,4 +1,5 @@
 import { Component, input, ChangeDetectionStrategy } from '@angular/core';
+
 import { DirectionName } from '../../data-access/models/direction.model';
 
 @Component({

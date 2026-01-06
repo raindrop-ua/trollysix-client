@@ -1,7 +1,9 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
+
+import { DirectionName } from '../models/direction.model';
+
 import { ScheduleApiActions, SchedulePageActions } from './schedule.actions';
 import { initialState, stopsAdapter } from './schedule.state';
-import { DirectionName } from '../models/direction.model';
 
 function pickValidStopId(
   stops: { id: string }[],

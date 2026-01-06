@@ -1,5 +1,7 @@
 import { Component, input, ChangeDetectionStrategy } from '@angular/core';
-import { SvgIconComponent } from '../../../../../../shared/ui';
+
+import { SvgIconComponent } from '@app/shared/ui';
+
 import { RouteStop } from '../../../../data-access/models/route-stops.model';
 
 @Component({

@@ -1,5 +1,6 @@
 import { InjectionToken } from '@angular/core';
-import { AppRouteEnum } from '../enums/app-route.enum';
+
+import { AppRouteEnum } from '@core/enums/app-route.enum';
 
 export interface NavItem {
   path: string;

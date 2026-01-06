@@ -1,14 +1,19 @@
 import { DestroyRef, inject, Injectable, signal } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { take, withLatestFrom } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { selectAllScheduleStops } from '../data-access/store/schedule.selectors';
-import { SchedulePageActions } from '../data-access/store/schedule.actions';
-import { GeolocationError } from './geolocation.types';
+
+import { take, withLatestFrom } from 'rxjs/operators';
+
+import { Store } from '@ngrx/store';
+
+import { ToastService } from '@core/services/toast.service';
+
 import { Stop } from '../data-access/models/stop.model';
-import { ToastService } from '../../../core/services/toast.service';
-import { GeolocationService } from './geolocation.service';
+import { SchedulePageActions } from '../data-access/store/schedule.actions';
+import { selectAllScheduleStops } from '../data-access/store/schedule.selectors';
+
 import { GeoState } from './closest-stop.types';
+import { GeolocationService } from './geolocation.service';
+import { GeolocationError } from './geolocation.types';
 
 @Injectable()
 export class ClosestStopService {

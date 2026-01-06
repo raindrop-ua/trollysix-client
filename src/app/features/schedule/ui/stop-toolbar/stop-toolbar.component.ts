@@ -4,13 +4,15 @@ import {
   computed,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { GeolocationService } from '../../services/geolocation.service';
+
+import { ClipboardService } from '@app/core/services/clipboard.service';
+import { BtnDirective } from '@app/shared/directives/btn.directive';
+import { TooltipDirective } from '@app/shared/directives/tooltip.directive';
+import { SvgIconComponent } from '@app/shared/ui';
+
 import { ClosestStopService } from '../../services/closest-stop.service';
+import { GeolocationService } from '../../services/geolocation.service';
 import { ShareScheduleService } from '../../services/share-schedule.service';
-import { ClipboardService } from '../../../../core/services/clipboard.service';
-import { TooltipDirective } from '../../../../shared/directives/tooltip.directive';
-import { BtnDirective } from '../../../../shared/directives/btn.directive';
-import { SvgIconComponent } from '../../../../shared/ui';
 
 @Component({
   selector: 'trollysix-stop-toolbar',

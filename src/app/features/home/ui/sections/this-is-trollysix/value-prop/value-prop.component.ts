@@ -1,4 +1,5 @@
 import { Component, input, ChangeDetectionStrategy } from '@angular/core';
+
 import { ValueProp } from '../../../../data-access/models/value-prop.model';
 
 @Component({

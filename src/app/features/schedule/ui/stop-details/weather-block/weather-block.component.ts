@@ -1,19 +1,22 @@
 import {
-  Component,
-  computed,
-  input,
-  ChangeDetectionStrategy,
-} from '@angular/core';
-import {
   DatePipe,
   DecimalPipe,
   NgOptimizedImage,
   TitleCasePipe,
 } from '@angular/common';
-import { TemperaturePipe } from '../../../../../shared/pipes/temperature.pipe';
+import {
+  Component,
+  computed,
+  input,
+  ChangeDetectionStrategy,
+} from '@angular/core';
+
+import { environment } from '@environments/environment';
+
+import { TemperaturePipe } from '@app/shared/pipes/temperature.pipe';
+import { SvgIconComponent } from '@app/shared/ui';
+
 import { Stop } from '../../../data-access/models/stop.model';
-import { environment } from '../../../../../../environments/environment';
-import { SvgIconComponent } from '../../../../../shared/ui';
 
 @Component({
   selector: 'trollysix-weather-block',

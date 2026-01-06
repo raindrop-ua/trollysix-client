@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { GenericSectionBlockComponent } from '../generic-section-block/generic-section-block.component';
-import { copy } from '../../../../core/content/copy.util';
+
+import { copy } from '@app/core/content/copy.util';
+import { GenericSectionBlockComponent } from '@app/shared/ui/sections';
 
 @Component({
   selector: 'trollysix-notice',
