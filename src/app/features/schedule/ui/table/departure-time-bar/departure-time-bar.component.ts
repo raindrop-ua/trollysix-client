@@ -1,9 +1,4 @@
-import {
-  Component,
-  inject,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { combineLatest, map } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -15,11 +10,10 @@ import { SvgIconComponent } from '../../../../../shared/ui';
 import { copy } from '../../../../../core/content/copy.util';
 
 @Component({
-  selector: 'app-departure-time-bar',
+  selector: 'trollysix-departure-time-bar',
   imports: [AsyncPipe, DatePipe, SvgIconComponent],
   templateUrl: './departure-time-bar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class DepartureTimeBarComponent {

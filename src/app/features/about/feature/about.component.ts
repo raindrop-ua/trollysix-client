@@ -1,8 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
   HeadComponent,
   OverviewComponent,
@@ -14,7 +10,7 @@ import { EasterEggComponent } from '../ui/sections/easter-egg/easter-egg.compone
 import { RouteOperationComponent } from '../ui';
 
 @Component({
-  selector: 'app-about',
+  selector: 'trollysix-about',
   imports: [
     HeadComponent,
     OverviewComponent,
@@ -26,7 +22,6 @@ import { RouteOperationComponent } from '../ui';
   ],
   templateUrl: './about.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class AboutComponent {

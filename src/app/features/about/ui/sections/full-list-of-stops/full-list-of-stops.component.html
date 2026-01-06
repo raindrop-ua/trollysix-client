@@ -1,4 +1,4 @@
-<app-generic-section-block class="mb-20 block">
+<trollysix-generic-section-block class="mb-20 block">
   <header>
     <h2 class="text-xl font-semibold text-slate-900 dark:text-white">
       List of stops of the route
@@ -8,18 +8,18 @@
 
   @if (routeStops().length) {
     <div class="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2">
-      <app-stops-list
+      <trollysix-stops-list
         [title]="'Forward direction'"
         [direction]="'forward'"
         [stops]="routeStopsForward()"
       />
-      <app-stops-list
+      <trollysix-stops-list
         [title]="'Backward direction'"
         [direction]="'backward'"
         [stops]="routeStopsBackward()"
       />
     </div>
   } @else {
-    <app-spinner />
+    <trollysix-spinner />
   }
-</app-generic-section-block>
+</trollysix-generic-section-block>

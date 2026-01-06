@@ -3,18 +3,16 @@ import {
   computed,
   input,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
 import { SvgIconComponent } from '../svg-icon/svg-icon.component';
 
 type StarKind = 'filled' | 'empty-yellow' | 'empty-gray';
 
 @Component({
-  selector: 'app-rating-stars',
+  selector: 'trollysix-rating-stars',
   imports: [SvgIconComponent],
   templateUrl: './rating-stars.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'flex gap-1' },
 })
 export class RatingStarsComponent {

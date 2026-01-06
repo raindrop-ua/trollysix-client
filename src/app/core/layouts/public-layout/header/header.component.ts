@@ -6,7 +6,6 @@ import {
   ChangeDetectorRef,
   DestroyRef,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { filter } from 'rxjs';
@@ -17,11 +16,10 @@ import { SvgIconComponent } from '../../../../shared/ui';
 import { HeaderActionsComponent } from '../../../../shared/ui/header-actions/header-actions.component';
 
 @Component({
-  selector: 'app-header',
+  selector: 'trollysix-header',
   imports: [RouterLink, SvgIconComponent, HeaderActionsComponent],
   templateUrl: './header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: {
     class: 'block',
   },

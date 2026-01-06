@@ -3,7 +3,6 @@ import {
   inject,
   signal,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
@@ -13,11 +12,10 @@ import { DepartureTimeItemComponent } from '../departure-time-item/departure-tim
 import { SpinnerComponent } from '../../../../../shared/ui';
 
 @Component({
-  selector: 'app-departure-table',
+  selector: 'trollysix-departure-table',
   templateUrl: './departure-table.component.html',
   imports: [DepartureTimeItemComponent, AsyncPipe, SpinnerComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class DepartureTableComponent {

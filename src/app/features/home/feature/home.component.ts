@@ -1,8 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AttentionComponent } from '../../../shared/ui/sections';
 import {
@@ -17,7 +13,7 @@ import { MetricsCoveredComponent } from '../ui/sections/metrics-covered/metrics-
 import { copy } from '../../../core/content/copy.util';
 
 @Component({
-  selector: 'app-home',
+  selector: 'trollysix-home',
   imports: [
     RouterLink,
     MastheadComponent,
@@ -32,7 +28,6 @@ import { copy } from '../../../core/content/copy.util';
   ],
   templateUrl: './home.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class HomeComponent {

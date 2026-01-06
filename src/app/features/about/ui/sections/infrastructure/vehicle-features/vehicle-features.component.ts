@@ -1,19 +1,13 @@
-import {
-  Component,
-  signal,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { VehicleFeature } from '../../../../data-access/models/vehicle-feature';
 import { SvgIconComponent } from '../../../../../../shared/ui';
 import { TooltipDirective } from '../../../../../../shared/directives/tooltip.directive';
 
 @Component({
-  selector: 'app-vehicle-features',
+  selector: 'trollysix-vehicle-features',
   imports: [SvgIconComponent, TooltipDirective],
   templateUrl: './vehicle-features.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class VehicleFeaturesComponent {

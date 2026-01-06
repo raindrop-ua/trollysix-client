@@ -3,7 +3,6 @@ import {
   inject,
   OnInit,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
@@ -21,7 +20,7 @@ import { GenericHeaderComponent } from '../../../shared/ui/sections/generic-head
 import { copy } from '../../../core/content/copy.util';
 
 @Component({
-  selector: 'app-schedule',
+  selector: 'trollysix-schedule',
   imports: [
     GenericHeaderComponent,
     ScheduleControlsComponent,
@@ -34,7 +33,6 @@ import { copy } from '../../../core/content/copy.util';
   ],
   templateUrl: './schedule.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class ScheduleComponent implements OnInit {

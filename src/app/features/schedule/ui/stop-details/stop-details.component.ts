@@ -1,9 +1,4 @@
-import {
-  Component,
-  input,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { Stop } from '../../data-access/models/stop.model';
 import { GeoBadgeComponent } from '../geo-badge/geo-badge.component';
@@ -13,7 +8,7 @@ import { WeatherBlockComponent } from './weather-block/weather-block.component';
 import { copy } from '../../../../core/content/copy.util';
 
 @Component({
-  selector: 'app-stop-details',
+  selector: 'trollysix-stop-details',
   imports: [
     NgOptimizedImage,
     GeoBadgeComponent,
@@ -23,7 +18,6 @@ import { copy } from '../../../../core/content/copy.util';
   ],
   templateUrl: './stop-details.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class StopDetailsComponent {

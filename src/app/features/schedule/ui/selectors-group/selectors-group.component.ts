@@ -1,9 +1,4 @@
-import {
-  Component,
-  inject,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { AsyncPipe, NgClass } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { SchedulePageActions } from '../../data-access/store/schedule.actions';
@@ -15,7 +10,7 @@ import { HintArrowComponent } from '../hint-arrow/hint-arrow.component';
 import { copy } from '../../../../core/content/copy.util';
 
 @Component({
-  selector: 'app-selectors-group',
+  selector: 'trollysix-selectors-group',
   imports: [
     OptionsSelectorComponent,
     SvgIconComponent,
@@ -25,7 +20,6 @@ import { copy } from '../../../../core/content/copy.util';
   ],
   templateUrl: './selectors-group.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class SelectorsGroupComponent {

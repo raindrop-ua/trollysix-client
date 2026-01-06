@@ -3,7 +3,6 @@ import {
   inject,
   computed,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
 import { GeolocationService } from '../../services/geolocation.service';
 import { ClosestStopService } from '../../services/closest-stop.service';
@@ -14,12 +13,11 @@ import { BtnDirective } from '../../../../shared/directives/btn.directive';
 import { SvgIconComponent } from '../../../../shared/ui';
 
 @Component({
-  selector: 'app-stop-toolbar',
+  selector: 'trollysix-stop-toolbar',
   imports: [BtnDirective, TooltipDirective, SvgIconComponent],
   providers: [ClosestStopService],
   templateUrl: './stop-toolbar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class StopToolbarComponent {

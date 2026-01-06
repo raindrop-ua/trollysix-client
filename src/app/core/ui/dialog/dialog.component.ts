@@ -6,7 +6,6 @@ import {
   OnDestroy,
   OnInit,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
 import { isPlatformBrowser, NgClass } from '@angular/common';
 import { Subject } from 'rxjs';
@@ -14,12 +13,11 @@ import { DialogConfig, DialogResult } from '../../models/dialog.models';
 import { SvgIconComponent } from '../../../shared/ui';
 
 @Component({
-  selector: 'app-dialog',
+  selector: 'trollysix-dialog',
   standalone: true,
   imports: [NgClass, SvgIconComponent],
   templateUrl: './dialog.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class DialogComponent implements OnInit, OnDestroy {

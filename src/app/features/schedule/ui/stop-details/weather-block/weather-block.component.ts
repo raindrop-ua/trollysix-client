@@ -3,7 +3,6 @@ import {
   computed,
   input,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
 import {
   DatePipe,
@@ -17,7 +16,7 @@ import { environment } from '../../../../../../environments/environment';
 import { SvgIconComponent } from '../../../../../shared/ui';
 
 @Component({
-  selector: 'app-weather-block',
+  selector: 'trollysix-weather-block',
   imports: [
     DatePipe,
     DecimalPipe,
@@ -28,7 +27,6 @@ import { SvgIconComponent } from '../../../../../shared/ui';
   ],
   templateUrl: './weather-block.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block h-full' },
 })
 export class WeatherBlockComponent {

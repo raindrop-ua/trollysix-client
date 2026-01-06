@@ -6,7 +6,6 @@ import {
   OnInit,
   DestroyRef,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouteStop } from '../../../data-access/models/route-stops.model';
@@ -16,11 +15,10 @@ import { StopsListComponent } from './stops-list/stops-list.component';
 import { SpinnerComponent } from '../../../../../shared/ui';
 
 @Component({
-  selector: 'app-full-list-of-stops',
+  selector: 'trollysix-full-list-of-stops',
   imports: [GenericSectionBlockComponent, StopsListComponent, SpinnerComponent],
   templateUrl: './full-list-of-stops.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class FullListOfStopsComponent implements OnInit {

@@ -3,18 +3,16 @@ import {
   computed,
   input,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { SvgIconComponent } from '../../../../shared/ui';
 import { TooltipDirective } from '../../../../shared/directives/tooltip.directive';
 
 @Component({
-  selector: 'app-geo-badge',
+  selector: 'trollysix-geo-badge',
   imports: [SvgIconComponent, DecimalPipe, TooltipDirective],
   templateUrl: './geo-badge.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class GeoBadgeComponent {
