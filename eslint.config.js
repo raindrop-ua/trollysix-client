@@ -42,7 +42,12 @@ module.exports = tseslint.config(
               position: 'after',
             },
             {
-              pattern: '@trollysix/**',
+              pattern: '@environments/**',
+              group: 'internal',
+              position: 'after',
+            },
+            {
+              pattern: '@{app,core,config,shared,features}/**',
               group: 'internal',
               position: 'after',
             },
