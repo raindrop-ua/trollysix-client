@@ -53,6 +53,7 @@
     "commitlint": "^19.8.1",
     "cypress": "latest",
     "eslint": "^9.33.0",
+    "eslint-plugin-import": "^2.32.0",
     "husky": "^8.0.0",
     "jsdom": "^27.1.0",
     "lint-staged": "^16.1.2",
