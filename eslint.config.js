@@ -13,8 +13,48 @@ module.exports = tseslint.config(
       ...angular.configs.tsRecommended,
     ],
     processor: angular.processInlineTemplates,
-    plugins: {},
+    plugins: {
+      import: require('eslint-plugin-import'),
+    },
     rules: {
+      'import/order': [
+        'error',
+        {
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+            'object',
+            'type',
+          ],
+          pathGroups: [
+            {
+              pattern: '@angular/**',
+              group: 'external',
+              position: 'before',
+            },
+            {
+              pattern: '{rxjs,@ngrx/**}',
+              group: 'external',
+              position: 'after',
+            },
+            {
+              pattern: '@trollysix/**',
+              group: 'internal',
+              position: 'after',
+            },
+          ],
+          pathGroupsExcludedImportTypes: ['builtin'],
+          alphabetize: {
+            order: 'asc',
+            caseInsensitive: true,
+          },
+          'newlines-between': 'always',
+        },
+      ],
       '@angular-eslint/directive-selector': [
         'error',
         {
