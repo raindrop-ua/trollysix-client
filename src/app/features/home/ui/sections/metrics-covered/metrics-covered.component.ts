@@ -2,8 +2,7 @@ import { AsyncPipe } from '@angular/common';
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { MetricsComponent } from '@app/shared/ui/sections';
-
-import { MetricsListService } from '../../../services/metrics-list.service';
+import { MetricsListService } from '@features/home/services/metrics-list.service';
 
 @Component({
   selector: 'trollysix-metrics-covered',

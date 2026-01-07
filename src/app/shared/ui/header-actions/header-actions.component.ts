@@ -1,8 +1,9 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 
-import { ThemeSwitcherComponent } from '@app/shared/ui';
 import { AppRouteEnum } from '@core/enums/app-route.enum';
+
+import { ThemeSwitcherComponent } from '@app/shared/ui';
 
 import { SettingsButtonComponent } from './settings-button/settings-button.component';
 

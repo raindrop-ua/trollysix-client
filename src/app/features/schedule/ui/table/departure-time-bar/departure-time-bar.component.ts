@@ -7,10 +7,9 @@ import { combineLatest, map } from 'rxjs';
 import { copy } from '@app/core/content/copy.util';
 import { ClockService } from '@app/core/services/clock.service';
 import { SvgIconComponent } from '@app/shared/ui';
-
-import { Status } from '../../../data-access/models/departure.model';
-import { selectScheduleViewModel } from '../../../data-access/store/schedule.selectors';
-import { ScheduleService } from '../../../services/schedule.service';
+import { Status } from '@features/schedule/data-access/models/departure.model';
+import { selectScheduleViewModel } from '@features/schedule/data-access/store/schedule.selectors';
+import { ScheduleService } from '@features/schedule/services/schedule.service';
 
 @Component({
   selector: 'trollysix-departure-time-bar',

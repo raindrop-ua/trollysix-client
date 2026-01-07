@@ -1,6 +1,6 @@
 import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 
-import { DirectionName } from '../../data-access/models/direction.model';
+import { DirectionName } from '@features/schedule/data-access/models/direction.model';
 
 @Component({
   selector: 'trollysix-hint-arrow',

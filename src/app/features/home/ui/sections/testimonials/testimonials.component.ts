@@ -15,9 +15,8 @@ import {
   ColorSplashComponent,
   SpinnerComponent,
 } from '@app/shared/ui';
-
-import { Testimonials } from '../../../data-access/models/testimonial.model';
-import { TestimonialsListService } from '../../../services/testimonials-list.service';
+import { Testimonials } from '@features/home/data-access/models/testimonial.model';
+import { TestimonialsListService } from '@features/home/services/testimonials-list.service';
 
 import { TestimonialComponent } from './testimonial/testimonial.component';
 

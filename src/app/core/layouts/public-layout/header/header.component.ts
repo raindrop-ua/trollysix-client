@@ -12,10 +12,11 @@ import { NavigationEnd, Router, RouterLink } from '@angular/router';
 
 import { filter } from 'rxjs';
 
-import { SvgIconComponent } from '@app/shared/ui';
-import { HeaderActionsComponent } from '@app/shared/ui/header-actions/header-actions.component';
 import { NAVIGATION_TOKEN } from '@core/config/navigation.config';
 import { AppRouteEnum } from '@core/enums/app-route.enum';
+
+import { SvgIconComponent } from '@app/shared/ui';
+import { HeaderActionsComponent } from '@app/shared/ui/header-actions/header-actions.component';
 
 @Component({
   selector: 'trollysix-header',

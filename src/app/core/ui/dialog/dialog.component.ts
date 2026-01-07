@@ -11,9 +11,9 @@ import {
 
 import { Subject } from 'rxjs';
 
-import { SvgIconComponent } from '@shared/ui';
+import { DialogConfig, DialogResult } from '@core//models/dialog.models';
 
-import { DialogConfig, DialogResult } from '../../models/dialog.models';
+import { SvgIconComponent } from '@shared/ui';
 
 @Component({
   selector: 'trollysix-dialog',

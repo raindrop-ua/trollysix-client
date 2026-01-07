@@ -15,8 +15,7 @@ import { environment } from '@environments/environment';
 
 import { TemperaturePipe } from '@app/shared/pipes/temperature.pipe';
 import { SvgIconComponent } from '@app/shared/ui';
-
-import { Stop } from '../../../data-access/models/stop.model';
+import { Stop } from '@features/schedule/data-access/models/stop.model';
 
 @Component({
   selector: 'trollysix-weather-block',

@@ -2,8 +2,7 @@ import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { TooltipDirective } from '@app/shared/directives/tooltip.directive';
 import { SvgIconComponent } from '@app/shared/ui';
-
-import { VehicleFeature } from '../../../../data-access/models/vehicle-feature';
+import { VehicleFeature } from '@features/about/data-access/models/vehicle-feature';
 
 @Component({
   selector: 'trollysix-vehicle-features',

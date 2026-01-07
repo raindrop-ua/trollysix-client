@@ -17,6 +17,7 @@ module.exports = tseslint.config(
       import: require('eslint-plugin-import'),
     },
     rules: {
+      'import/no-cycle': ['error', { maxDepth: 1 }],
       'import/order': [
         'error',
         {
@@ -47,7 +48,17 @@ module.exports = tseslint.config(
               position: 'after',
             },
             {
-              pattern: '@{app,core,config,shared,features}/**',
+              pattern: '@config/**',
+              group: 'internal',
+              position: 'after',
+            },
+            {
+              pattern: '@core/**',
+              group: 'internal',
+              position: 'after',
+            },
+            {
+              pattern: '@{app,shared,features}/**',
               group: 'internal',
               position: 'after',
             },

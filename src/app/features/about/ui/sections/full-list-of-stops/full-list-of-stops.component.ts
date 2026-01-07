@@ -11,9 +11,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { SpinnerComponent } from '@app/shared/ui';
 import { GenericSectionBlockComponent } from '@app/shared/ui/sections';
-
-import { RouteStop } from '../../../data-access/models/route-stops.model';
-import { StopsListService } from '../../../services/stops-list.service';
+import { RouteStop } from '@features/about/data-access/models/route-stops.model';
+import { StopsListService } from '@features/about/services/stops-list.service';
 
 import { StopsListComponent } from './stops-list/stops-list.component';
 

@@ -1,7 +1,7 @@
 import { AsyncPipe } from '@angular/common';
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
-import { ScheduleService } from '../../../services/schedule.service';
+import { ScheduleService } from '@features/schedule/services/schedule.service';
 
 @Component({
   selector: 'trollysix-departure-legend',

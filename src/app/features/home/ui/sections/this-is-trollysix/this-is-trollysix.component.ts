@@ -1,8 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { RevealOnScrollDirective } from '@app/shared/directives/reveal-on-scroll.directive';
-
-import { ValueProp } from '../../../data-access/models/value-prop.model';
+import { ValueProp } from '@features/home/data-access/models/value-prop.model';
 
 import { ValuePropComponent } from './value-prop/value-prop.component';
 

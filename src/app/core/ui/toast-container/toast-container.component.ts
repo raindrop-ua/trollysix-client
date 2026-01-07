@@ -6,9 +6,9 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 
-import { SvgIconComponent } from '@shared/ui';
+import { ToastService } from '@core/services/toast.service';
 
-import { ToastService } from '../../services/toast.service';
+import { SvgIconComponent } from '@shared/ui';
 
 @Component({
   selector: 'trollysix-toast-container',

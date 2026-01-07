@@ -8,8 +8,8 @@ import {
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 
-import { Departure } from '../../../data-access/models/departure.model';
-import { ScheduleService } from '../../../services/schedule.service';
+import { Departure } from '@features/schedule/data-access/models/departure.model';
+import { ScheduleService } from '@features/schedule/services/schedule.service';
 
 @Component({
   selector: 'trollysix-departure-time-item',

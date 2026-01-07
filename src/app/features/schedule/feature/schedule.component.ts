@@ -9,6 +9,7 @@ import {
 import { Store } from '@ngrx/store';
 
 import { copy } from '@core/content/copy.util';
+
 import { ScheduleControlsComponent } from '@features/schedule/ui/schedule-controls/schedule-controls.component';
 import { SelectorsGroupComponent } from '@features/schedule/ui/selectors-group/selectors-group.component';
 import { StopDetailsComponent } from '@features/schedule/ui/stop-details/stop-details.component';

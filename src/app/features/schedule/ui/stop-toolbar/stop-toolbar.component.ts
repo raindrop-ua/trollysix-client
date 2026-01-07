@@ -9,10 +9,9 @@ import { ClipboardService } from '@app/core/services/clipboard.service';
 import { BtnDirective } from '@app/shared/directives/btn.directive';
 import { TooltipDirective } from '@app/shared/directives/tooltip.directive';
 import { SvgIconComponent } from '@app/shared/ui';
-
-import { ClosestStopService } from '../../services/closest-stop.service';
-import { GeolocationService } from '../../services/geolocation.service';
-import { ShareScheduleService } from '../../services/share-schedule.service';
+import { ClosestStopService } from '@features/schedule/services/closest-stop.service';
+import { GeolocationService } from '@features/schedule/services/geolocation.service';
+import { ShareScheduleService } from '@features/schedule/services/share-schedule.service';
 
 @Component({
   selector: 'trollysix-stop-toolbar',
