@@ -1,8 +1,10 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
+
+import { GlobalMessageComponent } from '@core/ui/global-message/global-message.component';
+
 import { FooterComponent } from './footer/footer.component';
-import { GlobalMessageComponent } from '../../ui/global-message/global-message.component';
+import { HeaderComponent } from './header/header.component';
 
 @Component({
   selector: 'trollysix-public-layout',

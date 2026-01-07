@@ -1,14 +1,16 @@
+import { IMAGE_CONFIG } from '@angular/common';
 import {
   EnvironmentProviders,
   ErrorHandler,
   makeEnvironmentProviders,
   provideBrowserGlobalErrorListeners,
 } from '@angular/core';
-import { IMAGE_CONFIG } from '@angular/common';
-import { NAVIGATION, NAVIGATION_TOKEN } from './navigation.config';
 import { EVENT_MANAGER_PLUGINS } from '@angular/platform-browser';
+
 import { CustomErrorHandler } from '../custom-error-handler';
 import { PreventDefaultEventPlugin } from '../plugins/prevent-default-events';
+
+import { NAVIGATION, NAVIGATION_TOKEN } from './navigation.config';
 
 export function provideAppCore(): EnvironmentProviders {
   return makeEnvironmentProviders([

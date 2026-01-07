@@ -1,8 +1,10 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+
 import { Store } from '@ngrx/store';
-import { selectScheduleViewModel } from '../../../data-access/store/schedule.selectors';
-import { ScheduleService } from '../../../services/schedule.service';
+
+import { selectScheduleViewModel } from '@features/schedule/data-access/store/schedule.selectors';
+import { ScheduleService } from '@features/schedule/services/schedule.service';
 
 @Component({
   selector: 'trollysix-departure-stop-bar',

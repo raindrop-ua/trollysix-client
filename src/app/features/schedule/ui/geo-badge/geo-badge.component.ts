@@ -1,12 +1,13 @@
+import { DecimalPipe } from '@angular/common';
 import {
   Component,
   computed,
   input,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { DecimalPipe } from '@angular/common';
-import { SvgIconComponent } from '../../../../shared/ui';
-import { TooltipDirective } from '../../../../shared/directives/tooltip.directive';
+
+import { TooltipDirective } from '@app/shared/directives/tooltip.directive';
+import { SvgIconComponent } from '@app/shared/ui';
 
 @Component({
   selector: 'trollysix-geo-badge',

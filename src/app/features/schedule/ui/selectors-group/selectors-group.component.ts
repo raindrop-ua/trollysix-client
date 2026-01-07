@@ -1,13 +1,15 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { AsyncPipe, NgClass } from '@angular/common';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+
 import { Store } from '@ngrx/store';
-import { SchedulePageActions } from '../../data-access/store/schedule.actions';
-import { selectScheduleViewModel } from '../../data-access/store/schedule.selectors';
-import { ScheduleService } from '../../services/schedule.service';
-import { OptionsSelectorComponent } from '../options-selector/options-selector.component';
-import { SvgIconComponent } from '../../../../shared/ui';
-import { HintArrowComponent } from '../hint-arrow/hint-arrow.component';
-import { copy } from '../../../../core/content/copy.util';
+
+import { copy } from '@app/core/content/copy.util';
+import { SvgIconComponent } from '@app/shared/ui';
+import { SchedulePageActions } from '@features/schedule/data-access/store/schedule.actions';
+import { selectScheduleViewModel } from '@features/schedule/data-access/store/schedule.selectors';
+import { ScheduleService } from '@features/schedule/services/schedule.service';
+import { HintArrowComponent } from '@features/schedule/ui/hint-arrow/hint-arrow.component';
+import { OptionsSelectorComponent } from '@features/schedule/ui/options-selector/options-selector.component';
 
 @Component({
   selector: 'trollysix-selectors-group',

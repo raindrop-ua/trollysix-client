@@ -8,11 +8,13 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { RouteStop } from '../../../data-access/models/route-stops.model';
-import { StopsListService } from '../../../services/stops-list.service';
-import { GenericSectionBlockComponent } from '../../../../../shared/ui/sections';
+
+import { SpinnerComponent } from '@app/shared/ui';
+import { GenericSectionBlockComponent } from '@app/shared/ui/sections';
+import { RouteStop } from '@features/about/data-access/models/route-stops.model';
+import { StopsListService } from '@features/about/services/stops-list.service';
+
 import { StopsListComponent } from './stops-list/stops-list.component';
-import { SpinnerComponent } from '../../../../../shared/ui';
 
 @Component({
   selector: 'trollysix-full-list-of-stops',

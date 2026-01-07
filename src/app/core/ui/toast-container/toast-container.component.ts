@@ -1,12 +1,14 @@
+import { NgClass } from '@angular/common';
 import {
   Component,
   computed,
   inject,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { NgClass } from '@angular/common';
-import { ToastService } from '../../services/toast.service';
-import { SvgIconComponent } from '../../../shared/ui';
+
+import { ToastService } from '@core/services/toast.service';
+
+import { SvgIconComponent } from '@shared/ui';
 
 @Component({
   selector: 'trollysix-toast-container',

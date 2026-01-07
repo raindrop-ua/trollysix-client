@@ -1,10 +1,10 @@
+import { NgTemplateOutlet } from '@angular/common';
 import {
   Component,
   input,
   ChangeDetectionStrategy,
   TemplateRef,
 } from '@angular/core';
-import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'trollysix-attention',

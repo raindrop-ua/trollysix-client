@@ -1,8 +1,9 @@
 import { Injector, PLATFORM_ID } from '@angular/core';
 
-import { firstValueFrom } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { describe, expect, it } from 'vitest';
+
+import { firstValueFrom } from 'rxjs';
 
 import { ClockService } from './clock.service';
 

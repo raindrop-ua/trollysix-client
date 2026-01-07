@@ -1,7 +1,9 @@
 import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
-import { GenericSectionBlockComponent } from '../../../../../shared/ui/sections';
+
+import { GenericSectionBlockComponent } from '@app/shared/ui/sections';
+import { OperatingDays } from '@features/about/data-access/models/operating-days.model';
+
 import { RouteOperationTableComponent } from './operating-table/route-operation-table.component';
-import { OperatingDays } from '../../../../../shared/models/operating-days.model';
 
 @Component({
   selector: 'trollysix-route-operation',

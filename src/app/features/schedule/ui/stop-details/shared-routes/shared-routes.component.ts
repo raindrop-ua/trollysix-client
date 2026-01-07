@@ -1,5 +1,6 @@
 import { Component, input, ChangeDetectionStrategy } from '@angular/core';
-import { Stop } from '../../../data-access/models/stop.model';
+
+import { Stop } from '@features/schedule/data-access/models/stop.model';
 
 @Component({
   selector: 'trollysix-shared-routes',

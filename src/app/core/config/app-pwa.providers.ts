@@ -1,9 +1,9 @@
-import { provideServiceWorker } from '@angular/service-worker';
 import {
   EnvironmentProviders,
   isDevMode,
   makeEnvironmentProviders,
 } from '@angular/core';
+import { provideServiceWorker } from '@angular/service-worker';
 
 export function provideAppPwa(): EnvironmentProviders {
   return makeEnvironmentProviders([

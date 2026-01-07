@@ -4,7 +4,8 @@ import {
   input,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { SvgIconComponent } from '../svg-icon/svg-icon.component';
+
+import { SvgIconComponent } from '@app/shared/ui';
 
 type StarKind = 'filled' | 'empty-yellow' | 'empty-gray';
 

@@ -1,6 +1,7 @@
 import { Component, input, ChangeDetectionStrategy } from '@angular/core';
-import { SvgIconComponent } from '../../../../../../shared/ui';
-import { RouteStop } from '../../../../data-access/models/route-stops.model';
+
+import { SvgIconComponent } from '@app/shared/ui';
+import { RouteStop } from '@features/about/data-access/models/route-stops.model';
 
 @Component({
   selector: 'trollysix-stops-list-item',

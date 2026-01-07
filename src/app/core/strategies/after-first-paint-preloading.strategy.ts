@@ -1,7 +1,9 @@
 import { Injectable, inject, ApplicationRef } from '@angular/core';
 import { PreloadingStrategy, Route } from '@angular/router';
-import { Observable, of, race, timer } from 'rxjs';
+
 import { filter, first, map, switchMap } from 'rxjs/operators';
+
+import { Observable, of, race, timer } from 'rxjs';
 
 interface NavigatorWithConnection extends Navigator {
   connection?: {

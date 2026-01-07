@@ -7,8 +7,9 @@ import {
   ViewContainerRef,
   DestroyRef,
 } from '@angular/core';
-import { interval, timer } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+import { interval, timer } from 'rxjs';
 
 class HideAfterContext {
   public trollysixHideAfter = 0;

@@ -1,9 +1,12 @@
 import { Routes } from '@angular/router';
-import { provideState } from '@ngrx/store';
+
 import { provideEffects } from '@ngrx/effects';
-import { ScheduleComponent } from './schedule.component';
-import { scheduleFeature } from '../data-access/store/schedule.reducer';
+import { provideState } from '@ngrx/store';
+
 import { ScheduleEffects } from '../data-access/store/schedule.effects';
+import { scheduleFeature } from '../data-access/store/schedule.reducer';
+
+import { ScheduleComponent } from './schedule.component';
 
 export default [
   {

@@ -1,6 +1,7 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
-import { GlobalMessageService } from '../../services/global-message.service';
 import { AsyncPipe, NgClass } from '@angular/common';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+
+import { GlobalMessageService } from '@core/services/global-message.service';
 
 @Component({
   selector: 'trollysix-global-message',

@@ -1,6 +1,7 @@
 import { Injectable, signal, computed } from '@angular/core';
-import { interval } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+import { interval } from 'rxjs';
 
 export interface Snowflake {
   id: number;

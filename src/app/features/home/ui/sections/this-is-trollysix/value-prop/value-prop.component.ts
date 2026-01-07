@@ -1,5 +1,6 @@
 import { Component, input, ChangeDetectionStrategy } from '@angular/core';
-import { ValueProp } from '../../../../data-access/models/value-prop.model';
+
+import { ValueProp } from '@features/home/data-access/models/value-prop.model';
 
 @Component({
   selector: 'trollysix-value-prop',

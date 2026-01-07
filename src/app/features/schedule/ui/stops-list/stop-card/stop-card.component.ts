@@ -1,17 +1,19 @@
+import { AsyncPipe, NgOptimizedImage } from '@angular/common';
 import {
   Component,
   input,
   inject,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { AsyncPipe, NgOptimizedImage } from '@angular/common';
+
 import { Store } from '@ngrx/store';
-import { SchedulePageActions } from '../../../data-access/store/schedule.actions';
-import { selectScheduleViewModel } from '../../../data-access/store/schedule.selectors';
-import { Stop } from '../../../data-access/models/stop.model';
-import { DirectionName } from '../../../data-access/models/direction.model';
-import { SvgIconComponent } from '../../../../../shared/ui';
-import { copy } from '../../../../../core/content/copy.util';
+
+import { copy } from '@app/core/content/copy.util';
+import { SvgIconComponent } from '@app/shared/ui';
+import { DirectionName } from '@features/schedule/data-access/models/direction.model';
+import { Stop } from '@features/schedule/data-access/models/stop.model';
+import { SchedulePageActions } from '@features/schedule/data-access/store/schedule.actions';
+import { selectScheduleViewModel } from '@features/schedule/data-access/store/schedule.selectors';
 
 @Component({
   selector: 'trollysix-stop-card',

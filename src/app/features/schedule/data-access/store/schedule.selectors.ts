@@ -1,6 +1,7 @@
+import { createSelector } from '@ngrx/store';
+
 import { scheduleFeature } from './schedule.reducer';
 import { stopsAdapter } from './schedule.state';
-import { createSelector } from '@ngrx/store';
 
 const {
   selectStops,

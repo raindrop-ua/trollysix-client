@@ -6,8 +6,10 @@ import {
   signal,
   computed,
 } from '@angular/core';
-import { fromEvent, merge, map, pairwise, startWith, tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+import { fromEvent, merge, map, pairwise, startWith, tap } from 'rxjs';
+
 import { ToastService } from './toast.service';
 
 @Injectable({ providedIn: 'root' })

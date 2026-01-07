@@ -1,5 +1,6 @@
 import { Component, input, ChangeDetectionStrategy } from '@angular/core';
-import { RevealOnScrollDirective } from '../../../directives/reveal-on-scroll.directive';
+
+import { RevealOnScrollDirective } from '@shared/directives/reveal-on-scroll.directive';
 
 @Component({
   selector: 'trollysix-generic-header',

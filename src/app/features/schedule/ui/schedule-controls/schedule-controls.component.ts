@@ -1,10 +1,10 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import {
-  DepartureTableComponent,
-  DepartureLegendComponent,
-  DepartureTimeBarComponent,
-  DepartureStopBarComponent,
-} from '../table';
+
+import { DepartureLegendComponent } from '@features/schedule/ui/table/departure-legend/departure-legend.component';
+import { DepartureStopBarComponent } from '@features/schedule/ui/table/departure-stop-bar/departure-stop-bar.component';
+import { DepartureTableComponent } from '@features/schedule/ui/table/departure-table/departure-table.component';
+import { DepartureTimeBarComponent } from '@features/schedule/ui/table/departure-time-bar/departure-time-bar.component';
+
 import { DepartureConfigComponent } from '../table/departure-config/departure-config.component';
 
 @Component({
