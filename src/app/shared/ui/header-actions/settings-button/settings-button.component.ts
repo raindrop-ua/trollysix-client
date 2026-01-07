@@ -2,8 +2,8 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { AppRouteEnum } from '@app/core/enums/app-route.enum';
-import { SvgIconComponent } from '@app/shared/ui';
 import { IconButtonDirective } from '@shared/directives/icon-button.directive';
+import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
 @Component({
   selector: 'trollysix-settings-button',

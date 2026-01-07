@@ -7,7 +7,7 @@ import { Observable, of, shareReplay } from 'rxjs';
 
 import { environment } from '@environments/environment';
 
-import { Metric } from '@shared/ui/sections';
+import { Metric } from '@shared/ui/sections/metrics/metrics.model';
 
 @Injectable({ providedIn: 'root' })
 export class MetricsListService {

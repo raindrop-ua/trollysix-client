@@ -1,14 +1,13 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
-import {
-  HeadComponent,
-  OverviewComponent,
-  InfrastructureComponent,
-  FullListOfStopsComponent,
-  RouteOperationComponent,
-  EasterEggComponent,
-} from '@features/about/ui';
-import { Metric, MetricsComponent } from '@shared/ui/sections';
+import { EasterEggComponent } from '@features/about/ui/sections/easter-egg/easter-egg.component';
+import { FullListOfStopsComponent } from '@features/about/ui/sections/full-list-of-stops/full-list-of-stops.component';
+import { HeadComponent } from '@features/about/ui/sections/head/head.component';
+import { InfrastructureComponent } from '@features/about/ui/sections/infrastructure/infrastructure.component';
+import { OverviewComponent } from '@features/about/ui/sections/overview/overview.component';
+import { RouteOperationComponent } from '@features/about/ui/sections/route-operation/route-operation.component';
+import { MetricsComponent } from '@shared/ui/sections/metrics/metrics.component';
+import { Metric } from '@shared/ui/sections/metrics/metrics.model';
 
 @Component({
   selector: 'trollysix-about',

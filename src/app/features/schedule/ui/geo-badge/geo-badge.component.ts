@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 
 import { TooltipDirective } from '@app/shared/directives/tooltip.directive';
-import { SvgIconComponent } from '@app/shared/ui';
+import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
 @Component({
   selector: 'trollysix-geo-badge',

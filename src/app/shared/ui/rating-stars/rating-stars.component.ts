@@ -5,7 +5,7 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 
-import { SvgIconComponent } from '@app/shared/ui';
+import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
 type StarKind = 'filled' | 'empty-yellow' | 'empty-gray';
 

@@ -8,10 +8,10 @@ import {
 import { ClipboardService } from '@app/core/services/clipboard.service';
 import { BtnDirective } from '@app/shared/directives/btn.directive';
 import { TooltipDirective } from '@app/shared/directives/tooltip.directive';
-import { SvgIconComponent } from '@app/shared/ui';
 import { ClosestStopService } from '@features/schedule/services/closest-stop.service';
 import { GeolocationService } from '@features/schedule/services/geolocation.service';
 import { ShareScheduleService } from '@features/schedule/services/share-schedule.service';
+import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
 @Component({
   selector: 'trollysix-stop-toolbar',
