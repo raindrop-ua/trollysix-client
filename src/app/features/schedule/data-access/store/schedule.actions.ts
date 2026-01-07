@@ -1,7 +1,8 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { Stop } from '../models/stop.model';
-import { Direction, DirectionName } from '../models/direction.model';
+
 import { DayType } from '../models/daytype.model';
+import { Direction, DirectionName } from '../models/direction.model';
+import { Stop } from '../models/stop.model';
 import { Timetable } from '../models/timetable.model';
 
 export const SchedulePageActions = createActionGroup({

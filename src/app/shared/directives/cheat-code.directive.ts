@@ -6,11 +6,11 @@ import {
   HostListener,
   inject,
   Output,
-  EventEmitter
+  EventEmitter,
 } from '@angular/core';
 
 @Directive({
-  selector: '[appCheatCode]',
+  selector: '[trollysixCheatCode]',
 })
 export class CheatCodeDirective {
   private tpl = inject(TemplateRef);
@@ -22,13 +22,13 @@ export class CheatCodeDirective {
   private hasShown = false;
 
   @Input()
-  set appCheatCode(value: string) {
+  set trollysixCheatCode(value: string) {
     this.code = (value ?? '').toUpperCase();
     this.buffer = '';
   }
 
   @Input()
-  appCheatCodeTimeout = 1500;
+  trollysixCheatCodeTimeout = 1500;
 
   @Output()
   cheatSuccess = new EventEmitter<void>();
@@ -45,7 +45,10 @@ export class CheatCodeDirective {
 
     const now = Date.now();
 
-    if (this.lastKeyTime && now - this.lastKeyTime > this.appCheatCodeTimeout) {
+    if (
+      this.lastKeyTime &&
+      now - this.lastKeyTime > this.trollysixCheatCodeTimeout
+    ) {
       this.buffer = '';
     }
 

@@ -11,7 +11,7 @@
   </div>
 
   @if (isWinter$ | async) {
-    <app-snow />
+    <trollysix-snow />
   }
 
   <div
@@ -43,7 +43,7 @@
     </p>
 
     <div
-      appRevealOnScroll="300"
+      trollysixRevealOnScroll="300"
       class="m-8 flex flex-wrap items-center justify-center gap-3 text-blue-800 dark:text-white"
     >
       <svg
@@ -55,10 +55,10 @@
     </div>
 
     <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-      <a [routerLink]="[AppRouteEnum.Schedule]" appBtn="primary">{{
+      <a [routerLink]="[AppRouteEnum.Schedule]" trollysixBtn="primary">{{
         copyCommon.viewSchedule
       }}</a>
-      <a [routerLink]="[AppRouteEnum.About]" appBtn="secondary">{{
+      <a [routerLink]="[AppRouteEnum.About]" trollysixBtn="secondary">{{
         copyCommon.learnMore
       }}</a>
     </div>

@@ -12,7 +12,7 @@
   </div>
   <div class="flex w-full flex-col items-start">
     @for (stop of stops(); track stop.id; let i = $index, last = $last) {
-      <app-stops-list-item
+      <trollysix-stops-list-item
         class="block w-full"
         [stopItemData]="stop"
         [itemIndex]="i"

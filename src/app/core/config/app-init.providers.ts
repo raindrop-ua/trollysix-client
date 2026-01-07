@@ -1,3 +1,4 @@
+import { isPlatformBrowser } from '@angular/common';
 import {
   PLATFORM_ID,
   EnvironmentProviders,
@@ -5,12 +6,12 @@ import {
   makeEnvironmentProviders,
   provideEnvironmentInitializer,
 } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
-import { SwUpdateService } from '../services/sw-update.service';
-import { PageVisibilityService } from '../services/page-visibility.service';
-import { NetworkStatusService } from '../services/network-status.service';
-import { SeoService } from '../services/seo.service';
+
 import { ConfigService } from '../services/config.service';
+import { NetworkStatusService } from '../services/network-status.service';
+import { PageVisibilityService } from '../services/page-visibility.service';
+import { SeoService } from '../services/seo.service';
+import { SwUpdateService } from '../services/sw-update.service';
 
 export function provideAppInit(): EnvironmentProviders {
   return makeEnvironmentProviders([

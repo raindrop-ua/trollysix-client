@@ -5,20 +5,19 @@ import {
   signal,
   effect,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
-import { Option } from '../../data-access/models/option.model';
-import { DayType } from '../../data-access/models/daytype.model';
-import { Direction } from '../../data-access/models/direction.model';
+
+import { DayType } from '@features/schedule/data-access/models/daytype.model';
+import { Direction } from '@features/schedule/data-access/models/direction.model';
+import { Option } from '@features/schedule/data-access/models/option.model';
 
 type OptionLike = Option | DayType | Direction;
 
 @Component({
-  selector: 'app-options-selector',
+  selector: 'trollysix-options-selector',
   imports: [],
   templateUrl: './options-selector.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class OptionsSelectorComponent {

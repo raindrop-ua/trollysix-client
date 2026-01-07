@@ -1,19 +1,15 @@
-import {
-  Component,
-  signal,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
-import { GenericSectionBlockComponent } from '../../../../../shared/ui/sections';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
+
+import { OperatingDays } from '@features/about/data-access/models/operating-days.model';
+import { GenericSectionBlockComponent } from '@shared/ui/sections/generic-section-block/generic-section-block.component';
+
 import { RouteOperationTableComponent } from './operating-table/route-operation-table.component';
-import { OperatingDays } from '../../../../../shared/models/operating-days.model';
 
 @Component({
-  selector: 'app-route-operation',
+  selector: 'trollysix-route-operation',
   imports: [GenericSectionBlockComponent, RouteOperationTableComponent],
   templateUrl: './route-operation.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class RouteOperationComponent {

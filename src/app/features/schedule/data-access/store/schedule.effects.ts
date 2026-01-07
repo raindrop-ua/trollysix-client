@@ -1,6 +1,7 @@
-import { inject, Injectable } from '@angular/core';
 import { Location } from '@angular/common';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { inject, Injectable } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import {
   catchError,
   map,
@@ -9,14 +10,18 @@ import {
   filter,
   take,
 } from 'rxjs/operators';
-import { of, forkJoin, distinctUntilChanged, combineLatest, tap } from 'rxjs';
+
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { ActivatedRoute, Router } from '@angular/router';
-import { SchedulePageActions, ScheduleApiActions } from './schedule.actions';
-import { scheduleFeature } from './schedule.reducer';
+import { of, forkJoin, distinctUntilChanged, combineLatest, tap } from 'rxjs';
+
+
 import { ScheduleApiService } from '../data/schedule.api.service';
 import { DayType } from '../models/daytype.model';
 import { DirectionName } from '../models/direction.model';
+
+import { SchedulePageActions, ScheduleApiActions } from './schedule.actions';
+import { scheduleFeature } from './schedule.reducer';
 
 function parseDirection(v: string | null): DirectionName | null {
   return v === 'forward' || v === 'backward' ? v : null;

@@ -1,17 +1,12 @@
-import {
-  Component,
-  input,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
-import { DirectionName } from '../../data-access/models/direction.model';
+import { Component, input, ChangeDetectionStrategy } from '@angular/core';
+
+import { DirectionName } from '@features/schedule/data-access/models/direction.model';
 
 @Component({
-  selector: 'app-hint-arrow',
+  selector: 'trollysix-hint-arrow',
   imports: [],
   templateUrl: './hint-arrow.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class HintArrowComponent {

@@ -1,10 +1,13 @@
-import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+
 import { Observable } from 'rxjs';
-import { environment } from '../../../../../environments/environment';
-import { Stop } from '../models/stop.model';
+
+import { environment } from '@environments/environment';
+
 import { DayType } from '../models/daytype.model';
 import { Direction } from '../models/direction.model';
+import { Stop } from '../models/stop.model';
 import { Timetable } from '../models/timetable.model';
 
 @Injectable({ providedIn: 'root' })

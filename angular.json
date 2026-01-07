@@ -12,7 +12,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "trollysix",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
@@ -102,7 +102,10 @@
   },
   "schematics": {
     "@schematics/angular:component": {
-      "type": "component"
+      "type": "component",
+      "changeDetection": "OnPush",
+      "inlineStyle": true,
+      "skipTests": true
     },
     "@schematics/angular:directive": {
       "type": "directive"

@@ -1,19 +1,15 @@
-import {
-  Component,
-  input,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, input, ChangeDetectionStrategy } from '@angular/core';
+
+import { RouteStop } from '@features/about/data-access/models/route-stops.model';
+import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
+
 import { StopsListItemComponent } from '../stops-list-item/stops-list-item.component';
-import { SvgIconComponent } from '../../../../../../shared/ui';
-import { RouteStop } from '../../../../data-access/models/route-stops.model';
 
 @Component({
-  selector: 'app-stops-list',
+  selector: 'trollysix-stops-list',
   imports: [StopsListItemComponent, SvgIconComponent],
   templateUrl: './stops-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'flex' },
 })
 export class StopsListComponent {

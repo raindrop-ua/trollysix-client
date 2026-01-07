@@ -3,23 +3,22 @@ import {
   inject,
   computed,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
-import { GeolocationService } from '../../services/geolocation.service';
-import { ClosestStopService } from '../../services/closest-stop.service';
-import { ShareScheduleService } from '../../services/share-schedule.service';
-import { ClipboardService } from '../../../../core/services/clipboard.service';
-import { TooltipDirective } from '../../../../shared/directives/tooltip.directive';
-import { BtnDirective } from '../../../../shared/directives/btn.directive';
-import { SvgIconComponent } from '../../../../shared/ui';
+
+import { ClipboardService } from '@app/core/services/clipboard.service';
+import { BtnDirective } from '@app/shared/directives/btn.directive';
+import { TooltipDirective } from '@app/shared/directives/tooltip.directive';
+import { ClosestStopService } from '@features/schedule/services/closest-stop.service';
+import { GeolocationService } from '@features/schedule/services/geolocation.service';
+import { ShareScheduleService } from '@features/schedule/services/share-schedule.service';
+import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
 @Component({
-  selector: 'app-stop-toolbar',
+  selector: 'trollysix-stop-toolbar',
   imports: [BtnDirective, TooltipDirective, SvgIconComponent],
   providers: [ClosestStopService],
   templateUrl: './stop-toolbar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class StopToolbarComponent {

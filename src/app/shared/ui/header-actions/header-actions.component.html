@@ -7,14 +7,14 @@
 <div class="flex items-center gap-3">
   @if (showSettingsButton()) {
     @defer (on idle) {
-      <app-settings-button />
+      <trollysix-settings-button />
     } @placeholder {
       <ng-container *ngTemplateOutlet="placeholder"></ng-container>
     }
   }
 
   @defer (on idle) {
-    <app-theme-switcher />
+    <trollysix-theme-switcher />
   } @placeholder {
     <ng-container *ngTemplateOutlet="placeholder"></ng-container>
   }

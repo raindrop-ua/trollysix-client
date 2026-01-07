@@ -1,22 +1,23 @@
+import { AsyncPipe, DatePipe } from '@angular/common';
 import {
   Component,
   inject,
   signal,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
+
 import { Store } from '@ngrx/store';
-import { AsyncPipe, DatePipe } from '@angular/common';
-import { selectScheduleViewModel } from '../../data-access/store/schedule.selectors';
+
+import { copy } from '@app/core/content/copy.util';
+import { selectScheduleViewModel } from '@features/schedule/data-access/store/schedule.selectors';
+
 import { StopCardComponent } from './stop-card/stop-card.component';
-import { copy } from '../../../../core/content/copy.util';
 
 @Component({
-  selector: 'app-stops-list',
+  selector: 'trollysix-stops-list',
   imports: [AsyncPipe, DatePipe, StopCardComponent],
   templateUrl: './stops-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class StopsListComponent {

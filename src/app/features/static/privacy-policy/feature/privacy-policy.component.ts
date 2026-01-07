@@ -1,16 +1,12 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
-import { GenericHeaderComponent } from '../../../../shared/ui/sections/generic-header/generic-header.component';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+
+import { GenericHeaderComponent } from '@app/shared/ui/sections/generic-header/generic-header.component';
 
 @Component({
-  selector: 'app-privacy-policy',
+  selector: 'trollysix-privacy-policy',
   imports: [GenericHeaderComponent],
   templateUrl: './privacy-policy.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class PrivacyPolicyComponent {}

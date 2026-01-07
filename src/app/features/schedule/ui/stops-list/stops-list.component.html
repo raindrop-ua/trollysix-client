@@ -17,7 +17,7 @@
     <div class="grid min-h-28 grid-cols-2 gap-4 md:grid-cols-4">
       @for (stop of vm.stops; track stop.id) {
         @let selected = vm.selectedStop?.id === stop.id;
-        <app-stop-card
+        <trollysix-stop-card
           [stopData]="stop"
           [selected]="selected"
           [showDescriptions]="showDescriptions()"

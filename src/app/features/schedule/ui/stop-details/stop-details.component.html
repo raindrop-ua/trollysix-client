@@ -1,10 +1,10 @@
 @if (stopData(); as stop) {
-  <app-generic-section-block class="mb-12 block">
+  <trollysix-generic-section-block class="mb-12 block">
     <header class="mb-4 flex flex-wrap items-center justify-between gap-3">
       <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
         {{ stop.name }} — {{ copySchedule.stopDetails }}
       </h3>
-      <app-geo-badge [geo]="stop.geo" />
+      <trollysix-geo-badge [geo]="stop.geo" />
     </header>
 
     <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
@@ -20,9 +20,9 @@
       </div>
 
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:col-span-2">
-        <app-shared-routes [stop]="stop" />
-        <app-weather-block [stop]="stop" />
+        <trollysix-shared-routes [stop]="stop" />
+        <trollysix-weather-block [stop]="stop" />
       </div>
     </div>
-  </app-generic-section-block>
+  </trollysix-generic-section-block>
 }

@@ -1,7 +1,9 @@
 import { Injectable, inject, DestroyRef } from '@angular/core';
-import { SwUpdate } from '@angular/service-worker';
-import { filter, interval, switchMap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { SwUpdate } from '@angular/service-worker';
+
+import { filter, interval, switchMap } from 'rxjs';
+
 import { DialogService } from './dialog.service';
 
 @Injectable({ providedIn: 'root' })

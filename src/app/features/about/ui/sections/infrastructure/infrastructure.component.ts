@@ -1,15 +1,13 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
-import { GenericSectionBlockComponent } from '../../../../../shared/ui/sections';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+
+import { GenericSectionBlockComponent } from '@shared/ui/sections/generic-section-block/generic-section-block.component';
+
 import { InfrastructureCardComponent } from './infrastructure-card/infrastructure-card.component';
 import { VehicleFeaturesComponent } from './vehicle-features/vehicle-features.component';
 
 @Component({
-  selector: 'app-infrastructure',
+  selector: 'trollysix-infrastructure',
   imports: [
     NgOptimizedImage,
     GenericSectionBlockComponent,
@@ -18,7 +16,6 @@ import { VehicleFeaturesComponent } from './vehicle-features/vehicle-features.co
   ],
   templateUrl: './infrastructure.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class InfrastructureComponent {}

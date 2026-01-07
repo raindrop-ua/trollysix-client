@@ -1,15 +1,13 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
+
+import { GlobalMessageComponent } from '@core/ui/global-message/global-message.component';
+
 import { FooterComponent } from './footer/footer.component';
-import { GlobalMessageComponent } from '../../ui/global-message/global-message.component';
+import { HeaderComponent } from './header/header.component';
 
 @Component({
-  selector: 'app-public-layout',
+  selector: 'trollysix-public-layout',
   imports: [
     RouterOutlet,
     HeaderComponent,
@@ -18,7 +16,6 @@ import { GlobalMessageComponent } from '../../ui/global-message/global-message.c
   ],
   templateUrl: './public-layout.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: {
     class: 'baseline-background min-w-sm min-h-screen flex flex-col',
   },

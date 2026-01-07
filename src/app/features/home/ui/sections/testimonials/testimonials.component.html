@@ -9,7 +9,7 @@
   </div>
   @if (testimonials() && testimonials()?.overallRating; as overallRating) {
     <div class="mb-8 flex items-center justify-center gap-2">
-      <app-rating-stars class="mt-1" [rating]="overallRating || 0" />
+      <trollysix-rating-stars class="mt-1" [rating]="overallRating || 0" />
       <span>{{ overallRating | number: '1.1' }}</span>
     </div>
   }
@@ -21,16 +21,16 @@
         track testimonial.id;
         let i = $index
       ) {
-        <app-testimonial
+        <trollysix-testimonial
           [testimonial]="testimonial"
-          [appRevealOnScroll]="300 + i * 300"
+          [trollysixRevealOnScroll]="300 + i * 300"
         />
       }
     </div>
   } @else {
-    <app-spinner />
+    <trollysix-spinner />
   }
-  <app-color-splash
+  <trollysix-color-splash
     aria-hidden="true"
     class="text-sky-700/25 dark:text-blue-400/33"
   />

@@ -1,20 +1,19 @@
+import { DecimalPipe } from '@angular/common';
 import {
   Component,
   computed,
   input,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
-import { DecimalPipe } from '@angular/common';
-import { SvgIconComponent } from '../../../../shared/ui';
-import { TooltipDirective } from '../../../../shared/directives/tooltip.directive';
+
+import { TooltipDirective } from '@app/shared/directives/tooltip.directive';
+import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
 @Component({
-  selector: 'app-geo-badge',
+  selector: 'trollysix-geo-badge',
   imports: [SvgIconComponent, DecimalPipe, TooltipDirective],
   templateUrl: './geo-badge.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class GeoBadgeComponent {

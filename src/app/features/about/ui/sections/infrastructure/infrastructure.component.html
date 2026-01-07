@@ -1,4 +1,4 @@
-<app-generic-section-block class="mb-12 block">
+<trollysix-generic-section-block class="mb-12 block">
   <header class="mb-4">
     <h2 class="text-xl font-semibold text-slate-900 dark:text-white">
       Rolling stock
@@ -9,7 +9,7 @@
   </header>
 
   <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
-    <app-infrastructure-card [title]="'Primary model'">
+    <trollysix-infrastructure-card [title]="'Primary model'">
       <div class="text-base font-semibold text-slate-900 dark:text-white">
         AKSM&nbsp;321D <span class="opacity-60">(АКСМ&nbsp;321D)</span>
       </div>
@@ -23,9 +23,9 @@
       <div class="mt-1 text-base font-semibold text-slate-900 dark:text-white">
         Dnipro&nbsp;T203 <span class="opacity-60">(Дніпрó&nbsp;Т203)</span>
       </div>
-    </app-infrastructure-card>
+    </trollysix-infrastructure-card>
 
-    <app-infrastructure-card [title]="'Operation'">
+    <trollysix-infrastructure-card [title]="'Operation'">
       <ul class="space-y-1 text-sm text-slate-600 dark:text-slate-300">
         <li>Weekdays: <span class="font-medium">8</span> vehicles</li>
         <li>Weekends: <span class="font-medium">4</span> vehicles</li>
@@ -34,10 +34,10 @@
           allocation)
         </li>
       </ul>
-      <app-vehicle-features />
-    </app-infrastructure-card>
+      <trollysix-vehicle-features />
+    </trollysix-infrastructure-card>
 
-    <app-infrastructure-card [title]="'Media'">
+    <trollysix-infrastructure-card [title]="'Media'">
       <div
         class="relative mt-2 aspect-16/10 w-full overflow-hidden rounded-xl bg-slate-900/5 ring-1 ring-slate-900/10 dark:bg-white/5 dark:ring-white/10"
       >
@@ -48,6 +48,6 @@
           fill
         />
       </div>
-    </app-infrastructure-card>
+    </trollysix-infrastructure-card>
   </div>
-</app-generic-section-block>
+</trollysix-generic-section-block>
