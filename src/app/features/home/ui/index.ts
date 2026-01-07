@@ -4,3 +4,4 @@ export { BigClaimsComponent } from './sections/big-claims/big-claims.component';
 export { ThisIsTrollysixComponent } from './sections/this-is-trollysix/this-is-trollysix.component';
 export { ReadyForRouteSixComponent } from './sections/ready-for-route-six/ready-for-route-six.component';
 export { TestimonialsComponent } from './sections/testimonials/testimonials.component';
+export { MetricsCoveredComponent } from './sections/metrics-covered/metrics-covered.component';

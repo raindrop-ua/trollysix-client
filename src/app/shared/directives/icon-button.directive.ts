@@ -11,7 +11,7 @@ type IconButtonVariant = 'default' | 'strong' | 'warning';
 type IconButtonSize = 'md' | 'sm';
 
 @Directive({
-  selector: 'button[appIconButton], a[appIconButton]',
+  selector: 'button[trollysixIconButton], a[trollysixIconButton]',
   host: {
     '[class]': 'classes()',
     '[attr.aria-label]': 'ariaLabel() || null',

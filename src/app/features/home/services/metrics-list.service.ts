@@ -1,9 +1,13 @@
-import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of, shareReplay } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+
 import { catchError } from 'rxjs/operators';
-import { environment } from '../../../../environments/environment';
-import { Metric } from '../../../shared/ui/sections';
+
+import { Observable, of, shareReplay } from 'rxjs';
+
+import { environment } from '@environments/environment';
+
+import { Metric } from '@shared/ui/sections';
 
 @Injectable({ providedIn: 'root' })
 export class MetricsListService {

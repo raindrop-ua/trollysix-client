@@ -9,7 +9,7 @@
         (departures$ | async)?.length === 0 && !(vm$ | async)?.timetableLoading;
       @if (vm$ | async; as vm) {
         <div class="relative flex w-full sm:w-auto">
-          <app-options-selector
+          <trollysix-options-selector
             class="block w-full"
             (optionSelect)="onSelectDayType($event)"
             [title]="copySchedule.controlDay"
@@ -18,7 +18,7 @@
           />
         </div>
         <div class="relative flex w-full sm:w-auto">
-          <app-options-selector
+          <trollysix-options-selector
             class="block w-full"
             (optionSelect)="onSelectDirection($event)"
             [title]="copySchedule.controlDirection"
@@ -26,12 +26,12 @@
             [preselected]="(vm$ | async)?.selectedDirectionName"
           >
             @if (isUnavailable) {
-              <app-hint-arrow
+              <trollysix-hint-arrow
                 slot="footer"
                 [direction]="vm.selectedDirectionName"
               />
             }
-          </app-options-selector>
+          </trollysix-options-selector>
         </div>
       }
       <div class="flex items-center justify-end gap-4 md:px-3">

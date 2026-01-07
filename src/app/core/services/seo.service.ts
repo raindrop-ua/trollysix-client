@@ -1,10 +1,13 @@
 import { Injectable, DestroyRef, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+
 import { filter, map, mergeMap, distinctUntilChanged } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { environment } from '../../../environments/environment';
-import { SeoData } from '../models/seo-data';
+
+import { environment } from '@environments/environment';
+
+import { SeoData } from '../models/seo-data.model';
 
 @Injectable({ providedIn: 'root' })
 export class SeoService {

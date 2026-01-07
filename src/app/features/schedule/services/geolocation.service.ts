@@ -1,6 +1,8 @@
-import { Injectable, PLATFORM_ID, inject, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { Injectable, PLATFORM_ID, inject, signal } from '@angular/core';
+
 import { Observable, throwError } from 'rxjs';
+
 import { GeolocationError, GeolocationErrorCode } from './geolocation.types';
 
 @Injectable({ providedIn: 'root' })

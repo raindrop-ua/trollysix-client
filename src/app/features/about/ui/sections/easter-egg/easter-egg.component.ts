@@ -1,17 +1,13 @@
-import {
-  Component,
-  inject,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
-import { ToastService } from '../../../../../core/services/toast.service';
-import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
-import { CheatCodeDirective } from '../../../../../shared/directives/cheat-code.directive';
-import { GenericSectionBlockComponent } from '../../../../../shared/ui/sections';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+
+import { ToastService } from '@app/core/services/toast.service';
+import { CheatCodeDirective } from '@app/shared/directives/cheat-code.directive';
+import { RevealOnScrollDirective } from '@app/shared/directives/reveal-on-scroll.directive';
+import { GenericSectionBlockComponent } from '@app/shared/ui/sections';
 
 @Component({
-  selector: 'app-easter-egg',
+  selector: 'trollysix-easter-egg',
   imports: [
     NgOptimizedImage,
     RevealOnScrollDirective,
@@ -21,7 +17,6 @@ import { GenericSectionBlockComponent } from '../../../../../shared/ui/sections'
   ],
   templateUrl: './easter-egg.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class EasterEggComponent {

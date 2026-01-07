@@ -1,3 +1,4 @@
+import { DecimalPipe } from '@angular/common';
 import {
   Component,
   inject,
@@ -5,22 +6,22 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   DestroyRef,
-  ViewEncapsulation,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { DecimalPipe } from '@angular/common';
-import { Testimonials } from '../../../data-access/models/testimonial.model';
-import { RevealOnScrollDirective } from '../../../../../shared/directives/reveal-on-scroll.directive';
-import { TestimonialsListService } from '../../../services/testimonials-list.service';
-import { TestimonialComponent } from './testimonial/testimonial.component';
+
+import { RevealOnScrollDirective } from '@app/shared/directives/reveal-on-scroll.directive';
 import {
   RatingStarsComponent,
   ColorSplashComponent,
   SpinnerComponent,
-} from '../../../../../shared/ui';
+} from '@app/shared/ui';
+import { Testimonials } from '@features/home/data-access/models/testimonial.model';
+import { TestimonialsListService } from '@features/home/services/testimonials-list.service';
+
+import { TestimonialComponent } from './testimonial/testimonial.component';
 
 @Component({
-  selector: 'app-testimonials',
+  selector: 'trollysix-testimonials',
   imports: [
     RevealOnScrollDirective,
     DecimalPipe,
@@ -31,7 +32,6 @@ import {
   ],
   templateUrl: './testimonials.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class TestimonialsComponent implements OnInit {

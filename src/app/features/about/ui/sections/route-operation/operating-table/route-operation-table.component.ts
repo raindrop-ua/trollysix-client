@@ -3,10 +3,10 @@ import {
   computed,
   input,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
-import { SvgIconComponent } from '../../../../../../shared/ui';
-import { OperatingDay } from '../../../../../../shared/models/operating-days.model';
+
+import { SvgIconComponent } from '@app/shared/ui';
+import { OperatingDay } from '@features/about/data-access/models/operating-days.model';
 
 interface IntervalCell {
   value: string;
@@ -15,11 +15,10 @@ interface IntervalCell {
 }
 
 @Component({
-  selector: 'app-route-operation-table',
+  selector: 'trollysix-route-operation-table',
   imports: [SvgIconComponent],
   templateUrl: './route-operation-table.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class RouteOperationTableComponent {

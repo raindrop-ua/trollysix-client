@@ -1,23 +1,24 @@
 import {
-  Component,
-  computed,
-  input,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
-import {
   DatePipe,
   DecimalPipe,
   NgOptimizedImage,
   TitleCasePipe,
 } from '@angular/common';
-import { TemperaturePipe } from '../../../../../shared/pipes/temperature.pipe';
-import { Stop } from '../../../data-access/models/stop.model';
-import { environment } from '../../../../../../environments/environment';
-import { SvgIconComponent } from '../../../../../shared/ui';
+import {
+  Component,
+  computed,
+  input,
+  ChangeDetectionStrategy,
+} from '@angular/core';
+
+import { environment } from '@environments/environment';
+
+import { TemperaturePipe } from '@app/shared/pipes/temperature.pipe';
+import { SvgIconComponent } from '@app/shared/ui';
+import { Stop } from '@features/schedule/data-access/models/stop.model';
 
 @Component({
-  selector: 'app-weather-block',
+  selector: 'trollysix-weather-block',
   imports: [
     DatePipe,
     DecimalPipe,
@@ -28,7 +29,6 @@ import { SvgIconComponent } from '../../../../../shared/ui';
   ],
   templateUrl: './weather-block.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block h-full' },
 })
 export class WeatherBlockComponent {

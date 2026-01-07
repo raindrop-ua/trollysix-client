@@ -1,13 +1,13 @@
-<app-masthead />
+<trollysix-masthead />
 
-<app-metrics-covered />
+<trollysix-metrics-covered />
 
 @defer (on idle) {
-  <app-big-claims />
+  <trollysix-big-claims />
 }
 
 @defer (on idle) {
-  <app-attention
+  <trollysix-attention
     [titleTemplate]="worksTitle"
     [descriptionTemplate]="worksDescription"
     [ctaTemplate]="worksCTAs"
@@ -18,21 +18,21 @@
     touching, more control.</ng-template
   >
   <ng-template #worksCTAs>
-    <a [routerLink]="['/schedule']" appBtn="primary">{{
+    <a [routerLink]="['/schedule']" trollysixBtn="primary">{{
       copyCommon.viewSchedule
     }}</a>
-    <a [routerLink]="['/about']" appBtn="secondary">{{
+    <a [routerLink]="['/about']" trollysixBtn="secondary">{{
       copyCommon.whyDifferent
     }}</a>
   </ng-template>
 }
 
 @defer (on idle) {
-  <app-testimonials />
+  <trollysix-testimonials />
 }
 
 @defer (on idle) {
-  <app-attention
+  <trollysix-attention
     [titleTemplate]="precisionTitle"
     [descriptionTemplate]="precisionDescription"
   />
@@ -44,9 +44,9 @@
 }
 
 @defer (on idle) {
-  <app-this-is-trollysix />
+  <trollysix-this-is-trollysix />
 }
 
 @defer (on idle) {
-  <app-ready-for-route-six />
+  <trollysix-ready-for-route-six />
 }

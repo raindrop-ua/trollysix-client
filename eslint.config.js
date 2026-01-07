@@ -13,13 +13,69 @@ module.exports = tseslint.config(
       ...angular.configs.tsRecommended,
     ],
     processor: angular.processInlineTemplates,
-    plugins: {},
+    plugins: {
+      import: require('eslint-plugin-import'),
+    },
     rules: {
+      'import/no-cycle': ['error', { maxDepth: 1 }],
+      'import/order': [
+        'error',
+        {
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+            'object',
+            'type',
+          ],
+          pathGroups: [
+            {
+              pattern: '@angular/**',
+              group: 'external',
+              position: 'before',
+            },
+            {
+              pattern: '{rxjs,@ngrx/**}',
+              group: 'external',
+              position: 'after',
+            },
+            {
+              pattern: '@environments/**',
+              group: 'internal',
+              position: 'after',
+            },
+            {
+              pattern: '@config/**',
+              group: 'internal',
+              position: 'after',
+            },
+            {
+              pattern: '@core/**',
+              group: 'internal',
+              position: 'after',
+            },
+            {
+              pattern: '@{app,shared,features}/**',
+              group: 'internal',
+              position: 'after',
+            },
+          ],
+          pathGroupsExcludedImportTypes: ['builtin'],
+          alphabetize: {
+            order: 'asc',
+            caseInsensitive: true,
+          },
+          'newlines-between': 'always',
+        },
+      ],
       '@angular-eslint/directive-selector': [
         'error',
         {
           type: 'attribute',
-          prefix: 'app',
+          prefix: 'trollysix',
           style: 'camelCase',
         },
       ],
@@ -27,7 +83,7 @@ module.exports = tseslint.config(
         'error',
         {
           type: 'element',
-          prefix: 'app',
+          prefix: 'trollysix',
           style: 'kebab-case',
         },
       ],

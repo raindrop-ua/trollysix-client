@@ -16,9 +16,9 @@
 
   <div class="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3">
     @for (valueProp of valueProps; track valueProp; let i = $index) {
-      <app-value-prop
+      <trollysix-value-prop
         [valueProp]="valueProp"
-        [appRevealOnScroll]="300 + i * 300"
+        [trollysixRevealOnScroll]="300 + i * 300"
       />
     }
   </div>

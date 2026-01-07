@@ -1,20 +1,20 @@
+import { NgClass } from '@angular/common';
 import {
   Component,
   computed,
   inject,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
-import { NgClass } from '@angular/common';
-import { ToastService } from '../../services/toast.service';
-import { SvgIconComponent } from '../../../shared/ui';
+
+import { ToastService } from '@core/services/toast.service';
+
+import { SvgIconComponent } from '@shared/ui';
 
 @Component({
-  selector: 'app-toast-container',
+  selector: 'trollysix-toast-container',
   imports: [NgClass, SvgIconComponent],
   templateUrl: './toast-container.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class ToastContainerComponent {

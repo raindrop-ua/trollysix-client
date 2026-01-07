@@ -6,9 +6,11 @@ import {
   Injectable,
   ComponentRef,
 } from '@angular/core';
+
+import { Subject } from 'rxjs';
+
 import { DialogConfig, DialogResult } from '../models/dialog.models';
 import { DialogComponent } from '../ui/dialog/dialog.component';
-import { Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class DialogService {

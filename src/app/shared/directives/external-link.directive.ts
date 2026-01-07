@@ -1,7 +1,7 @@
 import { Directive, HostBinding } from '@angular/core';
 
 @Directive({
-  selector: 'a[appExternalLink]',
+  selector: 'a[trollysixExternalLink]',
 })
 export class ExternalLinkDirective {
   @HostBinding('attr.target') target = '_blank';

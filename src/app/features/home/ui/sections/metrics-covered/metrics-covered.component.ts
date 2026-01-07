@@ -1,19 +1,14 @@
-import {
-  Component,
-  inject,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
-import { MetricsComponent } from '../../../../../shared/ui/sections';
-import { MetricsListService } from '../../../services/metrics-list.service';
 import { AsyncPipe } from '@angular/common';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+
+import { MetricsComponent } from '@app/shared/ui/sections';
+import { MetricsListService } from '@features/home/services/metrics-list.service';
 
 @Component({
-  selector: 'app-metrics-covered',
+  selector: 'trollysix-metrics-covered',
   imports: [MetricsComponent, AsyncPipe],
   templateUrl: './metrics-covered.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class MetricsCoveredComponent {

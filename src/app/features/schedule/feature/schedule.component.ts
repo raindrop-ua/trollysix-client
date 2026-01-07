@@ -1,27 +1,28 @@
+import { AsyncPipe } from '@angular/common';
 import {
   Component,
   inject,
   OnInit,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
 } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
+
 import { Store } from '@ngrx/store';
-import {
-  ScheduleControlsComponent,
-  SelectorsGroupComponent,
-  StopDetailsComponent,
-  StopsListComponent,
-  StopToolbarComponent,
-} from '../ui';
-import { selectScheduleViewModel } from '../data-access/store/schedule.selectors';
+
+import { copy } from '@core/content/copy.util';
+
+import { ScheduleControlsComponent } from '@features/schedule/ui/schedule-controls/schedule-controls.component';
+import { SelectorsGroupComponent } from '@features/schedule/ui/selectors-group/selectors-group.component';
+import { StopDetailsComponent } from '@features/schedule/ui/stop-details/stop-details.component';
+import { StopToolbarComponent } from '@features/schedule/ui/stop-toolbar/stop-toolbar.component';
+import { StopsListComponent } from '@features/schedule/ui/stops-list/stops-list.component';
+import { NoticeComponent } from '@shared/ui/sections';
+import { GenericHeaderComponent } from '@shared/ui/sections/generic-header/generic-header.component';
+
 import { SchedulePageActions } from '../data-access/store/schedule.actions';
-import { NoticeComponent } from '../../../shared/ui/sections';
-import { GenericHeaderComponent } from '../../../shared/ui/sections/generic-header/generic-header.component';
-import { copy } from '../../../core/content/copy.util';
+import { selectScheduleViewModel } from '../data-access/store/schedule.selectors';
 
 @Component({
-  selector: 'app-schedule',
+  selector: 'trollysix-schedule',
   imports: [
     GenericHeaderComponent,
     ScheduleControlsComponent,
@@ -34,7 +35,6 @@ import { copy } from '../../../core/content/copy.util';
   ],
   templateUrl: './schedule.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class ScheduleComponent implements OnInit {

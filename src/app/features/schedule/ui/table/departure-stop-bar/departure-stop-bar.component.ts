@@ -1,20 +1,16 @@
-import {
-  Component,
-  inject,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
-} from '@angular/core';
 import { AsyncPipe } from '@angular/common';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+
 import { Store } from '@ngrx/store';
-import { selectScheduleViewModel } from '../../../data-access/store/schedule.selectors';
-import { ScheduleService } from '../../../services/schedule.service';
+
+import { selectScheduleViewModel } from '@features/schedule/data-access/store/schedule.selectors';
+import { ScheduleService } from '@features/schedule/services/schedule.service';
 
 @Component({
-  selector: 'app-departure-stop-bar',
+  selector: 'trollysix-departure-stop-bar',
   imports: [AsyncPipe],
   templateUrl: './departure-stop-bar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   host: { class: 'block' },
 })
 export class DepartureStopBarComponent {
