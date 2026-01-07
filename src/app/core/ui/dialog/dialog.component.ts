@@ -11,7 +11,7 @@ import {
 
 import { Subject } from 'rxjs';
 
-import { DialogConfig, DialogResult } from '@core//models/dialog.models';
+import { DialogConfig, DialogResult } from '@core/models/dialog.models';
 
 import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
