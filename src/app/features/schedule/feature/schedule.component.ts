@@ -15,8 +15,8 @@ import { SelectorsGroupComponent } from '@features/schedule/ui/selectors-group/s
 import { StopDetailsComponent } from '@features/schedule/ui/stop-details/stop-details.component';
 import { StopToolbarComponent } from '@features/schedule/ui/stop-toolbar/stop-toolbar.component';
 import { StopsListComponent } from '@features/schedule/ui/stops-list/stops-list.component';
-import { NoticeComponent } from '@shared/ui/sections';
 import { GenericHeaderComponent } from '@shared/ui/sections/generic-header/generic-header.component';
+import { NoticeComponent } from '@shared/ui/sections/notice/notice.component';
 
 import { SchedulePageActions } from '../data-access/store/schedule.actions';
 import { selectScheduleViewModel } from '../data-access/store/schedule.selectors';

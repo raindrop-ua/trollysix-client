@@ -15,8 +15,8 @@ import { filter } from 'rxjs';
 import { NAVIGATION_TOKEN } from '@core/config/navigation.config';
 import { AppRouteEnum } from '@core/enums/app-route.enum';
 
-import { SvgIconComponent } from '@app/shared/ui';
 import { HeaderActionsComponent } from '@app/shared/ui/header-actions/header-actions.component';
+import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
 @Component({
   selector: 'trollysix-header',

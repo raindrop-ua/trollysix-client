@@ -9,7 +9,8 @@ import { AppRouteEnum } from '@app/core/enums/app-route.enum';
 import { ClockService } from '@app/core/services/clock.service';
 import { BtnDirective } from '@app/shared/directives/btn.directive';
 import { RevealOnScrollDirective } from '@app/shared/directives/reveal-on-scroll.directive';
-import { SvgIconComponent, SnowComponent } from '@app/shared/ui';
+import { SnowComponent } from '@shared/ui/snow/snow.component';
+import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
 @Component({
   selector: 'trollysix-masthead',

@@ -10,13 +10,11 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { RevealOnScrollDirective } from '@app/shared/directives/reveal-on-scroll.directive';
-import {
-  RatingStarsComponent,
-  ColorSplashComponent,
-  SpinnerComponent,
-} from '@app/shared/ui';
 import { Testimonials } from '@features/home/data-access/models/testimonial.model';
 import { TestimonialsListService } from '@features/home/services/testimonials-list.service';
+import { ColorSplashComponent } from '@shared/ui/color-splash/color-splash.component';
+import { RatingStarsComponent } from '@shared/ui/rating-stars/rating-stars.component';
+import { SpinnerComponent } from '@shared/ui/spinner/spinner.component';
 
 import { TestimonialComponent } from './testimonial/testimonial.component';
 

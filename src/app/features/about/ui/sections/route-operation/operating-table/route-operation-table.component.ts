@@ -5,8 +5,8 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 
-import { SvgIconComponent } from '@app/shared/ui';
 import { OperatingDay } from '@features/about/data-access/models/operating-days.model';
+import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
 interface IntervalCell {
   value: string;
