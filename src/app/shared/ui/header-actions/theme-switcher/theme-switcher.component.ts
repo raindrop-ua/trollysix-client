@@ -1,8 +1,8 @@
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { ThemeService } from '@app/core/services/theme.service';
-import { SvgIconComponent } from '@app/shared/ui';
 import { IconButtonDirective } from '@shared/directives/icon-button.directive';
+import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
 @Component({
   selector: 'trollysix-theme-switcher',

@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 import { copy } from '@app/core/content/copy.util';
 import { AppRouteEnum } from '@app/core/enums/app-route.enum';
 import { BtnDirective } from '@app/shared/directives/btn.directive';
-import { ColorSplashComponent } from '@app/shared/ui';
+import { ColorSplashComponent } from '@shared/ui/color-splash/color-splash.component';
 
 @Component({
   selector: 'trollysix-big-claims',

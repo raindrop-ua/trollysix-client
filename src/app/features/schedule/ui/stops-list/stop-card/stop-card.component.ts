@@ -9,11 +9,11 @@ import {
 import { Store } from '@ngrx/store';
 
 import { copy } from '@app/core/content/copy.util';
-import { SvgIconComponent } from '@app/shared/ui';
 import { DirectionName } from '@features/schedule/data-access/models/direction.model';
 import { Stop } from '@features/schedule/data-access/models/stop.model';
 import { SchedulePageActions } from '@features/schedule/data-access/store/schedule.actions';
 import { selectScheduleViewModel } from '@features/schedule/data-access/store/schedule.selectors';
+import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
 @Component({
   selector: 'trollysix-stop-card',

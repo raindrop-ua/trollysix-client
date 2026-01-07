@@ -8,10 +8,10 @@ import {
 
 import { Store } from '@ngrx/store';
 
-import { SpinnerComponent } from '@app/shared/ui';
 import { selectScheduleViewModel } from '@features/schedule/data-access/store/schedule.selectors';
 import { ScheduleService } from '@features/schedule/services/schedule.service';
 import { DepartureTimeItemComponent } from '@features/schedule/ui/table/departure-time-item/departure-time-item.component';
+import { SpinnerComponent } from '@shared/ui/spinner/spinner.component';
 
 @Component({
   selector: 'trollysix-departure-table',

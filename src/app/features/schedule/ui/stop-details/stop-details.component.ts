@@ -2,9 +2,9 @@ import { NgOptimizedImage } from '@angular/common';
 import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 
 import { copy } from '@app/core/content/copy.util';
-import { GenericSectionBlockComponent } from '@app/shared/ui/sections';
 import { Stop } from '@features/schedule/data-access/models/stop.model';
 import { GeoBadgeComponent } from '@features/schedule/ui/geo-badge/geo-badge.component';
+import { GenericSectionBlockComponent } from '@shared/ui/sections/generic-section-block/generic-section-block.component';
 
 import { SharedRoutesComponent } from './shared-routes/shared-routes.component';
 import { WeatherBlockComponent } from './weather-block/weather-block.component';

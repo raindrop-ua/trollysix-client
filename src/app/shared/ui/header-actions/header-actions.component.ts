@@ -3,7 +3,7 @@ import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { AppRouteEnum } from '@core/enums/app-route.enum';
 
-import { ThemeSwitcherComponent } from '@app/shared/ui';
+import { ThemeSwitcherComponent } from '@shared/ui/header-actions/theme-switcher/theme-switcher.component';
 
 import { SettingsButtonComponent } from './settings-button/settings-button.component';
 
