@@ -13,5 +13,5 @@ import { MetricsComponent } from '@shared/ui/sections/metrics/metrics.component'
 })
 export class MetricsCoveredComponent {
   private metricsListService = inject(MetricsListService);
-  public metricsList$ = this.metricsListService.getMetrics();
+  public metricsList$ = this.metricsListService.getMetricsSafe();
 }
