@@ -5,7 +5,7 @@ import { Observable, shareReplay } from 'rxjs';
 
 import { environment } from '@environments/environment';
 
-import { RouteStop } from '../data-access/models/route-stops.model';
+import { RouteStop } from '../models/route-stops.model';
 
 @Injectable({ providedIn: 'root' })
 export class StopsListService {
