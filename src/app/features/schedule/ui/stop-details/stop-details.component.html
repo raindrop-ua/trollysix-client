@@ -1,5 +1,5 @@
 @if (stopData(); as stop) {
-  <trollysix-generic-section-block class="mb-12 block">
+  <trollysix-generic-section-block class="group mb-12 block">
     <header class="mb-4 flex flex-wrap items-center justify-between gap-3">
       <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
         {{ stop.name }} — {{ copySchedule.stopDetails }}
@@ -14,7 +14,7 @@
         <img
           [ngSrc]="stop.imageUrl"
           alt="Stop photo"
-          class="h-full w-full scale-105 object-cover transition duration-500 hover:scale-100"
+          class="h-full w-full scale-105 object-cover transition duration-500 group-hover:scale-100"
           fill
         />
       </div>
