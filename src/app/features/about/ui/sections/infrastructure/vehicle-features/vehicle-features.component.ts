@@ -1,7 +1,7 @@
-import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 
 import { TooltipDirective } from '@app/shared/directives/tooltip.directive';
-import { VehicleFeature } from '@features/about/data-access/models/vehicle-feature';
+import { VehicleFeaturesService } from '@features/about/data-access/services/vehicle-features.service';
 import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
 @Component({
@@ -12,21 +12,6 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
   host: { class: 'block' },
 })
 export class VehicleFeaturesComponent {
-  vehicleFeatures = signal<VehicleFeature[]>([
-    {
-      name: 'Accessibility',
-      ariaLabel: 'Accessibility',
-      icon: 'accessibility',
-    },
-    {
-      name: 'Onboard Announcement System',
-      ariaLabel: 'Onboard Announcement System',
-      icon: 'speech',
-    },
-    {
-      name: 'Autonomous Operation',
-      ariaLabel: 'Autonomous Operation',
-      icon: 'battery-charging',
-    },
-  ]);
+  private vehicleFeaturesService = inject(VehicleFeaturesService);
+  public readonly vehicleFeatures = this.vehicleFeaturesService.features;
 }
