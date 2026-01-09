@@ -5,7 +5,7 @@ import { Observable, shareReplay } from 'rxjs';
 
 import { environment } from '@environments/environment';
 
-import { Testimonials } from '../data-access/models/testimonial.model';
+import { Testimonials } from '../models/testimonial.model';
 
 @Injectable({ providedIn: 'root' })
 export class TestimonialsListService {
