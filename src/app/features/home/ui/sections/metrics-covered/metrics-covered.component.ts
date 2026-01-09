@@ -1,7 +1,7 @@
 import { AsyncPipe } from '@angular/common';
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
-import { MetricsListService } from '@features/home/services/metrics-list.service';
+import { MetricsListService } from '@features/home/data-access/services/metrics-list.service';
 import { MetricsComponent } from '@shared/ui/sections/metrics/metrics.component';
 
 @Component({
