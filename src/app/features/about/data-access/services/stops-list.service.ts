@@ -5,18 +5,18 @@ import { Observable, shareReplay } from 'rxjs';
 
 import { environment } from '@environments/environment';
 
-import { Testimonials } from '../data-access/models/testimonial.model';
+import { RouteStop } from '../models/route-stops.model';
 
 @Injectable({ providedIn: 'root' })
-export class TestimonialsListService {
+export class StopsListService {
   private readonly BASE_URL = environment.BASE_API_URL;
   private http = inject(HttpClient);
 
-  private readonly testimonials$ = this.http
-    .get<Testimonials>(`${this.BASE_URL}/testimonials`)
+  private readonly stops$ = this.http
+    .get<RouteStop[]>(`${this.BASE_URL}/stops-list`)
     .pipe(shareReplay({ bufferSize: 1, refCount: true }));
 
-  public getTestimonials(): Observable<Testimonials> {
-    return this.testimonials$;
+  public getStops(): Observable<RouteStop[]> {
+    return this.stops$;
   }
 }
