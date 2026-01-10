@@ -7,7 +7,7 @@ import { Observable, of, shareReplay } from 'rxjs';
 
 import { environment } from '@environments/environment';
 
-import { GlobalMessage } from '../models/global-message.model';
+import { GlobalMessage } from '@core/models/global-message.model';
 
 @Injectable({ providedIn: 'root' })
 export class GlobalMessageService {

@@ -3,7 +3,7 @@ import { inject } from '@angular/core';
 
 import { retry, tap, timer } from 'rxjs';
 
-import { ToastService } from '../services/toast.service';
+import { ToastService } from '@core/services/toast.service';
 
 export const globalHttpErrorInterceptor: HttpInterceptorFn = (req, next) => {
   const toastService: ToastService = inject(ToastService);

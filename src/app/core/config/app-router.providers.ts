@@ -17,7 +17,7 @@ import {
   withViewTransitions,
 } from '@angular/router';
 
-import { AfterFirstPaintPreloadingStrategy } from '../strategies/after-first-paint-preloading.strategy';
+import { AfterFirstPaintPreloadingStrategy } from '@core/strategies/after-first-paint-preloading.strategy';
 
 export function provideAppRouter<T extends Routes>(
   routes: T,

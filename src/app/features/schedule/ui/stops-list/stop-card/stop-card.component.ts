@@ -8,7 +8,8 @@ import {
 
 import { Store } from '@ngrx/store';
 
-import { copy } from '@app/core/content/copy.util';
+import { copy } from '@core/content/copy.util';
+
 import { DirectionName } from '@features/schedule/data-access/models/direction.model';
 import { Stop } from '@features/schedule/data-access/models/stop.model';
 import { SchedulePageActions } from '@features/schedule/data-access/store/schedule.actions';

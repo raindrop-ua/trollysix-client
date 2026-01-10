@@ -1,7 +1,8 @@
 import { NgOptimizedImage } from '@angular/common';
 import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 
-import { copy } from '@app/core/content/copy.util';
+import { copy } from '@core/content/copy.util';
+
 import { Stop } from '@features/schedule/data-access/models/stop.model';
 import { GeoBadgeComponent } from '@features/schedule/ui/geo-badge/geo-badge.component';
 import { GenericSectionBlockComponent } from '@shared/ui/sections/generic-section-block/generic-section-block.component';
