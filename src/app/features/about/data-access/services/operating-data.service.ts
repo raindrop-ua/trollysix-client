@@ -2,7 +2,9 @@ import { Injectable, signal } from '@angular/core';
 
 import { OperatingDays } from '@features/about/data-access/models/operating-days.model';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class OperatingDataService {
   public operating = signal<OperatingDays>({
     weekday: {

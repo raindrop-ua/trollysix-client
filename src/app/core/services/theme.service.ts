@@ -3,7 +3,9 @@ import { Injectable, effect, inject, signal, PLATFORM_ID } from '@angular/core';
 
 export type Theme = 'light' | 'dark';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class ThemeService {
   private readonly THEME_KEY = 'theme';
   private readonly platformId = inject(PLATFORM_ID);
@@ -17,7 +19,8 @@ export class ThemeService {
     const saved = this.getSavedTheme();
     const initial: Theme =
       saved ??
-      (typeof matchMedia === 'function' && matchMedia('(prefers-color-scheme: dark)').matches
+      (typeof matchMedia === 'function' &&
+      matchMedia('(prefers-color-scheme: dark)').matches
         ? 'dark'
         : 'light');
 

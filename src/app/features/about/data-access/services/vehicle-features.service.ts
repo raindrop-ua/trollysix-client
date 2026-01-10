@@ -2,7 +2,9 @@ import { Injectable, signal } from '@angular/core';
 
 import { VehicleFeature } from '@features/about/data-access/models/vehicle-feature';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class VehicleFeaturesService {
   public features = signal<VehicleFeature[]>([
     {

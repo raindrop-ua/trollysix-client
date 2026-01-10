@@ -12,7 +12,9 @@ import { fromEvent, merge, map, pairwise, startWith, tap } from 'rxjs';
 
 import { ToastService } from './toast.service';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class NetworkStatusService {
   private readonly document = inject(DOCUMENT);
   private readonly destroyRef = inject(DestroyRef);
