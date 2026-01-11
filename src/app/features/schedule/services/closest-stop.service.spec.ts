@@ -27,23 +27,7 @@ describe('ClosestStopService (Injector.create)', () => {
     onDestroy: vi.fn(),
   };
 
-  const makePosition = (
-    lat: number,
-    lon: number,
-  ): {
-    coords: {
-      latitude: number;
-      longitude: number;
-      accuracy: number;
-      altitude: null;
-      altitudeAccuracy: null;
-      heading: null;
-      speed: null;
-      toJSON: () => void;
-    };
-    timestamp: number;
-    toJSON: () => void;
-  } => ({
+  const makePosition = (lat: number, lon: number) => ({
     coords: {
       latitude: lat,
       longitude: lon,
