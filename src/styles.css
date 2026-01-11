@@ -4,6 +4,8 @@
 @import './app/styles/components/baseline.css';
 @import './app/styles/components/stops.css';
 @import './app/styles/components/timetable.css';
+@import './app/styles/components/toast.css';
+@import './app/styles/components/global-message.css';
 @import './app/styles/animations.css';
 
 @custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));

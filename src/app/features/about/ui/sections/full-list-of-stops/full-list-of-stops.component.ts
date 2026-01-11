@@ -10,7 +10,7 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { RouteStop } from '@features/about/data-access/models/route-stops.model';
-import { StopsListService } from '@features/about/services/stops-list.service';
+import { StopsListService } from '@features/about/data-access/services/stops-list.service';
 import { GenericSectionBlockComponent } from '@shared/ui/sections/generic-section-block/generic-section-block.component';
 import { SpinnerComponent } from '@shared/ui/spinner/spinner.component';
 

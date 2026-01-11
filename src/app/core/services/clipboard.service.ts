@@ -5,7 +5,9 @@ export type ClipboardCopyResult =
   | { ok: true }
   | { ok: false; reason: 'empty' | 'not_browser' | 'not_supported' | 'failed' };
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class ClipboardService {
   private readonly doc = inject(DOCUMENT);
   private readonly platformId = inject(PLATFORM_ID);

@@ -1,6 +1,7 @@
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
-import { ThemeService } from '@app/core/services/theme.service';
+import { ThemeService } from '@core/services/theme.service';
+
 import { IconButtonDirective } from '@shared/directives/icon-button.directive';
 import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 

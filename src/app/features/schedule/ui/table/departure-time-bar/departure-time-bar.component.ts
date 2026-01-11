@@ -4,8 +4,9 @@ import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { combineLatest, map } from 'rxjs';
 
-import { copy } from '@app/core/content/copy.util';
-import { ClockService } from '@app/core/services/clock.service';
+import { copy } from '@core/content/copy.util';
+import { ClockService } from '@core/services/clock.service';
+
 import { Status } from '@features/schedule/data-access/models/departure.model';
 import { selectScheduleViewModel } from '@features/schedule/data-access/store/schedule.selectors';
 import { ScheduleService } from '@features/schedule/services/schedule.service';

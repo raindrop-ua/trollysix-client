@@ -9,10 +9,12 @@ import {
 
 import { Subject } from 'rxjs';
 
-import { DialogConfig, DialogResult } from '../models/dialog.models';
-import { DialogComponent } from '../ui/dialog/dialog.component';
+import { DialogConfig, DialogResult } from '@core/models/dialog.models';
+import { DialogComponent } from '@core/ui/dialog/dialog.component';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class DialogService {
   private appRef = inject(ApplicationRef);
   private injector = inject(EnvironmentInjector);

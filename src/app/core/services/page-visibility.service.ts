@@ -6,7 +6,9 @@ import { fromEvent, filter, map, pairwise, tap, delay } from 'rxjs';
 
 import { ToastService } from './toast.service';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class PageVisibilityService {
   private readonly document = inject(DOCUMENT);
   private readonly destroyRef = inject(DestroyRef);

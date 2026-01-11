@@ -67,7 +67,9 @@ function canPreloadNow(): boolean {
   return !(type && ['slow-2g', '2g'].includes(type));
 }
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class AfterFirstPaintPreloadingStrategy implements PreloadingStrategy {
   private ready$ = race(appStableOnce(), afterFirstPaint()).pipe(first());
 
