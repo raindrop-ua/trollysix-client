@@ -13,8 +13,8 @@ import {
 
 import { environment } from '@environments/environment';
 
-import { TemperaturePipe } from '@app/shared/pipes/temperature.pipe';
 import { Stop } from '@features/schedule/data-access/models/stop.model';
+import { TemperaturePipe } from '@shared/pipes/temperature.pipe';
 import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
 @Component({

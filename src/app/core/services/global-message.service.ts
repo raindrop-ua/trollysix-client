@@ -7,9 +7,11 @@ import { Observable, of, shareReplay } from 'rxjs';
 
 import { environment } from '@environments/environment';
 
-import { GlobalMessage } from '../models/global-message.model';
+import { GlobalMessage } from '@core/models/global-message.model';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class GlobalMessageService {
   private readonly BASE_URL = environment.BASE_API_URL;
   private http = inject(HttpClient);

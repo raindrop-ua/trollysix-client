@@ -8,32 +8,18 @@
       <div
         tabindex="0"
         role="button"
-        animate.enter="enter-chain"
-        animate.leave="leave-chain"
-        class="pointer-events-auto flex w-full max-w-sm cursor-default items-center gap-1 overflow-hidden rounded-2xl border-l-4 px-4 py-3 shadow-lg backdrop-blur ease-in-out motion-safe:transition motion-safe:duration-300 motion-safe:hover:-translate-y-0.5"
-        [ngClass]="{
-          'border-red-500/80 bg-red-100/80 text-red-900 hover:bg-red-200/90 dark:border-red-700/80 dark:bg-red-900/80 dark:text-red-100 dark:hover:bg-red-800/80':
-            toast.type === 'error',
-          'border-blue-500/80 bg-blue-100/80 text-blue-900 hover:bg-blue-200/90 dark:border-blue-700/80 dark:bg-blue-900/80 dark:text-blue-100 dark:hover:bg-blue-800/80':
-            toast.type === 'info',
-          'border-yellow-500/80 bg-yellow-100/80 text-yellow-900 hover:bg-yellow-200/90 dark:border-yellow-700/80 dark:bg-yellow-900/80 dark:text-yellow-100 dark:hover:bg-yellow-800/80':
-            toast.type === 'warning',
-          'border-green-500/80 bg-green-100/80 text-green-900 hover:bg-green-200/90 dark:border-green-700/80 dark:bg-green-900/80 dark:text-green-100 dark:hover:bg-green-800/80':
-            toast.type === 'success',
-        }"
+        animate.enter="toast-enter-chain"
+        animate.leave="toast-leave-chain"
+        class="toast-panel"
+        [class]="`toast-panel--${toast.type}`"
         (click)="dismiss(toast.id)"
       >
         <svg
           icon="info"
           stroke="currentColor"
           stroke-width="2"
-          class="mr-2 size-6 shrink-0"
-          [ngClass]="{
-            'text-red-600': toast.type === 'error',
-            'text-blue-600': toast.type === 'info',
-            'text-yellow-600': toast.type === 'warning',
-            'text-green-600': toast.type === 'success',
-          }"
+          class="toast-icon"
+          [class]="`toast-icon--${toast.type}`"
         ></svg>
         <div>
           @if (toast.title) {

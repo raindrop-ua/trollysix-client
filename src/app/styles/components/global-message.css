@@ -1,0 +1,17 @@
+@layer components {
+  .global-message--info {
+    @apply bg-blue-600 text-white/80 dark:bg-blue-800;
+  }
+
+  .global-message--news {
+    @apply bg-green-600 text-white/90 dark:bg-green-800;
+  }
+
+  .global-message--issue {
+    @apply bg-yellow-400 text-slate-900 dark:bg-yellow-600 dark:text-white;
+  }
+
+  .global-message--warning {
+    @apply bg-red-500 text-white dark:bg-red-800;
+  }
+}

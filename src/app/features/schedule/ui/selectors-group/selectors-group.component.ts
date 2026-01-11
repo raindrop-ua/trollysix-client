@@ -3,7 +3,8 @@ import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
-import { copy } from '@app/core/content/copy.util';
+import { copy } from '@core/content/copy.util';
+
 import { SchedulePageActions } from '@features/schedule/data-access/store/schedule.actions';
 import { selectScheduleViewModel } from '@features/schedule/data-access/store/schedule.selectors';
 import { ScheduleService } from '@features/schedule/services/schedule.service';

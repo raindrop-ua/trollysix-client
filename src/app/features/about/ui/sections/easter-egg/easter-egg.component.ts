@@ -1,9 +1,10 @@
 import { NgOptimizedImage } from '@angular/common';
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
-import { ToastService } from '@app/core/services/toast.service';
-import { CheatCodeDirective } from '@app/shared/directives/cheat-code.directive';
-import { RevealOnScrollDirective } from '@app/shared/directives/reveal-on-scroll.directive';
+import { ToastService } from '@core/services/toast.service';
+
+import { CheatCodeDirective } from '@shared/directives/cheat-code.directive';
+import { RevealOnScrollDirective } from '@shared/directives/reveal-on-scroll.directive';
 import { GenericSectionBlockComponent } from '@shared/ui/sections/generic-section-block/generic-section-block.component';
 
 @Component({

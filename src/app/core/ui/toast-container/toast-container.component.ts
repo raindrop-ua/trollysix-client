@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   Component,
   computed,
@@ -12,7 +11,7 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
 @Component({
   selector: 'trollysix-toast-container',
-  imports: [NgClass, SvgIconComponent],
+  imports: [SvgIconComponent],
   templateUrl: './toast-container.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'block' },

@@ -6,7 +6,9 @@ import { filter, interval, switchMap } from 'rxjs';
 
 import { DialogService } from './dialog.service';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class SwUpdateService {
   private readonly swUpdate = inject(SwUpdate);
   private readonly dialogService = inject(DialogService);

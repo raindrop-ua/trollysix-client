@@ -4,11 +4,12 @@ import { RouterLink } from '@angular/router';
 
 import { distinctUntilChanged, map } from 'rxjs';
 
-import { copy } from '@app/core/content/copy.util';
-import { AppRouteEnum } from '@app/core/enums/app-route.enum';
-import { ClockService } from '@app/core/services/clock.service';
-import { BtnDirective } from '@app/shared/directives/btn.directive';
-import { RevealOnScrollDirective } from '@app/shared/directives/reveal-on-scroll.directive';
+import { copy } from '@core/content/copy.util';
+import { AppRouteEnum } from '@core/enums/app-route.enum';
+import { ClockService } from '@core/services/clock.service';
+
+import { BtnDirective } from '@shared/directives/btn.directive';
+import { RevealOnScrollDirective } from '@shared/directives/reveal-on-scroll.directive';
 import { SnowComponent } from '@shared/ui/snow/snow.component';
 import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 

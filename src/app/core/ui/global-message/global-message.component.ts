@@ -1,11 +1,11 @@
-import { AsyncPipe, NgClass } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { GlobalMessageService } from '@core/services/global-message.service';
 
 @Component({
   selector: 'trollysix-global-message',
-  imports: [AsyncPipe, NgClass],
+  imports: [AsyncPipe],
   templateUrl: './global-message.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'block' },

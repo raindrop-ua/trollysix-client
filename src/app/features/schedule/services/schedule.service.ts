@@ -11,7 +11,9 @@ import { SchedulePageActions } from '../data-access/store/schedule.actions';
 import { scheduleFeature } from '../data-access/store/schedule.reducer';
 import { selectScheduleViewModel } from '../data-access/store/schedule.selectors';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class ScheduleService {
   private readonly clock = inject(ClockService);
   private readonly store = inject(Store);

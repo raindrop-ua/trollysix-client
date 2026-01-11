@@ -15,7 +15,9 @@ function msToNextMinute(d = new Date()): number {
   return 60_000 - (d.getSeconds() * 1000 + d.getMilliseconds());
 }
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class ClockService {
   private readonly platformId = inject(PLATFORM_ID);
 

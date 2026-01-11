@@ -7,9 +7,11 @@ import { filter, map, mergeMap, distinctUntilChanged } from 'rxjs';
 
 import { environment } from '@environments/environment';
 
-import { SeoData } from '../models/seo-data.model';
+import { SeoData } from '@core/models/seo-data.model';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class SeoService {
   private readonly destroyRef = inject(DestroyRef);
   private readonly activatedRoute = inject(ActivatedRoute);

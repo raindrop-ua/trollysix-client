@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 
-import { TooltipDirective } from '@app/shared/directives/tooltip.directive';
 import { VehicleFeaturesService } from '@features/about/data-access/services/vehicle-features.service';
+import { TooltipDirective } from '@shared/directives/tooltip.directive';
 import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
 @Component({

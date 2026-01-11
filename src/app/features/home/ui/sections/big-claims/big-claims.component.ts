@@ -1,9 +1,10 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { copy } from '@app/core/content/copy.util';
-import { AppRouteEnum } from '@app/core/enums/app-route.enum';
-import { BtnDirective } from '@app/shared/directives/btn.directive';
+import { copy } from '@core/content/copy.util';
+import { AppRouteEnum } from '@core/enums/app-route.enum';
+
+import { BtnDirective } from '@shared/directives/btn.directive';
 import { ColorSplashComponent } from '@shared/ui/color-splash/color-splash.component';
 
 @Component({
