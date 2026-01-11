@@ -109,6 +109,7 @@ describe('GeolocationService (Injector.create)', () => {
       ) => watchId,
     );
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const clearWatch = vi.fn((id: number) => undefined);
 
     setNavigator({
