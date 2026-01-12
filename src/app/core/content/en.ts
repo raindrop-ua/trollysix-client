@@ -20,7 +20,7 @@ export const COPY = {
     stopSelected: 'Selected',
     stopDetails: 'Stop details',
     controlDay: 'Day',
-    controlDirection: 'Day',
+    controlDirection: 'Direction',
     noDepartures: 'No departures',
     noDeparturesFound: 'No departures found.',
     noDeparturesFoundNote:

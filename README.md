@@ -8,7 +8,7 @@
 
 ![Preview](docs/splash@2x.png)
 
-## 🚀 Live
+## Live
 
 [🔗 Try it on trolly6.com](https://trolly6.com)
 
@@ -23,4 +23,4 @@ ng serve
 
 ---
 
-👨‍💻 Made with ❤️ by [Anton Sizov](https://antonsizov.com)
+Made with ❤️ by [Anton Sizov](https://antonsizov.com)

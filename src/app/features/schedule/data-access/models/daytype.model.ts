@@ -1,5 +1,7 @@
+export type DayTypeName = 'weekday' | 'weekend';
+
 export interface DayType {
   id: string;
-  name: string; // 'weekday', 'weekend'
+  name: DayTypeName;
   label: string; // 'Weekday', 'Weekend'
 }

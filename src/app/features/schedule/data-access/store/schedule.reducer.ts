@@ -1,32 +1,12 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 
-import { DirectionName } from '../models/direction.model';
-
 import { ScheduleApiActions, SchedulePageActions } from './schedule.actions';
 import { initialState, stopsAdapter } from './schedule.state';
-
-function pickValidStopId(
-  stops: { id: string }[],
-  candidate: string | null,
-): string | null {
-  if (!candidate) return null;
-  return stops.some((s) => s.id === candidate) ? candidate : null;
-}
-
-function pickValidDayTypeName(
-  dayTypes: { name: string }[],
-  candidate: string | null,
-): string | null {
-  if (!candidate) return null;
-  return dayTypes.some((dt) => dt.name === candidate) ? candidate : null;
-}
-
-function pickValidDirectionName(
-  candidate: DirectionName | null,
-): DirectionName | null {
-  if (!candidate) return null;
-  return candidate === 'forward' || candidate === 'backward' ? candidate : null;
-}
+import {
+  pickValidDayTypeName,
+  pickValidDirectionName,
+  pickValidStopId,
+} from './schedule.utils';
 
 export const scheduleFeature = createFeature({
   name: 'schedule',

@@ -1,4 +1,5 @@
-import { DirectionName } from './direction.model';
+import { DirectionName } from '@features/schedule/data-access/models/direction.model';
+import { Weather } from '@features/schedule/data-access/models/weather.model';
 
 export interface Stop {
   id: string;
@@ -22,17 +23,5 @@ export interface Stop {
     lat: number;
     lon: number;
   };
-  weather?: {
-    temperature: number;
-    description: string;
-    icon: string;
-    feelsLike: number;
-    pressure: number;
-    humidity: number;
-    sunrise: number;
-    sunset: number;
-    windSpeed: number;
-    windDeg: number;
-    windGust: number;
-  };
+  weather?: Weather;
 }
