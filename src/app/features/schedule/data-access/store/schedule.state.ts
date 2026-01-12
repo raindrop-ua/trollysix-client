@@ -7,8 +7,6 @@ import { Timetable } from '../models/timetable.model';
 
 export const stopsAdapter = createEntityAdapter<Stop>();
 
-export const timetablesAdapter = createEntityAdapter<Timetable>();
-
 export interface ScheduleState {
   stops: EntityState<Stop>;
   dayTypes: DayType[];
