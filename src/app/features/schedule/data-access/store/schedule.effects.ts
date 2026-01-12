@@ -15,8 +15,8 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { of, forkJoin, distinctUntilChanged, combineLatest, tap } from 'rxjs';
 
+import { ScheduleApiService } from '@features/schedule/data-access/services/schedule.api.service';
 
-import { ScheduleApiService } from '../data/schedule.api.service';
 import { DayType } from '../models/daytype.model';
 import { DirectionName } from '../models/direction.model';
 
