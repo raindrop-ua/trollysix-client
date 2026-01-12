@@ -26,8 +26,8 @@ export function pickValidDirectionName(
   return candidate === 'forward' || candidate === 'backward' ? candidate : null;
 }
 
-export function parseDirection(v: string | null): DirectionName | null {
-  return v === 'forward' || v === 'backward' ? v : null;
+export function parseDirection(value: string | null): DirectionName | null {
+  return value === 'forward' || value === 'backward' ? value : null;
 }
 export function resolveAutoDayTypeName(
   dayTypes: DayType[],
