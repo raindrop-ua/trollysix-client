@@ -14,19 +14,19 @@ import { Timetable } from '../models/timetable.model';
   providedIn: 'root',
 })
 export class ScheduleApiService {
-  private readonly BASE_URL = environment.BASE_API_URL;
+  private readonly apiUrl = environment.BASE_API_URL;
   private http = inject(HttpClient);
 
   getStops(): Observable<Stop[]> {
-    return this.http.get<Stop[]>(`${this.BASE_URL}/stops`);
+    return this.http.get<Stop[]>(`${this.apiUrl}/stops`);
   }
 
   getDayTypes(): Observable<DayType[]> {
-    return this.http.get<DayType[]>(`${this.BASE_URL}/day-types`);
+    return this.http.get<DayType[]>(`${this.apiUrl}/day-types`);
   }
 
   getDirections(): Observable<Direction[]> {
-    return this.http.get<Direction[]>(`${this.BASE_URL}/directions`);
+    return this.http.get<Direction[]>(`${this.apiUrl}/directions`);
   }
 
   getTimetable(
@@ -39,6 +39,6 @@ export class ScheduleApiService {
       .set('dayType', dayTypeName)
       .set('direction', directionName);
 
-    return this.http.get<Timetable>(`${this.BASE_URL}/timetables`, { params });
+    return this.http.get<Timetable>(`${this.apiUrl}/timetables`, { params });
   }
 }
