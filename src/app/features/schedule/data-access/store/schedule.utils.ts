@@ -6,7 +6,7 @@ export function pickValidStopId(
   candidate: string | null,
 ): string | null {
   if (!candidate) return null;
-  return stops.some((s) => s.id === candidate) ? candidate : null;
+  return stops.some((stop) => stop.id === candidate) ? candidate : null;
 }
 
 export function pickValidDayTypeName(
@@ -14,7 +14,9 @@ export function pickValidDayTypeName(
   candidate: string | null,
 ): string | null {
   if (!candidate) return null;
-  return dayTypes.some((dt) => dt.name === candidate) ? candidate : null;
+  return dayTypes.some((dayType) => dayType.name === candidate)
+    ? candidate
+    : null;
 }
 
 export function pickValidDirectionName(
