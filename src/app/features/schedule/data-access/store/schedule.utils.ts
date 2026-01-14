@@ -1,5 +1,5 @@
-import { DayType } from '@features/schedule/data-access/models/daytype.model';
-import { DirectionName } from '@features/schedule/data-access/models/direction.model';
+import { DayType } from '../models/daytype.model';
+import { DirectionName } from '../models/direction.model';
 
 export function pickValidStopId(
   stops: { id: string }[],
