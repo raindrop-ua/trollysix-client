@@ -1,5 +1,5 @@
-import { DirectionName } from '@features/schedule/data-access/models/direction.model';
-import { Weather } from '@features/schedule/data-access/models/weather.model';
+import { DirectionName } from './direction.model';
+import { Weather } from './weather.model';
 
 export interface Stop {
   id: string;

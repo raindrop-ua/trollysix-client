@@ -15,7 +15,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { of, forkJoin, distinctUntilChanged, combineLatest, tap } from 'rxjs';
 
-import { ScheduleApiService } from '@features/schedule/data-access/services/schedule.api.service';
+import { ScheduleApiService } from '../services/schedule.api.service';
 
 import { SchedulePageActions, ScheduleApiActions } from './schedule.actions';
 import { scheduleFeature } from './schedule.reducer';
