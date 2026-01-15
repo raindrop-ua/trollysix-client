@@ -1,5 +1,5 @@
-import { DayTypeName } from '@features/schedule/data-access/models/daytype.model';
-import { DirectionName } from '@features/schedule/data-access/models/direction.model';
+import { DayTypeName } from './daytype.model';
+import { DirectionName } from './direction.model';
 
 export interface TimeEntity {
   time: string;
