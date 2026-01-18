@@ -8,13 +8,13 @@
         @if (vm.currentTimetable?.validFrom; as validFrom) {
           <span
             >{{ copySchedule.scheduleValidFrom }}
-            {{ validFrom | date: 'dd.MM.yyyy' }}</span
+            {{ validFrom | date: 'dd.MM.yy' }}</span
           >
         }
       </div>
     </div>
 
-    <div class="grid min-h-28 grid-cols-2 gap-4 md:grid-cols-4">
+    <div class="grid min-h-27 grid-cols-2 gap-4 md:grid-cols-4">
       @for (stop of vm.stops; track stop.id) {
         @let selected = vm.selectedStop?.id === stop.id;
         <trollysix-stop-card
