@@ -6,7 +6,7 @@
     type="button"
     class="stop-card h-full w-full"
     [attr.aria-pressed]="isSelected"
-    [class]="'stop-card stop-card-' + stop.style"
+    [class]="`stop-card stop-card-${stop.style}`"
     [class.stop-selected]="isSelected"
     (click)="onSelectStop(stop.id, isSelected)"
   >
@@ -46,7 +46,7 @@
           </span>
         </div>
         <div
-          class="mt-1 mb-2 text-lg/6 font-semibold text-slate-900 dark:text-white"
+          class="mt-1 text-lg/6 font-semibold text-slate-900 dark:text-white"
         >
           {{ stop.name }}
         </div>
@@ -66,7 +66,7 @@
       }
       @let departure = getDeparture(stop, vm.selectedDirectionName);
       <div
-        class="mt-2 flex items-center gap-2 text-sm text-slate-800 tabular-nums dark:text-slate-200"
+        class="flex items-center gap-2 text-sm text-slate-800 tabular-nums dark:text-slate-200"
       >
         <svg
           icon="clock"
