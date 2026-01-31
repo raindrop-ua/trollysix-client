@@ -27,7 +27,7 @@ import { Metric } from '@shared/ui/sections/metrics/metrics.model';
 export class AboutComponent {
   public readonly metrics: Metric[] = [
     {
-      title: '8 → 4',
+      title: '6 → 4',
       description: 'vehicles: weekdays → weekends',
     },
     {

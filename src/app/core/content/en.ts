@@ -40,7 +40,7 @@ export const COPY = {
 The route then proceeds along Elektrychna St., Kolska St., and 20 Years of Victory St., terminating at the loop near the district administration building.`,
       `With the launch of this trolleybus route, electric public transport finally reached Pridniprovsk, which previously could only be accessed by buses or minibuses.`,
       'The route is operated by AKSM 321D trolleybuses equipped with supercapacitor-based autonomous running capability. A charging substation for battery recharging was built at the Pridniprovsk terminal stop.',
-      'On weekdays, 8 vehicles operate on the route, while on weekends, this number is reduced to 4. The route is served by two trolleybus depots, with 4 vehicles from each depot on weekdays and 2 from each depot on weekends.',
+      'On weekdays, 6 vehicles operate on the route, while on weekends, this number is reduced to 4. The route is served by two trolleybus depots, with 3 vehicles from each depot on weekdays and 2 from each depot on weekends.',
     ],
   },
 
