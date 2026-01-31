@@ -18,7 +18,6 @@ import { Metric } from '@shared/ui/sections/metrics/metrics.model';
     MetricsComponent,
     FullListOfStopsComponent,
     EasterEggComponent,
-    RouteOperationComponent,
   ],
   templateUrl: './about.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
