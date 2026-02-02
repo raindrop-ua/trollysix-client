@@ -5,7 +5,6 @@ import { FullListOfStopsComponent } from '@features/about/ui/sections/full-list-
 import { HeadComponent } from '@features/about/ui/sections/head/head.component';
 import { InfrastructureComponent } from '@features/about/ui/sections/infrastructure/infrastructure.component';
 import { OverviewComponent } from '@features/about/ui/sections/overview/overview.component';
-import { RouteOperationComponent } from '@features/about/ui/sections/route-operation/route-operation.component';
 import { MetricsComponent } from '@shared/ui/sections/metrics/metrics.component';
 import { Metric } from '@shared/ui/sections/metrics/metrics.model';
 
@@ -18,7 +17,6 @@ import { Metric } from '@shared/ui/sections/metrics/metrics.model';
     MetricsComponent,
     FullListOfStopsComponent,
     EasterEggComponent,
-    RouteOperationComponent,
   ],
   templateUrl: './about.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,7 +25,7 @@ import { Metric } from '@shared/ui/sections/metrics/metrics.model';
 export class AboutComponent {
   public readonly metrics: Metric[] = [
     {
-      title: '8 → 4',
+      title: '6 → 4',
       description: 'vehicles: weekdays → weekends',
     },
     {
