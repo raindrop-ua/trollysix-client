@@ -38,12 +38,12 @@ export class ScheduleService {
     shareReplay({ bufferSize: 1, refCount: false }),
   );
 
-  public readonly showScheduleNumbers$ = this.store.select(
-    scheduleFeature.selectShowScheduleNumbers,
+  public readonly showRunNumbers$ = this.store.select(
+    scheduleFeature.selectShowRunNumbers,
   );
 
-  public setShowScheduleNumbers(show: boolean) {
-    this.store.dispatch(SchedulePageActions.setShowScheduleNumbers({ show }));
+  public setShowRunNumbers(show: boolean) {
+    this.store.dispatch(SchedulePageActions.setShowRunNumbers({ show }));
   }
 
   private timeArraysEqual(a: TimeEntity[], b: TimeEntity[]) {

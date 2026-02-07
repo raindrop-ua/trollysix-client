@@ -15,7 +15,7 @@ export interface ScheduleState {
   selectedStopId: string | null;
   selectedDayTypeName: string | null;
   selectedDirectionName: DirectionName | null;
-  showScheduleNumbers: boolean;
+  showRunNumbers: boolean;
   stopsLoading: boolean;
   timetableLoading: boolean;
   error: string | null;
@@ -35,7 +35,7 @@ export const initialState: ScheduleState = {
   selectedStopId: null,
   selectedDayTypeName: null,
   selectedDirectionName: 'forward',
-  showScheduleNumbers: false,
+  showRunNumbers: false,
   stopsLoading: false,
   timetableLoading: false,
   error: null,

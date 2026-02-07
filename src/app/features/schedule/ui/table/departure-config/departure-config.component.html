@@ -1,5 +1,5 @@
 @if ((departures$ | async)?.length) {
-  @let showSchedule = (showScheduleNumbers$ | async) ?? false;
+  @let showSchedule = (showRunNumbers$ | async) ?? false;
 
   <div
     class="baseline-borders baseline-surface rounded-3xl p-3 backdrop-blur md:p-4"
