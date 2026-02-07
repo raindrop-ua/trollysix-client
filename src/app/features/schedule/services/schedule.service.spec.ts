@@ -26,8 +26,8 @@ interface StoreLike {
 }
 
 describe('ScheduleService (Injector.create)', () => {
-  const makeTime = (time: string, scheduleNumber: number): TimeEntity =>
-    ({ time, scheduleNumber }) as TimeEntity;
+  const makeTime = (time: string, runNumber: number): TimeEntity =>
+    ({ time, runNumber }) as TimeEntity;
 
   const makeInjector = (opts: {
     now: Date;
@@ -50,7 +50,7 @@ describe('ScheduleService (Injector.create)', () => {
     function select(selector: unknown): Observable<boolean>;
     function select(selector: unknown) {
       if (selector === selectScheduleViewModel) return vm$;
-      if (selector === scheduleFeature.selectShowScheduleNumbers) return show$;
+      if (selector === scheduleFeature.selectShowRunNumbers) return show$;
 
       return of(undefined);
     }
@@ -101,7 +101,7 @@ describe('ScheduleService (Injector.create)', () => {
       Status.Coming,
     ]);
 
-    expect(departures.map((d) => [d.time, d.scheduleNumber])).toEqual([
+    expect(departures.map((d) => [d.time, d.runNumber])).toEqual([
       ['09:50', 1],
       ['10:00', 2],
       ['10:05', 3],
@@ -111,28 +111,28 @@ describe('ScheduleService (Injector.create)', () => {
     ]);
   });
 
-  it('showScheduleNumbers$ reflects store selector value', async () => {
+  it('showRunNumbers$ reflects store selector value', async () => {
     const { svc } = makeInjector({
       now: new Date(2026, 0, 11, 10, 0, 0, 0),
       times: [],
       showNumbers: true,
     });
 
-    const value = await firstValueFrom(svc.showScheduleNumbers$);
+    const value = await firstValueFrom(svc.showRunNumbers$);
     expect(value).toBe(true);
   });
 
-  it('setShowScheduleNumbers dispatches action', () => {
+  it('setShowRunNumbers dispatches action', () => {
     const { svc, mocks } = makeInjector({
       now: new Date(2026, 0, 11, 10, 0, 0, 0),
       times: [],
       showNumbers: false,
     });
 
-    svc.setShowScheduleNumbers(true);
+    svc.setShowRunNumbers(true);
 
     expect(mocks.dispatch).toHaveBeenCalledWith(
-      SchedulePageActions.setShowScheduleNumbers({ show: true }),
+      SchedulePageActions.setShowRunNumbers({ show: true }),
     );
   });
 });

@@ -31,19 +31,19 @@ export class ScheduleService {
     map(([now, times]) =>
       times.map<Departure>((t) => ({
         time: t.time,
-        scheduleNumber: t.scheduleNumber,
+        runNumber: t.runNumber,
         status: this.statusFor(now, this.toTodayDate(t.time, now)),
       })),
     ),
     shareReplay({ bufferSize: 1, refCount: false }),
   );
 
-  public readonly showScheduleNumbers$ = this.store.select(
-    scheduleFeature.selectShowScheduleNumbers,
+  public readonly showRunNumbers$ = this.store.select(
+    scheduleFeature.selectShowRunNumbers,
   );
 
-  public setShowScheduleNumbers(show: boolean) {
-    this.store.dispatch(SchedulePageActions.setShowScheduleNumbers({ show }));
+  public setShowRunNumbers(show: boolean) {
+    this.store.dispatch(SchedulePageActions.setShowRunNumbers({ show }));
   }
 
   private timeArraysEqual(a: TimeEntity[], b: TimeEntity[]) {
@@ -52,7 +52,7 @@ export class ScheduleService {
     for (let i = 0; i < a.length; i++) {
       const ai = a[i];
       const bi = b[i];
-      if (ai.time !== bi.time || ai.scheduleNumber !== bi.scheduleNumber) {
+      if (ai.time !== bi.time || ai.runNumber !== bi.runNumber) {
         return false;
       }
     }

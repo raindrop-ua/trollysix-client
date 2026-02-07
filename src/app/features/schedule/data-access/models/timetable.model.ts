@@ -3,7 +3,7 @@ import { DirectionName } from './direction.model';
 
 export interface TimeEntity {
   time: string;
-  scheduleNumber: number | null;
+  runNumber: number | null;
 }
 
 export interface Timetable {
