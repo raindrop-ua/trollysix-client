@@ -17,7 +17,7 @@ export const SchedulePageActions = createActionGroup({
     'Select Stop': props<{ stopId: string }>(),
     'Select Day Type': props<{ dayTypeName: string }>(),
     'Select Direction': props<{ directionName: DirectionName }>(),
-    'Set Show Schedule Numbers': props<{ show: boolean }>(),
+    'Set Show Run Numbers': props<{ show: boolean }>(),
   },
 });
 

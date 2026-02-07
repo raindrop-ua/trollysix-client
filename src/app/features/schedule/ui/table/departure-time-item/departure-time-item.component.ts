@@ -23,7 +23,7 @@ export class DepartureTimeItemComponent {
   public departure = input.required<Departure>();
   public clickTime = output<string>();
 
-  readonly showSchedule = toSignal(this.schedule.showScheduleNumbers$, {
+  readonly showSchedule = toSignal(this.schedule.showRunNumbers$, {
     initialValue: false,
   });
 
