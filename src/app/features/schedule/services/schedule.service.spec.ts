@@ -26,8 +26,8 @@ interface StoreLike {
 }
 
 describe('ScheduleService (Injector.create)', () => {
-  const makeTime = (time: string, scheduleNumber: number): TimeEntity =>
-    ({ time, scheduleNumber }) as TimeEntity;
+  const makeTime = (time: string, runNumber: number): TimeEntity =>
+    ({ time, runNumber }) as TimeEntity;
 
   const makeInjector = (opts: {
     now: Date;
@@ -101,7 +101,7 @@ describe('ScheduleService (Injector.create)', () => {
       Status.Coming,
     ]);
 
-    expect(departures.map((d) => [d.time, d.scheduleNumber])).toEqual([
+    expect(departures.map((d) => [d.time, d.runNumber])).toEqual([
       ['09:50', 1],
       ['10:00', 2],
       ['10:05', 3],
