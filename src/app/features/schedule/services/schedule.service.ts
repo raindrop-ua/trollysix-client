@@ -31,7 +31,7 @@ export class ScheduleService {
     map(([now, times]) =>
       times.map<Departure>((t) => ({
         time: t.time,
-        scheduleNumber: t.scheduleNumber,
+        runNumber: t.runNumber,
         status: this.statusFor(now, this.toTodayDate(t.time, now)),
       })),
     ),
@@ -52,7 +52,7 @@ export class ScheduleService {
     for (let i = 0; i < a.length; i++) {
       const ai = a[i];
       const bi = b[i];
-      if (ai.time !== bi.time || ai.scheduleNumber !== bi.scheduleNumber) {
+      if (ai.time !== bi.time || ai.runNumber !== bi.runNumber) {
         return false;
       }
     }
