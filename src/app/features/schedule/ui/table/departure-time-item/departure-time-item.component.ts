@@ -10,10 +10,11 @@ import { toSignal } from '@angular/core/rxjs-interop';
 
 import { Departure } from '@features/schedule/data-access/models/departure.model';
 import { ScheduleService } from '@features/schedule/services/schedule.service';
+import { TimeUiPipe } from '@shared/pipes/timeui.pipe';
 
 @Component({
   selector: 'trollysix-departure-time-item',
-  imports: [],
+  imports: [TimeUiPipe],
   templateUrl: './departure-time-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'block' },
