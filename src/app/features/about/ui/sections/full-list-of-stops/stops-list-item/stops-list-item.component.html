@@ -5,12 +5,12 @@
   <div class="relative">
     @if (!lastItem) {
       <div
-        class="absolute top-0 left-1/2 h-full w-0.5 -translate-x-1/2 bg-slate-600 dark:bg-slate-300"
+        class="absolute top-0 left-1/2 h-full w-0.5 -translate-x-1/2 bg-slate-300 dark:bg-slate-300"
       ></div>
     }
     @let icon = lastItem ? 'square' : stopData.direction;
     <span
-      class="relative z-10 grid h-8 w-8 place-items-center rounded-full bg-slate-600 text-blue-100 dark:bg-slate-300 dark:text-slate-800"
+      class="relative z-10 grid h-8 w-8 place-items-center rounded-full bg-slate-300 text-slate-800 dark:bg-slate-300 dark:text-slate-800"
     >
       <svg
         [icon]="icon"
