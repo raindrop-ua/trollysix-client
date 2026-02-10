@@ -19,7 +19,7 @@ export interface Snowflake {
 export class SnowService {
   private readonly destroyRef = inject(DestroyRef);
 
-  private readonly maxSnowflakes = 150;
+  private readonly maxSnowflakes = 100;
   private readonly snowflakes = signal<Snowflake[]>([]);
   readonly getSnowflakes = computed(() => this.snowflakes());
 
