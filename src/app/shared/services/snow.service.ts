@@ -1,7 +1,10 @@
-import { Injectable, signal, computed } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-
-import { interval } from 'rxjs';
+import {
+  DestroyRef,
+  Injectable,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 
 export interface Snowflake {
   id: number;
@@ -12,52 +15,70 @@ export interface Snowflake {
   opacity: number;
 }
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class SnowService {
-  private readonly maxSnowflakes = 75;
-  private snowflakes = signal<Snowflake[]>([]);
+  private readonly destroyRef = inject(DestroyRef);
 
-  public getSnowflakes = computed(() => this.snowflakes());
+  private readonly maxSnowflakes = 150;
+  private readonly snowflakes = signal<Snowflake[]>([]);
+  readonly getSnowflakes = computed(() => this.snowflakes());
+
+  private rafId: number | null = null;
+  private lastTs = 0;
 
   constructor() {
     this.initializeSnowflakes();
     this.startSnowfall();
+
+    this.destroyRef.onDestroy(() => {
+      if (this.rafId != null) cancelAnimationFrame(this.rafId);
+    });
   }
 
   private initializeSnowflakes(): void {
-    const initialSnowflakes = Array.from(
-      { length: this.maxSnowflakes },
-      (_, i) => this.createSnowflake(i),
+    this.snowflakes.set(
+      Array.from({ length: this.maxSnowflakes }, (_, i) =>
+        this.createSnowflake(i),
+      ),
     );
-    this.snowflakes.set(initialSnowflakes);
   }
 
   private createSnowflake(id: number): Snowflake {
-    const size = Math.random() * 3 + 2;
+    const sizePx = Math.random() * 3 + 2;
     return {
       id,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: size / 16,
-      speed: (Math.random() + 0.5) * (size / 3),
+      size: sizePx / 16,
+      speed: (Math.random() + 0.5) * (sizePx / 3) * 15,
       opacity: Math.random() * 0.6 + 0.4,
     };
   }
 
   private startSnowfall(): void {
-    interval(33.33333)
-      .pipe(takeUntilDestroyed())
-      .subscribe(() => {
-        this.snowflakes.update((flakes) =>
-          flakes.map((flake) => ({
-            ...flake,
-            y: flake.y + flake.speed,
-            x: flake.x + Math.sin(flake.y / 30) * 0.3,
-            ...(flake.y > 100 && { y: -5, x: Math.random() * 100 }),
-          })),
-        );
-      });
+    const tick = (ts: number) => {
+      const dt = this.lastTs
+        ? Math.min((ts - this.lastTs) / 1000, 0.05)
+        : 1 / 60;
+      this.lastTs = ts;
+
+      this.snowflakes.update((flakes) =>
+        flakes.map((flake) => {
+          const y = flake.y + flake.speed * dt;
+          const wind = Math.sin((y + flake.id * 10) / 40) * 0.15;
+          const x = flake.x + wind * dt * 30;
+
+          if (y > 100) {
+            return { ...flake, y: -5, x: Math.random() * 100 };
+          }
+
+          return { ...flake, x, y };
+        }),
+      );
+
+      this.rafId = requestAnimationFrame(tick);
+    };
+
+    this.rafId = requestAnimationFrame(tick);
   }
 }
