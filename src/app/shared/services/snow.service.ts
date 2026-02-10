@@ -47,7 +47,7 @@ export class SnowService {
   }
 
   private startSnowfall(): void {
-    interval(35)
+    interval(33.33333)
       .pipe(takeUntilDestroyed())
       .subscribe(() => {
         this.snowflakes.update((flakes) =>
