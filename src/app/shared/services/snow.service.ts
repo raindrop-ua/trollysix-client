@@ -1,6 +1,8 @@
+import { isPlatformBrowser } from '@angular/common';
 import {
   DestroyRef,
   Injectable,
+  PLATFORM_ID,
   computed,
   inject,
   signal,
@@ -18,6 +20,7 @@ export interface Snowflake {
 @Injectable({ providedIn: 'root' })
 export class SnowService {
   private readonly destroyRef = inject(DestroyRef);
+  private readonly platformId = inject(PLATFORM_ID);
 
   private readonly maxSnowflakes = 100;
   private readonly snowflakes = signal<Snowflake[]>([]);
@@ -28,11 +31,17 @@ export class SnowService {
 
   constructor() {
     this.initializeSnowflakes();
-    this.startSnowfall();
 
-    this.destroyRef.onDestroy(() => {
-      if (this.rafId != null) cancelAnimationFrame(this.rafId);
-    });
+    if (isPlatformBrowser(this.platformId)) {
+      this.startSnowfall();
+
+      this.destroyRef.onDestroy(() => {
+        if (this.rafId != null) {
+          cancelAnimationFrame(this.rafId);
+          this.rafId = null;
+        }
+      });
+    }
   }
 
   private initializeSnowflakes(): void {
