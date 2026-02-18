@@ -53,7 +53,9 @@ describe('GeolocationService (Injector.create)', () => {
 
     const svc = injector.get(GeolocationService);
 
-    expect(firstValueFrom(svc.getCurrentPosition$())).rejects.toMatchObject({
+    await expect(
+      firstValueFrom(svc.getCurrentPosition$()),
+    ).rejects.toMatchObject({
       code: GeolocationErrorCode.NotSupported,
     });
   });
