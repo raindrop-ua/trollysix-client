@@ -19,6 +19,10 @@
     @apply border-teal-600/80 bg-teal-400/30 font-medium text-teal-900 dark:text-teal-100;
   }
 
+  .ts-time-canceled {
+    @apply border-slate-600/80 bg-slate-500/10 text-slate-700 dark:bg-white/7 dark:text-slate-600;
+  }
+
   .hint-arrow {
     @apply motion-safe:animate-cartoon-bounce pointer-events-none absolute top-0 flex w-full animate-none items-center text-yellow-500 opacity-100 transition dark:text-yellow-400;
     @starting-style {
