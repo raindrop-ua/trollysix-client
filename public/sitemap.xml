@@ -20,15 +20,14 @@
   <lastmod>2025-11-21T17:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
-  <url>
-    <loc>https://trolly6.com/privacy-policy/</loc>
-    <lastmod>2025-11-21T17:00:00+00:00</lastmod>
-    <priority>0.25</priority>
-  </url>
-  <url>
-    <loc>https://trolly6.com/terms-of-use/</loc>
-    <lastmod>2025-11-21T17:00:00+00:00</lastmod>
-    <priority>0.25</priority>
-  </url>
-
+<url>
+  <loc>https://trolly6.com/privacy-policy/</loc>
+  <lastmod>2025-11-21T17:00:00+00:00</lastmod>
+  <priority>0.25</priority>
+</url>
+<url>
+  <loc>https://trolly6.com/terms-of-use/</loc>
+  <lastmod>2025-11-21T17:00:00+00:00</lastmod>
+  <priority>0.25</priority>
+</url>
 </urlset>
