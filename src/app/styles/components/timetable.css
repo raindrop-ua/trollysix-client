@@ -7,6 +7,10 @@
     @apply border-slate-600/80 bg-slate-800/10 text-slate-600 dark:bg-white/5 dark:text-slate-400;
   }
 
+  .ts-time-now-legend {
+    @apply border-red-700/80 bg-red-500/80 font-semibold text-white;
+  }
+
   .ts-time-now {
     @apply animate-none border-red-700/80 bg-red-500/80 font-semibold text-white motion-safe:animate-bounce;
   }
@@ -20,7 +24,7 @@
   }
 
   .ts-time-canceled {
-    @apply border-slate-600/80 bg-slate-500/10 text-slate-700 dark:bg-white/7 dark:text-slate-600;
+    @apply border-slate-600/80 bg-red-500/40 text-red-700 dark:bg-red-500/30 dark:text-white/70;
   }
 
   .hint-arrow {

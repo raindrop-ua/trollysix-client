@@ -32,7 +32,9 @@ export class ScheduleService {
       times.map<Departure>((t) => ({
         time: t.time,
         runNumber: t.runNumber,
-        status: this.statusFor(now, this.toTodayDate(t.time, now)),
+        status: t.isCanceled
+          ? Status.Canceled
+          : this.statusFor(now, this.toTodayDate(t.time, now)),
       })),
     ),
     shareReplay({ bufferSize: 1, refCount: false }),
