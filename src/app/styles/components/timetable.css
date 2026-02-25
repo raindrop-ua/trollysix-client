@@ -7,6 +7,10 @@
     @apply border-slate-600/80 bg-slate-800/10 text-slate-600 dark:bg-white/5 dark:text-slate-400;
   }
 
+  .ts-time-now-legend {
+    @apply border-red-700/80 bg-red-500/80 font-semibold text-white;
+  }
+
   .ts-time-now {
     @apply animate-none border-red-700/80 bg-red-500/80 font-semibold text-white motion-safe:animate-bounce;
   }
@@ -17,6 +21,10 @@
 
   .ts-time-coming {
     @apply border-teal-600/80 bg-teal-400/30 font-medium text-teal-900 dark:text-teal-100;
+  }
+
+  .ts-time-canceled {
+    @apply border-slate-600/80 bg-red-500/40 text-red-700 dark:bg-red-500/30 dark:text-white/70;
   }
 
   .hint-arrow {

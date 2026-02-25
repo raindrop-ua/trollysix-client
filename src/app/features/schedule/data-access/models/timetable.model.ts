@@ -4,6 +4,7 @@ import { DirectionName } from './direction.model';
 export interface TimeEntity {
   time: string;
   runNumber: number | null;
+  isCanceled?: boolean;
 }
 
 export interface Timetable {
