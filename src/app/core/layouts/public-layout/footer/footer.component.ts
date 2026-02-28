@@ -15,5 +15,5 @@ import { AppRouteEnum } from '@core/enums/app-route.enum';
 export class FooterComponent {
   protected readonly AppRouteEnum = AppRouteEnum;
   public currentYear = new Date().getFullYear();
-  public showStaticLinks = input<boolean>(false);
+  public showStaticLinks = input<boolean>(true);
 }
