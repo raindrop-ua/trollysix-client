@@ -34,7 +34,7 @@ export const initialState: ScheduleState = {
   currentTimetable: null,
   selectedStopId: null,
   selectedDayTypeName: null,
-  selectedDirectionName: 'forward',
+  selectedDirectionName: 'backward',
   showRunNumbers: false,
   stopsLoading: false,
   timetableLoading: false,
