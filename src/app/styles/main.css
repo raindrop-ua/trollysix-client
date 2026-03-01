@@ -10,8 +10,8 @@
     'Liberation Mono', 'Courier New', monospace;
 
   --breakpoint-xs: 30rem;
-  --breakpoint-2xl: 100rem;
-  --breakpoint-3xl: 120rem;
+  --breakpoint-3xl: 88rem;
+  --breakpoint-4xl: 120rem;
 }
 
 @keyframes fade-up {
