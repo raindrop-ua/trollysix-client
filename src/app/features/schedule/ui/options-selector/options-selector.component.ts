@@ -47,14 +47,22 @@ export class OptionsSelectorComponent {
     });
   }
 
-  public select(option: string) {
+  public onSelect(option: string) {
     if (this.selected() === option) return;
 
     this.selected.set(option);
     this.optionSelect.emit(option);
   }
 
-  public selectHapticFeedback() {
+  public onSelectHapticFeedback() {
+    console.log('pointer click fired');
+    console.log('isSecureContext', globalThis.isSecureContext);
+    console.log('vibrate in nav', 'vibrate' in navigator, navigator.vibrate);
+    try {
+      console.log('vibrate result', navigator.vibrate?.(30));
+    } catch (e) {
+      console.log('vibrate threw', e);
+    }
     this.haptics.trigger();
   }
 
