@@ -20,7 +20,6 @@
         [attr.aria-pressed]="isSelected"
         [class.selector-selected]="isSelected"
         (click)="onSelect(value)"
-        (pointerdown)="onSelectHapticFeedback()"
       >
         <span class="invisible block font-semibold">
           {{ getLabel(option) }}

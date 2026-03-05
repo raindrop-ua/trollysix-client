@@ -5,10 +5,7 @@ import {
   signal,
   effect,
   ChangeDetectionStrategy,
-  inject,
 } from '@angular/core';
-
-import { HapticsService } from '@core/services/haptic.service';
 
 import { DayType } from '@features/schedule/data-access/models/daytype.model';
 import { Direction } from '@features/schedule/data-access/models/direction.model';
@@ -24,7 +21,6 @@ type OptionLike = Option | DayType | Direction;
   host: { class: 'block' },
 })
 export class OptionsSelectorComponent {
-  private haptics: HapticsService = inject(HapticsService);
   public readonly title = input.required<string>();
   public readonly options = input.required<OptionLike[]>();
   public readonly preselected = input<string | null | undefined>();
@@ -52,10 +48,6 @@ export class OptionsSelectorComponent {
 
     this.selected.set(option);
     this.optionSelect.emit(option);
-  }
-
-  public onSelectHapticFeedback() {
-    this.haptics.trigger();
   }
 
   public getValue(option: OptionLike): string {
