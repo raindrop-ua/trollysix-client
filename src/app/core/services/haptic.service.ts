@@ -10,7 +10,7 @@ export class HapticsService {
 
   constructor() {
     if (this.isSupported()) {
-      this.haptics = new WebHaptics();
+      this.haptics = new WebHaptics({ debug: true });
     }
   }
 
