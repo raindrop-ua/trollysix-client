@@ -9,6 +9,7 @@ import {
 import { Store } from '@ngrx/store';
 
 import { copy } from '@core/content/copy.util';
+import { HapticsService } from '@core/services/haptic.service';
 
 import { DirectionName } from '@features/schedule/data-access/models/direction.model';
 import { Stop } from '@features/schedule/data-access/models/stop.model';
@@ -27,6 +28,7 @@ export class StopCardComponent {
   readonly copySchedule = copy('schedule');
 
   private store = inject(Store);
+  private haptics: HapticsService = inject(HapticsService);
 
   public readonly showDescriptions = input.required<boolean>();
   public readonly showBackgroundImage = input.required<boolean>();
@@ -42,6 +44,8 @@ export class StopCardComponent {
   }
 
   public onSelectStop(stopId: string, isSelected: boolean): void {
+    this.haptics.trigger();
+
     if (isSelected) {
       return;
     }
