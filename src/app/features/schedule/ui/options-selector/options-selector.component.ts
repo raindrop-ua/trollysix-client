@@ -55,14 +55,6 @@ export class OptionsSelectorComponent {
   }
 
   public onSelectHapticFeedback() {
-    console.log('pointer click fired');
-    console.log('isSecureContext', globalThis.isSecureContext);
-    console.log('vibrate in nav', 'vibrate' in navigator, navigator.vibrate);
-    try {
-      console.log('vibrate result', navigator.vibrate?.(30));
-    } catch (e) {
-      console.log('vibrate threw', e);
-    }
     this.haptics.trigger();
   }
 
