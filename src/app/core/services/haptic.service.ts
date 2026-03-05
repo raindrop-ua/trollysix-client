@@ -7,19 +7,27 @@ import { WebHaptics, defaultPatterns } from 'web-haptics';
 })
 export class HapticsService {
   private haptics?: WebHaptics;
+  private iosSwitch?: HTMLInputElement;
 
   constructor() {
-    if (this.isSupported()) {
-      this.haptics = new WebHaptics({ debug: true });
+    if (this.supportsVibration()) {
+      this.haptics = new WebHaptics();
     }
   }
 
-  private isSupported(): boolean {
+  private supportsVibration(): boolean {
     return typeof navigator !== 'undefined' && 'vibrate' in navigator;
   }
 
-  trigger(pattern = defaultPatterns.medium) {
-    this.haptics?.trigger(pattern);
+  trigger() {
+    // Android / поддерживаемые браузеры
+    if (this.haptics) {
+      this.haptics.trigger();
+      return;
+    }
+
+    // iOS fallback
+    this.iosHapticTap();
   }
 
   success() {
@@ -32,5 +40,25 @@ export class HapticsService {
 
   warning() {
     this.haptics?.trigger(defaultPatterns.warning);
+  }
+
+  private iosHapticTap() {
+    if (typeof document === 'undefined') return;
+
+    if (!this.iosSwitch) {
+      const el = document.createElement('input');
+      el.type = 'checkbox';
+      el.setAttribute('switch', '');
+
+      el.style.position = 'fixed';
+      el.style.opacity = '0';
+      el.style.pointerEvents = 'none';
+      el.style.left = '-9999px';
+
+      document.body.appendChild(el);
+      this.iosSwitch = el;
+    }
+
+    this.iosSwitch.checked = !this.iosSwitch.checked;
   }
 }
