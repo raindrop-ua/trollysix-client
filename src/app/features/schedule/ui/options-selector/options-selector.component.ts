@@ -48,12 +48,14 @@ export class OptionsSelectorComponent {
   }
 
   public select(option: string) {
-    this.haptics.trigger();
-
     if (this.selected() === option) return;
 
     this.selected.set(option);
     this.optionSelect.emit(option);
+  }
+
+  public selectHapticFeedback() {
+    this.haptics.trigger();
   }
 
   public getValue(option: OptionLike): string {
