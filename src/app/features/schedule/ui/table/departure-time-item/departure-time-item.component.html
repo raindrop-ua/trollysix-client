@@ -1,7 +1,6 @@
-<button
+<div
   class="relative w-full cursor-default focus:ring-2 focus:ring-slate-200/50 focus:ring-offset-2 focus:ring-offset-slate-900 focus:outline-none"
   [class]="timeClass()"
-  (click)="onClick()"
 >
   @let dep = departure();
   <time class="cursor-default">{{ dep.time | timeUi }}</time>
@@ -12,4 +11,4 @@
       #{{ dep.runNumber }}
     </div>
   }
-</button>
+</div>
