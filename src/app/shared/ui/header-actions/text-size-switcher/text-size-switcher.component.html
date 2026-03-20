@@ -1,0 +1,19 @@
+<div class="flex items-center gap-2">
+  <button
+    trollysixIconButton
+    [variant]="'default'"
+    type="button"
+    [attr.aria-pressed]="textSizeService.isLarge()"
+    [attr.aria-label]="textSizeService.isLarge() ? 'Use normal font size' : 'Use large font size'"
+    (click)="toggleTextSize()"
+  >
+    <svg
+      icon="a-large"
+      class="size-4"
+      stroke="currentColor"
+      stroke-width="2"
+    ></svg>
+
+    <span class="sr-only">Toggle font size</span>
+  </button>
+</div>
