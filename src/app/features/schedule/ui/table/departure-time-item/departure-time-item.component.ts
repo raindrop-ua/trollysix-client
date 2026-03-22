@@ -32,8 +32,4 @@ export class DepartureTimeItemComponent {
     const d = this.departure();
     return `ts-time ts-time-${d.status}`;
   });
-
-  onClick() {
-    this.clickTime.emit(this.departure().time);
-  }
 }

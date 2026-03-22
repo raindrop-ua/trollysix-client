@@ -19,7 +19,7 @@
         [disabled]="isDisabled(option)"
         [attr.aria-pressed]="isSelected"
         [class.selector-selected]="isSelected"
-        (click)="select(value)"
+        (click)="onSelect(value)"
       >
         <span class="invisible block font-semibold">
           {{ getLabel(option) }}
