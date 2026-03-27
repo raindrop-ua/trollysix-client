@@ -22,5 +22,6 @@ import { SettingsButtonComponent } from './settings-button/settings-button.compo
 })
 export class HeaderActionsComponent {
   public readonly showSettingsButton = signal<boolean>(false);
+  public readonly showTextSizeButton = signal<boolean>(true);
   protected readonly AppRouteEnum = AppRouteEnum;
 }
