@@ -17,12 +17,7 @@
     <div class="3xl:grid-cols-6 grid min-h-27 grid-cols-2 gap-4 md:grid-cols-4">
       @for (stop of vm.stops; track stop.id) {
         @let selected = vm.selectedStop?.id === stop.id;
-        <trollysix-stop-card
-          [stopData]="stop"
-          [selected]="selected"
-          [showDescriptions]="showDescriptions()"
-          [showBackgroundImage]="showBackgroundImage()"
-        />
+        <trollysix-stop-card [stopData]="stop" [selected]="selected" />
       } @empty {
         @for (placeholder of [1, 2, 3, 4, 5, 6]; track placeholder) {
           <div
