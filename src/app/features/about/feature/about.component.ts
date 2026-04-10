@@ -1,6 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
-import { EasterEggComponent } from '@features/about/ui/sections/easter-egg/easter-egg.component';
 import { FullListOfStopsComponent } from '@features/about/ui/sections/full-list-of-stops/full-list-of-stops.component';
 import { HeadComponent } from '@features/about/ui/sections/head/head.component';
 import { InfrastructureComponent } from '@features/about/ui/sections/infrastructure/infrastructure.component';
@@ -16,7 +15,6 @@ import { Metric } from '@shared/ui/sections/metrics/metrics.model';
     InfrastructureComponent,
     MetricsComponent,
     FullListOfStopsComponent,
-    EasterEggComponent,
   ],
   templateUrl: './about.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
