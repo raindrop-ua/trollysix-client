@@ -1,4 +1,3 @@
-import { NgOptimizedImage } from '@angular/common';
 import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 
 import { copy } from '@core/content/copy.util';
@@ -13,7 +12,6 @@ import { WeatherBlockComponent } from './weather-block/weather-block.component';
 @Component({
   selector: 'trollysix-stop-details',
   imports: [
-    NgOptimizedImage,
     GeoBadgeComponent,
     GenericSectionBlockComponent,
     SharedRoutesComponent,
