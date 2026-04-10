@@ -14,6 +14,8 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 export class TextSizeSwitcherComponent {
   protected readonly textSizeService = inject(TextSizeService);
 
+  modeSignal = this.textSizeService.mode;
+
   protected toggleTextSize(): void {
     this.textSizeService.toggle();
   }

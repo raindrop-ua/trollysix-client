@@ -1,4 +1,4 @@
-import { AsyncPipe, NgOptimizedImage } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import {
   Component,
   input,
@@ -18,7 +18,7 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
 @Component({
   selector: 'trollysix-stop-card',
-  imports: [SvgIconComponent, AsyncPipe, NgOptimizedImage],
+  imports: [SvgIconComponent, AsyncPipe],
   templateUrl: './stop-card.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'block' },
@@ -27,9 +27,6 @@ export class StopCardComponent {
   readonly copySchedule = copy('schedule');
 
   private store = inject(Store);
-
-  public readonly showDescriptions = input.required<boolean>();
-  public readonly showBackgroundImage = input.required<boolean>();
 
   public selected = input<boolean>(false);
   public stopData = input<Stop>();

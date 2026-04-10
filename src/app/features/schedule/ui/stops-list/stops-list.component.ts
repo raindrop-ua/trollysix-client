@@ -27,7 +27,6 @@ export class StopsListComponent {
   private store = inject(Store);
 
   public readonly showDescriptions = signal<boolean>(false);
-  public readonly showBackgroundImage = signal<boolean>(true);
 
   public vm$ = this.store.select(selectScheduleViewModel);
 }

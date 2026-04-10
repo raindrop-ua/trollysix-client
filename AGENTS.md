@@ -1,0 +1,19 @@
+- These instructions apply to the entire repository unless a deeper `AGENTS.md` overrides them.
+- This is an Angular 21 client application with SSR support.
+- Package management in this repo uses `pnpm`.
+- Main source code lives under `src/`.
+- Static assets live under `public/` and `src/assets/`.
+- Keep changes focused and minimal; do not refactor unrelated areas.
+- Match the existing Angular and TypeScript style already present in the repo.
+- Prefer updating existing files over introducing new abstractions unless they clearly simplify the change.
+- Do not edit generated output in `dist/` or cached content in `.angular/`.
+- Preserve SSR compatibility when changing routing, bootstrap, or browser-only APIs.
+- Install dependencies with `pnpm install`.
+- Start local development with `pnpm start`.
+- Build with `pnpm build`.
+- Run lint checks with `pnpm lint`.
+- Run tests with `pnpm test`.
+- For code changes, prefer targeted validation first, then broader project checks if needed.
+- If a change touches Angular templates, routing, state, or SSR behavior, mention any validation you did or could not do.
+- Do not commit build artifacts, caches, or dependency directories.
+- Respect the existing `.gitignore` and keep the worktree clean of generated files.

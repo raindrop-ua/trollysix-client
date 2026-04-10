@@ -13,7 +13,13 @@
     }
   }
 
-  <trollysix-text-size-switcher />
+  @if (showTextSizeButton()) {
+    @defer (on idle) {
+      <trollysix-text-size-switcher />
+    } @placeholder {
+      <ng-container *ngTemplateOutlet="placeholder"></ng-container>
+    }
+  }
 
   @defer (on idle) {
     <trollysix-theme-switcher />
