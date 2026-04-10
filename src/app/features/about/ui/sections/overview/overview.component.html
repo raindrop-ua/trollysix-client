@@ -5,7 +5,7 @@
   <div class="prose prose-slate dark:prose-invert w-full">
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
       <div>
-        @for (paragraph of firstHalf; track paragraph) {
+        @for (paragraph of splitContent().firstHalf; track paragraph) {
           <p class="text-pretty" [class.mb-2]="!$last">
             {{ paragraph }}
           </p>
@@ -13,7 +13,7 @@
       </div>
 
       <div>
-        @for (paragraph of secondHalf; track paragraph) {
+        @for (paragraph of splitContent().secondHalf; track paragraph) {
           <p class="text-pretty" [class.mb-2]="!$last">
             {{ paragraph }}
           </p>
