@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, computed } from '@angular/core';
 
 import { copy } from '@core/content/copy.util';
 
@@ -15,14 +15,13 @@ import { GenericSectionBlockComponent } from '@shared/ui/sections/generic-sectio
 export class OverviewComponent {
   readonly copyAbout = copy('about');
 
-  private readonly paragraphs = this.copyAbout.generalDescription;
+  readonly splitContent = computed(() => {
+    const paragraphs = this.copyAbout.generalDescription;
+    const splitIndex = Math.ceil(paragraphs.length / 2);
 
-  readonly firstHalf = this.paragraphs.slice(
-    0,
-    Math.ceil(this.paragraphs.length / 2),
-  );
-
-  readonly secondHalf = this.paragraphs.slice(
-    Math.ceil(this.paragraphs.length / 2),
-  );
+    return {
+      firstHalf: paragraphs.slice(0, splitIndex),
+      secondHalf: paragraphs.slice(splitIndex),
+    };
+  });
 }
