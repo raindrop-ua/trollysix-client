@@ -27,11 +27,6 @@
       >
         {{ stopData.title }}
       </p>
-      @if (stopData.description) {
-        <small class="text-sm text-slate-600 antialiased dark:text-slate-400">{{
-          stopData.description
-        }}</small>
-      }
       <div class="mt-1 flex flex-wrap items-start gap-2">
         @if (stopData.onDemand) {
           <span
