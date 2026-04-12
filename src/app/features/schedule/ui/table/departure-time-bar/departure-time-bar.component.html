@@ -10,8 +10,8 @@
         stroke-width="2"
       ></svg>
     </span>
-    <time class="font-mono text-blue-700 dark:text-yellow-500">
-      {{ clockService.now$ | async | date: 'H:mm' }}
+    <time class="font-mono">
+      {{ clockService.now$ | async | date: 'HH:mm' }}
     </time>
   </div>
   <div
@@ -19,14 +19,14 @@
   >
     <span>
       <svg
-        icon="clock"
+        icon="circle-arrow-right"
         class="size-6"
         stroke="currentColor"
         stroke-width="2"
       ></svg>
     </span>
-    <span class="font-mono text-blue-700 dark:text-yellow-500">
+    <time class="font-mono">
       {{ label$ | async }}
-    </span>
+    </time>
   </div>
 </div>
