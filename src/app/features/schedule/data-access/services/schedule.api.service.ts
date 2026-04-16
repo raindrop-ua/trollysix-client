@@ -1,7 +1,14 @@
+import { isPlatformServer } from '@angular/common';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import {
+  inject,
+  Injectable,
+  makeStateKey,
+  PLATFORM_ID,
+  TransferState,
+} from '@angular/core';
 
-import { Observable } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 
 import { environment } from '@environments/environment';
 
@@ -15,18 +22,29 @@ import { Timetable } from '../models/timetable.model';
 })
 export class ScheduleApiService {
   private readonly apiUrl = environment.BASE_API_URL;
-  private http = inject(HttpClient);
+  private readonly http = inject(HttpClient);
+  private readonly transferState = inject(TransferState);
+  private readonly platformId = inject(PLATFORM_ID);
 
   getStops(): Observable<Stop[]> {
-    return this.http.get<Stop[]>(`${this.apiUrl}/stops`);
+    return this.getWithTransferState<Stop[]>(
+      'schedule:stops',
+      `${this.apiUrl}/stops`,
+    );
   }
 
   getDayTypes(): Observable<DayType[]> {
-    return this.http.get<DayType[]>(`${this.apiUrl}/day-types`);
+    return this.getWithTransferState<DayType[]>(
+      'schedule:day-types',
+      `${this.apiUrl}/day-types`,
+    );
   }
 
   getDirections(): Observable<Direction[]> {
-    return this.http.get<Direction[]>(`${this.apiUrl}/directions`);
+    return this.getWithTransferState<Direction[]>(
+      'schedule:directions',
+      `${this.apiUrl}/directions`,
+    );
   }
 
   getTimetable(
@@ -39,6 +57,38 @@ export class ScheduleApiService {
       .set('dayType', dayTypeName)
       .set('direction', directionName);
 
-    return this.http.get<Timetable>(`${this.apiUrl}/timetables`, { params });
+    const url = `${this.apiUrl}/timetables`;
+    const transferKey = [
+      'schedule:timetable',
+      stopId,
+      dayTypeName,
+      directionName,
+    ].join(':');
+
+    return this.getWithTransferState<Timetable>(transferKey, url, { params });
+  }
+
+  private getWithTransferState<T>(
+    transferKey: string,
+    url: string,
+    options?: { params: HttpParams },
+  ): Observable<T> {
+    const stateKey = makeStateKey<T>(transferKey);
+
+    if (this.transferState.hasKey(stateKey)) {
+      const cached = this.transferState.get<T | null>(stateKey, null);
+      this.transferState.remove(stateKey);
+      if (cached !== null) {
+        return of(cached);
+      }
+    }
+
+    return this.http.get<T>(url, options).pipe(
+      tap((response) => {
+        if (isPlatformServer(this.platformId)) {
+          this.transferState.set(stateKey, response);
+        }
+      }),
+    );
   }
 }
