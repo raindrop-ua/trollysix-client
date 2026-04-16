@@ -18,8 +18,21 @@
 git clone https://github.com/raindrop-ua/trollysix-client.git
 cd trollysix-client
 pnpm install
-ng serve
+pnpm start
 ```
+
+## SSR Cypress smoke tests
+
+```bash
+pnpm build
+pnpm start:ssr:e2e
+pnpm e2e
+```
+
+## Engineering Docs
+
+- [Architecture](./ARCHITECTURE.md)
+- [Contributing](./CONTRIBUTING.md)
 
 ---
 

@@ -23,6 +23,7 @@ import { StopCardComponent } from './stop-card/stop-card.component';
 })
 export class StopsListComponent {
   readonly copySchedule = copy('schedule');
+  readonly stopsTitleId = 'stops-list-title';
 
   private store = inject(Store);
 

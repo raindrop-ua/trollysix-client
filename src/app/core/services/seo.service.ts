@@ -32,7 +32,7 @@ export class SeoService {
         }),
         mergeMap((route) => route.data),
         map((data) => data['seo'] as SeoData | undefined),
-        distinctUntilChanged((a, b) => JSON.stringify(a) === JSON.stringify(b)),
+        distinctUntilChanged((a, b) => this.isSameSeo(a, b)),
         takeUntilDestroyed(this.destroyRef),
       )
       .subscribe((seo) => this.update(seo ?? {}));
@@ -72,5 +72,16 @@ export class SeoService {
         ? `${environment.PUBLIC_URL}${environment.SEO_ASSETS}${seo.ogImage}`
         : this.DEFAULT_OG_IMAGE,
     });
+  }
+
+  private isSameSeo(a?: SeoData, b?: SeoData): boolean {
+    return (
+      a?.title === b?.title &&
+      a?.description === b?.description &&
+      a?.keywords === b?.keywords &&
+      a?.ogTitle === b?.ogTitle &&
+      a?.ogDescription === b?.ogDescription &&
+      a?.ogImage === b?.ogImage
+    );
   }
 }

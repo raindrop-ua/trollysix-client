@@ -3,7 +3,7 @@ import { PreloadingStrategy, Route } from '@angular/router';
 
 import { filter, first, map, switchMap } from 'rxjs/operators';
 
-import { Observable, of, race, timer } from 'rxjs';
+import { Observable, Subscription, of, race, timer } from 'rxjs';
 
 interface NavigatorWithConnection extends Navigator {
   connection?: {
@@ -25,13 +25,15 @@ function afterFirstPaint(): Observable<void> {
   const fcp$ =
     typeof PerformanceObserver !== 'undefined'
       ? new Observable<void>((sub) => {
+          let obs: PerformanceObserver | null = null;
+
           try {
-            const obs = new PerformanceObserver((list) => {
+            obs = new PerformanceObserver((list) => {
               const entry = list
                 .getEntries()
                 .find((e) => e.name === 'first-contentful-paint');
               if (entry) {
-                obs.disconnect();
+                obs?.disconnect();
                 sub.next();
                 sub.complete();
               }
@@ -41,25 +43,29 @@ function afterFirstPaint(): Observable<void> {
             sub.next();
             sub.complete();
           }
+
+          return () => obs?.disconnect();
         })
       : of(void 0);
 
   return race(fcp$, timer(2000).pipe(map(() => void 0)));
 }
 
-function inIdle<T>(work: () => Promise<T> | T): Promise<T> {
-  return new Promise((resolve) => {
-    const run = async () => resolve(await work());
+function runInIdle(work: () => void): () => void {
+  if (typeof requestIdleCallback !== 'undefined') {
+    const id = requestIdleCallback(work, { timeout: 2000 });
+    return () => cancelIdleCallback(id);
+  }
 
-    if (typeof requestIdleCallback !== 'undefined') {
-      requestIdleCallback(run, { timeout: 2000 });
-    } else {
-      setTimeout(run, 0);
-    }
-  });
+  const id = setTimeout(work, 0);
+  return () => clearTimeout(id);
 }
 
 function canPreloadNow(): boolean {
+  if (typeof navigator === 'undefined') {
+    return true;
+  }
+
   const nav = navigator as NavigatorWithConnection;
   if (nav?.connection?.saveData) return false;
 
@@ -86,15 +92,20 @@ export class AfterFirstPaintPreloadingStrategy implements PreloadingStrategy {
         if (!canPreloadNow()) return of(null);
         if (mode === 'eager') return load();
 
-        return new Observable((sub) => {
-          inIdle(() => {
-            const s = load().subscribe({
+        return new Observable<unknown>((sub) => {
+          let innerSubscription: Subscription | null = null;
+          const cancelIdle = runInIdle(() => {
+            innerSubscription = load().subscribe({
               next: (v) => sub.next(v),
               error: (e) => sub.error(e),
               complete: () => sub.complete(),
             });
-            return () => s.unsubscribe();
           });
+
+          return () => {
+            cancelIdle();
+            innerSubscription?.unsubscribe();
+          };
         });
       }),
     );

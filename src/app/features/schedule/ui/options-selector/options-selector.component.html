@@ -1,5 +1,6 @@
 <div class="md:px-3">
   <div
+    [id]="titleId"
     class="mb-1 text-xs tracking-wide text-slate-500 uppercase dark:text-slate-400"
   >
     {{ title() }}
@@ -8,20 +9,26 @@
     <ng-content select="[slot='header']" />
   </div>
   <div
+    [id]="groupId"
+    role="radiogroup"
+    [attr.aria-labelledby]="titleId"
+    aria-orientation="horizontal"
     class="inline-flex w-full overflow-hidden rounded-xl ring-1 ring-slate-900/10 dark:ring-white/10"
   >
     @for (option of options(); track getValue(option)) {
       @let value = getValue(option);
       @let isSelected = value === selected();
       <button
+        [id]="getOptionId(value)"
         type="button"
+        role="radio"
         class="selector relative w-[50%]"
         [disabled]="isDisabled(option)"
-        [attr.aria-pressed]="isSelected"
+        [attr.aria-checked]="isSelected"
         [class.selector-selected]="isSelected"
         (click)="onSelect(value)"
       >
-        <span class="invisible block font-semibold">
+        <span class="invisible block font-semibold" aria-hidden="true">
           {{ getLabel(option) }}
         </span>
         <span
