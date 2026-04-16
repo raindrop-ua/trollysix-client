@@ -14,12 +14,33 @@ const browserDistFolder = join(import.meta.dirname, '../browser');
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
-function getSsrCacheControl(pathname: string): string {
-  if (pathname.startsWith('/schedule')) {
-    return 'public, max-age=30, stale-while-revalidate=60';
+function readNonNegativeIntEnv(name: string, fallback: number): number {
+  const raw = process.env[name];
+  if (!raw) {
+    return fallback;
   }
 
-  return 'public, max-age=300, stale-while-revalidate=600';
+  const parsed = Number.parseInt(raw, 10);
+  return Number.isFinite(parsed) && parsed >= 0 ? parsed : fallback;
+}
+
+const ssrCacheConfig = {
+  schedule: {
+    maxAge: readNonNegativeIntEnv('SSR_CACHE_SCHEDULE_MAX_AGE', 30),
+    staleWhileRevalidate: readNonNegativeIntEnv('SSR_CACHE_SCHEDULE_SWR', 60),
+  },
+  default: {
+    maxAge: readNonNegativeIntEnv('SSR_CACHE_DEFAULT_MAX_AGE', 300),
+    staleWhileRevalidate: readNonNegativeIntEnv('SSR_CACHE_DEFAULT_SWR', 600),
+  },
+};
+
+function getSsrCacheControl(pathname: string): string {
+  if (pathname.startsWith('/schedule')) {
+    return `public, max-age=${ssrCacheConfig.schedule.maxAge}, stale-while-revalidate=${ssrCacheConfig.schedule.staleWhileRevalidate}`;
+  }
+
+  return `public, max-age=${ssrCacheConfig.default.maxAge}, stale-while-revalidate=${ssrCacheConfig.default.staleWhileRevalidate}`;
 }
 
 function withSsrCacheHeaders(req: express.Request, response: Response): Response {
