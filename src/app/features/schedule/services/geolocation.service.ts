@@ -12,7 +12,7 @@ export class GeolocationService {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
 
-  public isGeolocationAvailable = signal<boolean>('geolocation' in navigator);
+  public isGeolocationAvailable = signal<boolean>(this.hasGeolocationApi());
 
   public getCurrentPosition$(
     options?: PositionOptions,
@@ -26,7 +26,7 @@ export class GeolocationService {
       );
     }
 
-    if (!('geolocation' in navigator)) {
+    if (!this.hasGeolocationApi()) {
       return throwError(() =>
         this.createError(
           GeolocationErrorCode.NotSupported,
@@ -69,7 +69,7 @@ export class GeolocationService {
       );
     }
 
-    if (!('geolocation' in navigator)) {
+    if (!this.hasGeolocationApi()) {
       return throwError(() =>
         this.createError(
           GeolocationErrorCode.NotSupported,
@@ -132,5 +132,13 @@ export class GeolocationService {
           error,
         );
     }
+  }
+
+  private hasGeolocationApi(): boolean {
+    return (
+      this.isBrowser &&
+      typeof navigator !== 'undefined' &&
+      'geolocation' in navigator
+    );
   }
 }
