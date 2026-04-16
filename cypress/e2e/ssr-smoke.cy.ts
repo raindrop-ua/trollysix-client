@@ -17,12 +17,15 @@ describe('SSR smoke', () => {
   });
 
   it('redirects unknown route to 404 page', () => {
-    cy.request({ url: '/some-route-that-does-not-exist', failOnStatusCode: false })
+    cy.request({
+      url: '/some-route-that-does-not-exist',
+      failOnStatusCode: false,
+    })
       .its('status')
       .should('eq', 200);
 
     cy.visit('/some-route-that-does-not-exist');
     cy.location('pathname').should('eq', '/404');
-    cy.contains('h1', '404').should('be.visible');
+    cy.contains('h1', 'Page Not Found').should('be.visible');
   });
 });
