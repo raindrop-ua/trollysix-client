@@ -6,9 +6,11 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { Actions } from '@ngrx/effects';
 import { Action, Store } from '@ngrx/store';
-import { Observable, Subject, firstValueFrom, of } from 'rxjs';
+import { Observable, Subject, firstValueFrom, of, throwError } from 'rxjs';
 
-import { DirectionName } from '../models/direction.model';
+import { DayType } from '../models/daytype.model';
+import { Direction, DirectionName } from '../models/direction.model';
+import { Stop } from '../models/stop.model';
 import { Timetable } from '../models/timetable.model';
 import { ScheduleApiService } from '../services/schedule.api.service';
 
@@ -22,9 +24,13 @@ interface StoreLike {
 
 describe('ScheduleEffects (Injector.create)', () => {
   const makeInjector = (opts: {
+    initialDataLoaded?: boolean;
     selectedStopId: string | null;
     selectedDayType: string | null;
     selectedDirection: DirectionName | null;
+    getStopsImpl?: () => Observable<Stop[]>;
+    getDayTypesImpl?: () => Observable<DayType[]>;
+    getDirectionsImpl?: () => Observable<Direction[]>;
     getTimetableImpl?: (
       stopId: string,
       dayTypeName: string,
@@ -36,7 +42,7 @@ describe('ScheduleEffects (Injector.create)', () => {
     const storeObj: StoreLike = {
       select: (selector: unknown) => {
         if (selector === scheduleFeature.selectInitialDataLoaded) {
-          return of(true);
+          return of(opts.initialDataLoaded ?? true);
         }
         if (selector === scheduleFeature.selectSelectedStopId) {
           return of(opts.selectedStopId);
@@ -66,9 +72,13 @@ describe('ScheduleEffects (Injector.create)', () => {
       ScheduleApiService,
       'getStops' | 'getDayTypes' | 'getDirections' | 'getTimetable'
     > = {
-      getStops: vi.fn(() => of([])),
-      getDayTypes: vi.fn(() => of([])),
-      getDirections: vi.fn(() => of([])),
+      getStops: opts.getStopsImpl ? vi.fn(opts.getStopsImpl) : vi.fn(() => of([])),
+      getDayTypes: opts.getDayTypesImpl
+        ? vi.fn(opts.getDayTypesImpl)
+        : vi.fn(() => of([])),
+      getDirections: opts.getDirectionsImpl
+        ? vi.fn(opts.getDirectionsImpl)
+        : vi.fn(() => of([])),
       getTimetable:
         opts.getTimetableImpl ??
         vi.fn(() => {
@@ -183,5 +193,38 @@ describe('ScheduleEffects (Injector.create)', () => {
     expect(emitted).toEqual([]);
 
     sub.unsubscribe();
+  });
+
+  it('loadInitialData$ emits failure when api request fails', async () => {
+    const { actions$, effects } = makeInjector({
+      initialDataLoaded: false,
+      selectedStopId: 'stop-1',
+      selectedDayType: 'weekday',
+      selectedDirection: 'forward',
+      getStopsImpl: () => throwError(() => new Error('boom')),
+    });
+
+    const emitted = firstValueFrom(effects.loadInitialData$);
+    actions$.next(SchedulePageActions.enter());
+
+    await expect(emitted).resolves.toEqual(
+      ScheduleApiActions.loadInitialDataFailure({ error: 'boom' }),
+    );
+  });
+
+  it('executeLoadTimetable$ emits failure when api errors', async () => {
+    const { actions$, effects } = makeInjector({
+      selectedStopId: 'stop-1',
+      selectedDayType: 'weekday',
+      selectedDirection: 'forward',
+      getTimetableImpl: () => throwError(() => new Error('timetable failed')),
+    });
+
+    const emitted = firstValueFrom(effects.executeLoadTimetable$);
+    actions$.next(ScheduleApiActions.loadTimetable());
+
+    await expect(emitted).resolves.toEqual(
+      ScheduleApiActions.loadTimetableFailure({ error: 'timetable failed' }),
+    );
   });
 });
