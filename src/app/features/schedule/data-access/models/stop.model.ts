@@ -4,7 +4,6 @@ import { Weather } from './weather.model';
 export interface Stop {
   id: string;
   name: string;
-  description: string;
   departures: {
     forward?: {
       first: string;
@@ -17,7 +16,6 @@ export interface Stop {
   };
   style: number;
   availableDirections: DirectionName[];
-  imageUrl: string;
   sharedRoutes: string[];
   geo?: {
     lat: number;
