@@ -8,12 +8,18 @@ import {
   TransferState,
 } from '@angular/core';
 
-import { Observable, of, tap } from 'rxjs';
+import { Observable, map, of, tap } from 'rxjs';
 
 import { environment } from '@environments/environment';
 
 import { DayType } from '../models/daytype.model';
 import { Direction } from '../models/direction.model';
+import {
+  parseDayTypesResponse,
+  parseDirectionsResponse,
+  parseStopsResponse,
+  parseTimetableResponse,
+} from '../models/schedule-api.contract';
 import { Stop } from '../models/stop.model';
 import { Timetable } from '../models/timetable.model';
 
@@ -30,6 +36,7 @@ export class ScheduleApiService {
     return this.getWithTransferState<Stop[]>(
       'schedule:stops',
       `${this.apiUrl}/stops`,
+      parseStopsResponse,
     );
   }
 
@@ -37,6 +44,7 @@ export class ScheduleApiService {
     return this.getWithTransferState<DayType[]>(
       'schedule:day-types',
       `${this.apiUrl}/day-types`,
+      parseDayTypesResponse,
     );
   }
 
@@ -44,6 +52,7 @@ export class ScheduleApiService {
     return this.getWithTransferState<Direction[]>(
       'schedule:directions',
       `${this.apiUrl}/directions`,
+      parseDirectionsResponse,
     );
   }
 
@@ -65,25 +74,36 @@ export class ScheduleApiService {
       directionName,
     ].join(':');
 
-    return this.getWithTransferState<Timetable>(transferKey, url, { params });
+    return this.getWithTransferState<Timetable>(
+      transferKey,
+      url,
+      parseTimetableResponse,
+      { params },
+    );
   }
 
   private getWithTransferState<T>(
     transferKey: string,
     url: string,
+    parser: (value: unknown) => T,
     options?: { params: HttpParams },
   ): Observable<T> {
     const stateKey = makeStateKey<T>(transferKey);
 
     if (this.transferState.hasKey(stateKey)) {
-      const cached = this.transferState.get<T | null>(stateKey, null);
+      const cached = this.transferState.get<unknown>(stateKey, null);
       this.transferState.remove(stateKey);
       if (cached !== null) {
-        return of(cached);
+        try {
+          return of(parser(cached));
+        } catch {
+          // Stale or invalid TransferState must not block client-side recovery.
+        }
       }
     }
 
-    return this.http.get<T>(url, options).pipe(
+    return this.http.get<unknown>(url, options).pipe(
+      map((response) => parser(response)),
       tap((response) => {
         if (isPlatformServer(this.platformId)) {
           this.transferState.set(stateKey, response);
