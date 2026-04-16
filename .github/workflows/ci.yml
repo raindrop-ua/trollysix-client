@@ -75,6 +75,15 @@ jobs:
       - name: Install deps
         run: pnpm install --frozen-lockfile
 
+      - name: Cache Cypress binary
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+
+      - name: Install Cypress binary
+        run: pnpm exec cypress install
+
       - name: Build SSR bundle
         run: pnpm build
 
@@ -86,10 +95,10 @@ jobs:
           SERVER_PID=$!
           trap 'kill $SERVER_PID || true; cat /tmp/ssr.log' EXIT
           for i in {1..60}; do
-            if curl -sSf "$CYPRESS_BASE_URL" > /dev/null; then
+            if curl -sSf "$CYPRESS_BASE_URL" > /dev/null 2>&1; then
               break
             fi
             sleep 1
           done
-          curl -sSf "$CYPRESS_BASE_URL" > /dev/null
+          curl -sSf "$CYPRESS_BASE_URL" > /dev/null 2>&1
           pnpm e2e
