@@ -207,6 +207,10 @@ export class ScheduleEffects {
         this.store.select(scheduleFeature.selectSelectedDayTypeName),
         this.store.select(scheduleFeature.selectSelectedDirectionName),
       ),
+      filter(
+        ([, stopId, dayType, direction]) =>
+          !!stopId && !!dayType && !!direction,
+      ),
       switchMap(([, stopId, dayType, direction]) =>
         this.scheduleApi.getTimetable(stopId!, dayType!, direction!).pipe(
           map((timetable) =>
