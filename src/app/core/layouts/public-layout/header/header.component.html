@@ -3,8 +3,12 @@
     <div class="flex items-center gap-4">
       <div class="md:hidden">
         <button
+          #menuToggleButton
           type="button"
           (click)="toggleMenu()"
+          [attr.aria-expanded]="isMenuOpen()"
+          [attr.aria-controls]="mobileMenuId"
+          aria-haspopup="menu"
           class="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl bg-white/20 px-2 py-1 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-white/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 dark:bg-gray-900/20 dark:text-gray-100 dark:hover:bg-gray-900/30 dark:focus-visible:outline-white"
         >
           <svg
@@ -64,12 +68,12 @@
   <div
     class="sticky top-0 z-50 bg-white/60 backdrop-blur-xl dark:bg-slate-900/50"
   >
-    <nav class="shadow-lg md:hidden">
+    <nav [id]="mobileMenuId" class="shadow-lg md:hidden" aria-label="Main menu">
       <ul class="flex flex-col gap-4 px-6 py-4 text-lg">
         @for (routeItem of navigation; track routeItem.path) {
           <li>
             <a
-              (click)="isMenuOpen.set(false)"
+              (click)="closeMenu()"
               class="block font-semibold text-slate-700 underline-offset-4 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
               [routerLink]="[routeItem.path]"
               [queryParamsHandling]="

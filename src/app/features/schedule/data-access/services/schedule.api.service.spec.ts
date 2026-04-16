@@ -48,11 +48,9 @@ describe('ScheduleApiService', () => {
       {
         id: '1',
         name: 'Central',
-        description: 'Central stop',
         departures: {},
         style: 1,
         availableDirections: ['forward'],
-        imageUrl: '',
         sharedRoutes: [],
       },
     ];
@@ -77,6 +75,20 @@ describe('ScheduleApiService', () => {
     const result = await request;
     expect(result).toEqual(response);
     expect(transferState.get(key, [])).toEqual(response);
+  });
+
+  it('falls back to http when cached TransferState payload is invalid', async () => {
+    const { service, transferState, http } = setup('browser');
+    const key = makeStateKey<unknown>('schedule:directions');
+    transferState.set(key, [{ id: '1', name: 'sideways', label: 'Sideways' }]);
+
+    const request = firstValueFrom(service.getDirections());
+    const req = http.expectOne('http://localhost:4450/directions');
+    const response: Direction[] = [{ id: '1', name: 'forward', label: 'Forward' }];
+    req.flush(response);
+
+    await expect(request).resolves.toEqual(response);
+    expect(transferState.hasKey(key)).toBe(false);
   });
 
   it('requests timetable with query params', async () => {
@@ -105,5 +117,17 @@ describe('ScheduleApiService', () => {
     req.flush(response);
 
     await expect(request).resolves.toEqual(response);
+  });
+
+  it('rejects invalid api payload by contract', async () => {
+    const { service, http } = setup('browser');
+    const request = firstValueFrom(service.getDirections());
+
+    const req = http.expectOne('http://localhost:4450/directions');
+    req.flush([{ id: '1', name: 'sideways', label: 'Sideways' }]);
+
+    await expect(request).rejects.toThrowError(
+      'Invalid schedule API response: directions',
+    );
   });
 });

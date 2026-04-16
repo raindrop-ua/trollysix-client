@@ -5,9 +5,8 @@
 >
   <div class="flex w-full flex-col items-end space-y-3">
     @for (toast of toasts(); track toast.id) {
-      <div
-        tabindex="0"
-        role="button"
+      <button
+        type="button"
         animate.enter="toast-enter-chain"
         animate.leave="toast-leave-chain"
         class="toast-panel"
@@ -21,7 +20,7 @@
           class="toast-icon"
           [class]="`toast-icon--${toast.type}`"
         ></svg>
-        <div>
+        <div class="text-left">
           @if (toast.title) {
             <p class="text-sm font-semibold">
               {{ toast.title }}
@@ -31,7 +30,7 @@
             {{ toast.message }}
           </p>
         </div>
-      </div>
+      </button>
     }
   </div>
 </div>

@@ -4,8 +4,9 @@
   @let isSelected = selected();
   <button
     type="button"
+    role="radio"
     class="stop-card h-full w-full"
-    [attr.aria-pressed]="isSelected"
+    [attr.aria-checked]="isSelected"
     [class]="`stop-card stop-card-${stop.style}`"
     [class.stop-selected]="isSelected"
     (click)="onSelectStop(stop.id, isSelected)"
@@ -23,6 +24,8 @@
                 class="size-4"
                 stroke="currentColor"
                 stroke-width="2"
+                aria-hidden="true"
+                focusable="false"
               ></svg>
             }
             @if (stop.availableDirections.includes('backward')) {
@@ -31,6 +34,8 @@
                 class="size-4"
                 stroke="currentColor"
                 stroke-width="2"
+                aria-hidden="true"
+                focusable="false"
               ></svg>
             }
           </span>
@@ -60,6 +65,8 @@
           class="size-4"
           stroke="currentColor"
           stroke-width="2"
+          aria-hidden="true"
+          focusable="false"
         ></svg>
         @if (departure?.first && departure?.last) {
           <span> {{ departure?.first }} • {{ departure?.last }} </span>

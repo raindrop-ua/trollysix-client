@@ -1,7 +1,10 @@
 @if (vm$ | async; as vm) {
   <section class="baseline-container py-6 md:py-8">
     <div class="mb-4 flex items-center justify-between gap-2">
-      <h2 class="text-base font-semibold text-slate-900 dark:text-slate-100">
+      <h2
+        [id]="stopsTitleId"
+        class="text-base font-semibold text-slate-900 dark:text-slate-100"
+      >
         {{ copySchedule.selectStop }}
       </h2>
       <div class="text-s text-slate-500 dark:text-slate-400">
@@ -14,7 +17,11 @@
       </div>
     </div>
 
-    <div class="3xl:grid-cols-6 grid min-h-27 grid-cols-2 gap-4 md:grid-cols-4">
+    <div
+      role="radiogroup"
+      [attr.aria-labelledby]="stopsTitleId"
+      class="3xl:grid-cols-6 grid min-h-27 grid-cols-2 gap-4 md:grid-cols-4"
+    >
       @for (stop of vm.stops; track stop.id) {
         @let selected = vm.selectedStop?.id === stop.id;
         <trollysix-stop-card [stopData]="stop" [selected]="selected" />
