@@ -1,3 +1,4 @@
+import { DOCUMENT } from '@angular/common';
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -19,8 +20,14 @@ export class ShareScheduleService {
   private readonly router = inject(Router);
   private readonly clipboardService = inject(ClipboardService);
   private readonly toastService = inject(ToastService);
+  private readonly document = inject(DOCUMENT, { optional: true });
+  private readonly isBrowser = typeof window !== 'undefined';
 
   shareSchedule(): void {
+    if (!this.isBrowser) {
+      return;
+    }
+
     combineLatest([
       this.store.select(scheduleFeature.selectSelectedStopId),
       this.store.select(scheduleFeature.selectSelectedDayTypeName),
@@ -39,7 +46,15 @@ export class ShareScheduleService {
           queryParams: { stopId, dayType, direction },
         });
 
-        const url = `${location.origin}${this.router.serializeUrl(tree)}`;
+        const origin =
+          this.document?.location?.origin ??
+          (typeof location !== 'undefined' ? location.origin : null);
+        if (!origin) {
+          this.showShareResult(false);
+          return;
+        }
+
+        const url = `${origin}${this.router.serializeUrl(tree)}`;
         const result = await this.clipboardService.copy(url);
 
         this.showShareResult(result.ok);
