@@ -8,7 +8,10 @@
     "build:stats": "ng build --configuration production --stats-json",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "e2e": "cypress run --config-file cypress.config.ts",
+    "e2e:open": "cypress open --config-file cypress.config.ts",
     "start:ssr": "node dist/trollysix-client/server/server.mjs",
+    "start:ssr:e2e": "NG_ALLOWED_HOSTS=localhost,127.0.0.1 node dist/trollysix-client/server/server.mjs",
     "serve:ssr:trollysix-client": "node dist/trollysix-client/server/server.mjs",
     "lint": "ng lint",
     "prepare": "husky || true"

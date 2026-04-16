@@ -21,6 +21,14 @@ pnpm install
 ng serve
 ```
 
+## SSR Cypress smoke tests
+
+```bash
+pnpm build
+pnpm start:ssr:e2e
+pnpm e2e
+```
+
 ---
 
 Made with ❤️ by [Anton Sizov](https://antonsizov.com)
