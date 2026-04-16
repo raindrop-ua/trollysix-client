@@ -13,6 +13,8 @@ import { Option } from '@features/schedule/data-access/models/option.model';
 
 type OptionLike = Option | DayType | Direction;
 
+let selectorIdCounter = 0;
+
 @Component({
   selector: 'trollysix-options-selector',
   imports: [],
@@ -26,6 +28,9 @@ export class OptionsSelectorComponent {
   public readonly preselected = input<string | null | undefined>();
   public readonly selected = signal<string | null>(null);
   public optionSelect = output<string>();
+  public readonly selectorId = ++selectorIdCounter;
+  public readonly titleId = `options-selector-title-${this.selectorId}`;
+  public readonly groupId = `options-selector-group-${this.selectorId}`;
 
   constructor() {
     effect(() => {
@@ -60,5 +65,9 @@ export class OptionsSelectorComponent {
 
   public isDisabled(option: OptionLike): boolean {
     return 'disabled' in option ? !!option.disabled : false;
+  }
+
+  public getOptionId(value: string): string {
+    return `${this.groupId}-option-${value}`;
   }
 }

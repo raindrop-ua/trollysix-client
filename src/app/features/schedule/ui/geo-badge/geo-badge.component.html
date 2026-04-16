@@ -8,7 +8,14 @@
     trollysixTooltip="Open in Google Maps"
     trollysixTooltipPlacement="top"
   >
-    <svg icon="geo" class="size-4" stroke="currentColor" stroke-width="2"></svg>
+    <svg
+      icon="geo"
+      class="size-4"
+      stroke="currentColor"
+      stroke-width="2"
+      aria-hidden="true"
+      focusable="false"
+    ></svg>
     <span
       >{{ geo()?.lat | number: '1.1-8' }} •
       {{ geo()?.lon | number: '1.1-8' }}</span

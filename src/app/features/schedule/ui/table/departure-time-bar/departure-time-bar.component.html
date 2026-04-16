@@ -8,6 +8,8 @@
         class="size-6"
         stroke="currentColor"
         stroke-width="2"
+        aria-hidden="true"
+        focusable="false"
       ></svg>
     </span>
     <time class="font-mono">
@@ -15,6 +17,9 @@
     </time>
   </div>
   <div
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
     class="flex items-center gap-2 text-lg text-blue-700 dark:text-yellow-500"
   >
     <span>
@@ -23,8 +28,11 @@
         class="size-6"
         stroke="currentColor"
         stroke-width="2"
+        aria-hidden="true"
+        focusable="false"
       ></svg>
     </span>
+    <span class="sr-only">Next departure:</span>
     <time class="font-mono">
       {{ label$ | async }}
     </time>
