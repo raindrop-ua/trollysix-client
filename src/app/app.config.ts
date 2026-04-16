@@ -1,11 +1,11 @@
 import { ApplicationConfig } from '@angular/core';
 
-import { provideAppCore } from '@core/config/app-core.providers';
-import { provideAppHttp } from '@core/config/app-http.providers';
-import { provideAppInit } from '@core/config/app-init.providers';
-import { provideAppPwa } from '@core/config/app-pwa.providers';
-import { provideAppRouter } from '@core/config/app-router.providers';
-import { provideAppState } from '@core/config/app-state.providers';
+import { provideAppCore } from '@config/app-core.providers';
+import { provideAppHttp } from '@config/app-http.providers';
+import { provideAppInit } from '@config/app-init.providers';
+import { provideAppPwa } from '@config/app-pwa.providers';
+import { provideAppRouter } from '@config/app-router.providers';
+import { provideAppState } from '@config/app-state.providers';
 
 import { routes } from './app.routes';
 
