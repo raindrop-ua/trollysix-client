@@ -14,6 +14,32 @@ const browserDistFolder = join(import.meta.dirname, '../browser');
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
+function getSsrCacheControl(pathname: string): string {
+  if (pathname.startsWith('/schedule')) {
+    return 'public, max-age=30, stale-while-revalidate=60';
+  }
+
+  return 'public, max-age=300, stale-while-revalidate=600';
+}
+
+function withSsrCacheHeaders(req: express.Request, response: Response): Response {
+  const contentType = response.headers.get('content-type') ?? '';
+  if (!contentType.includes('text/html')) {
+    return response;
+  }
+
+  const headers = new Headers(response.headers);
+  if (!headers.has('Cache-Control')) {
+    headers.set('Cache-Control', getSsrCacheControl(req.path));
+  }
+
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+}
+
 app.use(
   express.static(browserDistFolder, {
     maxAge: '1y',
@@ -25,9 +51,14 @@ app.use(
 app.use((req, res, next) => {
   angularApp
     .handle(req)
-    .then((response) =>
-      response ? writeResponseToNodeResponse(response, res) : next(),
-    )
+    .then((response) => {
+      if (!response) {
+        next();
+        return;
+      }
+
+      writeResponseToNodeResponse(withSsrCacheHeaders(req, response), res);
+    })
     .catch(next);
 });
 
