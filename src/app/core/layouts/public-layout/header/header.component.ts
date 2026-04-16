@@ -6,6 +6,9 @@ import {
   ChangeDetectorRef,
   DestroyRef,
   ChangeDetectionStrategy,
+  ElementRef,
+  HostListener,
+  ViewChild,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
@@ -28,12 +31,16 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
   },
 })
 export class HeaderComponent implements OnInit {
+  @ViewChild('menuToggleButton')
+  private menuToggleButton?: ElementRef<HTMLButtonElement>;
+
   protected readonly AppRouteEnum = AppRouteEnum;
   private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
   private readonly cdr = inject(ChangeDetectorRef);
   public readonly navigation = inject(NAVIGATION_TOKEN);
   public isMenuOpen = signal(false);
+  protected readonly mobileMenuId = 'mobile-main-menu';
 
   public ngOnInit() {
     this.router.events
@@ -42,6 +49,9 @@ export class HeaderComponent implements OnInit {
         takeUntilDestroyed(this.destroyRef),
       )
       .subscribe(() => {
+        if (this.isMenuOpen()) {
+          this.closeMenu(false);
+        }
         this.cdr.markForCheck();
       });
   }
@@ -56,6 +66,32 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleMenu() {
-    this.isMenuOpen.update(() => !this.isMenuOpen());
+    if (this.isMenuOpen()) {
+      this.closeMenu(false);
+      return;
+    }
+
+    this.openMenu();
+  }
+
+  closeMenu(restoreFocus = false) {
+    if (!this.isMenuOpen()) {
+      return;
+    }
+    this.isMenuOpen.set(false);
+    if (restoreFocus) {
+      this.menuToggleButton?.nativeElement.focus();
+    }
+  }
+
+  private openMenu() {
+    this.isMenuOpen.set(true);
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    if (this.isMenuOpen()) {
+      this.closeMenu(true);
+    }
   }
 }
