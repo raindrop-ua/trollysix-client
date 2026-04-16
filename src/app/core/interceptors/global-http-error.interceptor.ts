@@ -1,4 +1,8 @@
-import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
+import {
+  HttpErrorResponse,
+  HttpInterceptorFn,
+  HttpRequest,
+} from '@angular/common/http';
 import { inject } from '@angular/core';
 
 import { retry, tap, timer } from 'rxjs';
@@ -11,7 +15,14 @@ export const globalHttpErrorInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
     retry({
       count: 3,
-      delay: (_, retryCount) => timer(retryCount * 1_500),
+      delay: (error, retryCount) => {
+        if (!isRetriableRequest(req) || !isTransientError(error)) {
+          throw error;
+        }
+
+        // Exponential backoff: 500ms, 1000ms, 2000ms
+        return timer(500 * 2 ** (retryCount - 1));
+      },
     }),
     tap({
       error: (error: HttpErrorResponse) => {
@@ -35,3 +46,19 @@ export const globalHttpErrorInterceptor: HttpInterceptorFn = (req, next) => {
     }),
   );
 };
+
+function isRetriableRequest(req: HttpRequest<unknown>): boolean {
+  return ['GET', 'HEAD', 'OPTIONS'].includes(req.method.toUpperCase());
+}
+
+function isTransientError(error: unknown): boolean {
+  if (!(error instanceof HttpErrorResponse)) {
+    return false;
+  }
+
+  if (error.status === 0) {
+    return true;
+  }
+
+  return [408, 429, 502, 503, 504].includes(error.status);
+}

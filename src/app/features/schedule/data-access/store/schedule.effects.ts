@@ -1,5 +1,5 @@
-import { Location } from '@angular/common';
-import { inject, Injectable } from '@angular/core';
+import { isPlatformBrowser, Location } from '@angular/common';
+import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import {
@@ -26,6 +26,8 @@ export class ScheduleEffects {
   private actions$ = inject(Actions);
   private store = inject(Store);
   private scheduleApi = inject(ScheduleApiService);
+  private readonly platformId = inject(PLATFORM_ID);
+  private readonly isBrowser = isPlatformBrowser(this.platformId);
 
   private router = inject(Router);
   private route = inject(ActivatedRoute);
@@ -94,6 +96,7 @@ export class ScheduleEffects {
         this.store.select(scheduleFeature.selectSelectedDayTypeName),
         this.store.select(scheduleFeature.selectSelectedDirectionName),
       ]).pipe(
+        filter(() => this.isBrowser),
         filter(
           ([stopId, dayTypeName, directionName]) =>
             !!stopId && !!dayTypeName && !!directionName,
@@ -129,6 +132,7 @@ export class ScheduleEffects {
     () =>
       this.actions$.pipe(
         ofType(SchedulePageActions.enter),
+        filter(() => this.isBrowser),
         switchMap(() =>
           this.route.queryParamMap.pipe(
             take(1),
@@ -202,6 +206,10 @@ export class ScheduleEffects {
         this.store.select(scheduleFeature.selectSelectedStopId),
         this.store.select(scheduleFeature.selectSelectedDayTypeName),
         this.store.select(scheduleFeature.selectSelectedDirectionName),
+      ),
+      filter(
+        ([, stopId, dayType, direction]) =>
+          !!stopId && !!dayType && !!direction,
       ),
       switchMap(([, stopId, dayType, direction]) =>
         this.scheduleApi.getTimetable(stopId!, dayType!, direction!).pipe(

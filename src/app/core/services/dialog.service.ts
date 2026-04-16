@@ -1,3 +1,4 @@
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import {
   createComponent,
   ApplicationRef,
@@ -5,6 +6,7 @@ import {
   inject,
   Injectable,
   ComponentRef,
+  PLATFORM_ID,
 } from '@angular/core';
 
 import { Subject } from 'rxjs';
@@ -18,10 +20,17 @@ import { DialogComponent } from '@core/ui/dialog/dialog.component';
 export class DialogService {
   private appRef = inject(ApplicationRef);
   private injector = inject(EnvironmentInjector);
+  private readonly document = inject(DOCUMENT, { optional: true });
+  private readonly platformId = inject(PLATFORM_ID);
+  private readonly isBrowser = isPlatformBrowser(this.platformId);
   private activeDialogs: ComponentRef<DialogComponent>[] = [];
 
   open(config: DialogConfig): Subject<DialogResult> {
     const result$ = new Subject<DialogResult>();
+    if (!this.isBrowser || !this.document?.body) {
+      result$.complete();
+      return result$;
+    }
 
     const componentRef = createComponent(DialogComponent, {
       environmentInjector: this.injector,
@@ -34,7 +43,7 @@ export class DialogService {
     });
 
     this.appRef.attachView(componentRef.hostView);
-    document.body.appendChild(componentRef.location.nativeElement);
+    this.document.body.appendChild(componentRef.location.nativeElement);
 
     this.activeDialogs.push(componentRef);
 

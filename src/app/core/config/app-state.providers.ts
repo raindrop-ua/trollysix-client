@@ -9,13 +9,19 @@ import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 export function provideAppState(): EnvironmentProviders {
+  const enableDevtools = isDevMode() && typeof window !== 'undefined';
+
   return makeEnvironmentProviders([
     provideStore(),
     provideEffects(),
-    provideStoreDevtools({
-      maxAge: 25,
-      logOnly: !isDevMode(),
-      connectInZone: false,
-    }),
+    ...(enableDevtools
+      ? [
+          provideStoreDevtools({
+            maxAge: 25,
+            logOnly: !isDevMode(),
+            connectInZone: false,
+          }),
+        ]
+      : []),
   ]);
 }
