@@ -23,6 +23,8 @@ type TooltipPlacement = 'top' | 'bottom' | 'left' | 'right';
   },
 })
 export class TooltipDirective {
+  private static nextTooltipId = 0;
+
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly doc = inject(DOCUMENT);
   private readonly destroyRef = inject(DestroyRef);
@@ -59,6 +61,7 @@ export class TooltipDirective {
   });
 
   private tooltipEl: HTMLDivElement | null = null;
+  private tooltipId: string | null = null;
   private showTimer: ReturnType<typeof setTimeout> | null = null;
   private hideTimer: ReturnType<typeof setTimeout> | null = null;
   private rafId: number | null = null;
@@ -106,7 +109,7 @@ export class TooltipDirective {
     }
 
     this.tooltipEl!.textContent = text;
-    this.host.nativeElement.setAttribute('aria-label', text);
+    this.addDescribedBy();
     this.tooltipEl!.style.opacity = '1';
 
     this.updatePosition();
@@ -126,6 +129,9 @@ export class TooltipDirective {
 
   private createTooltip() {
     const el = this.doc.createElement('div');
+    const tooltipId = `trollysix-tooltip-${++TooltipDirective.nextTooltipId}`;
+
+    el.id = tooltipId;
     el.setAttribute('role', 'tooltip');
 
     el.className = `hidden md:block fixed z-45 pointer-events-none select-none rounded-xl baseline-borders
@@ -147,6 +153,7 @@ export class TooltipDirective {
 
     this.doc.body.appendChild(el);
     this.tooltipEl = el;
+    this.tooltipId = tooltipId;
   }
 
   private destroyTooltip() {
@@ -154,8 +161,10 @@ export class TooltipDirective {
     if (this.rafId) cancelAnimationFrame(this.rafId);
     this.ro?.disconnect();
     this.detachGlobalListeners();
+    this.removeDescribedBy();
     this.tooltipEl?.remove();
     this.tooltipEl = null;
+    this.tooltipId = null;
   }
 
   private attachGlobalListeners() {
@@ -234,5 +243,40 @@ export class TooltipDirective {
       clearTimeout(this.hideTimer);
       this.hideTimer = null;
     }
+  }
+
+  private addDescribedBy() {
+    if (!this.tooltipId) {
+      return;
+    }
+
+    const hostEl = this.host.nativeElement;
+    const existing = (hostEl.getAttribute('aria-describedby') ?? '').trim();
+    const ids = existing ? existing.split(/\s+/) : [];
+
+    if (!ids.includes(this.tooltipId)) {
+      ids.push(this.tooltipId);
+      hostEl.setAttribute('aria-describedby', ids.join(' '));
+    }
+  }
+
+  private removeDescribedBy() {
+    if (!this.tooltipId) {
+      return;
+    }
+
+    const hostEl = this.host.nativeElement;
+    const existing = (hostEl.getAttribute('aria-describedby') ?? '').trim();
+    if (!existing) {
+      return;
+    }
+
+    const ids = existing.split(/\s+/).filter((id) => id && id !== this.tooltipId);
+    if (ids.length) {
+      hostEl.setAttribute('aria-describedby', ids.join(' '));
+      return;
+    }
+
+    hostEl.removeAttribute('aria-describedby');
   }
 }
