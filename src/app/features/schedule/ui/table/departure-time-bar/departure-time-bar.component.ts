@@ -33,9 +33,24 @@ export class DepartureTimeBarComponent {
     map(
       (list) =>
         list.find((d) => d.status === Status.Now) ??
-        list.find((d) => d.status !== Status.Past) ??
+        list.find(
+          (d) => d.status !== Status.Past && d.status !== Status.Canceled,
+        ) ??
         null,
     ),
+  );
+
+  readonly minutesToNext$ = combineLatest([this.next$, this.clockService.now$]).pipe(
+    map(([next, now]) => {
+      if (!next?.time) return null;
+
+      const [hours, minutes] = next.time.split(':').map(Number);
+      const departure = new Date(now);
+      departure.setHours(hours, minutes, 0, 0);
+
+      const diff = Math.floor((departure.getTime() - now.getTime()) / 60000);
+      return diff >= 0 ? diff : null;
+    }),
   );
 
   readonly label$ = combineLatest([
