@@ -1,43 +1,48 @@
 <trollysix-generic-section-block class="mb-12 block">
   <header class="mb-4">
     <h2 class="text-xl font-semibold text-slate-900 dark:text-white">
-      Rolling stock
+      {{ copyAbout.infrastructure.rollingStock }}
     </h2>
     <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
-      Vehicles currently operating on Route 6
+      {{ copyAbout.infrastructure.vehiclesOnRouteSix }}
     </p>
   </header>
 
   <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-    <trollysix-infrastructure-card [title]="'Primary model'">
+    <trollysix-infrastructure-card [title]="copyAbout.infrastructure.primaryModel">
       <div class="text-base font-semibold text-slate-900 dark:text-white">
-        AKSM&nbsp;321D
+        {{ copyAbout.infrastructure.modelName }}
       </div>
       <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-        Capable of extended autonomous operation — suitable for the wire-free
-        segment of the route.
+        {{ copyAbout.infrastructure.modelDescription }}
       </p>
       <trollysix-vehicle-features />
     </trollysix-infrastructure-card>
 
-    <trollysix-infrastructure-card [title]="'Operation'">
+    <trollysix-infrastructure-card [title]="copyAbout.infrastructure.operation">
       <ul class="space-y-1 text-sm text-slate-600 dark:text-slate-300">
-        <li>Weekdays: <span class="font-medium">6</span> vehicles</li>
-        <li>Weekends: <span class="font-medium">4</span> vehicles</li>
         <li>
-          Served by <span class="font-medium">2</span> depots (balanced
-          allocation)
+          {{ copyAbout.infrastructure.weekdays }} <span class="font-medium">6</span>
+          {{ copyAbout.infrastructure.vehicles }}
+        </li>
+        <li>
+          {{ copyAbout.infrastructure.weekends }} <span class="font-medium">4</span>
+          {{ copyAbout.infrastructure.vehicles }}
+        </li>
+        <li>
+          {{ copyAbout.infrastructure.servedBy }} <span class="font-medium">2</span>
+          {{ copyAbout.infrastructure.depotsBalancedAllocation }}
         </li>
       </ul>
     </trollysix-infrastructure-card>
 
-    <trollysix-infrastructure-card [title]="'Media'">
+    <trollysix-infrastructure-card [title]="copyAbout.infrastructure.media">
       <div
         class="relative mt-2 aspect-16/10 w-full overflow-hidden rounded-2xl bg-slate-900/5 ring-1 ring-slate-900/10 dark:bg-white/5 dark:ring-white/10"
       >
         <img
           [ngSrc]="'assets/images/posters/pridniprovsk2.webp'"
-          alt="Stop photo"
+          [alt]="copyAbout.infrastructure.stopPhotoAlt"
           class="h-full w-full object-cover"
           fill
         />

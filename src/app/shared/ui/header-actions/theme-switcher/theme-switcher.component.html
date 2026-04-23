@@ -2,8 +2,14 @@
   <button
     trollysixIconButton
     [variant]="'default'"
-    [attr.aria-label]="'Theme: ' + themeSignal()"
-    [attr.title]="'Theme: ' + themeSignal() + ' — click to toggle'"
+    [attr.aria-label]="copyCommon.themeLabelPrefix + ' ' + themeSignal()"
+    [attr.title]="
+      copyCommon.themeLabelPrefix +
+      ' ' +
+      themeSignal() +
+      ' - ' +
+      copyCommon.themeToggleHint
+    "
     (click)="toggleTheme()"
   >
     @if (themeSignal() === 'light') {
@@ -21,6 +27,6 @@
         stroke-width="2"
       ></svg>
     }
-    <span class="sr-only">Toggle theme</span>
+    <span class="sr-only">{{ copyCommon.toggleTheme }}</span>
   </button>
 </div>

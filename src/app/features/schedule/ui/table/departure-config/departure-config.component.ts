@@ -1,6 +1,8 @@
 import { AsyncPipe } from '@angular/common';
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
+import { copy } from '@core/content/copy.util';
+
 import { ScheduleService } from '@features/schedule/services/schedule.service';
 
 @Component({
@@ -11,6 +13,7 @@ import { ScheduleService } from '@features/schedule/services/schedule.service';
   host: { class: 'block' },
 })
 export class DepartureConfigComponent {
+  readonly copySchedule = copy('schedule');
   private readonly schedule = inject(ScheduleService);
   readonly departures$ = this.schedule.departures$;
   readonly showRunNumbers$ = this.schedule.showRunNumbers$;

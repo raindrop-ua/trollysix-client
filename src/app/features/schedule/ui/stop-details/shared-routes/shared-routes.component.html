@@ -1,6 +1,6 @@
 <div class="baseline-borders baseline-surface h-full rounded-3xl p-4">
   <div class="mb-2 text-base font-medium text-slate-700 dark:text-slate-200">
-    Shared routes
+    {{ copySchedule.sharedRoutes.title }}
   </div>
   <ul class="flex flex-wrap gap-2">
     @for (sharedRoute of stop().sharedRoutes; track sharedRoute) {
@@ -8,7 +8,7 @@
         {{ sharedRoute }}
       </li>
     } @empty {
-      <li class="shared-route-badge">No shared routes</li>
+      <li class="shared-route-badge">{{ copySchedule.sharedRoutes.noSharedRoutes }}</li>
     }
   </ul>
 </div>

@@ -1,5 +1,6 @@
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
+import { copy } from '@core/content/copy.util';
 import { ThemeService } from '@core/services/theme.service';
 
 import { IconButtonDirective } from '@shared/directives/icon-button.directive';
@@ -13,6 +14,7 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
   host: { class: 'block' },
 })
 export class ThemeSwitcherComponent {
+  readonly copyCommon = copy('common');
   private readonly theme = inject(ThemeService);
 
   themeSignal = this.theme.theme;

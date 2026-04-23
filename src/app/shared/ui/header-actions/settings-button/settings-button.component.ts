@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+import { copy } from '@core/content/copy.util';
 import { AppRouteEnum } from '@core/enums/app-route.enum';
 
 import { IconButtonDirective } from '@shared/directives/icon-button.directive';
@@ -14,5 +15,6 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
   host: { class: 'block' },
 })
 export class SettingsButtonComponent {
+  readonly copyCommon = copy('common');
   protected readonly AppRouteEnum = AppRouteEnum;
 }

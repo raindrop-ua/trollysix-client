@@ -8,6 +8,8 @@ import { toSignal } from '@angular/core/rxjs-interop';
 
 import { Store } from '@ngrx/store';
 
+import { copy } from '@core/content/copy.util';
+
 import { selectTimetableLoading } from '@features/schedule/data-access/store/schedule.selectors';
 import { ScheduleService } from '@features/schedule/services/schedule.service';
 import { DepartureTimeItemComponent } from '@features/schedule/ui/table/departure-time-item/departure-time-item.component';
@@ -21,6 +23,7 @@ import { SpinnerComponent } from '@shared/ui/spinner/spinner.component';
   host: { class: 'block' },
 })
 export class DepartureTableComponent {
+  readonly copySchedule = copy('schedule');
   private readonly schedule = inject(ScheduleService);
   readonly departures = toSignal(this.schedule.departures$, { initialValue: [] });
   private readonly store = inject(Store);

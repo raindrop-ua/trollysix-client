@@ -1,6 +1,8 @@
 import { NgOptimizedImage } from '@angular/common';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
+import { copy } from '@core/content/copy.util';
+
 import { GenericSectionBlockComponent } from '@shared/ui/sections/generic-section-block/generic-section-block.component';
 
 import { InfrastructureCardComponent } from './infrastructure-card/infrastructure-card.component';
@@ -18,4 +20,6 @@ import { VehicleFeaturesComponent } from './vehicle-features/vehicle-features.co
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'block' },
 })
-export class InfrastructureComponent {}
+export class InfrastructureComponent {
+  readonly copyAbout = copy('about');
+}

@@ -6,6 +6,8 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 
+import { copy } from '@core/content/copy.util';
+
 import { TooltipDirective } from '@shared/directives/tooltip.directive';
 import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
@@ -17,6 +19,7 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
   host: { class: 'block' },
 })
 export class GeoBadgeComponent {
+  readonly copySchedule = copy('schedule');
   geo = input<{ lat: number; lon: number }>();
 
   readonly mapsUrl = computed(() => {

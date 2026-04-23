@@ -12,10 +12,9 @@
     [descriptionTemplate]="worksDescription"
     [ctaTemplate]="worksCTAs"
   />
-  <ng-template #worksTitle>It just works.</ng-template>
+  <ng-template #worksTitle>{{ copyHome.works.title }}</ng-template>
   <ng-template #worksDescription
-    >No instructions. No chaos. Open it and see everything you need. Less
-    touching, more control.</ng-template
+    >{{ copyHome.works.description }}</ng-template
   >
   <ng-template #worksCTAs>
     <a [routerLink]="['/schedule']" trollysixBtn="primary">{{
@@ -36,10 +35,9 @@
     [titleTemplate]="precisionTitle"
     [descriptionTemplate]="precisionDescription"
   />
-  <ng-template #precisionTitle>Designed with the precision</ng-template>
+  <ng-template #precisionTitle>{{ copyHome.precision.title }}</ng-template>
   <ng-template #precisionDescription
-    >Every departure, every arrival — perfectly organized. Because your time
-    deserves nothing less than perfection.</ng-template
+    >{{ copyHome.precision.description }}</ng-template
   >
 }
 

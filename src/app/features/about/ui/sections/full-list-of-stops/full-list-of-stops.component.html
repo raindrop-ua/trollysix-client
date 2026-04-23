@@ -1,7 +1,7 @@
 <trollysix-generic-section-block class="mb-20 block">
   <header>
     <h2 class="text-xl font-semibold text-slate-900 dark:text-white">
-      List of stops of the route
+      {{ copyAbout.fullListOfStops.title }}
     </h2>
     <p class="mt-1 text-sm text-slate-600 dark:text-slate-300"></p>
   </header>
@@ -9,12 +9,12 @@
   @if (routeStops().length) {
     <div class="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2">
       <trollysix-stops-list
-        [title]="'Forward direction'"
+        [title]="copyAbout.fullListOfStops.forwardDirection"
         [direction]="'forward'"
         [stops]="routeStopsForward()"
       />
       <trollysix-stops-list
-        [title]="'Backward direction'"
+        [title]="copyAbout.fullListOfStops.backwardDirection"
         [direction]="'backward'"
         [stops]="routeStopsBackward()"
       />

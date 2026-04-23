@@ -1,5 +1,7 @@
 import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 
+import { copy } from '@core/content/copy.util';
+
 import { RouteStop } from '@features/about/data-access/models/route-stops.model';
 import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
@@ -11,6 +13,7 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
   host: { class: 'block' },
 })
 export class StopsListItemComponent {
+  readonly copyAbout = copy('about');
   public readonly stopItemData = input.required<RouteStop>();
   public readonly isLastItem = input(false);
   public readonly itemIndex = input.required<number>();

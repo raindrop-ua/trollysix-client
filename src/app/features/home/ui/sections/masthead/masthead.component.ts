@@ -31,6 +31,7 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 export class MastheadComponent {
   protected readonly AppRouteEnum = AppRouteEnum;
   readonly copyCommon = copy('common');
+  readonly copyHome = copy('home');
   private readonly clock = inject(ClockService);
 
   readonly isWinter$ = this.clock.now$.pipe(
