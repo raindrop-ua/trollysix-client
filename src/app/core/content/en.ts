@@ -29,7 +29,7 @@ export const COPY = {
     masthead: {
       titleMain: 'Ultimate Schedule',
       titleFor: 'for Trolleybus',
-      titleRoute: 'Route 6',
+      titleRoute: 'Route\u00A06',
     },
     works: {
       title: 'It just works.',
@@ -45,7 +45,7 @@ export const COPY = {
       title: 'Route 6 — Ready?',
     },
     bigClaims: {
-      title: 'Everything you need to catch Route 6.',
+      title: 'Everything you need to catch Route\u00A06.',
       subtitle: 'And nothing you don’t.',
       description:
         'Find, choose, go. It is your pocket dispatcher, always at hand.',
@@ -175,8 +175,8 @@ The route then proceeds along Elektrychna St., Kolska St., and 20 Years of Victo
     },
     metrics: [
       {
-        title: '6 > 4',
-        description: 'vehicles: weekdays > weekends',
+        title: '6 → 4',
+        description: 'vehicles: weekdays → weekends',
       },
       {
         title: '2',
