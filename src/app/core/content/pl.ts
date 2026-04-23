@@ -19,7 +19,7 @@ export const COPY = {
     navigation: {
       home: 'Strona główna',
       schedule: 'Rozkład jazdy',
-      about: 'O aplikacji',
+      about: 'O projekcie',
     },
   },
 
