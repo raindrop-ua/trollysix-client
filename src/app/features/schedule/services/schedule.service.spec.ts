@@ -11,17 +11,12 @@ import { Status } from '../data-access/models/departure.model';
 import { TimeEntity } from '../data-access/models/timetable.model';
 import { SchedulePageActions } from '../data-access/store/schedule.actions';
 import { scheduleFeature } from '../data-access/store/schedule.reducer';
-import { selectScheduleViewModel } from '../data-access/store/schedule.selectors';
+import { selectCurrentTimetableTimes } from '../data-access/store/schedule.selectors';
 
 import { ScheduleService } from './schedule.service';
 
-interface ScheduleVM {
-  currentTimetable?: { times: TimeEntity[] } | null;
-}
-
 interface StoreLike {
-  select(selector: unknown): Observable<ScheduleVM>;
-  select(selector: unknown): Observable<boolean>;
+  select(selector: unknown): Observable<unknown>;
   dispatch: (action: unknown) => void;
 }
 
@@ -38,18 +33,14 @@ describe('ScheduleService (Injector.create)', () => {
       now$: of(opts.now),
     };
 
-    const vm$: Observable<ScheduleVM> = of({
-      currentTimetable: { times: opts.times },
-    });
+    const times$: Observable<TimeEntity[]> = of(opts.times);
 
     const show$: Observable<boolean> = of(opts.showNumbers);
 
     const dispatch = vi.fn<(action: unknown) => void>();
 
-    function select(selector: unknown): Observable<ScheduleVM>;
-    function select(selector: unknown): Observable<boolean>;
     function select(selector: unknown) {
-      if (selector === selectScheduleViewModel) return vm$;
+      if (selector === selectCurrentTimetableTimes) return times$;
       if (selector === scheduleFeature.selectShowRunNumbers) return show$;
 
       return of(undefined);
