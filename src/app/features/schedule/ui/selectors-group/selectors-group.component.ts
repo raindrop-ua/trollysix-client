@@ -1,12 +1,19 @@
-import { AsyncPipe, NgClass } from '@angular/common';
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { Component, computed, inject, ChangeDetectionStrategy } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 import { Store } from '@ngrx/store';
 
 import { copy } from '@core/content/copy.util';
 
 import { SchedulePageActions } from '@features/schedule/data-access/store/schedule.actions';
-import { selectScheduleViewModel } from '@features/schedule/data-access/store/schedule.selectors';
+import {
+  selectDayTypes,
+  selectDirections,
+  selectSelectedDayType,
+  selectSelectedDirection,
+  selectTimetableLoading,
+} from '@features/schedule/data-access/store/schedule.selectors';
 import { ScheduleService } from '@features/schedule/services/schedule.service';
 import { HintArrowComponent } from '@features/schedule/ui/hint-arrow/hint-arrow.component';
 import { OptionsSelectorComponent } from '@features/schedule/ui/options-selector/options-selector.component';
@@ -17,7 +24,6 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
   imports: [
     OptionsSelectorComponent,
     SvgIconComponent,
-    AsyncPipe,
     HintArrowComponent,
     NgClass,
   ],
@@ -28,10 +34,18 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 export class SelectorsGroupComponent {
   readonly copySchedule = copy('schedule');
 
-  private store = inject(Store);
+  private readonly store = inject(Store);
   private readonly schedule = inject(ScheduleService);
-  readonly departures$ = this.schedule.departures$;
-  vm$ = this.store.select(selectScheduleViewModel);
+  readonly departures = toSignal(this.schedule.departures$, { initialValue: [] });
+  readonly dayTypes = this.store.selectSignal(selectDayTypes);
+  readonly directions = this.store.selectSignal(selectDirections);
+  readonly selectedDayTypeName = this.store.selectSignal(selectSelectedDayType);
+  readonly selectedDirectionName = this.store.selectSignal(selectSelectedDirection);
+  readonly timetableLoading = this.store.selectSignal(selectTimetableLoading);
+  readonly isUnavailable = computed(
+    () => this.departures().length === 0 && !this.timetableLoading(),
+  );
+  readonly hasDepartures = computed(() => this.departures().length > 0);
 
   onSelectDayType(dayTypeName: string): void {
     this.store.dispatch(SchedulePageActions.selectDayType({ dayTypeName }));
