@@ -58,7 +58,7 @@
     >
       @let departure = getDeparture(stop, vm.selectedDirectionName);
       <div
-        class="flex items-center gap-2 font-mono text-sm text-slate-800 dark:text-slate-200"
+        class="flex items-center gap-2 font-mono text-sm text-blue-700 dark:text-yellow-500"
       >
         <svg
           icon="clock"
@@ -71,7 +71,9 @@
         @if (departure?.first && departure?.last) {
           <span> {{ departure?.first }} • {{ departure?.last }} </span>
         } @else {
-          <span>{{ copySchedule.noDepartures }}</span>
+          <span class="text-slate-800 dark:text-slate-200">{{
+            copySchedule.noDepartures
+          }}</span>
         }
       </div>
     </div>
