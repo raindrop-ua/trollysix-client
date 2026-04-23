@@ -31,11 +31,7 @@
       />
     } @empty {
       @for (placeholder of [1, 2, 3, 4, 5, 6, 7, 8]; track placeholder) {
-        <div
-          class="stop-card-placeholder"
-          [class.min-h-33]="showDescriptions()"
-          [class.min-h-27]="!showDescriptions()"
-        ></div>
+        <div class="stop-card-placeholder min-h-27"></div>
       }
     }
   </div>

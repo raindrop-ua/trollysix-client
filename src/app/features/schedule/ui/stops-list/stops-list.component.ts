@@ -33,12 +33,15 @@ export class StopsListComponent {
 
   private readonly store = inject(Store);
 
-  public readonly showDescriptions = signal<boolean>(false);
   public readonly stops = this.store.selectSignal(selectAllScheduleStops);
-  public readonly selectedStopId = this.store.selectSignal(selectSelectedStopId);
-  public readonly selectedDayTypeName = this.store.selectSignal(selectSelectedDayType);
-  public readonly selectedDirectionName =
-    this.store.selectSignal(selectSelectedDirection);
+  public readonly selectedStopId =
+    this.store.selectSignal(selectSelectedStopId);
+  public readonly selectedDayTypeName = this.store.selectSignal(
+    selectSelectedDayType,
+  );
+  public readonly selectedDirectionName = this.store.selectSignal(
+    selectSelectedDirection,
+  );
   public readonly currentTimetableValidFrom = this.store.selectSignal(
     selectCurrentTimetableValidFrom,
   );
