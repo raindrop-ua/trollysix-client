@@ -1,38 +1,36 @@
-@if (vm$ | async; as vm) {
-  @let departures = departures$ | async;
-  <div [attr.aria-busy]="vm.timetableLoading" aria-live="polite">
-    <div
-      class="grid grid-cols-4 gap-2 sm:grid-cols-6 md:grid-cols-7 lg:grid-cols-8 xl:grid-cols-10"
-    >
-      @for (departure of departures; track departure.time) {
-        <trollysix-departure-time-item
-          [departure]="departure"
-          (clickTime)="onSelectTime($event)"
-        />
-      }
-    </div>
-    @if (vm.timetableLoading) {
-      <div
-        role="status"
-        aria-live="polite"
-        class="flex min-h-38 w-full items-center justify-center"
-      >
-        <span class="sr-only">Loading departures...</span>
-        <trollysix-spinner />
-      </div>
-    }
-    @if (departures?.length === 0 && !vm.timetableLoading) {
-      <div
-        role="status"
-        aria-live="polite"
-        class="flex w-full flex-col items-center justify-center py-4 text-center"
-      >
-        <p class="text-xl">No departures found.</p>
-        <p class="mt-4 text-lg">
-          This stop may not have any departures in the selected direction.
-          Please try choosing the opposite direction.
-        </p>
-      </div>
+@let departuresList = departures();
+<div [attr.aria-busy]="timetableLoading()" aria-live="polite">
+  <div
+    class="grid grid-cols-4 gap-2 sm:grid-cols-6 md:grid-cols-7 lg:grid-cols-8 xl:grid-cols-10"
+  >
+    @for (departure of departuresList; track departure.time) {
+      <trollysix-departure-time-item
+        [departure]="departure"
+        (clickTime)="onSelectTime($event)"
+      />
     }
   </div>
-}
+  @if (timetableLoading()) {
+    <div
+      role="status"
+      aria-live="polite"
+      class="flex min-h-38 w-full items-center justify-center"
+    >
+      <span class="sr-only">Loading departures...</span>
+      <trollysix-spinner />
+    </div>
+  }
+  @if (departuresList.length === 0 && !timetableLoading()) {
+    <div
+      role="status"
+      aria-live="polite"
+      class="flex w-full flex-col items-center justify-center py-4 text-center"
+    >
+      <p class="text-xl">No departures found.</p>
+      <p class="mt-4 text-lg">
+        This stop may not have any departures in the selected direction.
+        Please try choosing the opposite direction.
+      </p>
+    </div>
+  }
+</div>
