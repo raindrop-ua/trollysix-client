@@ -1,44 +1,39 @@
-@if (vm$ | async; as vm) {
-  <section class="baseline-container py-6 md:py-8">
-    <div class="mb-4 flex items-center justify-between gap-2">
-      <h2
-        [id]="stopsTitleId"
-        class="text-base font-semibold text-slate-900 dark:text-slate-100"
-      >
-        {{ copySchedule.selectStop }}
-      </h2>
-      <div class="text-s text-slate-500 dark:text-slate-400">
-        @if (vm.currentTimetable?.validFrom; as validFrom) {
-          <span
-            >{{ copySchedule.scheduleValidFrom }}
-            {{ validFrom | date: 'dd.MM.yy' }}</span
-          >
-        }
-      </div>
-    </div>
-
-    <div
-      role="radiogroup"
-      [attr.aria-labelledby]="stopsTitleId"
-      class="3xl:grid-cols-6 grid min-h-27 grid-cols-2 gap-4 md:grid-cols-4"
+<section class="baseline-container py-6 md:py-8">
+  <div class="mb-4 flex items-center justify-between gap-2">
+    <h2
+      [id]="stopsTitleId"
+      class="text-base font-semibold text-slate-900 dark:text-slate-100"
     >
-      @for (stop of vm.stops; track stop.id) {
-        @let selected = vm.selectedStop?.id === stop.id;
-        <trollysix-stop-card
-          [stopData]="stop"
-          [selected]="selected"
-          [selectedDirectionName]="vm.selectedDirectionName"
-          [selectedDayTypeName]="vm.selectedDayTypeName"
-        />
-      } @empty {
-        @for (placeholder of [1, 2, 3, 4, 5, 6]; track placeholder) {
-          <div
-            class="stop-card-placeholder"
-            [class.min-h-33]="showDescriptions()"
-            [class.min-h-27]="!showDescriptions()"
-          ></div>
-        }
+      {{ copySchedule.selectStop }}
+    </h2>
+    <div class="text-s text-slate-500 dark:text-slate-400">
+      @if (currentTimetableValidFrom(); as validFrom) {
+        <span>{{ copySchedule.scheduleValidFrom }} {{ validFrom | date: 'dd.MM.yy' }}</span>
       }
     </div>
-  </section>
-}
+  </div>
+
+  <div
+    role="radiogroup"
+    [attr.aria-labelledby]="stopsTitleId"
+    class="3xl:grid-cols-6 grid min-h-27 grid-cols-2 gap-4 md:grid-cols-4"
+  >
+    @for (stop of stops(); track stop.id) {
+      @let selected = selectedStopId() === stop.id;
+      <trollysix-stop-card
+        [stopData]="stop"
+        [selected]="selected"
+        [selectedDirectionName]="selectedDirectionName()"
+        [selectedDayTypeName]="selectedDayTypeName()"
+      />
+    } @empty {
+      @for (placeholder of [1, 2, 3, 4, 5, 6]; track placeholder) {
+        <div
+          class="stop-card-placeholder"
+          [class.min-h-33]="showDescriptions()"
+          [class.min-h-27]="!showDescriptions()"
+        ></div>
+      }
+    }
+  </div>
+</section>
