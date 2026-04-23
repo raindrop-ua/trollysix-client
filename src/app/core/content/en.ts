@@ -16,6 +16,11 @@ export const COPY = {
     },
     themeLabelPrefix: 'Theme:',
     themeToggleHint: 'click to toggle',
+    navigation: {
+      home: 'Home',
+      schedule: 'Schedule',
+      about: 'About',
+    },
   },
 
   home: {
