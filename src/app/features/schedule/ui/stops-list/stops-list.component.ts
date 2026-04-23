@@ -1,22 +1,23 @@
-import { AsyncPipe, DatePipe } from '@angular/common';
-import {
-  Component,
-  inject,
-  signal,
-  ChangeDetectionStrategy,
-} from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
 import { copy } from '@core/content/copy.util';
 
-import { selectScheduleViewModel } from '@features/schedule/data-access/store/schedule.selectors';
+import {
+  selectAllScheduleStops,
+  selectCurrentTimetableValidFrom,
+  selectSelectedDayType,
+  selectSelectedDirection,
+  selectSelectedStopId,
+} from '@features/schedule/data-access/store/schedule.selectors';
 
 import { StopCardComponent } from './stop-card/stop-card.component';
 
 @Component({
   selector: 'trollysix-stops-list',
-  imports: [AsyncPipe, DatePipe, StopCardComponent],
+  imports: [DatePipe, StopCardComponent],
   templateUrl: './stops-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'block' },
@@ -25,9 +26,18 @@ export class StopsListComponent {
   readonly copySchedule = copy('schedule');
   readonly stopsTitleId = 'stops-list-title';
 
-  private store = inject(Store);
+  private readonly store = inject(Store);
 
-  public readonly showDescriptions = signal<boolean>(false);
-
-  public vm$ = this.store.select(selectScheduleViewModel);
+  public readonly stops = this.store.selectSignal(selectAllScheduleStops);
+  public readonly selectedStopId =
+    this.store.selectSignal(selectSelectedStopId);
+  public readonly selectedDayTypeName = this.store.selectSignal(
+    selectSelectedDayType,
+  );
+  public readonly selectedDirectionName = this.store.selectSignal(
+    selectSelectedDirection,
+  );
+  public readonly currentTimetableValidFrom = this.store.selectSignal(
+    selectCurrentTimetableValidFrom,
+  );
 }

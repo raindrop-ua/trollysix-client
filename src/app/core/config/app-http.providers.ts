@@ -2,7 +2,6 @@ import {
   provideHttpClient,
   withFetch,
   withInterceptors,
-  withInterceptorsFromDi,
 } from '@angular/common/http';
 import { EnvironmentProviders, makeEnvironmentProviders } from '@angular/core';
 
@@ -12,7 +11,6 @@ export function provideAppHttp(): EnvironmentProviders {
   return makeEnvironmentProviders([
     provideHttpClient(
       withInterceptors([globalHttpErrorInterceptor]),
-      withInterceptorsFromDi(),
       withFetch(),
     ),
   ]);

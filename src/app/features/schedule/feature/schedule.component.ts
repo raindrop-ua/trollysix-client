@@ -1,4 +1,3 @@
-import { AsyncPipe } from '@angular/common';
 import {
   Component,
   inject,
@@ -19,7 +18,7 @@ import { GenericHeaderComponent } from '@shared/ui/sections/generic-header/gener
 import { NoticeComponent } from '@shared/ui/sections/notice/notice.component';
 
 import { SchedulePageActions } from '../data-access/store/schedule.actions';
-import { selectScheduleViewModel } from '../data-access/store/schedule.selectors';
+import { selectSelectedStop } from '../data-access/store/schedule.selectors';
 
 @Component({
   selector: 'trollysix-schedule',
@@ -31,7 +30,6 @@ import { selectScheduleViewModel } from '../data-access/store/schedule.selectors
     StopsListComponent,
     StopDetailsComponent,
     StopToolbarComponent,
-    AsyncPipe,
   ],
   templateUrl: './schedule.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -40,8 +38,8 @@ import { selectScheduleViewModel } from '../data-access/store/schedule.selectors
 export class ScheduleComponent implements OnInit {
   readonly copySchedule = copy('schedule');
 
-  private store = inject(Store);
-  vm$ = this.store.select(selectScheduleViewModel);
+  private readonly store = inject(Store);
+  readonly selectedStop = this.store.selectSignal(selectSelectedStop);
 
   ngOnInit(): void {
     this.store.dispatch(SchedulePageActions.enter());

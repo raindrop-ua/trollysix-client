@@ -80,7 +80,7 @@ export class ScheduleEffects {
           catchError((error) =>
             of(
               ScheduleApiActions.loadInitialDataFailure({
-                error: error.message,
+                error: toErrorMessage(error),
               }),
             ),
           ),
@@ -191,9 +191,20 @@ export class ScheduleEffects {
         this.store.select(scheduleFeature.selectSelectedDayTypeName),
         this.store.select(scheduleFeature.selectSelectedDirectionName),
       ),
+      map(([, stopId, dayType, direction]) => ({
+        stopId,
+        dayType,
+        direction,
+      })),
       filter(
-        ([, stopId, dayType, direction]) =>
+        ({ stopId, dayType, direction }) =>
           !!stopId && !!dayType && !!direction,
+      ),
+      distinctUntilChanged(
+        (a, b) =>
+          a.stopId === b.stopId &&
+          a.dayType === b.dayType &&
+          a.direction === b.direction,
       ),
       map(() => ScheduleApiActions.loadTimetable()),
     ),
@@ -218,11 +229,25 @@ export class ScheduleEffects {
           ),
           catchError((error) =>
             of(
-              ScheduleApiActions.loadTimetableFailure({ error: error.message }),
+              ScheduleApiActions.loadTimetableFailure({
+                error: toErrorMessage(error),
+              }),
             ),
           ),
         ),
       ),
     ),
   );
+}
+
+function toErrorMessage(error: unknown): string {
+  if (error instanceof Error && error.message) {
+    return error.message;
+  }
+
+  if (typeof error === 'string' && error.trim().length > 0) {
+    return error;
+  }
+
+  return 'Unknown error';
 }

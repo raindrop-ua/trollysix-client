@@ -85,19 +85,31 @@ export const scheduleFeature = createFeature({
             selectedStopId: stopId,
           },
     ),
-    on(SchedulePageActions.selectDayType, (state, { dayTypeName }) => ({
-      ...state,
-      selectedDayTypeName: dayTypeName,
-    })),
-    on(SchedulePageActions.selectDirection, (state, { directionName }) => ({
-      ...state,
-      selectedDirectionName: directionName,
-    })),
+    on(SchedulePageActions.selectDayType, (state, { dayTypeName }) =>
+      state.selectedDayTypeName === dayTypeName
+        ? state
+        : {
+            ...state,
+            selectedDayTypeName: dayTypeName,
+          },
+    ),
+    on(SchedulePageActions.selectDirection, (state, { directionName }) =>
+      state.selectedDirectionName === directionName
+        ? state
+        : {
+            ...state,
+            selectedDirectionName: directionName,
+          },
+    ),
 
-    on(SchedulePageActions.setShowRunNumbers, (state, { show }) => ({
-      ...state,
-      showRunNumbers: show,
-    })),
+    on(SchedulePageActions.setShowRunNumbers, (state, { show }) =>
+      state.showRunNumbers === show
+        ? state
+        : {
+            ...state,
+            showRunNumbers: show,
+          },
+    ),
 
     on(ScheduleApiActions.loadTimetable, (state) => ({
       ...state,
