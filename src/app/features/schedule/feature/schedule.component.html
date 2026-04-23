@@ -1,10 +1,10 @@
 <trollysix-generic-header [title]="copySchedule.header.title" />
 @defer (on idle) {
   @if (vm$ | async; as vm) {
+    <trollysix-selectors-group />
     <trollysix-stops-list />
     @if (vm.selectedStop) {
       <trollysix-stop-toolbar />
-      <trollysix-selectors-group />
       <trollysix-schedule-controls />
       <trollysix-stop-details [stopData]="vm.selectedStop" />
     }
