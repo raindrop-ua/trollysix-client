@@ -26,6 +26,29 @@ describe('schedule-api.contract', () => {
     expect(parsed[0]?.id).toBe('stop-1');
   });
 
+  it('parses valid stops payload with day type departures', () => {
+    const parsed = parseStopsResponse([
+      {
+        id: 'stop-2',
+        name: 'South',
+        departures: {
+          weekday: {
+            forward: { first: '06:00', last: '22:00' },
+            backward: { first: '06:10', last: '22:10' },
+          },
+          weekend: {
+            forward: { first: '07:00', last: '21:00' },
+          },
+        },
+        style: 2,
+        availableDirections: ['forward', 'backward'],
+        sharedRoutes: ['6'],
+      },
+    ]);
+
+    expect(parsed[0]?.id).toBe('stop-2');
+  });
+
   it('throws for invalid stops payload', () => {
     expect(() =>
       parseStopsResponse([

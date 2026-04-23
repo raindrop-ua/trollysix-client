@@ -72,12 +72,76 @@ function isDepartureBound(value: unknown): boolean {
   return isString(value['first']) && isString(value['last']);
 }
 
+function isDeparturesByDirection(value: unknown): boolean {
+  if (!isRecord(value)) {
+    return false;
+  }
+
+  return (
+    isDepartureBound(value['forward']) && isDepartureBound(value['backward'])
+  );
+}
+
+function isDeparturesByDayType(value: unknown): boolean {
+  if (!isRecord(value)) {
+    return false;
+  }
+
+  for (const dayTypeName of DAY_TYPE_NAMES) {
+    const byDayType = value[dayTypeName];
+    if (byDayType === undefined) {
+      continue;
+    }
+
+    if (
+      !isRecord(byDayType) ||
+      !isDepartureBound(byDayType['forward']) ||
+      !isDepartureBound(byDayType['backward'])
+    ) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function isDeparturesByDirectionAndDayType(value: unknown): boolean {
+  if (!isRecord(value)) {
+    return false;
+  }
+
+  for (const directionName of DIRECTION_NAMES) {
+    const byDirection = value[directionName];
+    if (byDirection === undefined) {
+      continue;
+    }
+
+    if (
+      !isRecord(byDirection) ||
+      !isDepartureBound(byDirection['weekday']) ||
+      !isDepartureBound(byDirection['weekend'])
+    ) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function isStopDepartures(value: unknown): boolean {
+  return (
+    isDeparturesByDirection(value) ||
+    isDeparturesByDayType(value) ||
+    isDeparturesByDirectionAndDayType(value)
+  );
+}
+
 function isStop(value: unknown): value is Stop {
   if (!isRecord(value)) {
     return false;
   }
 
-  if (!isRecord(value['departures'])) {
+  if (!isStopDepartures(value['departures'])) {
     return false;
   }
 
@@ -97,8 +161,6 @@ function isStop(value: unknown): value is Stop {
     isString(value['name']) &&
     isFiniteNumber(value['style']) &&
     value['availableDirections'].every((direction) => isDirectionName(direction)) &&
-    isDepartureBound(value['departures']['forward']) &&
-    isDepartureBound(value['departures']['backward']) &&
     (value['geo'] === undefined || isGeo(value['geo'])) &&
     (value['weather'] === undefined || isWeather(value['weather']))
   );

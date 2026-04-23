@@ -9,7 +9,7 @@ import { Departure, Status } from '../data-access/models/departure.model';
 import { TimeEntity } from '../data-access/models/timetable.model';
 import { SchedulePageActions } from '../data-access/store/schedule.actions';
 import { scheduleFeature } from '../data-access/store/schedule.reducer';
-import { selectScheduleViewModel } from '../data-access/store/schedule.selectors';
+import { selectCurrentTimetableTimes } from '../data-access/store/schedule.selectors';
 
 @Injectable({
   providedIn: 'root',
@@ -18,8 +18,7 @@ export class ScheduleService {
   private readonly clock = inject(ClockService);
   private readonly store = inject(Store);
 
-  private readonly times$ = this.store.select(selectScheduleViewModel).pipe(
-    map((vm) => vm.currentTimetable?.times ?? ([] as TimeEntity[])),
+  private readonly times$ = this.store.select(selectCurrentTimetableTimes).pipe(
     distinctUntilChanged((a, b) => this.timeArraysEqual(a, b)),
     shareReplay({ bufferSize: 1, refCount: true }),
   );

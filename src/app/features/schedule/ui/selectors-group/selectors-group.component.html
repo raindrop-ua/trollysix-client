@@ -1,47 +1,42 @@
-<section class="baseline-container">
+<section class="baseline-container pt-6 md:pt-12">
   <div
     class="baseline-borders baseline-surface rounded-2xl p-4 backdrop-blur md:p-4"
   >
     <div
       class="grid grid-flow-col grid-rows-2 items-center gap-4 sm:flex sm:justify-between md:divide-x md:divide-white/10"
     >
-      @let isUnavailable =
-        (departures$ | async)?.length === 0 && !(vm$ | async)?.timetableLoading;
-      @if (vm$ | async; as vm) {
-        <div class="relative flex w-full sm:w-auto">
-          <trollysix-options-selector
-            class="block w-full"
-            (optionSelect)="onSelectDayType($event)"
-            [title]="copySchedule.controlDay"
-            [options]="vm.dayTypes"
-            [preselected]="vm.selectedDayTypeName"
-          />
-        </div>
-        <div class="relative flex w-full sm:w-auto">
-          <trollysix-options-selector
-            class="block w-full"
-            (optionSelect)="onSelectDirection($event)"
-            [title]="copySchedule.controlDirection"
-            [options]="vm.directions"
-            [preselected]="(vm$ | async)?.selectedDirectionName"
-          >
-            @if (isUnavailable) {
-              <trollysix-hint-arrow
-                slot="footer"
-                [direction]="vm.selectedDirectionName"
-              />
-            }
-          </trollysix-options-selector>
-        </div>
-      }
+      <div class="relative flex w-full sm:w-auto">
+        <trollysix-options-selector
+          class="block w-full"
+          (optionSelect)="onSelectDayType($event)"
+          [title]="copySchedule.controlDay"
+          [options]="dayTypes()"
+          [preselected]="selectedDayTypeName()"
+        />
+      </div>
+      <div class="relative flex w-full sm:w-auto">
+        <trollysix-options-selector
+          class="block w-full"
+          (optionSelect)="onSelectDirection($event)"
+          [title]="copySchedule.controlDirection"
+          [options]="directions()"
+          [preselected]="selectedDirectionName()"
+        >
+          @if (isUnavailable()) {
+            <trollysix-hint-arrow
+              slot="footer"
+              [direction]="selectedDirectionName()"
+            />
+          }
+        </trollysix-options-selector>
+      </div>
       <div class="flex items-center justify-end gap-4 md:px-3">
         <div
           class="transition"
           [ngClass]="{
             'motion-safe:animate-shake-once-delayed animate-none text-blue-700 dark:text-blue-800':
-              (departures$ | async)?.length,
-            'text-slate-400 dark:text-slate-700': !(departures$ | async)
-              ?.length,
+              hasDepartures(),
+            'text-slate-400 dark:text-slate-700': !hasDepartures(),
           }"
         >
           <svg
