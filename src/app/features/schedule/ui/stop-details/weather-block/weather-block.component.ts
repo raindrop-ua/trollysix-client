@@ -13,6 +13,8 @@ import {
 
 import { environment } from '@environments/environment';
 
+import { copy } from '@core/content/copy.util';
+
 import { Stop } from '@features/schedule/data-access/models/stop.model';
 import { TemperaturePipe } from '@shared/pipes/temperature.pipe';
 import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
@@ -32,6 +34,7 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
   host: { class: 'block h-full' },
 })
 export class WeatherBlockComponent {
+  readonly copySchedule = copy('schedule');
   stop = input.required<Stop>();
 
   readonly weatherIconUrl = computed(() => {
