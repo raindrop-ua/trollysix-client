@@ -29,7 +29,7 @@ export const COPY = {
     masthead: {
       titleMain: 'Najlepszy rozkład',
       titleFor: 'dla trolejbusu',
-      titleRoute: 'linia 6',
+      titleRoute: 'linia\u00A06',
     },
     works: {
       title: 'Po prostu działa.',
@@ -45,7 +45,7 @@ export const COPY = {
       title: 'Linia 6 — gotowy?',
     },
     bigClaims: {
-      title: 'Wszystko, czego potrzebujesz, aby złapać linię 6.',
+      title: 'Wszystko, czego potrzebujesz, aby złapać linię\u00A06.',
       subtitle: 'I niczego, czego nie potrzebujesz.',
       description:
         'Znajdź, wybierz, jedź. To Twój kieszonkowy dyspozytor, zawsze pod ręką.',
@@ -175,7 +175,7 @@ Następnie trasa biegnie ulicami Elektryczną, Kolską oraz 20-lecia Zwycięstwa
     },
     metrics: [
       {
-        title: '6 -> 4',
+        title: '6 → 4',
         description: 'pojazdy: dni robocze -> weekendy',
       },
       {
