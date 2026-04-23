@@ -8,7 +8,10 @@
     </h2>
     <div class="text-s text-slate-500 dark:text-slate-400">
       @if (currentTimetableValidFrom(); as validFrom) {
-        <span>{{ copySchedule.scheduleValidFrom }} {{ validFrom | date: 'dd.MM.yy' }}</span>
+        <span
+          >{{ copySchedule.scheduleValidFrom }}
+          {{ validFrom | date: 'dd.MM.yy' }}</span
+        >
       }
     </div>
   </div>
@@ -27,7 +30,7 @@
         [selectedDayTypeName]="selectedDayTypeName()"
       />
     } @empty {
-      @for (placeholder of [1, 2, 3, 4, 5, 6]; track placeholder) {
+      @for (placeholder of [1, 2, 3, 4, 5, 6, 7, 8]; track placeholder) {
         <div
           class="stop-card-placeholder"
           [class.min-h-33]="showDescriptions()"
