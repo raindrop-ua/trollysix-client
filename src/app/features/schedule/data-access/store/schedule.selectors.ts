@@ -8,37 +8,43 @@ const {
   selectSelectedStopId,
   selectSelectedDayTypeName,
   selectSelectedDirectionName,
-  selectCurrentTimetable,
 } = scheduleFeature;
 
 const stopsSelectors = stopsAdapter.getSelectors(selectStops);
 
 export const selectAllScheduleStops = stopsSelectors.selectAll;
+const selectAllStops = stopsSelectors.selectAll;
 
-const { selectAll: selectAllStops } = stopsAdapter.getSelectors(selectStops);
-
-const selectSelectedStop = createSelector(
+export const selectSelectedStop = createSelector(
   selectStops,
   selectSelectedStopId,
-  (stops, selectedId) => (selectedId ? stops.entities[selectedId] : null)
+  (stops, selectedId) => (selectedId ? stops.entities[selectedId] : null),
 );
 
-const selectAvailableDirections = createSelector(
+export const selectAvailableDirections = createSelector(
   selectSelectedStop,
-  (selectedStop) => selectedStop?.availableDirections ?? []
+  (selectedStop) => selectedStop?.availableDirections ?? [],
 );
+
+export const selectTimetableLoading = scheduleFeature.selectTimetableLoading;
+export const selectStopsLoading = scheduleFeature.selectStopsLoading;
+export const selectDayTypes = scheduleFeature.selectDayTypes;
+export const selectDirections = scheduleFeature.selectDirections;
+export const selectCurrentTimetable = scheduleFeature.selectCurrentTimetable;
+export const selectSelectedDayType = selectSelectedDayTypeName;
+export const selectSelectedDirection = selectSelectedDirectionName;
 
 export const selectScheduleViewModel = createSelector(
   selectAllStops,
   selectSelectedStop,
-  scheduleFeature.selectDayTypes,
-  scheduleFeature.selectDirections,
+  selectDayTypes,
+  selectDirections,
   selectAvailableDirections,
-  selectSelectedDayTypeName,
-  selectSelectedDirectionName,
+  selectSelectedDayType,
+  selectSelectedDirection,
   selectCurrentTimetable,
-  scheduleFeature.selectStopsLoading,
-  scheduleFeature.selectTimetableLoading,
+  selectStopsLoading,
+  selectTimetableLoading,
   (
     stops,
     selectedStop,
