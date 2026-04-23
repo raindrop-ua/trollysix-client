@@ -56,9 +56,9 @@
     <div
       class="mt-1 line-clamp-2 flex basis-full flex-col items-start justify-end text-sm text-slate-600 dark:text-slate-300"
     >
-      @let departure = getDeparture(stop, vm.selectedDirectionName);
+      @let departure = getDeparture(stop, vm.selectedDirectionName, vm.selectedDayTypeName);
       <div
-        class="flex items-center gap-2 font-mono text-sm text-slate-800 dark:text-slate-200"
+        class="flex items-center gap-2 font-mono text-sm text-blue-700 dark:text-yellow-500"
       >
         <svg
           icon="clock"
@@ -71,7 +71,9 @@
         @if (departure?.first && departure?.last) {
           <span> {{ departure?.first }} • {{ departure?.last }} </span>
         } @else {
-          <span>{{ copySchedule.noDepartures }}</span>
+          <span class="font-sans text-slate-800 dark:text-slate-200">{{
+            copySchedule.noDepartures
+          }}</span>
         }
       </div>
     </div>
