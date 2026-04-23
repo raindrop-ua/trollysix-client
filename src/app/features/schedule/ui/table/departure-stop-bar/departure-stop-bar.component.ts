@@ -1,21 +1,21 @@
-import { AsyncPipe } from '@angular/common';
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 import { Store } from '@ngrx/store';
 
-import { selectScheduleViewModel } from '@features/schedule/data-access/store/schedule.selectors';
+import { selectSelectedStopName } from '@features/schedule/data-access/store/schedule.selectors';
 import { ScheduleService } from '@features/schedule/services/schedule.service';
 
 @Component({
   selector: 'trollysix-departure-stop-bar',
-  imports: [AsyncPipe],
+  imports: [],
   templateUrl: './departure-stop-bar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'block' },
 })
 export class DepartureStopBarComponent {
-  private store = inject(Store);
+  private readonly store = inject(Store);
   private readonly schedule = inject(ScheduleService);
-  readonly departures$ = this.schedule.departures$;
-  vm$ = this.store.select(selectScheduleViewModel);
+  readonly departures = toSignal(this.schedule.departures$, { initialValue: [] });
+  readonly selectedStopName = this.store.selectSignal(selectSelectedStopName);
 }
