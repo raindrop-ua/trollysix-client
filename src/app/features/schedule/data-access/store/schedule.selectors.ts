@@ -5,9 +5,9 @@ import { stopsAdapter } from './schedule.state';
 
 const {
   selectStops,
-  selectSelectedStopId,
-  selectSelectedDayTypeName,
-  selectSelectedDirectionName,
+  selectSelectedStopId: selectFeatureSelectedStopId,
+  selectSelectedDayTypeName: selectFeatureSelectedDayTypeName,
+  selectSelectedDirectionName: selectFeatureSelectedDirectionName,
 } = scheduleFeature;
 
 const stopsSelectors = stopsAdapter.getSelectors(selectStops);
@@ -17,7 +17,7 @@ const selectAllStops = stopsSelectors.selectAll;
 
 export const selectSelectedStop = createSelector(
   selectStops,
-  selectSelectedStopId,
+  selectFeatureSelectedStopId,
   (stops, selectedId) => (selectedId ? stops.entities[selectedId] : null),
 );
 
@@ -31,8 +31,21 @@ export const selectStopsLoading = scheduleFeature.selectStopsLoading;
 export const selectDayTypes = scheduleFeature.selectDayTypes;
 export const selectDirections = scheduleFeature.selectDirections;
 export const selectCurrentTimetable = scheduleFeature.selectCurrentTimetable;
-export const selectSelectedDayType = selectSelectedDayTypeName;
-export const selectSelectedDirection = selectSelectedDirectionName;
+export const selectSelectedStopId = selectFeatureSelectedStopId;
+export const selectSelectedDayType = selectFeatureSelectedDayTypeName;
+export const selectSelectedDirection = selectFeatureSelectedDirectionName;
+export const selectSelectedStopName = createSelector(
+  selectSelectedStop,
+  (selectedStop) => selectedStop?.name ?? null,
+);
+export const selectCurrentTimetableTimes = createSelector(
+  selectCurrentTimetable,
+  (timetable) => timetable?.times ?? [],
+);
+export const selectCurrentTimetableValidFrom = createSelector(
+  selectCurrentTimetable,
+  (timetable) => timetable?.validFrom ?? null,
+);
 
 export const selectScheduleViewModel = createSelector(
   selectAllStops,
