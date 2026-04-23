@@ -47,7 +47,8 @@ export const COPY = {
     bigClaims: {
       title: 'Everything you need to catch Route 6.',
       subtitle: 'And nothing you don’t.',
-      description: 'Find, choose, go. It is your pocket dispatcher, always at hand.',
+      description:
+        'Find, choose, go. It is your pocket dispatcher, always at hand.',
     },
     thisIsTrollySix: {
       titleBeforeBrand: 'This is not just public transport.',
@@ -75,7 +76,8 @@ export const COPY = {
     },
     testimonials: {
       title: 'Loved by everyday riders',
-      subtitle: 'No advertising. No noise. Just what helps you get things done.',
+      subtitle:
+        'No advertising. No noise. Just what helps you get things done.',
     },
   },
 
@@ -173,8 +175,8 @@ The route then proceeds along Elektrychna St., Kolska St., and 20 Years of Victo
     },
     metrics: [
       {
-        title: '6 -> 4',
-        description: 'vehicles: weekdays -> weekends',
+        title: '6 > 4',
+        description: 'vehicles: weekdays > weekends',
       },
       {
         title: '2',
@@ -291,10 +293,12 @@ The route then proceeds along Elektrychna St., Kolska St., and 20 Years of Victo
       lines: {
         acceptance1:
           'By accessing and using TrollySix, you agree to these Terms of Use.',
-        acceptance2: 'If you do not agree, please discontinue use of the website.',
+        acceptance2:
+          'If you do not agree, please discontinue use of the website.',
         service1:
           'TrollySix is an informational project that provides publicly available trolleybus schedule information.',
-        service2: 'The website is provided "as is" for informational purposes only.',
+        service2:
+          'The website is provided "as is" for informational purposes only.',
         accuracy1:
           'While efforts are made to keep the information accurate and up to date:',
         accuracy2:
@@ -302,8 +306,7 @@ The route then proceeds along Elektrychna St., Kolska St., and 20 Years of Victo
         accuracy3: 'Always verify official transport updates when necessary.',
         noAccounts1:
           'TrollySix does not provide user accounts, registration, or user-generated content features.',
-        ip1:
-          'All content, design, code, and branding of TrollySix are the intellectual property of the project owner unless otherwise stated.',
+        ip1: 'All content, design, code, and branding of TrollySix are the intellectual property of the project owner unless otherwise stated.',
         youMay: 'You may:',
         youMayNot: 'You may not:',
         liability1: 'TrollySix is provided without warranties of any kind.',
