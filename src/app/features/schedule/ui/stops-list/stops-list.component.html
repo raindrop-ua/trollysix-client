@@ -24,7 +24,12 @@
     >
       @for (stop of vm.stops; track stop.id) {
         @let selected = vm.selectedStop?.id === stop.id;
-        <trollysix-stop-card [stopData]="stop" [selected]="selected" />
+        <trollysix-stop-card
+          [stopData]="stop"
+          [selected]="selected"
+          [selectedDirectionName]="vm.selectedDirectionName"
+          [selectedDayTypeName]="vm.selectedDayTypeName"
+        />
       } @empty {
         @for (placeholder of [1, 2, 3, 4, 5, 6]; track placeholder) {
           <div

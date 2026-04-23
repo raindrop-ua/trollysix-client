@@ -1,10 +1,4 @@
-import { AsyncPipe } from '@angular/common';
-import {
-  Component,
-  input,
-  inject,
-  ChangeDetectionStrategy,
-} from '@angular/core';
+import { Component, input, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
@@ -15,12 +9,11 @@ import { DirectionName } from '@features/schedule/data-access/models/direction.m
 import { DepartureBound } from '@features/schedule/data-access/models/stop.model';
 import { Stop } from '@features/schedule/data-access/models/stop.model';
 import { SchedulePageActions } from '@features/schedule/data-access/store/schedule.actions';
-import { selectScheduleViewModel } from '@features/schedule/data-access/store/schedule.selectors';
 import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
 @Component({
   selector: 'trollysix-stop-card',
-  imports: [SvgIconComponent, AsyncPipe],
+  imports: [SvgIconComponent],
   templateUrl: './stop-card.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'block' },
@@ -30,10 +23,10 @@ export class StopCardComponent {
 
   private store = inject(Store);
 
-  public selected = input<boolean>(false);
-  public stopData = input<Stop>();
-
-  public vm$ = this.store.select(selectScheduleViewModel);
+  public readonly selected = input(false);
+  public readonly stopData = input.required<Stop>();
+  public readonly selectedDirectionName = input<DirectionName | null>(null);
+  public readonly selectedDayTypeName = input<string | null>(null);
 
   public getDeparture(
     stop: Stop,
