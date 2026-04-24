@@ -16,4 +16,5 @@ import { BtnDirective } from '@shared/directives/btn.directive';
 export class ReadyForRouteSixComponent {
   protected readonly AppRouteEnum = AppRouteEnum;
   readonly copyCommon = copy('common');
+  readonly copyHome = copy('home');
 }

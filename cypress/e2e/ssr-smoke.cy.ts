@@ -26,6 +26,6 @@ describe('SSR smoke', () => {
 
     cy.visit('/some-route-that-does-not-exist');
     cy.location('pathname').should('eq', '/404');
-    cy.contains('h1', 'Page Not Found').should('be.visible');
+    cy.contains('h1', 'Page not found').should('be.visible');
   });
 });

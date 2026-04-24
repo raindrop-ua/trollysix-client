@@ -32,4 +32,5 @@ import { AttentionComponent } from '@shared/ui/sections/attention/attention.comp
 })
 export class HomeComponent {
   readonly copyCommon = copy('common');
+  readonly copyHome = copy('home');
 }

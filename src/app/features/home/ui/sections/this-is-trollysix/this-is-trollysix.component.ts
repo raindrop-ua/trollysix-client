@@ -1,5 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
+import { copy } from '@core/content/copy.util';
+
 import { ValueProp } from '@features/home/data-access/models/value-prop.model';
 import { RevealOnScrollDirective } from '@shared/directives/reveal-on-scroll.directive';
 
@@ -13,21 +15,6 @@ import { ValuePropComponent } from './value-prop/value-prop.component';
   host: { class: 'block' },
 })
 export class ThisIsTrollysixComponent {
-  protected readonly valueProps: ValueProp[] = [
-    {
-      title: 'Precision, by default',
-      description:
-        'Precise time, neat statuses: missed, next, upcoming. Everything to get there on time - no surprises.',
-    },
-    {
-      title: 'Designed to disappear',
-      description:
-        "An interface that doesn't distract. Focus only on the route - because time is the most precious thing.",
-    },
-    {
-      title: 'Built for today',
-      description:
-        "Mobile first, lightweight, fast. Works like it's the only thing you need.",
-    },
-  ];
+  readonly copyHome = copy('home');
+  protected readonly valueProps: ValueProp[] = [...this.copyHome.thisIsTrollySix.valueProps];
 }

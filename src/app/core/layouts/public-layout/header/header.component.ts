@@ -16,6 +16,7 @@ import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { filter } from 'rxjs';
 
 import { NAVIGATION_TOKEN } from '@core/config/navigation.config';
+import { copy } from '@core/content/copy.util';
 import { AppRouteEnum } from '@core/enums/app-route.enum';
 
 import { HeaderActionsComponent } from '@shared/ui/header-actions/header-actions.component';
@@ -35,6 +36,7 @@ export class HeaderComponent implements OnInit {
   private menuToggleButton?: ElementRef<HTMLButtonElement>;
 
   protected readonly AppRouteEnum = AppRouteEnum;
+  readonly copyCommon = copy('common');
   private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
   private readonly cdr = inject(ChangeDetectorRef);

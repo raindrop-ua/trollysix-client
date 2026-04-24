@@ -7,27 +7,27 @@
     >
       <span
         class="ts-time-coming cursor-default rounded-xl px-2.5 py-1.5 font-medium"
-        >Later today</span
+        >{{ copySchedule.departureLegend.laterToday }}</span
       >
       <span
-        trollysixTooltip="≤ 15 min"
+        [trollysixTooltip]="copySchedule.departureLegend.soonTooltip"
         trollysixTooltipPlacement="top"
         class="ts-time-soon cursor-default rounded-xl px-2.5 py-1.5 font-medium"
-        >Soon</span
+        >{{ copySchedule.departureLegend.soon }}</span
       >
       <span
-        trollysixTooltip="≤ 5 min"
+        [trollysixTooltip]="copySchedule.departureLegend.departingTooltip"
         trollysixTooltipPlacement="top"
         class="ts-time-now-legend cursor-default rounded-xl px-2.5 py-1.5 font-medium"
-        >Departing</span
+        >{{ copySchedule.departureLegend.departing }}</span
       >
       <span
         class="ts-time-past cursor-default rounded-xl px-2.5 py-1.5 font-medium"
-        >Departed</span
+        >{{ copySchedule.departureLegend.departed }}</span
       >
       <span
         class="ts-time-canceled cursor-default rounded-xl px-2.5 py-1.5 font-medium"
-        >Canceled</span
+        >{{ copySchedule.departureLegend.canceled }}</span
       >
     </div>
   </div>

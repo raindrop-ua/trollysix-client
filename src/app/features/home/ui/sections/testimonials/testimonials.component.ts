@@ -9,6 +9,8 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
+import { copy } from '@core/content/copy.util';
+
 import { Testimonials } from '@features/home/data-access/models/testimonial.model';
 import { TestimonialsListService } from '@features/home/data-access/services/testimonials-list.service';
 import { RevealOnScrollDirective } from '@shared/directives/reveal-on-scroll.directive';
@@ -33,6 +35,7 @@ import { TestimonialComponent } from './testimonial/testimonial.component';
   host: { class: 'block' },
 })
 export class TestimonialsComponent implements OnInit {
+  readonly copyHome = copy('home');
   private testimonialsListService = inject(TestimonialsListService);
   private destroyRef = inject(DestroyRef);
   public readonly testimonials = signal<Testimonials | null>(null);

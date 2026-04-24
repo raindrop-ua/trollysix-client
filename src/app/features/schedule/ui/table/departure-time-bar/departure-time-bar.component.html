@@ -25,7 +25,9 @@
     @let minutesToNext = (minutesToNext$ | async);
     @if (minutesToNext !== null && minutesToNext !== undefined) {
       <span class="text-sm">
-        in <span class="font-mono">{{ minutesToNext }}</span> min
+        {{ copySchedule.departureTimeBar.in }}
+        <span class="font-mono">{{ minutesToNext }}</span>
+        {{ copySchedule.departureTimeBar.min }}
       </span>
     }
     <span>
@@ -38,7 +40,7 @@
         focusable="false"
       ></svg>
     </span>
-    <span class="sr-only">Next departure:</span>
+    <span class="sr-only">{{ copySchedule.departureTimeBar.nextDepartureSr }}</span>
     <time class="font-mono">
       {{ label$ | async }}
     </time>

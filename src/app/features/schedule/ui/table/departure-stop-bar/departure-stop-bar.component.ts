@@ -3,6 +3,8 @@ import { toSignal } from '@angular/core/rxjs-interop';
 
 import { Store } from '@ngrx/store';
 
+import { copy } from '@core/content/copy.util';
+
 import { selectSelectedStopName } from '@features/schedule/data-access/store/schedule.selectors';
 import { ScheduleService } from '@features/schedule/services/schedule.service';
 
@@ -14,6 +16,7 @@ import { ScheduleService } from '@features/schedule/services/schedule.service';
   host: { class: 'block' },
 })
 export class DepartureStopBarComponent {
+  readonly copySchedule = copy('schedule');
   private readonly store = inject(Store);
   private readonly schedule = inject(ScheduleService);
   readonly departures = toSignal(this.schedule.departures$, { initialValue: [] });

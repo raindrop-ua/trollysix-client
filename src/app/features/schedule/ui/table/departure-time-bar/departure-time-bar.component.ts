@@ -58,9 +58,9 @@ export class DepartureTimeBarComponent {
     this.timetableLoading$,
   ]).pipe(
     map(([next, departures, timetableLoading]) => {
-      if (timetableLoading) return 'Loading...';
+      if (timetableLoading) return this.copySchedule.departureTimeBar.loading;
       if (next?.time) return next.time;
-      if (departures?.length) return 'Tomorrow';
+      if (departures?.length) return this.copySchedule.departureTimeBar.tomorrow;
       return this.copySchedule.noDepartures;
     }),
   );

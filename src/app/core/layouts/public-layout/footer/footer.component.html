@@ -2,18 +2,20 @@
   <div
     class="flex flex-col items-center justify-between gap-3 text-sm sm:flex-row"
   >
-    <div>© 2024-{{ currentYear }} TrollySix. All rights reserved.</div>
+    <div>
+      © 2024-{{ currentYear }} TrollySix. {{ copyFooter.rightsReserved }}
+    </div>
     @if (showStaticLinks()) {
       <div>
         <ul class="flex gap-3">
           <li>
             <a class="hover:underline" [routerLink]="AppRouteEnum.PrivacyPolicy"
-              >Privacy Policy</a
+              >{{ copyFooter.privacyPolicy }}</a
             >
           </li>
           <li>
             <a class="hover:underline" [routerLink]="AppRouteEnum.TermsOfUse"
-              >Terms of Use</a
+              >{{ copyFooter.termsOfUse }}</a
             >
           </li>
         </ul>

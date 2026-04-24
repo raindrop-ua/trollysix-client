@@ -9,6 +9,8 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
+import { copy } from '@core/content/copy.util';
+
 import { RouteStop } from '@features/about/data-access/models/route-stops.model';
 import { StopsListService } from '@features/about/data-access/services/stops-list.service';
 import { GenericSectionBlockComponent } from '@shared/ui/sections/generic-section-block/generic-section-block.component';
@@ -24,6 +26,7 @@ import { StopsListComponent } from './stops-list/stops-list.component';
   host: { class: 'block' },
 })
 export class FullListOfStopsComponent implements OnInit {
+  readonly copyAbout = copy('about');
   private stopsListService = inject(StopsListService);
   private destroyRef = inject(DestroyRef);
   public readonly routeStops = signal<RouteStop[]>([]);
