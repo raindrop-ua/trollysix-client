@@ -5,6 +5,7 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 
+import { copy } from '@core/content/copy.util';
 import { ClipboardService } from '@core/services/clipboard.service';
 
 import { ClosestStopService } from '@features/schedule/services/closest-stop.service';
@@ -23,6 +24,7 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
   host: { class: 'block' },
 })
 export class StopToolbarComponent {
+  readonly copySchedule = copy('schedule');
   public readonly geolocationService = inject(GeolocationService);
   private readonly closestStopService = inject(ClosestStopService);
   private readonly shareScheduleService = inject(ShareScheduleService);

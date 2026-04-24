@@ -4,7 +4,11 @@
     [variant]="'default'"
     type="button"
     [attr.aria-pressed]="textSizeService.isLarge()"
-    [attr.aria-label]="textSizeService.isLarge() ? 'Use normal font size' : 'Use large font size'"
+    [attr.aria-label]="
+      textSizeService.isLarge()
+        ? copyCommon.useNormalFontSize
+        : copyCommon.useLargeFontSize
+    "
     (click)="toggleTextSize()"
   >
     @if (modeSignal() === 'normal') {
@@ -23,6 +27,6 @@
       ></svg>
     }
 
-    <span class="sr-only">Toggle font size</span>
+    <span class="sr-only">{{ copyCommon.toggleFontSize }}</span>
   </button>
 </div>

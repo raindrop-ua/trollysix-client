@@ -1,5 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
+import { copy } from '@core/content/copy.util';
+
 import { FullListOfStopsComponent } from '@features/about/ui/sections/full-list-of-stops/full-list-of-stops.component';
 import { HeadComponent } from '@features/about/ui/sections/head/head.component';
 import { InfrastructureComponent } from '@features/about/ui/sections/infrastructure/infrastructure.component';
@@ -21,18 +23,6 @@ import { Metric } from '@shared/ui/sections/metrics/metrics.model';
   host: { class: 'block' },
 })
 export class AboutComponent {
-  public readonly metrics: Metric[] = [
-    {
-      title: '6 → 4',
-      description: 'vehicles: weekdays → weekends',
-    },
-    {
-      title: '2',
-      description: 'trolleybus depots',
-    },
-    {
-      title: 'Autonomous',
-      description: 'segment without overhead wires',
-    },
-  ];
+  readonly copyAbout = copy('about');
+  public readonly metrics: Metric[] = [...this.copyAbout.metrics];
 }

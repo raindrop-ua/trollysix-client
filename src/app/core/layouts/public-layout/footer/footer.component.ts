@@ -1,6 +1,7 @@
 import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+import { copy } from '@core/content/copy.util';
 import { AppRouteEnum } from '@core/enums/app-route.enum';
 
 @Component({
@@ -13,6 +14,7 @@ import { AppRouteEnum } from '@core/enums/app-route.enum';
   },
 })
 export class FooterComponent {
+  readonly copyFooter = copy('footer');
   protected readonly AppRouteEnum = AppRouteEnum;
   public currentYear = new Date().getFullYear();
   public showStaticLinks = input<boolean>(true);

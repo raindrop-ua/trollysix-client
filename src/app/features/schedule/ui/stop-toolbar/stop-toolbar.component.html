@@ -3,12 +3,12 @@
     @if (canFind()) {
       <button
         (click)="onFindStop()"
-        aria-label="Find closest stop"
+        [attr.aria-label]="copySchedule.stopToolbar.findClosestStop"
         trollysixBtn="primary"
-        trollysixTooltip="Find closest stop based on your location"
+        [trollysixTooltip]="copySchedule.stopToolbar.findClosestStopTooltip"
         trollysixTooltipPlacement="top"
       >
-        <span>Find closest stop</span>
+        <span>{{ copySchedule.stopToolbar.findClosestStop }}</span>
         <svg
           icon="map-pinned"
           class="size-4"
@@ -21,7 +21,7 @@
     }
     @if (canShare()) {
       <button (click)="onShare()" trollysixBtn="primary">
-        <span>Share</span>
+        <span>{{ copySchedule.stopToolbar.share }}</span>
         <svg
           icon="share"
           class="size-4"

@@ -6,3 +6,6 @@ onlyBuiltDependencies:
   - esbuild
   - lmdb
   - msgpackr-extract
+
+overrides:
+  uuid@<14.0.0: '>=14.0.0'

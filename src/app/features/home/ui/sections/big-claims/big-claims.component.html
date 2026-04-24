@@ -5,13 +5,13 @@
     <h2
       class="mx-auto max-w-4xl text-3xl font-bold tracking-tight text-slate-900 md:text-5xl dark:text-white"
     >
-      Everything you need to catch Route&nbsp;6.
-      <span class="opacity-70">And nothing you don’t.</span>
+      {{ copyHome.bigClaims.title }}
+      <span class="opacity-70">{{ copyHome.bigClaims.subtitle }}</span>
     </h2>
     <p
       class="mx-auto mt-4 max-w-2xl text-slate-600 md:text-lg dark:text-slate-300"
     >
-      Find, choose, go. It is your pocket dispatcher, always at hand.
+      {{ copyHome.bigClaims.description }}
     </p>
     <div class="mt-7">
       <a [routerLink]="[AppRouteEnum.Schedule]" trollysixBtn="primary">{{

@@ -1,6 +1,8 @@
 import { AsyncPipe } from '@angular/common';
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
+import { copy } from '@core/content/copy.util';
+
 import { ScheduleService } from '@features/schedule/services/schedule.service';
 import { TooltipDirective } from '@shared/directives/tooltip.directive';
 
@@ -12,6 +14,7 @@ import { TooltipDirective } from '@shared/directives/tooltip.directive';
   host: { class: 'block' },
 })
 export class DepartureLegendComponent {
+  readonly copySchedule = copy('schedule');
   private readonly schedule = inject(ScheduleService);
   readonly departures$ = this.schedule.departures$;
 }
