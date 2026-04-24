@@ -1,15 +1,19 @@
 @let departuresList = departures();
 <div [attr.aria-busy]="timetableLoading()" aria-live="polite">
-  <div
-    class="grid grid-cols-4 gap-2 sm:grid-cols-6 md:grid-cols-7 lg:grid-cols-8 xl:grid-cols-10"
-  >
-    @for (departure of departuresList; track departure.time) {
-      <trollysix-departure-time-item
-        [departure]="departure"
-        (clickTime)="onSelectTime($event)"
-      />
-    }
-  </div>
+  @for (key of [revealKey()]; track key) {
+    <div class="ts-departure-table-reveal">
+      <div
+        class="grid grid-cols-4 gap-2 sm:grid-cols-6 md:grid-cols-7 lg:grid-cols-8 xl:grid-cols-10"
+      >
+        @for (departure of departuresList; track departure.time) {
+          <trollysix-departure-time-item
+            [departure]="departure"
+            (clickTime)="onSelectTime($event)"
+          />
+        }
+      </div>
+    </div>
+  }
   @if (timetableLoading()) {
     <div
       role="status"
