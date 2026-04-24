@@ -33,4 +33,11 @@
       @apply motion-safe:opacity-0;
     }
   }
+
+  .ts-departure-table-reveal {
+    @apply motion-safe:translate-y-0 motion-safe:opacity-100 motion-safe:transition-[opacity,transform] motion-safe:duration-1000 motion-safe:ease-out;
+    @starting-style {
+      @apply motion-safe:translate-y-8 motion-safe:opacity-0;
+    }
+  }
 }
