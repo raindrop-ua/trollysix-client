@@ -47,6 +47,32 @@ export const selectCurrentTimetableValidFrom = createSelector(
   (timetable) => timetable?.validFrom ?? null,
 );
 
+export const selectIsSelectorsGroupReady = createSelector(
+  scheduleFeature.selectInitialDataLoaded,
+  selectAllStops,
+  selectDayTypes,
+  selectDirections,
+  selectSelectedStopId,
+  selectSelectedDayType,
+  selectSelectedDirection,
+  (
+    initialDataLoaded,
+    stops,
+    dayTypes,
+    directions,
+    selectedStopId,
+    selectedDayTypeName,
+    selectedDirectionName,
+  ) =>
+    initialDataLoaded &&
+    stops.length > 0 &&
+    dayTypes.length > 0 &&
+    directions.length > 0 &&
+    !!selectedStopId &&
+    !!selectedDayTypeName &&
+    !!selectedDirectionName,
+);
+
 export const selectScheduleViewModel = createSelector(
   selectAllStops,
   selectSelectedStop,
