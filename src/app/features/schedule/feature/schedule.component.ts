@@ -18,7 +18,10 @@ import { GenericHeaderComponent } from '@shared/ui/sections/generic-header/gener
 import { NoticeComponent } from '@shared/ui/sections/notice/notice.component';
 
 import { SchedulePageActions } from '../data-access/store/schedule.actions';
-import { selectSelectedStop } from '../data-access/store/schedule.selectors';
+import {
+  selectIsSelectorsGroupReady,
+  selectSelectedStop,
+} from '../data-access/store/schedule.selectors';
 
 @Component({
   selector: 'trollysix-schedule',
@@ -40,6 +43,9 @@ export class ScheduleComponent implements OnInit {
 
   private readonly store = inject(Store);
   readonly selectedStop = this.store.selectSignal(selectSelectedStop);
+  readonly isSelectorsGroupReady = this.store.selectSignal(
+    selectIsSelectorsGroupReady,
+  );
 
   ngOnInit(): void {
     this.store.dispatch(SchedulePageActions.enter());
