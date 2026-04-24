@@ -1,6 +1,8 @@
 <trollysix-generic-header [title]="copySchedule.header.title" />
 @defer (on idle) {
-  <trollysix-selectors-group />
+  @if (isSelectorsGroupReady()) {
+    <trollysix-selectors-group />
+  }
   <trollysix-stops-list />
   @if (selectedStop(); as stop) {
     <trollysix-stop-toolbar />
