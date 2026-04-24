@@ -176,7 +176,7 @@ Następnie trasa biegnie ulicami Elektryczną, Kolską oraz 20-lecia Zwycięstwa
     metrics: [
       {
         title: '6 → 4',
-        description: 'pojazdy: dni robocze -> weekendy',
+        description: 'pojazdy: dni robocze → weekendy',
       },
       {
         title: '2',
@@ -427,7 +427,10 @@ Następnie trasa biegnie ulicami Elektryczną, Kolską oraz 20-lecia Zwycięstwa
             { type: 'paragraph', value: 'Możesz:' },
             {
               type: 'list',
-              items: ['Przeglądać stronę internetową', 'Udostępniać do niej linki'],
+              items: [
+                'Przeglądać stronę internetową',
+                'Udostępniać do niej linki',
+              ],
             },
             { type: 'paragraph', value: 'Nie możesz:' },
             {
