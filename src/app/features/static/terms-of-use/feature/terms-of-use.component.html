@@ -3,53 +3,20 @@
   <div class="prose prose-slate dark:prose-invert w-full">
     <div class="grid grid-cols-1 gap-4">
       <p>{{ copyLegal.termsOfUse.effectiveDate }}</p>
-      <h3 class="mt-4 text-2xl font-bold">{{ copyLegal.termsOfUse.sections.acceptance }}</h3>
-      <p>{{ copyLegal.termsOfUse.lines.acceptance1 }}</p>
-      <p>{{ copyLegal.termsOfUse.lines.acceptance2 }}</p>
-      <h3 class="mt-4 text-2xl font-bold">
-        {{ copyLegal.termsOfUse.sections.serviceDescription }}
-      </h3>
-      <p>{{ copyLegal.termsOfUse.lines.service1 }}</p>
-      <p>{{ copyLegal.termsOfUse.lines.service2 }}</p>
-      <h3 class="mt-4 text-2xl font-bold">{{ copyLegal.termsOfUse.sections.accuracy }}</h3>
-      <p>{{ copyLegal.termsOfUse.lines.accuracy1 }}</p>
-      <ul class="list-inside list-disc">
-        @for (item of copyLegal.termsOfUse.lists.accuracy; track item) {
-          <li>{{ item }}</li>
+      @for (section of copyLegal.termsOfUse.sections; track section.title) {
+        <h3 class="mt-4 text-2xl font-bold">{{ section.title }}</h3>
+        @for (block of section.content; track $index) {
+          @if (block.type === 'paragraph') {
+            <p>{{ block.value }}</p>
+          } @else {
+            <ul class="list-inside list-disc">
+              @for (item of block.items; track item) {
+                <li>{{ item }}</li>
+              }
+            </ul>
+          }
         }
-      </ul>
-      <p>{{ copyLegal.termsOfUse.lines.accuracy2 }}</p>
-      <p>{{ copyLegal.termsOfUse.lines.accuracy3 }}</p>
-      <h3 class="mt-4 text-2xl font-bold">{{ copyLegal.termsOfUse.sections.noAccounts }}</h3>
-      <p>{{ copyLegal.termsOfUse.lines.noAccounts1 }}</p>
-      <h3 class="mt-4 text-2xl font-bold">
-        {{ copyLegal.termsOfUse.sections.intellectualProperty }}
-      </h3>
-      <p>{{ copyLegal.termsOfUse.lines.ip1 }}</p>
-      <p>{{ copyLegal.termsOfUse.lines.youMay }}</p>
-      <ul class="list-inside list-disc">
-        @for (item of copyLegal.termsOfUse.lists.youMay; track item) {
-          <li>{{ item }}</li>
-        }
-      </ul>
-      <p>{{ copyLegal.termsOfUse.lines.youMayNot }}</p>
-      <ul>
-        @for (item of copyLegal.termsOfUse.lists.youMayNot; track item) {
-          <li>{{ item }}</li>
-        }
-      </ul>
-      <h3 class="mt-4 text-2xl font-bold">{{ copyLegal.termsOfUse.sections.liability }}</h3>
-      <p>{{ copyLegal.termsOfUse.lines.liability1 }}</p>
-      <p>{{ copyLegal.termsOfUse.lines.liability2 }}</p>
-      <ul class="list-inside list-disc">
-        @for (item of copyLegal.termsOfUse.lists.liability; track item) {
-          <li>{{ item }}</li>
-        }
-      </ul>
-      <h3 class="mt-4 text-2xl font-bold">{{ copyLegal.termsOfUse.sections.modifications }}</h3>
-      <p>{{ copyLegal.termsOfUse.lines.modifications1 }}</p>
-      <h3 class="mt-4 text-2xl font-bold">{{ copyLegal.termsOfUse.sections.governingLaw }}</h3>
-      <p>{{ copyLegal.termsOfUse.lines.governingLaw1 }}</p>
+      }
     </div>
   </div>
 </trollysix-generic-section-block>

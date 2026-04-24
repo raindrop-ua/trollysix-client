@@ -3,41 +3,20 @@
   <div class="prose prose-slate dark:prose-invert w-full">
     <div class="grid grid-cols-1 gap-4">
       <p class="text-pretty">{{ copyLegal.privacyPolicy.effectiveDate }}</p>
-      <h3 class="mt-4 text-2xl font-bold">{{ copyLegal.privacyPolicy.sections.introduction }}</h3>
-      <p>{{ copyLegal.privacyPolicy.lines.welcome }}</p>
-      <p>{{ copyLegal.privacyPolicy.lines.intro1 }}</p>
-      <h3 class="mt-4 text-2xl font-bold">
-        {{ copyLegal.privacyPolicy.sections.informationCollected }}
-      </h3>
-      <p>{{ copyLegal.privacyPolicy.lines.collect1 }}</p>
-      <p>{{ copyLegal.privacyPolicy.lines.specifically }}</p>
-      <ul class="list-inside list-disc">
-        @for (item of copyLegal.privacyPolicy.lists.collect; track item) {
-          <li>{{ item }}</li>
+      @for (section of copyLegal.privacyPolicy.sections; track section.title) {
+        <h3 class="mt-4 text-2xl font-bold">{{ section.title }}</h3>
+        @for (block of section.content; track $index) {
+          @if (block.type === 'paragraph') {
+            <p>{{ block.value }}</p>
+          } @else {
+            <ul class="list-inside list-disc">
+              @for (item of block.items; track item) {
+                <li>{{ item }}</li>
+              }
+            </ul>
+          }
         }
-      </ul>
-      <h3 class="mt-4 text-2xl font-bold">{{ copyLegal.privacyPolicy.sections.cookies }}</h3>
-      <p>{{ copyLegal.privacyPolicy.lines.cookie1 }}</p>
-      <p>{{ copyLegal.privacyPolicy.lines.cookiePreference }}</p>
-      <ul class="list-inside list-disc">
-        @for (item of copyLegal.privacyPolicy.lists.cookie; track item) {
-          <li>{{ item }}</li>
-        }
-      </ul>
-      <p>{{ copyLegal.privacyPolicy.lines.cookie2 }}</p>
-      <h3 class="mt-4 text-2xl font-bold">{{ copyLegal.privacyPolicy.sections.thirdParty }}</h3>
-      <p>{{ copyLegal.privacyPolicy.lines.thirdParty1 }}</p>
-      <p>{{ copyLegal.privacyPolicy.lines.thirdParty2 }}</p>
-      <h3 class="mt-4 text-2xl font-bold">{{ copyLegal.privacyPolicy.sections.dataSecurity }}</h3>
-      <p>{{ copyLegal.privacyPolicy.lines.dataSecurity1 }}</p>
-      <h3 class="mt-4 text-2xl font-bold">{{ copyLegal.privacyPolicy.sections.childrenPrivacy }}</h3>
-      <p>{{ copyLegal.privacyPolicy.lines.children1 }}</p>
-      <h3 class="mt-4 text-2xl font-bold">{{ copyLegal.privacyPolicy.sections.changes }}</h3>
-      <p>{{ copyLegal.privacyPolicy.lines.changes1 }}</p>
-      <p>{{ copyLegal.privacyPolicy.lines.changes2 }}</p>
-      <h3 class="mt-4 text-2xl font-bold">{{ copyLegal.privacyPolicy.sections.contact }}</h3>
-      <p>{{ copyLegal.privacyPolicy.lines.contact1 }}</p>
-      <p>{{ copyLegal.privacyPolicy.email }}</p>
+      }
     </div>
   </div>
 </trollysix-generic-section-block>

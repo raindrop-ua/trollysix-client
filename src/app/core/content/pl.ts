@@ -220,120 +220,267 @@ Następnie trasa biegnie ulicami Elektryczną, Kolską oraz 20-lecia Zwycięstwa
     privacyPolicy: {
       title: 'Polityka prywatności',
       effectiveDate: 'Data wejścia w życie: 25.02.2026',
-      sections: {
-        introduction: '1. Wprowadzenie',
-        informationCollected: '2. Jakie informacje zbieramy',
-        cookies: '3. Pliki cookie',
-        thirdParty: '4. Usługi stron trzecich',
-        dataSecurity: '5. Bezpieczeństwo danych',
-        childrenPrivacy: '6. Prywatność dzieci',
-        changes: '7. Zmiany w niniejszej polityce',
-        contact: '8. Kontakt',
-      },
-      lines: {
-        welcome: 'Witamy w TrollySix.',
-        intro1:
-          'Twoja prywatność jest ważna. Niniejsza Polityka prywatności wyjaśnia, jakie informacje są zbierane (spoiler: prawie żadne), w jaki sposób są wykorzystywane oraz jakie masz prawa podczas korzystania z tej strony internetowej.',
-        collect1:
-          'TrollySix nie zbiera, nie przechowuje, nie przetwarza ani nie udostępnia żadnych danych osobowych.',
-        specifically: 'Konkretnie:',
-        cookie1:
-          'TrollySix używa wyłącznie jednego wpisu w local storage lub pliku cookie, wyłącznie w celu zapisania wybranej przez Ciebie preferencji motywu (np. trybu jasnego lub ciemnego).',
-        cookiePreference: 'Ta preferencja:',
-        cookie2:
-          'Możesz usunąć tę preferencję w dowolnym momencie, czyszcząc pamięć przeglądarki.',
-        thirdParty1:
-          'TrollySix nie integruje się z zewnętrznymi narzędziami analitycznymi, sieciami reklamowymi ani usługami śledzącymi.',
-        thirdParty2:
-          'Jeśli dostawca hostingu automatycznie zapisuje techniczne dane serwera (takie jak standardowe logi dostępu), pozostaje to poza kontrolą TrollySix i jest obsługiwane zgodnie z politykami dostawcy hostingu.',
-        dataSecurity1:
-          'Ponieważ TrollySix nie zbiera danych osobowych, nie istnieją żadne dane osobowe do przechowywania, ochrony ani udostępniania.',
-        children1:
-          'TrollySix nie jest skierowany do dzieci ani do żadnej konkretnej grupy wiekowej i świadomie nie zbiera informacji od dzieci.',
-        changes1:
-          'Niniejsza Polityka prywatności może zostać zaktualizowana, jeśli funkcjonalność TrollySix ulegnie zmianie w przyszłości.',
-        changes2:
-          'Jeśli praktyki związane ze zbieraniem danych ulegną zmianie, ten dokument zostanie odpowiednio zaktualizowany.',
-        contact1:
-          'Jeśli masz jakiekolwiek pytania dotyczące niniejszej Polityki prywatności, możesz skontaktować się z właścicielem projektu pod adresem:',
-      },
-      lists: {
-        collect: [
-          'Brak rejestracji użytkowników',
-          'Brak systemu logowania',
-          'Brak śledzenia analitycznego',
-          'Brak reklamowych trackerów',
-          'Brak zbierania danych osobowych',
-          'Brak logowania adresów IP',
-          'Brak śledzenia zachowań',
-          'Brak zewnętrznych narzędzi analitycznych',
-        ],
-        cookie: [
-          'Jest przechowywana lokalnie w Twojej przeglądarce',
-          'Nie jest przesyłana na żaden serwer',
-          'Nie jest używana do śledzenia',
-          'Nie zawiera żadnych danych osobowych',
-        ],
-      },
-      email: 'contacts@trolly6.com',
+      sections: [
+        {
+          title: '1. Wprowadzenie',
+          content: [
+            { type: 'paragraph', value: 'Witamy w TrollySix.' },
+            {
+              type: 'paragraph',
+              value:
+                'Twoja prywatność jest ważna. Niniejsza Polityka prywatności wyjaśnia, jakie informacje są zbierane (spoiler: prawie żadne), w jaki sposób są wykorzystywane oraz jakie masz prawa podczas korzystania z tej strony internetowej.',
+            },
+          ],
+        },
+        {
+          title: '2. Jakie informacje zbieramy',
+          content: [
+            {
+              type: 'paragraph',
+              value:
+                'TrollySix nie zbiera, nie przechowuje, nie przetwarza ani nie udostępnia żadnych danych osobowych.',
+            },
+            { type: 'paragraph', value: 'Konkretnie:' },
+            {
+              type: 'list',
+              items: [
+                'Brak rejestracji użytkowników',
+                'Brak systemu logowania',
+                'Brak śledzenia analitycznego',
+                'Brak reklamowych trackerów',
+                'Brak zbierania danych osobowych',
+                'Brak logowania adresów IP',
+                'Brak śledzenia zachowań',
+                'Brak zewnętrznych narzędzi analitycznych',
+              ],
+            },
+          ],
+        },
+        {
+          title: '3. Pliki cookie',
+          content: [
+            {
+              type: 'paragraph',
+              value:
+                'TrollySix używa wyłącznie jednego wpisu w local storage lub pliku cookie, wyłącznie w celu zapisania wybranej przez Ciebie preferencji motywu (np. trybu jasnego lub ciemnego).',
+            },
+            { type: 'paragraph', value: 'Ta preferencja:' },
+            {
+              type: 'list',
+              items: [
+                'Jest przechowywana lokalnie w Twojej przeglądarce',
+                'Nie jest przesyłana na żaden serwer',
+                'Nie jest używana do śledzenia',
+                'Nie zawiera żadnych danych osobowych',
+              ],
+            },
+            {
+              type: 'paragraph',
+              value:
+                'Możesz usunąć tę preferencję w dowolnym momencie, czyszcząc pamięć przeglądarki.',
+            },
+          ],
+        },
+        {
+          title: '4. Usługi stron trzecich',
+          content: [
+            {
+              type: 'paragraph',
+              value:
+                'TrollySix nie integruje się z zewnętrznymi narzędziami analitycznymi, sieciami reklamowymi ani usługami śledzącymi.',
+            },
+            {
+              type: 'paragraph',
+              value:
+                'Jeśli dostawca hostingu automatycznie zapisuje techniczne dane serwera (takie jak standardowe logi dostępu), pozostaje to poza kontrolą TrollySix i jest obsługiwane zgodnie z politykami dostawcy hostingu.',
+            },
+          ],
+        },
+        {
+          title: '5. Bezpieczeństwo danych',
+          content: [
+            {
+              type: 'paragraph',
+              value:
+                'Ponieważ TrollySix nie zbiera danych osobowych, nie istnieją żadne dane osobowe do przechowywania, ochrony ani udostępniania.',
+            },
+          ],
+        },
+        {
+          title: '6. Prywatność dzieci',
+          content: [
+            {
+              type: 'paragraph',
+              value:
+                'TrollySix nie jest skierowany do dzieci ani do żadnej konkretnej grupy wiekowej i świadomie nie zbiera informacji od dzieci.',
+            },
+          ],
+        },
+        {
+          title: '7. Zmiany w niniejszej polityce',
+          content: [
+            {
+              type: 'paragraph',
+              value:
+                'Niniejsza Polityka prywatności może zostać zaktualizowana, jeśli funkcjonalność TrollySix ulegnie zmianie w przyszłości.',
+            },
+            {
+              type: 'paragraph',
+              value:
+                'Jeśli praktyki związane ze zbieraniem danych ulegną zmianie, ten dokument zostanie odpowiednio zaktualizowany.',
+            },
+          ],
+        },
+        {
+          title: '8. Kontakt',
+          content: [
+            {
+              type: 'paragraph',
+              value:
+                'Jeśli masz jakiekolwiek pytania dotyczące niniejszej Polityki prywatności, możesz skontaktować się z właścicielem projektu pod adresem:',
+            },
+            { type: 'paragraph', value: 'contacts@trolly6.com' },
+          ],
+        },
+      ],
     },
     termsOfUse: {
       title: 'Warunki korzystania',
       effectiveDate: 'Data wejścia w życie: 25.02.2026',
-      sections: {
-        acceptance: '1. Akceptacja warunków',
-        serviceDescription: '2. Opis usługi',
-        accuracy: '3. Brak gwarancji dokładności',
-        noAccounts: '4. Brak kont użytkowników',
-        intellectualProperty: '5. Własność intelektualna',
-        liability: '6. Ograniczenie odpowiedzialności',
-        modifications: '7. Zmiany',
-        governingLaw: '8. Prawo właściwe',
-      },
-      lines: {
-        acceptance1:
-          'Uzyskując dostęp do TrollySix i korzystając z niego, akceptujesz niniejsze Warunki korzystania.',
-        acceptance2:
-          'Jeśli się z nimi nie zgadzasz, prosimy o zaprzestanie korzystania ze strony.',
-        service1:
-          'TrollySix jest projektem informacyjnym, który udostępnia publicznie dostępne informacje o rozkładzie jazdy trolejbusów.',
-        service2:
-          'Strona internetowa jest udostępniana „tak jak jest”, wyłącznie w celach informacyjnych.',
-        accuracy1:
-          'Chociaż dokładamy starań, aby informacje były prawidłowe i aktualne:',
-        accuracy2:
-          'TrollySix nie ponosi odpowiedzialności za przegapiony transport, opóźnienia ani jakiekolwiek konsekwencje wynikające z polegania na udostępnionych informacjach.',
-        accuracy3:
-          'W razie potrzeby zawsze sprawdzaj oficjalne aktualizacje transportowe.',
-        noAccounts1:
-          'TrollySix nie oferuje kont użytkowników, rejestracji ani funkcji tworzenia treści przez użytkowników.',
-        ip1: 'Wszystkie treści, projekt, kod i branding TrollySix stanowią własność intelektualną właściciela projektu, o ile nie zaznaczono inaczej.',
-        youMay: 'Możesz:',
-        youMayNot: 'Nie możesz:',
-        liability1: 'TrollySix jest udostępniany bez jakichkolwiek gwarancji.',
-        liability2: 'Właściciel projektu nie ponosi odpowiedzialności za:',
-        modifications1:
-          'Niniejsze Warunki mogą zostać zaktualizowane w dowolnym momencie. Dalsze korzystanie ze strony oznacza akceptację zaktualizowanych Warunków.',
-        governingLaw1:
-          'Niniejsze Warunki podlegają właściwym przepisom prawa kraju zamieszkania właściciela projektu, chyba że obowiązujące prawo wymaga inaczej.',
-      },
-      lists: {
-        accuracy: [
-          'Informacje o rozkładzie jazdy mogą się zmieniać',
-          'Mogą wystąpić opóźnienia lub zmiany operacyjne',
-          'Strona może zawierać nieścisłości',
-        ],
-        youMay: ['Przeglądać stronę internetową', 'Udostępniać do niej linki'],
-        youMayNot: [
-          'Kopiować ani rozpowszechniać treści w celach komercyjnych bez zgody',
-        ],
-        liability: [
-          'Przerwy w działaniu usługi',
-          'Błędy techniczne',
-          'Nieprawidłowe dane rozkładowe',
-          'Jakiekolwiek szkody bezpośrednie lub pośrednie wynikające z korzystania ze strony',
-        ],
-      },
+      sections: [
+        {
+          title: '1. Akceptacja warunków',
+          content: [
+            {
+              type: 'paragraph',
+              value:
+                'Uzyskując dostęp do TrollySix i korzystając z niego, akceptujesz niniejsze Warunki korzystania.',
+            },
+            {
+              type: 'paragraph',
+              value:
+                'Jeśli się z nimi nie zgadzasz, prosimy o zaprzestanie korzystania ze strony.',
+            },
+          ],
+        },
+        {
+          title: '2. Opis usługi',
+          content: [
+            {
+              type: 'paragraph',
+              value:
+                'TrollySix jest projektem informacyjnym, który udostępnia publicznie dostępne informacje o rozkładzie jazdy trolejbusów.',
+            },
+            {
+              type: 'paragraph',
+              value:
+                'Strona internetowa jest udostępniana „tak jak jest”, wyłącznie w celach informacyjnych.',
+            },
+          ],
+        },
+        {
+          title: '3. Brak gwarancji dokładności',
+          content: [
+            {
+              type: 'paragraph',
+              value:
+                'Chociaż dokładamy starań, aby informacje były prawidłowe i aktualne:',
+            },
+            {
+              type: 'list',
+              items: [
+                'Informacje o rozkładzie jazdy mogą się zmieniać',
+                'Mogą wystąpić opóźnienia lub zmiany operacyjne',
+                'Strona może zawierać nieścisłości',
+              ],
+            },
+            {
+              type: 'paragraph',
+              value:
+                'TrollySix nie ponosi odpowiedzialności za przegapiony transport, opóźnienia ani jakiekolwiek konsekwencje wynikające z polegania na udostępnionych informacjach.',
+            },
+            {
+              type: 'paragraph',
+              value:
+                'W razie potrzeby zawsze sprawdzaj oficjalne aktualizacje transportowe.',
+            },
+          ],
+        },
+        {
+          title: '4. Brak kont użytkowników',
+          content: [
+            {
+              type: 'paragraph',
+              value:
+                'TrollySix nie oferuje kont użytkowników, rejestracji ani funkcji tworzenia treści przez użytkowników.',
+            },
+          ],
+        },
+        {
+          title: '5. Własność intelektualna',
+          content: [
+            {
+              type: 'paragraph',
+              value:
+                'Wszystkie treści, projekt, kod i branding TrollySix stanowią własność intelektualną właściciela projektu, o ile nie zaznaczono inaczej.',
+            },
+            { type: 'paragraph', value: 'Możesz:' },
+            {
+              type: 'list',
+              items: ['Przeglądać stronę internetową', 'Udostępniać do niej linki'],
+            },
+            { type: 'paragraph', value: 'Nie możesz:' },
+            {
+              type: 'list',
+              items: [
+                'Kopiować ani rozpowszechniać treści w celach komercyjnych bez zgody',
+              ],
+            },
+          ],
+        },
+        {
+          title: '6. Ograniczenie odpowiedzialności',
+          content: [
+            {
+              type: 'paragraph',
+              value: 'TrollySix jest udostępniany bez jakichkolwiek gwarancji.',
+            },
+            {
+              type: 'paragraph',
+              value: 'Właściciel projektu nie ponosi odpowiedzialności za:',
+            },
+            {
+              type: 'list',
+              items: [
+                'Przerwy w działaniu usługi',
+                'Błędy techniczne',
+                'Nieprawidłowe dane rozkładowe',
+                'Jakiekolwiek szkody bezpośrednie lub pośrednie wynikające z korzystania ze strony',
+              ],
+            },
+          ],
+        },
+        {
+          title: '7. Zmiany',
+          content: [
+            {
+              type: 'paragraph',
+              value:
+                'Niniejsze Warunki mogą zostać zaktualizowane w dowolnym momencie. Dalsze korzystanie ze strony oznacza akceptację zaktualizowanych Warunków.',
+            },
+          ],
+        },
+        {
+          title: '8. Prawo właściwe',
+          content: [
+            {
+              type: 'paragraph',
+              value:
+                'Niniejsze Warunki podlegają właściwym przepisom prawa kraju zamieszkania właściciela projektu, chyba że obowiązujące prawo wymaga inaczej.',
+            },
+          ],
+        },
+      ],
     },
   },
 
