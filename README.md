@@ -12,6 +12,10 @@
 
 [🔗 Try it on trolly6.com](https://trolly6.com)
 
+## Backend
+
+[🔗 trollysix-server](https://github.com/raindrop-ua/trollysix-server)
+
 ## Run frontend locally
 
 ```bash
