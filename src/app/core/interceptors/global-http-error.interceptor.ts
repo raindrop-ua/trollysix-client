@@ -26,6 +26,10 @@ export const globalHttpErrorInterceptor: HttpInterceptorFn = (req, next) => {
     }),
     tap({
       error: (error: HttpErrorResponse) => {
+        if (isExpectedNoDataCase(req, error)) {
+          return;
+        }
+
         if (error.status === 0) {
           toastService.error('Network error. Please check your connection.', {
             title: 'Connection issue',
@@ -46,6 +50,17 @@ export const globalHttpErrorInterceptor: HttpInterceptorFn = (req, next) => {
     }),
   );
 };
+
+function isExpectedNoDataCase(
+  req: HttpRequest<unknown>,
+  error: HttpErrorResponse,
+): boolean {
+  return (
+    req.method.toUpperCase() === 'GET' &&
+    req.url.includes('/timetables') &&
+    error.status === 404
+  );
+}
 
 function isRetriableRequest(req: HttpRequest<unknown>): boolean {
   return ['GET', 'HEAD', 'OPTIONS'].includes(req.method.toUpperCase());
