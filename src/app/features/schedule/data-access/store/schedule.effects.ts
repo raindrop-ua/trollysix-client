@@ -16,13 +16,13 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { of, forkJoin, distinctUntilChanged, combineLatest, tap } from 'rxjs';
 
+import { DayTypeName } from '../models/daytype.model';
+import { DirectionName } from '../models/direction.model';
 import { ScheduleApiService } from '../services/schedule.api.service';
 
 import { SchedulePageActions, ScheduleApiActions } from './schedule.actions';
 import { scheduleFeature } from './schedule.reducer';
 import { parseDirection, resolveAutoDayTypeName } from './schedule.utils';
-import { DayTypeName } from '../models/daytype.model';
-import { DirectionName } from '../models/direction.model';
 
 @Injectable()
 export class ScheduleEffects {
