@@ -1,4 +1,5 @@
 import { isPlatformBrowser, Location } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -20,6 +21,8 @@ import { ScheduleApiService } from '../services/schedule.api.service';
 import { SchedulePageActions, ScheduleApiActions } from './schedule.actions';
 import { scheduleFeature } from './schedule.reducer';
 import { parseDirection, resolveAutoDayTypeName } from './schedule.utils';
+import { DayTypeName } from '../models/daytype.model';
+import { DirectionName } from '../models/direction.model';
 
 @Injectable()
 export class ScheduleEffects {
@@ -227,16 +230,40 @@ export class ScheduleEffects {
           map((timetable) =>
             ScheduleApiActions.loadTimetableSuccess({ timetable }),
           ),
-          catchError((error) =>
-            of(
+          catchError((error) => {
+            if (isTimetableNotFound(error)) {
+              return of(
+                ScheduleApiActions.loadTimetableSuccess({
+                  timetable: {
+                    id: `${stopId}:${dayType}:${direction}`,
+                    name: '',
+                    stopId: stopId!,
+                    validFrom: '',
+                    dayType: dayType! as DayTypeName,
+                    direction: direction! as DirectionName,
+                    times: [],
+                  },
+                }),
+              );
+            }
+
+            return of(
               ScheduleApiActions.loadTimetableFailure({
                 error: toErrorMessage(error),
               }),
-            ),
-          ),
+            );
+          }),
         ),
       ),
     ),
+  );
+}
+
+function isTimetableNotFound(error: unknown): boolean {
+  return (
+    error instanceof HttpErrorResponse &&
+    error.status === 404 &&
+    error.url?.includes('/timetables') === true
   );
 }
 
