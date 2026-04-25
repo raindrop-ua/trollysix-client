@@ -8,10 +8,10 @@
       {{ copyErrors.notFound.subtitle }}
     </p>
     <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
-      <a [routerLink]="['/']" trollysixBtn="secondary">
+      <a [routerLink]="[AppRouteEnum.Home]" trollysixBtn="secondary">
         {{ copyErrors.notFound.action }}
       </a>
-      <a [routerLink]="['/schedule']" trollysixBtn="primary">
+      <a [routerLink]="['/', AppRouteEnum.Schedule]" trollysixBtn="primary">
         {{ copyErrors.notFound.actionOpenSchedule }}
       </a>
     </div>
