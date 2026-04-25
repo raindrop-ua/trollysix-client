@@ -10,12 +10,15 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { fromEvent, merge, map, pairwise, startWith, tap } from 'rxjs';
 
+import { COPY } from '@core/content/en';
+
 import { ToastService } from './toast.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NetworkStatusService {
+  private readonly copy = COPY.services.networkStatus;
   private readonly document = inject(DOCUMENT);
   private readonly destroyRef = inject(DestroyRef);
   private readonly toastService = inject(ToastService);
@@ -53,8 +56,8 @@ export class NetworkStatusService {
           if (!curr) {
             this.wentOfflineAt = now;
 
-            this.toastService.error('You are offline', {
-              title: 'Connection lost',
+            this.toastService.error(this.copy.offlineMessage, {
+              title: this.copy.connectionLost,
             });
 
             return;
@@ -68,8 +71,8 @@ export class NetworkStatusService {
             }
           }
 
-          this.toastService.success('Back online', {
-            title: 'Connection restored',
+          this.toastService.success(this.copy.backOnline, {
+            title: this.copy.connectionRestored,
           });
 
           this.wentOfflineAt = null;

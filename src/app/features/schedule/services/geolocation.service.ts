@@ -3,12 +3,15 @@ import { Injectable, PLATFORM_ID, inject, signal } from '@angular/core';
 
 import { Observable, throwError } from 'rxjs';
 
+import { COPY } from '@core/content/en';
+
 import { GeolocationError, GeolocationErrorCode } from './geolocation.types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GeolocationService {
+  private readonly copy = COPY.schedule.services.geolocation;
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
 
@@ -21,7 +24,7 @@ export class GeolocationService {
       return throwError(() =>
         this.createError(
           GeolocationErrorCode.NotSupported,
-          'Geolocation is not available on this platform.',
+          this.copy.notAvailableOnPlatform,
         ),
       );
     }
@@ -30,7 +33,7 @@ export class GeolocationService {
       return throwError(() =>
         this.createError(
           GeolocationErrorCode.NotSupported,
-          'Geolocation API is not supported by this browser.',
+          this.copy.apiNotSupportedByBrowser,
         ),
       );
     }
@@ -64,7 +67,7 @@ export class GeolocationService {
       return throwError(() =>
         this.createError(
           GeolocationErrorCode.NotSupported,
-          'Geolocation is not available on this platform.',
+          this.copy.notAvailableOnPlatform,
         ),
       );
     }
@@ -73,7 +76,7 @@ export class GeolocationService {
       return throwError(() =>
         this.createError(
           GeolocationErrorCode.NotSupported,
-          'Geolocation API is not supported by this browser.',
+          this.copy.apiNotSupportedByBrowser,
         ),
       );
     }
@@ -110,25 +113,25 @@ export class GeolocationService {
       case error.PERMISSION_DENIED:
         return this.createError(
           GeolocationErrorCode.PermissionDenied,
-          'Location permission was denied by the user.',
+          this.copy.permissionDeniedByUser,
           error,
         );
       case error.POSITION_UNAVAILABLE:
         return this.createError(
           GeolocationErrorCode.PositionUnavailable,
-          'Location information is unavailable.',
+          this.copy.positionUnavailable,
           error,
         );
       case error.TIMEOUT:
         return this.createError(
           GeolocationErrorCode.Timeout,
-          'Retrieving location took too long.',
+          this.copy.timeout,
           error,
         );
       default:
         return this.createError(
           GeolocationErrorCode.Unknown,
-          'An unknown geolocation error occurred.',
+          this.copy.unknownError,
           error,
         );
     }

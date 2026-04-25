@@ -1,5 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 
+import { COPY } from '@core/content/en';
+
 import { VehicleFeature } from '@features/about/data-access/models/vehicle-feature';
 
 @Injectable({
@@ -8,18 +10,18 @@ import { VehicleFeature } from '@features/about/data-access/models/vehicle-featu
 export class VehicleFeaturesService {
   public features = signal<VehicleFeature[]>([
     {
-      name: 'Accessibility',
-      ariaLabel: 'Accessibility',
+      name: COPY.about.infrastructure.vehicleFeatures[0].name,
+      ariaLabel: COPY.about.infrastructure.vehicleFeatures[0].ariaLabel,
       icon: 'accessibility',
     },
     {
-      name: 'Onboard Announcement System',
-      ariaLabel: 'Onboard Announcement System',
+      name: COPY.about.infrastructure.vehicleFeatures[1].name,
+      ariaLabel: COPY.about.infrastructure.vehicleFeatures[1].ariaLabel,
       icon: 'speech',
     },
     {
-      name: 'Autonomous Operation',
-      ariaLabel: 'Autonomous Operation',
+      name: COPY.about.infrastructure.vehicleFeatures[2].name,
+      ariaLabel: COPY.about.infrastructure.vehicleFeatures[2].ariaLabel,
       icon: 'battery-charging',
     },
   ]);

@@ -5,6 +5,7 @@ import { take, withLatestFrom } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
 
+import { COPY } from '@core/content/en';
 import { ToastService } from '@core/services/toast.service';
 
 import { Stop } from '../data-access/models/stop.model';
@@ -17,6 +18,8 @@ import { GeolocationError } from './geolocation.types';
 
 @Injectable()
 export class ClosestStopService {
+  private readonly copy = COPY.schedule.services.closestStop;
+  private readonly geolocationCopy = COPY.schedule.services.geolocation;
   private readonly destroyRef = inject(DestroyRef);
   protected readonly geolocation = inject(GeolocationService);
   private readonly toastService = inject(ToastService);
@@ -46,16 +49,13 @@ export class ClosestStopService {
               status: 'error',
               error: {
                 code: 'unknown',
-                message: 'No stops with coordinates found.',
+                message: this.copy.noStopsWithCoordinatesFound,
               } as GeolocationError,
             });
 
-            this.toastService.error(
-              'No stops with location data are available. Please try again later.',
-              {
-                title: 'Failed to find closest stop',
-              },
-            );
+            this.toastService.error(this.copy.noStopsWithLocationDataAvailable, {
+              title: this.copy.failedToFindClosestStop,
+            });
             return;
           }
 
@@ -65,15 +65,18 @@ export class ClosestStopService {
             SchedulePageActions.selectStop({ stopId: closestStop.id }),
           );
 
-          this.toastService.success(`Closest stop: ${closestStop.name}`, {
-            title: 'Stop selected by location',
-          });
+          this.toastService.success(
+            `${this.copy.closestStopPrefix} ${closestStop.name}`,
+            {
+              title: this.copy.stopSelectedByLocation,
+            },
+          );
         },
 
         error: (error: GeolocationError) => {
           this.state.set({ status: 'error', error });
           this.toastService.error(this.getErrorMessage(error), {
-            title: 'Failed to get location',
+            title: this.copy.failedToGetLocation,
           });
         },
       });
@@ -146,15 +149,15 @@ export class ClosestStopService {
   private getErrorMessage(error: GeolocationError): string {
     switch (error.code) {
       case 'permission-denied':
-        return 'Please allow location access in your browser settings.';
+        return this.geolocationCopy.allowLocationAccessInBrowserSettings;
       case 'position-unavailable':
-        return 'Unable to determine your location. Try again in a moment.';
+        return this.geolocationCopy.unableToDetermineLocation;
       case 'timeout':
-        return 'Location request took too long. Please try again.';
+        return this.geolocationCopy.locationRequestTooLong;
       case 'not-supported':
-        return 'Your browser does not support geolocation.';
+        return this.geolocationCopy.browserDoesNotSupportGeolocation;
       default:
-        return 'Something went wrong while trying to get your location.';
+        return this.geolocationCopy.somethingWentWrongGettingLocation;
     }
   }
 }
