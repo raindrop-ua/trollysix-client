@@ -2,7 +2,9 @@
 <trollysix-generic-section-block class="relative mt-8 mb-20 block">
   <div class="prose prose-slate dark:prose-invert w-full">
     <div class="grid grid-cols-1 gap-4">
-      <p class="text-pretty">{{ copyLegal.privacyPolicy.effectiveDate }}</p>
+      <p class="text-right text-pretty">
+        {{ copyLegal.privacyPolicy.effectiveDate }}
+      </p>
       @for (section of copyLegal.privacyPolicy.sections; track section.title) {
         <h3 class="mt-4 text-2xl font-bold">{{ section.title }}</h3>
         @for (block of section.content; track $index) {
