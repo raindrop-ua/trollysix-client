@@ -7,9 +7,7 @@ import { COPY } from '@core/content/en';
 
 import { GeolocationError, GeolocationErrorCode } from './geolocation.types';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class GeolocationService {
   private readonly copy = COPY.schedule.services.geolocation;
   private readonly platformId = inject(PLATFORM_ID);

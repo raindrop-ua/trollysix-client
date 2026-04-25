@@ -9,7 +9,9 @@ import {
 
 export type FontSizeMode = 'normal' | 'large';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class TextSizeService {
   private readonly document = inject(DOCUMENT);
   private readonly platformId = inject(PLATFORM_ID);
