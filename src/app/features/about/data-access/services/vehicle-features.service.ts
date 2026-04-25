@@ -1,6 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 
 import { COPY } from '@core/content/en';
+
 import { VehicleFeature } from '@features/about/data-access/models/vehicle-feature';
 
 @Injectable({
