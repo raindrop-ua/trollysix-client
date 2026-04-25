@@ -9,9 +9,7 @@ import { environment } from '@environments/environment';
 
 import { Metric } from '@shared/ui/sections/metrics/metrics.model';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class MetricsListService {
   private readonly BASE_URL = environment.BASE_API_URL;
   private http = inject(HttpClient);

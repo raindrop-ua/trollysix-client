@@ -11,9 +11,7 @@ import { SchedulePageActions } from '../data-access/store/schedule.actions';
 import { scheduleFeature } from '../data-access/store/schedule.reducer';
 import { selectCurrentTimetableTimes } from '../data-access/store/schedule.selectors';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ScheduleService {
   private readonly clock = inject(ClockService);
   private readonly store = inject(Store);
@@ -36,7 +34,7 @@ export class ScheduleService {
           : this.statusFor(now, this.toTodayDate(t.time, now)),
       })),
     ),
-    shareReplay({ bufferSize: 1, refCount: false }),
+    shareReplay({ bufferSize: 1, refCount: true }),
   );
 
   public readonly showRunNumbers$ = this.store.select(

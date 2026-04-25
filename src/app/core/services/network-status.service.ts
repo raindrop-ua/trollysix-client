@@ -28,13 +28,20 @@ export class NetworkStatusService {
 
   private readonly minOfflineMs = 1_000;
   private wentOfflineAt: number | null = null;
+  private initialized = false;
 
   public init(): void {
+    if (this.initialized) {
+      return;
+    }
+
     const defaultView = this.document.defaultView;
 
     if (!defaultView) {
       return;
     }
+
+    this.initialized = true;
 
     const online$ = fromEvent(defaultView, 'online').pipe(map(() => true));
     const offline$ = fromEvent(defaultView, 'offline').pipe(map(() => false));
