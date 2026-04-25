@@ -1,17 +1,21 @@
 @if (stopData(); as stop) {
-  <trollysix-generic-section-block class="group mb-12 block">
-    <header class="mb-4 flex flex-wrap items-center justify-between gap-3">
-      <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
-        {{ stop.name }} — {{ copySchedule.stopDetails }}
-      </h3>
-      <trollysix-geo-badge [geo]="stop.geo" />
-    </header>
+  @for (key of [stop.id]; track key) {
+    <div class="ts-stop-details-reveal">
+      <trollysix-generic-section-block class="group mb-12 block">
+        <header class="mb-4 flex flex-wrap items-center justify-between gap-3">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
+            {{ stop.name }} — {{ copySchedule.stopDetails }}
+          </h3>
+          <trollysix-geo-badge [geo]="stop.geo" />
+        </header>
 
-    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
-      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:col-span-2">
-        <trollysix-shared-routes [stop]="stop" />
-        <trollysix-weather-block [stop]="stop" />
-      </div>
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:col-span-2">
+            <trollysix-shared-routes [stop]="stop" />
+            <trollysix-weather-block [stop]="stop" />
+          </div>
+        </div>
+      </trollysix-generic-section-block>
     </div>
-  </trollysix-generic-section-block>
+  }
 }
