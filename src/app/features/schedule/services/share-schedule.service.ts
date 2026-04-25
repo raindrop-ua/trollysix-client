@@ -13,9 +13,7 @@ import { ToastService } from '@core/services/toast.service';
 
 import { scheduleFeature } from '../data-access/store/schedule.reducer';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ShareScheduleService {
   private readonly copy = COPY.schedule.services.share;
   private readonly store = inject(Store);

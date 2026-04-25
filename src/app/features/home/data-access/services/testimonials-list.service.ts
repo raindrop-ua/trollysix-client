@@ -7,9 +7,7 @@ import { environment } from '@environments/environment';
 
 import { Testimonials } from '../models/testimonial.model';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class TestimonialsListService {
   private readonly BASE_URL = environment.BASE_API_URL;
   private http = inject(HttpClient);
