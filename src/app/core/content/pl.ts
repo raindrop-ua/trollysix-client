@@ -140,6 +140,44 @@ export const COPY = {
     geoBadge: {
       openInGoogleMaps: 'Otwórz w Google Maps',
     },
+    services: {
+      share: {
+        nothingToShare: 'Na razie nic do udostępnienia (wybierz przystanek/dzień/kierunek)',
+        linkCopied: 'Link skopiowany do schowka',
+        linkCopyFailed: 'Nie udało się skopiować linku do schowka',
+      },
+      closestStop: {
+        noStopsWithCoordinatesFound:
+          'Nie znaleziono przystanków ze współrzędnymi.',
+        noStopsWithLocationDataAvailable:
+          'Brak dostępnych przystanków z danymi lokalizacji. Spróbuj ponownie później.',
+        failedToFindClosestStop: 'Nie udało się znaleźć najbliższego przystanku',
+        closestStopPrefix: 'Najbliższy przystanek:',
+        stopSelectedByLocation: 'Przystanek wybrany na podstawie lokalizacji',
+        failedToGetLocation: 'Nie udało się pobrać lokalizacji',
+      },
+      geolocation: {
+        notAvailableOnPlatform:
+          'Geolokalizacja nie jest dostępna na tej platformie.',
+        apiNotSupportedByBrowser:
+          'API geolokalizacji nie jest obsługiwane przez tę przeglądarkę.',
+        permissionDeniedByUser:
+          'Uprawnienie do lokalizacji zostało odrzucone przez użytkownika.',
+        positionUnavailable: 'Informacje o lokalizacji są niedostępne.',
+        timeout: 'Pobieranie lokalizacji trwało zbyt długo.',
+        unknownError: 'Wystąpił nieznany błąd geolokalizacji.',
+        allowLocationAccessInBrowserSettings:
+          'Zezwól na dostęp do lokalizacji w ustawieniach przeglądarki.',
+        unableToDetermineLocation:
+          'Nie można określić Twojej lokalizacji. Spróbuj ponownie za chwilę.',
+        locationRequestTooLong:
+          'Żądanie lokalizacji trwało zbyt długo. Spróbuj ponownie.',
+        browserDoesNotSupportGeolocation:
+          'Twoja przeglądarka nie obsługuje geolokalizacji.',
+        somethingWentWrongGettingLocation:
+          'Coś poszło nie tak podczas pobierania Twojej lokalizacji.',
+      },
+    },
   },
 
   about: {
@@ -172,6 +210,20 @@ Następnie trasa biegnie ulicami Elektryczną, Kolską oraz 20-lecia Zwycięstwa
       depotsBalancedAllocation: 'zajezdnie (zrównoważony przydział)',
       vehicles: 'pojazdy',
       stopPhotoAlt: 'Zdjęcie przystanku',
+      vehicleFeatures: [
+        {
+          name: 'Dostępność',
+          ariaLabel: 'Dostępność',
+        },
+        {
+          name: 'System zapowiedzi pokładowych',
+          ariaLabel: 'System zapowiedzi pokładowych',
+        },
+        {
+          name: 'Jazda autonomiczna',
+          ariaLabel: 'Jazda autonomiczna',
+        },
+      ],
     },
     metrics: [
       {
@@ -491,5 +543,23 @@ Następnie trasa biegnie ulicami Elektryczną, Kolską oraz 20-lecia Zwycięstwa
     rightsReserved: 'Wszelkie prawa zastrzeżone.',
     privacyPolicy: 'Polityka prywatności',
     termsOfUse: 'Warunki korzystania',
+  },
+
+  services: {
+    networkStatus: {
+      offlineMessage: 'Jesteś offline',
+      connectionLost: 'Połączenie utracone',
+      backOnline: 'Z powrotem online',
+      connectionRestored: 'Połączenie przywrócone',
+    },
+    pageVisibility: {
+      welcomeBackTitle: 'Witamy ponownie 👋',
+      niceToSeeYouAgain: 'Miło Cię znowu widzieć',
+    },
+    swUpdate: {
+      dialogTitle: 'Dostępna aktualizacja!',
+      dialogMessage: 'Dostępna jest aktualizacja. Zaktualizować teraz?',
+      confirmText: 'Aktualizuj',
+    },
   },
 } as const;

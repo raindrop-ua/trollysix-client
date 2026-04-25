@@ -7,9 +7,7 @@ import { environment } from '@environments/environment';
 
 import { RouteStop } from '../models/route-stops.model';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class StopsListService {
   private readonly BASE_URL = environment.BASE_API_URL;
   private http = inject(HttpClient);

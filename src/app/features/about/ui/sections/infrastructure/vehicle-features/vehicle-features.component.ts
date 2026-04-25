@@ -1,6 +1,8 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
 
-import { VehicleFeaturesService } from '@features/about/data-access/services/vehicle-features.service';
+import { COPY } from '@core/content/en';
+
+import { VehicleFeature } from '@features/about/data-access/models/vehicle-feature';
 import { TooltipDirective } from '@shared/directives/tooltip.directive';
 import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
@@ -12,6 +14,21 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
   host: { class: 'block' },
 })
 export class VehicleFeaturesComponent {
-  private vehicleFeaturesService = inject(VehicleFeaturesService);
-  public readonly vehicleFeatures = this.vehicleFeaturesService.features;
+  public readonly vehicleFeatures = signal<VehicleFeature[]>([
+    {
+      name: COPY.about.infrastructure.vehicleFeatures[0].name,
+      ariaLabel: COPY.about.infrastructure.vehicleFeatures[0].ariaLabel,
+      icon: 'accessibility',
+    },
+    {
+      name: COPY.about.infrastructure.vehicleFeatures[1].name,
+      ariaLabel: COPY.about.infrastructure.vehicleFeatures[1].ariaLabel,
+      icon: 'speech',
+    },
+    {
+      name: COPY.about.infrastructure.vehicleFeatures[2].name,
+      ariaLabel: COPY.about.infrastructure.vehicleFeatures[2].ariaLabel,
+      icon: 'battery-charging',
+    },
+  ]);
 }

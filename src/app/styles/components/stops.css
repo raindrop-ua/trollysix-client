@@ -45,4 +45,11 @@
   .shared-route-badge {
     @apply min-w-9 cursor-default rounded-lg border border-blue-500/30 bg-blue-500/10 px-2 py-1 text-center text-base text-blue-600 dark:text-blue-300;
   }
+
+  .ts-stop-details-reveal {
+    @apply motion-safe:opacity-100 motion-safe:transition-opacity motion-safe:duration-300 motion-safe:delay-300 motion-safe:ease-out;
+    @starting-style {
+      @apply motion-safe:opacity-0;
+    }
+  }
 }
