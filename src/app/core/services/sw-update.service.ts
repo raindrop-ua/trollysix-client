@@ -4,12 +4,15 @@ import { SwUpdate } from '@angular/service-worker';
 
 import { filter, interval, switchMap } from 'rxjs';
 
+import { COPY } from '@core/content/en';
+
 import { DialogService } from './dialog.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SwUpdateService {
+  private readonly copy = COPY.services.swUpdate;
   private readonly swUpdate = inject(SwUpdate);
   private readonly dialogService = inject(DialogService);
   private readonly destroyRef = inject(DestroyRef);
@@ -25,9 +28,9 @@ export class SwUpdateService {
       .subscribe(() => {
         this.dialogService
           .open({
-            title: 'Update available!',
-            message: 'An update is available. Update now?',
-            confirmText: 'Update',
+            title: this.copy.dialogTitle,
+            message: this.copy.dialogMessage,
+            confirmText: this.copy.confirmText,
             variant: 'info',
             disableClose: true,
             customIcon: 'monitor-down',

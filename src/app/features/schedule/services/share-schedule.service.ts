@@ -7,6 +7,7 @@ import { take } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { combineLatest } from 'rxjs';
 
+import { COPY } from '@core/content/en';
 import { ClipboardService } from '@core/services/clipboard.service';
 import { ToastService } from '@core/services/toast.service';
 
@@ -16,6 +17,7 @@ import { scheduleFeature } from '../data-access/store/schedule.reducer';
   providedIn: 'root',
 })
 export class ShareScheduleService {
+  private readonly copy = COPY.schedule.services.share;
   private readonly store = inject(Store);
   private readonly router = inject(Router);
   private readonly clipboardService = inject(ClipboardService);
@@ -36,9 +38,7 @@ export class ShareScheduleService {
       .pipe(take(1))
       .subscribe(async ([stopId, dayType, direction]) => {
         if (!stopId || !dayType || !direction) {
-          this.toastService.error(
-            'Nothing to share yet (select stop/day/direction)',
-          );
+          this.toastService.error(this.copy.nothingToShare);
           return;
         }
 
@@ -63,9 +63,9 @@ export class ShareScheduleService {
 
   private showShareResult(ok: boolean) {
     if (ok) {
-      this.toastService.success('Link copied to clipboard');
+      this.toastService.success(this.copy.linkCopied);
     } else {
-      this.toastService.error('Link could not be copied to clipboard');
+      this.toastService.error(this.copy.linkCopyFailed);
     }
   }
 }
