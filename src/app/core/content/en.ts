@@ -140,6 +140,42 @@ export const COPY = {
     geoBadge: {
       openInGoogleMaps: 'Open in Google Maps',
     },
+    services: {
+      share: {
+        nothingToShare: 'Nothing to share yet (select stop/day/direction)',
+        linkCopied: 'Link copied to clipboard',
+        linkCopyFailed: 'Link could not be copied to clipboard',
+      },
+      closestStop: {
+        noStopsWithCoordinatesFound: 'No stops with coordinates found.',
+        noStopsWithLocationDataAvailable:
+          'No stops with location data are available. Please try again later.',
+        failedToFindClosestStop: 'Failed to find closest stop',
+        closestStopPrefix: 'Closest stop:',
+        stopSelectedByLocation: 'Stop selected by location',
+        failedToGetLocation: 'Failed to get location',
+      },
+      geolocation: {
+        notAvailableOnPlatform:
+          'Geolocation is not available on this platform.',
+        apiNotSupportedByBrowser:
+          'Geolocation API is not supported by this browser.',
+        permissionDeniedByUser: 'Location permission was denied by the user.',
+        positionUnavailable: 'Location information is unavailable.',
+        timeout: 'Retrieving location took too long.',
+        unknownError: 'An unknown geolocation error occurred.',
+        allowLocationAccessInBrowserSettings:
+          'Please allow location access in your browser settings.',
+        unableToDetermineLocation:
+          'Unable to determine your location. Try again in a moment.',
+        locationRequestTooLong:
+          'Location request took too long. Please try again.',
+        browserDoesNotSupportGeolocation:
+          'Your browser does not support geolocation.',
+        somethingWentWrongGettingLocation:
+          'Something went wrong while trying to get your location.',
+      },
+    },
   },
 
   about: {
@@ -172,6 +208,20 @@ The route then proceeds along Elektrychna St., Kolska St., and 20 Years of Victo
       depotsBalancedAllocation: 'depots (balanced allocation)',
       vehicles: 'vehicles',
       stopPhotoAlt: 'Stop photo',
+      vehicleFeatures: [
+        {
+          name: 'Accessibility',
+          ariaLabel: 'Accessibility',
+        },
+        {
+          name: 'Onboard Announcement System',
+          ariaLabel: 'Onboard Announcement System',
+        },
+        {
+          name: 'Autonomous Operation',
+          ariaLabel: 'Autonomous Operation',
+        },
+      ],
     },
     metrics: [
       {
@@ -485,5 +535,23 @@ The route then proceeds along Elektrychna St., Kolska St., and 20 Years of Victo
     rightsReserved: 'All rights reserved.',
     privacyPolicy: 'Privacy Policy',
     termsOfUse: 'Terms of Use',
+  },
+
+  services: {
+    networkStatus: {
+      offlineMessage: 'You are offline',
+      connectionLost: 'Connection lost',
+      backOnline: 'Back online',
+      connectionRestored: 'Connection restored',
+    },
+    pageVisibility: {
+      welcomeBackTitle: 'Welcome back 👋',
+      niceToSeeYouAgain: 'Nice to see you again',
+    },
+    swUpdate: {
+      dialogTitle: 'Update available!',
+      dialogMessage: 'An update is available. Update now?',
+      confirmText: 'Update',
+    },
   },
 } as const;
