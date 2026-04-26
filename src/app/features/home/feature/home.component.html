@@ -2,47 +2,53 @@
 
 <trollysix-metrics-covered />
 
-@defer (on idle) {
-  <trollysix-big-claims />
-}
+<trollysix-big-claims />
 
-@defer (on idle) {
-  <trollysix-attention
-    [titleTemplate]="worksTitle"
-    [descriptionTemplate]="worksDescription"
-    [ctaTemplate]="worksCTAs"
-  />
-  <ng-template #worksTitle>{{ copyHome.works.title }}</ng-template>
-  <ng-template #worksDescription
-    >{{ copyHome.works.description }}</ng-template
-  >
-  <ng-template #worksCTAs>
-    <a [routerLink]="['/schedule']" trollysixBtn="primary">{{
-      copyCommon.viewSchedule
-    }}</a>
-    <a [routerLink]="['/about']" trollysixBtn="secondary">{{
-      copyCommon.whyDifferent
-    }}</a>
-  </ng-template>
-}
+<trollysix-attention
+  [titleTemplate]="worksTitle"
+  [descriptionTemplate]="worksDescription"
+  [ctaTemplate]="worksCTAs"
+/>
+<ng-template #worksTitle>{{ copyHome.works.title }}</ng-template>
+<ng-template #worksDescription>{{ copyHome.works.description }}</ng-template>
+<ng-template #worksCTAs>
+  <a [routerLink]="['/schedule']" trollysixBtn="primary">{{
+    copyCommon.viewSchedule
+  }}</a>
+  <a [routerLink]="['/about']" trollysixBtn="secondary">{{
+    copyCommon.whyDifferent
+  }}</a>
+</ng-template>
 
-@defer (on idle) {
+@defer (on viewport) {
   <trollysix-testimonials />
+} @placeholder {
+  <section class="baseline-container py-16 md:py-20">
+    <div class="min-h-64"></div>
+  </section>
 }
 
-@defer (on idle) {
+@defer (on viewport) {
   <trollysix-attention
     [titleTemplate]="precisionTitle"
     [descriptionTemplate]="precisionDescription"
   />
   <ng-template #precisionTitle>{{ copyHome.precision.title }}</ng-template>
-  <ng-template #precisionDescription
-    >{{ copyHome.precision.description }}</ng-template
-  >
+  <ng-template #precisionDescription>{{
+    copyHome.precision.description
+  }}</ng-template>
+} @placeholder {
+  <section class="baseline-container py-14 md:py-16">
+    <div class="min-h-40"></div>
+  </section>
 }
 
-@defer (on idle) {
+@defer (on viewport) {
   <trollysix-this-is-trollysix />
+} @placeholder {
+  <section class="baseline-container py-20">
+    <div class="min-h-80"></div>
+  </section>
 }
 
 @defer (on idle) {

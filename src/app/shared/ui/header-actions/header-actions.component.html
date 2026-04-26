@@ -1,29 +1,11 @@
-<ng-template #placeholder>
-  <div
-    class="baseline-borders inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/80 px-3 py-2 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 dark:bg-gray-900/70 dark:text-gray-100 dark:hover:bg-gray-900 dark:focus-visible:outline-white"
-  ></div>
-</ng-template>
-
 <div class="flex items-center gap-3">
   @if (showSettingsButton()) {
-    @defer (on idle) {
-      <trollysix-settings-button />
-    } @placeholder {
-      <ng-container *ngTemplateOutlet="placeholder"></ng-container>
-    }
+    <trollysix-settings-button />
   }
 
   @if (showTextSizeButton()) {
-    @defer (on idle) {
-      <trollysix-text-size-switcher />
-    } @placeholder {
-      <ng-container *ngTemplateOutlet="placeholder"></ng-container>
-    }
+    <trollysix-text-size-switcher />
   }
 
-  @defer (on idle) {
-    <trollysix-theme-switcher />
-  } @placeholder {
-    <ng-container *ngTemplateOutlet="placeholder"></ng-container>
-  }
+  <trollysix-theme-switcher />
 </div>

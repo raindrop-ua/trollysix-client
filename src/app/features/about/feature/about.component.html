@@ -1,17 +1,21 @@
 <trollysix-head />
 
-@defer (on idle) {
-  <trollysix-overview />
-}
+<trollysix-overview />
 
-@defer (on idle) {
-  <trollysix-metrics mobileFullWidth="true" [data]="metrics" />
-}
+<trollysix-metrics mobileFullWidth="true" [data]="metrics" />
 
-@defer (on idle) {
+@defer (on viewport) {
   <trollysix-infrastructure />
+} @placeholder {
+  <section class="baseline-container py-14 md:py-16">
+    <div class="min-h-72"></div>
+  </section>
 }
 
-@defer (on idle) {
+@defer (on viewport) {
   <trollysix-full-list-of-stops />
+} @placeholder {
+  <section class="baseline-container py-14 md:py-16">
+    <div class="min-h-72"></div>
+  </section>
 }

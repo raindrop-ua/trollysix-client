@@ -1,4 +1,3 @@
-import { NgTemplateOutlet } from '@angular/common';
 import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { AppRouteEnum } from '@core/enums/app-route.enum';
@@ -11,7 +10,6 @@ import { SettingsButtonComponent } from './settings-button/settings-button.compo
 @Component({
   selector: 'trollysix-header-actions',
   imports: [
-    NgTemplateOutlet,
     ThemeSwitcherComponent,
     SettingsButtonComponent,
     TextSizeSwitcherComponent,

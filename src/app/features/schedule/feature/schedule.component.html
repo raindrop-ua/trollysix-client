@@ -1,13 +1,17 @@
 <trollysix-generic-header [title]="copySchedule.header.title" />
-@defer (on idle) {
-  @if (isSelectorsGroupReady()) {
-    <trollysix-selectors-group />
-  }
-  <trollysix-stops-list />
+@if (isSelectorsGroupReady()) {
+  <trollysix-selectors-group />
+}
+<trollysix-stops-list />
+@defer (when selectedStop(); prefetch on idle) {
   @if (selectedStop(); as stop) {
     <trollysix-stop-toolbar />
     <trollysix-schedule-controls />
     <trollysix-stop-details [stopData]="stop" />
   }
-  <trollysix-notice />
+} @placeholder {
+  <section class="baseline-container py-6 md:py-8">
+    <div class="min-h-32"></div>
+  </section>
 }
+<trollysix-notice />
