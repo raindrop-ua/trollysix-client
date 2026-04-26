@@ -94,17 +94,24 @@ export class ScheduleEffects {
 
   syncStoreToUrl$ = createEffect(
     () =>
-      combineLatest([
-        this.store.select(scheduleFeature.selectSelectedStopId),
-        this.store.select(scheduleFeature.selectSelectedDayTypeName),
-        this.store.select(scheduleFeature.selectSelectedDirectionName),
-      ]).pipe(
+      this.actions$.pipe(
+        ofType(
+          SchedulePageActions.selectStop,
+          SchedulePageActions.selectDayType,
+          SchedulePageActions.selectDirection,
+          ScheduleApiActions.loadInitialDataSuccess,
+        ),
         filter(() => this.isBrowser),
+        withLatestFrom(
+          this.store.select(scheduleFeature.selectSelectedStopId),
+          this.store.select(scheduleFeature.selectSelectedDayTypeName),
+          this.store.select(scheduleFeature.selectSelectedDirectionName),
+        ),
         filter(
-          ([stopId, dayTypeName, directionName]) =>
+          ([, stopId, dayTypeName, directionName]) =>
             !!stopId && !!dayTypeName && !!directionName,
         ),
-        map(([stopId, dayTypeName, directionName]) => ({
+        map(([, stopId, dayTypeName, directionName]) => ({
           stopId,
           dayTypeName,
           directionName,
