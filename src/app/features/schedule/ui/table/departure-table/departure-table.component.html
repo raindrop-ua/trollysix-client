@@ -1,13 +1,18 @@
 @let departuresList = departures();
 <div [attr.aria-busy]="timetableLoading()" aria-live="polite">
   @for (key of [revealKey()]; track key) {
-    <div class="ts-departure-table-reveal">
+    <div>
       <div
         class="grid grid-cols-4 gap-2 sm:grid-cols-6 md:grid-cols-7 lg:grid-cols-8 xl:grid-cols-10"
       >
-        @for (departure of departuresList; track departure.time) {
+        @for (
+          departure of departuresList;
+          track departure.time;
+          let i = $index
+        ) {
           <trollysix-departure-time-item
             [departure]="departure"
+            [revealIndex]="i"
             (clickTime)="onSelectTime($event)"
           />
         }
