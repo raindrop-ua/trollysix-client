@@ -47,10 +47,10 @@
               <a
                 class="text-slate-700 underline-offset-8 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
                 [routerLink]="[routeItem.path]"
-                [queryParamsHandling]="
-                  isLinkActive(routeItem.path) ? 'preserve' : null
-                "
-                [class.underline]="isLinkActive(routeItem.path)"
+                routerLinkActive="underline"
+                [routerLinkActiveOptions]="{ exact: true }"
+                #desktopLink="routerLinkActive"
+                [queryParamsHandling]="desktopLink.isActive ? 'preserve' : null"
                 >{{ routeItem.label }}</a
               >
             </li>
@@ -82,10 +82,10 @@
               (click)="closeMenu()"
               class="block font-semibold text-slate-700 underline-offset-4 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
               [routerLink]="[routeItem.path]"
-              [queryParamsHandling]="
-                isLinkActive(routeItem.path) ? 'preserve' : null
-              "
-              [class.underline]="isLinkActive(routeItem.path)"
+              routerLinkActive="underline"
+              [routerLinkActiveOptions]="{ exact: true }"
+              #mobileLink="routerLinkActive"
+              [queryParamsHandling]="mobileLink.isActive ? 'preserve' : null"
               >{{ routeItem.label }}</a
             >
           </li>

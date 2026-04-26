@@ -3,7 +3,6 @@ import {
   inject,
   signal,
   OnInit,
-  ChangeDetectorRef,
   DestroyRef,
   ChangeDetectionStrategy,
   ElementRef,
@@ -11,7 +10,12 @@ import {
   ViewChild,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { NavigationEnd, Router, RouterLink } from '@angular/router';
+import {
+  NavigationEnd,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+} from '@angular/router';
 
 import { filter } from 'rxjs';
 
@@ -24,7 +28,7 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
 @Component({
   selector: 'trollysix-header',
-  imports: [RouterLink, SvgIconComponent, HeaderActionsComponent],
+  imports: [RouterLink, RouterLinkActive, SvgIconComponent, HeaderActionsComponent],
   templateUrl: './header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
@@ -39,7 +43,6 @@ export class HeaderComponent implements OnInit {
   readonly copyCommon = copy('common');
   private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
-  private readonly cdr = inject(ChangeDetectorRef);
   public readonly navigation = inject(NAVIGATION_TOKEN);
   public isMenuOpen = signal(false);
   protected readonly mobileMenuId = 'mobile-main-menu';
@@ -54,17 +57,7 @@ export class HeaderComponent implements OnInit {
         if (this.isMenuOpen()) {
           this.closeMenu(false);
         }
-        this.cdr.markForCheck();
       });
-  }
-
-  public isLinkActive(path: string): boolean {
-    return this.router.isActive(path, {
-      paths: 'exact',
-      queryParams: 'ignored',
-      matrixParams: 'ignored',
-      fragment: 'ignored',
-    });
   }
 
   toggleMenu() {
