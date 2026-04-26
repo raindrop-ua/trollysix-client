@@ -37,7 +37,7 @@ export class DepartureTimeItemComponent {
   readonly revealDelay = computed(() => {
     const index = this.revealIndex();
     const normalized = Number.isFinite(index) && index > 0 ? index : 0;
-    const delay = Math.min(normalized * 28, 420);
+    const delay = normalized * 10;
     return `${delay}ms`;
   });
 }
