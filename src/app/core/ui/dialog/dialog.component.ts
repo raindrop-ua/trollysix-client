@@ -1,10 +1,7 @@
-import { isPlatformBrowser, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import {
   Component,
   signal,
-  inject,
-  PLATFORM_ID,
-  OnDestroy,
   OnInit,
   ChangeDetectionStrategy,
 } from '@angular/core';
@@ -23,10 +20,7 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'block' },
 })
-export class DialogComponent implements OnInit, OnDestroy {
-  private readonly platformId = inject(PLATFORM_ID);
-  private readonly isBrowser = isPlatformBrowser(this.platformId);
-
+export class DialogComponent implements OnInit {
   readonly config = signal<DialogConfig | null>(null);
   readonly isVisible = signal(false);
 
@@ -34,10 +28,6 @@ export class DialogComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     setTimeout(() => this.isVisible.set(true), 10);
-
-    if (this.isBrowser) {
-      document.body.style.overflow = 'hidden';
-    }
   }
 
   close(result: DialogResult) {
@@ -65,11 +55,5 @@ export class DialogComponent implements OnInit, OnDestroy {
     const cfg = this.config();
     if (cfg?.disableClose) return;
     this.close('escape');
-  }
-
-  ngOnDestroy() {
-    if (this.isBrowser) {
-      document.body.style.overflow = '';
-    }
   }
 }
