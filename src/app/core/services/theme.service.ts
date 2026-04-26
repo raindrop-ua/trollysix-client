@@ -25,8 +25,6 @@ export class ThemeService {
         : 'light');
 
     this.theme.set(initial);
-    this.apply(initial);
-    this.persist(initial);
 
     effect(() => {
       const t = this.theme();
