@@ -22,7 +22,6 @@ import { AttentionComponent } from '@shared/ui/sections/attention/attention.comp
     TestimonialsComponent,
     ReadyForRouteSixComponent,
     AttentionComponent,
-    TestimonialsComponent,
     BtnDirective,
     MetricsCoveredComponent,
   ],
