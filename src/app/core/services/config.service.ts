@@ -1,12 +1,16 @@
 import { isPlatformBrowser } from '@angular/common';
 import {
   computed,
+  DestroyRef,
   effect,
   inject,
   Injectable,
   signal,
   PLATFORM_ID,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+import { filter, fromEvent } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +22,7 @@ export class ConfigService<T extends Record<string, unknown>> {
 
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
+  private readonly destroyRef = inject(DestroyRef);
   private storageListenerAttached = false;
 
   constructor() {
@@ -39,14 +44,20 @@ export class ConfigService<T extends Record<string, unknown>> {
 
     if (this.isBrowser && !this.storageListenerAttached) {
       this.storageListenerAttached = true;
-      window.addEventListener('storage', (event) => {
-        if (event.key === this.STORAGE_KEY && event.newValue !== null) {
-          const next = this.parseStoredConfig(event.newValue);
+      fromEvent<StorageEvent>(window, 'storage')
+        .pipe(
+          filter(
+            (event) =>
+              event.key === this.STORAGE_KEY && event.newValue !== null,
+          ),
+          takeUntilDestroyed(this.destroyRef),
+        )
+        .subscribe((event) => {
+          const next = this.parseStoredConfig(event.newValue!);
           if (next) {
             this._config.set(next);
           }
-        }
-      });
+        });
     }
   }
 

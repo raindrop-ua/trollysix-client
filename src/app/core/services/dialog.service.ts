@@ -9,7 +9,7 @@ import {
   PLATFORM_ID,
 } from '@angular/core';
 
-import { Subject } from 'rxjs';
+import { Observable, Subject, take } from 'rxjs';
 
 import { DialogConfig, DialogResult } from '@core/models/dialog.models';
 import { DialogComponent } from '@core/ui/dialog/dialog.component';
@@ -24,8 +24,10 @@ export class DialogService {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
   private activeDialogs: ComponentRef<DialogComponent>[] = [];
+  private openDialogsCount = 0;
+  private previousBodyOverflow = '';
 
-  open(config: DialogConfig): Subject<DialogResult> {
+  open(config: DialogConfig): Observable<DialogResult> {
     const result$ = new Subject<DialogResult>();
     if (!this.isBrowser || !this.document?.body) {
       result$.complete();
@@ -37,15 +39,19 @@ export class DialogService {
     });
 
     componentRef.instance.config.set(config);
-    componentRef.instance.result$.subscribe((res) => {
-      result$.next(res);
-      this.destroyDialog(componentRef);
-    });
+    componentRef.instance.result$
+      .pipe(take(1))
+      .subscribe((res) => {
+        result$.next(res);
+        result$.complete();
+        this.destroyDialog(componentRef);
+      });
 
     this.appRef.attachView(componentRef.hostView);
     this.document.body.appendChild(componentRef.location.nativeElement);
 
     this.activeDialogs.push(componentRef);
+    this.lockBodyScroll();
 
     return result$;
   }
@@ -54,5 +60,31 @@ export class DialogService {
     this.appRef.detachView(ref.hostView);
     ref.destroy();
     this.activeDialogs = this.activeDialogs.filter((d) => d !== ref);
+    this.unlockBodyScrollIfNeeded();
+  }
+
+  private lockBodyScroll(): void {
+    if (!this.document?.body) {
+      return;
+    }
+
+    if (this.openDialogsCount === 0) {
+      this.previousBodyOverflow = this.document.body.style.overflow;
+      this.document.body.style.overflow = 'hidden';
+    }
+
+    this.openDialogsCount += 1;
+  }
+
+  private unlockBodyScrollIfNeeded(): void {
+    if (!this.document?.body || this.openDialogsCount === 0) {
+      return;
+    }
+
+    this.openDialogsCount -= 1;
+    if (this.openDialogsCount === 0) {
+      this.document.body.style.overflow = this.previousBodyOverflow;
+      this.previousBodyOverflow = '';
+    }
   }
 }

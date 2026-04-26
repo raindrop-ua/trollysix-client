@@ -2,7 +2,7 @@ import { Injectable, inject, DestroyRef } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { SwUpdate } from '@angular/service-worker';
 
-import { filter, interval, switchMap } from 'rxjs';
+import { EMPTY, catchError, filter, from, interval, switchMap } from 'rxjs';
 
 import { COPY } from '@core/content/en';
 
@@ -45,12 +45,10 @@ export class SwUpdateService {
     interval(3 * 60_000)
       .pipe(
         takeUntilDestroyed(this.destroyRef),
-        switchMap(() => this.swUpdate.checkForUpdate()),
+        switchMap(() =>
+          from(this.swUpdate.checkForUpdate()).pipe(catchError(() => EMPTY)),
+        ),
       )
-      .subscribe({
-        error: () => {
-          /* empty */
-        },
-      });
+      .subscribe();
   }
 }
