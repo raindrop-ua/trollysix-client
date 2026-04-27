@@ -1,3 +1,4 @@
+import { isPlatformBrowser, Location } from '@angular/common';
 import {
   Component,
   inject,
@@ -9,6 +10,7 @@ import {
   ElementRef,
   HostListener,
   ViewChild,
+  PLATFORM_ID,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
@@ -38,13 +40,24 @@ export class HeaderComponent implements OnInit {
   protected readonly AppRouteEnum = AppRouteEnum;
   readonly copyCommon = copy('common');
   private readonly router = inject(Router);
+  private readonly location = inject(Location);
+  private readonly platformId = inject(PLATFORM_ID);
+  private readonly isBrowser = isPlatformBrowser(this.platformId);
   private readonly destroyRef = inject(DestroyRef);
   private readonly cdr = inject(ChangeDetectorRef);
   public readonly navigation = inject(NAVIGATION_TOKEN);
   public isMenuOpen = signal(false);
   protected readonly mobileMenuId = 'mobile-main-menu';
+  private currentPathWithQuery = signal<string>('/');
 
   public ngOnInit() {
+    this.currentPathWithQuery.set(this.location.path(true) || '/');
+    const unregisterOnUrlChange = this.location.onUrlChange((url) => {
+      this.currentPathWithQuery.set(url || '/');
+      this.cdr.markForCheck();
+    });
+    this.destroyRef.onDestroy(unregisterOnUrlChange);
+
     this.router.events
       .pipe(
         filter((e): e is NavigationEnd => e instanceof NavigationEnd),
@@ -65,6 +78,21 @@ export class HeaderComponent implements OnInit {
       matrixParams: 'ignored',
       fragment: 'ignored',
     });
+  }
+
+  public getLinkQueryParams(path: string): Record<string, string> | null {
+    if (
+      !this.isBrowser ||
+      path !== AppRouteEnum.Schedule ||
+      !this.isLinkActive(path)
+    ) {
+      return null;
+    }
+
+    const urlTree = this.router.parseUrl(this.currentPathWithQuery());
+    return Object.keys(urlTree.queryParams).length
+      ? (urlTree.queryParams as Record<string, string>)
+      : null;
   }
 
   toggleMenu() {
