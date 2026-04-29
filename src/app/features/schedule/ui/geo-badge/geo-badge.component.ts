@@ -20,7 +20,7 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 })
 export class GeoBadgeComponent {
   readonly copySchedule = copy('schedule');
-  geo = input<{ lat: number; lon: number }>();
+  geo = input<{ lat: number; lon: number } | null>();
 
   readonly mapsUrl = computed(() => {
     const geo = this.geo();

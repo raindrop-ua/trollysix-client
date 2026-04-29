@@ -1,8 +1,18 @@
-import { Component, input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  computed,
+  input,
+  ChangeDetectionStrategy,
+  inject,
+} from '@angular/core';
+
+import { Store } from '@ngrx/store';
 
 import { copy } from '@core/content/copy.util';
 
+import { DirectionName } from '@features/schedule/data-access/models/direction.model';
 import { Stop } from '@features/schedule/data-access/models/stop.model';
+import { selectSelectedDirection } from '@features/schedule/data-access/store/schedule.selectors';
 import { GeoBadgeComponent } from '@features/schedule/ui/geo-badge/geo-badge.component';
 import { GenericSectionBlockComponent } from '@shared/ui/sections/generic-section-block/generic-section-block.component';
 
@@ -23,6 +33,14 @@ import { WeatherBlockComponent } from './weather-block/weather-block.component';
 })
 export class StopDetailsComponent {
   readonly copySchedule = copy('schedule');
+  private readonly store = inject(Store);
 
   stopData = input.required<Stop>();
+  readonly selectedDirection = this.store.selectSignal(selectSelectedDirection);
+  readonly currentGeo = computed(() => {
+    const stop = this.stopData();
+    const direction = this.selectedDirection() as DirectionName | null;
+    const byDirection = direction ? stop.geo?.[direction] : null;
+    return byDirection ?? stop.geo?.forward ?? stop.geo?.backward ?? null;
+  });
 }

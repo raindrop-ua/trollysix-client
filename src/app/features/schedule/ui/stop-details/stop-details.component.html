@@ -6,7 +6,7 @@
           <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
             {{ stop.name }} — {{ copySchedule.stopDetails }}
           </h3>
-          <trollysix-geo-badge [geo]="stop.geo" />
+          <trollysix-geo-badge [geo]="currentGeo()" />
         </header>
 
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
