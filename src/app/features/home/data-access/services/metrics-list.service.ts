@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 
 import { catchError } from 'rxjs/operators';
 
-import { Observable, of, shareReplay } from 'rxjs';
+import { Observable, of, shareReplay, timeout } from 'rxjs';
 
 import { environment } from '@environments/environment';
 
@@ -12,11 +12,15 @@ import { Metric } from '@shared/ui/sections/metrics/metrics.model';
 @Injectable()
 export class MetricsListService {
   private readonly BASE_URL = environment.BASE_API_URL;
+  private readonly REQUEST_TIMEOUT_MS = 8_000;
   private http = inject(HttpClient);
 
   private readonly metrics$ = this.http
     .get<Metric[]>(`${this.BASE_URL}/metrics`)
-    .pipe(shareReplay({ bufferSize: 1, refCount: true }));
+    .pipe(
+      timeout(this.REQUEST_TIMEOUT_MS),
+      shareReplay({ bufferSize: 1, refCount: true }),
+    );
 
   public getMetrics(): Observable<Metric[]> {
     return this.metrics$;
