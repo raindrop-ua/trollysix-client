@@ -19,7 +19,10 @@ describe('schedule-api.contract', () => {
         style: 1,
         availableDirections: ['forward', 'backward'],
         sharedRoutes: ['1A'],
-        geo: { lat: 48.45, lon: 35.06 },
+        geo: {
+          forward: null,
+          backward: { lat: 48.45, lon: 35.06 },
+        },
       },
     ]);
 
