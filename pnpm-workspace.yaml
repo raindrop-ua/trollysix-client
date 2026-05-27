@@ -8,4 +8,5 @@ onlyBuiltDependencies:
   - msgpackr-extract
 
 overrides:
+  qs@>=6.11.1 <=6.15.1: '>=6.15.2'
   uuid@<14.0.0: '>=14.0.0'
