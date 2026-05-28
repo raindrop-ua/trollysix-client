@@ -116,7 +116,7 @@ importers:
         specifier: ^19.8.1
         version: 19.8.1(@types/node@20.19.41)(typescript@5.9.3)
       cypress:
-        specifier: latest
+        specifier: 15.16.0
         version: 15.16.0
       eslint:
         specifier: ^9.39.4
