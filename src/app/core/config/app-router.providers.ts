@@ -6,6 +6,7 @@ import {
 import {
   provideClientHydration,
   withEventReplay,
+  withNoIncrementalHydration,
 } from '@angular/platform-browser';
 import {
   PreloadingStrategy,
@@ -34,6 +35,6 @@ export function provideAppRouter<T extends Routes>(
         anchorScrolling: 'enabled',
       }),
     ),
-    provideClientHydration(withEventReplay()),
+    provideClientHydration(withEventReplay(), withNoIncrementalHydration()),
   ]);
 }
