@@ -41,6 +41,9 @@
             "outputMode": "server",
             "ssr": {
               "entry": "src/server.ts"
+            },
+            "security": {
+              "allowedHosts": ["trolly6.com", "www.trolly6.com"]
             }
           },
           "configurations": {
