@@ -85,6 +85,6 @@ export class HideAfterDirective implements OnInit {
     dir: HideAfterDirective,
     ctx: unknown,
   ): ctx is HideAfterContext {
-    return true;
+    return ctx instanceof HideAfterContext;
   }
 }
