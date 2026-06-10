@@ -101,8 +101,16 @@ describe('ClosestStopService (Injector.create)', () => {
 
     const stops: Stop[] = [
       { id: 'a', name: 'No geo stop' } as Stop,
-      { id: 'b', name: 'Far', geo: { lat: 48.0, lon: 35.0 } } as Stop,
-      { id: 'c', name: 'Closest', geo: { lat: 48.4501, lon: 35.0501 } } as Stop,
+      {
+        id: 'b',
+        name: 'Far',
+        geo: { forward: { lat: 48.0, lon: 35.0 }, backward: null },
+      } as Stop,
+      {
+        id: 'c',
+        name: 'Closest',
+        geo: { forward: null, backward: { lat: 48.4501, lon: 35.0501 } },
+      } as Stop,
     ];
 
     const { svc, mocks } = makeInjector({

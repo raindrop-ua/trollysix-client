@@ -47,9 +47,7 @@
               <a
                 class="text-slate-700 underline-offset-8 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
                 [routerLink]="[routeItem.path]"
-                [queryParamsHandling]="
-                  isLinkActive(routeItem.path) ? 'preserve' : null
-                "
+                [queryParams]="getLinkQueryParams(routeItem.path)"
                 [class.underline]="isLinkActive(routeItem.path)"
                 >{{ routeItem.label }}</a
               >
@@ -82,9 +80,7 @@
               (click)="closeMenu()"
               class="block font-semibold text-slate-700 underline-offset-4 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
               [routerLink]="[routeItem.path]"
-              [queryParamsHandling]="
-                isLinkActive(routeItem.path) ? 'preserve' : null
-              "
+              [queryParams]="getLinkQueryParams(routeItem.path)"
               [class.underline]="isLinkActive(routeItem.path)"
               >{{ routeItem.label }}</a
             >

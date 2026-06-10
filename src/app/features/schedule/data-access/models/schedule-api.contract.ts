@@ -57,7 +57,18 @@ function isGeo(value: unknown): boolean {
     return false;
   }
 
-  return isFiniteNumber(value['lat']) && isFiniteNumber(value['lon']);
+  const isGeoPoint = (point: unknown) =>
+    isRecord(point) && isFiniteNumber(point['lat']) && isFiniteNumber(point['lon']);
+
+  const forward = value['forward'];
+  const backward = value['backward'];
+
+  const isForwardValid =
+    forward === undefined || forward === null || isGeoPoint(forward);
+  const isBackwardValid =
+    backward === undefined || backward === null || isGeoPoint(backward);
+
+  return isForwardValid && isBackwardValid;
 }
 
 function isDepartureBound(value: unknown): boolean {

@@ -21,8 +21,14 @@ export interface Stop {
   availableDirections: DirectionName[];
   sharedRoutes: string[];
   geo?: {
-    lat: number;
-    lon: number;
+    forward?: {
+      lat: number;
+      lon: number;
+    } | null;
+    backward?: {
+      lat: number;
+      lon: number;
+    } | null;
   };
   weather?: Weather;
 }

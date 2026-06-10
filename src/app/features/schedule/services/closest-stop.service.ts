@@ -88,34 +88,29 @@ export class ClosestStopService {
   ): Stop | null {
     const { latitude, longitude } = position.coords;
 
-    const stopsWithGeo = stops.filter(
-      (s): s is Stop & { geo: { lat: number; lon: number } } => !!s.geo,
-    );
+    let closest: Stop | null = null;
+    let minDistance = Number.POSITIVE_INFINITY;
 
-    if (stopsWithGeo.length === 0) {
-      return null;
-    }
-
-    let closest = stopsWithGeo[0];
-    let minDistance = this.getDistanceMeters(
-      latitude,
-      longitude,
-      closest.geo!.lat,
-      closest.geo!.lon,
-    );
-
-    for (let i = 1; i < stopsWithGeo.length; i++) {
-      const stop = stopsWithGeo[i];
-      const distance = this.getDistanceMeters(
-        latitude,
-        longitude,
-        stop.geo!.lat,
-        stop.geo!.lon,
+    for (const stop of stops) {
+      const points = [stop.geo?.forward, stop.geo?.backward].filter(
+        (point): point is { lat: number; lon: number } => !!point,
       );
 
-      if (distance < minDistance) {
-        minDistance = distance;
-        closest = stop;
+      if (points.length === 0) {
+        continue;
+      }
+
+      for (const point of points) {
+        const distance = this.getDistanceMeters(
+          latitude,
+          longitude,
+          point.lat,
+          point.lon,
+        );
+        if (distance < minDistance) {
+          minDistance = distance;
+          closest = stop;
+        }
       }
     }
 

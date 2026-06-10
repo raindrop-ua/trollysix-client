@@ -34,7 +34,6 @@ export class ScheduleEffects {
 
   private router = inject(Router);
   private route = inject(ActivatedRoute);
-
   private location = inject(Location);
 
   hydrateFromUrlOnEnter$ = createEffect(() =>
