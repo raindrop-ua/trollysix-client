@@ -1,5 +1,5 @@
 - These instructions apply to the entire repository unless a deeper `AGENTS.md` overrides them.
-- This is an Angular 21 client application with SSR support.
+- This is an Angular 22 client application with SSR support.
 - Package management in this repo uses `pnpm`.
 - Main source code lives under `src/`.
 - Static assets live under `public/` and `src/assets/`.

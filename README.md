@@ -3,7 +3,7 @@
 ![CI](https://github.com/raindrop-ua/trollysix-client/actions/workflows/ci.yml/badge.svg)
 ![Commits](https://img.shields.io/badge/commits-conventional-brightgreen)
 ![MIT License](https://img.shields.io/badge/license-MIT-green)
-![Angular](https://img.shields.io/badge/angular-21-brightgreen)
+![Angular](https://img.shields.io/badge/angular-22-brightgreen)
 ![Build](https://img.shields.io/github/actions/workflow/status/raindrop-ua/trollysix-client/ci.yml?branch=main)
 
 ![Preview](docs/splash@2x.png)

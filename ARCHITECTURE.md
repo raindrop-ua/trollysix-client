@@ -2,7 +2,7 @@
 
 ## Stack
 
-- Angular 21 (standalone APIs)
+- Angular 22 (standalone APIs)
 - Angular SSR + hydration
 - NgRx Store/Effects (feature-scoped state)
 - Tailwind CSS
