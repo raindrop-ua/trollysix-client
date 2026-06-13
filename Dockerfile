@@ -1,5 +1,5 @@
 # ---------- Build stage ----------
-FROM node:22-alpine AS build
+FROM node:24-alpine AS build
 WORKDIR /app
 
 ENV HUSKY=0
@@ -14,7 +14,7 @@ COPY . .
 RUN pnpm run build
 
 # ---------- Runtime stage ----------
-FROM node:22-bullseye-slim AS runtime
+FROM node:24-bullseye-slim AS runtime
 WORKDIR /app
 
 ENV NODE_ENV=production
