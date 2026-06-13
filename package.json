@@ -51,7 +51,7 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@types/cookie-parser": "^1.4.10",
     "@types/express": "^5.0.6",
-    "@types/node": "^20.19.41",
+    "@types/node": "^20.19.43",
     "angular-eslint": "22.0.0",
     "commit-and-tag-version": "^12.7.3",
     "commitlint": "^19.8.1",
@@ -61,14 +61,14 @@
     "husky": "^8.0.3",
     "jsdom": "^27.4.0",
     "lint-staged": "^16.4.0",
-    "postcss": "^8.5.3",
-    "prettier": "^3.8.3",
+    "postcss": "^8.5.15",
+    "prettier": "^3.8.4",
     "prettier-plugin-tailwindcss": "^0.7.4",
     "tailwindcss": "^4.3.0",
     "typescript": "~6.0.3",
     "typescript-eslint": "8.60.1",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^4.1.7"
+    "vitest": "^4.1.8"
   },
   "lint-staged": {
     "*.{html,scss,css,json}": [
