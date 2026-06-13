@@ -30,5 +30,5 @@ export interface Stop {
       lon: number;
     } | null;
   };
-  weather?: Weather;
+  weather?: Weather | null;
 }

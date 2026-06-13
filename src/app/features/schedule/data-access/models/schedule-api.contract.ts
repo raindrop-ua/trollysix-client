@@ -173,7 +173,9 @@ function isStop(value: unknown): value is Stop {
     isFiniteNumber(value['style']) &&
     value['availableDirections'].every((direction) => isDirectionName(direction)) &&
     (value['geo'] === undefined || isGeo(value['geo'])) &&
-    (value['weather'] === undefined || isWeather(value['weather']))
+    (value['weather'] === undefined ||
+      value['weather'] === null ||
+      isWeather(value['weather']))
   );
 }
 
