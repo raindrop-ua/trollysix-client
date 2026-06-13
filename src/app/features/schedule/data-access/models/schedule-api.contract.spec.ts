@@ -52,6 +52,24 @@ describe('schedule-api.contract', () => {
     expect(parsed[0]?.id).toBe('stop-2');
   });
 
+  it('parses stops payload with null weather', () => {
+    const parsed = parseStopsResponse([
+      {
+        id: 'stop-3',
+        name: 'North',
+        departures: {
+          forward: { first: '05:30', last: '23:30' },
+        },
+        style: 3,
+        availableDirections: ['forward'],
+        sharedRoutes: ['9'],
+        weather: null,
+      },
+    ]);
+
+    expect(parsed[0]?.weather).toBeNull();
+  });
+
   it('throws for invalid stops payload', () => {
     expect(() =>
       parseStopsResponse([
