@@ -4,9 +4,9 @@ import {
   ApplicationRef,
   EnvironmentInjector,
   inject,
-  Injectable,
   ComponentRef,
   PLATFORM_ID,
+  Service,
 } from '@angular/core';
 
 import { Observable, Subject, take } from 'rxjs';
@@ -14,9 +14,7 @@ import { Observable, Subject, take } from 'rxjs';
 import { DialogConfig, DialogResult } from '@core/models/dialog.models';
 import { DialogComponent } from '@core/ui/dialog/dialog.component';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class DialogService {
   private appRef = inject(ApplicationRef);
   private injector = inject(EnvironmentInjector);
@@ -39,13 +37,11 @@ export class DialogService {
     });
 
     componentRef.instance.config.set(config);
-    componentRef.instance.result$
-      .pipe(take(1))
-      .subscribe((res) => {
-        result$.next(res);
-        result$.complete();
-        this.destroyDialog(componentRef);
-      });
+    componentRef.instance.result$.pipe(take(1)).subscribe((res) => {
+      result$.next(res);
+      result$.complete();
+      this.destroyDialog(componentRef);
+    });
 
     this.appRef.attachView(componentRef.hostView);
     this.document.body.appendChild(componentRef.location.nativeElement);

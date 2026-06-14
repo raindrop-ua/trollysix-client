@@ -1,4 +1,4 @@
-import { Injectable, DestroyRef, inject } from '@angular/core';
+import { DestroyRef, inject, Service } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
@@ -9,9 +9,7 @@ import { environment } from '@environments/environment';
 
 import { SeoData } from '@core/models/seo-data.model';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class SeoService {
   private readonly destroyRef = inject(DestroyRef);
   private readonly activatedRoute = inject(ActivatedRoute);

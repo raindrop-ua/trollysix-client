@@ -1,11 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import {
-  DestroyRef,
-  Injectable,
-  inject,
-  signal,
-  computed,
-} from '@angular/core';
+import { DestroyRef, inject, signal, computed, Service } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { fromEvent, merge, map, pairwise, startWith, tap } from 'rxjs';
@@ -14,9 +8,7 @@ import { COPY } from '@core/content/en';
 
 import { ToastService } from './toast.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class NetworkStatusService {
   private readonly copy = COPY.services.networkStatus;
   private readonly document = inject(DOCUMENT);
