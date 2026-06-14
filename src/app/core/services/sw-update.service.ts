@@ -1,4 +1,4 @@
-import { Injectable, inject, DestroyRef } from '@angular/core';
+import { inject, DestroyRef, Service } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { SwUpdate } from '@angular/service-worker';
 
@@ -8,9 +8,7 @@ import { COPY } from '@core/content/en';
 
 import { DialogService } from './dialog.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class SwUpdateService {
   private readonly copy = COPY.services.swUpdate;
   private readonly swUpdate = inject(SwUpdate);

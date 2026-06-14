@@ -1,13 +1,11 @@
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
-import { Injectable, inject, PLATFORM_ID } from '@angular/core';
+import { inject, PLATFORM_ID, Service } from '@angular/core';
 
 export type ClipboardCopyResult =
   | { ok: true }
   | { ok: false; reason: 'empty' | 'not_browser' | 'not_supported' | 'failed' };
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class ClipboardService {
   private readonly doc = inject(DOCUMENT);
   private readonly platformId = inject(PLATFORM_ID);

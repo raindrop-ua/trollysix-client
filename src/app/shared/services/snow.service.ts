@@ -1,11 +1,11 @@
 import { isPlatformBrowser } from '@angular/common';
 import {
   DestroyRef,
-  Injectable,
   PLATFORM_ID,
   computed,
   inject,
   signal,
+  Service,
 } from '@angular/core';
 
 export interface Snowflake {
@@ -17,7 +17,7 @@ export interface Snowflake {
   opacity: number;
 }
 
-@Injectable({ providedIn: 'root' })
+@Service()
 export class SnowService {
   private readonly destroyRef = inject(DestroyRef);
   private readonly platformId = inject(PLATFORM_ID);

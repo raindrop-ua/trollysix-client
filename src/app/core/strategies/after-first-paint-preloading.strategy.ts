@@ -1,4 +1,4 @@
-import { Injectable, inject, ApplicationRef } from '@angular/core';
+import { inject, ApplicationRef, Service } from '@angular/core';
 import { PreloadingStrategy, Route } from '@angular/router';
 
 import { filter, first, map, switchMap } from 'rxjs/operators';
@@ -73,9 +73,7 @@ function canPreloadNow(): boolean {
   return !(type && ['slow-2g', '2g'].includes(type));
 }
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class AfterFirstPaintPreloadingStrategy implements PreloadingStrategy {
   private ready$ = race(appStableOnce(), afterFirstPaint()).pipe(first());
 

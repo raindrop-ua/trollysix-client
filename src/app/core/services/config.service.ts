@@ -4,17 +4,15 @@ import {
   DestroyRef,
   effect,
   inject,
-  Injectable,
   signal,
   PLATFORM_ID,
+  Service,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { filter, fromEvent } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class ConfigService<T extends Record<string, unknown>> {
   private readonly STORAGE_KEY = 'app_config';
   private readonly _config = signal<T>({} as T);
