@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { DestroyRef, Injectable, inject } from '@angular/core';
+import { DestroyRef, inject, Service } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { fromEvent, filter, map, pairwise, tap, delay } from 'rxjs';
@@ -8,9 +8,7 @@ import { COPY } from '@core/content/en';
 
 import { ToastService } from './toast.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class PageVisibilityService {
   private readonly copy = COPY.services.pageVisibility;
   private readonly document = inject(DOCUMENT);

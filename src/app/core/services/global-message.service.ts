@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Service } from '@angular/core';
 
 import { catchError } from 'rxjs/operators';
 
@@ -9,9 +9,7 @@ import { environment } from '@environments/environment';
 
 import { GlobalMessage } from '@core/models/global-message.model';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class GlobalMessageService {
   private readonly BASE_URL = environment.BASE_API_URL;
   private readonly REQUEST_TIMEOUT_MS = 8_000;

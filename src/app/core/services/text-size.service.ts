@@ -1,17 +1,9 @@
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
-import {
-  Injectable,
-  PLATFORM_ID,
-  computed,
-  inject,
-  signal,
-} from '@angular/core';
+import { PLATFORM_ID, computed, inject, signal, Service } from '@angular/core';
 
 export type FontSizeMode = 'normal' | 'large';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class TextSizeService {
   private readonly document = inject(DOCUMENT);
   private readonly platformId = inject(PLATFORM_ID);

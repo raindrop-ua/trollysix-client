@@ -2,9 +2,9 @@ import { isPlatformServer } from '@angular/common';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import {
   inject,
-  Injectable,
   makeStateKey,
   PLATFORM_ID,
+  Service,
   TransferState,
 } from '@angular/core';
 
@@ -23,9 +23,7 @@ import {
 import { Stop } from '../models/stop.model';
 import { Timetable } from '../models/timetable.model';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class ScheduleApiService {
   private readonly apiUrl = environment.BASE_API_URL;
   private readonly http = inject(HttpClient);

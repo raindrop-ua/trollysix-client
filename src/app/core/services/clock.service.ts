@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Injectable, inject, PLATFORM_ID } from '@angular/core';
+import { inject, PLATFORM_ID, Service } from '@angular/core';
 
 import {
   interval,
@@ -15,9 +15,7 @@ function msToNextMinute(d = new Date()): number {
   return 60_000 - (d.getSeconds() * 1000 + d.getMilliseconds());
 }
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class ClockService {
   private readonly platformId = inject(PLATFORM_ID);
 
