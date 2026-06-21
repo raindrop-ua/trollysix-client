@@ -7,6 +7,7 @@ settings:
 overrides:
   '@babel/core': 7.29.7
   esbuild: 0.28.1
+  piscina: 5.2.0
   qs@>=6.11.1 <=6.15.1: '>=6.15.2'
   uuid@<14.0.0: '>=14.0.0'
   vite: 7.3.5
@@ -3711,8 +3712,8 @@ packages:
     resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
     engines: {node: '>=0.10.0'}
 
-  piscina@5.1.4:
-    resolution: {integrity: sha512-7uU4ZnKeQq22t9AsmHGD2w4OYQGonwFnTypDypaWi7Qr2EvQIFVtG8J5D/3bE7W123Wdc9+v4CZDu5hJXVCtBg==}
+  piscina@5.2.0:
+    resolution: {integrity: sha512-DszUCKeVN/5G5QKo6jAVHL8fmKnkJvQ0ACiVgY7YGCq3TUB2oznAOayvZPIAdEThvhczkXR+qm3IHsNXpFCYfA==}
     engines: {node: '>=20.x'}
 
   pkce-challenge@5.0.1:
@@ -4811,7 +4812,7 @@ snapshots:
       mrmime: 2.0.1
       parse5-html-rewriting-stream: 8.0.1
       picomatch: 4.0.4
-      piscina: 5.1.4
+      piscina: 5.2.0
       rollup: 4.60.2
       sass: 1.99.0
       semver: 7.7.4
@@ -8371,7 +8372,7 @@ snapshots:
 
   pify@2.3.0: {}
 
-  piscina@5.1.4:
+  piscina@5.2.0:
     optionalDependencies:
       '@napi-rs/nice': 1.1.1
 
