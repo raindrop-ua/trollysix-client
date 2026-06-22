@@ -43,7 +43,7 @@
   }
 
   .api-activity-indicator__core {
-    @apply size-2.5 rounded-full bg-cyan-100 shadow-[0_0_18px_rgba(103,232,249,0.95)];
+    @apply relative z-10 drop-shadow-[0_0_10px_rgba(103,232,249,0.85)];
   }
 }
 
