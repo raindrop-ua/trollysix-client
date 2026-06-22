@@ -2,7 +2,7 @@ import { Service, signal } from '@angular/core';
 
 @Service()
 export class ApiActivityService {
-  private readonly minVisibleMs = 1000;
+  private readonly minVisibleMs = 1_000;
   private readonly activeRequests = signal(0);
   private readonly visible = signal(false);
   private hideTimer: ReturnType<typeof setTimeout> | null = null;

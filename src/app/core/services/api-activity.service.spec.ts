@@ -14,7 +14,7 @@ describe('ApiActivityService', () => {
 
     expect(service.isActive()).toBe(true);
 
-    vi.advanceTimersByTime(699);
+    vi.advanceTimersByTime(999);
     expect(service.isActive()).toBe(true);
 
     vi.advanceTimersByTime(1);
@@ -39,7 +39,7 @@ describe('ApiActivityService', () => {
     expect(service.isActive()).toBe(true);
 
     service.end();
-    vi.advanceTimersByTime(299);
+    vi.advanceTimersByTime(599);
     expect(service.isActive()).toBe(true);
 
     vi.advanceTimersByTime(1);
