@@ -1,9 +1,24 @@
-<div class="flex w-full flex-col items-center justify-center gap-4">
+<div class="flex w-full items-center justify-center">
   <div
-    class="flex h-20 w-20 animate-spin items-center justify-center rounded-full border-4 border-transparent border-t-blue-800 text-4xl text-blue-800"
+    class="relative grid size-16 place-items-center rounded-full bg-zinc-950/70 text-cyan-200 shadow-2xl ring-1 shadow-cyan-950/30 ring-white/15 backdrop-blur-md dark:bg-white/10 dark:text-cyan-100"
+    role="status"
+    aria-label="Loading"
   >
-    <div
-      class="flex h-16 w-16 animate-spin items-center justify-center rounded-full border-4 border-transparent border-t-yellow-500 text-2xl text-yellow-500"
-    ></div>
+    <span
+      class="absolute inset-1 rounded-full border-2 border-cyan-200/25 border-t-cyan-200 border-r-sky-400/90 motion-safe:animate-[api-activity-spin_900ms_linear_infinite]"
+      aria-hidden="true"
+    ></span>
+    <span
+      class="absolute inset-2.5 rounded-full border border-cyan-100/10 border-b-cyan-100/50 motion-safe:animate-[api-activity-spin_1400ms_linear_infinite_reverse]"
+      aria-hidden="true"
+    ></span>
+    <svg
+      icon="logo"
+      class="relative z-10 size-12 drop-shadow-[0_0_12px_rgba(103,232,249,0.85)]"
+      stroke="currentColor"
+      stroke-width="2"
+      aria-hidden="true"
+      focusable="false"
+    ></svg>
   </div>
 </div>
