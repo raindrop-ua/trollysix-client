@@ -1,0 +1,20 @@
+@if (isActive()) {
+  <div
+    animate.enter="api-activity-enter"
+    animate.leave="api-activity-leave"
+    class="api-activity-indicator"
+    role="status"
+    aria-live="polite"
+    aria-label="Loading API data"
+  >
+    <span class="api-activity-indicator__ring" aria-hidden="true"></span>
+    <svg
+      icon="logo"
+      class="api-activity-indicator__core size-10"
+      stroke="currentColor"
+      stroke-width="2"
+      aria-hidden="true"
+      focusable="false"
+    ></svg>
+  </div>
+}

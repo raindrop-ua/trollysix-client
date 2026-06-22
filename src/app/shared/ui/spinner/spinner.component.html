@@ -1,9 +1,24 @@
-<div class="flex w-full flex-col items-center justify-center gap-4">
+<div class="flex w-full items-center justify-center">
   <div
-    class="flex h-20 w-20 animate-spin items-center justify-center rounded-full border-4 border-transparent border-t-blue-800 text-4xl text-blue-800"
+    class="relative grid size-16 place-items-center rounded-full bg-white/80 text-blue-700 shadow-2xl ring-1 shadow-sky-900/10 ring-sky-900/10 backdrop-blur-md dark:bg-white/10 dark:text-cyan-100 dark:shadow-cyan-950/30 dark:ring-white/15"
+    role="status"
+    aria-label="Loading"
   >
-    <div
-      class="flex h-16 w-16 animate-spin items-center justify-center rounded-full border-4 border-transparent border-t-yellow-500 text-2xl text-yellow-500"
-    ></div>
+    <span
+      class="absolute inset-1 rounded-full border-2 border-sky-300/35 border-t-blue-600 border-r-cyan-500/90 motion-safe:animate-[api-activity-spin_900ms_linear_infinite] dark:border-cyan-200/25 dark:border-t-cyan-200 dark:border-r-sky-400/90"
+      aria-hidden="true"
+    ></span>
+    <span
+      class="absolute inset-2.5 rounded-full border border-blue-600/10 border-b-sky-500/50 motion-safe:animate-[api-activity-spin_1400ms_linear_infinite_reverse] dark:border-cyan-100/10 dark:border-b-cyan-100/50"
+      aria-hidden="true"
+    ></span>
+    <svg
+      icon="logo"
+      class="relative z-10 size-12 drop-shadow-[0_0_10px_rgba(37,99,235,0.45)] dark:drop-shadow-[0_0_12px_rgba(103,232,249,0.85)]"
+      stroke="currentColor"
+      stroke-width="2"
+      aria-hidden="true"
+      focusable="false"
+    ></svg>
   </div>
 </div>
