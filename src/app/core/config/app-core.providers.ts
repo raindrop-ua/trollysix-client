@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { EVENT_MANAGER_PLUGINS } from '@angular/platform-browser';
 
-import { CustomErrorHandler } from '@core/custom-error-handler';
+import { CustomErrorHandler } from '@core/handlers/custom-error.handler';
 import { PreventDefaultEventPlugin } from '@core/plugins/prevent-default-events';
 
 import { NAVIGATION, NAVIGATION_TOKEN } from './navigation.config';
