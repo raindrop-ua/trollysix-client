@@ -17,12 +17,14 @@ import { NavigationEnd, Router, RouterLink } from '@angular/router';
 
 import { filter } from 'rxjs';
 
-import { NAVIGATION_TOKEN } from '@core/config/navigation.config';
+import { NAVIGATION_TOKEN } from '@config/navigation.config';
+
 import { copy } from '@core/content/copy.util';
 import { AppRouteEnum } from '@core/enums/app-route.enum';
 
-import { HeaderActionsComponent } from '@shared/ui/header-actions/header-actions.component';
 import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
+
+import { HeaderActionsComponent } from './header-actions/header-actions.component';
 
 @Component({
   selector: 'trollysix-header',
@@ -45,7 +47,7 @@ export class HeaderComponent implements OnInit {
   private readonly isBrowser = isPlatformBrowser(this.platformId);
   private readonly destroyRef = inject(DestroyRef);
   private readonly cdr = inject(ChangeDetectorRef);
-  public readonly navigation = inject(NAVIGATION_TOKEN);
+  public readonly navItems = inject(NAVIGATION_TOKEN);
   public isMenuOpen = signal(false);
   protected readonly mobileMenuId = 'mobile-main-menu';
   private currentPathWithQuery = signal<string>('/');

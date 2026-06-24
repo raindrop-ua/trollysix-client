@@ -2,10 +2,9 @@ import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { AppRouteEnum } from '@core/enums/app-route.enum';
 
-import { TextSizeSwitcherComponent } from '@shared/ui/header-actions/text-size-switcher/text-size-switcher.component';
-import { ThemeSwitcherComponent } from '@shared/ui/header-actions/theme-switcher/theme-switcher.component';
-
 import { SettingsButtonComponent } from './settings-button/settings-button.component';
+import { TextSizeSwitcherComponent } from './text-size-switcher/text-size-switcher.component';
+import { ThemeSwitcherComponent } from './theme-switcher/theme-switcher.component';
 
 @Component({
   selector: 'trollysix-header-actions',
