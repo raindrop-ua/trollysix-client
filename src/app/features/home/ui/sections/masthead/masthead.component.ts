@@ -8,9 +8,9 @@ import { copy } from '@core/content/copy.util';
 import { AppRouteEnum } from '@core/enums/app-route.enum';
 import { ClockService } from '@core/services/clock.service';
 
+import { SnowComponent } from '@features/home/ui/sections/masthead/snow/snow.component';
 import { BtnDirective } from '@shared/directives/btn.directive';
 import { RevealOnScrollDirective } from '@shared/directives/reveal-on-scroll.directive';
-import { SnowComponent } from '@shared/ui/snow/snow.component';
 import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
 @Component({

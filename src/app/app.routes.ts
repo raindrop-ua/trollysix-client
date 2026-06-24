@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
 
+import { PublicLayoutComponent } from '@layouts/public-layout/public-layout.component';
+
 import { AppRouteEnum } from '@core/enums/app-route.enum';
-import { PublicLayoutComponent } from '@core/layouts/public-layout/public-layout.component';
 
 export const routes: Routes = [
   {
