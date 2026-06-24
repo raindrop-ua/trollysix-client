@@ -47,7 +47,7 @@ export class HeaderComponent implements OnInit {
   private readonly isBrowser = isPlatformBrowser(this.platformId);
   private readonly destroyRef = inject(DestroyRef);
   private readonly cdr = inject(ChangeDetectorRef);
-  public readonly navigation = inject(NAVIGATION_TOKEN);
+  public readonly navItems = inject(NAVIGATION_TOKEN);
   public isMenuOpen = signal(false);
   protected readonly mobileMenuId = 'mobile-main-menu';
   private currentPathWithQuery = signal<string>('/');
