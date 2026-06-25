@@ -1,6 +1,6 @@
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
-import { SnowService } from '@shared/services/snow.service';
+import { SnowService } from '@features/home/data-access/services/snow.service';
 
 @Component({
   selector: 'trollysix-snow',

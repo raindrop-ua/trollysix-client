@@ -7,9 +7,9 @@ import { Observable, of, throwError } from 'rxjs';
 
 import { ToastService } from '@core/services/toast.service';
 
-import { Stop } from '../data-access/models/stop.model';
-import { SchedulePageActions } from '../data-access/store/schedule.actions';
-import { selectAllScheduleStops } from '../data-access/store/schedule.selectors';
+import { Stop } from '../../data-access/models/stop.model';
+import { SchedulePageActions } from '../../data-access/store/schedule.actions';
+import { selectAllScheduleStops } from '../../data-access/store/schedule.selectors';
 
 import { ClosestStopService } from './closest-stop.service';
 import { GeolocationService } from './geolocation.service';

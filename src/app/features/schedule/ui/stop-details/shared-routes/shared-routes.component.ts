@@ -1,6 +1,6 @@
 import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 
-import { copy } from '@core/content/copy.util';
+import { copy } from '@core/content';
 
 import { Stop } from '@features/schedule/data-access/models/stop.model';
 

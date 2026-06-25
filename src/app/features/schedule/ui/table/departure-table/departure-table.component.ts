@@ -9,13 +9,13 @@ import { toSignal } from '@angular/core/rxjs-interop';
 
 import { Store } from '@ngrx/store';
 
-import { copy } from '@core/content/copy.util';
+import { copy } from '@core/content';
 
+import { ScheduleService } from '@features/schedule/application/services/schedule.service';
 import {
   selectSelectedStopId,
   selectTimetableLoading,
 } from '@features/schedule/data-access/store/schedule.selectors';
-import { ScheduleService } from '@features/schedule/services/schedule.service';
 import { DepartureTimeItemComponent } from '@features/schedule/ui/table/departure-time-item/departure-time-item.component';
 import { SpinnerComponent } from '@shared/ui/spinner/spinner.component';
 

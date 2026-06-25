@@ -7,11 +7,11 @@ import { take } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { combineLatest } from 'rxjs';
 
-import { COPY } from '@core/content/en';
+import { COPY } from '@core/content';
 import { ClipboardService } from '@core/services/clipboard.service';
 import { ToastService } from '@core/services/toast.service';
 
-import { scheduleFeature } from '../data-access/store/schedule.reducer';
+import { scheduleFeature } from '../../data-access/store/schedule.reducer';
 
 @Injectable()
 export class ShareScheduleService {

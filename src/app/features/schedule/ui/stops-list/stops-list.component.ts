@@ -3,7 +3,7 @@ import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
-import { copy } from '@core/content/copy.util';
+import { copy } from '@core/content';
 
 import {
   selectAllScheduleStops,

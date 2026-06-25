@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
-import { copy } from '@core/content/copy.util';
+import { copy } from '@core/content';
 import { TextSizeService } from '@core/services/text-size.service';
 
 import { IconButtonDirective } from '@shared/directives/icon-button.directive';

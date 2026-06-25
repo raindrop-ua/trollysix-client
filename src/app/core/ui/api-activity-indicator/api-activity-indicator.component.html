@@ -5,7 +5,7 @@
     class="api-activity-indicator"
     role="status"
     aria-live="polite"
-    aria-label="Loading API data"
+    [attr.aria-label]="copyServices.apiActivity.loadingApiData"
   >
     <span class="api-activity-indicator__ring" aria-hidden="true"></span>
     <svg

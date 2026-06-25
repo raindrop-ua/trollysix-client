@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
 
-import { COPY } from '@core/content/en';
+import { COPY } from '@core/content';
 
 import { VehicleFeature } from '@features/about/data-access/models/vehicle-feature';
 import { TooltipDirective } from '@shared/directives/tooltip.directive';
