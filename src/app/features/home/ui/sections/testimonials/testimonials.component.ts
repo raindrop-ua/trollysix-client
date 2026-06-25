@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { copy } from '@core/content/copy.util';
+import { copy } from '@core/content';
 
 import { Testimonials } from '@features/home/data-access/models/testimonial.model';
 import { TestimonialsListService } from '@features/home/data-access/services/testimonials-list.service';

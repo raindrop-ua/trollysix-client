@@ -5,11 +5,11 @@ import { combineLatest, map, shareReplay, distinctUntilChanged } from 'rxjs';
 
 import { ClockService } from '@core/services/clock.service';
 
-import { Departure, Status } from '../data-access/models/departure.model';
-import { TimeEntity } from '../data-access/models/timetable.model';
-import { SchedulePageActions } from '../data-access/store/schedule.actions';
-import { scheduleFeature } from '../data-access/store/schedule.reducer';
-import { selectCurrentTimetableTimes } from '../data-access/store/schedule.selectors';
+import { Departure, Status } from '../../data-access/models/departure.model';
+import { TimeEntity } from '../../data-access/models/timetable.model';
+import { SchedulePageActions } from '../../data-access/store/schedule.actions';
+import { scheduleFeature } from '../../data-access/store/schedule.reducer';
+import { selectCurrentTimetableTimes } from '../../data-access/store/schedule.selectors';
 
 @Injectable()
 export class ScheduleService {

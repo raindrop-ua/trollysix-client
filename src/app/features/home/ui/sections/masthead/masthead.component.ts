@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 
 import { distinctUntilChanged, map } from 'rxjs';
 
-import { copy } from '@core/content/copy.util';
+import { copy } from '@core/content';
 import { AppRouteEnum } from '@core/enums/app-route.enum';
 import { ClockService } from '@core/services/clock.service';
 

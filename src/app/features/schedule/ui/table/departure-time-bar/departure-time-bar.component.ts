@@ -4,12 +4,12 @@ import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { combineLatest, map } from 'rxjs';
 
-import { copy } from '@core/content/copy.util';
+import { copy } from '@core/content';
 import { ClockService } from '@core/services/clock.service';
 
+import { ScheduleService } from '@features/schedule/application/services/schedule.service';
 import { Status } from '@features/schedule/data-access/models/departure.model';
 import { selectTimetableLoading } from '@features/schedule/data-access/store/schedule.selectors';
-import { ScheduleService } from '@features/schedule/services/schedule.service';
 import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
 @Component({
@@ -39,7 +39,10 @@ export class DepartureTimeBarComponent {
     ),
   );
 
-  readonly minutesToNext$ = combineLatest([this.next$, this.clockService.now$]).pipe(
+  readonly minutesToNext$ = combineLatest([
+    this.next$,
+    this.clockService.now$,
+  ]).pipe(
     map(([next, now]) => {
       if (!next?.time) return null;
 
@@ -60,7 +63,8 @@ export class DepartureTimeBarComponent {
     map(([next, departures, timetableLoading]) => {
       if (timetableLoading) return this.copySchedule.departureTimeBar.loading;
       if (next?.time) return next.time;
-      if (departures?.length) return this.copySchedule.departureTimeBar.tomorrow;
+      if (departures?.length)
+        return this.copySchedule.departureTimeBar.tomorrow;
       return this.copySchedule.noDepartures;
     }),
   );

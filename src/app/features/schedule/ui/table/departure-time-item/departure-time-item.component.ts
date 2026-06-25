@@ -8,8 +8,8 @@ import {
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 
+import { ScheduleService } from '@features/schedule/application/services/schedule.service';
 import { Departure } from '@features/schedule/data-access/models/departure.model';
-import { ScheduleService } from '@features/schedule/services/schedule.service';
 import { TimeUiPipe } from '@shared/pipes/timeui.pipe';
 
 @Component({

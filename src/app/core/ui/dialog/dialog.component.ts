@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  OnDestroy,
   signal,
   ChangeDetectionStrategy,
   ViewChild,
@@ -25,7 +26,7 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'block' },
 })
-export class DialogComponent implements AfterViewInit {
+export class DialogComponent implements AfterViewInit, OnDestroy {
   @ViewChild('dialogElement', { static: true })
   private readonly dialogElement!: ElementRef<HTMLDialogElement>;
 
@@ -37,6 +38,9 @@ export class DialogComponent implements AfterViewInit {
 
   readonly result$ = new Subject<DialogResult>();
 
+  private showFrameId: number | null = null;
+  private closeTimer: ReturnType<typeof setTimeout> | null = null;
+
   ngAfterViewInit() {
     const dialog = this.dialogElement.nativeElement;
 
@@ -46,7 +50,10 @@ export class DialogComponent implements AfterViewInit {
       dialog.show();
     }
 
-    requestAnimationFrame(() => this.isVisible.set(true));
+    this.showFrameId = requestAnimationFrame(() => {
+      this.showFrameId = null;
+      this.isVisible.set(true);
+    });
   }
 
   close(result: DialogResult) {
@@ -57,11 +64,28 @@ export class DialogComponent implements AfterViewInit {
     }
 
     this.isVisible.set(false);
-    setTimeout(() => {
+    this.closeTimer = setTimeout(() => {
+      this.closeTimer = null;
       dialog.close(result);
       this.result$.next(result);
       this.result$.complete();
     }, 300);
+  }
+
+  ngOnDestroy(): void {
+    if (this.showFrameId !== null) {
+      cancelAnimationFrame(this.showFrameId);
+      this.showFrameId = null;
+    }
+
+    if (this.closeTimer !== null) {
+      clearTimeout(this.closeTimer);
+      this.closeTimer = null;
+    }
+
+    if (!this.result$.closed) {
+      this.result$.complete();
+    }
   }
 
   onDialogPointerDown(event: PointerEvent) {

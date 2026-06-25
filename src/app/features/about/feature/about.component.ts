@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
-import { copy } from '@core/content/copy.util';
+import { copy } from '@core/content';
 
 import { FullListOfStopsComponent } from '@features/about/ui/sections/full-list-of-stops/full-list-of-stops.component';
 import { HeadComponent } from '@features/about/ui/sections/head/head.component';

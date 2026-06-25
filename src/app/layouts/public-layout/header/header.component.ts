@@ -19,7 +19,7 @@ import { filter } from 'rxjs';
 
 import { NAVIGATION_TOKEN } from '@config/navigation.config';
 
-import { copy } from '@core/content/copy.util';
+import { copy } from '@core/content';
 import { AppRouteEnum } from '@core/enums/app-route.enum';
 
 import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
