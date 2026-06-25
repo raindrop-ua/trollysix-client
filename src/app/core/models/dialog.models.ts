@@ -1,4 +1,5 @@
 export type DialogVariant = 'info' | 'danger' | 'warning' | 'success';
+export type DialogOpenMode = 'modeless' | 'modal';
 
 export interface DialogConfig {
   title: string;

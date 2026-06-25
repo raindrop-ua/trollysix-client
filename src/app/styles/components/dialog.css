@@ -1,0 +1,101 @@
+@layer components {
+  .app-dialog {
+    @apply fixed inset-0 z-150 m-0 size-full max-h-none max-w-none overflow-y-auto border-0 bg-transparent p-0 text-inherit backdrop:bg-slate-950/55 backdrop:backdrop-blur-xs;
+  }
+
+  .app-dialog__viewport {
+    @apply flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0;
+  }
+
+  .app-dialog__panel {
+    @apply relative transform overflow-hidden rounded-3xl border border-slate-300/40 bg-white/60 text-left text-slate-900 shadow-2xl ring-1 ring-slate-900/10 backdrop-blur-xl transition-all duration-300 ease-out sm:my-8 sm:w-full sm:max-w-lg dark:border-white/10 dark:bg-slate-900/40 dark:text-white dark:shadow-sky-950/30 dark:ring-white/10;
+  }
+
+  .app-dialog__panel::before {
+    @apply absolute inset-x-0 top-0 h-1 content-[''];
+  }
+
+  .app-dialog__panel--danger::before {
+    @apply bg-red-500;
+  }
+
+  .app-dialog__panel--info::before {
+    @apply bg-blue-500;
+  }
+
+  .app-dialog__panel--warning::before {
+    @apply bg-yellow-400;
+  }
+
+  .app-dialog__panel--success::before {
+    @apply bg-green-500;
+  }
+
+  .app-dialog__body {
+    @apply px-5 pt-6 pb-5 sm:p-6;
+  }
+
+  .app-dialog__content {
+    @apply sm:flex sm:items-start;
+  }
+
+  .app-dialog__icon {
+    @apply mx-auto flex size-12 shrink-0 items-center justify-center rounded-2xl shadow-sm ring-1 backdrop-blur sm:mx-0 sm:size-11;
+  }
+
+  .app-dialog__icon--danger {
+    @apply bg-red-500/10 text-red-600 ring-red-500/20 dark:text-red-300 dark:ring-red-400/25;
+  }
+
+  .app-dialog__icon--info {
+    @apply bg-blue-500/10 text-blue-700 ring-blue-500/20 dark:text-cyan-200 dark:ring-cyan-300/25;
+  }
+
+  .app-dialog__icon--warning {
+    @apply bg-yellow-400/15 text-yellow-700 ring-yellow-500/25 dark:text-yellow-200 dark:ring-yellow-300/25;
+  }
+
+  .app-dialog__icon--success {
+    @apply bg-green-500/10 text-green-700 ring-green-500/20 dark:text-green-200 dark:ring-green-300/25;
+  }
+
+  .app-dialog__copy {
+    @apply mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left;
+  }
+
+  .app-dialog__title {
+    @apply text-base font-semibold text-slate-900 dark:text-white;
+  }
+
+  .app-dialog__message {
+    @apply text-sm leading-6 text-slate-600 dark:text-slate-300;
+  }
+
+  .app-dialog__actions {
+    @apply border-t border-slate-900/10 bg-white/45 px-4 py-4 sm:flex sm:flex-row-reverse sm:px-6 dark:border-white/10 dark:bg-white/5;
+  }
+
+  .app-dialog__confirm {
+    @apply inline-flex w-full cursor-pointer justify-center rounded-xl px-3 py-2 text-sm font-semibold transition hover:opacity-90 active:scale-95 sm:ml-3 sm:w-auto;
+  }
+
+  .app-dialog__confirm--danger {
+    @apply bg-red-500 text-white;
+  }
+
+  .app-dialog__confirm--info {
+    @apply bg-blue-500 text-white;
+  }
+
+  .app-dialog__confirm--warning {
+    @apply bg-yellow-500 text-slate-800;
+  }
+
+  .app-dialog__confirm--success {
+    @apply bg-green-600 text-white;
+  }
+
+  .app-dialog__cancel {
+    @apply mt-3 inline-flex w-full cursor-pointer justify-center rounded-xl bg-white/70 px-3 py-2 text-sm font-semibold text-slate-700 ring-1 ring-slate-900/10 transition hover:bg-white active:scale-95 sm:mt-0 sm:w-auto dark:bg-white/10 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/15;
+  }
+}
