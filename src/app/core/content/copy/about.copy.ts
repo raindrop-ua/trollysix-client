@@ -14,7 +14,7 @@ The route then proceeds along Elektrychna St., Kolska St., and 20 Years of Victo
     'On weekdays, 6 vehicles operate on the route, while on weekends, this number is reduced to 4. The route is served by two trolleybus depots, with 3 vehicles from each depot on weekdays and 2 from each depot on weekends.',
   ],
   infrastructure: {
-    rollingStock: 'Rolling stock',
+    rollingStock: 'Vehicle fleet',
     vehiclesOnRouteSix: 'Vehicles currently operating on Route 6',
     primaryModel: 'Primary model',
     operation: 'Operation',
