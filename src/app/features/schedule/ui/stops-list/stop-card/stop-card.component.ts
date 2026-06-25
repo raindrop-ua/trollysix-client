@@ -2,7 +2,7 @@ import { Component, input, inject, ChangeDetectionStrategy } from '@angular/core
 
 import { Store } from '@ngrx/store';
 
-import { copy } from '@core/content/copy.util';
+import { copy } from '@core/content';
 
 import { DayTypeName } from '@features/schedule/data-access/models/daytype.model';
 import { DirectionName } from '@features/schedule/data-access/models/direction.model';

@@ -5,12 +5,12 @@ import { take, withLatestFrom } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
 
-import { COPY } from '@core/content/en';
+import { COPY } from '@core/content';
 import { ToastService } from '@core/services/toast.service';
 
-import { Stop } from '../data-access/models/stop.model';
-import { SchedulePageActions } from '../data-access/store/schedule.actions';
-import { selectAllScheduleStops } from '../data-access/store/schedule.selectors';
+import { Stop } from '../../data-access/models/stop.model';
+import { SchedulePageActions } from '../../data-access/store/schedule.actions';
+import { selectAllScheduleStops } from '../../data-access/store/schedule.selectors';
 
 import { GeoState } from './closest-stop.types';
 import { GeolocationService } from './geolocation.service';
@@ -53,9 +53,12 @@ export class ClosestStopService {
               } as GeolocationError,
             });
 
-            this.toastService.error(this.copy.noStopsWithLocationDataAvailable, {
-              title: this.copy.failedToFindClosestStop,
-            });
+            this.toastService.error(
+              this.copy.noStopsWithLocationDataAvailable,
+              {
+                title: this.copy.failedToFindClosestStop,
+              },
+            );
             return;
           }
 

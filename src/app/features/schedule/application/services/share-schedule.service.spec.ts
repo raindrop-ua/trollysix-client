@@ -12,7 +12,7 @@ import {
 } from '@core/services/clipboard.service';
 import { ToastService } from '@core/services/toast.service';
 
-import { scheduleFeature } from '../data-access/store/schedule.reducer';
+import { scheduleFeature } from '../../data-access/store/schedule.reducer';
 
 import { ShareScheduleService } from './share-schedule.service';
 interface StoreLike {
