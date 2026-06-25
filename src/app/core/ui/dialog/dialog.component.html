@@ -1,18 +1,14 @@
-<div
-  class="fixed inset-0 z-150 overflow-y-auto"
-  role="dialog"
-  aria-modal="true"
+<dialog
+  #dialogElement
+  class="fixed inset-0 z-150 m-0 size-full max-h-none max-w-none overflow-y-auto border-0 bg-transparent p-0 text-inherit backdrop:bg-gray-900/60"
+  [attr.aria-modal]="openMode() === 'modal'"
+  [attr.aria-labelledby]="titleId"
+  [attr.aria-describedby]="descriptionId"
+  tabindex="-1"
   (cancel)="onCancelEvent($event)"
+  (keydown.escape)="onEscapeKeydown($event)"
+  (pointerdown)="onDialogPointerDown($event)"
 >
-  <div
-    tabindex="0"
-    role="button"
-    class="fixed inset-0 bg-gray-900/60 transition-opacity duration-300 ease-out"
-    [class.opacity-0]="!isVisible()"
-    [class.opacity-100]="isVisible()"
-    (click)="onBackdropClick()"
-  ></div>
-
   <div
     class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
   >
@@ -31,13 +27,14 @@
         <div class="sm:flex sm:items-start">
           <div
             class="mx-auto flex size-12 shrink-0 items-center justify-center rounded-full sm:mx-0 sm:size-10"
-            [ngClass]="{
-              'bg-red-500/10 text-red-500': config()?.variant === 'danger',
-              'bg-blue-500/10 text-blue-500': config()?.variant === 'info',
-              'bg-yellow-500/10 text-yellow-500':
-                config()?.variant === 'warning',
-              'bg-green-500/10 text-green-500': config()?.variant === 'success',
-            }"
+            [class.bg-red-500/10]="config()?.variant === 'danger'"
+            [class.text-red-500]="config()?.variant === 'danger'"
+            [class.bg-blue-500/10]="config()?.variant === 'info'"
+            [class.text-blue-500]="config()?.variant === 'info'"
+            [class.bg-yellow-500/10]="config()?.variant === 'warning'"
+            [class.text-yellow-500]="config()?.variant === 'warning'"
+            [class.bg-green-500/10]="config()?.variant === 'success'"
+            [class.text-green-500]="config()?.variant === 'success'"
           >
             @let icon = config()?.customIcon ?? 'info';
             <svg [icon]="icon" class="size-6" stroke="currentColor"></svg>
@@ -45,12 +42,16 @@
 
           <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
             <h3
+              [id]="titleId"
               class="text-base font-semibold text-slate-600 dark:text-slate-300"
             >
               {{ config()?.title }}
             </h3>
             <div class="mt-2">
-              <p class="text-sm text-gray-600 dark:text-gray-300">
+              <p
+                [id]="descriptionId"
+                class="text-sm text-gray-600 dark:text-gray-300"
+              >
                 {{ config()?.message }}
               </p>
             </div>
@@ -64,12 +65,16 @@
         <button
           type="button"
           class="inline-flex w-full cursor-pointer justify-center rounded-xl px-3 py-2 text-sm font-semibold transition hover:opacity-90 active:scale-95 sm:ml-3 sm:w-auto"
-          [ngClass]="{
-            'bg-red-500 text-white': config()?.variant === 'danger',
-            'bg-blue-500 text-white': config()?.variant === 'info',
-            'bg-yellow-500 text-slate-800': config()?.variant === 'warning',
-            'bg-green-500 text-white': config()?.variant === 'success',
-          }"
+          [class.bg-red-500]="config()?.variant === 'danger'"
+          [class.text-white]="
+            config()?.variant === 'danger' ||
+            config()?.variant === 'info' ||
+            config()?.variant === 'success'
+          "
+          [class.bg-blue-500]="config()?.variant === 'info'"
+          [class.bg-yellow-500]="config()?.variant === 'warning'"
+          [class.text-slate-800]="config()?.variant === 'warning'"
+          [class.bg-green-600]="config()?.variant === 'success'"
           (click)="onConfirmClick()"
         >
           {{ config()?.confirmText }}
@@ -87,4 +92,4 @@
       </div>
     </div>
   </div>
-</div>
+</dialog>

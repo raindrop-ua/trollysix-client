@@ -11,7 +11,11 @@ import {
 
 import { Observable, Subject, take } from 'rxjs';
 
-import { DialogConfig, DialogResult } from '@core/models/dialog.models';
+import {
+  DialogConfig,
+  DialogOpenMode,
+  DialogResult,
+} from '@core/models/dialog.models';
 import { DialogComponent } from '@core/ui/dialog/dialog.component';
 
 @Service()
@@ -26,6 +30,21 @@ export class DialogService {
   private previousBodyOverflow = '';
 
   open(config: DialogConfig): Observable<DialogResult> {
+    return this.openModal(config);
+  }
+
+  openModeless(config: DialogConfig): Observable<DialogResult> {
+    return this.createDialog(config, 'modeless');
+  }
+
+  openModal(config: DialogConfig): Observable<DialogResult> {
+    return this.createDialog(config, 'modal');
+  }
+
+  private createDialog(
+    config: DialogConfig,
+    mode: DialogOpenMode,
+  ): Observable<DialogResult> {
     const result$ = new Subject<DialogResult>();
     if (!this.isBrowser || !this.document?.body) {
       result$.complete();
@@ -37,6 +56,7 @@ export class DialogService {
     });
 
     componentRef.instance.config.set(config);
+    componentRef.instance.openMode.set(mode);
     componentRef.instance.result$.pipe(take(1)).subscribe((res) => {
       result$.next(res);
       result$.complete();
@@ -47,16 +67,21 @@ export class DialogService {
     this.document.body.appendChild(componentRef.location.nativeElement);
 
     this.activeDialogs.push(componentRef);
-    this.lockBodyScroll();
+    if (mode === 'modal') {
+      this.lockBodyScroll();
+    }
 
     return result$;
   }
 
   private destroyDialog(ref: ComponentRef<DialogComponent>) {
     this.appRef.detachView(ref.hostView);
+    const mode = ref.instance.openMode();
     ref.destroy();
     this.activeDialogs = this.activeDialogs.filter((d) => d !== ref);
-    this.unlockBodyScrollIfNeeded();
+    if (mode === 'modal') {
+      this.unlockBodyScrollIfNeeded();
+    }
   }
 
   private lockBodyScroll(): void {
