@@ -1,6 +1,6 @@
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
-import { copy } from '@core/content/copy.util';
+import { copy } from '@core/content';
 import { ThemeService } from '@core/services/theme.service';
 
 import { IconButtonDirective } from '@shared/directives/icon-button.directive';
