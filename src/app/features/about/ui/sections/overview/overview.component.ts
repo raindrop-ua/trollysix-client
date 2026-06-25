@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, computed } from '@angular/core';
 
-import { copy } from '@core/content/copy.util';
+import { copy } from '@core/content';
 
 import { RevealOnScrollDirective } from '@shared/directives/reveal-on-scroll.directive';
 import { GenericSectionBlockComponent } from '@shared/ui/sections/generic-section-block/generic-section-block.component';

@@ -5,12 +5,12 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 
-import { copy } from '@core/content/copy.util';
+import { copy } from '@core/content';
 import { ClipboardService } from '@core/services/clipboard.service';
 
-import { ClosestStopService } from '@features/schedule/services/closest-stop.service';
-import { GeolocationService } from '@features/schedule/services/geolocation.service';
-import { ShareScheduleService } from '@features/schedule/services/share-schedule.service';
+import { ClosestStopService } from '@features/schedule/application/services/closest-stop.service';
+import { GeolocationService } from '@features/schedule/application/services/geolocation.service';
+import { ShareScheduleService } from '@features/schedule/application/services/share-schedule.service';
 import { BtnDirective } from '@shared/directives/btn.directive';
 import { TooltipDirective } from '@shared/directives/tooltip.directive';
 import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';

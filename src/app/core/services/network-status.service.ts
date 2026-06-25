@@ -4,7 +4,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { fromEvent, merge, map, pairwise, startWith, tap } from 'rxjs';
 
-import { COPY } from '@core/content/en';
+import { COPY } from '@core/content';
 
 import { ToastService } from './toast.service';
 

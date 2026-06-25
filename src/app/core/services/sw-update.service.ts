@@ -4,7 +4,7 @@ import { SwUpdate } from '@angular/service-worker';
 
 import { EMPTY, catchError, filter, from, interval, switchMap } from 'rxjs';
 
-import { COPY } from '@core/content/en';
+import { COPY } from '@core/content';
 
 import { DialogService } from './dialog.service';
 

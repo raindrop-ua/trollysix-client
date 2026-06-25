@@ -18,6 +18,66 @@ module.exports = tseslint.config(
     },
     rules: {
       'import/no-cycle': ['error', { maxDepth: 1 }],
+      'import/no-restricted-paths': [
+        'error',
+        {
+          basePath: __dirname,
+          zones: [
+            {
+              target: './src/app/core',
+              from: ['./src/app/features', './src/app/layouts'],
+              message:
+                'Core must stay independent from feature and layout code.',
+            },
+            {
+              target: './src/app/shared',
+              from: ['./src/app/features', './src/app/layouts'],
+              message:
+                'Shared code must stay independent from feature and layout code.',
+            },
+            {
+              target: './src/app/features',
+              from: './src/app/layouts',
+              message: 'Features must not depend on layouts.',
+            },
+            {
+              target: './src/app/layouts',
+              from: './src/app/features',
+              message: 'Layouts must not depend on feature code.',
+            },
+            {
+              target: './src/app/features/home',
+              from: './src/app/features',
+              except: ['./home'],
+              message: 'Feature code must not import another feature directly.',
+            },
+            {
+              target: './src/app/features/about',
+              from: './src/app/features',
+              except: ['./about'],
+              message: 'Feature code must not import another feature directly.',
+            },
+            {
+              target: './src/app/features/schedule',
+              from: './src/app/features',
+              except: ['./schedule'],
+              message: 'Feature code must not import another feature directly.',
+            },
+            {
+              target: './src/app/features/settings',
+              from: './src/app/features',
+              except: ['./settings'],
+              message: 'Feature code must not import another feature directly.',
+            },
+            {
+              target: './src/app/features/static',
+              from: './src/app/features',
+              except: ['./static'],
+              message: 'Feature code must not import another feature directly.',
+            },
+          ],
+        },
+      ],
       'import/order': [
         'error',
         {

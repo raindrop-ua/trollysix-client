@@ -1,9 +1,9 @@
 import { AsyncPipe } from '@angular/common';
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
-import { copy } from '@core/content/copy.util';
+import { copy } from '@core/content';
 
-import { ScheduleService } from '@features/schedule/services/schedule.service';
+import { ScheduleService } from '@features/schedule/application/services/schedule.service';
 
 @Component({
   selector: 'trollysix-departure-config',

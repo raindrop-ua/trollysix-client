@@ -13,7 +13,7 @@ import {
 
 import { environment } from '@environments/environment';
 
-import { copy } from '@core/content/copy.util';
+import { copy } from '@core/content';
 
 import { Stop } from '@features/schedule/data-access/models/stop.model';
 import { TemperaturePipe } from '@shared/pipes/temperature.pipe';

@@ -3,7 +3,7 @@ import { Injectable, PLATFORM_ID, inject, signal } from '@angular/core';
 
 import { Observable, throwError } from 'rxjs';
 
-import { COPY } from '@core/content/en';
+import { COPY } from '@core/content';
 
 import { GeolocationError, GeolocationErrorCode } from './geolocation.types';
 

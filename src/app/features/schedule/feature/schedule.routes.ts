@@ -3,11 +3,11 @@ import { Routes } from '@angular/router';
 import { provideEffects } from '@ngrx/effects';
 import { provideState } from '@ngrx/store';
 
+import { GeolocationService } from '../application/services/geolocation.service';
+import { ScheduleService } from '../application/services/schedule.service';
+import { ShareScheduleService } from '../application/services/share-schedule.service';
 import { ScheduleEffects } from '../data-access/store/schedule.effects';
 import { scheduleFeature } from '../data-access/store/schedule.reducer';
-import { GeolocationService } from '../services/geolocation.service';
-import { ScheduleService } from '../services/schedule.service';
-import { ShareScheduleService } from '../services/share-schedule.service';
 
 import { ScheduleComponent } from './schedule.component';
 

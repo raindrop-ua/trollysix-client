@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { copy } from '@core/content/copy.util';
+import { copy } from '@core/content';
 
 import { RouteStop } from '@features/about/data-access/models/route-stops.model';
 import { StopsListService } from '@features/about/data-access/services/stops-list.service';

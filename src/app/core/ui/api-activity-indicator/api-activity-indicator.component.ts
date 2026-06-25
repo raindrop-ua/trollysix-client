@@ -5,6 +5,7 @@ import {
   inject,
 } from '@angular/core';
 
+import { copy } from '@core/content';
 import { ApiActivityService } from '@core/services/api-activity.service';
 
 import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
@@ -19,5 +20,6 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 export class ApiActivityIndicatorComponent {
   private readonly activityService = inject(ApiActivityService);
 
+  readonly copyServices = copy('services');
   readonly isActive = computed(() => this.activityService.isActive());
 }

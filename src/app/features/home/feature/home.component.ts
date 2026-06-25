@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { copy } from '@core/content/copy.util';
+import { copy } from '@core/content';
 
 import { BigClaimsComponent } from '@features/home/ui/sections/big-claims/big-claims.component';
 import { MastheadComponent } from '@features/home/ui/sections/masthead/masthead.component';
