@@ -25,7 +25,7 @@ export class SwUpdateService {
       )
       .subscribe(() => {
         this.dialogService
-          .open({
+          .openModal({
             title: this.copy.dialogTitle,
             message: this.copy.dialogMessage,
             confirmText: this.copy.confirmText,
