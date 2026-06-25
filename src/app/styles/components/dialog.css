@@ -1,0 +1,65 @@
+@layer components {
+  .app-dialog {
+    @apply fixed inset-0 z-150 m-0 size-full max-h-none max-w-none overflow-y-auto border-0 bg-transparent p-0 text-inherit backdrop:bg-gray-900/60;
+  }
+
+  .app-dialog__viewport {
+    @apply flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0;
+  }
+
+  .app-dialog__panel {
+    @apply relative transform overflow-hidden rounded-2xl bg-gray-800/90 text-left shadow-xl outline -outline-offset-1 outline-white/10 backdrop-blur transition-all duration-300 ease-out sm:my-8 sm:w-full sm:max-w-lg;
+  }
+
+  .app-dialog__body {
+    @apply bg-gray-100/90 px-5 pt-5 pb-4 sm:p-6 sm:pb-5 dark:bg-gray-800;
+  }
+
+  .app-dialog__icon {
+    @apply mx-auto flex size-12 shrink-0 items-center justify-center rounded-full sm:mx-0 sm:size-10;
+  }
+
+  .app-dialog__icon--danger {
+    @apply bg-red-500/10 text-red-500;
+  }
+
+  .app-dialog__icon--info {
+    @apply bg-blue-500/10 text-blue-500;
+  }
+
+  .app-dialog__icon--warning {
+    @apply bg-yellow-500/10 text-yellow-500;
+  }
+
+  .app-dialog__icon--success {
+    @apply bg-green-500/10 text-green-500;
+  }
+
+  .app-dialog__actions {
+    @apply bg-gray-200/90 px-4 py-4 sm:flex sm:flex-row-reverse sm:px-6 dark:bg-gray-700/25;
+  }
+
+  .app-dialog__confirm {
+    @apply inline-flex w-full cursor-pointer justify-center rounded-xl px-3 py-2 text-sm font-semibold transition hover:opacity-90 active:scale-95 sm:ml-3 sm:w-auto;
+  }
+
+  .app-dialog__confirm--danger {
+    @apply bg-red-500 text-white;
+  }
+
+  .app-dialog__confirm--info {
+    @apply bg-blue-500 text-white;
+  }
+
+  .app-dialog__confirm--warning {
+    @apply bg-yellow-500 text-slate-800;
+  }
+
+  .app-dialog__confirm--success {
+    @apply bg-green-600 text-white;
+  }
+
+  .app-dialog__cancel {
+    @apply mt-3 inline-flex w-full cursor-pointer justify-center rounded-xl bg-slate-900/30 px-3 py-2 text-sm font-semibold text-white inset-ring inset-ring-white/5 transition hover:bg-slate-900/40 active:scale-95 sm:mt-0 sm:w-auto dark:bg-white/10;
+  }
+}

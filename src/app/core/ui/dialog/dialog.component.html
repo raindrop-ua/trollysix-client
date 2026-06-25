@@ -1,6 +1,6 @@
 <dialog
   #dialogElement
-  class="fixed inset-0 z-150 m-0 size-full max-h-none max-w-none overflow-y-auto border-0 bg-transparent p-0 text-inherit backdrop:bg-gray-900/60"
+  class="app-dialog"
   [attr.aria-modal]="openMode() === 'modal'"
   [attr.aria-labelledby]="titleId"
   [attr.aria-describedby]="descriptionId"
@@ -9,11 +9,9 @@
   (keydown.escape)="onEscapeKeydown($event)"
   (pointerdown)="onDialogPointerDown($event)"
 >
-  <div
-    class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
-  >
+  <div class="app-dialog__viewport">
     <div
-      class="relative transform overflow-hidden rounded-2xl bg-gray-800/90 text-left shadow-xl outline -outline-offset-1 outline-white/10 backdrop-blur transition-all duration-300 ease-out sm:my-8 sm:w-full sm:max-w-lg"
+      class="app-dialog__panel"
       [class.translate-y-4]="!isVisible()"
       [class.opacity-0]="!isVisible()"
       [class.scale-95]="!isVisible()"
@@ -21,20 +19,14 @@
       [class.opacity-100]="isVisible()"
       [class.scale-100]="isVisible()"
     >
-      <div
-        class="bg-gray-100/90 px-5 pt-5 pb-4 sm:p-6 sm:pb-5 dark:bg-gray-800"
-      >
+      <div class="app-dialog__body">
         <div class="sm:flex sm:items-start">
           <div
-            class="mx-auto flex size-12 shrink-0 items-center justify-center rounded-full sm:mx-0 sm:size-10"
-            [class.bg-red-500/10]="config()?.variant === 'danger'"
-            [class.text-red-500]="config()?.variant === 'danger'"
-            [class.bg-blue-500/10]="config()?.variant === 'info'"
-            [class.text-blue-500]="config()?.variant === 'info'"
-            [class.bg-yellow-500/10]="config()?.variant === 'warning'"
-            [class.text-yellow-500]="config()?.variant === 'warning'"
-            [class.bg-green-500/10]="config()?.variant === 'success'"
-            [class.text-green-500]="config()?.variant === 'success'"
+            class="app-dialog__icon"
+            [class.app-dialog__icon--danger]="config()?.variant === 'danger'"
+            [class.app-dialog__icon--info]="config()?.variant === 'info'"
+            [class.app-dialog__icon--warning]="config()?.variant === 'warning'"
+            [class.app-dialog__icon--success]="config()?.variant === 'success'"
           >
             @let icon = config()?.customIcon ?? 'info';
             <svg [icon]="icon" class="size-6" stroke="currentColor"></svg>
@@ -59,22 +51,16 @@
         </div>
       </div>
 
-      <div
-        class="bg-gray-200/90 px-4 py-4 sm:flex sm:flex-row-reverse sm:px-6 dark:bg-gray-700/25"
-      >
+      <div class="app-dialog__actions">
         <button
           type="button"
-          class="inline-flex w-full cursor-pointer justify-center rounded-xl px-3 py-2 text-sm font-semibold transition hover:opacity-90 active:scale-95 sm:ml-3 sm:w-auto"
-          [class.bg-red-500]="config()?.variant === 'danger'"
-          [class.text-white]="
-            config()?.variant === 'danger' ||
-            config()?.variant === 'info' ||
-            config()?.variant === 'success'
+          class="app-dialog__confirm"
+          [class.app-dialog__confirm--danger]="config()?.variant === 'danger'"
+          [class.app-dialog__confirm--info]="config()?.variant === 'info'"
+          [class.app-dialog__confirm--warning]="
+            config()?.variant === 'warning'
           "
-          [class.bg-blue-500]="config()?.variant === 'info'"
-          [class.bg-yellow-500]="config()?.variant === 'warning'"
-          [class.text-slate-800]="config()?.variant === 'warning'"
-          [class.bg-green-600]="config()?.variant === 'success'"
+          [class.app-dialog__confirm--success]="config()?.variant === 'success'"
           (click)="onConfirmClick()"
         >
           {{ config()?.confirmText }}
@@ -83,7 +69,7 @@
         @if (config()?.cancelText) {
           <button
             type="button"
-            class="mt-3 inline-flex w-full cursor-pointer justify-center rounded-xl bg-slate-900/30 px-3 py-2 text-sm font-semibold text-white inset-ring inset-ring-white/5 transition hover:bg-slate-900/40 active:scale-95 sm:mt-0 sm:w-auto dark:bg-white/10"
+            class="app-dialog__cancel"
             (click)="onCancelClick()"
           >
             {{ config()?.cancelText }}
