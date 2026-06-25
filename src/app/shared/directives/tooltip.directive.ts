@@ -64,6 +64,7 @@ export class TooltipDirective {
   private tooltipId: string | null = null;
   private showTimer: ReturnType<typeof setTimeout> | null = null;
   private hideTimer: ReturnType<typeof setTimeout> | null = null;
+  private destroyTimer: ReturnType<typeof setTimeout> | null = null;
   private rafId: number | null = null;
   private ro: ResizeObserver | null = null;
 
@@ -120,7 +121,12 @@ export class TooltipDirective {
     if (!this.tooltipEl) return;
 
     this.tooltipEl.style.opacity = '0';
-    setTimeout(() => {
+    if (this.destroyTimer !== null) {
+      clearTimeout(this.destroyTimer);
+    }
+
+    this.destroyTimer = setTimeout(() => {
+      this.destroyTimer = null;
       if (this.tooltipEl?.style.opacity === '0') {
         this.destroyTooltip();
       }
@@ -159,6 +165,10 @@ export class TooltipDirective {
   private destroyTooltip() {
     this.clearTimers();
     if (this.rafId) cancelAnimationFrame(this.rafId);
+    if (this.destroyTimer !== null) {
+      clearTimeout(this.destroyTimer);
+      this.destroyTimer = null;
+    }
     this.ro?.disconnect();
     this.detachGlobalListeners();
     this.removeDescribedBy();
@@ -271,7 +281,9 @@ export class TooltipDirective {
       return;
     }
 
-    const ids = existing.split(/\s+/).filter((id) => id && id !== this.tooltipId);
+    const ids = existing
+      .split(/\s+/)
+      .filter((id) => id && id !== this.tooltipId);
     if (ids.length) {
       hostEl.setAttribute('aria-describedby', ids.join(' '));
       return;
