@@ -26,15 +26,18 @@ import { TooltipDirective } from '@shared/directives/tooltip.directive';
   host: { class: 'block' },
 })
 export class DepartureLegendComponent {
-  readonly copySchedule = copy('schedule');
+  public readonly copySchedule = copy('schedule');
   private readonly store = inject(Store);
   private readonly schedule = inject(ScheduleService);
-  readonly departures = toSignal(this.schedule.departures$, {
+  public readonly departures = toSignal(this.schedule.departures$, {
     initialValue: [],
   });
-  readonly timetableLoading = this.store.selectSignal(selectTimetableLoading);
-  readonly selectedStopId = this.store.selectSignal(selectSelectedStopId);
-  readonly revealKey = signal(0);
+  public readonly timetableLoading = this.store.selectSignal(
+    selectTimetableLoading,
+  );
+  public readonly selectedStopId =
+    this.store.selectSignal(selectSelectedStopId);
+  public readonly revealKey = signal(0);
 
   private previousLoading = true;
   private previousStopId: string | null = null;

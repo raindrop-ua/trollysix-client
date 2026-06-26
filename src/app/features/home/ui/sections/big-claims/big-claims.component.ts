@@ -16,6 +16,6 @@ import { ColorSplashComponent } from '@shared/ui/color-splash/color-splash.compo
 })
 export class BigClaimsComponent {
   protected readonly AppRouteEnum = AppRouteEnum;
-  readonly copyCommon = copy('common');
-  readonly copyHome = copy('home');
+  public readonly copyCommon = copy('common');
+  public readonly copyHome = copy('home');
 }

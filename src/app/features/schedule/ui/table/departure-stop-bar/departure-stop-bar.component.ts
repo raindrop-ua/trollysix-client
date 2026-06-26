@@ -16,11 +16,13 @@ import { selectSelectedStopName } from '@features/schedule/data-access/store/sch
   host: { class: 'block' },
 })
 export class DepartureStopBarComponent {
-  readonly copySchedule = copy('schedule');
+  public readonly copySchedule = copy('schedule');
   private readonly store = inject(Store);
   private readonly schedule = inject(ScheduleService);
-  readonly departures = toSignal(this.schedule.departures$, {
+  public readonly departures = toSignal(this.schedule.departures$, {
     initialValue: [],
   });
-  readonly selectedStopName = this.store.selectSignal(selectSelectedStopName);
+  public readonly selectedStopName = this.store.selectSignal(
+    selectSelectedStopName,
+  );
 }

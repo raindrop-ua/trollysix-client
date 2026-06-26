@@ -24,7 +24,7 @@ export class SnowService {
 
   private readonly maxSnowflakes = 100;
   private readonly snowflakes = signal<Snowflake[]>([]);
-  readonly getSnowflakes = computed(() => this.snowflakes());
+  public readonly getSnowflakes = computed(() => this.snowflakes());
 
   private rafId: number | null = null;
   private lastTs = 0;

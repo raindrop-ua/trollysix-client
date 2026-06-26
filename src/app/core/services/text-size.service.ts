@@ -14,18 +14,18 @@ export class TextSizeService {
 
   private readonly modeSignal = signal<FontSizeMode>('normal');
 
-  readonly mode = this.modeSignal.asReadonly();
-  readonly isLarge = computed(() => this.modeSignal() === 'large');
+  public readonly mode = this.modeSignal.asReadonly();
+  public readonly isLarge = computed(() => this.modeSignal() === 'large');
 
   constructor() {
     this.init();
   }
 
-  toggle(): void {
+  public toggle(): void {
     this.setMode(this.isLarge() ? 'normal' : 'large');
   }
 
-  setMode(mode: FontSizeMode): void {
+  public setMode(mode: FontSizeMode): void {
     this.modeSignal.set(mode);
 
     if (!this.isBrowser) {

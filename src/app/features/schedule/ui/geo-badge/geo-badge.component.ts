@@ -19,10 +19,10 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
   host: { class: 'block' },
 })
 export class GeoBadgeComponent {
-  readonly copySchedule = copy('schedule');
-  geo = input<{ lat: number; lon: number } | null>();
+  public readonly copySchedule = copy('schedule');
+  public geo = input<{ lat: number; lon: number } | null>();
 
-  readonly mapsUrl = computed(() => {
+  public readonly mapsUrl = computed(() => {
     const geo = this.geo();
     if (!geo) {
       return null;

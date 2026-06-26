@@ -14,7 +14,7 @@ import {
   host: { class: 'block' },
 })
 export class AttentionComponent {
-  titleTemplate = input<TemplateRef<unknown>>();
-  descriptionTemplate = input<TemplateRef<unknown>>();
-  ctaTemplate = input<TemplateRef<unknown>>();
+  public titleTemplate = input<TemplateRef<unknown>>();
+  public descriptionTemplate = input<TemplateRef<unknown>>();
+  public ctaTemplate = input<TemplateRef<unknown>>();
 }

@@ -12,5 +12,5 @@ import { RevealOnScrollDirective } from '@shared/directives/reveal-on-scroll.dir
   host: { class: 'block' },
 })
 export class HeadComponent {
-  readonly copyAbout = copy('about');
+  public readonly copyAbout = copy('about');
 }

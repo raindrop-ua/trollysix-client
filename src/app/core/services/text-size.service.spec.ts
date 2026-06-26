@@ -9,7 +9,10 @@ describe('TextSizeService', () => {
   const setup = (platformId: 'browser' | 'server') => {
     TestBed.resetTestingModule();
     TestBed.configureTestingModule({
-      providers: [TextSizeService, { provide: PLATFORM_ID, useValue: platformId }],
+      providers: [
+        TextSizeService,
+        { provide: PLATFORM_ID, useValue: platformId },
+      ],
     });
 
     return TestBed.inject(TextSizeService);
@@ -27,7 +30,9 @@ describe('TextSizeService', () => {
 
     expect(service.mode()).toBe('large');
     expect(service.isLarge()).toBe(true);
-    expect(document.documentElement.classList.contains('font-large')).toBe(true);
+    expect(document.documentElement.classList.contains('font-large')).toBe(
+      true,
+    );
   });
 
   it('toggle persists mode and updates class', () => {
@@ -36,7 +41,9 @@ describe('TextSizeService', () => {
 
     expect(service.mode()).toBe('large');
     expect(localStorage.getItem('font-size-mode')).toBe('large');
-    expect(document.documentElement.classList.contains('font-large')).toBe(true);
+    expect(document.documentElement.classList.contains('font-large')).toBe(
+      true,
+    );
   });
 
   it('does not mutate document in server mode', () => {
@@ -45,6 +52,8 @@ describe('TextSizeService', () => {
 
     expect(service.mode()).toBe('large');
     expect(localStorage.getItem('font-size-mode')).toBeNull();
-    expect(document.documentElement.classList.contains('font-large')).toBe(false);
+    expect(document.documentElement.classList.contains('font-large')).toBe(
+      false,
+    );
   });
 });

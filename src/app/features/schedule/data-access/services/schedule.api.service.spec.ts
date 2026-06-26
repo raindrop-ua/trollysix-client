@@ -69,7 +69,9 @@ describe('ScheduleApiService', () => {
 
     const request = firstValueFrom(service.getDirections());
     const req = http.expectOne('http://localhost:4450/directions');
-    const response: Direction[] = [{ id: '1', name: 'forward', label: 'Forward' }];
+    const response: Direction[] = [
+      { id: '1', name: 'forward', label: 'Forward' },
+    ];
     req.flush(response);
 
     const result = await request;
@@ -84,7 +86,9 @@ describe('ScheduleApiService', () => {
 
     const request = firstValueFrom(service.getDirections());
     const req = http.expectOne('http://localhost:4450/directions');
-    const response: Direction[] = [{ id: '1', name: 'forward', label: 'Forward' }];
+    const response: Direction[] = [
+      { id: '1', name: 'forward', label: 'Forward' },
+    ];
     req.flush(response);
 
     await expect(request).resolves.toEqual(response);

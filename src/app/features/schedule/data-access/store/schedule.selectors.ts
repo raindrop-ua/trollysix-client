@@ -94,7 +94,7 @@ export const selectScheduleViewModel = createSelector(
     selectedDirectionName,
     currentTimetable,
     stopsLoading,
-    timetableLoading
+    timetableLoading,
   ) => ({
     stops,
     selectedStop,
@@ -106,5 +106,5 @@ export const selectScheduleViewModel = createSelector(
     currentTimetable,
     stopsLoading,
     timetableLoading,
-  })
+  }),
 );
