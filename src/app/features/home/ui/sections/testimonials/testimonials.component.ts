@@ -35,13 +35,13 @@ import { TestimonialComponent } from './testimonial/testimonial.component';
   host: { class: 'block' },
 })
 export class TestimonialsComponent implements OnInit {
-  readonly copyHome = copy('home');
+  public readonly copyHome = copy('home');
   private testimonialsListService = inject(TestimonialsListService);
   private destroyRef = inject(DestroyRef);
   public readonly testimonials = signal<Testimonials | null>(null);
   public readonly isLoading = signal(true);
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.testimonialsListService
       .getTestimonials()
       .pipe(takeUntilDestroyed(this.destroyRef))

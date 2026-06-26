@@ -29,15 +29,15 @@ export class DialogService {
   private openDialogsCount = 0;
   private previousBodyOverflow = '';
 
-  open(config: DialogConfig): Observable<DialogResult> {
+  public open(config: DialogConfig): Observable<DialogResult> {
     return this.openModal(config);
   }
 
-  openModeless(config: DialogConfig): Observable<DialogResult> {
+  public openModeless(config: DialogConfig): Observable<DialogResult> {
     return this.createDialog(config, 'modeless');
   }
 
-  openModal(config: DialogConfig): Observable<DialogResult> {
+  public openModal(config: DialogConfig): Observable<DialogResult> {
     return this.createDialog(config, 'modal');
   }
 
@@ -74,7 +74,7 @@ export class DialogService {
     return result$;
   }
 
-  private destroyDialog(ref: ComponentRef<DialogComponent>) {
+  private destroyDialog(ref: ComponentRef<DialogComponent>): void {
     this.appRef.detachView(ref.hostView);
     const mode = ref.instance.openMode();
     ref.destroy();

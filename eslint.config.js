@@ -17,6 +17,15 @@ module.exports = tseslint.config(
       import: require('eslint-plugin-import'),
     },
     rules: {
+      '@typescript-eslint/explicit-member-accessibility': [
+        'error',
+        {
+          accessibility: 'explicit',
+          overrides: {
+            constructors: 'no-public',
+          },
+        },
+      ],
       'import/no-cycle': ['error', { maxDepth: 1 }],
       'import/no-restricted-paths': [
         'error',

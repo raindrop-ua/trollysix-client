@@ -9,7 +9,7 @@ export class BtnDirective {
   public readonly trollysixBtn = input<ButtonVariant>('primary');
 
   @HostBinding('class')
-  get hostClasses(): string {
+  public get hostClasses(): string {
     const base =
       'cursor-pointer rounded-2xl px-5 py-3 text-sm inline-flex gap-2 items-center justify-center ' +
       'transition active:scale-[.98] ' +

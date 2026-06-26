@@ -21,6 +21,6 @@ import { GenericSectionBlockComponent } from '@shared/ui/sections/generic-sectio
   host: { class: 'block' },
 })
 export class NotFoundComponent {
-  readonly copyErrors = copy('errors');
+  public readonly copyErrors = copy('errors');
   protected readonly AppRouteEnum = AppRouteEnum;
 }

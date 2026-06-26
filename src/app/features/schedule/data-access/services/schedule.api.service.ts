@@ -30,7 +30,7 @@ export class ScheduleApiService {
   private readonly transferState = inject(TransferState);
   private readonly platformId = inject(PLATFORM_ID);
 
-  getStops(): Observable<Stop[]> {
+  public getStops(): Observable<Stop[]> {
     return this.getWithTransferState<Stop[]>(
       'schedule:stops',
       `${this.apiUrl}/stops`,
@@ -38,7 +38,7 @@ export class ScheduleApiService {
     );
   }
 
-  getDayTypes(): Observable<DayType[]> {
+  public getDayTypes(): Observable<DayType[]> {
     return this.getWithTransferState<DayType[]>(
       'schedule:day-types',
       `${this.apiUrl}/day-types`,
@@ -46,7 +46,7 @@ export class ScheduleApiService {
     );
   }
 
-  getDirections(): Observable<Direction[]> {
+  public getDirections(): Observable<Direction[]> {
     return this.getWithTransferState<Direction[]>(
       'schedule:directions',
       `${this.apiUrl}/directions`,
@@ -54,7 +54,7 @@ export class ScheduleApiService {
     );
   }
 
-  getTimetable(
+  public getTimetable(
     stopId: string,
     dayTypeName: string,
     directionName: string,

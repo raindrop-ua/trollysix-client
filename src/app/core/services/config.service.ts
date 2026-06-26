@@ -7,6 +7,7 @@ import {
   signal,
   PLATFORM_ID,
   Service,
+  Signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -16,7 +17,7 @@ import { filter, fromEvent } from 'rxjs';
 export class ConfigService<T extends Record<string, unknown>> {
   private readonly STORAGE_KEY = 'app_config';
   private readonly _config = signal<T>({} as T);
-  readonly config = this._config.asReadonly();
+  public readonly config = this._config.asReadonly();
 
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
@@ -63,7 +64,7 @@ export class ConfigService<T extends Record<string, unknown>> {
     this._config.update((current) => ({ ...current, ...patch }));
   }
 
-  public select<K extends keyof T>(key: K) {
+  public select<K extends keyof T>(key: K): Signal<T[K]> {
     return computed(() => this._config()[key]);
   }
 

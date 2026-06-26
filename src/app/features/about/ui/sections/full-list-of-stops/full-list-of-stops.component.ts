@@ -26,13 +26,13 @@ import { StopsListComponent } from './stops-list/stops-list.component';
   host: { class: 'block' },
 })
 export class FullListOfStopsComponent implements OnInit {
-  readonly copyAbout = copy('about');
+  public readonly copyAbout = copy('about');
   private stopsListService = inject(StopsListService);
   private destroyRef = inject(DestroyRef);
   public readonly routeStops = signal<RouteStop[]>([]);
   public readonly isLoading = signal(true);
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.stopsListService
       .getStops()
       .pipe(takeUntilDestroyed(this.destroyRef))

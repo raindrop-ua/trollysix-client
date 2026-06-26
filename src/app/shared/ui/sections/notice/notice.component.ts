@@ -12,5 +12,5 @@ import { GenericSectionBlockComponent } from '@shared/ui/sections/generic-sectio
   host: { class: 'block' },
 })
 export class NoticeComponent {
-  readonly copyRouteNote = copy('routeNote');
+  public readonly copyRouteNote = copy('routeNote');
 }

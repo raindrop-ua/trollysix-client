@@ -20,15 +20,15 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
   host: { class: 'block' },
 })
 export class DepartureTimeBarComponent {
-  readonly copySchedule = copy('schedule');
+  public readonly copySchedule = copy('schedule');
 
   public clockService: ClockService = inject(ClockService);
   private readonly schedule = inject(ScheduleService);
-  readonly departures$ = this.schedule.departures$;
+  public readonly departures$ = this.schedule.departures$;
   private readonly store = inject(Store);
-  readonly timetableLoading$ = this.store.select(selectTimetableLoading);
+  public readonly timetableLoading$ = this.store.select(selectTimetableLoading);
 
-  readonly next$ = this.departures$.pipe(
+  public readonly next$ = this.departures$.pipe(
     map(
       (list) =>
         list.find((d) => d.status === Status.Now) ??
@@ -39,7 +39,7 @@ export class DepartureTimeBarComponent {
     ),
   );
 
-  readonly minutesToNext$ = combineLatest([
+  public readonly minutesToNext$ = combineLatest([
     this.next$,
     this.clockService.now$,
   ]).pipe(
@@ -55,7 +55,7 @@ export class DepartureTimeBarComponent {
     }),
   );
 
-  readonly label$ = combineLatest([
+  public readonly label$ = combineLatest([
     this.next$,
     this.departures$,
     this.timetableLoading$,

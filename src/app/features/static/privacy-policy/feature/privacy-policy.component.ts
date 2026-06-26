@@ -13,5 +13,5 @@ import { GenericSectionBlockComponent } from '@shared/ui/sections/generic-sectio
   host: { class: 'block' },
 })
 export class PrivacyPolicyComponent {
-  readonly copyLegal = copy('legal');
+  public readonly copyLegal = copy('legal');
 }

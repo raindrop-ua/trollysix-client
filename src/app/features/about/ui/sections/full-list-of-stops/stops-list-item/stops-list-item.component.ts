@@ -13,7 +13,7 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
   host: { class: 'block' },
 })
 export class StopsListItemComponent {
-  readonly copyAbout = copy('about');
+  public readonly copyAbout = copy('about');
   public readonly stopItemData = input.required<RouteStop>();
   public readonly isLastItem = input(false);
   public readonly itemIndex = input.required<number>();

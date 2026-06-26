@@ -10,5 +10,5 @@ import { ValueProp } from '@features/home/data-access/models/value-prop.model';
   host: { class: 'block' },
 })
 export class ValuePropComponent {
-  valueProp = input.required<ValueProp>();
+  public valueProp = input.required<ValueProp>();
 }

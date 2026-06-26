@@ -10,12 +10,12 @@ export class ClipboardService {
   private readonly doc = inject(DOCUMENT);
   private readonly platformId = inject(PLATFORM_ID);
 
-  isSupported(): boolean {
+  public isSupported(): boolean {
     if (!isPlatformBrowser(this.platformId)) return false;
     return !!navigator?.clipboard?.writeText || !!this.doc?.execCommand;
   }
 
-  async copy(text: string): Promise<ClipboardCopyResult> {
+  public async copy(text: string): Promise<ClipboardCopyResult> {
     if (!text) return { ok: false, reason: 'empty' };
     if (!isPlatformBrowser(this.platformId))
       return { ok: false, reason: 'not_browser' };

@@ -15,6 +15,6 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
   host: { class: 'block' },
 })
 export class SettingsButtonComponent {
-  readonly copyCommon = copy('common');
+  public readonly copyCommon = copy('common');
   protected readonly AppRouteEnum = AppRouteEnum;
 }

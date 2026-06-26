@@ -23,7 +23,7 @@ export class ShareScheduleService {
   private readonly document = inject(DOCUMENT, { optional: true });
   private readonly isBrowser = typeof window !== 'undefined';
 
-  shareSchedule(): void {
+  public shareSchedule(): void {
     if (!this.isBrowser) {
       return;
     }
@@ -59,7 +59,7 @@ export class ShareScheduleService {
       });
   }
 
-  private showShareResult(ok: boolean) {
+  private showShareResult(ok: boolean): void {
     if (ok) {
       this.toastService.success(this.copy.linkCopied);
     } else {

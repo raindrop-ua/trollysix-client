@@ -1,4 +1,9 @@
-import { Component, input, inject, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  input,
+  inject,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
@@ -19,7 +24,7 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
   host: { class: 'block' },
 })
 export class StopCardComponent {
-  readonly copySchedule = copy('schedule');
+  public readonly copySchedule = copy('schedule');
 
   private store = inject(Store);
 
@@ -85,6 +90,8 @@ export class StopCardComponent {
       return false;
     }
 
-    return typeof value['first'] === 'string' && typeof value['last'] === 'string';
+    return (
+      typeof value['first'] === 'string' && typeof value['last'] === 'string'
+    );
   }
 }

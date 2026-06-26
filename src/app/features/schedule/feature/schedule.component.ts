@@ -39,15 +39,15 @@ import {
   host: { class: 'block' },
 })
 export class ScheduleComponent implements OnInit {
-  readonly copySchedule = copy('schedule');
+  public readonly copySchedule = copy('schedule');
 
   private readonly store = inject(Store);
-  readonly selectedStop = this.store.selectSignal(selectSelectedStop);
-  readonly isSelectorsGroupReady = this.store.selectSignal(
+  public readonly selectedStop = this.store.selectSignal(selectSelectedStop);
+  public readonly isSelectorsGroupReady = this.store.selectSignal(
     selectIsSelectorsGroupReady,
   );
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.store.dispatch(SchedulePageActions.enter());
   }
 }

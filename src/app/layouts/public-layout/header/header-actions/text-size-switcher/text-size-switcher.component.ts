@@ -13,10 +13,10 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextSizeSwitcherComponent {
-  readonly copyCommon = copy('common');
+  public readonly copyCommon = copy('common');
   protected readonly textSizeService = inject(TextSizeService);
 
-  modeSignal = this.textSizeService.mode;
+  public modeSignal = this.textSizeService.mode;
 
   protected toggleTextSize(): void {
     this.textSizeService.toggle();

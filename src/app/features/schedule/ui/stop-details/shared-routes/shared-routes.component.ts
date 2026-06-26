@@ -12,6 +12,6 @@ import { Stop } from '@features/schedule/data-access/models/stop.model';
   host: { class: 'block h-full' },
 })
 export class SharedRoutesComponent {
-  readonly copySchedule = copy('schedule');
-  stop = input.required<Stop>();
+  public readonly copySchedule = copy('schedule');
+  public stop = input.required<Stop>();
 }

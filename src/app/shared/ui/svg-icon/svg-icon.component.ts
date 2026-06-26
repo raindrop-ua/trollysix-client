@@ -11,7 +11,7 @@ export class SvgIconComponent {
   public icon = input.required();
   public sprite = input('icons');
 
-  get href() {
+  public get href(): string {
     return `/assets/svg/${this.sprite()}.svg#${this.icon()}`;
   }
 }

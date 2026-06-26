@@ -41,11 +41,11 @@ export class ScheduleService {
     scheduleFeature.selectShowRunNumbers,
   );
 
-  public setShowRunNumbers(show: boolean) {
+  public setShowRunNumbers(show: boolean): void {
     this.store.dispatch(SchedulePageActions.setShowRunNumbers({ show }));
   }
 
-  private timeArraysEqual(a: TimeEntity[], b: TimeEntity[]) {
+  private timeArraysEqual(a: TimeEntity[], b: TimeEntity[]): boolean {
     if (a === b) return true;
     if (a.length !== b.length) return false;
     for (let i = 0; i < a.length; i++) {

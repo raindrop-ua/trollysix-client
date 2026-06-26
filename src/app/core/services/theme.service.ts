@@ -9,7 +9,7 @@ export class ThemeService {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
 
-  readonly theme = signal<Theme>('light');
+  public readonly theme = signal<Theme>('light');
 
   constructor() {
     if (!this.isBrowser) return;
@@ -32,7 +32,7 @@ export class ThemeService {
     });
   }
 
-  toggle(): void {
+  public toggle(): void {
     this.theme.update((t) => (t === 'light' ? 'dark' : 'light'));
   }
 

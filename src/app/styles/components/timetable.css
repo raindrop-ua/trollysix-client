@@ -62,4 +62,11 @@
       @apply motion-safe:opacity-0;
     }
   }
+
+  .ts-departure-count-reveal {
+    @apply motion-safe:translate-y-0 motion-safe:opacity-100 motion-safe:transition-[opacity,translate] motion-safe:duration-300 motion-safe:delay-150 motion-safe:ease-out;
+    @starting-style {
+      @apply motion-safe:-translate-y-2 motion-safe:opacity-0;
+    }
+  }
 }

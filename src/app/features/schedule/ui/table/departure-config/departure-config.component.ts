@@ -13,12 +13,12 @@ import { ScheduleService } from '@features/schedule/application/services/schedul
   host: { class: 'block' },
 })
 export class DepartureConfigComponent {
-  readonly copySchedule = copy('schedule');
+  public readonly copySchedule = copy('schedule');
   private readonly schedule = inject(ScheduleService);
-  readonly departures$ = this.schedule.departures$;
-  readonly showRunNumbers$ = this.schedule.showRunNumbers$;
+  public readonly departures$ = this.schedule.departures$;
+  public readonly showRunNumbers$ = this.schedule.showRunNumbers$;
 
-  onToggleSchedule(event: Event) {
+  public onToggleSchedule(event: Event): void {
     const checked = (event.target as HTMLInputElement).checked;
     this.schedule.setShowRunNumbers(checked);
   }
