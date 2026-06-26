@@ -30,6 +30,6 @@ import { AttentionComponent } from '@shared/ui/sections/attention/attention.comp
   host: { class: 'block' },
 })
 export class HomeComponent {
-  readonly copyCommon = copy('common');
-  readonly copyHome = copy('home');
+  public readonly copyCommon = copy('common');
+  public readonly copyHome = copy('home');
 }

@@ -108,7 +108,9 @@ describe('schedule-api.contract', () => {
 
   it('throws for invalid directions payload', () => {
     expect(() =>
-      parseDirectionsResponse([{ id: '1', name: 'sideways', label: 'Sideways' }]),
+      parseDirectionsResponse([
+        { id: '1', name: 'sideways', label: 'Sideways' },
+      ]),
     ).toThrowError('Invalid schedule API response: directions');
   });
 

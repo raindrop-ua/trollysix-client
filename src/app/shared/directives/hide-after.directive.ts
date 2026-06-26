@@ -17,7 +17,7 @@ class HideAfterContext {
 
   public trollysixHideAfterThen: TemplateRef<HideAfterContext> | null = null;
 
-  public get $implicit() {
+  public get $implicit(): number {
     return this.trollysixHideAfter;
   }
 }
@@ -36,18 +36,18 @@ export class HideAfterDirective implements OnInit {
   private delayValue = 0;
 
   @Input('trollysixHideAfter')
-  set delay(value: number | null) {
+  public set delay(value: number | null) {
     this.delayValue = value ?? 0;
     this.context.trollysixHideAfter = this.delayValue / 1000;
     this.context.counter = this.context.trollysixHideAfter;
   }
 
   @Input()
-  set trollysixHideAfterThen(tpl: TemplateRef<HideAfterContext> | null) {
+  public set trollysixHideAfterThen(tpl: TemplateRef<HideAfterContext> | null) {
     this.context.trollysixHideAfterThen = tpl;
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.viewContainerRef.createEmbeddedView(this.template, this.context);
 
     if (this.delayValue <= 0) {
@@ -81,7 +81,7 @@ export class HideAfterDirective implements OnInit {
     }
   }
 
-  static ngTemplateContextGuard(
+  public static ngTemplateContextGuard(
     dir: HideAfterDirective,
     ctx: unknown,
   ): ctx is HideAfterContext {

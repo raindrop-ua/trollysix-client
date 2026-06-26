@@ -18,9 +18,9 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 })
 export class ToastContainerComponent {
   private readonly toastService = inject(ToastService);
-  readonly toasts = computed(() => this.toastService.toasts());
+  public readonly toasts = computed(() => this.toastService.toasts());
 
-  dismiss(id: number): void {
+  public dismiss(id: number): void {
     this.toastService.dismiss(id);
   }
 }

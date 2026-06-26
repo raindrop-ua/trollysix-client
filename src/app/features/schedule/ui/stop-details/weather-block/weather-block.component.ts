@@ -34,10 +34,10 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
   host: { class: 'block h-full' },
 })
 export class WeatherBlockComponent {
-  readonly copySchedule = copy('schedule');
-  stop = input.required<Stop>();
+  public readonly copySchedule = copy('schedule');
+  public stop = input.required<Stop>();
 
-  readonly weatherIconUrl = computed(() => {
+  public readonly weatherIconUrl = computed(() => {
     const weather = this.stop().weather;
     if (!weather?.icon) {
       return `${environment.WEATHER_ICON_BASE}default@2x.png`;
@@ -56,28 +56,28 @@ export class WeatherBlockComponent {
     'NW',
   ] as const;
 
-  readonly windDegNorm = computed(() => {
+  public readonly windDegNorm = computed(() => {
     const w = this.stop().weather;
     const deg = w?.windDeg ?? 0;
     return ((deg % 360) + 360) % 360;
   });
 
-  readonly windDirLabel = computed(() => {
+  public readonly windDirLabel = computed(() => {
     const deg = this.windDegNorm();
     return this.windDirs[Math.round(deg / 45) % 8];
   });
 
-  readonly windArrowTransform = computed(
+  public readonly windArrowTransform = computed(
     () => `rotate(${this.windDegNorm()}deg)`,
   );
 
-  readonly hasWindGust = computed(() => {
+  public readonly hasWindGust = computed(() => {
     const w = this.stop().weather;
     if (!w) return false;
     return w.windGust > w.windSpeed + 0.5;
   });
 
-  readonly windGustDelta = computed(() => {
+  public readonly windGustDelta = computed(() => {
     const w = this.stop().weather;
     if (!w) return 0;
     return Math.max(0, w.windGust - w.windSpeed);

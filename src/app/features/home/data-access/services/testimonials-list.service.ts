@@ -17,7 +17,9 @@ export class TestimonialsListService {
     .get<Testimonials>(`${this.BASE_URL}/testimonials`)
     .pipe(
       timeout(this.REQUEST_TIMEOUT_MS),
-      catchError(() => of<Testimonials>({ testimonials: [], overallRating: 0 })),
+      catchError(() =>
+        of<Testimonials>({ testimonials: [], overallRating: 0 }),
+      ),
       shareReplay({ bufferSize: 1, refCount: true }),
     );
 

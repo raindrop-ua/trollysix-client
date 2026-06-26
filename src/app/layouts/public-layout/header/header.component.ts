@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit {
   private menuToggleButton?: ElementRef<HTMLButtonElement>;
 
   protected readonly AppRouteEnum = AppRouteEnum;
-  readonly copyCommon = copy('common');
+  public readonly copyCommon = copy('common');
   private readonly router = inject(Router);
   private readonly location = inject(Location);
   private readonly platformId = inject(PLATFORM_ID);
@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit {
   protected readonly mobileMenuId = 'mobile-main-menu';
   private currentPathWithQuery = signal<string>('/');
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.currentPathWithQuery.set(this.location.path(true) || '/');
     const unregisterOnUrlChange = this.location.onUrlChange((url) => {
       this.currentPathWithQuery.set(url || '/');
@@ -97,7 +97,7 @@ export class HeaderComponent implements OnInit {
       : null;
   }
 
-  toggleMenu() {
+  public toggleMenu(): void {
     if (this.isMenuOpen()) {
       this.closeMenu(false);
       return;
@@ -106,7 +106,7 @@ export class HeaderComponent implements OnInit {
     this.openMenu();
   }
 
-  closeMenu(restoreFocus = false) {
+  public closeMenu(restoreFocus = false): void {
     if (!this.isMenuOpen()) {
       return;
     }
@@ -116,12 +116,12 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  private openMenu() {
+  private openMenu(): void {
     this.isMenuOpen.set(true);
   }
 
   @HostListener('document:keydown.escape')
-  onEscape(): void {
+  public onEscape(): void {
     if (this.isMenuOpen()) {
       this.closeMenu(true);
     }

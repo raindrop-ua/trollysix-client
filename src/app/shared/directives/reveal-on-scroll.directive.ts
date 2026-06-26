@@ -14,7 +14,7 @@ import {
   standalone: true,
 })
 export class RevealOnScrollDirective implements OnInit, OnDestroy {
-  @Input('trollysixRevealOnScroll') delay: number | string | undefined;
+  @Input('trollysixRevealOnScroll') public delay: number | string | undefined;
 
   private readonly el =
     inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
@@ -22,7 +22,7 @@ export class RevealOnScrollDirective implements OnInit, OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     if (!this.isBrowser) return;
 
     const reduceMotion = window.matchMedia?.(
@@ -72,7 +72,7 @@ export class RevealOnScrollDirective implements OnInit, OnDestroy {
     this.io.observe(this.el);
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.io?.disconnect();
   }
 }

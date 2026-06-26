@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   standalone: true,
 })
 export class TimeUiPipe implements PipeTransform {
-  transform(value: string | null | undefined): string {
+  public transform(value: string | null | undefined): string {
     if (!value) return '';
 
     const [hh, mm] = value.split(':');

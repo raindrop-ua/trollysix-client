@@ -13,9 +13,9 @@ import { GenericSectionBlockComponent } from '@shared/ui/sections/generic-sectio
   host: { class: 'block' },
 })
 export class OverviewComponent {
-  readonly copyAbout = copy('about');
+  public readonly copyAbout = copy('about');
 
-  readonly splitContent = computed(() => {
+  public readonly splitContent = computed(() => {
     const paragraphs = this.copyAbout.generalDescription;
     const splitIndex = Math.ceil(paragraphs.length / 2);
 

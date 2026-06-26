@@ -20,6 +20,6 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 export class ApiActivityIndicatorComponent {
   private readonly activityService = inject(ApiActivityService);
 
-  readonly copyServices = copy('services');
-  readonly isActive = computed(() => this.activityService.isActive());
+  public readonly copyServices = copy('services');
+  public readonly isActive = computed(() => this.activityService.isActive());
 }

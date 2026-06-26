@@ -14,12 +14,12 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
   host: { class: 'block' },
 })
 export class ThemeSwitcherComponent {
-  readonly copyCommon = copy('common');
+  public readonly copyCommon = copy('common');
   private readonly theme = inject(ThemeService);
 
-  themeSignal = this.theme.theme;
+  public themeSignal = this.theme.theme;
 
-  toggleTheme() {
+  public toggleTheme(): void {
     this.theme.toggle();
   }
 }

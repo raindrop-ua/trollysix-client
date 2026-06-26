@@ -7,7 +7,7 @@ export class ToastService {
   private readonly _toasts = signal<Toast[]>([]);
   private _idSeq = 0;
 
-  readonly toasts = this._toasts.asReadonly();
+  public readonly toasts = this._toasts.asReadonly();
 
   public show(message: string, options: ToastOptions = {}): number {
     const id = ++this._idSeq;

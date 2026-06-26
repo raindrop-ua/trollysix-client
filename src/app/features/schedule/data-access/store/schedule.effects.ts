@@ -36,7 +36,7 @@ export class ScheduleEffects {
   private route = inject(ActivatedRoute);
   private location = inject(Location);
 
-  hydrateFromUrlOnEnter$ = createEffect(() =>
+  public hydrateFromUrlOnEnter$ = createEffect(() =>
     this.actions$.pipe(
       ofType(SchedulePageActions.enter),
       switchMap(() =>
@@ -58,7 +58,7 @@ export class ScheduleEffects {
     ),
   );
 
-  loadInitialData$ = createEffect(() =>
+  public loadInitialData$ = createEffect(() =>
     this.actions$.pipe(
       ofType(SchedulePageActions.enter),
       withLatestFrom(
@@ -91,7 +91,7 @@ export class ScheduleEffects {
     ),
   );
 
-  syncStoreToUrl$ = createEffect(
+  public syncStoreToUrl$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(
@@ -137,7 +137,7 @@ export class ScheduleEffects {
     { dispatch: false },
   );
 
-  ensureUrlOnEnter$ = createEffect(
+  public ensureUrlOnEnter$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(SchedulePageActions.enter),
@@ -187,7 +187,7 @@ export class ScheduleEffects {
     { dispatch: false },
   );
 
-  triggerLoadTimetable$ = createEffect(() =>
+  public triggerLoadTimetable$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
         SchedulePageActions.selectStop,
@@ -219,7 +219,7 @@ export class ScheduleEffects {
     ),
   );
 
-  executeLoadTimetable$ = createEffect(() =>
+  public executeLoadTimetable$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ScheduleApiActions.loadTimetable),
       withLatestFrom(

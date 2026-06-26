@@ -8,6 +8,6 @@ import { Component, input, ChangeDetectionStrategy } from '@angular/core';
   host: { class: 'block' },
 })
 export class MetricComponent {
-  title = input.required<string>();
-  description = input.required<string>();
+  public title = input.required<string>();
+  public description = input.required<string>();
 }

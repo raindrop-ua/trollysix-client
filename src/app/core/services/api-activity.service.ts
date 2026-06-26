@@ -8,9 +8,9 @@ export class ApiActivityService {
   private hideTimer: ReturnType<typeof setTimeout> | null = null;
   private visibleSince = 0;
 
-  readonly isActive = this.visible.asReadonly();
+  public readonly isActive = this.visible.asReadonly();
 
-  begin(): void {
+  public begin(): void {
     if (this.hideTimer) {
       clearTimeout(this.hideTimer);
       this.hideTimer = null;
@@ -24,7 +24,7 @@ export class ApiActivityService {
     this.activeRequests.update((count) => count + 1);
   }
 
-  end(): void {
+  public end(): void {
     const nextCount = Math.max(0, this.activeRequests() - 1);
     this.activeRequests.set(nextCount);
 

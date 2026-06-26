@@ -24,9 +24,9 @@ export class ClosestStopService {
   protected readonly geolocation = inject(GeolocationService);
   private readonly toastService = inject(ToastService);
   private readonly store = inject(Store);
-  state = signal<GeoState>({ status: 'idle' });
+  public state = signal<GeoState>({ status: 'idle' });
 
-  public findAndSelectStop() {
+  public findAndSelectStop(): void {
     this.state.set({ status: 'loading' });
 
     this.geolocation
