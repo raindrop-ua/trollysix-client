@@ -79,7 +79,9 @@ describe('SeoService (Injector.create)', () => {
       },
     });
 
-    expect(mocks.titleMock.setTitle).toHaveBeenCalledWith('Schedule | TrollySix');
+    expect(mocks.titleMock.setTitle).toHaveBeenCalledWith(
+      'Schedule | TrollySix',
+    );
     expect(mocks.metaMock.updateTag).toHaveBeenCalledWith({
       name: 'description',
       content: 'Ultimate schedule',

@@ -15,6 +15,8 @@ import { ValuePropComponent } from './value-prop/value-prop.component';
   host: { class: 'block' },
 })
 export class ThisIsTrollysixComponent {
-  readonly copyHome = copy('home');
-  protected readonly valueProps: ValueProp[] = [...this.copyHome.thisIsTrollySix.valueProps];
+  public readonly copyHome = copy('home');
+  protected readonly valueProps: ValueProp[] = [
+    ...this.copyHome.thisIsTrollySix.valueProps,
+  ];
 }

@@ -32,12 +32,14 @@ import { WeatherBlockComponent } from './weather-block/weather-block.component';
   host: { class: 'block' },
 })
 export class StopDetailsComponent {
-  readonly copySchedule = copy('schedule');
+  public readonly copySchedule = copy('schedule');
   private readonly store = inject(Store);
 
-  stopData = input.required<Stop>();
-  readonly selectedDirection = this.store.selectSignal(selectSelectedDirection);
-  readonly currentGeo = computed(() => {
+  public stopData = input.required<Stop>();
+  public readonly selectedDirection = this.store.selectSignal(
+    selectSelectedDirection,
+  );
+  public readonly currentGeo = computed(() => {
     const stop = this.stopData();
     const direction = this.selectedDirection() as DirectionName | null;
     const byDirection = direction ? stop.geo?.[direction] : null;

@@ -30,11 +30,11 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 })
 export class MastheadComponent {
   protected readonly AppRouteEnum = AppRouteEnum;
-  readonly copyCommon = copy('common');
-  readonly copyHome = copy('home');
+  public readonly copyCommon = copy('common');
+  public readonly copyHome = copy('home');
   private readonly clock = inject(ClockService);
 
-  readonly isWinter$ = this.clock.now$.pipe(
+  public readonly isWinter$ = this.clock.now$.pipe(
     map((date) => {
       const month = date.getMonth(); // 0 = Jan, 11 = Dec
       return month === 11 || month === 0 || month === 1; // Dec, Jan or Feb

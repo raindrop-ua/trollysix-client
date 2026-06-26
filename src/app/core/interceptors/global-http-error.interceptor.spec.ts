@@ -1,4 +1,8 @@
-import { HttpErrorResponse, HttpHandlerFn, HttpRequest } from '@angular/common/http';
+import {
+  HttpErrorResponse,
+  HttpHandlerFn,
+  HttpRequest,
+} from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -10,10 +14,7 @@ import { ToastService } from '@core/services/toast.service';
 import { globalHttpErrorInterceptor } from './global-http-error.interceptor';
 
 describe('globalHttpErrorInterceptor', () => {
-  const runInterceptor = (
-    req: HttpRequest<unknown>,
-    next: HttpHandlerFn,
-  ) => {
+  const runInterceptor = (req: HttpRequest<unknown>, next: HttpHandlerFn) => {
     return TestBed.runInInjectionContext(() =>
       globalHttpErrorInterceptor(req, next),
     );

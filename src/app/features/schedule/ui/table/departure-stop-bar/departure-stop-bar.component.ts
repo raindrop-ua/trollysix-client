@@ -1,4 +1,10 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  inject,
+  ChangeDetectionStrategy,
+  effect,
+  signal,
+} from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 import { Store } from '@ngrx/store';
@@ -6,7 +12,11 @@ import { Store } from '@ngrx/store';
 import { copy } from '@core/content';
 
 import { ScheduleService } from '@features/schedule/application/services/schedule.service';
-import { selectSelectedStopName } from '@features/schedule/data-access/store/schedule.selectors';
+import {
+  selectSelectedStopId,
+  selectSelectedStopName,
+  selectTimetableLoading,
+} from '@features/schedule/data-access/store/schedule.selectors';
 
 @Component({
   selector: 'trollysix-departure-stop-bar',
@@ -16,11 +26,41 @@ import { selectSelectedStopName } from '@features/schedule/data-access/store/sch
   host: { class: 'block' },
 })
 export class DepartureStopBarComponent {
-  readonly copySchedule = copy('schedule');
+  public readonly copySchedule = copy('schedule');
   private readonly store = inject(Store);
   private readonly schedule = inject(ScheduleService);
-  readonly departures = toSignal(this.schedule.departures$, {
+  public readonly departures = toSignal(this.schedule.departures$, {
     initialValue: [],
   });
-  readonly selectedStopName = this.store.selectSignal(selectSelectedStopName);
+  public readonly selectedStopName = this.store.selectSignal(
+    selectSelectedStopName,
+  );
+  public readonly selectedStopId =
+    this.store.selectSignal(selectSelectedStopId);
+  public readonly timetableLoading = this.store.selectSignal(
+    selectTimetableLoading,
+  );
+  public readonly revealKey = signal(0);
+
+  private previousLoading = true;
+  private previousStopId: string | null = null;
+
+  constructor() {
+    effect(() => {
+      const loading = this.timetableLoading();
+      const hasDepartures = this.departures().length > 0;
+      const selectedStopId = this.selectedStopId();
+
+      const loadingFinished = this.previousLoading && !loading && hasDepartures;
+      const stopChanged =
+        selectedStopId !== this.previousStopId && !loading && hasDepartures;
+
+      if (loadingFinished || stopChanged) {
+        this.revealKey.update((value) => value + 1);
+      }
+
+      this.previousLoading = loading;
+      this.previousStopId = selectedStopId;
+    });
+  }
 }

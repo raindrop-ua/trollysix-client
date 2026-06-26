@@ -21,5 +21,5 @@ import { VehicleFeaturesComponent } from './vehicle-features/vehicle-features.co
   host: { class: 'block' },
 })
 export class InfrastructureComponent {
-  readonly copyAbout = copy('about');
+  public readonly copyAbout = copy('about');
 }

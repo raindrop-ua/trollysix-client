@@ -23,6 +23,6 @@ import { Metric } from '@shared/ui/sections/metrics/metrics.model';
   host: { class: 'block' },
 })
 export class AboutComponent {
-  readonly copyAbout = copy('about');
+  public readonly copyAbout = copy('about');
   public readonly metrics: Metric[] = [...this.copyAbout.metrics];
 }

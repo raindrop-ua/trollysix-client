@@ -22,23 +22,23 @@ export class CheatCodeDirective {
   private hasShown = false;
 
   @Input()
-  set trollysixCheatCode(value: string) {
+  public set trollysixCheatCode(value: string) {
     this.code = (value ?? '').toUpperCase();
     this.buffer = '';
   }
 
   @Input()
-  trollysixCheatCodeTimeout = 1500;
+  public trollysixCheatCodeTimeout = 1500;
 
   @Output()
-  cheatSuccess = new EventEmitter<void>();
+  public cheatSuccess = new EventEmitter<void>();
 
   constructor() {
     this.vcr.clear();
   }
 
   @HostListener('document:keydown', ['$event'])
-  onKeydown(event: KeyboardEvent) {
+  public onKeydown(event: KeyboardEvent): void {
     if (!this.code || this.hasShown) {
       return;
     }
@@ -71,7 +71,7 @@ export class CheatCodeDirective {
     }
   }
 
-  private showTemplate() {
+  private showTemplate(): void {
     if (this.hasShown) {
       return;
     }

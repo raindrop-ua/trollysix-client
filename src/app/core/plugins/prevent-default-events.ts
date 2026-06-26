@@ -1,10 +1,10 @@
 import { EventManagerPlugin } from '@angular/platform-browser';
 
 export class PreventDefaultEventPlugin extends EventManagerPlugin {
-  override supports(eventName: string): boolean {
+  public override supports(eventName: string): boolean {
     return eventName.endsWith('.prevent');
   }
-  override addEventListener(
+  public override addEventListener(
     element: HTMLElement,
     eventName: string,
     // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type

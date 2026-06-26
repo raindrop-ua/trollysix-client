@@ -37,30 +37,34 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
   host: { class: 'block' },
 })
 export class SelectorsGroupComponent {
-  readonly copySchedule = copy('schedule');
+  public readonly copySchedule = copy('schedule');
 
   private readonly store = inject(Store);
   private readonly schedule = inject(ScheduleService);
-  readonly departures = toSignal(this.schedule.departures$, {
+  public readonly departures = toSignal(this.schedule.departures$, {
     initialValue: [],
   });
-  readonly dayTypes = this.store.selectSignal(selectDayTypes);
-  readonly directions = this.store.selectSignal(selectDirections);
-  readonly selectedDayTypeName = this.store.selectSignal(selectSelectedDayType);
-  readonly selectedDirectionName = this.store.selectSignal(
+  public readonly dayTypes = this.store.selectSignal(selectDayTypes);
+  public readonly directions = this.store.selectSignal(selectDirections);
+  public readonly selectedDayTypeName = this.store.selectSignal(
+    selectSelectedDayType,
+  );
+  public readonly selectedDirectionName = this.store.selectSignal(
     selectSelectedDirection,
   );
-  readonly timetableLoading = this.store.selectSignal(selectTimetableLoading);
-  readonly isUnavailable = computed(
+  public readonly timetableLoading = this.store.selectSignal(
+    selectTimetableLoading,
+  );
+  public readonly isUnavailable = computed(
     () => this.departures().length === 0 && !this.timetableLoading(),
   );
-  readonly hasDepartures = computed(() => this.departures().length > 0);
+  public readonly hasDepartures = computed(() => this.departures().length > 0);
 
-  onSelectDayType(dayTypeName: string): void {
+  public onSelectDayType(dayTypeName: string): void {
     this.store.dispatch(SchedulePageActions.selectDayType({ dayTypeName }));
   }
 
-  onSelectDirection(directionName: string): void {
+  public onSelectDirection(directionName: string): void {
     if (directionName !== 'forward' && directionName !== 'backward') {
       return;
     }

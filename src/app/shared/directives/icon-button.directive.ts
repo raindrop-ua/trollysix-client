@@ -21,11 +21,11 @@ type IconButtonSize = 'md' | 'sm';
 export class IconButtonDirective {
   private hostElement = inject(ElementRef<HTMLElement>);
 
-  variant = input<IconButtonVariant>('default');
-  size = input<IconButtonSize>('md');
-  ariaLabel = input<string>('');
-  title = input<string>('');
-  extraClass = input<string>('');
+  public variant = input<IconButtonVariant>('default');
+  public size = input<IconButtonSize>('md');
+  public ariaLabel = input<string>('');
+  public title = input<string>('');
+  public extraClass = input<string>('');
 
   private base = [
     'baseline-borders',
@@ -74,7 +74,7 @@ export class IconButtonDirective {
     ],
   };
 
-  classes = computed(() => {
+  public classes = computed(() => {
     return [
       ...this.base,
       ...this.sizes[this.size()],

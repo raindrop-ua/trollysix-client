@@ -6,7 +6,7 @@ import { ToastService } from '@core/services/toast.service';
 export class CustomErrorHandler implements ErrorHandler {
   private toastService: ToastService = inject(ToastService);
 
-  handleError(error: unknown) {
+  public handleError(error: unknown): void {
     this.toastService.error('We are already working on it.', {
       title: 'Error detected',
     });

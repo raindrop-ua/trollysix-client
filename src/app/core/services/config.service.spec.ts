@@ -62,7 +62,9 @@ describe('ConfigService', () => {
     localStorage.setItem(storageKey, '{broken-json');
     const svc = makeService('browser');
 
-    expect(() => svc.init({ theme: 'light', fontSize: 'normal' })).not.toThrow();
+    expect(() =>
+      svc.init({ theme: 'light', fontSize: 'normal' }),
+    ).not.toThrow();
     expect(svc.config()).toEqual({ theme: 'light', fontSize: 'normal' });
   });
 

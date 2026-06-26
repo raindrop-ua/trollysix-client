@@ -29,33 +29,33 @@ export class TooltipDirective {
   private readonly doc = inject(DOCUMENT);
   private readonly destroyRef = inject(DestroyRef);
 
-  text = input<string | null | undefined>(undefined, {
+  public text = input<string | null | undefined>(undefined, {
     alias: 'trollysixTooltip',
   });
-  placement = input<TooltipPlacement>('top', {
+  public placement = input<TooltipPlacement>('top', {
     alias: 'trollysixTooltipPlacement',
   });
-  offset = input(8, {
+  public offset = input(8, {
     transform: numberAttribute,
     alias: 'trollysixTooltipOffset',
   });
-  showDelay = input(150, {
+  public showDelay = input(150, {
     transform: numberAttribute,
     alias: 'trollysixTooltipShowDelay',
   });
-  hideDelay = input(50, {
+  public hideDelay = input(50, {
     transform: numberAttribute,
     alias: 'trollysixTooltipHideDelay',
   });
-  disabled = input(false, {
+  public disabled = input(false, {
     transform: booleanAttribute,
     alias: 'trollysixTooltipDisabled',
   });
-  maxWidth = input(12, {
+  public maxWidth = input(12, {
     transform: numberAttribute,
     alias: 'trollysixTooltipMaxWidth',
   });
-  interactive = input(false, {
+  public interactive = input(false, {
     transform: booleanAttribute,
     alias: 'trollysixTooltipInteractive',
   });
@@ -77,12 +77,12 @@ export class TooltipDirective {
     this.destroyRef.onDestroy(() => this.destroyTooltip());
   }
 
-  onEnter() {
+  public onEnter(): void {
     if (this.isTouchDevice || this.disabled() || !this.getText()) return;
     this.scheduleShow();
   }
 
-  onLeave() {
+  public onLeave(): void {
     this.scheduleHide();
   }
 
@@ -90,17 +90,17 @@ export class TooltipDirective {
     return (this.text() ?? '').trim();
   }
 
-  private scheduleShow() {
+  private scheduleShow(): void {
     this.clearTimers();
     this.showTimer = setTimeout(() => this.showNow(), this.showDelay());
   }
 
-  private scheduleHide() {
+  private scheduleHide(): void {
     this.clearTimers();
     this.hideTimer = setTimeout(() => this.hideNow(), this.hideDelay());
   }
 
-  private showNow() {
+  private showNow(): void {
     const text = this.getText();
     if (!text) return;
 
@@ -116,7 +116,7 @@ export class TooltipDirective {
     this.updatePosition();
   }
 
-  hideNow() {
+  public hideNow(): void {
     this.clearTimers();
     if (!this.tooltipEl) return;
 
@@ -133,7 +133,7 @@ export class TooltipDirective {
     }, 150);
   }
 
-  private createTooltip() {
+  private createTooltip(): void {
     const el = this.doc.createElement('div');
     const tooltipId = `trollysix-tooltip-${++TooltipDirective.nextTooltipId}`;
 
@@ -162,7 +162,7 @@ export class TooltipDirective {
     this.tooltipId = tooltipId;
   }
 
-  private destroyTooltip() {
+  private destroyTooltip(): void {
     this.clearTimers();
     if (this.rafId) cancelAnimationFrame(this.rafId);
     if (this.destroyTimer !== null) {
@@ -177,7 +177,7 @@ export class TooltipDirective {
     this.tooltipId = null;
   }
 
-  private attachGlobalListeners() {
+  private attachGlobalListeners(): void {
     window.addEventListener('scroll', this.onViewportChange, {
       passive: true,
       capture: true,
@@ -190,7 +190,7 @@ export class TooltipDirective {
     }
   }
 
-  private detachGlobalListeners() {
+  private detachGlobalListeners(): void {
     window.removeEventListener('scroll', this.onViewportChange, true);
     window.removeEventListener('resize', this.onViewportChange);
   }
@@ -203,7 +203,7 @@ export class TooltipDirective {
     });
   };
 
-  private updatePosition() {
+  private updatePosition(): void {
     if (!this.tooltipEl) return;
 
     const hostRect = this.host.nativeElement.getBoundingClientRect();
@@ -244,7 +244,7 @@ export class TooltipDirective {
     this.tooltipEl.style.transform = `translate3d(${Math.round(x)}px, ${Math.round(y)}px, 0)`;
   }
 
-  private clearTimers() {
+  private clearTimers(): void {
     if (this.showTimer !== null) {
       clearTimeout(this.showTimer);
       this.showTimer = null;
@@ -255,7 +255,7 @@ export class TooltipDirective {
     }
   }
 
-  private addDescribedBy() {
+  private addDescribedBy(): void {
     if (!this.tooltipId) {
       return;
     }
@@ -270,7 +270,7 @@ export class TooltipDirective {
     }
   }
 
-  private removeDescribedBy() {
+  private removeDescribedBy(): void {
     if (!this.tooltipId) {
       return;
     }

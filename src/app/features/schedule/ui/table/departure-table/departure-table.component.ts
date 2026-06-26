@@ -29,17 +29,20 @@ import { SpinnerComponent } from '@shared/ui/spinner/spinner.component';
 export class DepartureTableComponent {
   private static readonly minimumLoadingMs = 500;
 
-  readonly copySchedule = copy('schedule');
+  public readonly copySchedule = copy('schedule');
   private readonly schedule = inject(ScheduleService);
   private readonly store = inject(Store);
-  readonly departures = toSignal(this.schedule.departures$, {
+  public readonly departures = toSignal(this.schedule.departures$, {
     initialValue: [],
   });
-  readonly timetableLoading = this.store.selectSignal(selectTimetableLoading);
-  readonly selectedStopId = this.store.selectSignal(selectSelectedStopId);
-  readonly showLoading = signal(false);
+  public readonly timetableLoading = this.store.selectSignal(
+    selectTimetableLoading,
+  );
+  public readonly selectedStopId =
+    this.store.selectSignal(selectSelectedStopId);
+  public readonly showLoading = signal(false);
   private selectedTime = signal<string | null>(null);
-  readonly revealKey = signal(0);
+  public readonly revealKey = signal(0);
 
   private previousLoading = true;
   private previousStopId: string | null = null;
@@ -89,7 +92,7 @@ export class DepartureTableComponent {
     });
   }
 
-  onSelectTime(time: string) {
+  public onSelectTime(time: string): void {
     this.selectedTime.set(time);
   }
 }

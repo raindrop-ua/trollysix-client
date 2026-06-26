@@ -4,7 +4,10 @@ import { Stop } from './stop.model';
 import { TimeEntity, Timetable } from './timetable.model';
 import { Weather } from './weather.model';
 
-const DAY_TYPE_NAMES: ReadonlySet<DayTypeName> = new Set(['weekday', 'weekend']);
+const DAY_TYPE_NAMES: ReadonlySet<DayTypeName> = new Set([
+  'weekday',
+  'weekend',
+]);
 const DIRECTION_NAMES: ReadonlySet<DirectionName> = new Set([
   'forward',
   'backward',
@@ -58,7 +61,9 @@ function isGeo(value: unknown): boolean {
   }
 
   const isGeoPoint = (point: unknown) =>
-    isRecord(point) && isFiniteNumber(point['lat']) && isFiniteNumber(point['lon']);
+    isRecord(point) &&
+    isFiniteNumber(point['lat']) &&
+    isFiniteNumber(point['lon']);
 
   const forward = value['forward'];
   const backward = value['backward'];
@@ -171,7 +176,9 @@ function isStop(value: unknown): value is Stop {
     isString(value['id']) &&
     isString(value['name']) &&
     isFiniteNumber(value['style']) &&
-    value['availableDirections'].every((direction) => isDirectionName(direction)) &&
+    value['availableDirections'].every((direction) =>
+      isDirectionName(direction),
+    ) &&
     (value['geo'] === undefined || isGeo(value['geo'])) &&
     (value['weather'] === undefined ||
       value['weather'] === null ||
@@ -211,7 +218,8 @@ function isTimeEntity(value: unknown): value is TimeEntity {
   return (
     isString(value['time']) &&
     (value['runNumber'] === null || isFiniteNumber(value['runNumber'])) &&
-    (value['isCanceled'] === undefined || typeof value['isCanceled'] === 'boolean')
+    (value['isCanceled'] === undefined ||
+      typeof value['isCanceled'] === 'boolean')
   );
 }
 
@@ -220,7 +228,10 @@ function isTimetable(value: unknown): value is Timetable {
     return false;
   }
 
-  if (!Array.isArray(value['times']) || !value['times'].every((t) => isTimeEntity(t))) {
+  if (
+    !Array.isArray(value['times']) ||
+    !value['times'].every((t) => isTimeEntity(t))
+  ) {
     return false;
   }
 

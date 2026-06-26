@@ -30,18 +30,18 @@ export class DialogComponent implements AfterViewInit, OnDestroy {
   @ViewChild('dialogElement', { static: true })
   private readonly dialogElement!: ElementRef<HTMLDialogElement>;
 
-  readonly config = signal<DialogConfig | null>(null);
-  readonly openMode = signal<DialogOpenMode>('modeless');
-  readonly isVisible = signal(false);
-  readonly titleId = `dialog-title-${crypto.randomUUID()}`;
-  readonly descriptionId = `dialog-description-${crypto.randomUUID()}`;
+  public readonly config = signal<DialogConfig | null>(null);
+  public readonly openMode = signal<DialogOpenMode>('modeless');
+  public readonly isVisible = signal(false);
+  public readonly titleId = `dialog-title-${crypto.randomUUID()}`;
+  public readonly descriptionId = `dialog-description-${crypto.randomUUID()}`;
 
-  readonly result$ = new Subject<DialogResult>();
+  public readonly result$ = new Subject<DialogResult>();
 
   private showFrameId: number | null = null;
   private closeTimer: ReturnType<typeof setTimeout> | null = null;
 
-  ngAfterViewInit() {
+  public ngAfterViewInit(): void {
     const dialog = this.dialogElement.nativeElement;
 
     if (this.openMode() === 'modal') {
@@ -56,7 +56,7 @@ export class DialogComponent implements AfterViewInit, OnDestroy {
     });
   }
 
-  close(result: DialogResult) {
+  public close(result: DialogResult): void {
     const dialog = this.dialogElement.nativeElement;
 
     if (!dialog.open) {
@@ -72,7 +72,7 @@ export class DialogComponent implements AfterViewInit, OnDestroy {
     }, 300);
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     if (this.showFrameId !== null) {
       cancelAnimationFrame(this.showFrameId);
       this.showFrameId = null;
@@ -88,7 +88,7 @@ export class DialogComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  onDialogPointerDown(event: PointerEvent) {
+  public onDialogPointerDown(event: PointerEvent): void {
     if (
       event.target === this.dialogElement.nativeElement &&
       !this.config()?.disableClose
@@ -97,7 +97,7 @@ export class DialogComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  onEscapeKeydown(event: Event) {
+  public onEscapeKeydown(event: Event): void {
     event.preventDefault();
 
     if (this.config()?.disableClose) {
@@ -107,15 +107,15 @@ export class DialogComponent implements AfterViewInit, OnDestroy {
     this.close('escape');
   }
 
-  onConfirmClick() {
+  public onConfirmClick(): void {
     this.close('confirm');
   }
 
-  onCancelClick() {
+  public onCancelClick(): void {
     this.close('cancel');
   }
 
-  onCancelEvent(event: Event) {
+  public onCancelEvent(event: Event): void {
     event.preventDefault();
   }
 }

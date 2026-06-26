@@ -12,5 +12,5 @@ import { RatingStarsComponent } from '@features/home/ui/rating-stars/rating-star
   host: { class: 'block' },
 })
 export class TestimonialComponent {
-  testimonial = input.required<Testimonial>();
+  public testimonial = input.required<Testimonial>();
 }

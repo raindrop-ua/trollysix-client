@@ -72,7 +72,9 @@ describe('ScheduleEffects (Injector.create)', () => {
       ScheduleApiService,
       'getStops' | 'getDayTypes' | 'getDirections' | 'getTimetable'
     > = {
-      getStops: opts.getStopsImpl ? vi.fn(opts.getStopsImpl) : vi.fn(() => of([])),
+      getStops: opts.getStopsImpl
+        ? vi.fn(opts.getStopsImpl)
+        : vi.fn(() => of([])),
       getDayTypes: opts.getDayTypesImpl
         ? vi.fn(opts.getDayTypesImpl)
         : vi.fn(() => of([])),
@@ -86,12 +88,14 @@ describe('ScheduleEffects (Injector.create)', () => {
         }),
     };
 
-    const routerMock: Pick<Router, 'createUrlTree' | 'serializeUrl' | 'navigate'> =
-      {
-        createUrlTree: vi.fn(() => ({} as ReturnType<Router['createUrlTree']>)),
-        serializeUrl: vi.fn(() => '/schedule'),
-        navigate: vi.fn(async () => true),
-      };
+    const routerMock: Pick<
+      Router,
+      'createUrlTree' | 'serializeUrl' | 'navigate'
+    > = {
+      createUrlTree: vi.fn(() => ({}) as ReturnType<Router['createUrlTree']>),
+      serializeUrl: vi.fn(() => '/schedule'),
+      navigate: vi.fn(async () => true),
+    };
 
     const activatedRouteMock: Pick<ActivatedRoute, 'queryParamMap'> = {
       queryParamMap: of(convertToParamMap({})),
