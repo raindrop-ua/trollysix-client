@@ -2,10 +2,10 @@ import { isPlatformBrowser } from '@angular/common';
 import {
   Directive,
   ElementRef,
-  Input,
   OnDestroy,
   OnInit,
   inject,
+  input,
   PLATFORM_ID,
 } from '@angular/core';
 
@@ -14,7 +14,15 @@ import {
   standalone: true,
 })
 export class RevealOnScrollDirective implements OnInit, OnDestroy {
-  @Input('trollysixRevealOnScroll') public delay: number | string | undefined;
+  public readonly delay = input(0, {
+    alias: 'trollysixRevealOnScroll',
+    transform: (value: number | string | undefined) =>
+      typeof value === 'number'
+        ? value
+        : value
+          ? parseInt(String(value), 10) || 0
+          : 0,
+  });
 
   private readonly el =
     inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
@@ -42,12 +50,7 @@ export class RevealOnScrollDirective implements OnInit, OnDestroy {
 
     this.el.classList.add('reveal-preset');
 
-    const delayMs =
-      typeof this.delay === 'number'
-        ? this.delay
-        : this.delay
-          ? parseInt(String(this.delay), 10) || 0
-          : 0;
+    const delayMs = this.delay();
 
     this.io = new IntersectionObserver(
       (entries) => {

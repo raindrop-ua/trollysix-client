@@ -1,12 +1,13 @@
 import {
   Directive,
-  Input,
   TemplateRef,
   ViewContainerRef,
   HostListener,
+  effect,
   inject,
-  Output,
-  EventEmitter,
+  input,
+  numberAttribute,
+  output,
 } from '@angular/core';
 
 @Directive({
@@ -21,20 +22,25 @@ export class CheatCodeDirective {
   private lastKeyTime = 0;
   private hasShown = false;
 
-  @Input()
-  public set trollysixCheatCode(value: string) {
-    this.code = (value ?? '').toUpperCase();
-    this.buffer = '';
-  }
+  public readonly trollysixCheatCode = input('', {
+    transform: (value: string | null | undefined) =>
+      String(value ?? '').toUpperCase(),
+  });
 
-  @Input()
-  public trollysixCheatCodeTimeout = 1500;
+  public readonly trollysixCheatCodeTimeout = input(1500, {
+    transform: (value: number | string | null | undefined) =>
+      numberAttribute(value, 1500),
+  });
 
-  @Output()
-  public cheatSuccess = new EventEmitter<void>();
+  public readonly cheatSuccess = output<void>();
 
   constructor() {
     this.vcr.clear();
+
+    effect(() => {
+      this.code = this.trollysixCheatCode();
+      this.buffer = '';
+    });
   }
 
   @HostListener('document:keydown', ['$event'])
@@ -47,7 +53,7 @@ export class CheatCodeDirective {
 
     if (
       this.lastKeyTime &&
-      now - this.lastKeyTime > this.trollysixCheatCodeTimeout
+      now - this.lastKeyTime > this.trollysixCheatCodeTimeout()
     ) {
       this.buffer = '';
     }
