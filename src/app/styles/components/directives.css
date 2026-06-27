@@ -1,0 +1,53 @@
+@layer components {
+  .trollysix-btn {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-2xl px-5 py-3 text-sm transition active:scale-[.98] focus-visible:ring-2 focus-visible:ring-slate-900/60 focus-visible:ring-offset-2 focus-visible:outline-none dark:focus-visible:ring-white/70;
+  }
+
+  .trollysix-btn--primary {
+    @apply bg-slate-900 font-semibold text-white shadow-sm ring-1 ring-black/10 hover:opacity-95 dark:bg-white dark:text-slate-900 dark:ring-white/10;
+  }
+
+  .trollysix-btn--secondary {
+    @apply font-medium text-slate-700 ring-1 ring-slate-900/10 hover:bg-slate-900/5 dark:text-slate-200 dark:ring-white/10 dark:hover:bg-white/5;
+  }
+
+  .trollysix-icon-button {
+    @apply inline-flex cursor-pointer items-center justify-center rounded-xl border border-slate-300/40 shadow-sm transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 dark:border-white/10 dark:focus-visible:outline-white;
+  }
+
+  .trollysix-icon-button--md {
+    @apply h-10 w-10 px-2 py-1 text-sm font-medium;
+  }
+
+  .trollysix-icon-button--sm {
+    @apply h-9 w-9 px-2 py-1 text-sm font-medium;
+  }
+
+  .trollysix-icon-button--default {
+    @apply bg-white/50 text-gray-700 hover:bg-white dark:bg-gray-900/50 dark:text-gray-100 dark:hover:bg-gray-900/80;
+  }
+
+  .trollysix-icon-button--strong {
+    @apply bg-white/50 text-gray-700 hover:bg-white dark:bg-gray-900/80 dark:text-gray-100 dark:hover:bg-gray-900/80;
+  }
+
+  .trollysix-icon-button--warning {
+    @apply bg-white/50 text-yellow-500 hover:bg-white dark:bg-gray-900/50 dark:text-yellow-500 dark:hover:bg-gray-900/80;
+  }
+
+  .trollysix-tooltip {
+    @apply fixed z-45 hidden select-none rounded-xl border border-slate-300/40 bg-white/60 px-3 py-2 text-center text-sm text-slate-900 opacity-0 shadow-md backdrop-blur motion-safe:-translate-y-1 motion-safe:transition-[opacity,translate] motion-safe:duration-150 motion-safe:ease-out md:block dark:border-white/10 dark:bg-slate-900/40 dark:text-slate-100;
+  }
+
+  .trollysix-tooltip--visible {
+    @apply opacity-100 motion-safe:translate-y-0 motion-safe:starting:-translate-y-1 motion-safe:starting:opacity-0;
+  }
+
+  .trollysix-tooltip--passive {
+    @apply pointer-events-none;
+  }
+
+  .trollysix-tooltip--interactive {
+    @apply pointer-events-auto;
+  }
+}
