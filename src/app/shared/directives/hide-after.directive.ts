@@ -1,7 +1,8 @@
 import {
   Directive,
   inject,
-  Input,
+  input,
+  numberAttribute,
   OnInit,
   TemplateRef,
   ViewContainerRef,
@@ -33,24 +34,25 @@ export class HideAfterDirective implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
 
   private readonly context = new HideAfterContext();
-  private delayValue = 0;
 
-  @Input('trollysixHideAfter')
-  public set delay(value: number | null) {
-    this.delayValue = value ?? 0;
-    this.context.trollysixHideAfter = this.delayValue / 1000;
-    this.context.counter = this.context.trollysixHideAfter;
-  }
+  public readonly delay = input(0, {
+    alias: 'trollysixHideAfter',
+    transform: (value: number | string | null | undefined) =>
+      numberAttribute(value, 0),
+  });
 
-  @Input()
-  public set trollysixHideAfterThen(tpl: TemplateRef<HideAfterContext> | null) {
-    this.context.trollysixHideAfterThen = tpl;
-  }
+  public readonly trollysixHideAfterThen =
+    input<TemplateRef<HideAfterContext> | null>(null);
 
   public ngOnInit(): void {
+    const delayValue = this.delay();
+    this.context.trollysixHideAfter = delayValue / 1000;
+    this.context.counter = this.context.trollysixHideAfter;
+    this.context.trollysixHideAfterThen = this.trollysixHideAfterThen();
+
     this.viewContainerRef.createEmbeddedView(this.template, this.context);
 
-    if (this.delayValue <= 0) {
+    if (delayValue <= 0) {
       this.showThenTemplate();
       return;
     }
@@ -63,7 +65,7 @@ export class HideAfterDirective implements OnInit {
         }
       });
 
-    timer(this.delayValue)
+    timer(delayValue)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(() => {
         this.showThenTemplate();

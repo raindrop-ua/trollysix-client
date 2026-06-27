@@ -111,7 +111,7 @@ export class TooltipDirective {
 
     this.tooltipEl!.textContent = text;
     this.addDescribedBy();
-    this.tooltipEl!.style.opacity = '1';
+    this.tooltipEl!.classList.add('trollysix-tooltip--visible');
 
     this.updatePosition();
   }
@@ -120,14 +120,16 @@ export class TooltipDirective {
     this.clearTimers();
     if (!this.tooltipEl) return;
 
-    this.tooltipEl.style.opacity = '0';
+    this.tooltipEl.classList.remove('trollysix-tooltip--visible');
     if (this.destroyTimer !== null) {
       clearTimeout(this.destroyTimer);
     }
 
     this.destroyTimer = setTimeout(() => {
       this.destroyTimer = null;
-      if (this.tooltipEl?.style.opacity === '0') {
+      if (
+        !this.tooltipEl?.classList.contains('trollysix-tooltip--visible')
+      ) {
         this.destroyTooltip();
       }
     }, 150);
@@ -140,19 +142,18 @@ export class TooltipDirective {
     el.id = tooltipId;
     el.setAttribute('role', 'tooltip');
 
-    el.className = `hidden md:block fixed z-45 pointer-events-none select-none rounded-xl baseline-borders
-                    text-center baseline-surface backdrop-blur px-3 py-2 text-sm text-slate-900
-                    dark:text-slate-100 shadow-md transition-opacity duration-150 ease-out`;
+    el.className = `trollysix-tooltip ${
+      this.interactive()
+        ? 'trollysix-tooltip--interactive'
+        : 'trollysix-tooltip--passive'
+    }`;
 
     el.style.maxWidth = `${this.maxWidth()}rem`;
-    el.style.opacity = '0';
     el.style.left = '0px';
     el.style.top = '0px';
-    el.style.willChange = 'transform, opacity';
+    el.style.willChange = 'transform, opacity, translate';
 
     if (this.interactive()) {
-      el.classList.remove('pointer-events-none');
-      el.classList.add('pointer-events-auto');
       el.addEventListener('mouseenter', () => this.clearTimers());
       el.addEventListener('mouseleave', () => this.scheduleHide());
     }
