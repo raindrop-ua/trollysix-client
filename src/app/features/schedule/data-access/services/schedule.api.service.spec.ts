@@ -50,6 +50,7 @@ describe('ScheduleApiService', () => {
         name: 'Central',
         departures: {},
         style: 1,
+        rating: null,
         availableDirections: ['forward'],
         sharedRoutes: [],
       },

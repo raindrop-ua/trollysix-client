@@ -17,6 +17,7 @@ describe('schedule-api.contract', () => {
           forward: { first: '05:00', last: '23:00' },
         },
         style: 1,
+        rating: 4.7,
         availableDirections: ['forward', 'backward'],
         sharedRoutes: ['1A'],
         geo: {
@@ -27,6 +28,7 @@ describe('schedule-api.contract', () => {
     ]);
 
     expect(parsed[0]?.id).toBe('stop-1');
+    expect(parsed[0]?.rating).toBe(4.7);
   });
 
   it('parses valid stops payload with day type departures', () => {
@@ -44,6 +46,7 @@ describe('schedule-api.contract', () => {
           },
         },
         style: 2,
+        rating: null,
         availableDirections: ['forward', 'backward'],
         sharedRoutes: ['6'],
       },
@@ -61,6 +64,7 @@ describe('schedule-api.contract', () => {
           forward: { first: '05:30', last: '23:30' },
         },
         style: 3,
+        rating: 3.5,
         availableDirections: ['forward'],
         sharedRoutes: ['9'],
         weather: null,

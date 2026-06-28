@@ -35,10 +35,10 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 })
 export class WeatherBlockComponent {
   public readonly copySchedule = copy('schedule');
-  public stop = input.required<Stop>();
+  public stopData = input.required<Stop>();
 
   public readonly weatherIconUrl = computed(() => {
-    const weather = this.stop().weather;
+    const weather = this.stopData().weather;
     if (!weather?.icon) {
       return `${environment.WEATHER_ICON_BASE}default@2x.png`;
     }
@@ -57,7 +57,7 @@ export class WeatherBlockComponent {
   ] as const;
 
   public readonly windDegNorm = computed(() => {
-    const w = this.stop().weather;
+    const w = this.stopData().weather;
     const deg = w?.windDeg ?? 0;
     return ((deg % 360) + 360) % 360;
   });
@@ -72,13 +72,13 @@ export class WeatherBlockComponent {
   );
 
   public readonly hasWindGust = computed(() => {
-    const w = this.stop().weather;
+    const w = this.stopData().weather;
     if (!w) return false;
     return w.windGust > w.windSpeed + 0.5;
   });
 
   public readonly windGustDelta = computed(() => {
-    const w = this.stop().weather;
+    const w = this.stopData().weather;
     if (!w) return 0;
     return Math.max(0, w.windGust - w.windSpeed);
   });

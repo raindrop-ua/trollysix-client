@@ -20,6 +20,7 @@ export interface Stop {
   style: number;
   availableDirections: DirectionName[];
   sharedRoutes: string[];
+  rating: number | null;
   geo?: {
     forward?: {
       lat: number;
