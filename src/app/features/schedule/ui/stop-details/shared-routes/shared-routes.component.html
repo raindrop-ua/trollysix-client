@@ -3,12 +3,24 @@
     {{ copySchedule.sharedRoutes.title }}
   </div>
   <ul class="flex flex-wrap gap-2">
-    @for (sharedRoute of stop().sharedRoutes; track sharedRoute) {
+    @for (sharedRoute of stopData().sharedRoutes; track sharedRoute) {
       <li class="shared-route-badge">
         {{ sharedRoute }}
       </li>
     } @empty {
-      <li class="shared-route-badge">{{ copySchedule.sharedRoutes.noSharedRoutes }}</li>
+      <li class="shared-route-badge">
+        {{ copySchedule.sharedRoutes.noSharedRoutes }}
+      </li>
     }
   </ul>
+  <div
+    class="mt-6 mb-2 text-base font-medium text-slate-700 dark:text-slate-200"
+  >
+    {{ copySchedule.stopRating }}
+  </div>
+  <div class="mb-8 flex items-center justify-start gap-2">
+    @let rating = stopData().rating || 0;
+    <trollysix-rating-stars class="mt-1" [rating]="rating" />
+    <span>{{ rating | number: '1.1' }}</span>
+  </div>
 </div>

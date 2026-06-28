@@ -176,6 +176,7 @@ function isStop(value: unknown): value is Stop {
     isString(value['id']) &&
     isString(value['name']) &&
     isFiniteNumber(value['style']) &&
+    (value['rating'] === null || isFiniteNumber(value['rating'])) &&
     value['availableDirections'].every((direction) =>
       isDirectionName(direction),
     ) &&
