@@ -38,8 +38,9 @@ export const scheduleCopy = {
   departureConfig: {
     showScheduleNumber: 'Show schedule number',
   },
+  stopRating: 'Stop rating:',
   sharedRoutes: {
-    title: 'Shared routes',
+    title: 'Shared routes:',
     noSharedRoutes: 'No shared routes',
   },
   weather: {

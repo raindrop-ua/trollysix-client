@@ -13,9 +13,9 @@ import { copy } from '@core/content';
 
 import { Testimonials } from '@features/home/data-access/models/testimonial.model';
 import { TestimonialsListService } from '@features/home/data-access/services/testimonials-list.service';
-import { RatingStarsComponent } from '@features/home/ui/rating-stars/rating-stars.component';
 import { RevealOnScrollDirective } from '@shared/directives/reveal-on-scroll.directive';
 import { ColorSplashComponent } from '@shared/ui/color-splash/color-splash.component';
+import { RatingStarsComponent } from '@shared/ui/rating-stars/rating-stars.component';
 import { SpinnerComponent } from '@shared/ui/spinner/spinner.component';
 
 import { TestimonialComponent } from './testimonial/testimonial.component';
