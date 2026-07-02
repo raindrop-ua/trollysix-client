@@ -2,7 +2,7 @@ export const scheduleCopy = {
   header: {
     title: 'Schedule',
   },
-  selectStop: 'Select stop',
+  selectStop: 'Select a stop',
   scheduleValidFrom: 'Schedule valid from',
   stop: 'Stop',
   stopSelected: 'Selected',
