@@ -18,7 +18,7 @@
   >
     {{ copySchedule.stopRating }}
   </div>
-  <div class="mb-8 flex items-center justify-start gap-2">
+  <div class="flex items-center justify-start gap-2">
     @let rating = stopData().rating || 0;
     <trollysix-rating-stars class="mt-1" [rating]="rating" />
     <span>{{ rating | number: '1.1' }}</span>
