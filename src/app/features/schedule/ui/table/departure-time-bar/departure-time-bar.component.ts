@@ -55,6 +55,10 @@ export class DepartureTimeBarComponent {
     }),
   );
 
+  public readonly timeToNextLabel$ = this.minutesToNext$.pipe(
+    map((minutes) => this.formatMinutesToNext(minutes)),
+  );
+
   public readonly label$ = combineLatest([
     this.next$,
     this.departures$,
@@ -68,4 +72,32 @@ export class DepartureTimeBarComponent {
       return this.copySchedule.noDepartures;
     }),
   );
+
+  private formatMinutesToNext(minutes: number | null): string | null {
+    if (minutes === null) return null;
+
+    const hours = Math.floor(minutes / 60);
+    const remainingMinutes = minutes % 60;
+    const parts: string[] = [];
+
+    if (hours > 0) {
+      const hourLabel =
+        hours === 1
+          ? this.copySchedule.departureTimeBar.hour
+          : this.copySchedule.departureTimeBar.hours;
+
+      parts.push(`${hours} ${hourLabel}`);
+    }
+
+    if (remainingMinutes > 0 || hours === 0) {
+      const minuteLabel =
+        remainingMinutes === 1
+          ? this.copySchedule.departureTimeBar.minute
+          : this.copySchedule.departureTimeBar.minutes;
+
+      parts.push(`${remainingMinutes} ${minuteLabel}`);
+    }
+
+    return parts.join(' ');
+  }
 }
