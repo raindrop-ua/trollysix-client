@@ -10,6 +10,10 @@ import {
 import express from 'express';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
+const appleAppSiteAssociationFile = join(
+  browserDistFolder,
+  '.well-known/apple-app-site-association',
+);
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
@@ -43,7 +47,10 @@ function getSsrCacheControl(pathname: string): string {
   return `public, max-age=${ssrCacheConfig.default.maxAge}, stale-while-revalidate=${ssrCacheConfig.default.staleWhileRevalidate}`;
 }
 
-function withSsrCacheHeaders(req: express.Request, response: Response): Response {
+function withSsrCacheHeaders(
+  req: express.Request,
+  response: Response,
+): Response {
   const contentType = response.headers.get('content-type') ?? '';
   if (!contentType.includes('text/html')) {
     return response;
@@ -60,6 +67,22 @@ function withSsrCacheHeaders(req: express.Request, response: Response): Response
     headers,
   });
 }
+
+app.get('/.well-known/apple-app-site-association', (_req, res, next) => {
+  res.type('application/json');
+  res.sendFile(
+    appleAppSiteAssociationFile,
+    {
+      dotfiles: 'allow',
+      maxAge: '1h',
+    },
+    (error) => {
+      if (error) {
+        next(error);
+      }
+    },
+  );
+});
 
 app.use(
   express.static(browserDistFolder, {
