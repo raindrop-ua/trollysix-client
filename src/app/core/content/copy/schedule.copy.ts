@@ -21,7 +21,10 @@ export const scheduleCopy = {
   },
   departureTimeBar: {
     in: 'in',
-    min: 'min',
+    hour: 'hour',
+    hours: 'hours',
+    minute: 'minute',
+    minutes: 'minutes',
     nextDepartureSr: 'Next departure:',
     loading: 'Loading...',
     tomorrow: 'Tomorrow',

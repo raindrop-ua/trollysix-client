@@ -1,0 +1,17 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "VZQCQR362F.com.trolly6.TrollySix"
+        ],
+        "components": [
+          {
+            "/": "/schedule",
+            "comment": "Open schedule links in the app"
+          }
+        ]
+      }
+    ]
+  }
+}
