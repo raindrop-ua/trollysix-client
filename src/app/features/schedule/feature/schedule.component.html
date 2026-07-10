@@ -1,6 +1,10 @@
 <trollysix-generic-header [title]="copySchedule.header.title" />
 @if (isSelectorsGroupReady()) {
   <trollysix-selectors-group />
+} @else {
+  <section class="baseline-container pt-6 md:pt-12">
+    <div class="stop-card-placeholder min-h-21"></div>
+  </section>
 }
 <trollysix-stops-list />
 @defer (when selectedStop(); prefetch on idle) {
