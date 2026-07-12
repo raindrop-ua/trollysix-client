@@ -1,7 +1,7 @@
 export const legalCopy = {
   privacyPolicy: {
     title: 'Privacy Policy',
-    effectiveDate: 'Effective date: 25.02.2026',
+    effectiveDate: 'Effective date: 12.07.2026',
     sections: [
       {
         title: '1. Introduction',
@@ -10,7 +10,7 @@ export const legalCopy = {
           {
             type: 'paragraph',
             value:
-              'Your privacy is important. This Privacy Policy explains what information is collected (spoiler: almost none), how it is used, and what rights you have when using this website.',
+              'Your privacy is important. This Privacy Policy explains what information is collected (spoiler: almost none), how it is used, and what rights you have when using the TrollySix website and mobile applications for iOS and Android.',
           },
         ],
       },
@@ -20,7 +20,7 @@ export const legalCopy = {
           {
             type: 'paragraph',
             value:
-              'TrollySix does not collect, store, process, or share any personal data.',
+              'TrollySix does not collect, store, process, or share any personal data through its website or mobile applications.',
           },
           { type: 'paragraph', value: 'Specifically:' },
           {
@@ -31,7 +31,7 @@ export const legalCopy = {
               'No analytics tracking',
               'No advertising trackers',
               'No personal data collection',
-              'No IP address logging',
+              'No IP address logging by TrollySix',
               'No behavioral tracking',
               'No third-party analytics tools',
             ],
@@ -39,18 +39,18 @@ export const legalCopy = {
         ],
       },
       {
-        title: '3. Cookies',
+        title: '3. Local Preferences',
         content: [
           {
             type: 'paragraph',
             value:
-              'TrollySix uses a single local storage or cookie entry strictly for storing your selected theme preference (e.g., light or dark mode).',
+              'TrollySix may store your selected theme preference (for example, light or dark mode) locally on your device. The website uses browser storage or a cookie; mobile applications use device-local storage.',
           },
           { type: 'paragraph', value: 'This preference:' },
           {
             type: 'list',
             items: [
-              'Is stored locally in your browser',
+              'Is stored locally in your browser or on your device',
               'Is not transmitted to any server',
               'Is not used for tracking',
               'Contains no personal data',
@@ -59,7 +59,7 @@ export const legalCopy = {
           {
             type: 'paragraph',
             value:
-              'You may clear this preference at any time by clearing your browser storage.',
+              'You may clear this preference at any time by clearing your browser storage or the mobile application data.',
           },
         ],
       },
@@ -74,7 +74,7 @@ export const legalCopy = {
           {
             type: 'paragraph',
             value:
-              'If the hosting provider automatically logs technical server data (such as standard access logs), this is outside the control of TrollySix and is handled according to the hosting provider’s policies.',
+              'If the hosting provider or a third-party service automatically logs technical server data (such as standard access logs), this is outside the control of TrollySix and is handled according to that provider’s policies.',
           },
         ],
       },
@@ -128,7 +128,7 @@ export const legalCopy = {
   },
   termsOfUse: {
     title: 'Terms of Use',
-    effectiveDate: 'Effective date: 25.02.2026',
+    effectiveDate: 'Effective date: 12.07.2026',
     sections: [
       {
         title: '1. Acceptance of Terms',
@@ -141,7 +141,7 @@ export const legalCopy = {
           {
             type: 'paragraph',
             value:
-              'If you do not agree, please discontinue use of the website.',
+              'If you do not agree, please discontinue use of the website and mobile applications.',
           },
         ],
       },
@@ -156,7 +156,7 @@ export const legalCopy = {
           {
             type: 'paragraph',
             value:
-              'The website is provided "as is" for informational purposes only.',
+              'The website and mobile applications are provided "as is" for informational purposes only.',
           },
         ],
       },
@@ -173,7 +173,7 @@ export const legalCopy = {
             items: [
               'Schedule information may change',
               'Delays or operational changes may occur',
-              'The website may contain inaccuracies',
+              'The website or mobile applications may contain inaccuracies',
             ],
           },
           {
@@ -208,7 +208,10 @@ export const legalCopy = {
           { type: 'paragraph', value: 'You may:' },
           {
             type: 'list',
-            items: ['View the website', 'Share links to it'],
+            items: [
+              'Use the website and mobile applications for personal, non-commercial purposes',
+              'Share links to the website',
+            ],
           },
           { type: 'paragraph', value: 'You may not:' },
           {
@@ -236,7 +239,7 @@ export const legalCopy = {
               'Service interruptions',
               'Technical errors',
               'Inaccurate schedule data',
-              'Any direct or indirect damages arising from use of the website',
+              'Any direct or indirect damages arising from use of the website or mobile applications',
             ],
           },
         ],
@@ -247,7 +250,7 @@ export const legalCopy = {
           {
             type: 'paragraph',
             value:
-              'These Terms may be updated at any time. Continued use of the website constitutes acceptance of the updated Terms.',
+              'These Terms may be updated at any time. Continued use of the website or mobile applications constitutes acceptance of the updated Terms.',
           },
         ],
       },
@@ -262,5 +265,11 @@ export const legalCopy = {
         ],
       },
     ],
+  },
+  support: {
+    title: 'Support',
+    description:
+      'For app issues, feedback, or feature requests, contact TrollySix at:',
+    email: 'contacts@trolly6.com',
   },
 } as const;

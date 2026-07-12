@@ -38,6 +38,11 @@ export const routes: Routes = [
           import('./features/static/terms-of-use/feature/terms-of-use.routes'),
       },
       {
+        path: AppRouteEnum.Support,
+        loadChildren: () =>
+          import('./features/static/support/feature/support.routes'),
+      },
+      {
         path: AppRouteEnum.NotFound,
         loadChildren: () =>
           import('./features/static/not-found/feature/not-found.routes'),
