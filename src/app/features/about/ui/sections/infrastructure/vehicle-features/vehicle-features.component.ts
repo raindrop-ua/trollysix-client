@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
 
 import { COPY } from '@core/content';
 
-import { VehicleFeature } from '@features/about/data-access/models/vehicle-feature';
+import { VehicleFeature } from '@features/about/data-access/models/vehicle-feature.model';
 import { TooltipDirective } from '@shared/directives/tooltip.directive';
 import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 

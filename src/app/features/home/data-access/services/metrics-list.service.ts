@@ -15,7 +15,7 @@ export class MetricsListService {
   private readonly REQUEST_TIMEOUT_MS = 8_000;
   private http = inject(HttpClient);
 
-  private readonly metrics$ = this.http
+  private readonly metrics$: Observable<Metric[]> = this.http
     .get<Metric[]>(`${this.BASE_URL}/metrics`)
     .pipe(
       timeout(this.REQUEST_TIMEOUT_MS),
