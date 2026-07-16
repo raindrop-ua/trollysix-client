@@ -1,15 +1,19 @@
 import {
   HttpErrorResponse,
+  HttpEvent,
   HttpInterceptorFn,
   HttpRequest,
 } from '@angular/common/http';
 import { inject } from '@angular/core';
 
-import { retry, tap, timer } from 'rxjs';
+import { Observable, retry, tap, timer } from 'rxjs';
 
 import { ToastService } from '@core/services/toast.service';
 
-export const globalHttpErrorInterceptor: HttpInterceptorFn = (req, next) => {
+export const globalHttpErrorInterceptor: HttpInterceptorFn = (
+  req,
+  next,
+): Observable<HttpEvent<unknown>> => {
   const toastService: ToastService = inject(ToastService);
 
   return next(req).pipe(

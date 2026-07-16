@@ -13,7 +13,7 @@ export class TestimonialsListService {
   private readonly REQUEST_TIMEOUT_MS = 8_000;
   private http = inject(HttpClient);
 
-  private readonly testimonials$ = this.http
+  private readonly testimonials$: Observable<Testimonials> = this.http
     .get<Testimonials>(`${this.BASE_URL}/testimonials`)
     .pipe(
       timeout(this.REQUEST_TIMEOUT_MS),

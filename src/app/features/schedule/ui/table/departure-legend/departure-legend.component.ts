@@ -4,6 +4,7 @@ import {
   ChangeDetectionStrategy,
   effect,
   signal,
+  Signal,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 
@@ -12,6 +13,7 @@ import { Store } from '@ngrx/store';
 import { copy } from '@core/content';
 
 import { ScheduleService } from '@features/schedule/application/services/schedule.service';
+import { Departure } from '@features/schedule/data-access/models/departure.model';
 import {
   selectSelectedStopId,
   selectTimetableLoading,
@@ -28,14 +30,17 @@ import { TooltipDirective } from '@shared/directives/tooltip.directive';
 export class DepartureLegendComponent {
   public readonly copySchedule = copy('schedule');
   private readonly store = inject(Store);
-  private readonly schedule = inject(ScheduleService);
-  public readonly departures = toSignal(this.schedule.departures$, {
-    initialValue: [],
-  });
-  public readonly timetableLoading = this.store.selectSignal(
+  private readonly schedule: ScheduleService = inject(ScheduleService);
+  public readonly departures: Signal<Departure[]> = toSignal(
+    this.schedule.departures$,
+    {
+      initialValue: [],
+    },
+  );
+  public readonly timetableLoading: Signal<boolean> = this.store.selectSignal(
     selectTimetableLoading,
   );
-  public readonly selectedStopId =
+  public readonly selectedStopId: Signal<string | null> =
     this.store.selectSignal(selectSelectedStopId);
   public readonly revealKey = signal(0);
 

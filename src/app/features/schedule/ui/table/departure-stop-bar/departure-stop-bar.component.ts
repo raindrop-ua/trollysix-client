@@ -4,6 +4,7 @@ import {
   ChangeDetectionStrategy,
   effect,
   signal,
+  Signal,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 
@@ -12,6 +13,7 @@ import { Store } from '@ngrx/store';
 import { copy } from '@core/content';
 
 import { ScheduleService } from '@features/schedule/application/services/schedule.service';
+import { Departure } from '@features/schedule/data-access/models/departure.model';
 import {
   selectSelectedStopId,
   selectSelectedStopName,
@@ -28,16 +30,18 @@ import {
 export class DepartureStopBarComponent {
   public readonly copySchedule = copy('schedule');
   private readonly store = inject(Store);
-  private readonly schedule = inject(ScheduleService);
-  public readonly departures = toSignal(this.schedule.departures$, {
-    initialValue: [],
-  });
-  public readonly selectedStopName = this.store.selectSignal(
-    selectSelectedStopName,
+  private readonly schedule: ScheduleService = inject(ScheduleService);
+  public readonly departures: Signal<Departure[]> = toSignal(
+    this.schedule.departures$,
+    {
+      initialValue: [],
+    },
   );
-  public readonly selectedStopId =
+  public readonly selectedStopName: Signal<string | null> =
+    this.store.selectSignal(selectSelectedStopName);
+  public readonly selectedStopId: Signal<string | null> =
     this.store.selectSignal(selectSelectedStopId);
-  public readonly timetableLoading = this.store.selectSignal(
+  public readonly timetableLoading: Signal<boolean> = this.store.selectSignal(
     selectTimetableLoading,
   );
   public readonly revealKey = signal(0);

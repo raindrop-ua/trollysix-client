@@ -1,7 +1,13 @@
 import { Injectable, inject } from '@angular/core';
 
 import { Store } from '@ngrx/store';
-import { combineLatest, map, shareReplay, distinctUntilChanged } from 'rxjs';
+import {
+  combineLatest,
+  map,
+  shareReplay,
+  distinctUntilChanged,
+  Observable,
+} from 'rxjs';
 
 import { ClockService } from '@core/services/clock.service';
 
@@ -21,7 +27,7 @@ export class ScheduleService {
     shareReplay({ bufferSize: 1, refCount: true }),
   );
 
-  public readonly departures$ = combineLatest([
+  public readonly departures$: Observable<Departure[]> = combineLatest([
     this.clock.now$,
     this.times$,
   ]).pipe(
@@ -37,7 +43,7 @@ export class ScheduleService {
     shareReplay({ bufferSize: 1, refCount: true }),
   );
 
-  public readonly showRunNumbers$ = this.store.select(
+  public readonly showRunNumbers$: Observable<boolean> = this.store.select(
     scheduleFeature.selectShowRunNumbers,
   );
 

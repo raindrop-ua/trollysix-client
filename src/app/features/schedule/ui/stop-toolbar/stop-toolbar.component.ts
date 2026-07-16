@@ -3,6 +3,7 @@ import {
   inject,
   computed,
   ChangeDetectionStrategy,
+  Signal,
 } from '@angular/core';
 
 import { copy } from '@core/content';
@@ -25,15 +26,19 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 })
 export class StopToolbarComponent {
   public readonly copySchedule = copy('schedule');
-  public readonly geolocationService = inject(GeolocationService);
-  private readonly closestStopService = inject(ClosestStopService);
-  private readonly shareScheduleService = inject(ShareScheduleService);
-  private readonly clipboardService = inject(ClipboardService);
+  public readonly geolocationService: GeolocationService =
+    inject(GeolocationService);
+  private readonly closestStopService: ClosestStopService =
+    inject(ClosestStopService);
+  private readonly shareScheduleService: ShareScheduleService =
+    inject(ShareScheduleService);
+  private readonly clipboardService: ClipboardService =
+    inject(ClipboardService);
 
-  public readonly canShare = computed(() =>
+  public readonly canShare: Signal<boolean> = computed(() =>
     this.clipboardService.isSupported(),
   );
-  public readonly canFind = computed(() =>
+  public readonly canFind: Signal<boolean> = computed(() =>
     this.geolocationService.isGeolocationAvailable(),
   );
 

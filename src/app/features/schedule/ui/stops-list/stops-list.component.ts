@@ -1,10 +1,17 @@
 import { DatePipe } from '@angular/common';
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  inject,
+  ChangeDetectionStrategy,
+  Signal,
+} from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
 import { copy } from '@core/content';
 
+import { DirectionName } from '@features/schedule/data-access/models/direction.model';
+import { Stop } from '@features/schedule/data-access/models/stop.model';
 import {
   selectAllScheduleStops,
   selectCurrentTimetableValidFrom,
@@ -28,16 +35,15 @@ export class StopsListComponent {
 
   private readonly store = inject(Store);
 
-  public readonly stops = this.store.selectSignal(selectAllScheduleStops);
+  public readonly stops: Signal<Stop[]> = this.store.selectSignal(
+    selectAllScheduleStops,
+  );
   public readonly selectedStopId =
     this.store.selectSignal(selectSelectedStopId);
-  public readonly selectedDayTypeName = this.store.selectSignal(
-    selectSelectedDayType,
-  );
-  public readonly selectedDirectionName = this.store.selectSignal(
-    selectSelectedDirection,
-  );
-  public readonly currentTimetableValidFrom = this.store.selectSignal(
-    selectCurrentTimetableValidFrom,
-  );
+  public readonly selectedDayTypeName: Signal<string | null> =
+    this.store.selectSignal(selectSelectedDayType);
+  public readonly selectedDirectionName: Signal<DirectionName | null> =
+    this.store.selectSignal(selectSelectedDirection);
+  public readonly currentTimetableValidFrom: Signal<string | null> =
+    this.store.selectSignal(selectCurrentTimetableValidFrom);
 }

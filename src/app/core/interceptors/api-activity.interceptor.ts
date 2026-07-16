@@ -1,13 +1,16 @@
-import { HttpInterceptorFn } from '@angular/common/http';
+import { HttpEvent, HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 
-import { finalize } from 'rxjs';
+import { finalize, Observable } from 'rxjs';
 
 import { environment } from '@environments/environment';
 
 import { ApiActivityService } from '@core/services/api-activity.service';
 
-export const apiActivityInterceptor: HttpInterceptorFn = (req, next) => {
+export const apiActivityInterceptor: HttpInterceptorFn = (
+  req,
+  next,
+): Observable<HttpEvent<unknown>> => {
   const activityService = inject(ApiActivityService);
 
   if (!isApiRequest(req.url)) {

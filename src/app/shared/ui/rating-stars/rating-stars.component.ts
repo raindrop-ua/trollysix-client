@@ -3,6 +3,7 @@ import {
   computed,
   input,
   ChangeDetectionStrategy,
+  Signal,
 } from '@angular/core';
 
 import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
@@ -19,7 +20,7 @@ type StarKind = 'filled' | 'empty-yellow' | 'empty-gray';
 export class RatingStarsComponent {
   public readonly rating = input.required<number>();
 
-  public readonly starKinds = computed<StarKind[]>(() => {
+  public readonly starKinds: Signal<StarKind[]> = computed<StarKind[]>(() => {
     const ratingRaw = this.rating() ?? 0;
     const rating = Math.max(0, Math.min(5, ratingRaw));
 

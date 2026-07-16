@@ -269,7 +269,7 @@ export const legalCopy = {
   support: {
     title: 'Support',
     description:
-      'For app issues, feedback, or feature requests, contact TrollySix at:',
+      'For app issues, feedback, or feature requests, contact us at:',
     email: 'contacts@trolly6.com',
   },
 } as const;

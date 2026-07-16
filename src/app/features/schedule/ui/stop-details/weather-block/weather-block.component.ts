@@ -9,6 +9,7 @@ import {
   computed,
   input,
   ChangeDetectionStrategy,
+  Signal,
 } from '@angular/core';
 
 import { environment } from '@environments/environment';
@@ -37,7 +38,7 @@ export class WeatherBlockComponent {
   public readonly copySchedule = copy('schedule');
   public stopData = input.required<Stop>();
 
-  public readonly weatherIconUrl = computed(() => {
+  public readonly weatherIconUrl: Signal<string> = computed(() => {
     const weather = this.stopData().weather;
     if (!weather?.icon) {
       return `${environment.WEATHER_ICON_BASE}default@2x.png`;
@@ -56,7 +57,7 @@ export class WeatherBlockComponent {
     'NW',
   ] as const;
 
-  public readonly windDegNorm = computed(() => {
+  public readonly windDegNorm: Signal<number> = computed(() => {
     const w = this.stopData().weather;
     const deg = w?.windDeg ?? 0;
     return ((deg % 360) + 360) % 360;
@@ -67,17 +68,17 @@ export class WeatherBlockComponent {
     return this.windDirs[Math.round(deg / 45) % 8];
   });
 
-  public readonly windArrowTransform = computed(
+  public readonly windArrowTransform: Signal<string> = computed(
     () => `rotate(${this.windDegNorm()}deg)`,
   );
 
-  public readonly hasWindGust = computed(() => {
+  public readonly hasWindGust: Signal<boolean> = computed(() => {
     const w = this.stopData().weather;
     if (!w) return false;
     return w.windGust > w.windSpeed + 0.5;
   });
 
-  public readonly windGustDelta = computed(() => {
+  public readonly windGustDelta: Signal<number> = computed(() => {
     const w = this.stopData().weather;
     if (!w) return 0;
     return Math.max(0, w.windGust - w.windSpeed);
