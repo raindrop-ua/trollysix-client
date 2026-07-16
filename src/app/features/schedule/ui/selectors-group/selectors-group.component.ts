@@ -4,6 +4,7 @@ import {
   computed,
   inject,
   ChangeDetectionStrategy,
+  Signal,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 
@@ -12,6 +13,12 @@ import { Store } from '@ngrx/store';
 import { copy } from '@core/content';
 
 import { ScheduleService } from '@features/schedule/application/services/schedule.service';
+import { DayType } from '@features/schedule/data-access/models/daytype.model';
+import { Departure } from '@features/schedule/data-access/models/departure.model';
+import {
+  Direction,
+  DirectionName,
+} from '@features/schedule/data-access/models/direction.model';
 import { SchedulePageActions } from '@features/schedule/data-access/store/schedule.actions';
 import {
   selectDayTypes,
@@ -40,25 +47,30 @@ export class SelectorsGroupComponent {
   public readonly copySchedule = copy('schedule');
 
   private readonly store = inject(Store);
-  private readonly schedule = inject(ScheduleService);
-  public readonly departures = toSignal(this.schedule.departures$, {
-    initialValue: [],
-  });
-  public readonly dayTypes = this.store.selectSignal(selectDayTypes);
-  public readonly directions = this.store.selectSignal(selectDirections);
-  public readonly selectedDayTypeName = this.store.selectSignal(
-    selectSelectedDayType,
+  private readonly schedule: ScheduleService = inject(ScheduleService);
+  public readonly departures: Signal<Departure[]> = toSignal(
+    this.schedule.departures$,
+    {
+      initialValue: [],
+    },
   );
-  public readonly selectedDirectionName = this.store.selectSignal(
-    selectSelectedDirection,
-  );
-  public readonly timetableLoading = this.store.selectSignal(
+  public readonly dayTypes: Signal<DayType[]> =
+    this.store.selectSignal(selectDayTypes);
+  public readonly directions: Signal<Direction[]> =
+    this.store.selectSignal(selectDirections);
+  public readonly selectedDayTypeName: Signal<string | null> =
+    this.store.selectSignal(selectSelectedDayType);
+  public readonly selectedDirectionName: Signal<DirectionName | null> =
+    this.store.selectSignal(selectSelectedDirection);
+  public readonly timetableLoading: Signal<boolean> = this.store.selectSignal(
     selectTimetableLoading,
   );
-  public readonly isUnavailable = computed(
+  public readonly isUnavailable: Signal<boolean> = computed(
     () => this.departures().length === 0 && !this.timetableLoading(),
   );
-  public readonly hasDepartures = computed(() => this.departures().length > 0);
+  public readonly hasDepartures: Signal<boolean> = computed(
+    () => this.departures().length > 0,
+  );
 
   public onSelectDayType(dayTypeName: string): void {
     this.store.dispatch(SchedulePageActions.selectDayType({ dayTypeName }));

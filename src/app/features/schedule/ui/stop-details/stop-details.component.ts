@@ -4,6 +4,7 @@ import {
   input,
   ChangeDetectionStrategy,
   inject,
+  Signal,
 } from '@angular/core';
 
 import { Store } from '@ngrx/store';
@@ -11,7 +12,7 @@ import { Store } from '@ngrx/store';
 import { copy } from '@core/content';
 
 import { DirectionName } from '@features/schedule/data-access/models/direction.model';
-import { Stop } from '@features/schedule/data-access/models/stop.model';
+import { Geo, Stop } from '@features/schedule/data-access/models/stop.model';
 import { selectSelectedDirection } from '@features/schedule/data-access/store/schedule.selectors';
 import { GeoBadgeComponent } from '@features/schedule/ui/geo-badge/geo-badge.component';
 import { GenericSectionBlockComponent } from '@shared/ui/sections/generic-section-block/generic-section-block.component';
@@ -36,10 +37,9 @@ export class StopDetailsComponent {
   private readonly store = inject(Store);
 
   public stopData = input.required<Stop>();
-  public readonly selectedDirection = this.store.selectSignal(
-    selectSelectedDirection,
-  );
-  public readonly currentGeo = computed(() => {
+  public readonly selectedDirection: Signal<DirectionName | null> =
+    this.store.selectSignal(selectSelectedDirection);
+  public readonly currentGeo: Signal<Geo | null> = computed(() => {
     const stop = this.stopData();
     const direction = this.selectedDirection() as DirectionName | null;
     const byDirection = direction ? stop.geo?.[direction] : null;
