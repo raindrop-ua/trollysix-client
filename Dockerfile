@@ -5,7 +5,7 @@ WORKDIR /app
 ENV HUSKY=0
 ENV CYPRESS_INSTALL_BINARY=0
 
-RUN corepack enable && corepack prepare pnpm@11.10.0 --activate
+RUN corepack enable && corepack prepare pnpm@11.13.0 --activate
 
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 
