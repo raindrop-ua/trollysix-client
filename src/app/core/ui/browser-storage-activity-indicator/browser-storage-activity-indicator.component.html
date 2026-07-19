@@ -1,0 +1,23 @@
+@if (isActive()) {
+  <div
+    animate.enter="browser-storage-activity-enter"
+    animate.leave="browser-storage-activity-leave"
+    class="browser-storage-activity-indicator"
+    role="status"
+    aria-live="polite"
+    [attr.aria-label]="copyServices.browserStorageActivity.accessingStorage"
+  >
+    <span
+      class="browser-storage-activity-indicator__ring"
+      aria-hidden="true"
+    ></span>
+    <svg
+      icon="monitor-down"
+      class="browser-storage-activity-indicator__core size-6"
+      stroke="currentColor"
+      stroke-width="2"
+      aria-hidden="true"
+      focusable="false"
+    ></svg>
+  </div>
+}
