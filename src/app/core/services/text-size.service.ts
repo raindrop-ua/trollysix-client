@@ -1,12 +1,15 @@
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID, computed, inject, signal, Service } from '@angular/core';
 
+import { BrowserStorageActivityService } from '@core/services/browser-storage-activity.service';
+
 export type FontSizeMode = 'normal' | 'large';
 
 @Service()
 export class TextSizeService {
   private readonly document = inject(DOCUMENT);
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly storageActivity = inject(BrowserStorageActivityService);
 
   private readonly storageKey = 'font-size-mode';
   private readonly bodyClass = 'font-large';
@@ -47,21 +50,25 @@ export class TextSizeService {
   }
 
   private getSavedMode(): FontSizeMode {
-    try {
-      return localStorage.getItem(this.storageKey) === 'large'
-        ? 'large'
-        : 'normal';
-    } catch {
-      return 'normal';
-    }
+    return this.storageActivity.track(() => {
+      try {
+        return localStorage.getItem(this.storageKey) === 'large'
+          ? 'large'
+          : 'normal';
+      } catch {
+        return 'normal';
+      }
+    });
   }
 
   private persist(mode: FontSizeMode): void {
-    try {
-      localStorage.setItem(this.storageKey, mode);
-    } catch {
-      // ignore
-    }
+    this.storageActivity.track(() => {
+      try {
+        localStorage.setItem(this.storageKey, mode);
+      } catch {
+        // ignore
+      }
+    });
   }
 
   private syncBodyClass(mode: FontSizeMode): void {

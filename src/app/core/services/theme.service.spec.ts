@@ -3,13 +3,24 @@ import { TestBed } from '@angular/core/testing';
 
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { BrowserStorageActivityService } from './browser-storage-activity.service';
 import { ThemeService } from './theme.service';
 
 describe('ThemeService', () => {
+  const storageActivity = {
+    track<T>(operation: () => T): T {
+      return operation();
+    },
+  };
+
   const setup = (platformId: 'browser' | 'server') => {
     TestBed.resetTestingModule();
     TestBed.configureTestingModule({
-      providers: [ThemeService, { provide: PLATFORM_ID, useValue: platformId }],
+      providers: [
+        ThemeService,
+        { provide: BrowserStorageActivityService, useValue: storageActivity },
+        { provide: PLATFORM_ID, useValue: platformId },
+      ],
     });
 
     return TestBed.inject(ThemeService);
