@@ -1,4 +1,4 @@
-import { HttpHandlerFn, HttpRequest } from '@angular/common/http';
+import { HttpContext, HttpHandlerFn, HttpRequest } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 
 import { describe, expect, it, vi } from 'vitest';
@@ -8,6 +8,7 @@ import { EMPTY, throwError } from 'rxjs';
 import { ApiActivityService } from '@core/services/api-activity.service';
 
 import { apiActivityInterceptor } from './api-activity.interceptor';
+import { SILENT_HTTP_REQUEST } from './silent-http-request.context';
 
 describe('apiActivityInterceptor', () => {
   const runInterceptor = (req: HttpRequest<unknown>, next: HttpHandlerFn) => {
@@ -63,6 +64,26 @@ describe('apiActivityInterceptor', () => {
     });
 
     const req = new HttpRequest('GET', '/assets/data.json');
+    const next: HttpHandlerFn = vi.fn(() => EMPTY);
+
+    runInterceptor(req, next).subscribe();
+
+    expect(activityService.begin).not.toHaveBeenCalled();
+    expect(activityService.end).not.toHaveBeenCalled();
+  });
+
+  it('does not track silent background api requests', () => {
+    const activityService: Pick<ApiActivityService, 'begin' | 'end'> = {
+      begin: vi.fn(),
+      end: vi.fn(),
+    };
+    TestBed.configureTestingModule({
+      providers: [{ provide: ApiActivityService, useValue: activityService }],
+    });
+
+    const req = new HttpRequest('GET', 'http://localhost:4450/vehicles', null, {
+      context: new HttpContext().set(SILENT_HTTP_REQUEST, true),
+    });
     const next: HttpHandlerFn = vi.fn(() => EMPTY);
 
     runInterceptor(req, next).subscribe();

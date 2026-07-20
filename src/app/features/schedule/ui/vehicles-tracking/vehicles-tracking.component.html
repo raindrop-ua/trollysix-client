@@ -1,0 +1,85 @@
+<section class="baseline-container -mb-2 pt-6 md:pt-12">
+  <div
+    class="baseline-borders baseline-surface rounded-2xl p-4 backdrop-blur md:p-4"
+  >
+    @switch (tracking().status) {
+      @case ('loading') {
+        <div
+          class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300"
+        >
+          <span class="size-5 animate-pulse rounded-full bg-blue-600/30"></span>
+          {{ copySchedule.vehiclesTracking.loading }}
+        </div>
+      }
+      @case ('error') {
+        <p class="text-sm text-slate-600 dark:text-slate-300">
+          {{ copySchedule.vehiclesTracking.unavailable }}
+        </p>
+      }
+      @case ('ready') {
+        @if (response(); as response) {
+          @if (response.status === 'available') {
+            <div class="items-start gap-4 sm:flex sm:justify-between">
+              <div>
+                <h2
+                  class="text-lg font-semibold text-slate-900 dark:text-white"
+                >
+                  {{ copySchedule.vehiclesTracking.title }}
+                </h2>
+                <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
+                  {{ response.vehicles.length }}
+                  {{ copySchedule.vehiclesTracking.count }}
+                </p>
+              </div>
+              @if (
+                response.receivedAt ?? response.sourceUpdatedAt;
+                as updatedAt
+              ) {
+                <p
+                  class="mt-1 text-xs text-slate-500 sm:mt-0 dark:text-slate-400"
+                >
+                  {{ copySchedule.vehiclesTracking.updatedAt }}
+                  {{ updatedAt | date: 'HH:mm:ss' }}
+                </p>
+              }
+            </div>
+
+            @if (response.vehicles.length) {
+              <ul
+                class="mt-4 flex flex-wrap gap-2"
+                [attr.aria-label]="copySchedule.vehiclesTracking.title"
+              >
+                @for (vehicle of response.vehicles; track vehicle.boardNumber) {
+                  <li
+                    class="flex min-w-40 items-center gap-2 rounded-xl border border-slate-200 bg-white/60 px-3 py-2 text-sm shadow-sm dark:border-white/10 dark:bg-slate-900/40"
+                    [class.opacity-50]="!vehicle.isEnabled"
+                  >
+                    <svg
+                      icon="logo"
+                      class="size-6 shrink-0 text-blue-600 dark:text-blue-400"
+                      aria-hidden="true"
+                    ></svg>
+                    <span
+                      class="font-semibold text-slate-900 dark:text-white"
+                      >{{ vehicle.boardNumber }}</span
+                    >
+                    @if (vehicle.speedKph !== null) {
+                      <span class="text-slate-600 dark:text-slate-300"
+                        >{{ vehicle.speedKph }}
+                        {{ copySchedule.vehiclesTracking.speed }}</span
+                      >
+                    }
+                  </li>
+                }
+              </ul>
+            }
+          } @else {
+            <p class="text-sm text-slate-600 dark:text-slate-300">
+              {{ copySchedule.vehiclesTracking.unavailable }}
+            </p>
+          }
+        }
+      }
+    }
+  </div>
+</section>

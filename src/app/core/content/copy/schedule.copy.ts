@@ -41,6 +41,14 @@ export const scheduleCopy = {
   departureConfig: {
     showScheduleNumber: 'Show schedule number',
   },
+  vehiclesTracking: {
+    title: 'Vehicles on Route 6 now',
+    count: 'vehicles',
+    speed: 'km/h',
+    updatedAt: 'Updated at',
+    loading: 'Loading live vehicles...',
+    unavailable: 'Live vehicle data is temporarily unavailable.',
+  },
   stopRating: 'Stop rating:',
   sharedRoutes: {
     title: 'Shared routes:',
