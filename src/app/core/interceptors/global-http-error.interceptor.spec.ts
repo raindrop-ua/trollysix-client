@@ -1,4 +1,5 @@
 import {
+  HttpContext,
   HttpErrorResponse,
   HttpHandlerFn,
   HttpRequest,
@@ -12,6 +13,7 @@ import { defer, firstValueFrom, throwError } from 'rxjs';
 import { ToastService } from '@core/services/toast.service';
 
 import { globalHttpErrorInterceptor } from './global-http-error.interceptor';
+import { SILENT_HTTP_REQUEST } from './silent-http-request.context';
 
 describe('globalHttpErrorInterceptor', () => {
   const runInterceptor = (req: HttpRequest<unknown>, next: HttpHandlerFn) => {
@@ -119,5 +121,24 @@ describe('globalHttpErrorInterceptor', () => {
       'Network error. Please check your connection.',
       { title: 'Connection issue' },
     );
+  });
+
+  it('does not retry or show a toast for silent background requests', async () => {
+    const toastMock: Pick<ToastService, 'error'> = { error: vi.fn() };
+    TestBed.configureTestingModule({
+      providers: [{ provide: ToastService, useValue: toastMock }],
+    });
+
+    const req = new HttpRequest('GET', '/api/vehicles', null, {
+      context: new HttpContext().set(SILENT_HTTP_REQUEST, true),
+    });
+    const error = new HttpErrorResponse({ status: 503, url: '/api/vehicles' });
+    const next: HttpHandlerFn = vi.fn(() => throwError(() => error));
+
+    const rejected = firstValueFrom(runInterceptor(req, next)).catch((e) => e);
+
+    expect(await rejected).toBe(error);
+    expect(next).toHaveBeenCalledTimes(1);
+    expect(toastMock.error).not.toHaveBeenCalled();
   });
 });

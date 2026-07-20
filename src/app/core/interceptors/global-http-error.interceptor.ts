@@ -10,11 +10,17 @@ import { Observable, retry, tap, timer } from 'rxjs';
 
 import { ToastService } from '@core/services/toast.service';
 
+import { SILENT_HTTP_REQUEST } from './silent-http-request.context';
+
 export const globalHttpErrorInterceptor: HttpInterceptorFn = (
   req,
   next,
 ): Observable<HttpEvent<unknown>> => {
   const toastService: ToastService = inject(ToastService);
+
+  if (req.context.get(SILENT_HTTP_REQUEST)) {
+    return next(req);
+  }
 
   return next(req).pipe(
     retry({
