@@ -7,6 +7,7 @@
 @import './app/styles/components/toast.css';
 @import './app/styles/components/global-message.css';
 @import './app/styles/components/api-activity-indicator.css';
+@import './app/styles/components/browser-storage-activity-indicator.css';
 @import './app/styles/components/dialog.css';
 @import './app/styles/components/directives.css';
 @import './app/styles/animations.css';

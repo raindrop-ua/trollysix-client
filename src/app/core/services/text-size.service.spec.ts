@@ -3,14 +3,22 @@ import { TestBed } from '@angular/core/testing';
 
 import { beforeEach, describe, expect, it } from 'vitest';
 
+import { BrowserStorageActivityService } from './browser-storage-activity.service';
 import { TextSizeService } from './text-size.service';
 
 describe('TextSizeService', () => {
+  const storageActivity = {
+    track<T>(operation: () => T): T {
+      return operation();
+    },
+  };
+
   const setup = (platformId: 'browser' | 'server') => {
     TestBed.resetTestingModule();
     TestBed.configureTestingModule({
       providers: [
         TextSizeService,
+        { provide: BrowserStorageActivityService, useValue: storageActivity },
         { provide: PLATFORM_ID, useValue: platformId },
       ],
     });
