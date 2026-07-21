@@ -2,13 +2,16 @@ import { AsyncPipe, DatePipe } from '@angular/common';
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { Store } from '@ngrx/store';
-import { combineLatest, map } from 'rxjs';
+import { combineLatest, map, Observable } from 'rxjs';
 
 import { copy } from '@core/content';
 import { ClockService } from '@core/services/clock.service';
 
 import { ScheduleService } from '@features/schedule/application/services/schedule.service';
-import { Status } from '@features/schedule/data-access/models/departure.model';
+import {
+  Departure,
+  Status,
+} from '@features/schedule/data-access/models/departure.model';
 import { selectTimetableLoading } from '@features/schedule/data-access/store/schedule.selectors';
 import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
@@ -23,12 +26,15 @@ export class DepartureTimeBarComponent {
   public readonly copySchedule = copy('schedule');
 
   public clockService: ClockService = inject(ClockService);
-  private readonly schedule = inject(ScheduleService);
-  public readonly departures$ = this.schedule.departures$;
+  private readonly schedule: ScheduleService = inject(ScheduleService);
+  public readonly departures$: Observable<Departure[]> =
+    this.schedule.departures$;
   private readonly store = inject(Store);
-  public readonly timetableLoading$ = this.store.select(selectTimetableLoading);
+  public readonly timetableLoading$: Observable<boolean> = this.store.select(
+    selectTimetableLoading,
+  );
 
-  public readonly next$ = this.departures$.pipe(
+  public readonly next$: Observable<Departure | null> = this.departures$.pipe(
     map(
       (list) =>
         list.find((d) => d.status === Status.Now) ??
@@ -39,7 +45,7 @@ export class DepartureTimeBarComponent {
     ),
   );
 
-  public readonly minutesToNext$ = combineLatest([
+  public readonly minutesToNext$: Observable<number | null> = combineLatest([
     this.next$,
     this.clockService.now$,
   ]).pipe(
@@ -55,11 +61,12 @@ export class DepartureTimeBarComponent {
     }),
   );
 
-  public readonly timeToNextLabel$ = this.minutesToNext$.pipe(
-    map((minutes) => this.formatMinutesToNext(minutes)),
-  );
+  public readonly timeToNextLabel$: Observable<string | null> =
+    this.minutesToNext$.pipe(
+      map((minutes) => this.formatMinutesToNext(minutes)),
+    );
 
-  public readonly label$ = combineLatest([
+  public readonly label$: Observable<string> = combineLatest([
     this.next$,
     this.departures$,
     this.timetableLoading$,

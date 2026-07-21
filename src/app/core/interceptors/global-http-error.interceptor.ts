@@ -1,16 +1,26 @@
 import {
   HttpErrorResponse,
+  HttpEvent,
   HttpInterceptorFn,
   HttpRequest,
 } from '@angular/common/http';
 import { inject } from '@angular/core';
 
-import { retry, tap, timer } from 'rxjs';
+import { Observable, retry, tap, timer } from 'rxjs';
 
 import { ToastService } from '@core/services/toast.service';
 
-export const globalHttpErrorInterceptor: HttpInterceptorFn = (req, next) => {
+import { SILENT_HTTP_REQUEST } from './silent-http-request.context';
+
+export const globalHttpErrorInterceptor: HttpInterceptorFn = (
+  req,
+  next,
+): Observable<HttpEvent<unknown>> => {
   const toastService: ToastService = inject(ToastService);
+
+  if (req.context.get(SILENT_HTTP_REQUEST)) {
+    return next(req);
+  }
 
   return next(req).pipe(
     retry({

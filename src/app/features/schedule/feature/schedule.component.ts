@@ -14,6 +14,7 @@ import { SelectorsGroupComponent } from '@features/schedule/ui/selectors-group/s
 import { StopDetailsComponent } from '@features/schedule/ui/stop-details/stop-details.component';
 import { StopToolbarComponent } from '@features/schedule/ui/stop-toolbar/stop-toolbar.component';
 import { StopsListComponent } from '@features/schedule/ui/stops-list/stops-list.component';
+import { VehiclesTrackingComponent } from '@features/schedule/ui/vehicles-tracking/vehicles-tracking.component';
 import { GenericHeaderComponent } from '@shared/ui/sections/generic-header/generic-header.component';
 import { NoticeComponent } from '@shared/ui/sections/notice/notice.component';
 
@@ -33,6 +34,7 @@ import {
     StopsListComponent,
     StopDetailsComponent,
     StopToolbarComponent,
+    VehiclesTrackingComponent,
   ],
   templateUrl: './schedule.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

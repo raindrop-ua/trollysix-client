@@ -10,6 +10,11 @@ export interface DepartureBound {
 type DeparturesByDirection = Partial<Record<DirectionName, DepartureBound>>;
 type DeparturesByDayType = Partial<Record<DayTypeName, DepartureBound>>;
 
+export interface Geo {
+  lat: number;
+  lon: number;
+}
+
 export interface Stop {
   id: string;
   name: string;
@@ -22,14 +27,8 @@ export interface Stop {
   sharedRoutes: string[];
   rating: number | null;
   geo?: {
-    forward?: {
-      lat: number;
-      lon: number;
-    } | null;
-    backward?: {
-      lat: number;
-      lon: number;
-    } | null;
+    forward?: Geo | null;
+    backward?: Geo | null;
   };
   weather?: Weather | null;
 }

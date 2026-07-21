@@ -6,4 +6,5 @@ export enum AppRouteEnum {
   NotFound = '404',
   PrivacyPolicy = 'privacy-policy',
   TermsOfUse = 'terms-of-use',
+  Support = 'support',
 }

@@ -2,7 +2,7 @@ import { AsyncPipe, NgOptimizedImage } from '@angular/common';
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { distinctUntilChanged, map } from 'rxjs';
+import { distinctUntilChanged, map, Observable } from 'rxjs';
 
 import { copy } from '@core/content';
 import { AppRouteEnum } from '@core/enums/app-route.enum';
@@ -34,7 +34,7 @@ export class MastheadComponent {
   public readonly copyHome = copy('home');
   private readonly clock = inject(ClockService);
 
-  public readonly isWinter$ = this.clock.now$.pipe(
+  public readonly isWinter$: Observable<boolean> = this.clock.now$.pipe(
     map((date) => {
       const month = date.getMonth(); // 0 = Jan, 11 = Dec
       return month === 11 || month === 0 || month === 1; // Dec, Jan or Feb

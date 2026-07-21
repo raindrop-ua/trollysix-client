@@ -2,6 +2,9 @@ export const servicesCopy = {
   apiActivity: {
     loadingApiData: 'Loading API data',
   },
+  browserStorageActivity: {
+    accessingStorage: 'Accessing cookies and local storage',
+  },
   networkStatus: {
     offlineMessage: 'You are offline',
     connectionLost: 'Connection lost',

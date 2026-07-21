@@ -4,6 +4,7 @@ import {
   signal,
   effect,
   ChangeDetectionStrategy,
+  Signal,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 
@@ -12,6 +13,7 @@ import { Store } from '@ngrx/store';
 import { copy } from '@core/content';
 
 import { ScheduleService } from '@features/schedule/application/services/schedule.service';
+import { Departure } from '@features/schedule/data-access/models/departure.model';
 import {
   selectSelectedStopId,
   selectTimetableLoading,
@@ -30,15 +32,18 @@ export class DepartureTableComponent {
   private static readonly minimumLoadingMs = 500;
 
   public readonly copySchedule = copy('schedule');
-  private readonly schedule = inject(ScheduleService);
+  private readonly schedule: ScheduleService = inject(ScheduleService);
   private readonly store = inject(Store);
-  public readonly departures = toSignal(this.schedule.departures$, {
-    initialValue: [],
-  });
-  public readonly timetableLoading = this.store.selectSignal(
+  public readonly departures: Signal<Departure[]> = toSignal(
+    this.schedule.departures$,
+    {
+      initialValue: [],
+    },
+  );
+  public readonly timetableLoading: Signal<boolean> = this.store.selectSignal(
     selectTimetableLoading,
   );
-  public readonly selectedStopId =
+  public readonly selectedStopId: Signal<string | null> =
     this.store.selectSignal(selectSelectedStopId);
   public readonly showLoading = signal(false);
   private selectedTime = signal<string | null>(null);

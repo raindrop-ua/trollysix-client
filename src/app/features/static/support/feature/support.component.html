@@ -1,0 +1,11 @@
+<trollysix-generic-header [title]="copyLegal.support.title" />
+<trollysix-generic-section-block class="relative mt-8 mb-20 block">
+  <div class="prose prose-slate dark:prose-invert w-full">
+    <p>{{ copyLegal.support.description }}</p>
+    <p>
+      <a [href]="'mailto:' + copyLegal.support.email">{{
+        copyLegal.support.email
+      }}</a>
+    </p>
+  </div>
+</trollysix-generic-section-block>

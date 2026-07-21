@@ -6,6 +6,7 @@ import {
   OnInit,
   DestroyRef,
   ChangeDetectionStrategy,
+  Signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -48,11 +49,11 @@ export class FullListOfStopsComponent implements OnInit {
       });
   }
 
-  public readonly routeStopsForward = computed(() => {
+  public readonly routeStopsForward: Signal<RouteStop[]> = computed(() => {
     return this.routeStops().filter((stop) => stop.direction === 'forward');
   });
 
-  public readonly routeStopsBackward = computed(() => {
+  public readonly routeStopsBackward: Signal<RouteStop[]> = computed(() => {
     return this.routeStops().filter((stop) => stop.direction === 'backward');
   });
 }
