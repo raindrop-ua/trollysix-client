@@ -75,7 +75,11 @@
             }
           } @else {
             <p class="text-sm text-slate-600 dark:text-slate-300">
-              {{ copySchedule.vehiclesTracking.unavailable }}
+              {{
+                response.reason === 'outside_service_hours'
+                  ? copySchedule.vehiclesTracking.outsideServiceHours
+                  : copySchedule.vehiclesTracking.unavailable
+              }}
             </p>
           }
         }
