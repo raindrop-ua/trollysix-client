@@ -48,6 +48,7 @@ export const scheduleCopy = {
     updatedAt: 'Updated at',
     loading: 'Loading live vehicles...',
     unavailable: 'Live vehicle data is temporarily unavailable.',
+    outsideServiceHours: 'Live vehicle data is unavailable at this time.',
   },
   stopRating: 'Stop rating:',
   sharedRoutes: {
