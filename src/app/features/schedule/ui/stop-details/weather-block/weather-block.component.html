@@ -1,5 +1,7 @@
 @if (stopData().weather; as weather) {
-  <div class="baseline-borders baseline-surface h-full rounded-3xl p-4">
+  <div
+    class="baseline-borders baseline-surface h-full rounded-3xl p-4 shadow-sm"
+  >
     <div class="mb-2 text-base font-medium text-slate-700 dark:text-slate-200">
       {{ copySchedule.weather.title }}
     </div>
@@ -7,7 +9,7 @@
       class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300"
     >
       <div
-        class="baseline-borders baseline-surface relative h-12 w-12 rounded-xl p-3 text-base"
+        class="baseline-borders baseline-surface relative h-12 w-12 rounded-xl p-3 text-base shadow-sm"
       >
         <img
           class="h-12 w-12"
