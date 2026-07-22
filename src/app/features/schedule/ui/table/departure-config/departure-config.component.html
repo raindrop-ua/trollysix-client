@@ -2,7 +2,7 @@
   @let showSchedule = (showRunNumbers$ | async) ?? false;
 
   <div
-    class="baseline-borders baseline-surface rounded-3xl p-3 backdrop-blur md:p-4"
+    class="baseline-borders baseline-surface rounded-3xl p-3 shadow-sm backdrop-blur md:p-4"
   >
     <div
       class="flex flex-wrap items-center justify-end gap-3 text-xs text-blue-700 dark:text-slate-400"
@@ -14,7 +14,7 @@
         <div class="relative flex">
           <input
             id="showSchedules"
-            class="peer bg-gary-400 h-6 w-10 cursor-pointer appearance-none rounded-full border border-gray-300 checked:border-blue-700 focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 focus-visible:outline-none dark:border-gray-600 dark:checked:border-blue-600"
+            class="peer bg-gary-400 h-6 w-10 cursor-pointer appearance-none rounded-full border border-gray-300 shadow-sm checked:border-blue-700 focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 focus-visible:outline-none dark:border-gray-600 dark:checked:border-blue-600"
             type="checkbox"
             [checked]="showSchedule"
             (change)="onToggleSchedule($event)"
