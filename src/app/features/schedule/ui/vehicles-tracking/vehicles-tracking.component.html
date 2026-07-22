@@ -1,6 +1,6 @@
 <section class="baseline-container -mb-2 pt-6 md:pt-12">
   <div
-    class="baseline-borders baseline-surface rounded-2xl p-4 backdrop-blur md:p-4"
+    class="baseline-borders baseline-surface rounded-2xl p-4 shadow-sm backdrop-blur md:p-4"
   >
     @switch (tracking().status) {
       @case ('loading') {
@@ -52,15 +52,16 @@
                 @for (vehicle of response.vehicles; track vehicle.boardNumber) {
                   <li
                     class="flex min-w-40 items-center gap-2 rounded-xl border border-slate-200 bg-white/60 px-3 py-2 text-sm shadow-sm dark:border-white/10 dark:bg-slate-900/40"
-                    [class.opacity-50]="!vehicle.isEnabled"
                   >
                     <svg
                       icon="logo"
                       class="size-6 shrink-0 text-blue-600 dark:text-blue-400"
                       aria-hidden="true"
+                      [class.opacity-50]="!vehicle.isEnabled"
                     ></svg>
                     <span
                       class="font-semibold text-slate-900 dark:text-white"
+                      [class.opacity-50]="!vehicle.isEnabled"
                       >{{ vehicle.boardNumber }}</span
                     >
                     @if (vehicle.speedKph !== null) {

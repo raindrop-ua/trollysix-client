@@ -13,7 +13,7 @@
     role="radiogroup"
     [attr.aria-labelledby]="titleId"
     aria-orientation="horizontal"
-    class="inline-flex w-full overflow-hidden rounded-xl ring-1 ring-slate-900/10 dark:ring-white/10"
+    class="inline-flex w-full overflow-hidden rounded-xl shadow-sm ring-1 ring-slate-900/10 dark:ring-white/10"
   >
     @for (option of options(); track getValue(option)) {
       @let value = getValue(option);
