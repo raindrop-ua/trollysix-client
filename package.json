@@ -29,6 +29,7 @@
     "@angular/router": "^22.0.7",
     "@angular/service-worker": "^22.0.7",
     "@angular/ssr": "^22.0.7",
+    "@date-fns/tz": "^1.5.0",
     "@ngrx/effects": "^21.1.1",
     "@ngrx/entity": "^21.1.1",
     "@ngrx/router-store": "^21.1.1",

@@ -1,5 +1,8 @@
+import { TZDate } from '@date-fns/tz';
+
 import { DayType } from '../models/daytype.model';
 import { DirectionName } from '../models/direction.model';
+import { SCHEDULE_TIME_ZONE } from '../models/timetable.model';
 
 export function pickValidStopId(
   stops: { id: string }[],
@@ -37,7 +40,7 @@ export function resolveAutoDayTypeName(
     return null;
   }
 
-  const dayOfWeek = today.getDay(); // 0 - Sunday, 6 - Saturday
+  const dayOfWeek = TZDate.tz(SCHEDULE_TIME_ZONE, today).getDay();
   const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
 
   const findByName = (name: string) =>

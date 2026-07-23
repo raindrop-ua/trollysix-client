@@ -8,6 +8,7 @@ export enum Status {
 
 export interface Departure {
   status: Status;
+  departureAt: Date;
   time: string;
   runNumber: number | null;
   isCanceled?: boolean;
