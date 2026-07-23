@@ -13,6 +13,7 @@ import { SchedulePageActions } from '../../data-access/store/schedule.actions';
 import { scheduleFeature } from '../../data-access/store/schedule.reducer';
 import { selectCurrentTimetableTimes } from '../../data-access/store/schedule.selectors';
 
+import { ScheduleTimeService } from './schedule-time.service';
 import { ScheduleService } from './schedule.service';
 
 interface StoreLike {
@@ -38,6 +39,15 @@ describe('ScheduleService (Injector.create)', () => {
     const show$: Observable<boolean> = of(opts.showNumbers);
 
     const dispatch = vi.fn<(action: unknown) => void>();
+    const scheduleTimeMock: Pick<ScheduleTimeService, 'resolve'> = {
+      resolve: (time, now) => {
+        const [hours, minutes] = time.split(':').map(Number);
+        const departureAt = new Date(now ?? Date.now());
+        departureAt.setHours(hours, minutes, 0, 0);
+
+        return { departureAt, time };
+      },
+    };
 
     function select(selector: unknown) {
       if (selector === selectCurrentTimetableTimes) return times$;
@@ -52,6 +62,7 @@ describe('ScheduleService (Injector.create)', () => {
     const injector = Injector.create({
       providers: [
         { provide: ClockService, useValue: clockMock },
+        { provide: ScheduleTimeService, useValue: scheduleTimeMock },
         { provide: Store, useValue: storeMock },
         ScheduleService,
       ],
