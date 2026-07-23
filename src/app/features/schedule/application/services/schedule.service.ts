@@ -17,9 +17,12 @@ import { SchedulePageActions } from '../../data-access/store/schedule.actions';
 import { scheduleFeature } from '../../data-access/store/schedule.reducer';
 import { selectCurrentTimetableTimes } from '../../data-access/store/schedule.selectors';
 
+import { ScheduleTimeService } from './schedule-time.service';
+
 @Injectable()
 export class ScheduleService {
   private readonly clock = inject(ClockService);
+  private readonly scheduleTime = inject(ScheduleTimeService);
   private readonly store = inject(Store);
 
   private readonly times$ = this.store.select(selectCurrentTimetableTimes).pipe(
@@ -32,13 +35,18 @@ export class ScheduleService {
     this.times$,
   ]).pipe(
     map(([now, times]) =>
-      times.map<Departure>((t) => ({
-        time: t.time,
-        runNumber: t.runNumber,
-        status: t.isCanceled
-          ? Status.Canceled
-          : this.statusFor(now, this.toTodayDate(t.time, now)),
-      })),
+      times.map<Departure>((t) => {
+        const { departureAt, time } = this.scheduleTime.resolve(t.time, now);
+
+        return {
+          departureAt,
+          time,
+          runNumber: t.runNumber,
+          status: t.isCanceled
+            ? Status.Canceled
+            : this.statusFor(now, departureAt),
+        };
+      }),
     ),
     shareReplay({ bufferSize: 1, refCount: true }),
   );
@@ -62,13 +70,6 @@ export class ScheduleService {
       }
     }
     return true;
-  }
-
-  private toTodayDate(hhmm: string, now: Date): Date {
-    const [h, m] = hhmm.split(':').map(Number);
-    const d = new Date(now);
-    d.setHours(h, m, 0, 0);
-    return d;
   }
 
   private statusFor(now: Date, dep: Date): Status {

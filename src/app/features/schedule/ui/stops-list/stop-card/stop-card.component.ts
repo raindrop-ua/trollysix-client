@@ -9,6 +9,7 @@ import { Store } from '@ngrx/store';
 
 import { copy } from '@core/content';
 
+import { ScheduleTimeService } from '@features/schedule/application/services/schedule-time.service';
 import { DayTypeName } from '@features/schedule/data-access/models/daytype.model';
 import { DirectionName } from '@features/schedule/data-access/models/direction.model';
 import { DepartureBound } from '@features/schedule/data-access/models/stop.model';
@@ -26,7 +27,8 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 export class StopCardComponent {
   public readonly copySchedule = copy('schedule');
 
-  private store = inject(Store);
+  private readonly scheduleTime = inject(ScheduleTimeService);
+  private readonly store = inject(Store);
 
   public readonly selected = input(false);
   public readonly stopData = input.required<Stop>();
@@ -44,7 +46,7 @@ export class StopCardComponent {
 
     const byDirection = departures[direction];
     if (this.isDepartureBound(byDirection)) {
-      return byDirection;
+      return this.toLocalTime(byDirection);
     }
 
     const dayType = this.asDayTypeName(dayTypeName);
@@ -55,7 +57,7 @@ export class StopCardComponent {
     if (this.isRecord(byDirection)) {
       const byDirectionAndDayType = byDirection[dayType];
       if (this.isDepartureBound(byDirectionAndDayType)) {
-        return byDirectionAndDayType;
+        return this.toLocalTime(byDirectionAndDayType);
       }
     }
 
@@ -63,7 +65,7 @@ export class StopCardComponent {
     if (this.isRecord(byDayType)) {
       const byDayTypeAndDirection = byDayType[direction];
       if (this.isDepartureBound(byDayTypeAndDirection)) {
-        return byDayTypeAndDirection;
+        return this.toLocalTime(byDayTypeAndDirection);
       }
     }
 
@@ -93,5 +95,12 @@ export class StopCardComponent {
     return (
       typeof value['first'] === 'string' && typeof value['last'] === 'string'
     );
+  }
+
+  private toLocalTime(departure: DepartureBound): DepartureBound {
+    return {
+      first: this.scheduleTime.format(departure.first),
+      last: this.scheduleTime.format(departure.last),
+    };
   }
 }

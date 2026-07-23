@@ -55,13 +55,16 @@
                   >
                     <svg
                       icon="logo"
-                      class="size-6 shrink-0 text-blue-600 dark:text-blue-400"
+                      class="size-6 shrink-0"
                       aria-hidden="true"
-                      [class.opacity-50]="!vehicle.isEnabled"
+                      [class.text-blue-600]="vehicle.isEnabled"
+                      [class.dark:text-blue-400]="vehicle.isEnabled"
+                      [class.text-slate-400]="!vehicle.isEnabled"
+                      [class.dark:text-slate-700]="!vehicle.isEnabled"
                     ></svg>
                     <span
                       class="font-semibold text-slate-900 dark:text-white"
-                      [class.opacity-50]="!vehicle.isEnabled"
+                      [class.opacity-75]="!vehicle.isEnabled"
                       >{{ vehicle.boardNumber }}</span
                     >
                     @if (vehicle.speedKph !== null) {
