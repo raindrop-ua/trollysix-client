@@ -73,7 +73,7 @@ describe('ScheduleApiService', () => {
     const response: Direction[] = [
       { id: '1', name: 'forward', label: 'Forward' },
     ];
-    req.flush(response);
+    req.flush({ statusCode: 200, message: 'success', data: response });
 
     const result = await request;
     expect(result).toEqual(response);
@@ -90,7 +90,7 @@ describe('ScheduleApiService', () => {
     const response: Direction[] = [
       { id: '1', name: 'forward', label: 'Forward' },
     ];
-    req.flush(response);
+    req.flush({ statusCode: 200, message: 'success', data: response });
 
     await expect(request).resolves.toEqual(response);
     expect(transferState.hasKey(key)).toBe(false);
@@ -119,7 +119,7 @@ describe('ScheduleApiService', () => {
       direction: 'forward',
       times: [{ time: '10:00', runNumber: 1 }],
     };
-    req.flush(response);
+    req.flush({ statusCode: 200, message: 'success', data: response });
 
     await expect(request).resolves.toEqual(response);
   });
@@ -129,7 +129,11 @@ describe('ScheduleApiService', () => {
     const request = firstValueFrom(service.getDirections());
 
     const req = http.expectOne('http://localhost:4450/directions');
-    req.flush([{ id: '1', name: 'sideways', label: 'Sideways' }]);
+    req.flush({
+      statusCode: 200,
+      message: 'success',
+      data: [{ id: '1', name: 'sideways', label: 'Sideways' }],
+    });
 
     await expect(request).rejects.toThrowError(
       'Invalid schedule API response: directions',

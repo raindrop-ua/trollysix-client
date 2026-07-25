@@ -6,6 +6,7 @@ import { map, Observable } from 'rxjs';
 import { environment } from '@environments/environment';
 
 import { SILENT_HTTP_REQUEST } from '@core/interceptors/silent-http-request.context';
+import { ApiResponse } from '@core/models/api-response.model';
 
 import { parseVehiclesTrackingResponse } from '../models/vehicles-tracking.contract';
 import { VehiclesTrackingResponse } from '../models/vehicles-tracking.model';
@@ -16,9 +17,9 @@ export class VehiclesTrackingApiService {
 
   public getVehicles(): Observable<VehiclesTrackingResponse> {
     return this.http
-      .get<unknown>(`${environment.BASE_API_URL}/vehicles`, {
+      .get<ApiResponse<unknown>>(`${environment.BASE_API_URL}/vehicles`, {
         context: new HttpContext().set(SILENT_HTTP_REQUEST, true),
       })
-      .pipe(map(parseVehiclesTrackingResponse));
+      .pipe(map((response) => parseVehiclesTrackingResponse(response.data)));
   }
 }

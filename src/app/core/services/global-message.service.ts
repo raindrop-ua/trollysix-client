@@ -3,11 +3,12 @@ import { inject, Service } from '@angular/core';
 
 import { catchError } from 'rxjs/operators';
 
-import { Observable, of, shareReplay, timeout } from 'rxjs';
+import { map, Observable, of, shareReplay, timeout } from 'rxjs';
 
 import { environment } from '@environments/environment';
 
 import { GlobalMessage } from '@core/models/global-message.model';
+import { ApiResponse } from '@core/models/api-response.model';
 
 @Service()
 export class GlobalMessageService {
@@ -16,8 +17,9 @@ export class GlobalMessageService {
   private http = inject(HttpClient);
 
   private readonly globalMessage$ = this.http
-    .get<GlobalMessage[]>(`${this.BASE_URL}/global-message`)
+    .get<ApiResponse<GlobalMessage[]>>(`${this.BASE_URL}/global-message`)
     .pipe(
+      map((response) => response.data),
       timeout(this.REQUEST_TIMEOUT_MS),
       shareReplay({ bufferSize: 1, refCount: true }),
     );
