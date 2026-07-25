@@ -7,8 +7,8 @@ import { map, Observable, of, shareReplay, timeout } from 'rxjs';
 
 import { environment } from '@environments/environment';
 
-import { GlobalMessage } from '@core/models/global-message.model';
 import { ApiResponse } from '@core/models/api-response.model';
+import { GlobalMessage } from '@core/models/global-message.model';
 
 @Service()
 export class GlobalMessageService {
