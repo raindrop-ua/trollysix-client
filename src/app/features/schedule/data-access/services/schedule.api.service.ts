@@ -12,6 +12,8 @@ import { Observable, map, of, tap } from 'rxjs';
 
 import { environment } from '@environments/environment';
 
+import { ApiResponse } from '@core/models/api-response.model';
+
 import { DayType } from '../models/daytype.model';
 import { Direction } from '../models/direction.model';
 import {
@@ -100,8 +102,8 @@ export class ScheduleApiService {
       }
     }
 
-    return this.http.get<unknown>(url, options).pipe(
-      map((response) => parser(response)),
+    return this.http.get<ApiResponse<unknown>>(url, options).pipe(
+      map((response) => parser(response.data)),
       tap((response) => {
         if (isPlatformServer(this.platformId)) {
           this.transferState.set(stateKey, response);

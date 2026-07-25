@@ -50,13 +50,11 @@ export class DepartureTimeBarComponent {
     this.clockService.now$,
   ]).pipe(
     map(([next, now]) => {
-      if (!next?.time) return null;
+      if (!next) return null;
 
-      const [hours, minutes] = next.time.split(':').map(Number);
-      const departure = new Date(now);
-      departure.setHours(hours, minutes, 0, 0);
-
-      const diff = Math.floor((departure.getTime() - now.getTime()) / 60000);
+      const diff = Math.floor(
+        (next.departureAt.getTime() - now.getTime()) / 60000,
+      );
       return diff >= 0 ? diff : null;
     }),
   );

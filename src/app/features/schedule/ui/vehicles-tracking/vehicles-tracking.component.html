@@ -1,4 +1,4 @@
-<section class="baseline-container -mb-2 pt-6 md:pt-12">
+<section class="baseline-container mt-2 mb-10">
   <div
     class="baseline-borders baseline-surface rounded-2xl p-4 shadow-sm backdrop-blur md:p-4"
   >
@@ -51,17 +51,20 @@
               >
                 @for (vehicle of response.vehicles; track vehicle.boardNumber) {
                   <li
-                    class="flex min-w-40 items-center gap-2 rounded-xl border border-slate-200 bg-white/60 px-3 py-2 text-sm shadow-sm dark:border-white/10 dark:bg-slate-900/40"
+                    class="flex min-w-40 cursor-default items-center gap-2 rounded-xl border border-slate-200 bg-white/60 px-3 py-2 text-sm shadow-sm dark:border-white/10 dark:bg-slate-900/40"
                   >
                     <svg
                       icon="logo"
-                      class="size-6 shrink-0 text-blue-600 dark:text-blue-400"
+                      class="size-6 shrink-0"
                       aria-hidden="true"
-                      [class.opacity-50]="!vehicle.isEnabled"
+                      [class.text-blue-600]="vehicle.isEnabled"
+                      [class.dark:text-blue-400]="vehicle.isEnabled"
+                      [class.text-slate-400]="!vehicle.isEnabled"
+                      [class.dark:text-slate-700]="!vehicle.isEnabled"
                     ></svg>
                     <span
                       class="font-semibold text-slate-900 dark:text-white"
-                      [class.opacity-50]="!vehicle.isEnabled"
+                      [class.opacity-75]="!vehicle.isEnabled"
                       >{{ vehicle.boardNumber }}</span
                     >
                     @if (vehicle.speedKph !== null) {

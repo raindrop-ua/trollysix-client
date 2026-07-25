@@ -1,6 +1,8 @@
 import { DayTypeName } from './daytype.model';
 import { DirectionName } from './direction.model';
 
+export const SCHEDULE_TIME_ZONE = 'Europe/Kyiv';
+
 export interface TimeEntity {
   time: string;
   runNumber: number | null;
