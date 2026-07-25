@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 
-import { catchError, Observable, of, shareReplay, timeout } from 'rxjs';
+import { catchError, map, Observable, of, shareReplay, timeout } from 'rxjs';
 
 import { environment } from '@environments/environment';
+
+import { ApiResponse } from '@core/models/api-response.model';
 
 import { Testimonials } from '../models/testimonial.model';
 
@@ -14,8 +16,9 @@ export class TestimonialsListService {
   private http = inject(HttpClient);
 
   private readonly testimonials$: Observable<Testimonials> = this.http
-    .get<Testimonials>(`${this.BASE_URL}/testimonials`)
+    .get<ApiResponse<Testimonials>>(`${this.BASE_URL}/testimonials`)
     .pipe(
+      map((response) => response.data),
       timeout(this.REQUEST_TIMEOUT_MS),
       catchError(() =>
         of<Testimonials>({ testimonials: [], overallRating: 0 }),

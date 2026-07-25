@@ -3,9 +3,11 @@ import { inject, Injectable } from '@angular/core';
 
 import { catchError } from 'rxjs/operators';
 
-import { Observable, of, shareReplay, timeout } from 'rxjs';
+import { map, Observable, of, shareReplay, timeout } from 'rxjs';
 
 import { environment } from '@environments/environment';
+
+import { ApiResponse } from '@core/models/api-response.model';
 
 import { Metric } from '@shared/ui/sections/metrics/metrics.model';
 
@@ -16,8 +18,9 @@ export class MetricsListService {
   private http = inject(HttpClient);
 
   private readonly metrics$: Observable<Metric[]> = this.http
-    .get<Metric[]>(`${this.BASE_URL}/metrics`)
+    .get<ApiResponse<Metric[]>>(`${this.BASE_URL}/metrics`)
     .pipe(
+      map((response) => response.data),
       timeout(this.REQUEST_TIMEOUT_MS),
       shareReplay({ bufferSize: 1, refCount: true }),
     );
