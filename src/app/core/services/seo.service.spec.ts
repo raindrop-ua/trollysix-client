@@ -16,7 +16,7 @@ import { environment } from '@environments/environment';
 import { SeoService } from './seo.service';
 
 describe('SeoService (Injector.create)', () => {
-  const defaultOgImage = `${environment.PUBLIC_URL}${environment.SEO_ASSETS}og-vehicle.png`;
+  const defaultOgImage = `${environment.PUBLIC_URL}${environment.SEO_ASSETS}og-schedule.png`;
   const customOgImage = `${environment.PUBLIC_URL}${environment.SEO_ASSETS}custom-og.png`;
 
   const makeInjector = () => {
