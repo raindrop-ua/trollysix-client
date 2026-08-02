@@ -17,7 +17,7 @@ export class SeoService {
   private readonly titleService = inject(Title);
   private readonly metaService = inject(Meta);
 
-  private readonly DEFAULT_OG_IMAGE = `${environment.PUBLIC_URL}${environment.SEO_ASSETS}og-default.png`;
+  private readonly DEFAULT_OG_IMAGE = `${environment.PUBLIC_URL}${environment.SEO_ASSETS}og-vehicle.png`;
 
   constructor() {
     this.router.events
