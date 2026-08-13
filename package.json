@@ -47,6 +47,7 @@
     "@commitlint/cli": "^20.5.3",
     "@commitlint/config-conventional": "^20.5.3",
     "@eslint/js": "^9.39.5",
+    "@tailwindcss/language-server": "0.16.0",
     "@tailwindcss/postcss": "^4.3.3",
     "@testing-library/angular": "^19.4.1",
     "@testing-library/jest-dom": "^6.10.0",
