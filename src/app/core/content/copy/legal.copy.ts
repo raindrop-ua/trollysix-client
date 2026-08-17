@@ -121,7 +121,7 @@ export const legalCopy = {
             value:
               'If you have any questions regarding this Privacy Policy, you may contact the project owner at:',
           },
-          { type: 'paragraph', value: 'contacts@trolly6.com' },
+          { type: 'paragraph', value: 'trollysixapp@gmail.com' },
         ],
       },
     ],
@@ -270,6 +270,6 @@ export const legalCopy = {
     title: 'Support',
     description:
       'For app issues, feedback, or feature requests, contact us at:',
-    email: 'contacts@trolly6.com',
+    email: 'trollysixapp@gmail.com',
   },
 } as const;
