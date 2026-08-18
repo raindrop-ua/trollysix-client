@@ -17,8 +17,8 @@
       focusable="false"
     ></svg>
     <span
-      >{{ $safeNavigationMigration(geo()?.lat) | number: '1.1-8' }} •
-      {{ $safeNavigationMigration(geo()?.lon) | number: '1.1-8' }}</span
+      >{{ geo()?.lat | number: '1.1-8' }} •
+      {{ geo()?.lon | number: '1.1-8' }}</span
     >
   </a>
 }
