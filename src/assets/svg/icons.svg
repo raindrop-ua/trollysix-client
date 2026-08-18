@@ -209,4 +209,10 @@
     <path d="M8 12h8"/>
   </symbol>
 
+  <symbol id="circle-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+    <path d="m9 11 3 3L22 4"></path>
+  </symbol>
+
 </svg>
