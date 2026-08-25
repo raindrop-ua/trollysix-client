@@ -5,11 +5,10 @@ import { copy } from '@core/content';
 import { AppRouteEnum } from '@core/enums/app-route.enum';
 
 import { BtnDirective } from '@shared/directives/btn.directive';
-import { ColorSplashComponent } from '@shared/ui/color-splash/color-splash.component';
 
 @Component({
   selector: 'trollysix-big-claims',
-  imports: [RouterLink, BtnDirective, ColorSplashComponent],
+  imports: [RouterLink, BtnDirective],
   templateUrl: './big-claims.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'block' },
