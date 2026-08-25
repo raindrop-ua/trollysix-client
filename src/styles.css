@@ -10,6 +10,7 @@
 @import './app/styles/components/browser-storage-activity-indicator.css';
 @import './app/styles/components/dialog.css';
 @import './app/styles/components/directives.css';
+@import './app/styles/components/decoration.css';
 @import './app/styles/animations.css';
 
 @custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
