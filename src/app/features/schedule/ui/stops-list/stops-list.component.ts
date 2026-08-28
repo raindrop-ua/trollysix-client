@@ -3,6 +3,7 @@ import {
   Component,
   inject,
   ChangeDetectionStrategy,
+  linkedSignal,
   Signal,
 } from '@angular/core';
 
@@ -18,6 +19,7 @@ import {
   selectSelectedDayType,
   selectSelectedDirection,
   selectSelectedStopId,
+  selectTimetableLoading,
 } from '@features/schedule/data-access/store/schedule.selectors';
 
 import { StopCardComponent } from './stop-card/stop-card.component';
@@ -44,6 +46,21 @@ export class StopsListComponent {
     this.store.selectSignal(selectSelectedDayType);
   public readonly selectedDirectionName: Signal<DirectionName | null> =
     this.store.selectSignal(selectSelectedDirection);
-  public readonly currentTimetableValidFrom: Signal<string | null> =
+  private readonly timetableLoading: Signal<boolean> = this.store.selectSignal(
+    selectTimetableLoading,
+  );
+  private readonly loadedTimetableValidFrom: Signal<string | null> =
     this.store.selectSignal(selectCurrentTimetableValidFrom);
+
+  public readonly currentTimetableValidFrom: Signal<string | null> =
+    linkedSignal<{ loading: boolean; validFrom: string | null }, string | null>(
+      {
+        source: () => ({
+          loading: this.timetableLoading(),
+          validFrom: this.loadedTimetableValidFrom(),
+        }),
+        computation: ({ loading, validFrom }, previous) =>
+          loading ? (previous?.value ?? validFrom) : validFrom,
+      },
+    );
 }
