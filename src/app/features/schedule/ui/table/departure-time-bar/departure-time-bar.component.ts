@@ -131,21 +131,16 @@ export class DepartureTimeBarComponent {
           if (source.loading) {
             requestStarted = true;
 
-            if (confirmedContent) {
-              return of({
-                ...confirmedContent,
-                busy: true,
-                visible: true,
-              });
-            }
-
             const loadingContent: DepartureTimeBarContent = {
               timeToNextLabel: null,
               label: this.copySchedule.departureTimeBar.loading,
             };
+            const pendingContent: DepartureTimeBarViewModel = confirmedContent
+              ? { ...confirmedContent, busy: true, visible: true }
+              : { ...loadingContent, busy: true, visible: false };
 
             return concat(
-              of({ ...loadingContent, busy: true, visible: false }),
+              of(pendingContent),
               timer(DepartureTimeBarComponent.loadingDelayMs).pipe(
                 map(() => {
                   loadingShownAt = Date.now();
