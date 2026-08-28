@@ -16,32 +16,37 @@
       {{ clockService.now$ | async | date: 'HH:mm' }}
     </time>
   </div>
-  <div
-    role="status"
-    aria-live="polite"
-    aria-atomic="true"
-    class="flex items-center gap-2 text-lg text-blue-700 dark:text-yellow-500"
-  >
-    @let timeToNextLabel = (timeToNextLabel$ | async);
-    @if (timeToNextLabel) {
-      <span class="text-sm">
-        {{ copySchedule.departureTimeBar.in }}
-        {{ timeToNextLabel }}
+  @if (viewModel$ | async; as viewModel) {
+    <div
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+      [attr.aria-busy]="viewModel.busy"
+      [class.invisible]="!viewModel.visible"
+      class="flex items-center gap-2 text-lg text-blue-700 dark:text-yellow-500"
+    >
+      @if (viewModel.timeToNextLabel) {
+        <span class="text-sm">
+          {{ copySchedule.departureTimeBar.in }}
+          {{ viewModel.timeToNextLabel }}
+        </span>
+      }
+      <span>
+        <svg
+          icon="circle-arrow-right"
+          class="size-6"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+          focusable="false"
+        ></svg>
       </span>
-    }
-    <span>
-      <svg
-        icon="circle-arrow-right"
-        class="size-6"
-        stroke="currentColor"
-        stroke-width="2"
-        aria-hidden="true"
-        focusable="false"
-      ></svg>
-    </span>
-    <span class="sr-only">{{ copySchedule.departureTimeBar.nextDepartureSr }}</span>
-    <time class="font-mono">
-      {{ label$ | async }}
-    </time>
-  </div>
+      <span class="sr-only">{{
+        copySchedule.departureTimeBar.nextDepartureSr
+      }}</span>
+      <time class="font-mono">
+        {{ viewModel.label }}
+      </time>
+    </div>
+  }
 </div>

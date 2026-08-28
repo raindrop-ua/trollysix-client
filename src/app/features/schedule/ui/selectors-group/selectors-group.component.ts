@@ -4,6 +4,7 @@ import {
   computed,
   inject,
   ChangeDetectionStrategy,
+  linkedSignal,
   Signal,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -68,9 +69,17 @@ export class SelectorsGroupComponent {
   public readonly isUnavailable: Signal<boolean> = computed(
     () => this.departures().length === 0 && !this.timetableLoading(),
   );
-  public readonly hasDepartures: Signal<boolean> = computed(
-    () => this.departures().length > 0,
-  );
+  public readonly hasDepartures: Signal<boolean> = linkedSignal<
+    { loading: boolean; hasDepartures: boolean },
+    boolean
+  >({
+    source: () => ({
+      loading: this.timetableLoading(),
+      hasDepartures: this.departures().length > 0,
+    }),
+    computation: ({ loading, hasDepartures }, previous) =>
+      loading ? (previous?.value ?? hasDepartures) : hasDepartures,
+  });
 
   public onSelectDayType(dayTypeName: string): void {
     this.store.dispatch(SchedulePageActions.selectDayType({ dayTypeName }));

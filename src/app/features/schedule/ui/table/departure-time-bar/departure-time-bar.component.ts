@@ -2,7 +2,19 @@ import { AsyncPipe, DatePipe } from '@angular/common';
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { Store } from '@ngrx/store';
-import { combineLatest, map, Observable } from 'rxjs';
+import {
+  auditTime,
+  combineLatest,
+  concat,
+  defer,
+  distinctUntilChanged,
+  map,
+  Observable,
+  of,
+  shareReplay,
+  switchMap,
+  timer,
+} from 'rxjs';
 
 import { copy } from '@core/content';
 import { ClockService } from '@core/services/clock.service';
@@ -12,8 +24,26 @@ import {
   Departure,
   Status,
 } from '@features/schedule/data-access/models/departure.model';
-import { selectTimetableLoading } from '@features/schedule/data-access/store/schedule.selectors';
+import {
+  selectCurrentTimetable,
+  selectTimetableLoading,
+} from '@features/schedule/data-access/store/schedule.selectors';
 import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
+
+interface DepartureTimeBarContent {
+  readonly timeToNextLabel: string | null;
+  readonly label: string;
+}
+
+interface DepartureTimeBarViewModel extends DepartureTimeBarContent {
+  readonly busy: boolean;
+  readonly visible: boolean;
+}
+
+interface DepartureTimeBarSource extends DepartureTimeBarContent {
+  readonly loading: boolean;
+  readonly timetableResolved: boolean;
+}
 
 @Component({
   selector: 'trollysix-departure-time-bar',
@@ -23,6 +53,9 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
   host: { class: 'block' },
 })
 export class DepartureTimeBarComponent {
+  private static readonly loadingDelayMs = 300;
+  private static readonly minimumLoadingMs = 500;
+
   public readonly copySchedule = copy('schedule');
 
   public clockService: ClockService = inject(ClockService);
@@ -59,24 +92,106 @@ export class DepartureTimeBarComponent {
     }),
   );
 
-  public readonly timeToNextLabel$: Observable<string | null> =
-    this.minutesToNext$.pipe(
-      map((minutes) => this.formatMinutesToNext(minutes)),
-    );
-
-  public readonly label$: Observable<string> = combineLatest([
+  private readonly source$: Observable<DepartureTimeBarSource> = combineLatest([
     this.next$,
     this.departures$,
+    this.minutesToNext$,
     this.timetableLoading$,
+    this.store.select(selectCurrentTimetable),
   ]).pipe(
-    map(([next, departures, timetableLoading]) => {
-      if (timetableLoading) return this.copySchedule.departureTimeBar.loading;
-      if (next?.time) return next.time;
-      if (departures?.length)
-        return this.copySchedule.departureTimeBar.tomorrow;
-      return this.copySchedule.noDepartures;
-    }),
+    map(([next, departures, minutesToNext, loading, timetable]) => ({
+      loading,
+      timetableResolved: timetable !== null,
+      timeToNextLabel: this.formatMinutesToNext(minutesToNext),
+      label: next?.time
+        ? next.time
+        : departures.length
+          ? this.copySchedule.departureTimeBar.tomorrow
+          : this.copySchedule.noDepartures,
+    })),
+    auditTime(0),
+    distinctUntilChanged(
+      (previous, current) =>
+        previous.loading === current.loading &&
+        previous.timetableResolved === current.timetableResolved &&
+        previous.timeToNextLabel === current.timeToNextLabel &&
+        previous.label === current.label,
+    ),
+    shareReplay({ bufferSize: 1, refCount: true }),
   );
+
+  public readonly viewModel$: Observable<DepartureTimeBarViewModel> = defer(
+    () => {
+      let confirmedContent: DepartureTimeBarContent | null = null;
+      let requestStarted = false;
+      let loadingShownAt: number | null = null;
+
+      return this.source$.pipe(
+        switchMap((source) => {
+          if (source.loading) {
+            requestStarted = true;
+
+            const loadingContent: DepartureTimeBarContent = {
+              timeToNextLabel: null,
+              label: this.copySchedule.departureTimeBar.loading,
+            };
+            const pendingContent: DepartureTimeBarViewModel = confirmedContent
+              ? { ...confirmedContent, busy: true, visible: true }
+              : { ...loadingContent, busy: true, visible: false };
+
+            return concat(
+              of(pendingContent),
+              timer(DepartureTimeBarComponent.loadingDelayMs).pipe(
+                map(() => {
+                  loadingShownAt = Date.now();
+                  return { ...loadingContent, busy: true, visible: true };
+                }),
+              ),
+            );
+          }
+
+          if (
+            !source.timetableResolved &&
+            !requestStarted &&
+            !confirmedContent
+          ) {
+            return of({
+              timeToNextLabel: null,
+              label: this.copySchedule.departureTimeBar.loading,
+              busy: false,
+              visible: false,
+            });
+          }
+
+          const nextContent: DepartureTimeBarContent = {
+            timeToNextLabel: source.timeToNextLabel,
+            label: source.label,
+          };
+          confirmedContent = nextContent;
+          requestStarted = false;
+
+          const remainingLoadingMs = loadingShownAt
+            ? Math.max(
+                0,
+                DepartureTimeBarComponent.minimumLoadingMs -
+                  (Date.now() - loadingShownAt),
+              )
+            : 0;
+          loadingShownAt = null;
+
+          const viewModel: DepartureTimeBarViewModel = {
+            ...nextContent,
+            busy: false,
+            visible: true,
+          };
+
+          return remainingLoadingMs > 0
+            ? timer(remainingLoadingMs).pipe(map(() => viewModel))
+            : of(viewModel);
+        }),
+      );
+    },
+  ).pipe(shareReplay({ bufferSize: 1, refCount: true }));
 
   private formatMinutesToNext(minutes: number | null): string | null {
     if (minutes === null) return null;
