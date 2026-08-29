@@ -10,8 +10,10 @@
       @if (currentTimetableValidFrom(); as validFrom) {
         <span
           >{{ copySchedule.scheduleValidFrom }}
-          {{ validFrom | date: 'dd.MM.yy' }}</span
-        >
+          <span class="font-mono">
+            {{ validFrom | date: 'dd.MM.yy' }}
+          </span>
+        </span>
       }
     </div>
   </div>
