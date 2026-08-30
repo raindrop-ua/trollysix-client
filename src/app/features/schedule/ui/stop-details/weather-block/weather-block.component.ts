@@ -7,8 +7,8 @@ import {
 import {
   Component,
   computed,
-  input,
   ChangeDetectionStrategy,
+  inject,
   Signal,
 } from '@angular/core';
 
@@ -16,8 +16,9 @@ import { environment } from '@environments/environment';
 
 import { copy } from '@core/content';
 
-import { Stop } from '@features/schedule/data-access/models/stop.model';
+import { WeatherService } from '@features/schedule/application/services/weather.service';
 import { type WindDirection } from '@features/schedule/data-access/models/wind-direction.model';
+import { WeatherApiService } from '@features/schedule/data-access/services/weather-api.service';
 import { TemperaturePipe } from '@shared/pipes/temperature.pipe';
 import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
 
@@ -31,16 +32,22 @@ import { SvgIconComponent } from '@shared/ui/svg-icon/svg-icon.component';
     TitleCasePipe,
     SvgIconComponent,
   ],
+  providers: [WeatherApiService, WeatherService],
   templateUrl: './weather-block.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'block h-full' },
 })
 export class WeatherBlockComponent {
   public readonly copySchedule = copy('schedule');
-  public stopData = input.required<Stop>();
+  public readonly weatherState = inject(WeatherService).state;
+  public readonly weather = computed(() => {
+    const state = this.weatherState();
+
+    return state.status === 'ready' ? state.weather : null;
+  });
 
   public readonly weatherIconUrl: Signal<string> = computed((): string => {
-    const weather = this.stopData().weather;
+    const weather = this.weather();
     if (!weather?.icon) {
       return `${environment.WEATHER_ICON_BASE}default@2x.png`;
     }
@@ -59,7 +66,7 @@ export class WeatherBlockComponent {
   ] as const;
 
   public readonly windDegNorm: Signal<number> = computed((): number => {
-    const w = this.stopData().weather;
+    const w = this.weather();
     const deg = w?.windDeg ?? 0;
     return ((deg % 360) + 360) % 360;
   });
@@ -76,13 +83,13 @@ export class WeatherBlockComponent {
   );
 
   public readonly hasWindGust: Signal<boolean> = computed(() => {
-    const w = this.stopData().weather;
+    const w = this.weather();
     if (!w) return false;
     return w.windGust > w.windSpeed + 0.5;
   });
 
   public readonly windGustDelta: Signal<number> = computed(() => {
-    const w = this.stopData().weather;
+    const w = this.weather();
     if (!w) return 0;
     return Math.max(0, w.windGust - w.windSpeed);
   });

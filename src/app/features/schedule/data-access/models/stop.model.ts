@@ -1,6 +1,5 @@
 import { DayTypeName } from './daytype.model';
 import { DirectionName } from './direction.model';
-import { Weather } from './weather.model';
 
 export interface DepartureBound {
   first: string;
@@ -30,5 +29,4 @@ export interface Stop {
     forward?: Geo | null;
     backward?: Geo | null;
   };
-  weather?: Weather | null;
 }
