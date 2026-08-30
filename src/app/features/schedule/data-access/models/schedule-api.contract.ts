@@ -2,7 +2,6 @@ import { DayType, DayTypeName } from './daytype.model';
 import { Direction, DirectionName } from './direction.model';
 import { Stop } from './stop.model';
 import { TimeEntity, Timetable } from './timetable.model';
-import { Weather } from './weather.model';
 
 const DAY_TYPE_NAMES: ReadonlySet<DayTypeName> = new Set([
   'weekday',
@@ -33,26 +32,6 @@ function isDirectionName(value: unknown): value is DirectionName {
 
 function isDayTypeName(value: unknown): value is DayTypeName {
   return isString(value) && DAY_TYPE_NAMES.has(value as DayTypeName);
-}
-
-function isWeather(value: unknown): value is Weather {
-  if (!isRecord(value)) {
-    return false;
-  }
-
-  return (
-    isFiniteNumber(value['temperature']) &&
-    isString(value['description']) &&
-    isString(value['icon']) &&
-    isFiniteNumber(value['feelsLike']) &&
-    isFiniteNumber(value['pressure']) &&
-    isFiniteNumber(value['humidity']) &&
-    isFiniteNumber(value['sunrise']) &&
-    isFiniteNumber(value['sunset']) &&
-    isFiniteNumber(value['windSpeed']) &&
-    isFiniteNumber(value['windDeg']) &&
-    isFiniteNumber(value['windGust'])
-  );
 }
 
 function isGeo(value: unknown): boolean {
@@ -180,10 +159,7 @@ function isStop(value: unknown): value is Stop {
     value['availableDirections'].every((direction) =>
       isDirectionName(direction),
     ) &&
-    (value['geo'] === undefined || isGeo(value['geo'])) &&
-    (value['weather'] === undefined ||
-      value['weather'] === null ||
-      isWeather(value['weather']))
+    (value['geo'] === undefined || isGeo(value['geo']))
   );
 }
 
