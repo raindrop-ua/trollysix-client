@@ -57,6 +57,8 @@ export const scheduleCopy = {
   },
   weather: {
     title: 'Weather',
+    unavailable:
+      'Weather information for this stop and direction is unavailable.',
     feelsLike: 'Feels like',
     pressure: 'Pressure',
     humidity: 'Humidity',

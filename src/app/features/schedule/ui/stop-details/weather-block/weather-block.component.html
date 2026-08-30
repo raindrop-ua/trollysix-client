@@ -1,10 +1,8 @@
-@if (weather(); as weather) {
-  <div
-    class="baseline-borders baseline-surface h-full rounded-3xl p-4 shadow-sm"
-  >
-    <div class="mb-2 text-base font-medium text-slate-700 dark:text-slate-200">
-      {{ copySchedule.weather.title }}
-    </div>
+<div class="baseline-borders baseline-surface h-full rounded-3xl p-4 shadow-sm">
+  <div class="mb-2 text-base font-medium text-slate-700 dark:text-slate-200">
+    {{ copySchedule.weather.title }}
+  </div>
+  @if (weather(); as weather) {
     <div
       class="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300"
     >
@@ -96,5 +94,9 @@
         {{ weather.sunset | date: 'H:mm' }}
       </div>
     </div>
-  </div>
-}
+  } @else {
+    <p class="text-sm text-slate-600 dark:text-slate-300">
+      {{ copySchedule.weather.unavailable }}
+    </p>
+  }
+</div>
