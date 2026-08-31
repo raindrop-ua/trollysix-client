@@ -22,9 +22,15 @@
             <div class="items-start gap-4 sm:flex sm:justify-between">
               <div>
                 <h2
-                  class="text-lg font-semibold text-slate-900 dark:text-white"
+                  class="flex gap-3 text-lg font-semibold text-slate-900 dark:text-white"
                 >
-                  {{ copySchedule.vehiclesTracking.title }}
+                  <div class="inline-flex items-center gap-2 font-normal text-emerald-600 transition-colors hover:text-emerald-500 dark:text-emerald-500 dark:hover:text-emerald-400">
+                    <span class="relative flex h-2.5 w-2.5">
+                      <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-current opacity-60"></span>
+                      <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-current"></span>
+                    </span>
+                  </div>
+                  <span>{{ copySchedule.vehiclesTracking.title }}</span>
                 </h2>
                 <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
                   {{ response.vehicles.length }}
