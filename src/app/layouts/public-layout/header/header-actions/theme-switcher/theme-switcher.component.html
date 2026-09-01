@@ -14,17 +14,19 @@
   >
     @if (themeSignal() === 'light') {
       <svg
-        icon="light"
-        class="size-4"
-        stroke="currentColor"
-        stroke-width="2"
-      ></svg>
-    } @else {
-      <svg
         icon="dark"
         class="size-4"
         stroke="currentColor"
         stroke-width="2"
+        aria-hidden="true"
+      ></svg>
+    } @else {
+      <svg
+        icon="sun"
+        class="size-4"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
       ></svg>
     }
     <span class="sr-only">{{ copyCommon.toggleTheme }}</span>
