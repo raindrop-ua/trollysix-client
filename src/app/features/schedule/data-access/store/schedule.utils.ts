@@ -40,7 +40,7 @@ export function resolveAutoDayTypeName(
     return null;
   }
 
-  const dayOfWeek = TZDate.tz(SCHEDULE_TIME_ZONE, today).getDay();
+  const dayOfWeek = TZDate.tz(SCHEDULE_TIME_ZONE, today.getTime()).getDay();
   const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
 
   const findByName = (name: string) =>

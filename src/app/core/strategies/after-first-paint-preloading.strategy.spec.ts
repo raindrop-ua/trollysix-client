@@ -2,7 +2,7 @@ import { ApplicationRef } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { Route } from '@angular/router';
 
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { BehaviorSubject, firstValueFrom, of } from 'rxjs';
 
@@ -32,6 +32,10 @@ describe('AfterFirstPaintPreloadingStrategy', () => {
   beforeEach(() => {
     vi.useFakeTimers();
     vi.clearAllMocks();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
   });
 
   it('returns null and does not call load when preload is false', async () => {
