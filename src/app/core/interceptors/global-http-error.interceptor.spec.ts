@@ -6,7 +6,7 @@ import {
 } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { defer, firstValueFrom, throwError } from 'rxjs';
 
@@ -26,6 +26,10 @@ describe('globalHttpErrorInterceptor', () => {
     vi.useFakeTimers();
     vi.clearAllMocks();
     TestBed.resetTestingModule();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
   });
 
   it('does not retry non-idempotent requests', async () => {
