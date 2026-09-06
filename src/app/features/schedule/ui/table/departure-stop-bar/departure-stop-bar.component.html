@@ -1,6 +1,19 @@
 <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
-  <h3 class="cursor-default py-1 text-xl font-semibold text-slate-900 dark:text-white">
-    <div>{{ selectedStopName() }}</div>
+  <h3
+    class="cursor-default py-1 text-xl font-semibold text-slate-900 dark:text-white"
+  >
+    <span class="sr-only">{{ selectedStopName() }}</span>
+    <span aria-hidden="true" class="grid">
+      <span class="invisible col-start-1 row-start-1">
+        {{ selectedStopName() }}
+      </span>
+      <span class="col-start-1 row-start-1">
+        {{ displayedStopName() }}
+        @if (isTypingStopName()) {
+          <span class="ts-stop-name-caret"></span>
+        }
+      </span>
+    </span>
   </h3>
   @if (departures().length) {
     @for (key of [revealKey()]; track key) {
