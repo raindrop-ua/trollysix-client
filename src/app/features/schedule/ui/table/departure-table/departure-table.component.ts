@@ -1,5 +1,6 @@
 import {
   Component,
+  computed,
   inject,
   signal,
   effect,
@@ -34,11 +35,17 @@ export class DepartureTableComponent {
   public readonly copySchedule = copy('schedule');
   private readonly schedule: ScheduleService = inject(ScheduleService);
   private readonly store = inject(Store);
-  public readonly departures: Signal<Departure[]> = toSignal(
+  private readonly unsortedDepartures: Signal<Departure[]> = toSignal(
     this.schedule.departures$,
     {
       initialValue: [],
     },
+  );
+  public readonly departures = computed(() =>
+    [...this.unsortedDepartures()].sort(
+      (first, second) =>
+        first.departureAt.getTime() - second.departureAt.getTime(),
+    ),
   );
   public readonly timetableLoading: Signal<boolean> = this.store.selectSignal(
     selectTimetableLoading,
