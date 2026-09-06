@@ -1,3 +1,9 @@
+@keyframes ts-stop-name-caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 @layer timetable {
   .ts-time {
     @apply rounded-xl px-3 py-2 text-center font-mono text-base transition motion-safe:hover:-translate-y-0.5;
@@ -68,5 +74,10 @@
     @starting-style {
       @apply motion-safe:-translate-y-2 motion-safe:opacity-0;
     }
+  }
+
+  .ts-stop-name-caret {
+    @apply ml-0.5 inline-block h-[1em] w-0.5 translate-y-[0.08em] rounded-full bg-blue-600 dark:bg-blue-300;
+    animation: ts-stop-name-caret-blink 650ms steps(1, end) infinite;
   }
 }
