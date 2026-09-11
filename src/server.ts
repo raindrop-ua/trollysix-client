@@ -107,7 +107,7 @@ app.use((req, res, next) => {
 });
 
 if (isMainModule(import.meta.url) || process.env['pm_id']) {
-  const port = process.env['PORT'] || 4500;
+  const port = process.env['PORT'] || 4200;
   const host = process.env['HOST'] ?? '0.0.0.0';
   app.listen(Number(port), host, () => {
     console.log(`Node Express server listening on http://localhost:${port}`);

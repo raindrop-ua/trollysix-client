@@ -8,7 +8,7 @@
 
 ![Preview](docs/splash@2x.png)
 
-Timetable for trolleybus route in the city of Dnipro.
+Timetable for a trolleybus route in the city of Dnipro.
 The route connects the charming residential area of Pridniprovsky, locally referred to simply as Pridniprovsk, with the city center.
 
 ## Live
