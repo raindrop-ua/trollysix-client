@@ -89,7 +89,7 @@ jobs:
 
       - name: Run SSR smoke E2E
         env:
-          CYPRESS_BASE_URL: http://127.0.0.1:4500
+          CYPRESS_BASE_URL: http://127.0.0.1:4200
         run: |
           pnpm start:ssr:e2e > /tmp/ssr.log 2>&1 &
           SERVER_PID=$!
