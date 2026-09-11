@@ -10,9 +10,9 @@ export default [
       preload: true,
       seo: {
         title: 'Settings | TrollySix',
-        description:
-          'Welcome to ultimate schedule for trolleybus route number 6.',
-        keywords: 'trolleybus, route 6, schedule',
+        description: 'Manage your TrollySix app settings and preferences.',
+        keywords: 'TrollySix settings, app preferences',
+        ogImage: 'og-default.png',
       },
     },
   },

@@ -10,8 +10,10 @@ export default [
       preload: true,
       seo: {
         title: 'Support | TrollySix',
-        description: 'Get support for TrollySix.',
-        keywords: 'trollysix, support, contact',
+        description:
+          'Contact TrollySix support about app issues, feedback, or feature requests.',
+        keywords: 'TrollySix support, app feedback, feature requests, contact',
+        ogImage: 'og-default.png',
       },
     },
   },

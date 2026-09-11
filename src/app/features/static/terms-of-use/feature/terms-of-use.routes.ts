@@ -11,8 +11,9 @@ export default [
       seo: {
         title: 'Terms of Use | TrollySix',
         description:
-          'Welcome to ultimate schedule for trolleybus route number 6.',
-        keywords: 'trolleybus, route 6, schedule',
+          'Read the terms for using TrollySix timetable information, including accuracy, permitted use, and limitations of liability.',
+        keywords: 'TrollySix terms of use, timetable information, legal terms',
+        ogImage: 'og-default.png',
       },
     },
   },

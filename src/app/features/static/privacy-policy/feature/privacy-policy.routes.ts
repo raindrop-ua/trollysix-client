@@ -11,8 +11,9 @@ export default [
       seo: {
         title: 'Privacy Policy | TrollySix',
         description:
-          'Welcome to ultimate schedule for trolleybus route number 6.',
-        keywords: 'trolleybus, route 6, schedule',
+          'Learn how TrollySix handles privacy, personal data, and locally stored preferences across its website and mobile apps.',
+        keywords: 'TrollySix privacy policy, personal data, local preferences',
+        ogImage: 'og-default.png',
       },
     },
   },
