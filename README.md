@@ -1,8 +1,8 @@
-# TrollySix 
+# TrollySix
 
 ![CI](https://github.com/raindrop-ua/trollysix-client/actions/workflows/ci.yml/badge.svg)
 ![Commits](https://img.shields.io/badge/commits-conventional-brightgreen)
-![License](https://img.shields.io/badge/license-proprietary-red)
+![License](https://img.shields.io/badge/license-MIT-green)
 ![Angular](https://img.shields.io/badge/angular-22-brightgreen)
 ![Build](https://img.shields.io/github/actions/workflow/status/raindrop-ua/trollysix-client/ci.yml?branch=main)
 
@@ -40,6 +40,21 @@ pnpm e2e
 
 - [Architecture](./ARCHITECTURE.md)
 - [Contributing](./CONTRIBUTING.md)
+
+## Fonts
+
+This project bundles the following fonts under the SIL Open Font License,
+Version 1.1:
+
+- [Montserrat](./src/assets/fonts/montserrat/OFL.txt) — Copyright 2024 The Montserrat.Git Project Authors
+- [JetBrains Mono](./src/assets/fonts/jetbrains/OFL.txt) — Copyright 2020 The JetBrains Mono Project Authors
+
+The bundled font files remain subject to their respective OFL terms rather than
+the project's MIT License.
+
+## License
+
+TrollySix is available under the [MIT License](./LICENSE).
 
 ---
 
