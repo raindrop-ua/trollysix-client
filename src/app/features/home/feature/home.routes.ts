@@ -13,10 +13,12 @@ export default [
     data: {
       preload: true,
       seo: {
-        title: 'Home | TrollySix',
+        title: 'TrollySix | Dnipro Trolleybus Route 6',
         description:
-          'Welcome to ultimate schedule for trolleybus route number 6.',
-        keywords: 'trolleybus, route 6, schedule',
+          'Check the timetable and practical route information for trolleybus Route 6 in Dnipro.',
+        keywords:
+          'Dnipro trolleybus, trolleybus Route 6, Route 6 timetable, TrollySix',
+        ogImage: 'og-default.png',
       },
     },
   },

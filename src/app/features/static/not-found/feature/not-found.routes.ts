@@ -9,10 +9,11 @@ export default [
     data: {
       preload: true,
       seo: {
-        title: '404 | TrollySix',
+        title: 'Page Not Found | TrollySix',
         description:
-          'Welcome to ultimate schedule for trolleybus route number 6.',
-        keywords: 'trolleybus, route 6, schedule',
+          'The requested TrollySix page could not be found. Return home or open the Route 6 schedule.',
+        keywords: 'TrollySix page not found, 404',
+        ogImage: 'og-default.png',
       },
     },
   },

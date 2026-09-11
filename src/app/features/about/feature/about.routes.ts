@@ -12,9 +12,12 @@ export default [
     data: {
       preload: true,
       seo: {
-        title: 'About | TrollySix',
-        description: 'Ultimate schedule for trolleybus route number 6.',
-        keywords: 'trolleybus, route 6, schedule',
+        title: 'About Dnipro Trolleybus Route 6 | TrollySix',
+        description:
+          'Explore the history, route, stops, and vehicles of trolleybus Route 6 connecting Pridniprovsk with central Dnipro.',
+        keywords:
+          'Dnipro trolleybus Route 6, Route 6 history, Route 6 stops, AKSM 321D',
+        ogImage: 'og-default.png',
       },
     },
   },
