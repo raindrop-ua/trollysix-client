@@ -14,7 +14,7 @@ import {
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { of, forkJoin, distinctUntilChanged, combineLatest, tap } from 'rxjs';
+import { of, forkJoin, distinctUntilChanged, tap } from 'rxjs';
 
 import { DayTypeName } from '../models/daytype.model';
 import { DirectionName } from '../models/direction.model';
@@ -22,7 +22,12 @@ import { ScheduleApiService } from '../services/schedule.api.service';
 
 import { SchedulePageActions, ScheduleApiActions } from './schedule.actions';
 import { scheduleFeature } from './schedule.reducer';
-import { parseDirection, resolveAutoDayTypeName } from './schedule.utils';
+import { selectSelectedTime } from './schedule.selectors';
+import {
+  parseDepartureTime,
+  parseDirection,
+  resolveAutoDayTypeName,
+} from './schedule.utils';
 
 @Injectable()
 export class ScheduleEffects {
@@ -48,6 +53,7 @@ export class ScheduleEffects {
             const directionName = parseDirection(qp.get('direction'));
 
             return SchedulePageActions.hydrateFromUrl({
+              time: parseDepartureTime(qp.get('time')),
               stopId,
               dayTypeName,
               directionName,
@@ -95,94 +101,33 @@ export class ScheduleEffects {
     () =>
       this.actions$.pipe(
         ofType(
+          SchedulePageActions.hydrateFromUrl,
           SchedulePageActions.selectStop,
           SchedulePageActions.selectDayType,
           SchedulePageActions.selectDirection,
+          SchedulePageActions.toggleTime,
           ScheduleApiActions.loadInitialDataSuccess,
+          ScheduleApiActions.loadTimetableSuccess,
         ),
         filter(() => this.isBrowser),
         withLatestFrom(
+          this.store.select(scheduleFeature.selectInitialDataLoaded),
           this.store.select(scheduleFeature.selectSelectedStopId),
           this.store.select(scheduleFeature.selectSelectedDayTypeName),
           this.store.select(scheduleFeature.selectSelectedDirectionName),
+          this.store.select(selectSelectedTime),
         ),
         filter(
-          ([, stopId, dayTypeName, directionName]) =>
-            !!stopId && !!dayTypeName && !!directionName,
+          ([, loaded, stopId, dayType, direction]) =>
+            !!loaded && !!stopId && !!dayType && !!direction,
         ),
-        map(([, stopId, dayTypeName, directionName]) => ({
-          stopId,
-          dayTypeName,
-          directionName,
-        })),
-        distinctUntilChanged(
-          (a, b) =>
-            a.stopId === b.stopId &&
-            a.dayTypeName === b.dayTypeName &&
-            a.directionName === b.directionName,
-        ),
-        tap(({ stopId, dayTypeName, directionName }) => {
+        tap(([, , stopId, dayType, direction, time]) => {
           const urlTree = this.router.createUrlTree([], {
             relativeTo: this.route,
-            queryParams: {
-              stopId,
-              dayType: dayTypeName,
-              direction: directionName,
-            },
+            queryParams: { stopId, dayType, direction, time },
           });
-
           this.location.replaceState(this.router.serializeUrl(urlTree));
         }),
-      ),
-    { dispatch: false },
-  );
-
-  public ensureUrlOnEnter$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(SchedulePageActions.enter),
-        filter(() => this.isBrowser),
-        switchMap(() =>
-          this.route.queryParamMap.pipe(
-            take(1),
-            switchMap((qp) => {
-              const hasAny =
-                qp.has('stopId') || qp.has('dayType') || qp.has('direction');
-
-              if (hasAny) {
-                return of(null);
-              }
-
-              return combineLatest([
-                this.store
-                  .select(scheduleFeature.selectSelectedStopId)
-                  .pipe(take(1)),
-                this.store
-                  .select(scheduleFeature.selectSelectedDayTypeName)
-                  .pipe(take(1)),
-                this.store
-                  .select(scheduleFeature.selectSelectedDirectionName)
-                  .pipe(take(1)),
-              ]).pipe(
-                filter(
-                  ([stopId, dayTypeName, directionName]) =>
-                    !!stopId && !!dayTypeName && !!directionName,
-                ),
-                switchMap(([stopId, dayTypeName, directionName]) =>
-                  this.router.navigate([], {
-                    relativeTo: this.route,
-                    queryParams: {
-                      stopId,
-                      dayType: dayTypeName,
-                      direction: directionName,
-                    },
-                    replaceUrl: true,
-                  }),
-                ),
-              );
-            }),
-          ),
-        ),
       ),
     { dispatch: false },
   );
@@ -190,6 +135,7 @@ export class ScheduleEffects {
   public triggerLoadTimetable$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
+        SchedulePageActions.hydrateFromUrl,
         SchedulePageActions.selectStop,
         SchedulePageActions.selectDayType,
         SchedulePageActions.selectDirection,

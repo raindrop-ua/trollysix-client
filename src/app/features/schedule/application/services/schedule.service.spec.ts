@@ -70,7 +70,7 @@ describe('ScheduleService (Injector.create)', () => {
 
     return {
       svc: injector.get(ScheduleService),
-      mocks: { dispatch, select: selectSpy },
+      mocks: { dispatch, select: selectSpy, scheduleTimeMock },
     };
   };
 
@@ -111,6 +111,21 @@ describe('ScheduleService (Injector.create)', () => {
       ['10:15', 5],
       ['10:16', 6],
     ]);
+  });
+
+  it('keeps the timetable identity when displaying a different local time', async () => {
+    const { svc, mocks } = makeInjector({
+      now: new Date('2026-09-24T08:00:00Z'),
+      times: [makeTime('08:30', 1)],
+      showNumbers: false,
+    });
+    vi.spyOn(mocks.scheduleTimeMock, 'resolve').mockReturnValue({
+      departureAt: new Date('2026-09-24T05:30:00Z'),
+      time: '07:30',
+    });
+    const [departure] = await firstValueFrom(svc.departures$);
+    expect(departure.time).toBe('07:30');
+    expect(departure.scheduleTime).toBe('08:30');
   });
 
   it('showRunNumbers$ reflects store selector value', async () => {

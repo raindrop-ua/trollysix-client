@@ -39,6 +39,7 @@ export class ScheduleService {
         const { departureAt, time } = this.scheduleTime.resolve(t.time, now);
 
         return {
+          scheduleTime: t.time,
           departureAt,
           time,
           runNumber: t.runNumber,
