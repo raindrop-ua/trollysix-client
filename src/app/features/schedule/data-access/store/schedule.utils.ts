@@ -52,3 +52,17 @@ export function resolveAutoDayTypeName(
 
   return findByName('weekday') ?? findByName('weekend') ?? dayTypes[0].name;
 }
+
+export function timetableSelectionKey(
+  stopId: string | null,
+  dayType: string | null,
+  direction: DirectionName | null,
+): string | null {
+  return stopId && dayType && direction
+    ? JSON.stringify([stopId, dayType, direction])
+    : null;
+}
+
+export function parseDepartureTime(value: string | null): string | null {
+  return value && /^(?:[01]\d|2[0-3]):[0-5]\d$/.test(value) ? value : null;
+}

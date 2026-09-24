@@ -24,6 +24,7 @@ export class DepartureTimeItemComponent {
   private readonly schedule: ScheduleService = inject(ScheduleService);
   public departure = input.required<Departure>();
   public revealIndex = input<number>(0);
+  public selected = input(false);
   public clickTime = output<string>();
 
   public readonly showSchedule: Signal<boolean> = toSignal(

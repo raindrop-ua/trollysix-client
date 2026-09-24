@@ -15,8 +15,10 @@ import { copy } from '@core/content';
 
 import { ScheduleService } from '@features/schedule/application/services/schedule.service';
 import { Departure } from '@features/schedule/data-access/models/departure.model';
+import { SchedulePageActions } from '@features/schedule/data-access/store/schedule.actions';
 import {
   selectSelectedStopId,
+  selectSelectedTime,
   selectTimetableLoading,
 } from '@features/schedule/data-access/store/schedule.selectors';
 import { DepartureTimeItemComponent } from '@features/schedule/ui/table/departure-time-item/departure-time-item.component';
@@ -53,7 +55,7 @@ export class DepartureTableComponent {
   public readonly selectedStopId: Signal<string | null> =
     this.store.selectSignal(selectSelectedStopId);
   public readonly showLoading = signal(false);
-  private selectedTime = signal<string | null>(null);
+  public readonly selectedTime = this.store.selectSignal(selectSelectedTime);
   public readonly revealKey = signal(0);
 
   private previousLoading = true;
@@ -105,6 +107,6 @@ export class DepartureTableComponent {
   }
 
   public onSelectTime(time: string): void {
-    this.selectedTime.set(time);
+    this.store.dispatch(SchedulePageActions.toggleTime({ time }));
   }
 }
