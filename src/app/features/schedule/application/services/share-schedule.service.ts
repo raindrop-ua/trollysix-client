@@ -12,6 +12,7 @@ import { ClipboardService } from '@core/services/clipboard.service';
 import { ToastService } from '@core/services/toast.service';
 
 import { scheduleFeature } from '../../data-access/store/schedule.reducer';
+import { selectSelectedTime } from '../../data-access/store/schedule.selectors';
 
 @Injectable()
 export class ShareScheduleService {
@@ -32,16 +33,17 @@ export class ShareScheduleService {
       this.store.select(scheduleFeature.selectSelectedStopId),
       this.store.select(scheduleFeature.selectSelectedDayTypeName),
       this.store.select(scheduleFeature.selectSelectedDirectionName),
+      this.store.select(selectSelectedTime),
     ])
       .pipe(take(1))
-      .subscribe(async ([stopId, dayType, direction]) => {
+      .subscribe(async ([stopId, dayType, direction, time]) => {
         if (!stopId || !dayType || !direction) {
           this.toastService.error(this.copy.nothingToShare);
           return;
         }
 
         const tree = this.router.createUrlTree(['/schedule'], {
-          queryParams: { stopId, dayType, direction },
+          queryParams: { stopId, dayType, direction, time },
         });
 
         const origin =

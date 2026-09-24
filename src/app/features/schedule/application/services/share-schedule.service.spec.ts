@@ -13,6 +13,7 @@ import {
 import { ToastService } from '@core/services/toast.service';
 
 import { scheduleFeature } from '../../data-access/store/schedule.reducer';
+import { selectSelectedTime } from '../../data-access/store/schedule.selectors';
 
 import { ShareScheduleService } from './share-schedule.service';
 interface StoreLike {
@@ -25,6 +26,7 @@ describe('ShareScheduleService (Injector.create)', () => {
     dayType: string | null;
     direction: string | null;
     copyOk?: boolean;
+    time?: string | null;
   }) => {
     const storeObj: StoreLike = {
       select: (selector: unknown) => {
@@ -34,6 +36,7 @@ describe('ShareScheduleService (Injector.create)', () => {
           return of(opts.dayType);
         if (selector === scheduleFeature.selectSelectedDirectionName)
           return of(opts.direction);
+        if (selector === selectSelectedTime) return of(opts.time ?? null);
         return of(null);
       },
     };
@@ -87,6 +90,29 @@ describe('ShareScheduleService (Injector.create)', () => {
       },
     };
   };
+
+  it('includes the selected departure in Share and omits it when deselected', () => {
+    for (const time of ['08:30', null]) {
+      const { svc, mocks } = makeInjector({
+        stopId: 'stop-1',
+        dayType: 'weekday',
+        direction: 'forward',
+        time,
+      });
+      svc.shareSchedule();
+      expect(mocks.routerMock.createUrlTree).toHaveBeenCalledWith(
+        ['/schedule'],
+        {
+          queryParams: {
+            stopId: 'stop-1',
+            dayType: 'weekday',
+            direction: 'forward',
+            time,
+          },
+        },
+      );
+    }
+  });
 
   beforeEach(() => {
     vi.clearAllMocks();

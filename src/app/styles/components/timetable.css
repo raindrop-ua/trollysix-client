@@ -33,6 +33,10 @@
     @apply border-slate-600/80 bg-red-500/40 text-red-700 dark:bg-red-500/30 dark:text-white/70;
   }
 
+  .ts-time-selected {
+    @apply ring-2 ring-blue-600 ring-offset-2 ring-offset-white dark:ring-blue-300 dark:ring-offset-slate-900;
+  }
+
   .hint-arrow {
     @apply motion-safe:animate-cartoon-bounce pointer-events-none absolute top-0 flex w-full animate-none items-center text-yellow-500 opacity-100 transition dark:text-yellow-400;
     @starting-style {
