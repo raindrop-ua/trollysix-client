@@ -2,6 +2,7 @@ import { createSelector } from '@ngrx/store';
 
 import { scheduleFeature } from './schedule.reducer';
 import { stopsAdapter } from './schedule.state';
+import { timetableSelectionKey } from './schedule.utils';
 
 const {
   selectStops,
@@ -107,4 +108,15 @@ export const selectScheduleViewModel = createSelector(
     stopsLoading,
     timetableLoading,
   }),
+);
+
+export const selectSelectedTime = createSelector(
+  scheduleFeature.selectSelectedTimes,
+  selectSelectedStopId,
+  selectSelectedDayType,
+  selectSelectedDirection,
+  (selectedTimes, stopId, dayType, direction) => {
+    const key = timetableSelectionKey(stopId, dayType, direction);
+    return key ? (selectedTimes[key] ?? null) : null;
+  },
 );

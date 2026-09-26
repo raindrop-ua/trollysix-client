@@ -15,12 +15,14 @@ export interface ScheduleState {
   selectedStopId: string | null;
   selectedDayTypeName: string | null;
   selectedDirectionName: DirectionName | null;
+  selectedTimes: Record<string, string | null>;
   showRunNumbers: boolean;
   stopsLoading: boolean;
   timetableLoading: boolean;
   error: string | null;
   initialDataLoaded: boolean;
   pendingUrlSelection: {
+    time: string | null;
     stopId: string | null;
     dayTypeName: string | null;
     directionName: DirectionName | null;
@@ -35,6 +37,7 @@ export const initialState: ScheduleState = {
   selectedStopId: null,
   selectedDayTypeName: null,
   selectedDirectionName: 'backward',
+  selectedTimes: {},
   showRunNumbers: false,
   stopsLoading: false,
   timetableLoading: false,

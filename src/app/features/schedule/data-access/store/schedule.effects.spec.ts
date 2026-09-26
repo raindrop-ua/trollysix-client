@@ -17,6 +17,7 @@ import { ScheduleApiService } from '../services/schedule.api.service';
 import { ScheduleApiActions, SchedulePageActions } from './schedule.actions';
 import { ScheduleEffects } from './schedule.effects';
 import { scheduleFeature } from './schedule.reducer';
+import { selectSelectedTime } from './schedule.selectors';
 
 interface StoreLike {
   select(selector: unknown): Observable<unknown>;
@@ -25,6 +26,9 @@ interface StoreLike {
 describe('ScheduleEffects (Injector.create)', () => {
   const makeInjector = (opts: {
     initialDataLoaded?: boolean;
+    selectedTime?: string | null;
+    queryParams?: Record<string, string>;
+    platform?: string;
     selectedStopId: string | null;
     selectedDayType: string | null;
     selectedDirection: DirectionName | null;
@@ -54,6 +58,8 @@ describe('ScheduleEffects (Injector.create)', () => {
           return of(opts.selectedDirection);
         }
 
+        if (selector === selectSelectedTime)
+          return of(opts.selectedTime ?? null);
         return of(null);
       },
     };
@@ -98,7 +104,7 @@ describe('ScheduleEffects (Injector.create)', () => {
     };
 
     const activatedRouteMock: Pick<ActivatedRoute, 'queryParamMap'> = {
-      queryParamMap: of(convertToParamMap({})),
+      queryParamMap: of(convertToParamMap(opts.queryParams ?? {})),
     };
 
     const locationMock: Pick<Location, 'replaceState'> = {
@@ -113,7 +119,7 @@ describe('ScheduleEffects (Injector.create)', () => {
         { provide: Router, useValue: routerMock },
         { provide: ActivatedRoute, useValue: activatedRouteMock },
         { provide: Location, useValue: locationMock },
-        { provide: PLATFORM_ID, useValue: 'browser' },
+        { provide: PLATFORM_ID, useValue: opts.platform ?? 'browser' },
         ScheduleEffects,
       ],
     });
@@ -121,9 +127,101 @@ describe('ScheduleEffects (Injector.create)', () => {
     return {
       actions$,
       effects: injector.get(ScheduleEffects),
-      mocks: { scheduleApiMock },
+      mocks: { scheduleApiMock, routerMock, locationMock },
     };
   };
+
+  it('hydrates the selected departure from a shared URL', async () => {
+    const { actions$, effects } = makeInjector({
+      selectedStopId: null,
+      selectedDayType: null,
+      selectedDirection: null,
+      queryParams: {
+        stopId: 'stop-1',
+        dayType: 'weekday',
+        direction: 'forward',
+        time: '08:30',
+      },
+    });
+    const result = firstValueFrom(effects.hydrateFromUrlOnEnter$);
+    actions$.next(SchedulePageActions.enter());
+    await expect(result).resolves.toEqual(
+      SchedulePageActions.hydrateFromUrl({
+        stopId: 'stop-1',
+        dayTypeName: 'weekday',
+        directionName: 'forward',
+        time: '08:30',
+      }),
+    );
+  });
+
+  it('syncs selection, stop changes, and deselection to the URL without loading a timetable', () => {
+    const opts = {
+      selectedStopId: 'stop-1',
+      selectedDayType: 'weekday',
+      selectedDirection: 'forward' as const,
+      selectedTime: '08:30' as string | null,
+    };
+    // Re-subscribe for each state snapshot, as Store selectors emit after the reducer.
+    for (const [stopId, time] of [
+      ['stop-1', '08:30'],
+      ['stop-2', null],
+      ['stop-1', '08:30'],
+      ['stop-1', null],
+    ]) {
+      const { actions$, effects, mocks } = makeInjector({
+        ...opts,
+        selectedStopId: stopId,
+        selectedTime: time,
+      });
+      const sync = effects.syncStoreToUrl$.subscribe();
+      const loads: Action[] = [];
+      const load = effects.triggerLoadTimetable$.subscribe((action) =>
+        loads.push(action),
+      );
+      actions$.next(SchedulePageActions.toggleTime({ time: '08:30' }));
+      expect(mocks.routerMock.createUrlTree).toHaveBeenLastCalledWith(
+        [],
+        expect.objectContaining({
+          queryParams: {
+            stopId,
+            dayType: 'weekday',
+            direction: 'forward',
+            time,
+          },
+        }),
+      );
+      expect(mocks.locationMock.replaceState).toHaveBeenCalledWith('/schedule');
+      expect(loads).toEqual([]);
+      sync.unsubscribe();
+      load.unsubscribe();
+    }
+  });
+
+  it('does not write browser history on the server or before initial data resolves', () => {
+    for (const options of [
+      { platform: 'server' },
+      { initialDataLoaded: false },
+    ]) {
+      const { actions$, effects, mocks } = makeInjector({
+        selectedStopId: 'stop-1',
+        selectedDayType: 'weekday',
+        selectedDirection: 'forward',
+        ...options,
+      });
+      const sub = effects.syncStoreToUrl$.subscribe();
+      actions$.next(
+        SchedulePageActions.hydrateFromUrl({
+          stopId: 'stop-1',
+          dayTypeName: 'weekday',
+          directionName: 'forward',
+          time: '08:30',
+        }),
+      );
+      expect(mocks.locationMock.replaceState).not.toHaveBeenCalled();
+      sub.unsubscribe();
+    }
+  });
 
   beforeEach(() => {
     vi.clearAllMocks();

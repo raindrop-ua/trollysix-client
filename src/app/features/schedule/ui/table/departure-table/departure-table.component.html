@@ -13,6 +13,7 @@
           ) {
             <trollysix-departure-time-item
               [departure]="departure"
+              [selected]="selectedTime() === departure.scheduleTime"
               [revealIndex]="i"
               (clickTime)="onSelectTime($event)"
             />
