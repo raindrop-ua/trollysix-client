@@ -5,6 +5,7 @@
 - Static assets live under `public/` and `src/assets/`.
 - Keep changes focused and minimal; do not refactor unrelated areas.
 - Match the existing Angular and TypeScript style already present in the repo.
+- Always create components with separate `.component.ts`, `.component.html`, and `.component.css` files. Reference templates with `templateUrl` and styles with `styleUrl` or `styleUrls`; do not use inline `template` or `styles` in component TypeScript files, even for small components.
 - Prefer updating existing files over introducing new abstractions unless they clearly simplify the change.
 - Do not edit generated output in `dist/` or cached content in `.angular/`.
 - Preserve SSR compatibility when changing routing, bootstrap, or browser-only APIs.

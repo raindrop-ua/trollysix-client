@@ -113,7 +113,8 @@
       "type": "component",
       "style": "css",
       "changeDetection": "OnPush",
-      "inlineStyle": true,
+      "inlineTemplate": false,
+      "inlineStyle": false,
       "skipTests": true
     },
     "@schematics/angular:directive": {
