@@ -27,6 +27,14 @@ Feature folders follow a pragmatic split:
 - `services/`: feature business services
 - `ui/`: presentational components
 
+## Component Files
+
+- Every new component must have separate `.component.ts`, `.component.html`, and `.component.css` files in the same directory.
+- Keep component logic in TypeScript, markup in HTML, and styles in CSS.
+- Use `templateUrl` and `styleUrl` (or `styleUrls`) to reference the external files.
+- Do not embed templates or styles in component TypeScript files with `template` or `styles`, even for small components.
+- Angular CLI component defaults must keep `inlineTemplate: false`, `inlineStyle: false`, and `style: "css"`.
+
 ## Routing
 
 Top-level routing is defined in `src/app/app.routes.ts` with lazy-loaded feature route configs.

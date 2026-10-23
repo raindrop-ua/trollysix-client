@@ -5,7 +5,7 @@ Thanks for contributing to TrollySix.
 ## Prerequisites
 
 - Node.js 24+
-- pnpm 11+
+- pnpm 12.15.0
 
 ## Setup
 
